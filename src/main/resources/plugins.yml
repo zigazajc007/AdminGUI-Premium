@@ -33,17 +33,38 @@
 #               |________________________|
 #
 #----------------------------------------------------------
-#                     Custom Plugins
+#                     Plugins
 #----------------------------------------------------------
 plugins:
   1:
     name: "&a&lEssentials"
+    material: "BOOK"
     commands:
       1:
         name: "&c&lKill"
+        material: "DIAMOND_SWORD"
         command: "/kill {player}"
+        console_sender: true
         permission: "admingui.kill"
       2:
-        name: "&d&lTeleport"
-        command: "/tp <target_player>"
-        permission: "admingui.teleport"
+        name: "&e&lSeen"
+        material: "ENDER_PEARL"
+        command: "/seen {player}"
+        console_sender: false
+        permission: "admingui.seen"
+  2:
+    name: "&a&lVault"
+    material: "PAPER"
+    commands:
+      1:
+        name: "&2&lMoney"
+        material: "PAPER"
+        command: "/money {player}"
+        console_sender: false
+        permission: "admingui.money"
+      2:
+        name: "&d&lPay"
+        material: "BOOK"
+        command: "/eco give {player} 100"
+        console_sender: true
+        permission: "admingui.eco"

@@ -6,7 +6,6 @@ import com.rabbitcompany.admingui.listeners.PlayerDamageListener;
 import com.rabbitcompany.admingui.listeners.PlayerJoinListener;
 import com.rabbitcompany.admingui.listeners.PlayerLoginListener;
 import com.rabbitcompany.admingui.utils.Message;
-import com.rabbitcompany.admingui.utils.Updater;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
@@ -36,8 +35,6 @@ public class AdminGUI extends JavaPlugin {
     private File p = null;
     private YamlConfiguration plug = new YamlConfiguration();
 
-    public static SpigotUpdater updater;
-
     @Override
     public void onEnable() {
         instance = this;
@@ -53,16 +50,10 @@ public class AdminGUI extends JavaPlugin {
             MetricsLite metricsLite = new MetricsLite(this);
         }
 
-        //Updater
-        //updater = new SpigotUpdater(this, 71157);
-
         //VaultAPI
         if(setupEconomy()){
             vault = true;
         }
-
-        //Check for updates
-        Updater.sendConsole();
 
         //Listeners
         new InventoryClickListener(this);

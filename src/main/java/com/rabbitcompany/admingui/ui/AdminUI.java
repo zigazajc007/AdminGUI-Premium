@@ -1,6 +1,7 @@
 package com.rabbitcompany.admingui.ui;
 
 import com.rabbitcompany.admingui.AdminGUI;
+import com.rabbitcompany.admingui.XMaterial;
 import com.rabbitcompany.admingui.utils.*;
 import com.rabbitcompany.admingui.utils.potions.Version_12;
 import com.rabbitcompany.admingui.utils.potions.Version_14;
@@ -11,6 +12,7 @@ import de.myzelyam.api.vanish.VanishAPI;
 import net.milkbowl.vault.economy.EconomyResponse;
 import org.apache.commons.lang.math.NumberUtils;
 import org.bukkit.*;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -41,6 +43,9 @@ public class AdminUI {
 
     //God
     public static HashMap<Player, Boolean> god = new HashMap<Player, Boolean>();
+
+    //Custom commands
+    public static HashMap<Player, Integer> plugin_slot = new HashMap<Player, Integer>();
 
     //Maintenance mode
     public static boolean maintenance_mode = false;
@@ -286,6 +291,54 @@ public class AdminUI {
         Item.create(inv_players, "REDSTONE_BLOCK", 1, 54, Message.getMessage("players_back"));
 
         return inv_players;
+    }
+
+    private Inventory GUI_Plugins(Player p){
+
+        Inventory inv_plugins = Bukkit.createInventory(null, 54, Message.getMessage("inventory_plugins"));
+
+        for (int i = 1; i < 54; i++){
+            Item.create(inv_plugins, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
+        }
+
+        ConfigurationSection one = AdminGUI.getInstance().getPlug().getConfigurationSection("plugins");
+
+        for (Map.Entry<String, Object> plug_slot : one.getValues(false).entrySet()) {
+            int i = Integer.parseInt(plug_slot.getKey());
+            Item.create(inv_plugins, AdminGUI.getInstance().getPlug().getString("plugins."+i+".material"), 1, i, AdminGUI.getInstance().getPlug().getString("plugins."+i+".name"));
+        }
+
+        Item.create(inv_plugins, "REDSTONE_BLOCK", 1, 54, Message.getMessage("plugins_back"));
+
+        return inv_plugins;
+    }
+
+    private Inventory GUI_Commands(Player p, int slot){
+
+        Inventory inv_commands = Bukkit.createInventory(null, 54, Message.chat(AdminGUI.getInstance().getPlug().getString("plugins."+slot+".name"))+ " " + Message.getMessage("inventory_commands"));
+
+        for (int i = 1; i < 54; i++){
+            Item.create(inv_commands, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
+        }
+
+        ConfigurationSection two = AdminGUI.getInstance().getPlug().getConfigurationSection("plugins."+slot+".commands");
+
+        for (Map.Entry<String, Object> comm_slot : two.getValues(false).entrySet()) {
+            int j = Integer.parseInt(comm_slot.getKey());
+            if(AdminGUI.getInstance().getPlug().getString("plugins."+slot+".commands."+slot+".permission") != null){
+                if(p.hasPermission(AdminGUI.getInstance().getPlug().getString("plugins."+slot+".commands."+j+".permission")+"")){
+                    Item.create(inv_commands, AdminGUI.getInstance().getPlug().getString("plugins."+slot+".commands."+j+".material"), 1, j, AdminGUI.getInstance().getPlug().getString("plugins."+slot+".commands."+j+".name"));
+                }else{
+                    Item.create(inv_commands, "RED_STAINED_GLASS_PANE", 1, j,  Message.getMessage("permission"));
+                }
+            }else{
+                Item.create(inv_commands, AdminGUI.getInstance().getPlug().getString("plugins."+slot+".commands."+j+".material"), 1, j, AdminGUI.getInstance().getPlug().getString("plugins."+slot+".commands."+j+".name"));
+            }
+        }
+
+        Item.create(inv_commands, "REDSTONE_BLOCK", 1, 54, Message.getMessage("commands_back"));
+
+        return inv_commands;
     }
 
     public Inventory GUI_Players_Settings(Player p, Player target_player){
@@ -770,6 +823,8 @@ public class AdminUI {
             p.openInventory(GUI_World(p));
         }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("main_players"))){
             p.openInventory(GUI_Players(p));
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("main_plugins"))){
+            p.openInventory(GUI_Plugins(p));
         }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("main_maintenance_mode"))) {
             if(p.hasPermission("admingui.maintenance.manage")){
                 if (maintenance_mode) {
@@ -924,6 +979,28 @@ public class AdminUI {
             p.openInventory(GUI_Players(p));
         }
 
+    }
+
+    public void clicked_plugins(Player p, int slot, ItemStack clicked, Inventory inv){
+        if(InventoryGUI.getClickedItem(clicked, Message.getMessage("plugins_back"))){
+            p.openInventory(GUI_Main(p));
+        }else if(clicked.getType() != Material.AIR && clicked.getType() != XMaterial.LIGHT_BLUE_STAINED_GLASS_PANE.parseMaterial()){
+            plugin_slot.put(p, slot+1);
+            p.openInventory(GUI_Commands(p, slot+1));
+        }
+    }
+
+    public void clicked_commands(Player p, int slot, ItemStack clicked, Inventory inv){
+        slot++;
+        if(InventoryGUI.getClickedItem(clicked, Message.getMessage("commands_back"))){
+            p.openInventory(GUI_Plugins(p));
+        }else if(clicked.getType() != Material.AIR && clicked.getType() != XMaterial.LIGHT_BLUE_STAINED_GLASS_PANE.parseMaterial() && clicked.getType() != XMaterial.RED_STAINED_GLASS_PANE.parseMaterial()){
+            if(AdminGUI.getInstance().getPlug().getBoolean("plugins."+ plugin_slot.getOrDefault(p, 1) +".commands."+slot+".console_sender")){
+                Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), AdminGUI.getInstance().getPlug().getString("plugins."+plugin_slot.getOrDefault(p, 1)+".commands."+slot+".command").replace("/","").replace("{player}", p.getName()));
+            }else{
+                Bukkit.getServer().dispatchCommand(p, AdminGUI.getInstance().getPlug().getString("plugins."+plugin_slot.getOrDefault(p, 1)+".commands."+slot+".command").replace("/","").replace("{player}", p.getName()));
+            }
+        }
     }
 
     public void clicked_players_settings(Player p, int slot, ItemStack clicked, Inventory inv, Player target_player){
