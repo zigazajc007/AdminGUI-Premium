@@ -13,6 +13,7 @@ import net.milkbowl.vault.economy.EconomyResponse;
 import org.apache.commons.lang.math.NumberUtils;
 import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -45,6 +46,7 @@ public class AdminUI {
     public static HashMap<Player, Boolean> god = new HashMap<Player, Boolean>();
 
     //Custom commands
+    public static HashMap<Player, Integer> custom_method = new HashMap<Player, Integer>();
     public static HashMap<Player, Integer> plugin_slot = new HashMap<Player, Integer>();
 
     //Maintenance mode
@@ -203,6 +205,12 @@ public class AdminUI {
             Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 33, Message.getMessage("permission"));
         }
 
+        if(p.hasPermission("admingui.custom")) {
+            Item.create(inv_player, "PAINTING", 1, 35, Message.getMessage("player_custom"));
+        }else{
+            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 35,  Message.getMessage("permission"));
+        }
+
         Item.create(inv_player, "REDSTONE_BLOCK", 1, 45, Message.getMessage("player_back"));
 
         return inv_player;
@@ -295,17 +303,33 @@ public class AdminUI {
 
     private Inventory GUI_Plugins(Player p){
 
+        ConfigurationSection one;
+        YamlConfiguration yamlConfiguration;
+
+        switch (custom_method.getOrDefault(p, 0)){
+            case 1:
+                one = AdminGUI.getInstance().getComm().getConfigurationSection("plugins");
+                yamlConfiguration = AdminGUI.getInstance().getComm();
+                break;
+            case 2:
+                one = AdminGUI.getInstance().getComo().getConfigurationSection("plugins");
+                yamlConfiguration = AdminGUI.getInstance().getComo();
+                break;
+            default:
+                one = AdminGUI.getInstance().getPlug().getConfigurationSection("plugins");
+                yamlConfiguration = AdminGUI.getInstance().getPlug();
+                break;
+        }
+
         Inventory inv_plugins = Bukkit.createInventory(null, 54, Message.getMessage("inventory_plugins"));
 
         for (int i = 1; i < 54; i++){
             Item.create(inv_plugins, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
         }
 
-        ConfigurationSection one = AdminGUI.getInstance().getPlug().getConfigurationSection("plugins");
-
         for (Map.Entry<String, Object> plug_slot : one.getValues(false).entrySet()) {
             int i = Integer.parseInt(plug_slot.getKey());
-            Item.create(inv_plugins, AdminGUI.getInstance().getPlug().getString("plugins."+i+".material"), 1, i, AdminGUI.getInstance().getPlug().getString("plugins."+i+".name"));
+            Item.create(inv_plugins, yamlConfiguration.getString("plugins."+i+".material"), 1, i, yamlConfiguration.getString("plugins."+i+".name"));
         }
 
         Item.create(inv_plugins, "REDSTONE_BLOCK", 1, 54, Message.getMessage("plugins_back"));
@@ -315,24 +339,42 @@ public class AdminUI {
 
     private Inventory GUI_Commands(Player p, int slot){
 
-        Inventory inv_commands = Bukkit.createInventory(null, 54, Message.chat(AdminGUI.getInstance().getPlug().getString("plugins."+slot+".name"))+ " " + Message.getMessage("inventory_commands"));
+        ConfigurationSection two;
+        YamlConfiguration yamlConfiguration;
+
+        switch (custom_method.getOrDefault(p, 0)){
+            case 1:
+                two = AdminGUI.getInstance().getComm().getConfigurationSection("plugins."+slot+".commands");
+                yamlConfiguration = AdminGUI.getInstance().getComm();
+                break;
+            case 2:
+                two = AdminGUI.getInstance().getComo().getConfigurationSection("plugins."+slot+".commands");
+                yamlConfiguration = AdminGUI.getInstance().getComo();
+                break;
+            default:
+                two = AdminGUI.getInstance().getPlug().getConfigurationSection("plugins."+slot+".commands");
+                yamlConfiguration = AdminGUI.getInstance().getPlug();
+                break;
+        }
+
+        Inventory inv_commands = Bukkit.createInventory(null, 54, Message.chat(yamlConfiguration.getString("plugins."+slot+".name"))+ " " + Message.getMessage("inventory_commands"));
 
         for (int i = 1; i < 54; i++){
             Item.create(inv_commands, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
         }
 
-        ConfigurationSection two = AdminGUI.getInstance().getPlug().getConfigurationSection("plugins."+slot+".commands");
+        //ConfigurationSection two = AdminGUI.getInstance().getPlug().getConfigurationSection("plugins."+slot+".commands");
 
         for (Map.Entry<String, Object> comm_slot : two.getValues(false).entrySet()) {
             int j = Integer.parseInt(comm_slot.getKey());
-            if(AdminGUI.getInstance().getPlug().getString("plugins."+slot+".commands."+slot+".permission") != null){
-                if(p.hasPermission(AdminGUI.getInstance().getPlug().getString("plugins."+slot+".commands."+j+".permission")+"")){
-                    Item.create(inv_commands, AdminGUI.getInstance().getPlug().getString("plugins."+slot+".commands."+j+".material"), 1, j, AdminGUI.getInstance().getPlug().getString("plugins."+slot+".commands."+j+".name"));
+            if(yamlConfiguration.getString("plugins."+slot+".commands."+slot+".permission") != null){
+                if(p.hasPermission(yamlConfiguration.getString("plugins."+slot+".commands."+j+".permission")+"")){
+                    Item.create(inv_commands, yamlConfiguration.getString("plugins."+slot+".commands."+j+".material"), 1, j, yamlConfiguration.getString("plugins."+slot+".commands."+j+".name"));
                 }else{
                     Item.create(inv_commands, "RED_STAINED_GLASS_PANE", 1, j,  Message.getMessage("permission"));
                 }
             }else{
-                Item.create(inv_commands, AdminGUI.getInstance().getPlug().getString("plugins."+slot+".commands."+j+".material"), 1, j, AdminGUI.getInstance().getPlug().getString("plugins."+slot+".commands."+j+".name"));
+                Item.create(inv_commands, yamlConfiguration.getString("plugins."+slot+".commands."+j+".material"), 1, j, yamlConfiguration.getString("plugins."+slot+".commands."+j+".name"));
             }
         }
 
@@ -534,6 +576,12 @@ public class AdminUI {
             Item.create(inv_actions, "PAPER", 1, 39, Message.getMessage("actions_fakeop"));
         }else{
             Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 39, Message.getMessage("permission"));
+        }
+
+        if(p.hasPermission("admingui.custom")) {
+            Item.create(inv_actions, "PAINTING", 1, 41, Message.getMessage("actions_custom"));
+        }else{
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 41,  Message.getMessage("permission"));
         }
 
         Item.create(inv_actions, "REDSTONE_BLOCK", 1, 54, Message.getMessage("actions_back"));
@@ -824,6 +872,7 @@ public class AdminUI {
         }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("main_players"))){
             p.openInventory(GUI_Players(p));
         }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("main_plugins"))){
+            custom_method.put(p, 0);
             p.openInventory(GUI_Plugins(p));
         }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("main_maintenance_mode"))) {
             if(p.hasPermission("admingui.maintenance.manage")){
@@ -924,6 +973,9 @@ public class AdminUI {
                 p.sendMessage(Message.getMessage("prefix") + Message.getMessage("vanish_required"));
             }
             p.closeInventory();
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("player_custom"))){
+            custom_method.put(p, 1);
+            p.openInventory(GUI_Plugins(p));
         }
     }
 
@@ -995,10 +1047,24 @@ public class AdminUI {
         if(InventoryGUI.getClickedItem(clicked, Message.getMessage("commands_back"))){
             p.openInventory(GUI_Plugins(p));
         }else if(clicked.getType() != Material.AIR && clicked.getType() != XMaterial.LIGHT_BLUE_STAINED_GLASS_PANE.parseMaterial() && clicked.getType() != XMaterial.RED_STAINED_GLASS_PANE.parseMaterial()){
-            if(AdminGUI.getInstance().getPlug().getBoolean("plugins."+ plugin_slot.getOrDefault(p, 1) +".commands."+slot+".console_sender")){
-                Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), AdminGUI.getInstance().getPlug().getString("plugins."+plugin_slot.getOrDefault(p, 1)+".commands."+slot+".command").replace("/","").replace("{player}", p.getName()));
+            YamlConfiguration yamlConfiguration;
+
+            switch (custom_method.getOrDefault(p, 0)){
+                case 1:
+                    yamlConfiguration = AdminGUI.getInstance().getComm();
+                    break;
+                case 2:
+                    yamlConfiguration = AdminGUI.getInstance().getComo();
+                    break;
+                default:
+                    yamlConfiguration = AdminGUI.getInstance().getPlug();
+                    break;
+            }
+
+            if(yamlConfiguration.getBoolean("plugins."+ plugin_slot.getOrDefault(p, 1) +".commands."+slot+".console_sender")){
+                Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), yamlConfiguration.getString("plugins."+plugin_slot.getOrDefault(p, 1)+".commands."+slot+".command").replace("/","").replace("{player}", p.getName()).replace("{target_player}", target_player.getOrDefault(p, p).getName()));
             }else{
-                Bukkit.getServer().dispatchCommand(p, AdminGUI.getInstance().getPlug().getString("plugins."+plugin_slot.getOrDefault(p, 1)+".commands."+slot+".command").replace("/","").replace("{player}", p.getName()));
+                Bukkit.getServer().dispatchCommand(p, yamlConfiguration.getString("plugins."+plugin_slot.getOrDefault(p, 1)+".commands."+slot+".command").replace("/","").replace("{player}", p.getName()).replace("{target_player}", target_player.getOrDefault(p, p).getName()));
             }
         }
     }
@@ -1116,6 +1182,9 @@ public class AdminUI {
                 Fireworks.createRandom(target_player);
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("actions_fakeop"))){
                 Bukkit.broadcastMessage(Message.chat("&7&o[Server: Made " + target_player.getName() +" a server operator]"));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("actions_custom"))){
+                custom_method.put(p, 2);
+                p.openInventory(GUI_Plugins(p));
             }
         }else{
             p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_not_found"));

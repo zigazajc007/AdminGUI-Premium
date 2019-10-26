@@ -35,11 +35,22 @@ public class AdminGUI extends JavaPlugin {
     private File p = null;
     private YamlConfiguration plug = new YamlConfiguration();
 
+    //Commands
+    private File c = null;
+    private YamlConfiguration comm = new YamlConfiguration();
+
+    //Commands other
+    private File o = null;
+    private YamlConfiguration como = new YamlConfiguration();
+
     @Override
     public void onEnable() {
         instance = this;
         this.l = new File(getDataFolder(), "language.yml");
         this.p = new File(getDataFolder(), "plugins.yml");
+        this.c = new File(getDataFolder(), "commands.yml");
+        this.o = new File(getDataFolder(), "commands-other.yml");
+
         mkdir();
         loadYamls();
 
@@ -96,6 +107,14 @@ public class AdminGUI extends JavaPlugin {
         if(!this.p.exists()){
             saveResource("plugins.yml", false);
         }
+
+        if(!this.c.exists()){
+            saveResource("commands.yml", false);
+        }
+
+        if(!this.o.exists()){
+            saveResource("commands-other.yml", false);
+        }
     }
 
     public void loadYamls(){
@@ -115,11 +134,29 @@ public class AdminGUI extends JavaPlugin {
         } catch (InvalidConfigurationException e) {
             e.printStackTrace();
         }
+        try {
+            this.comm.load(this.c);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+        try {
+            this.como.load(this.o);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
     }
 
     public YamlConfiguration getLang() { return this.lang; }
 
     public YamlConfiguration getPlug() { return this.plug; }
+
+    public YamlConfiguration getComm() { return this.comm; }
+
+    public YamlConfiguration getComo() { return this.como; }
 
     public void saveLang() {
         try {
@@ -132,6 +169,22 @@ public class AdminGUI extends JavaPlugin {
     public void savePlug(){
         try {
             this.plug.save(this.p);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveComm(){
+        try {
+            this.comm.save(this.c);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveComo(){
+        try {
+            this.como.save(this.o);
         } catch (IOException e) {
             e.printStackTrace();
         }
