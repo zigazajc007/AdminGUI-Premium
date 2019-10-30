@@ -363,8 +363,6 @@ public class AdminUI {
             Item.create(inv_commands, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
         }
 
-        //ConfigurationSection two = AdminGUI.getInstance().getPlug().getConfigurationSection("plugins."+slot+".commands");
-
         for (Map.Entry<String, Object> comm_slot : two.getValues(false).entrySet()) {
             int j = Integer.parseInt(comm_slot.getKey());
             if(yamlConfiguration.getString("plugins."+slot+".commands."+slot+".permission") != null){
@@ -600,11 +598,18 @@ public class AdminUI {
                 Item.create(inv_kick, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
         }
 
+        for (Map.Entry<String, Object> kick_slot : AdminGUI.getInstance().getKick().getConfigurationSection("slots").getValues(false).entrySet()) {
+            int i = Integer.parseInt(kick_slot.getKey());
+            Item.create(inv_kick, AdminGUI.getInstance().getKick().getString("slots."+i+".material"), 1, i, AdminGUI.getInstance().getKick().getString("slots."+i+".name"));
+        }
+
+        /*
         Item.create(inv_kick, "WHITE_TERRACOTTA", 1, 10, Message.getMessage("kick_hacking"));
         Item.create(inv_kick, "ORANGE_TERRACOTTA", 1, 12, Message.getMessage("kick_griefing"));
         Item.create(inv_kick, "MAGENTA_TERRACOTTA", 1, 14, Message.getMessage("kick_spamming"));
         Item.create(inv_kick, "LIGHT_BLUE_TERRACOTTA", 1, 16, Message.getMessage("kick_advertising"));
         Item.create(inv_kick, "YELLOW_TERRACOTTA", 1, 18, Message.getMessage("kick_swearing"));
+        */
 
         Item.create(inv_kick, "REDSTONE_BLOCK", 1, 27, Message.getMessage("kick_back"));
 
@@ -1198,6 +1203,15 @@ public class AdminUI {
         if(target_player.isOnline()){
             if(InventoryGUI.getClickedItem(clicked,Message.getMessage("kick_back"))){
                 p.openInventory(GUI_Players_Settings(p, target_player));
+            }else if(clicked.getType() != Material.AIR && clicked.getType() != XMaterial.LIGHT_BLUE_STAINED_GLASS_PANE.parseMaterial()){
+                if(target_player.hasPermission("admingui.kick.bypass")){
+                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_kick_bypass"));
+                    p.closeInventory();
+                }else{
+                    target_player.kickPlayer(Message.getMessage("prefix") + Message.getMessage("kick") + Message.chat(AdminGUI.getInstance().getKick().getString("slots."+(slot+1)+".name")));
+                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_kick").replace("{player}", target_player.getName()));
+                    p.closeInventory();
+                }
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("kick_hacking"))){
                 if(target_player.hasPermission("admingui.kick.bypass")){
                     p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_kick_bypass"));

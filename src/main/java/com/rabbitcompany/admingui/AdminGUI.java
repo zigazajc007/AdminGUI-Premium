@@ -31,6 +31,10 @@ public class AdminGUI extends JavaPlugin {
     private File l = null;
     private YamlConfiguration lang = new YamlConfiguration();
 
+    //Kick
+    private File k = null;
+    private YamlConfiguration kick = new YamlConfiguration();
+
     //Plugins
     private File p = null;
     private YamlConfiguration plug = new YamlConfiguration();
@@ -47,6 +51,7 @@ public class AdminGUI extends JavaPlugin {
     public void onEnable() {
         instance = this;
         this.l = new File(getDataFolder(), "language.yml");
+        this.k = new File(getDataFolder(), "kick.yml");
         this.p = new File(getDataFolder(), "plugins.yml");
         this.c = new File(getDataFolder(), "commands.yml");
         this.o = new File(getDataFolder(), "commands-other.yml");
@@ -104,6 +109,10 @@ public class AdminGUI extends JavaPlugin {
             saveResource("language.yml", false);
         }
 
+        if(!this.k.exists()){
+            saveResource("kick.yml", false);
+        }
+
         if(!this.p.exists()){
             saveResource("plugins.yml", false);
         }
@@ -122,6 +131,13 @@ public class AdminGUI extends JavaPlugin {
             this.lang.load(this.l);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+        try {
+            this.kick.load(this.k);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InvalidConfigurationException e) {
@@ -152,6 +168,8 @@ public class AdminGUI extends JavaPlugin {
 
     public YamlConfiguration getLang() { return this.lang; }
 
+    public YamlConfiguration getKick() { return this.kick; }
+
     public YamlConfiguration getPlug() { return this.plug; }
 
     public YamlConfiguration getComm() { return this.comm; }
@@ -161,6 +179,14 @@ public class AdminGUI extends JavaPlugin {
     public void saveLang() {
         try {
             this.lang.save(this.l);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveKick(){
+        try {
+            this.kick.save(this.k);
         } catch (IOException e) {
             e.printStackTrace();
         }
