@@ -4,6 +4,7 @@ import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Message;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -24,7 +25,7 @@ public class Admin implements CommandExecutor {
 
         if(player.hasPermission("admingui.admin")){
             if(args.length == 0){
-                adminUI.target_player.put(player, player);
+                AdminUI.target_player.put(player, player);
                 player.openInventory(adminUI.GUI_Main(player));
             }else if(args.length == 1){
                 if(args[0].equals("reload")){
@@ -32,9 +33,9 @@ public class Admin implements CommandExecutor {
                     AdminGUI.getInstance().loadYamls();
                     player.sendMessage(Message.getMessage("prefix") + Message.chat("&aPlugin reloaded successfully!"));
                 }else{
-                    Player target_player = Bukkit.getServer().getPlayer(args[0]);
+                    Player target_player = Bukkit.getServer().getPlayer(ChatColor.stripColor(args[0]));
                     if(target_player != null){
-                        adminUI.target_player.put(player, target_player);
+                        AdminUI.target_player.put(player, target_player);
                         if(player.getName().equals(target_player.getName())){
                             player.openInventory(adminUI.GUI_Player(player));
                         }else{

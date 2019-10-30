@@ -6,12 +6,12 @@
 
     <groupId>com.rabbitcompany</groupId>
     <artifactId>AdminGUI-Premium</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
     <packaging>jar</packaging>
 
     <name>AdminGUI Premium</name>
 
-    <description>Easy manage your Minecraft server with Admin GUI Premium</description>
+    <description>Easily manage your Minecraft server with Admin GUI Premium</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

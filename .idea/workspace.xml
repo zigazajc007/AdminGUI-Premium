@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="Added reload and custom commands">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/commands-other.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/commands.yml" afterDir="false" />
+    <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/AdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/AdminGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/commands/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/commands/Admin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/ui/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/ui/AdminUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/language.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/AdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/AdminGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/ui/AdminUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/ui/AdminUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/language.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/language.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/original-AdminGUI-Premium-2.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-AdminGUI-Premium-2.0.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-AdminGUI-Premium-2.0.0.jar" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,6 +42,9 @@
   </component>
   <component name="ProjectId" id="1QYA89iHP7vChiUVoiCesrPLv5y" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectReloadState">
+    <option name="STATE" value="1" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -54,7 +53,7 @@
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="orchideLicense" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -166,7 +165,9 @@
       <workItem from="1571753775585" duration="3855000" />
       <workItem from="1571759126003" duration="16948000" />
       <workItem from="1572027033048" duration="603000" />
-      <workItem from="1572042459866" duration="5813000" />
+      <workItem from="1572042459866" duration="6708000" />
+      <workItem from="1572427777780" duration="32000" />
+      <workItem from="1572427811225" duration="1475000" />
     </task>
     <task id="LOCAL-00001" summary="Performance improvement">
       <created>1569016445205</created>
@@ -308,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571774987869</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Now you can add custom commands to each player">
+      <created>1572048362264</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1572048362264</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,6 +353,7 @@
     <MESSAGE value="Added support for 1.8 version and now plugin remind the player when config is not written correctly." />
     <MESSAGE value="Added fireworks and lightning." />
     <MESSAGE value="Added reload and custom commands" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added reload and custom commands" />
+    <MESSAGE value="Now you can add custom commands to each player" />
+    <option name="LAST_COMMIT_MESSAGE" value="Now you can add custom commands to each player" />
   </component>
 </project>
