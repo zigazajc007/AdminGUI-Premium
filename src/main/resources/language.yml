@@ -162,11 +162,6 @@ actions_back: "&c&lBack"
 #                       Kick GUI
 #----------------------------------------------------------
 kick: "&4You have been kicked for "
-kick_hacking: "&7&lHacking!"
-kick_griefing: "&6&lGriefing!"
-kick_spamming: "&d&lSpamming!"
-kick_advertising: "&3&lAdvertising!"
-kick_swearing: "&e&lSwearing!"
 kick_back: "&c&lBack"
 #----------------------------------------------------------
 #                       Ban GUI
