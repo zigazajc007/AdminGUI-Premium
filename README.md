@@ -1,4 +1,3 @@
 <p align="center">
-  <img src="https://www.spigotmc.org/attachments/admingui-updated-2-png.462765/">
+  <img src="https://i.imgur.com/4Z1VTLs.png">
 </p>
-# AdminGUI-Premium
