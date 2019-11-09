@@ -603,14 +603,6 @@ public class AdminUI {
             Item.create(inv_kick, AdminGUI.getInstance().getKick().getString("slots."+i+".material"), 1, i, AdminGUI.getInstance().getKick().getString("slots."+i+".name"));
         }
 
-        /*
-        Item.create(inv_kick, "WHITE_TERRACOTTA", 1, 10, Message.getMessage("kick_hacking"));
-        Item.create(inv_kick, "ORANGE_TERRACOTTA", 1, 12, Message.getMessage("kick_griefing"));
-        Item.create(inv_kick, "MAGENTA_TERRACOTTA", 1, 14, Message.getMessage("kick_spamming"));
-        Item.create(inv_kick, "LIGHT_BLUE_TERRACOTTA", 1, 16, Message.getMessage("kick_advertising"));
-        Item.create(inv_kick, "YELLOW_TERRACOTTA", 1, 18, Message.getMessage("kick_swearing"));
-        */
-
         Item.create(inv_kick, "REDSTONE_BLOCK", 1, 27, Message.getMessage("kick_back"));
 
         return inv_kick;

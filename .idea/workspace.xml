@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/language.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/language.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/language.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/InventoryClickListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/InventoryClickListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/ui/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/ui/AdminUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -166,7 +166,13 @@
       <workItem from="1572427777780" duration="32000" />
       <workItem from="1572427811225" duration="2274000" />
       <workItem from="1572433666428" duration="750000" />
-      <workItem from="1572434440273" duration="3255000" />
+      <workItem from="1572434440273" duration="3896000" />
+      <workItem from="1572444016332" duration="625000" />
+      <workItem from="1572614352399" duration="8977000" />
+      <workItem from="1572686726544" duration="2716000" />
+      <workItem from="1572720561503" duration="27000" />
+      <workItem from="1572739461375" duration="882000" />
+      <workItem from="1573326159951" duration="386000" />
     </task>
     <task id="LOCAL-00001" summary="Performance improvement">
       <created>1569016445205</created>
@@ -329,7 +335,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572437173139</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Removed useless kick messages in language.yml">
+      <created>1572437717871</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1572437717871</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -369,6 +382,7 @@
     <MESSAGE value="Now you can add custom commands to each player" />
     <MESSAGE value="Fixed bug where GUI isn't detected when you do /admin &lt;target player&gt;" />
     <MESSAGE value="Added custom kick" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added custom kick" />
+    <MESSAGE value="Removed useless kick messages in language.yml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed useless kick messages in language.yml" />
   </component>
 </project>
