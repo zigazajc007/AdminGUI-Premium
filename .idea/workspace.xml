@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bukkit_bukkit_1_14_4_R0_1_SNAPSHOT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bukkit_bukkit_1_14_4_R0_1_SNAPSHOT.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/zigaz.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/InventoryClickListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/InventoryClickListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/ui/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/ui/AdminUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/language.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/InventoryClickListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/InventoryClickListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/ui/AdminUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/ui/AdminUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/language.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/language.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -184,7 +185,8 @@
       <workItem from="1572739461375" duration="882000" />
       <workItem from="1573326159951" duration="453000" />
       <workItem from="1576087405516" duration="418000" />
-      <workItem from="1576087935034" duration="1376000" />
+      <workItem from="1576087935034" duration="2046000" />
+      <workItem from="1576262389397" duration="5884000" />
     </task>
     <task id="LOCAL-00001" summary="Performance improvement">
       <created>1569016445205</created>
@@ -361,7 +363,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573326574297</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Added 1.15 support">
+      <created>1576089512251</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1576089512251</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -403,25 +412,38 @@
     <MESSAGE value="Added custom kick" />
     <MESSAGE value="Removed useless kick messages in language.yml" />
     <MESSAGE value="Fixed some small bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed some small bugs" />
+    <MESSAGE value="Added 1.15 support" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added 1.15 support" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1340" height="176" key="GridCell.Tab.0.bottom" timestamp="1576089458831">
+    <state x="747" y="135" key="CommitChangelistDialog2" timestamp="1576089511074">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1340" height="176" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1576089458831" />
-    <state width="1340" height="176" key="GridCell.Tab.0.center" timestamp="1576089458831">
+    <state x="747" y="135" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1576089511074" />
+    <state x="902" y="295" key="FileChooserDialogImpl" timestamp="1576090143168">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1340" height="176" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1576089458831" />
-    <state width="1340" height="176" key="GridCell.Tab.0.left" timestamp="1576089458831">
+    <state x="902" y="295" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1576090143168" />
+    <state width="1340" height="186" key="GridCell.Tab.0.bottom" timestamp="1576268750143">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1340" height="176" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1576089458831" />
-    <state width="1340" height="176" key="GridCell.Tab.0.right" timestamp="1576089458831">
+    <state width="1340" height="186" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1576268750143" />
+    <state width="1340" height="186" key="GridCell.Tab.0.center" timestamp="1576268750143">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1340" height="176" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1576089458831" />
+    <state width="1340" height="186" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1576268750143" />
+    <state width="1340" height="186" key="GridCell.Tab.0.left" timestamp="1576268750143">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1340" height="186" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1576268750143" />
+    <state width="1340" height="186" key="GridCell.Tab.0.right" timestamp="1576268750143">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1340" height="186" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1576268750143" />
+    <state x="714" y="273" key="Vcs.Push.Dialog.v2" timestamp="1576089520107">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="714" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1576089520107" />
     <state x="656" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1576087937644">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

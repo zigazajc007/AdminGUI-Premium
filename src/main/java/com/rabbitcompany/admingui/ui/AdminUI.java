@@ -38,6 +38,10 @@ public class AdminUI {
     private HashMap<Player, Integer> page = new HashMap<Player, Integer>();
     private HashMap<Player, Integer> pages = new HashMap<Player, Integer>();
 
+    //Unban Page
+    private HashMap<Player, Integer> unban_page = new HashMap<Player, Integer>();
+    private HashMap<Player, Integer> unban_pages = new HashMap<Player, Integer>();
+
     //Potions
     private HashMap<Player, Integer> duration = new HashMap<Player, Integer>();
     private HashMap<Player, Integer> level = new HashMap<Player, Integer>();
@@ -72,6 +76,11 @@ public class AdminUI {
         }else{
             Item.create(inv_main, "REDSTONE", 1, 28, Message.getMessage("main_maintenance_mode"));
         }
+
+        if(p.hasPermission("admingui.unban")) {
+            Item.create(inv_main, "BARRIER", 1, 32, Message.getMessage("main_unban_players"));
+        }
+
         Item.create(inv_main, "REDSTONE_BLOCK", 1, 36, Message.getMessage("main_quit"));
 
         return inv_main;
@@ -379,6 +388,54 @@ public class AdminUI {
         Item.create(inv_commands, "REDSTONE_BLOCK", 1, 54, Message.getMessage("commands_back"));
 
         return inv_commands;
+    }
+
+    public Inventory GUI_Unban_Players(Player p){
+
+        ArrayList<String> pl = new ArrayList<String>();
+
+        Inventory inv_unban_players = Bukkit.createInventory(null, 54, Message.getMessage("inventory_unban"));
+
+        for(OfflinePlayer all : Bukkit.getServer().getBannedPlayers()) {
+            pl.add(all.getName());
+        }
+
+        Collections.sort(pl);
+
+        int online = pl.size();
+
+        unban_pages.put(p, (int) Math.ceil((float)online / 45));
+
+        for (int i = 46; i <= 53; i++){
+            Item.create(inv_unban_players, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
+        }
+
+        int player_slot = (unban_page.getOrDefault(p,1)-1) * 45;
+
+        for (int i = 0; i < 45; i++){
+            if(player_slot < online){
+                Item.createPlayerHead(inv_unban_players, pl.get(player_slot),1, i+1, Message.getMessage("unban_color").replace("{player}", pl.get(player_slot)), Message.chat("&aBanned: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getCreated()), Message.chat("&aExpiration: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getExpiration()), " " , Message.getMessage("unban_lore"));
+                player_slot++;
+            }else{
+                Item.create(inv_unban_players, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i+1, " ");
+            }
+        }
+
+        if(unban_page.getOrDefault(p, 1) > 1){
+            Item.create(inv_unban_players, "PAPER", 1, 49, Message.getMessage("unban_previous"));
+        }
+
+        if(unban_pages.getOrDefault(p, 1) > 1){
+            Item.create(inv_unban_players, "BOOK", unban_page.getOrDefault(p, 1), 50, Message.getMessage("unban_page") + " " + unban_page.getOrDefault(p, 1));
+        }
+
+        if(unban_pages.get(p) > unban_page.getOrDefault(p, 1)){
+            Item.create(inv_unban_players, "PAPER", 1, 51, Message.getMessage("unban_next"));
+        }
+
+        Item.create(inv_unban_players, "REDSTONE_BLOCK", 1, 54, Message.getMessage("unban_back"));
+
+        return inv_unban_players;
     }
 
     public Inventory GUI_Players_Settings(Player p, Player target_player){
@@ -891,6 +948,8 @@ public class AdminUI {
                 p.sendMessage(Message.getMessage("prefix") + Message.getMessage("permission"));
                 p.closeInventory();
             }
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("main_unban_players"))){
+            p.openInventory(GUI_Unban_Players(p));
         }
 
     }
@@ -1064,6 +1123,32 @@ public class AdminUI {
                 Bukkit.getServer().dispatchCommand(p, yamlConfiguration.getString("plugins."+plugin_slot.getOrDefault(p, 1)+".commands."+slot+".command").replace("/","").replace("{player}", p.getName()).replace("{target_player}", target_player.getOrDefault(p, p).getName()));
             }
         }
+    }
+
+    public void clicked_unban_players(Player p, int slot, ItemStack clicked, Inventory inv){
+
+        if(clicked.getItemMeta().getLore() != null){
+            if(clicked.getItemMeta().getLore().get(3).equals(Message.getMessage("unban_lore"))){
+                OfflinePlayer target_p = Bukkit.getServer().getOfflinePlayer(ChatColor.stripColor(clicked.getItemMeta().getDisplayName()));
+                if(target_p.isBanned()){
+                   Bukkit.getBanList(BanList.Type.NAME).pardon(target_p.getName());
+                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_unban_player").replace("{player}", target_p.getName()));
+                    p.closeInventory();
+                }else{
+                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_not_found"));
+                    p.closeInventory();
+                }
+            }
+        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("unban_back"))){
+            p.openInventory(GUI_Main(p));
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("unban_previous"))){
+            unban_page.put(p, unban_page.get(p)-1);
+            p.openInventory(GUI_Unban_Players(p));
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("unban_next"))){
+            unban_page.put(p, unban_page.get(p)+1);
+            p.openInventory(GUI_Unban_Players(p));
+        }
+
     }
 
     public void clicked_players_settings(Player p, int slot, ItemStack clicked, Inventory inv, Player target_player){
