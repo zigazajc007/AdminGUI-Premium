@@ -112,7 +112,7 @@ world_back: "&c&lBack"
 #                     Players GUI
 #----------------------------------------------------------
 players_color: "&2&l{player}"
-players_lore: "&cClick me for more actions"
+players_more: "&cClick here for more actions"
 players_previous: "&c&lPrevious"
 players_page: "&a&lPage"
 players_next: "&2&lNext"
@@ -129,7 +129,7 @@ commands_back: "&c&lBack"
 #                     Unban GUI
 #----------------------------------------------------------
 unban_color: "&2&l{player}"
-unban_lore: "&cClick here to unban this player"
+unban_more: "&cClick here to unban this player"
 unban_previous: "&c&lPrevious"
 unban_page: "&a&lPage"
 unban_next: "&2&lNext"

@@ -23,6 +23,8 @@ import org.bukkit.potion.PotionEffectType;
 
 import java.util.*;
 
+import static org.bukkit.Bukkit.getServer;
+
 public class AdminUI {
 
     public static HashMap<Player, Player> target_player = new HashMap<Player, Player>();
@@ -266,7 +268,7 @@ public class AdminUI {
 
         Inventory inv_players = Bukkit.createInventory(null, 54, Message.getMessage("inventory_players"));
 
-        for(Player all : Bukkit.getServer().getOnlinePlayers()) {
+        for(Player all : getServer().getOnlinePlayers()) {
             pl.add(all.getName());
         }
 
@@ -286,7 +288,7 @@ public class AdminUI {
 
         for (int i = 0; i < 45; i++){
             if(player_slot < online){
-                Item.createPlayerHead(inv_players, pl.get(player_slot),1, i+1, Message.getMessage("players_color").replace("{player}", pl.get(player_slot)), Message.getMessage("players_lore"));
+                Item.createPlayerHead(inv_players, pl.get(player_slot),1, i+1, Message.getMessage("players_color").replace("{player}", pl.get(player_slot)), Message.getMessage("players_more"));
                 player_slot++;
             }else{
                 Item.create(inv_players, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i+1, " ");
@@ -396,7 +398,7 @@ public class AdminUI {
 
         Inventory inv_unban_players = Bukkit.createInventory(null, 54, Message.getMessage("inventory_unban"));
 
-        for(OfflinePlayer all : Bukkit.getServer().getBannedPlayers()) {
+        for (OfflinePlayer all : getServer().getBannedPlayers()) {
             pl.add(all.getName());
         }
 
@@ -414,7 +416,7 @@ public class AdminUI {
 
         for (int i = 0; i < 45; i++){
             if(player_slot < online){
-                Item.createPlayerHead(inv_unban_players, pl.get(player_slot),1, i+1, Message.getMessage("unban_color").replace("{player}", pl.get(player_slot)), Message.chat("&aBanned: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getCreated()), Message.chat("&aExpiration: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getExpiration()), " " , Message.getMessage("unban_lore"));
+                Item.createPlayerHead(inv_unban_players, pl.get(player_slot), 1, i + 1, Message.getMessage("unban_color").replace("{player}", pl.get(player_slot)), Message.chat("&aBanned: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getCreated()), Message.chat("&aExpiration: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getExpiration()), " ", Message.getMessage("unban_more"));
                 player_slot++;
             }else{
                 Item.create(inv_unban_players, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i+1, " ");
@@ -938,7 +940,7 @@ public class AdminUI {
                     maintenance_mode = true;
                     p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_maintenance_enabled"));
                     p.closeInventory();
-                    for (Player pl : Bukkit.getServer().getOnlinePlayers()) {
+                    for (Player pl : getServer().getOnlinePlayers()) {
                         if (!pl.isOp() && !pl.hasPermission("admingui.maintenance")) {
                             pl.kickPlayer(Message.getMessage("prefix") + Message.getMessage("message_maintenance"));
                         }
@@ -1067,8 +1069,8 @@ public class AdminUI {
     public void clicked_players(Player p, int slot, ItemStack clicked, Inventory inv){
 
         if(clicked.getItemMeta().getLore() != null){
-            if(clicked.getItemMeta().getLore().get(0).equals(Message.getMessage("players_lore"))){
-                Player target_p = Bukkit.getServer().getPlayer(ChatColor.stripColor(clicked.getItemMeta().getDisplayName()));
+            if(clicked.getItemMeta().getLore().get(0).equals(Message.getMessage("players_more"))){
+                Player target_p = getServer().getPlayer(ChatColor.stripColor(clicked.getItemMeta().getDisplayName()));
                 if(target_p != null){
                     target_player.put(p, target_p);
                     p.openInventory(GUI_Players_Settings(p,target_p));
@@ -1118,9 +1120,9 @@ public class AdminUI {
             }
 
             if(yamlConfiguration.getBoolean("plugins."+ plugin_slot.getOrDefault(p, 1) +".commands."+slot+".console_sender")){
-                Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), yamlConfiguration.getString("plugins."+plugin_slot.getOrDefault(p, 1)+".commands."+slot+".command").replace("/","").replace("{player}", p.getName()).replace("{target_player}", target_player.getOrDefault(p, p).getName()));
+                getServer().dispatchCommand(Bukkit.getConsoleSender(), yamlConfiguration.getString("plugins."+plugin_slot.getOrDefault(p, 1)+".commands."+slot+".command").replace("/","").replace("{player}", p.getName()).replace("{target_player}", target_player.getOrDefault(p, p).getName()));
             }else{
-                Bukkit.getServer().dispatchCommand(p, yamlConfiguration.getString("plugins."+plugin_slot.getOrDefault(p, 1)+".commands."+slot+".command").replace("/","").replace("{player}", p.getName()).replace("{target_player}", target_player.getOrDefault(p, p).getName()));
+                getServer().dispatchCommand(p, yamlConfiguration.getString("plugins."+plugin_slot.getOrDefault(p, 1)+".commands."+slot+".command").replace("/","").replace("{player}", p.getName()).replace("{target_player}", target_player.getOrDefault(p, p).getName()));
             }
         }
     }
@@ -1128,10 +1130,10 @@ public class AdminUI {
     public void clicked_unban_players(Player p, int slot, ItemStack clicked, Inventory inv){
 
         if(clicked.getItemMeta().getLore() != null){
-            if(clicked.getItemMeta().getLore().get(3).equals(Message.getMessage("unban_lore"))){
-                OfflinePlayer target_p = Bukkit.getServer().getOfflinePlayer(ChatColor.stripColor(clicked.getItemMeta().getDisplayName()));
+            if(clicked.getItemMeta().getLore().get(3).equals(Message.getMessage("unban_more"))){
+                OfflinePlayer target_p = getServer().getOfflinePlayer(ChatColor.stripColor(clicked.getItemMeta().getDisplayName()));
                 if(target_p.isBanned()){
-                   Bukkit.getBanList(BanList.Type.NAME).pardon(target_p.getName());
+                    Bukkit.getBanList(BanList.Type.NAME).pardon(target_p.getName());
                     p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_unban_player").replace("{player}", target_p.getName()));
                     p.closeInventory();
                 }else{

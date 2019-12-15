@@ -2,15 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/zigaz.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/AdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/AdminGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/InventoryClickListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/InventoryClickListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/ui/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/ui/AdminUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/TargetPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/TargetPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/language.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/AdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/AdminGUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/InventoryClickListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/InventoryClickListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/ui/AdminUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/ui/AdminUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/utils/TargetPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/utils/TargetPlayer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/language.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/language.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,11 +62,11 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Problems" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/LiteBansAPI.jar!/" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunManager">
     <configuration name="AdminGUI build" type="MavenRunConfiguration" factoryName="Maven">
@@ -186,7 +191,12 @@
       <workItem from="1573326159951" duration="453000" />
       <workItem from="1576087405516" duration="418000" />
       <workItem from="1576087935034" duration="2046000" />
-      <workItem from="1576262389397" duration="5884000" />
+      <workItem from="1576262389397" duration="7867000" />
+      <workItem from="1576315185267" duration="1626000" />
+      <workItem from="1576316822370" duration="24000" />
+      <workItem from="1576319477533" duration="2564000" />
+      <workItem from="1576322821175" duration="19233000" />
+      <workItem from="1576367994071" duration="2728000" />
     </task>
     <task id="LOCAL-00001" summary="Performance improvement">
       <created>1569016445205</created>
@@ -370,7 +380,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576089512251</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Added Unban system">
+      <created>1576268907306</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1576268907306</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -390,6 +407,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/LiteBansAPI" />
+    </ignored-roots>
     <MESSAGE value="Performance improvement" />
     <MESSAGE value="Added:&#10;   - Inventory view&#10;   - New permissions: admingui.inventory and admingui.maintenance.manage&#10;Fixed:&#10;   - Incorrect spawner entities" />
     <MESSAGE value="Redesigned the code" />
@@ -413,40 +433,49 @@
     <MESSAGE value="Removed useless kick messages in language.yml" />
     <MESSAGE value="Fixed some small bugs" />
     <MESSAGE value="Added 1.15 support" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added 1.15 support" />
+    <MESSAGE value="Added Unban system" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Unban system" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="747" y="135" key="CommitChangelistDialog2" timestamp="1576089511074">
+    <state x="640" y="247" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1576316808945">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="747" y="135" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1576089511074" />
-    <state x="902" y="295" key="FileChooserDialogImpl" timestamp="1576090143168">
+    <state x="640" y="247" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1576316808945" />
+    <state x="747" y="135" key="CommitChangelistDialog2" timestamp="1576268906449">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="902" y="295" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1576090143168" />
-    <state width="1340" height="186" key="GridCell.Tab.0.bottom" timestamp="1576268750143">
+    <state x="747" y="135" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1576268906449" />
+    <state x="902" y="295" key="FileChooserDialogImpl" timestamp="1576319519444">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1340" height="186" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1576268750143" />
-    <state width="1340" height="186" key="GridCell.Tab.0.center" timestamp="1576268750143">
+    <state x="902" y="295" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1576319519444" />
+    <state width="1340" height="197" key="GridCell.Tab.0.bottom" timestamp="1576370727418">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1340" height="186" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1576268750143" />
-    <state width="1340" height="186" key="GridCell.Tab.0.left" timestamp="1576268750143">
+    <state width="1340" height="197" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1576370727418" />
+    <state width="1340" height="197" key="GridCell.Tab.0.center" timestamp="1576370727418">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1340" height="186" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1576268750143" />
-    <state width="1340" height="186" key="GridCell.Tab.0.right" timestamp="1576268750143">
+    <state width="1340" height="197" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1576370727418" />
+    <state width="1340" height="197" key="GridCell.Tab.0.left" timestamp="1576370727418">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1340" height="186" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1576268750143" />
-    <state x="714" y="273" key="Vcs.Push.Dialog.v2" timestamp="1576089520107">
+    <state width="1340" height="197" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1576370727418" />
+    <state width="1340" height="197" key="GridCell.Tab.0.right" timestamp="1576370727418">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="714" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1576089520107" />
-    <state x="656" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1576087937644">
+    <state width="1340" height="197" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1576370727418" />
+    <state x="459" y="105" key="SettingsEditor" timestamp="1576369585967">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1576087937644" />
+    <state x="459" y="105" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1576369585967" />
+    <state x="714" y="273" key="Vcs.Push.Dialog.v2" timestamp="1576268915806">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="714" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1576268915806" />
+    <state x="656" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1576367997757">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1576367997757" />
   </component>
 </project>

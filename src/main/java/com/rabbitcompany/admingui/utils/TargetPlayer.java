@@ -7,6 +7,8 @@ import org.bukkit.potion.PotionEffectType;
 
 import java.util.Date;
 
+import static org.bukkit.Bukkit.getServer;
+
 public class TargetPlayer {
 
     public void setPotionEffect(org.bukkit.entity.Player p, org.bukkit.entity.Player target_player, PotionEffectType potion, String getPotionConfigName, int duration, int level){
@@ -32,7 +34,13 @@ public class TargetPlayer {
     }
 
     public static void ban(String target, String reason, Date expired){
-        Bukkit.getServer().getBanList(BanList.Type.NAME).addBan(target, reason, expired, null);
+        if(getServer().getPluginManager().getPlugin("LiteBans") != null || getServer().getPluginManager().getPlugin("AdvancedBan") != null) {
+            Date date = new Date(System.currentTimeMillis());
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tempban " + target + " " + ((expired.getTime() - date.getTime())/60000) + "m " + reason);
+        }else{
+            Bukkit.getServer().getBanList(BanList.Type.NAME).addBan(target, reason, expired, null);
+        }
+
     }
 
     public static String banReason(String reason, Date time){
