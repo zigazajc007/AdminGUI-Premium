@@ -24,7 +24,7 @@ public class PlayerDamageListener implements Listener {
         if(Bukkit.getVersion().contains("1.8")){
             if(event.getEntity() instanceof Player){
                 Player p = (Player) event.getEntity();
-                if(AdminUI.god.getOrDefault(p, false)){
+                if(AdminUI.god.getOrDefault(p.getUniqueId(), false)){
                     event.setCancelled(true);
                 }
             }

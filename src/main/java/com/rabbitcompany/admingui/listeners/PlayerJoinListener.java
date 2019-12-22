@@ -1,6 +1,8 @@
 package com.rabbitcompany.admingui.listeners;
 
 import com.rabbitcompany.admingui.AdminGUI;
+import com.rabbitcompany.admingui.ui.AdminUI;
+import com.rabbitcompany.admingui.utils.Item;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,10 +20,7 @@ public class PlayerJoinListener implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
-
-        if(event.getPlayer().hasPermission("admingui.admin") || event.getPlayer().isOp()){
-            //TODO: Updater
-        }
-
+        AdminUI.online_players.add(event.getPlayer().getName());
+        AdminUI.skulls.put(event.getPlayer().getName(), Item.pre_createPlayerHead(event.getPlayer().getName()));
     }
 }

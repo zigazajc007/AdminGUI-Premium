@@ -1,10 +1,9 @@
 package com.rabbitcompany.admingui;
 
 import com.rabbitcompany.admingui.commands.Admin;
-import com.rabbitcompany.admingui.listeners.InventoryClickListener;
-import com.rabbitcompany.admingui.listeners.PlayerDamageListener;
-import com.rabbitcompany.admingui.listeners.PlayerJoinListener;
-import com.rabbitcompany.admingui.listeners.PlayerLoginListener;
+import com.rabbitcompany.admingui.listeners.*;
+import com.rabbitcompany.admingui.ui.AdminUI;
+import com.rabbitcompany.admingui.utils.Item;
 import com.rabbitcompany.admingui.utils.Message;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
@@ -15,7 +14,6 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
@@ -27,9 +25,21 @@ public class AdminGUI extends JavaPlugin {
     private static Economy econ = null;
     public static boolean vault = false;
 
-    //Language
-    private File l = null;
-    private YamlConfiguration lang = new YamlConfiguration();
+    //English
+    private File en = null;
+    private YamlConfiguration engl = new YamlConfiguration();
+
+    //German
+    private File ge = null;
+    private YamlConfiguration germ = new YamlConfiguration();
+
+    //Chinese
+    private File ch = null;
+    private YamlConfiguration chin = new YamlConfiguration();
+
+    //Russian
+    private File ru = null;
+    private YamlConfiguration russ = new YamlConfiguration();
 
     //Kick
     private File k = null;
@@ -50,7 +60,10 @@ public class AdminGUI extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        this.l = new File(getDataFolder(), "language.yml");
+        this.en = new File(getDataFolder(), "Languages/English.yml");
+        this.ge = new File(getDataFolder(), "Languages/German.yml");
+        this.ch = new File(getDataFolder(), "Languages/Chinese.yml");
+        this.ru = new File(getDataFolder(), "Languages/Russian.yml");
         this.k = new File(getDataFolder(), "kick.yml");
         this.p = new File(getDataFolder(), "plugins.yml");
         this.c = new File(getDataFolder(), "commands.yml");
@@ -75,11 +88,21 @@ public class AdminGUI extends JavaPlugin {
         new InventoryClickListener(this);
         new PlayerDamageListener(this);
         new PlayerJoinListener(this);
+        new PlayerLeaveListener(this);
         new PlayerLoginListener(this);
 
         //Commands
         this.getCommand("admin").setExecutor((CommandExecutor) new Admin());
         this.getCommand("admin").setTabCompleter(new TabCompletion());
+
+        //Skulls
+        AdminUI.skulls.put("0qt", Item.pre_createPlayerHead("0qt"));
+        AdminUI.skulls.put("Black1_TV", Item.pre_createPlayerHead("Black1_TV"));
+        AdminUI.skulls.put("mattijs", Item.pre_createPlayerHead("mattijs"));
+        AdminUI.skulls.put("BKing2012", Item.pre_createPlayerHead("BKing2012"));
+        AdminUI.skulls.put("AverageJoe", Item.pre_createPlayerHead("AverageJoe"));
+        AdminUI.skulls.put("Chaochris", Item.pre_createPlayerHead("Chaochris"));
+        AdminUI.skulls.put("MHF_Redstone", Item.pre_createPlayerHead("MHF_Redstone"));
     }
 
     @Override
@@ -104,9 +127,21 @@ public class AdminGUI extends JavaPlugin {
         return econ;
     }
 
-    private void mkdir(){
-        if (!this.l.exists()) {
-            saveResource("language.yml", false);
+    private void mkdir() {
+        if (!this.en.exists()) {
+            saveResource("Languages/English.yml", false);
+        }
+
+        if (!this.ge.exists()) {
+            saveResource("Languages/German.yml", false);
+        }
+
+        if (!this.ch.exists()) {
+            saveResource("Languages/Chinese.yml", false);
+        }
+
+        if (!this.ru.exists()) {
+            saveResource("Languages/Russian.yml", false);
         }
 
         if(!this.k.exists()){
@@ -128,45 +163,54 @@ public class AdminGUI extends JavaPlugin {
 
     public void loadYamls(){
         try {
-            this.lang.load(this.l);
-        } catch (FileNotFoundException e) {
+            this.engl.load(this.en);
+        } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
-        } catch (IOException e) {
+        }
+        try {
+            this.germ.load(this.ge);
+        } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
-        } catch (InvalidConfigurationException e) {
+        }
+        try {
+            this.chin.load(this.ch);
+        } catch (IOException | InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+        try {
+            this.russ.load(this.ru);
+        } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
         try {
             this.kick.load(this.k);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InvalidConfigurationException e) {
+        } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
         try {
             this.plug.load(this.p);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InvalidConfigurationException e) {
+        } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
         try {
             this.comm.load(this.c);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InvalidConfigurationException e) {
+        } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
         try {
             this.como.load(this.o);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InvalidConfigurationException e) {
+        } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
     }
 
-    public YamlConfiguration getLang() { return this.lang; }
+    public YamlConfiguration getEngl() { return this.engl; }
+
+    public YamlConfiguration getGerm() { return this.germ; }
+
+    public YamlConfiguration getChin() { return this.chin; }
+
+    public YamlConfiguration getRuss() { return this.russ; }
 
     public YamlConfiguration getKick() { return this.kick; }
 
@@ -176,9 +220,37 @@ public class AdminGUI extends JavaPlugin {
 
     public YamlConfiguration getComo() { return this.como; }
 
-    public void saveLang() {
+    /*
+
+    //Saving files...
+
+    public void saveEngl() {
         try {
-            this.lang.save(this.l);
+            this.engl.save(this.en);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveGerm() {
+        try {
+            this.germ.save(this.ge);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveChin() {
+        try {
+            this.chin.save(this.ch);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveRuss() {
+        try {
+            this.russ.save(this.ru);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -214,7 +286,7 @@ public class AdminGUI extends JavaPlugin {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    } */
 
     private void info(String message){
         Bukkit.getConsoleSender().sendMessage(Message.chat(""));

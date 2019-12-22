@@ -27,70 +27,92 @@ import static org.bukkit.Bukkit.getServer;
 
 public class AdminUI {
 
-    public static HashMap<Player, Player> target_player = new HashMap<Player, Player>();
+    public static HashMap<Player, Player> target_player = new HashMap<>();
+
+    //Skulls
+    public static HashMap<String, ItemStack> skulls = new HashMap<>();
+
+    //Online players
+    public static ArrayList<String> online_players = new ArrayList<>();
+
+    //Language
+    public static HashMap<UUID, Integer> language = new HashMap<>();
 
     //Ban
-    private HashMap<Player, Integer> ban_years = new HashMap<Player, Integer>();
-    private HashMap<Player, Integer> ban_months = new HashMap<Player, Integer>();
-    private HashMap<Player, Integer> ban_days = new HashMap<Player, Integer>();
-    private HashMap<Player, Integer> ban_hours = new HashMap<Player, Integer>();
-    private HashMap<Player, Integer> ban_minutes = new HashMap<Player, Integer>();
+    private HashMap<UUID, Integer> ban_years = new HashMap<>();
+    private HashMap<UUID, Integer> ban_months = new HashMap<>();
+    private HashMap<UUID, Integer> ban_days = new HashMap<>();
+    private HashMap<UUID, Integer> ban_hours = new HashMap<>();
+    private HashMap<UUID, Integer> ban_minutes = new HashMap<>();
 
     //Page
-    private HashMap<Player, Integer> page = new HashMap<Player, Integer>();
-    private HashMap<Player, Integer> pages = new HashMap<Player, Integer>();
+    private HashMap<UUID, Integer> page = new HashMap<>();
+    private HashMap<UUID, Integer> pages = new HashMap<>();
 
     //Unban Page
-    private HashMap<Player, Integer> unban_page = new HashMap<Player, Integer>();
-    private HashMap<Player, Integer> unban_pages = new HashMap<Player, Integer>();
+    private HashMap<UUID, Integer> unban_page = new HashMap<>();
+    private HashMap<UUID, Integer> unban_pages = new HashMap<>();
 
     //Potions
-    private HashMap<Player, Integer> duration = new HashMap<Player, Integer>();
-    private HashMap<Player, Integer> level = new HashMap<Player, Integer>();
+    private HashMap<UUID, Integer> duration = new HashMap<>();
+    private HashMap<UUID, Integer> level = new HashMap<>();
 
     //God
-    public static HashMap<Player, Boolean> god = new HashMap<Player, Boolean>();
+    public static HashMap<UUID, Boolean> god = new HashMap<>();
 
     //Custom commands
-    public static HashMap<Player, Integer> custom_method = new HashMap<Player, Integer>();
-    public static HashMap<Player, Integer> plugin_slot = new HashMap<Player, Integer>();
+    public static HashMap<UUID, Integer> custom_method = new HashMap<>();
+    public static HashMap<UUID, Integer> plugin_slot = new HashMap<>();
 
     //Maintenance mode
     public static boolean maintenance_mode = false;
 
     public Inventory GUI_Main(Player p){
 
-        Inventory inv_main = Bukkit.createInventory(null, 36, Message.getMessage("inventory_main"));
-
-        Player random_player = Bukkit.getOnlinePlayers().stream().findAny().get();
+        Inventory inv_main = Bukkit.createInventory(null, 36, Message.getMessage(p.getUniqueId(), "inventory_main"));
 
         for(int i = 1; i < 36; i++){
                 Item.create(inv_main, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
         }
 
-        Item.createPlayerHead(inv_main, p.getName(), 1, 11, Message.getMessage("main_player").replace("{player}", p.getName()));
-        Item.create(inv_main, "GRASS_BLOCK", 1, 13, Message.getMessage("main_world"));
-        Item.createPlayerHead(inv_main,  random_player.getName(),1, 15, Message.getMessage("main_players"));
-        Item.create(inv_main, "PAINTING", 1, 17, Message.getMessage("main_plugins"));
+        //Item.createPlayerHead(inv_main, p.getName(), 1, 11, Message.getMessage(p.getUniqueId(),"main_player").replace("{player}", p.getName()));
+        Item.after_createPlayerHead(inv_main, skulls.get(p.getName()), 1, 11, Message.getMessage(p.getUniqueId(),"main_player").replace("{player}", p.getName()));
+                    //Item.create(inv_main, "GRASS_BLOCK", 1, 13, Message.getMessage(p.getUniqueId(), "main_world"));
+        //Item.createPlayerHead(inv_main,  "0qt",1, 13, Message.getMessage(p.getUniqueId(), "main_world"));
+        Item.after_createPlayerHead(inv_main, skulls.get("0qt"), 1, 13, Message.getMessage(p.getUniqueId(), "main_world"));
+
+        //Item.createPlayerHead(inv_main,  "Black1_TV",1, 15, Message.getMessage(p.getUniqueId(), "main_players"));
+        Item.after_createPlayerHead(inv_main, skulls.get("Black1_TV"), 1, 15, Message.getMessage(p.getUniqueId(), "main_players"));
+                    //Item.create(inv_main, "PAINTING", 1, 17, Message.getMessage(p.getUniqueId(), "main_plugins"));
+        //Item.createPlayerHead(inv_main,  "mattijs",1, 17, Message.getMessage(p.getUniqueId(), "main_plugins"));
+        Item.after_createPlayerHead(inv_main, skulls.get("mattijs"), 1, 17, Message.getMessage(p.getUniqueId(), "main_plugins"));
 
         if(maintenance_mode){
-            Item.create(inv_main, "GLOWSTONE_DUST", 1, 28, Message.getMessage("main_maintenance_mode"));
+                        //Item.create(inv_main, "GLOWSTONE_DUST", 1, 28, Message.getMessage(p.getUniqueId(), "main_maintenance_mode"));
+            //Item.createPlayerHead(inv_main,  "BKing2012",1, 28, Message.getMessage(p.getUniqueId(), "main_maintenance_mode"));
+            Item.after_createPlayerHead(inv_main, skulls.get("BKing2012"),1,28, Message.getMessage(p.getUniqueId(), "main_maintenance_mode"));
         }else{
-            Item.create(inv_main, "REDSTONE", 1, 28, Message.getMessage("main_maintenance_mode"));
+                        //Item.create(inv_main, "REDSTONE", 1, 28, Message.getMessage(p.getUniqueId(), "main_maintenance_mode"));
+            //Item.createPlayerHead(inv_main,  "AverageJoe",1, 28, Message.getMessage(p.getUniqueId(), "main_maintenance_mode"));
+            Item.after_createPlayerHead(inv_main, skulls.get("AverageJoe"),1,28, Message.getMessage(p.getUniqueId(), "main_maintenance_mode"));
         }
 
         if(p.hasPermission("admingui.unban")) {
-            Item.create(inv_main, "BARRIER", 1, 32, Message.getMessage("main_unban_players"));
+                        //Item.create(inv_main, "BARRIER", 1, 32, Message.getMessage(p.getUniqueId(), "main_unban_players"));
+            //Item.createPlayerHead(inv_main,  "Chaochris",1, 32, Message.getMessage(p.getUniqueId(), "main_unban_players"));
+            Item.after_createPlayerHead(inv_main, skulls.get("Chaochris"),1,32, Message.getMessage(p.getUniqueId(), "main_unban_players"));
         }
 
-        Item.create(inv_main, "REDSTONE_BLOCK", 1, 36, Message.getMessage("main_quit"));
+        //Item.createPlayerHead(inv_main,  "MHF_Redstone",1, 36, Message.getMessage(p.getUniqueId(), "main_quit"));
+        Item.after_createPlayerHead(inv_main, skulls.get("MHF_Redstone"),1,36, Message.getMessage(p.getUniqueId(), "main_quit"));
+                        //Item.create(inv_main, "REDSTONE_BLOCK", 1, 36, Message.getMessage(p.getUniqueId(), "main_quit"));
 
         return inv_main;
     }
 
     public Inventory GUI_Player(Player p){
 
-        String inventory_player_name = Message.getMessage("inventory_player").replace("{player}", p.getName());
+        String inventory_player_name = Message.getMessage(p.getUniqueId(), "inventory_player").replace("{player}", p.getName());
 
         Inventory inv_player = Bukkit.createInventory(null, 45, inventory_player_name);
 
@@ -100,136 +122,136 @@ public class AdminUI {
 
         if(p.hasPermission("admingui.info")) {
             if(AdminGUI.vault){
-                Item.createPlayerHead(inv_player, p.getName(), 1, 5, Message.getMessage("player_info").replace("{player}", p.getName()), Message.chat("&eHeal: " + Math.round(p.getHealth())), Message.chat("&7Feed: " + Math.round(p.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(p.getName()))) ,Message.chat("&aGamemode: " + p.getGameMode().toString()), Message.chat("&5IP: " + p.getAddress()));
+                Item.createPlayerHead(inv_player, p.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "player_info").replace("{player}", p.getName()), Message.chat("&eHeal: " + Math.round(p.getHealth())), Message.chat("&7Feed: " + Math.round(p.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(p.getName()))) ,Message.chat("&aGamemode: " + p.getGameMode().toString()), Message.chat("&5IP: " + p.getAddress()));
             }else{
-                Item.createPlayerHead(inv_player, p.getName(), 1, 5, Message.getMessage("player_info").replace("{player}", p.getName()), Message.chat("&eHeal: " + Math.round(p.getHealth())), Message.chat("&7Feed: " + Math.round(p.getFoodLevel())), Message.chat("&aGamemode: " + p.getGameMode().toString()), Message.chat("&5IP: " + p.getAddress()));
+                Item.createPlayerHead(inv_player, p.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "player_info").replace("{player}", p.getName()), Message.chat("&eHeal: " + Math.round(p.getHealth())), Message.chat("&7Feed: " + Math.round(p.getFoodLevel())), Message.chat("&aGamemode: " + p.getGameMode().toString()), Message.chat("&5IP: " + p.getAddress()));
             }
         }else{
-            Item.createPlayerHead(inv_player, p.getName(), 1, 5, Message.getMessage("player_info").replace("{player}", p.getName()));
+            Item.createPlayerHead(inv_player, p.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "player_info").replace("{player}", p.getName()));
         }
 
         if(p.hasPermission("admingui.heal")) {
-            Item.create(inv_player, "GOLDEN_APPLE", 1, 11, Message.getMessage("player_heal"));
+            Item.create(inv_player, "GOLDEN_APPLE", 1, 11, Message.getMessage(p.getUniqueId(), "player_heal"));
         }else{
-            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 11,  Message.getMessage("permission"));
+            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 11,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.feed")) {
-            Item.create(inv_player, "COOKED_BEEF", 1, 13, Message.getMessage("player_feed"));
+            Item.create(inv_player, "COOKED_BEEF", 1, 13, Message.getMessage(p.getUniqueId(), "player_feed"));
         }else{
-            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 13,  Message.getMessage("permission"));
+            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 13,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.gamemode")) {
             if (p.getPlayer().getGameMode() == GameMode.SURVIVAL) {
-                Item.create(inv_player, "DIRT", 1, 15, Message.getMessage("player_survival"));
+                Item.create(inv_player, "DIRT", 1, 15, Message.getMessage(p.getUniqueId(), "player_survival"));
             } else if (p.getPlayer().getGameMode() == GameMode.ADVENTURE) {
-                Item.create(inv_player, "GRASS_BLOCK", 1, 15, Message.getMessage("player_adventure"));
+                Item.create(inv_player, "GRASS_BLOCK", 1, 15, Message.getMessage(p.getUniqueId(), "player_adventure"));
             } else if (p.getPlayer().getGameMode() == GameMode.CREATIVE) {
-                Item.create(inv_player, "BRICKS", 1, 15, Message.getMessage("player_creative"));
+                Item.create(inv_player, "BRICKS", 1, 15, Message.getMessage(p.getUniqueId(), "player_creative"));
             } else if (p.getPlayer().getGameMode() == GameMode.SPECTATOR) {
                 if(Bukkit.getVersion().contains("1.8")){
-                    Item.create(inv_player, "POTION", 1, 15, Message.getMessage("player_spectator"));
+                    Item.create(inv_player, "POTION", 1, 15, Message.getMessage(p.getUniqueId(), "player_spectator"));
                 }else{
-                    Item.create(inv_player, "SPLASH_POTION", 1, 15, Message.getMessage("player_spectator"));
+                    Item.create(inv_player, "SPLASH_POTION", 1, 15, Message.getMessage(p.getUniqueId(), "player_spectator"));
                 }
             }
         }else{
-            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 15,  Message.getMessage("permission"));
+            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 15,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.god")) {
             if(!Bukkit.getVersion().contains("1.8")) {
                 if (p.isInvulnerable()) {
-                    Item.create(inv_player, "RED_TERRACOTTA", 1, 17, Message.getMessage("player_god_disabled"));
+                    Item.create(inv_player, "RED_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "player_god_disabled"));
                 } else {
-                    Item.create(inv_player, "LIME_TERRACOTTA", 1, 17, Message.getMessage("player_god_enabled"));
+                    Item.create(inv_player, "LIME_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "player_god_enabled"));
                 }
             }else{
-                if(god.getOrDefault(p, false)){
-                    Item.create(inv_player, "RED_TERRACOTTA", 1, 17, Message.getMessage("player_god_disabled"));
+                if(god.getOrDefault(p.getUniqueId(), false)){
+                    Item.create(inv_player, "RED_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "player_god_disabled"));
                 }else{
-                    Item.create(inv_player, "LIME_TERRACOTTA", 1, 17, Message.getMessage("player_god_enabled"));
+                    Item.create(inv_player, "LIME_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "player_god_enabled"));
                 }
             }
         }else{
-            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 17,  Message.getMessage("permission"));
+            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 17,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.potions")) {
-            Item.create(inv_player, "POTION", 1, 19, Message.getMessage("player_potions"));
+            Item.create(inv_player, "POTION", 1, 19, Message.getMessage(p.getUniqueId(), "player_potions"));
         }else{
-            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 19,  Message.getMessage("permission"));
+            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 19,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.spawner")) {
-            Item.create(inv_player, "SPAWNER", 1, 21, Message.getMessage("player_spawner"));
+            Item.create(inv_player, "SPAWNER", 1, 21, Message.getMessage(p.getUniqueId(), "player_spawner"));
         }else{
-            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 21,  Message.getMessage("permission"));
+            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 21,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.kill")) {
-            Item.create(inv_player, "DIAMOND_SWORD", 1, 23, Message.getMessage("player_kill"));
+            Item.create(inv_player, "DIAMOND_SWORD", 1, 23, Message.getMessage(p.getUniqueId(), "player_kill"));
         }else{
-            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 23,  Message.getMessage("permission"));
+            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 23,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.burn")) {
-            Item.create(inv_player, "FLINT_AND_STEEL", 1, 25, Message.getMessage("player_burn"));
+            Item.create(inv_player, "FLINT_AND_STEEL", 1, 25, Message.getMessage(p.getUniqueId(), "player_burn"));
         }else{
-            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 25,  Message.getMessage("permission"));
+            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 25,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.lightning")) {
             if(Bukkit.getVersion().contains("1.13") || Bukkit.getVersion().contains("1.14")){
-                Item.create(inv_player, "TRIDENT", 1, 27, Message.getMessage("player_lightning"));
+                Item.create(inv_player, "TRIDENT", 1, 27, Message.getMessage(p.getUniqueId(), "player_lightning"));
             }else{
-                Item.create(inv_player, "STICK", 1, 27, Message.getMessage("player_lightning"));
+                Item.create(inv_player, "STICK", 1, 27, Message.getMessage(p.getUniqueId(), "player_lightning"));
             }
         }else{
-            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 27,  Message.getMessage("permission"));
+            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 27,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.firework")) {
-            Item.create(inv_player, "FIREWORK_ROCKET", 1, 29, Message.getMessage("player_firework"));
+            Item.create(inv_player, "FIREWORK_ROCKET", 1, 29, Message.getMessage(p.getUniqueId(), "player_firework"));
         }else{
-            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 29,  Message.getMessage("permission"));
+            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 29,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.money")) {
-            Item.create(inv_player, "PAPER", 1, 31, Message.getMessage("player_money"));
+            Item.create(inv_player, "PAPER", 1, 31, Message.getMessage(p.getUniqueId(), "player_money"));
         }else{
-            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 31,  Message.getMessage("permission"));
+            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 31,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if (p.hasPermission("admingui.vanish")) {
             if (Bukkit.getPluginManager().isPluginEnabled("SuperVanish") || Bukkit.getPluginManager().isPluginEnabled("PremiumVanish")) {
                 if (VanishAPI.isInvisible(p)) {
-                    Item.create(inv_player, "FEATHER", 1, 33, Message.getMessage("player_vanish_disabled"));
+                    Item.create(inv_player, "FEATHER", 1, 33, Message.getMessage(p.getUniqueId(), "player_vanish_disabled"));
                 } else {
-                    Item.create(inv_player, "FEATHER", 1, 33, Message.getMessage("player_vanish_enabled"));
+                    Item.create(inv_player, "FEATHER", 1, 33, Message.getMessage(p.getUniqueId(), "player_vanish_enabled"));
                 }
             } else {
-                Item.create(inv_player, "FEATHER", 1, 33, Message.getMessage("player_vanish_enabled"));
+                Item.create(inv_player, "FEATHER", 1, 33, Message.getMessage(p.getUniqueId(), "player_vanish_enabled"));
             }
         }else{
-            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 33, Message.getMessage("permission"));
+            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 33, Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.custom")) {
-            Item.create(inv_player, "PAINTING", 1, 35, Message.getMessage("player_custom"));
+            Item.create(inv_player, "PAINTING", 1, 35, Message.getMessage(p.getUniqueId(), "player_custom"));
         }else{
-            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 35,  Message.getMessage("permission"));
+            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 35,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
-        Item.create(inv_player, "REDSTONE_BLOCK", 1, 45, Message.getMessage("player_back"));
+        Item.create(inv_player, "REDSTONE_BLOCK", 1, 45, Message.getMessage(p.getUniqueId(), "player_back"));
 
         return inv_player;
     }
 
     private Inventory GUI_World(Player p){
 
-        Inventory inv_world = Bukkit.createInventory(null, 27, Message.getMessage("inventory_world"));
+        Inventory inv_world = Bukkit.createInventory(null, 27, Message.getMessage(p.getUniqueId(), "inventory_world"));
 
         for(int i = 1; i < 27; i++){
             Item.create(inv_world, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
@@ -237,77 +259,73 @@ public class AdminUI {
 
         if(p.hasPermission("admingui.time")) {
             if (p.getPlayer().getWorld().getTime() < 13000) {
-                Item.create(inv_world, "GOLD_BLOCK", 1, 11, Message.getMessage("world_day"));
+                //Item.create(inv_world, "GOLD_BLOCK", 1, 11, Message.getMessage(p.getUniqueId(), "world_day"));
+                Item.createPlayerHead(inv_world,  "Ground15",1, 11, Message.getMessage(p.getUniqueId(), "world_day"));
             } else {
-                Item.create(inv_world, "COAL_BLOCK", 1, 11, Message.getMessage("world_night"));
+                //Item.create(inv_world, "COAL_BLOCK", 1, 11, Message.getMessage(p.getUniqueId(), "world_night"));
+                Item.createPlayerHead(inv_world,  "EDDxample",1, 11, Message.getMessage(p.getUniqueId(), "world_night"));
             }
         }else{
-            Item.create(inv_world, "RED_STAINED_GLASS_PANE", 1, 11,  Message.getMessage("permission"));
+            Item.create(inv_world, "RED_STAINED_GLASS_PANE", 1, 11,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.weather")) {
             if (p.getPlayer().getWorld().isThundering()) {
-                Item.create(inv_world, " BLUE_TERRACOTTA", 1, 13, Message.getMessage("world_thunder"));
+                Item.createPlayerHead(inv_world,  "LapisBlock",1, 13, Message.getMessage(p.getUniqueId(), "world_thunder"));
+                //Item.create(inv_world, " BLUE_TERRACOTTA", 1, 13, Message.getMessage(p.getUniqueId(), "world_thunder"));
             } else if (p.getPlayer().getWorld().hasStorm()) {
-                Item.create(inv_world, "CYAN_TERRACOTTA", 1, 13, Message.getMessage("world_rain"));
+                Item.createPlayerHead(inv_world,  "emack0714",1, 13, Message.getMessage(p.getUniqueId(), "world_rain"));
+                //Item.create(inv_world, "CYAN_TERRACOTTA", 1, 13, Message.getMessage(p.getUniqueId(), "world_rain"));
             } else {
-                Item.create(inv_world, "LIGHT_BLUE_TERRACOTTA", 1, 13, Message.getMessage("world_clear"));
+                Item.createPlayerHead(inv_world,  "Super_Sniper",1, 13, Message.getMessage(p.getUniqueId(), "world_clear"));
+                //Item.create(inv_world, "LIGHT_BLUE_TERRACOTTA", 1, 13, Message.getMessage(p.getUniqueId(), "world_clear"));
             }
         }else{
-            Item.create(inv_world, "RED_STAINED_GLASS_PANE", 1, 13,  Message.getMessage("permission"));
+            Item.create(inv_world, "RED_STAINED_GLASS_PANE", 1, 13,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
-        Item.create(inv_world, "REDSTONE_BLOCK", 1, 27, Message.getMessage("world_back"));
+        //Item.create(inv_world, "REDSTONE_BLOCK", 1, 27, Message.getMessage(p.getUniqueId(), "world_back"));
+        Item.createPlayerHead(inv_world,  "MHF_Redstone",1, 27, Message.getMessage(p.getUniqueId(), "world_back"));
 
         return inv_world;
     }
 
     private Inventory GUI_Players(Player p){
 
-        ArrayList<String> pl = new ArrayList<String>();
+        Inventory inv_players = Bukkit.createInventory(null, 54, Message.getMessage(p.getUniqueId(), "inventory_players"));
 
-        Inventory inv_players = Bukkit.createInventory(null, 54, Message.getMessage("inventory_players"));
+        int online = online_players.size();
 
-        for(Player all : getServer().getOnlinePlayers()) {
-            pl.add(all.getName());
-        }
-
-        pl.remove(p.getName());
-
-        Collections.sort(pl);
-
-        int online = pl.size();
-
-        pages.put(p, (int) Math.ceil((float)online / 45));
+        pages.put(p.getUniqueId(), (int) Math.ceil((float)online / 45));
 
         for (int i = 46; i <= 53; i++){
             Item.create(inv_players, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
         }
 
-        int player_slot = (page.getOrDefault(p,1)-1) * 45;
+        int player_slot = (page.getOrDefault(p.getUniqueId(),1)-1) * 45;
 
         for (int i = 0; i < 45; i++){
             if(player_slot < online){
-                Item.createPlayerHead(inv_players, pl.get(player_slot),1, i+1, Message.getMessage("players_color").replace("{player}", pl.get(player_slot)), Message.getMessage("players_more"));
+                Item.createPlayerHead(inv_players, online_players.get(player_slot),1, i+1, Message.getMessage(p.getUniqueId(), "players_color").replace("{player}", online_players.get(player_slot)), Message.getMessage(p.getUniqueId(), "players_more"));
                 player_slot++;
             }else{
                 Item.create(inv_players, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i+1, " ");
             }
         }
 
-        if(page.getOrDefault(p, 1) > 1){
-            Item.create(inv_players, "PAPER", 1, 49, Message.getMessage("players_previous"));
+        if(page.getOrDefault(p.getUniqueId(), 1) > 1){
+            Item.createPlayerHead(inv_players, "MHF_ArrowLeft", 1, 49, Message.getMessage(p.getUniqueId(), "players_previous"));
         }
 
-        if(pages.getOrDefault(p, 1) > 1){
-            Item.create(inv_players, "BOOK", page.getOrDefault(p, 1), 50, Message.getMessage("players_page") + " " + page.getOrDefault(p, 1));
+        if(pages.getOrDefault(p.getUniqueId(), 1) > 1){
+            Item.createPlayerHead(inv_players, "MHF_Question", page.getOrDefault(p.getUniqueId(), 1), 50, Message.getMessage(p.getUniqueId(), "players_page") + " " + page.getOrDefault(p.getUniqueId(), 1));
         }
 
-        if(pages.get(p) > page.getOrDefault(p, 1)){
-            Item.create(inv_players, "PAPER", 1, 51, Message.getMessage("players_next"));
+        if(pages.get(p.getUniqueId()) > page.getOrDefault(p.getUniqueId(), 1)){
+            Item.createPlayerHead(inv_players, "MHF_ArrowRight", 1, 51, Message.getMessage(p.getUniqueId(), "players_next"));
         }
 
-        Item.create(inv_players, "REDSTONE_BLOCK", 1, 54, Message.getMessage("players_back"));
+        Item.create(inv_players, "REDSTONE_BLOCK", 1, 54, Message.getMessage(p.getUniqueId(), "players_back"));
 
         return inv_players;
     }
@@ -317,7 +335,7 @@ public class AdminUI {
         ConfigurationSection one;
         YamlConfiguration yamlConfiguration;
 
-        switch (custom_method.getOrDefault(p, 0)){
+        switch (custom_method.getOrDefault(p.getUniqueId(), 0)){
             case 1:
                 one = AdminGUI.getInstance().getComm().getConfigurationSection("plugins");
                 yamlConfiguration = AdminGUI.getInstance().getComm();
@@ -332,7 +350,7 @@ public class AdminUI {
                 break;
         }
 
-        Inventory inv_plugins = Bukkit.createInventory(null, 54, Message.getMessage("inventory_plugins"));
+        Inventory inv_plugins = Bukkit.createInventory(null, 54, Message.getMessage(p.getUniqueId(), "inventory_plugins"));
 
         for (int i = 1; i < 54; i++){
             Item.create(inv_plugins, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
@@ -343,7 +361,7 @@ public class AdminUI {
             Item.create(inv_plugins, yamlConfiguration.getString("plugins."+i+".material"), 1, i, yamlConfiguration.getString("plugins."+i+".name"));
         }
 
-        Item.create(inv_plugins, "REDSTONE_BLOCK", 1, 54, Message.getMessage("plugins_back"));
+        Item.create(inv_plugins, "REDSTONE_BLOCK", 1, 54, Message.getMessage(p.getUniqueId(), "plugins_back"));
 
         return inv_plugins;
     }
@@ -353,7 +371,7 @@ public class AdminUI {
         ConfigurationSection two;
         YamlConfiguration yamlConfiguration;
 
-        switch (custom_method.getOrDefault(p, 0)){
+        switch (custom_method.getOrDefault(p.getUniqueId(), 0)){
             case 1:
                 two = AdminGUI.getInstance().getComm().getConfigurationSection("plugins."+slot+".commands");
                 yamlConfiguration = AdminGUI.getInstance().getComm();
@@ -368,7 +386,7 @@ public class AdminUI {
                 break;
         }
 
-        Inventory inv_commands = Bukkit.createInventory(null, 54, Message.chat(yamlConfiguration.getString("plugins."+slot+".name"))+ " " + Message.getMessage("inventory_commands"));
+        Inventory inv_commands = Bukkit.createInventory(null, 54, Message.chat(yamlConfiguration.getString("plugins."+slot+".name"))+ " " + Message.getMessage(p.getUniqueId(), "inventory_commands"));
 
         for (int i = 1; i < 54; i++){
             Item.create(inv_commands, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
@@ -380,23 +398,23 @@ public class AdminUI {
                 if(p.hasPermission(yamlConfiguration.getString("plugins."+slot+".commands."+j+".permission")+"")){
                     Item.create(inv_commands, yamlConfiguration.getString("plugins."+slot+".commands."+j+".material"), 1, j, yamlConfiguration.getString("plugins."+slot+".commands."+j+".name"));
                 }else{
-                    Item.create(inv_commands, "RED_STAINED_GLASS_PANE", 1, j,  Message.getMessage("permission"));
+                    Item.create(inv_commands, "RED_STAINED_GLASS_PANE", 1, j,  Message.getMessage(p.getUniqueId(), "permission"));
                 }
             }else{
                 Item.create(inv_commands, yamlConfiguration.getString("plugins."+slot+".commands."+j+".material"), 1, j, yamlConfiguration.getString("plugins."+slot+".commands."+j+".name"));
             }
         }
 
-        Item.create(inv_commands, "REDSTONE_BLOCK", 1, 54, Message.getMessage("commands_back"));
+        Item.create(inv_commands, "REDSTONE_BLOCK", 1, 54, Message.getMessage(p.getUniqueId(), "commands_back"));
 
         return inv_commands;
     }
 
     public Inventory GUI_Unban_Players(Player p){
 
-        ArrayList<String> pl = new ArrayList<String>();
+        ArrayList<String> pl = new ArrayList<>();
 
-        Inventory inv_unban_players = Bukkit.createInventory(null, 54, Message.getMessage("inventory_unban"));
+        Inventory inv_unban_players = Bukkit.createInventory(null, 54, Message.getMessage(p.getUniqueId(), "inventory_unban"));
 
         for (OfflinePlayer all : getServer().getBannedPlayers()) {
             pl.add(all.getName());
@@ -406,43 +424,43 @@ public class AdminUI {
 
         int online = pl.size();
 
-        unban_pages.put(p, (int) Math.ceil((float)online / 45));
+        unban_pages.put(p.getUniqueId(), (int) Math.ceil((float)online / 45));
 
         for (int i = 46; i <= 53; i++){
             Item.create(inv_unban_players, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
         }
 
-        int player_slot = (unban_page.getOrDefault(p,1)-1) * 45;
+        int player_slot = (unban_page.getOrDefault(p.getUniqueId(),1)-1) * 45;
 
         for (int i = 0; i < 45; i++){
             if(player_slot < online){
-                Item.createPlayerHead(inv_unban_players, pl.get(player_slot), 1, i + 1, Message.getMessage("unban_color").replace("{player}", pl.get(player_slot)), Message.chat("&aBanned: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getCreated()), Message.chat("&aExpiration: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getExpiration()), " ", Message.getMessage("unban_more"));
+                Item.createPlayerHead(inv_unban_players, pl.get(player_slot), 1, i + 1, Message.getMessage(p.getUniqueId(), "unban_color").replace("{player}", pl.get(player_slot)), Message.chat("&aBanned: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getCreated()), Message.chat("&aExpiration: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getExpiration()), " ", Message.getMessage(p.getUniqueId(), "unban_more"));
                 player_slot++;
             }else{
                 Item.create(inv_unban_players, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i+1, " ");
             }
         }
 
-        if(unban_page.getOrDefault(p, 1) > 1){
-            Item.create(inv_unban_players, "PAPER", 1, 49, Message.getMessage("unban_previous"));
+        if(unban_page.getOrDefault(p.getUniqueId(), 1) > 1){
+            Item.createPlayerHead(inv_unban_players, "MHF_ArrowLeft", 1, 49, Message.getMessage(p.getUniqueId(), "unban_previous"));
         }
 
-        if(unban_pages.getOrDefault(p, 1) > 1){
-            Item.create(inv_unban_players, "BOOK", unban_page.getOrDefault(p, 1), 50, Message.getMessage("unban_page") + " " + unban_page.getOrDefault(p, 1));
+        if(unban_pages.getOrDefault(p.getUniqueId(), 1) > 1){
+            Item.createPlayerHead(inv_unban_players, "MHF_Question", unban_page.getOrDefault(p.getUniqueId(), 1), 50, Message.getMessage(p.getUniqueId(), "unban_page") + " " + unban_page.getOrDefault(p.getUniqueId(), 1));
         }
 
-        if(unban_pages.get(p) > unban_page.getOrDefault(p, 1)){
-            Item.create(inv_unban_players, "PAPER", 1, 51, Message.getMessage("unban_next"));
+        if(unban_pages.get(p.getUniqueId()) > unban_page.getOrDefault(p.getUniqueId(), 1)){
+            Item.createPlayerHead(inv_unban_players, "MHF_ArrowRight", 1, 51, Message.getMessage(p.getUniqueId(), "unban_next"));
         }
 
-        Item.create(inv_unban_players, "REDSTONE_BLOCK", 1, 54, Message.getMessage("unban_back"));
+        Item.create(inv_unban_players, "REDSTONE_BLOCK", 1, 54, Message.getMessage(p.getUniqueId(), "unban_back"));
 
         return inv_unban_players;
     }
 
     public Inventory GUI_Players_Settings(Player p, Player target_player){
 
-        String inventory_players_settings_name = Message.getMessage("players_color").replace("{player}", target_player.getName());
+        String inventory_players_settings_name = Message.getMessage(p.getUniqueId(), "players_color").replace("{player}", target_player.getName());
         Inventory inv_players_settings = Bukkit.createInventory(null, 27, inventory_players_settings_name);
 
         for(int i = 1; i < 27; i++){
@@ -451,42 +469,42 @@ public class AdminUI {
 
         if(p.hasPermission("admingui.info")) {
             if(AdminGUI.vault){
-                Item.createPlayerHead(inv_players_settings, target_player.getName(), 1, 5, Message.getMessage("players_settings_info").replace("{player}", target_player.getName()), Message.chat("&eHeal: " + Math.round(target_player.getHealth())), Message.chat("&7Feed: " + Math.round(target_player.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(target_player.getName()))) ,Message.chat("&aGamemode: " + target_player.getGameMode().toString()), Message.chat("&5IP: " + target_player.getAddress()));
+                Item.createPlayerHead(inv_players_settings, target_player.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_player.getName()), Message.chat("&eHeal: " + Math.round(target_player.getHealth())), Message.chat("&7Feed: " + Math.round(target_player.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(target_player.getName()))) ,Message.chat("&aGamemode: " + target_player.getGameMode().toString()), Message.chat("&5IP: " + target_player.getAddress()));
             }else{
-                Item.createPlayerHead(inv_players_settings, target_player.getName(), 1, 5, Message.getMessage("players_settings_info").replace("{player}", target_player.getName()), Message.chat("&eHeal: " + Math.round(target_player.getHealth())), Message.chat("&7Feed: " + Math.round(target_player.getFoodLevel())), Message.chat("&aGamemode: " + target_player.getGameMode().toString()), Message.chat("&5IP: " + target_player.getAddress()));
+                Item.createPlayerHead(inv_players_settings, target_player.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_player.getName()), Message.chat("&eHeal: " + Math.round(target_player.getHealth())), Message.chat("&7Feed: " + Math.round(target_player.getFoodLevel())), Message.chat("&aGamemode: " + target_player.getGameMode().toString()), Message.chat("&5IP: " + target_player.getAddress()));
             }
         }else{
-            Item.createPlayerHead(inv_players_settings, target_player.getName(), 1, 5, Message.getMessage("players_settings_info").replace("{player}", target_player.getName()));
+            Item.createPlayerHead(inv_players_settings, target_player.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_player.getName()));
         }
 
-        Item.create(inv_players_settings, "DIAMOND_SWORD", 1, 11, Message.getMessage("players_settings_actions"));
+        Item.create(inv_players_settings, "DIAMOND_SWORD", 1, 11, Message.getMessage(p.getUniqueId(), "players_settings_actions"));
 
         if(p.hasPermission("admingui.money.other")) {
-            Item.create(inv_players_settings, "PAPER", 1, 13, Message.getMessage("players_settings_money"));
+            Item.create(inv_players_settings, "PAPER", 1, 13, Message.getMessage(p.getUniqueId(), "players_settings_money"));
         }else{
-            Item.create(inv_players_settings, "RED_STAINED_GLASS_PANE", 1, 13,  Message.getMessage("permission"));
+            Item.create(inv_players_settings, "RED_STAINED_GLASS_PANE", 1, 13,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.kick.other")) {
-            Item.create(inv_players_settings, "BLACK_TERRACOTTA", 1, 15, Message.getMessage("players_settings_kick_player"));
+            Item.create(inv_players_settings, "BLACK_TERRACOTTA", 1, 15, Message.getMessage(p.getUniqueId(), "players_settings_kick_player"));
         }else{
-            Item.create(inv_players_settings, "RED_STAINED_GLASS_PANE", 1, 15,  Message.getMessage("permission"));
+            Item.create(inv_players_settings, "RED_STAINED_GLASS_PANE", 1, 15,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.ban")) {
-            Item.create(inv_players_settings, "BEDROCK", 1, 17, Message.getMessage("players_settings_ban_player"));
+            Item.create(inv_players_settings, "BEDROCK", 1, 17, Message.getMessage(p.getUniqueId(), "players_settings_ban_player"));
         }else{
-            Item.create(inv_players_settings, "RED_STAINED_GLASS_PANE", 1, 17,  Message.getMessage("permission"));
+            Item.create(inv_players_settings, "RED_STAINED_GLASS_PANE", 1, 17,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
-        Item.create(inv_players_settings, "REDSTONE_BLOCK", 1, 27, Message.getMessage("players_settings_back"));
+        Item.create(inv_players_settings, "REDSTONE_BLOCK", 1, 27, Message.getMessage(p.getUniqueId(), "players_settings_back"));
 
         return inv_players_settings;
     }
 
     public Inventory GUI_Actions(Player p, Player target){
 
-        String inventory_actions_name = Message.getMessage("inventory_actions").replace("{player}", target.getName());
+        String inventory_actions_name = Message.getMessage(p.getUniqueId(), "inventory_actions").replace("{player}", target.getName());
         target_player.put(p, target);
 
         Inventory inv_actions = Bukkit.createInventory(null, 54, inventory_actions_name);
@@ -497,158 +515,158 @@ public class AdminUI {
 
         if(p.hasPermission("admingui.info")) {
             if(AdminGUI.vault){
-                Item.createPlayerHead(inv_actions, target.getName(), 1, 5, Message.getMessage("players_settings_info").replace("{player}", target.getName()), Message.chat("&eHeal: " + Math.round(target.getHealth())), Message.chat("&7Feed: " + Math.round(target.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(target.getName()))) ,Message.chat("&aGamemode: " + target.getGameMode().toString()), Message.chat("&5IP: " + target.getAddress()));
+                Item.createPlayerHead(inv_actions, target.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target.getName()), Message.chat("&eHeal: " + Math.round(target.getHealth())), Message.chat("&7Feed: " + Math.round(target.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(target.getName()))) ,Message.chat("&aGamemode: " + target.getGameMode().toString()), Message.chat("&5IP: " + target.getAddress()));
             }else{
-                Item.createPlayerHead(inv_actions, target.getName(), 1, 5, Message.getMessage("players_settings_info").replace("{player}", target.getName()), Message.chat("&eHeal: " + Math.round(target.getHealth())), Message.chat("&7Feed: " + Math.round(target.getFoodLevel())), Message.chat("&aGamemode: " + target.getGameMode().toString()), Message.chat("&5IP: " + target.getAddress()));
+                Item.createPlayerHead(inv_actions, target.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target.getName()), Message.chat("&eHeal: " + Math.round(target.getHealth())), Message.chat("&7Feed: " + Math.round(target.getFoodLevel())), Message.chat("&aGamemode: " + target.getGameMode().toString()), Message.chat("&5IP: " + target.getAddress()));
             }
         }else{
-            Item.createPlayerHead(inv_actions, target.getName(), 1, 5, Message.getMessage("actions_info").replace("{player}", target.getName()));
+            Item.createPlayerHead(inv_actions, target.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "actions_info").replace("{player}", target.getName()));
         }
 
         if(p.hasPermission("admingui.heal.other")) {
-            Item.create(inv_actions, "GOLDEN_APPLE", 1, 11, Message.getMessage("actions_heal"));
+            Item.create(inv_actions, "GOLDEN_APPLE", 1, 11, Message.getMessage(p.getUniqueId(), "actions_heal"));
         }else{
-            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 11,  Message.getMessage("permission"));
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 11,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.feed.other")) {
-            Item.create(inv_actions, "COOKED_BEEF", 1, 13, Message.getMessage("actions_feed"));
+            Item.create(inv_actions, "COOKED_BEEF", 1, 13, Message.getMessage(p.getUniqueId(), "actions_feed"));
         }else{
-            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 13,  Message.getMessage("permission"));
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 13,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.gamemode.other")) {
             if (target.getGameMode() == GameMode.SURVIVAL) {
-                Item.create(inv_actions, "DIRT", 1, 15, Message.getMessage("actions_survival"));
+                Item.create(inv_actions, "DIRT", 1, 15, Message.getMessage(p.getUniqueId(), "actions_survival"));
             } else if (target.getGameMode() == GameMode.ADVENTURE) {
-                Item.create(inv_actions, "GRASS_BLOCK", 1, 15, Message.getMessage("actions_adventure"));
+                Item.create(inv_actions, "GRASS_BLOCK", 1, 15, Message.getMessage(p.getUniqueId(), "actions_adventure"));
             } else if (target.getGameMode() == GameMode.CREATIVE) {
-                Item.create(inv_actions, "BRICKS", 1, 15, Message.getMessage("actions_creative"));
+                Item.create(inv_actions, "BRICKS", 1, 15, Message.getMessage(p.getUniqueId(), "actions_creative"));
             } else if (target.getGameMode() == GameMode.SPECTATOR) {
                 if(Bukkit.getVersion().contains("1.8")){
-                    Item.create(inv_actions, "POTION", 1, 15, Message.getMessage("actions_spectator"));
+                    Item.create(inv_actions, "POTION", 1, 15, Message.getMessage(p.getUniqueId(), "actions_spectator"));
                 }else{
-                    Item.create(inv_actions, "SPLASH_POTION", 1, 15, Message.getMessage("actions_spectator"));
+                    Item.create(inv_actions, "SPLASH_POTION", 1, 15, Message.getMessage(p.getUniqueId(), "actions_spectator"));
                 }
             }
         }else{
-            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 15,  Message.getMessage("permission"));
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 15,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.god.other")) {
             if(!Bukkit.getVersion().contains("1.8")) {
                 if (target.isInvulnerable()) {
-                    Item.create(inv_actions, "RED_TERRACOTTA", 1, 17, Message.getMessage("actions_god_disabled"));
+                    Item.create(inv_actions, "RED_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_disabled"));
                 } else {
-                    Item.create(inv_actions, "LIME_TERRACOTTA", 1, 17, Message.getMessage("actions_god_enabled"));
+                    Item.create(inv_actions, "LIME_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_enabled"));
                 }
             }else{
-                if(god.getOrDefault(target, false)){
-                    Item.create(inv_actions, "RED_TERRACOTTA", 1, 17, Message.getMessage("actions_god_disabled"));
+                if(god.getOrDefault(target.getUniqueId(), false)){
+                    Item.create(inv_actions, "RED_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_disabled"));
                 }else{
-                    Item.create(inv_actions, "LIME_TERRACOTTA", 1, 17, Message.getMessage("actions_god_enabled"));
+                    Item.create(inv_actions, "LIME_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_enabled"));
                 }
             }
         }else{
-            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 17,  Message.getMessage("permission"));
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 17,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.teleport")) {
-            Item.create(inv_actions, "ENDER_PEARL", 1, 19, Message.getMessage("actions_teleport_to_player"));
+            Item.create(inv_actions, "ENDER_PEARL", 1, 19, Message.getMessage(p.getUniqueId(), "actions_teleport_to_player"));
         }else{
-            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 19,  Message.getMessage("permission"));
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 19,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.potions.other")) {
-            Item.create(inv_actions, "POTION", 1, 21, Message.getMessage("actions_potions"));
+            Item.create(inv_actions, "POTION", 1, 21, Message.getMessage(p.getUniqueId(), "actions_potions"));
         }else{
-            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 21,  Message.getMessage("permission"));
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 21,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.kill.other")) {
-            Item.create(inv_actions, "DIAMOND_SWORD", 1, 23, Message.getMessage("actions_kill_player"));
+            Item.create(inv_actions, "DIAMOND_SWORD", 1, 23, Message.getMessage(p.getUniqueId(), "actions_kill_player"));
         }else{
-            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 23,  Message.getMessage("permission"));
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 23,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.spawner.other")) {
-            Item.create(inv_actions, "SPAWNER", 1, 25, Message.getMessage("actions_spawner"));
+            Item.create(inv_actions, "SPAWNER", 1, 25, Message.getMessage(p.getUniqueId(), "actions_spawner"));
         }else{
-            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 25,  Message.getMessage("permission"));
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 25,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.teleport.other")) {
             if(Bukkit.getVersion().contains("1.8")){
-                Item.create(inv_actions, "ENDER_PEARL", 1, 27, Message.getMessage("actions_teleport_player_to_you"));
+                Item.create(inv_actions, "ENDER_PEARL", 1, 27, Message.getMessage(p.getUniqueId(), "actions_teleport_player_to_you"));
             }else{
-                Item.create(inv_actions, "END_CRYSTAL", 1, 27, Message.getMessage("actions_teleport_player_to_you"));
+                Item.create(inv_actions, "END_CRYSTAL", 1, 27, Message.getMessage(p.getUniqueId(), "actions_teleport_player_to_you"));
             }
         }else{
-            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 27,  Message.getMessage("permission"));
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 27,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.inventory")) {
-            Item.create(inv_actions, "BOOK", 1, 29, Message.getMessage("actions_inventory"));
+            Item.create(inv_actions, "BOOK", 1, 29, Message.getMessage(p.getUniqueId(), "actions_inventory"));
         }else{
-            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 29,  Message.getMessage("permission"));
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 29,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.burn.other")) {
-            Item.create(inv_actions, "FLINT_AND_STEEL", 1, 31, Message.getMessage("actions_burn_player"));
+            Item.create(inv_actions, "FLINT_AND_STEEL", 1, 31, Message.getMessage(p.getUniqueId(), "actions_burn_player"));
         }else{
-            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 31,  Message.getMessage("permission"));
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 31,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if (p.hasPermission("admingui.vanish.other")) {
             if (Bukkit.getPluginManager().isPluginEnabled("SuperVanish") || Bukkit.getPluginManager().isPluginEnabled("PremiumVanish")) {
                 if (VanishAPI.isInvisible(target)) {
-                    Item.create(inv_actions, "FEATHER", 1, 33, Message.getMessage("actions_vanish_disabled"));
+                    Item.create(inv_actions, "FEATHER", 1, 33, Message.getMessage(p.getUniqueId(), "actions_vanish_disabled"));
                 } else {
-                    Item.create(inv_actions, "FEATHER", 1, 33, Message.getMessage("actions_vanish_enabled"));
+                    Item.create(inv_actions, "FEATHER", 1, 33, Message.getMessage(p.getUniqueId(), "actions_vanish_enabled"));
                 }
             } else {
-                Item.create(inv_actions, "FEATHER", 1, 33, Message.getMessage("actions_vanish_enabled"));
+                Item.create(inv_actions, "FEATHER", 1, 33, Message.getMessage(p.getUniqueId(), "actions_vanish_enabled"));
             }
         }else{
-            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 33, Message.getMessage("permission"));
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 33, Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.lightning.other")){
             if(Bukkit.getVersion().contains("1.13") || Bukkit.getVersion().contains("1.14")){
-                Item.create(inv_actions, "TRIDENT", 1, 35, Message.getMessage("actions_lightning"));
+                Item.create(inv_actions, "TRIDENT", 1, 35, Message.getMessage(p.getUniqueId(), "actions_lightning"));
             }else{
-                Item.create(inv_actions, "STICK", 1, 35, Message.getMessage("actions_lightning"));
+                Item.create(inv_actions, "STICK", 1, 35, Message.getMessage(p.getUniqueId(), "actions_lightning"));
             }
         }else{
-            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 35, Message.getMessage("permission"));
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 35, Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.firework.other")){
-            Item.create(inv_actions, "FIREWORK_ROCKET", 1, 37, Message.getMessage("actions_firework"));
+            Item.create(inv_actions, "FIREWORK_ROCKET", 1, 37, Message.getMessage(p.getUniqueId(), "actions_firework"));
         }else{
-            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 37, Message.getMessage("permission"));
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 37, Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.fakeop")){
-            Item.create(inv_actions, "PAPER", 1, 39, Message.getMessage("actions_fakeop"));
+            Item.create(inv_actions, "PAPER", 1, 39, Message.getMessage(p.getUniqueId(), "actions_fakeop"));
         }else{
-            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 39, Message.getMessage("permission"));
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 39, Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.custom")) {
-            Item.create(inv_actions, "PAINTING", 1, 41, Message.getMessage("actions_custom"));
+            Item.create(inv_actions, "PAINTING", 1, 41, Message.getMessage(p.getUniqueId(), "actions_custom"));
         }else{
-            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 41,  Message.getMessage("permission"));
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 41,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
-        Item.create(inv_actions, "REDSTONE_BLOCK", 1, 54, Message.getMessage("actions_back"));
+        Item.create(inv_actions, "REDSTONE_BLOCK", 1, 54, Message.getMessage(p.getUniqueId(), "actions_back"));
 
         return inv_actions;
     }
 
     public Inventory GUI_Kick(Player p, Player target){
 
-        String inventory_kick_name = Message.getMessage("inventory_kick").replace("{player}", target.getName());
+        String inventory_kick_name = Message.getMessage(p.getUniqueId(), "inventory_kick").replace("{player}", target.getName());
         target_player.put(p, target);
 
         Inventory inv_kick = Bukkit.createInventory(null, 27, inventory_kick_name);
@@ -662,14 +680,14 @@ public class AdminUI {
             Item.create(inv_kick, AdminGUI.getInstance().getKick().getString("slots."+i+".material"), 1, i, AdminGUI.getInstance().getKick().getString("slots."+i+".name"));
         }
 
-        Item.create(inv_kick, "REDSTONE_BLOCK", 1, 27, Message.getMessage("kick_back"));
+        Item.create(inv_kick, "REDSTONE_BLOCK", 1, 27, Message.getMessage(p.getUniqueId(), "kick_back"));
 
         return inv_kick;
     }
 
     public Inventory GUI_Ban(Player p, Player target){
 
-        String inventory_ban_name = Message.getMessage("inventory_ban").replace("{player}", target.getName());
+        String inventory_ban_name = Message.getMessage(p.getUniqueId(), "inventory_ban").replace("{player}", target.getName());
         target_player.put(p, target);
 
         Inventory inv_ban = Bukkit.createInventory(null, 36, inventory_ban_name);
@@ -678,50 +696,50 @@ public class AdminUI {
             Item.create(inv_ban, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
         }
 
-        if(ban_years.getOrDefault(p, 0) == 0){
-            Item.create(inv_ban, "RED_STAINED_GLASS_PANE", 1, 12, Message.getMessage("ban_years"));
+        if(ban_years.getOrDefault(p.getUniqueId(), 0) == 0){
+            Item.create(inv_ban, "RED_STAINED_GLASS_PANE", 1, 12, Message.getMessage(p.getUniqueId(), "ban_years"));
         }else{
-            Item.create(inv_ban, "CLOCK", ban_years.getOrDefault(p,0), 12, Message.getMessage("ban_years"));
+            Item.create(inv_ban, "CLOCK", ban_years.getOrDefault(p.getUniqueId(),0), 12, Message.getMessage(p.getUniqueId(), "ban_years"));
         }
 
-        if(ban_months.getOrDefault(p,0) == 0){
-            Item.create(inv_ban, "RED_STAINED_GLASS_PANE", 1, 13, Message.getMessage("ban_months"));
+        if(ban_months.getOrDefault(p.getUniqueId(),0) == 0){
+            Item.create(inv_ban, "RED_STAINED_GLASS_PANE", 1, 13, Message.getMessage(p.getUniqueId(), "ban_months"));
         }else{
-            Item.create(inv_ban, "CLOCK", ban_months.getOrDefault(p,0), 13, Message.getMessage("ban_months"));
+            Item.create(inv_ban, "CLOCK", ban_months.getOrDefault(p.getUniqueId(),0), 13, Message.getMessage(p.getUniqueId(), "ban_months"));
         }
 
-        if(ban_days.getOrDefault(p, 0) == 0){
-            Item.create(inv_ban, "RED_STAINED_GLASS_PANE", 1, 14, Message.getMessage("ban_days"));
+        if(ban_days.getOrDefault(p.getUniqueId(), 0) == 0){
+            Item.create(inv_ban, "RED_STAINED_GLASS_PANE", 1, 14, Message.getMessage(p.getUniqueId(), "ban_days"));
         }else{
-            Item.create(inv_ban, "CLOCK", ban_days.getOrDefault(p,0), 14, Message.getMessage("ban_days"));
+            Item.create(inv_ban, "CLOCK", ban_days.getOrDefault(p.getUniqueId(),0), 14, Message.getMessage(p.getUniqueId(), "ban_days"));
         }
 
-        if(ban_hours.getOrDefault(p, 0) == 0){
-            Item.create(inv_ban, "RED_STAINED_GLASS_PANE", 1, 15, Message.getMessage("ban_hours"));
+        if(ban_hours.getOrDefault(p.getUniqueId(), 0) == 0){
+            Item.create(inv_ban, "RED_STAINED_GLASS_PANE", 1, 15, Message.getMessage(p.getUniqueId(), "ban_hours"));
         }else{
-            Item.create(inv_ban, "CLOCK", ban_hours.getOrDefault(p,0), 15, Message.getMessage("ban_hours"));
+            Item.create(inv_ban, "CLOCK", ban_hours.getOrDefault(p.getUniqueId(),0), 15, Message.getMessage(p.getUniqueId(), "ban_hours"));
         }
 
-        if(ban_minutes.getOrDefault(p,0) == 0){
-            Item.create(inv_ban, "RED_STAINED_GLASS_PANE", 1, 16, Message.getMessage("ban_minutes"));
+        if(ban_minutes.getOrDefault(p.getUniqueId(),0) == 0){
+            Item.create(inv_ban, "RED_STAINED_GLASS_PANE", 1, 16, Message.getMessage(p.getUniqueId(), "ban_minutes"));
         }else{
-            Item.create(inv_ban, "CLOCK", ban_minutes.getOrDefault(p,0), 16, Message.getMessage("ban_minutes"));
+            Item.create(inv_ban, "CLOCK", ban_minutes.getOrDefault(p.getUniqueId(),0), 16, Message.getMessage(p.getUniqueId(), "ban_minutes"));
         }
 
-        Item.create(inv_ban, "WHITE_TERRACOTTA", 1, 30, Message.getMessage("ban_hacking"));
-        Item.create(inv_ban, "ORANGE_TERRACOTTA", 1, 31, Message.getMessage("ban_griefing"));
-        Item.create(inv_ban, "MAGENTA_TERRACOTTA", 1, 32, Message.getMessage("ban_spamming"));
-        Item.create(inv_ban, "LIGHT_BLUE_TERRACOTTA", 1, 33, Message.getMessage("ban_advertising"));
-        Item.create(inv_ban, "YELLOW_TERRACOTTA", 1, 34, Message.getMessage("ban_swearing"));
+        Item.create(inv_ban, "WHITE_TERRACOTTA", 1, 30, Message.getMessage(p.getUniqueId(), "ban_hacking"));
+        Item.create(inv_ban, "ORANGE_TERRACOTTA", 1, 31, Message.getMessage(p.getUniqueId(), "ban_griefing"));
+        Item.create(inv_ban, "MAGENTA_TERRACOTTA", 1, 32, Message.getMessage(p.getUniqueId(), "ban_spamming"));
+        Item.create(inv_ban, "LIGHT_BLUE_TERRACOTTA", 1, 33, Message.getMessage(p.getUniqueId(), "ban_advertising"));
+        Item.create(inv_ban, "YELLOW_TERRACOTTA", 1, 34, Message.getMessage(p.getUniqueId(), "ban_swearing"));
 
-        Item.create(inv_ban, "REDSTONE_BLOCK", 1, 36, Message.getMessage("ban_back"));
+        Item.create(inv_ban, "REDSTONE_BLOCK", 1, 36, Message.getMessage(p.getUniqueId(), "ban_back"));
 
         return inv_ban;
     }
 
     public Inventory GUI_potions(Player p, Player target){
 
-        String inventory_potions_name = Message.getMessage("inventory_potions").replace("{player}", target.getName());
+        String inventory_potions_name = Message.getMessage(p.getUniqueId(), "inventory_potions").replace("{player}", target.getName());
         target_player.put(p, target);
 
         Inventory inv_potions = Bukkit.createInventory(null, 36, inventory_potions_name);
@@ -732,72 +750,72 @@ public class AdminUI {
 
         if (Bukkit.getVersion().contains("1.15") || Bukkit.getVersion().contains("1.14") || Bukkit.getVersion().contains("1.13")) {
             for(Version_14 potion : Version_14.values()){
-                Item.create(inv_potions, "POTION", 1, potion.ordinal() + 1, Message.getMessage(potion.name()));
+                Item.create(inv_potions, "POTION", 1, potion.ordinal() + 1, Message.getMessage(p.getUniqueId(), potion.name()));
             }
         }else if(Bukkit.getVersion().contains("1.12") || Bukkit.getVersion().contains("1.11") || Bukkit.getVersion().contains("1.10") || Bukkit.getVersion().contains("1.9")){
             for(Version_12 potion : Version_12.values()){
-                Item.create(inv_potions, "POTION", 1, potion.ordinal() + 1, Message.getMessage(potion.name()));
+                Item.create(inv_potions, "POTION", 1, potion.ordinal() + 1, Message.getMessage(p.getUniqueId(), potion.name()));
             }
         }else if(Bukkit.getVersion().contains("1.8")){
             for(Version_8 potion : Version_8.values()){
-                Item.create(inv_potions, "POTION", 1, potion.ordinal() + 1, Message.getMessage(potion.name()));
+                Item.create(inv_potions, "POTION", 1, potion.ordinal() + 1, Message.getMessage(p.getUniqueId(), potion.name()));
             }
         }
 
-        Item.create(inv_potions, "CLOCK", duration.getOrDefault(p,1), 31, Message.getMessage("potions_time"));
-        Item.create(inv_potions, "RED_STAINED_GLASS_PANE", 1, 32, Message.getMessage("potions_remove_all"));
-        Item.create(inv_potions, "BEACON", level.getOrDefault(p, 1), 33, Message.getMessage("potions_level"));
+        Item.create(inv_potions, "CLOCK", duration.getOrDefault(p.getUniqueId(),1), 31, Message.getMessage(p.getUniqueId(), "potions_time"));
+        Item.create(inv_potions, "RED_STAINED_GLASS_PANE", 1, 32, Message.getMessage(p.getUniqueId(), "potions_remove_all"));
+        Item.create(inv_potions, "BEACON", level.getOrDefault(p.getUniqueId(), 1), 33, Message.getMessage(p.getUniqueId(), "potions_level"));
 
-        Item.create(inv_potions, "REDSTONE_BLOCK", 1, 36, Message.getMessage("potions_back"));
+        Item.create(inv_potions, "REDSTONE_BLOCK", 1, 36, Message.getMessage(p.getUniqueId(), "potions_back"));
 
         return inv_potions;
     }
 
     public Inventory GUI_Spawner(Player p, Player target){
 
-        String inventory_spawner_name = Message.getMessage("inventory_spawner").replace("{player}", target.getName());
+        String inventory_spawner_name = Message.getMessage(p.getUniqueId(), "inventory_spawner").replace("{player}", target.getName());
         Inventory inv_spawner = Bukkit.createInventory(null, 54, inventory_spawner_name);
 
         target_player.put(p, target);
 
         if (Bukkit.getVersion().contains("1.15") || Bukkit.getVersion().contains("1.14")) {
             for(Material_Version_14 material : Material_Version_14.values()){
-                Item.create(inv_spawner, material.name(), 1, material.ordinal()+1, Message.getMessage(Message_Version_14.values()[material.ordinal()].name()));
+                Item.create(inv_spawner, material.name(), 1, material.ordinal()+1, Message.getMessage(p.getUniqueId(), Message_Version_14.values()[material.ordinal()].name()));
             }
         }else if(Bukkit.getVersion().contains("1.13")){
             for(Material_Version_13 material : Material_Version_13.values()){
-                Item.create(inv_spawner, material.name(), 1, material.ordinal()+1, Message.getMessage(Message_Version_13.values()[material.ordinal()].name()));
+                Item.create(inv_spawner, material.name(), 1, material.ordinal()+1, Message.getMessage(p.getUniqueId(), Message_Version_13.values()[material.ordinal()].name()));
             }
         }else if(Bukkit.getVersion().contains("1.12")){
             for(Material_Version_12 material : Material_Version_12.values()){
-                Item.create(inv_spawner, material.name(), 1, material.ordinal()+1, Message.getMessage(Message_Version_12.values()[material.ordinal()].name()));
+                Item.create(inv_spawner, material.name(), 1, material.ordinal()+1, Message.getMessage(p.getUniqueId(), Message_Version_12.values()[material.ordinal()].name()));
             }
         }else if(Bukkit.getVersion().contains("1.11")){
             for(Material_Version_11 material : Material_Version_11.values()){
-                Item.create(inv_spawner, material.name(), 1, material.ordinal()+1, Message.getMessage(Message_Version_11.values()[material.ordinal()].name()));
+                Item.create(inv_spawner, material.name(), 1, material.ordinal()+1, Message.getMessage(p.getUniqueId(), Message_Version_11.values()[material.ordinal()].name()));
             }
         }else if(Bukkit.getVersion().contains("1.10")){
             for(Material_Version_10 material : Material_Version_10.values()){
-                Item.create(inv_spawner, material.name(), 1, material.ordinal()+1, Message.getMessage(Message_Version_10.values()[material.ordinal()].name()));
+                Item.create(inv_spawner, material.name(), 1, material.ordinal()+1, Message.getMessage(p.getUniqueId(), Message_Version_10.values()[material.ordinal()].name()));
             }
         }else if(Bukkit.getVersion().contains("1.9")){
             for(Material_Version_9 material : Material_Version_9.values()){
-                Item.create(inv_spawner, material.name(), 1, material.ordinal()+1, Message.getMessage(Message_Version_9.values()[material.ordinal()].name()));
+                Item.create(inv_spawner, material.name(), 1, material.ordinal()+1, Message.getMessage(p.getUniqueId(), Message_Version_9.values()[material.ordinal()].name()));
             }
         }else if(Bukkit.getVersion().contains("1.8")){
             for(Material_Version_8 material : Material_Version_8.values()){
-                Item.create(inv_spawner, material.name(), 1, material.ordinal()+1, Message.getMessage(Message_Version_8.values()[material.ordinal()].name()));
+                Item.create(inv_spawner, material.name(), 1, material.ordinal()+1, Message.getMessage(p.getUniqueId(), Message_Version_8.values()[material.ordinal()].name()));
             }
         }
 
-        Item.create(inv_spawner, "REDSTONE_BLOCK", 1, 54, Message.getMessage("spawner_back"));
+        Item.create(inv_spawner, "REDSTONE_BLOCK", 1, 54, Message.getMessage(p.getUniqueId(), "spawner_back"));
 
         return inv_spawner;
     }
 
     public Inventory GUI_Money(Player p, Player target){
 
-        String inventory_money_name = Message.getMessage("inventory_money").replace("{player}", target.getName());
+        String inventory_money_name = Message.getMessage(p.getUniqueId(), "inventory_money").replace("{player}", target.getName());
         target_player.put(p, target);
 
         Inventory inv_money = Bukkit.createInventory(null, 27, inventory_money_name);
@@ -808,16 +826,16 @@ public class AdminUI {
                 Item.create(inv_money, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
             }
 
-            Item.create(inv_money, "PAPER", 1, 12, Message.getMessage("money_give"));
-            Item.create(inv_money, "BOOK", 1, 14, Message.getMessage("money_set"));
-            Item.create(inv_money, "PAPER", 1, 16, Message.getMessage("money_take"));
+            Item.create(inv_money, "PAPER", 1, 12, Message.getMessage(p.getUniqueId(), "money_give"));
+            Item.create(inv_money, "BOOK", 1, 14, Message.getMessage(p.getUniqueId(), "money_set"));
+            Item.create(inv_money, "PAPER", 1, 16, Message.getMessage(p.getUniqueId(), "money_take"));
 
         }else{
-            p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_not_found"));
+            p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
             p.closeInventory();
         }
 
-        Item.create(inv_money, "REDSTONE_BLOCK", 1, 27, Message.getMessage("money_back"));
+        Item.create(inv_money, "REDSTONE_BLOCK", 1, 27, Message.getMessage(p.getUniqueId(), "money_back"));
 
         return inv_money;
     }
@@ -828,13 +846,13 @@ public class AdminUI {
 
         switch (option){
             case 1:
-                inventory_money_amount_name = Message.getMessage("inventory_money_give").replace("{player}", target.getName());
+                inventory_money_amount_name = Message.getMessage(p.getUniqueId(), "inventory_money_give").replace("{player}", target.getName());
                 break;
             case 3:
-                inventory_money_amount_name = Message.getMessage("inventory_money_take").replace("{player}", target.getName());
+                inventory_money_amount_name = Message.getMessage(p.getUniqueId(), "inventory_money_take").replace("{player}", target.getName());
                 break;
             default:
-                inventory_money_amount_name = Message.getMessage("inventory_money_set").replace("{player}", target.getName());
+                inventory_money_amount_name = Message.getMessage(p.getUniqueId(), "inventory_money_set").replace("{player}", target.getName());
         }
         target_player.put(p, target);
 
@@ -863,18 +881,18 @@ public class AdminUI {
             }
 
         }else{
-            p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_not_found"));
+            p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
             p.closeInventory();
         }
 
-        Item.create(inv_money_amount, "REDSTONE_BLOCK", 1, 36, Message.getMessage("money_back"));
+        Item.create(inv_money_amount, "REDSTONE_BLOCK", 1, 36, Message.getMessage(p.getUniqueId(), "money_back"));
 
         return inv_money_amount;
     }
 
     public Inventory GUI_Inventory(Player p, Player target) {
 
-        String inventory_inventory_name = Message.getMessage("inventory_inventory").replace("{player}", target.getName());
+        String inventory_inventory_name = Message.getMessage(p.getUniqueId(), "inventory_inventory").replace("{player}", target.getName());
         target_player.put(p, target);
 
         Inventory inv_inventory = Bukkit.createInventory(null, 54, inventory_inventory_name);
@@ -900,7 +918,7 @@ public class AdminUI {
                 }
             }
         }else{
-            p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_not_found"));
+            p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
             p.closeInventory();
         }
 
@@ -908,49 +926,49 @@ public class AdminUI {
             Item.create(inv_inventory, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
         }
 
-        Item.create(inv_inventory, "GREEN_TERRACOTTA", 1, 46, Message.getMessage("inventory_refresh"));
+        Item.create(inv_inventory, "GREEN_TERRACOTTA", 1, 46, Message.getMessage(p.getUniqueId(), "inventory_refresh"));
 
-        Item.create(inv_inventory, "BLUE_TERRACOTTA", 1, 50, Message.getMessage("inventory_clear"));
+        Item.create(inv_inventory, "BLUE_TERRACOTTA", 1, 50, Message.getMessage(p.getUniqueId(), "inventory_clear"));
 
-        Item.create(inv_inventory, "REDSTONE_BLOCK", 1, 54, Message.getMessage("inventory_back"));
+        Item.create(inv_inventory, "REDSTONE_BLOCK", 1, 54, Message.getMessage(p.getUniqueId(), "inventory_back"));
 
         return inv_inventory;
     }
 
     public void clicked_main(Player p, int slot, ItemStack clicked, Inventory inv){
 
-        if(InventoryGUI.getClickedItem(clicked, Message.getMessage("main_quit"))){
+        if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "main_quit"))){
             p.closeInventory();
-        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("main_player").replace("{player}", p.getName()))) {
+        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "main_player").replace("{player}", p.getName()))) {
             p.openInventory(GUI_Player(p));
-        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("main_world"))){
+        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "main_world"))){
             p.openInventory(GUI_World(p));
-        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("main_players"))){
+        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "main_players"))){
             p.openInventory(GUI_Players(p));
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("main_plugins"))){
-            custom_method.put(p, 0);
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "main_plugins"))){
+            custom_method.put(p.getUniqueId(), 0);
             p.openInventory(GUI_Plugins(p));
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("main_maintenance_mode"))) {
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "main_maintenance_mode"))) {
             if(p.hasPermission("admingui.maintenance.manage")){
                 if (maintenance_mode) {
                     maintenance_mode = false;
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_maintenance_disabled"));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_maintenance_disabled"));
                     p.closeInventory();
                 } else {
                     maintenance_mode = true;
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_maintenance_enabled"));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_maintenance_enabled"));
                     p.closeInventory();
                     for (Player pl : getServer().getOnlinePlayers()) {
                         if (!pl.isOp() && !pl.hasPermission("admingui.maintenance")) {
-                            pl.kickPlayer(Message.getMessage("prefix") + Message.getMessage("message_maintenance"));
+                            pl.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_maintenance"));
                         }
                     }
                 }
             }else{
-                p.sendMessage(Message.getMessage("prefix") + Message.getMessage("permission"));
+                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "permission"));
                 p.closeInventory();
             }
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("main_unban_players"))){
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "main_unban_players"))){
             p.openInventory(GUI_Unban_Players(p));
         }
 
@@ -958,106 +976,106 @@ public class AdminUI {
 
     public void clicked_player(Player p, int slot, ItemStack clicked, Inventory inv){
 
-        if(InventoryGUI.getClickedItem(clicked, Message.getMessage("player_back"))) {
+        if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_back"))) {
             p.openInventory(GUI_Main(p));
-        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("player_info").replace("{player}", p.getName()))){
+        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "player_info").replace("{player}", p.getName()))){
             p.openInventory(GUI_Player(p));
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("player_heal"))){
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_heal"))){
             p.setHealth(20);
             p.setFireTicks(0);
-            p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_heal"));
+            p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_heal"));
             p.closeInventory();
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("player_feed"))){
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_feed"))){
             p.setFoodLevel(20);
-            p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_feed"));
+            p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_feed"));
             p.closeInventory();
-        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("player_survival"))){
+        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "player_survival"))){
             p.setGameMode(GameMode.ADVENTURE);
             p.openInventory(GUI_Player(p));
-        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("player_adventure"))){
+        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "player_adventure"))){
             p.setGameMode(GameMode.CREATIVE);
             p.openInventory(GUI_Player(p));
-        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("player_creative"))){
+        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "player_creative"))){
             p.setGameMode(GameMode.SPECTATOR);
             p.openInventory(GUI_Player(p));
-        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("player_spectator"))){
+        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "player_spectator"))){
             p.setGameMode(GameMode.SURVIVAL);
             p.openInventory(GUI_Player(p));
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("player_god_enabled"))){
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_god_enabled"))){
             if(Bukkit.getVersion().contains("1.8")){
-                god.put(p, true);
+                god.put(p.getUniqueId(), true);
             }else{
                 p.setInvulnerable(true);
             }
-            p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_god_enabled"));
+            p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_god_enabled"));
             p.openInventory(GUI_Player(p));
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("player_god_disabled"))){
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_god_disabled"))){
             if(Bukkit.getVersion().contains("1.8")){
-                god.put(p, false);
+                god.put(p.getUniqueId(), false);
             }else{
                 p.setInvulnerable(false);
             }
-            p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_god_disabled"));
+            p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_god_disabled"));
             p.openInventory(GUI_Player(p));
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("player_potions"))){
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_potions"))){
             p.openInventory(GUI_potions(p, p));
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("player_spawner"))){
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_spawner"))){
             p.openInventory(GUI_Spawner(p, p));
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("player_kill"))){
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_kill"))){
             p.setHealth(0);
-            p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_kill"));
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("player_burn"))){
+            p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_kill"));
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_burn"))){
             p.setFireTicks(500);
-            p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_burn"));
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("player_lightning"))) {
+            p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_burn"));
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_lightning"))) {
             p.getWorld().strikeLightning(p.getLocation());
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("player_firework"))){
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_firework"))){
             Fireworks.createRandom(p);
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("player_money"))){
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_money"))){
             p.openInventory(GUI_Money(p, p));
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("player_vanish_enabled"))){
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_vanish_enabled"))){
             if (Bukkit.getPluginManager().isPluginEnabled("SuperVanish") || Bukkit.getPluginManager().isPluginEnabled("PremiumVanish")) {
                 VanishAPI.hidePlayer(p);
-                p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_hide"));
+                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_hide"));
             }else{
-                p.sendMessage(Message.getMessage("prefix") + Message.getMessage("vanish_required"));
+                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "vanish_required"));
             }
             p.closeInventory();
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("player_vanish_disabled"))){
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_vanish_disabled"))){
             if (Bukkit.getPluginManager().isPluginEnabled("SuperVanish") || Bukkit.getPluginManager().isPluginEnabled("PremiumVanish")) {
                 VanishAPI.showPlayer(p);
-                p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_visible"));
+                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_visible"));
             }else{
-                p.sendMessage(Message.getMessage("prefix") + Message.getMessage("vanish_required"));
+                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "vanish_required"));
             }
             p.closeInventory();
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("player_custom"))){
-            custom_method.put(p, 1);
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_custom"))){
+            custom_method.put(p.getUniqueId(), 1);
             p.openInventory(GUI_Plugins(p));
         }
     }
 
     public void clicked_world(Player p, int slot, ItemStack clicked, Inventory inv){
 
-        if(InventoryGUI.getClickedItem(clicked, Message.getMessage("world_back"))) {
+        if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "world_back"))) {
             p.openInventory(GUI_Main(p));
-        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("world_day"))){
+        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "world_day"))){
             p.getPlayer().getWorld().setTime(13000);
             p.openInventory(GUI_World(p));
-        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("world_night"))){
+        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "world_night"))){
             p.getPlayer().getWorld().setTime(0);
             p.openInventory(GUI_World(p));
-        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("world_clear"))){
+        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "world_clear"))){
             World world = p.getWorld();
             world.setThundering(false);
             world.setStorm(true);
             p.openInventory(GUI_World(p));
-        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("world_rain"))){
+        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "world_rain"))){
             World world = p.getWorld();
             world.setStorm(true);
             world.setThundering(true);
             p.openInventory(GUI_World(p));
-        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("world_thunder"))){
+        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "world_thunder"))){
             World world = p.getWorld();
             world.setStorm(false);
             world.setThundering(false);
@@ -1068,46 +1086,46 @@ public class AdminUI {
 
     public void clicked_players(Player p, int slot, ItemStack clicked, Inventory inv){
 
-        if(clicked.getItemMeta().getLore() != null){
-            if(clicked.getItemMeta().getLore().get(0).equals(Message.getMessage("players_more"))){
+        if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "players_back"))){
+            p.openInventory(GUI_Main(p));
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "players_previous"))){
+            page.put(p.getUniqueId(), page.getOrDefault(p.getUniqueId(),1)-1);
+            p.openInventory(GUI_Players(p));
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "players_next"))){
+            page.put(p.getUniqueId(), page.getOrDefault(p.getUniqueId(),1)+1);
+            p.openInventory(GUI_Players(p));
+        }else if(clicked.getItemMeta().getLore() != null){
+            if(clicked.getItemMeta().getLore().get(0).equals(Message.getMessage(p.getUniqueId(), "players_more"))){
                 Player target_p = getServer().getPlayer(ChatColor.stripColor(clicked.getItemMeta().getDisplayName()));
                 if(target_p != null){
                     target_player.put(p, target_p);
                     p.openInventory(GUI_Players_Settings(p,target_p));
                 }else{
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_not_found"));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
                     p.closeInventory();
                 }
             }
-        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("players_back"))){
-            p.openInventory(GUI_Main(p));
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("players_previous"))){
-            page.put(p, page.get(p)-1);
-            p.openInventory(GUI_Players(p));
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("players_next"))){
-            page.put(p, page.get(p)+1);
-            p.openInventory(GUI_Players(p));
         }
 
     }
 
     public void clicked_plugins(Player p, int slot, ItemStack clicked, Inventory inv){
-        if(InventoryGUI.getClickedItem(clicked, Message.getMessage("plugins_back"))){
+        if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "plugins_back"))){
             p.openInventory(GUI_Main(p));
         }else if(clicked.getType() != Material.AIR && clicked.getType() != XMaterial.LIGHT_BLUE_STAINED_GLASS_PANE.parseMaterial()){
-            plugin_slot.put(p, slot+1);
+            plugin_slot.put(p.getUniqueId(), slot+1);
             p.openInventory(GUI_Commands(p, slot+1));
         }
     }
 
     public void clicked_commands(Player p, int slot, ItemStack clicked, Inventory inv){
         slot++;
-        if(InventoryGUI.getClickedItem(clicked, Message.getMessage("commands_back"))){
+        if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "commands_back"))){
             p.openInventory(GUI_Plugins(p));
         }else if(clicked.getType() != Material.AIR && clicked.getType() != XMaterial.LIGHT_BLUE_STAINED_GLASS_PANE.parseMaterial() && clicked.getType() != XMaterial.RED_STAINED_GLASS_PANE.parseMaterial()){
             YamlConfiguration yamlConfiguration;
 
-            switch (custom_method.getOrDefault(p, 0)){
+            switch (custom_method.getOrDefault(p.getUniqueId(), 0)){
                 case 1:
                     yamlConfiguration = AdminGUI.getInstance().getComm();
                     break;
@@ -1119,10 +1137,10 @@ public class AdminUI {
                     break;
             }
 
-            if(yamlConfiguration.getBoolean("plugins."+ plugin_slot.getOrDefault(p, 1) +".commands."+slot+".console_sender")){
-                getServer().dispatchCommand(Bukkit.getConsoleSender(), yamlConfiguration.getString("plugins."+plugin_slot.getOrDefault(p, 1)+".commands."+slot+".command").replace("/","").replace("{player}", p.getName()).replace("{target_player}", target_player.getOrDefault(p, p).getName()));
+            if(yamlConfiguration.getBoolean("plugins."+ plugin_slot.getOrDefault(p.getUniqueId(), 1) +".commands."+slot+".console_sender")){
+                getServer().dispatchCommand(Bukkit.getConsoleSender(), yamlConfiguration.getString("plugins."+plugin_slot.getOrDefault(p.getUniqueId(), 1)+".commands."+slot+".command").replace("/","").replace("{player}", p.getName()).replace("{target_player}", target_player.getOrDefault(p, p).getName()));
             }else{
-                getServer().dispatchCommand(p, yamlConfiguration.getString("plugins."+plugin_slot.getOrDefault(p, 1)+".commands."+slot+".command").replace("/","").replace("{player}", p.getName()).replace("{target_player}", target_player.getOrDefault(p, p).getName()));
+                getServer().dispatchCommand(p, yamlConfiguration.getString("plugins."+plugin_slot.getOrDefault(p.getUniqueId(), 1)+".commands."+slot+".command").replace("/","").replace("{player}", p.getName()).replace("{target_player}", target_player.getOrDefault(p, p).getName()));
             }
         }
     }
@@ -1130,24 +1148,23 @@ public class AdminUI {
     public void clicked_unban_players(Player p, int slot, ItemStack clicked, Inventory inv){
 
         if(clicked.getItemMeta().getLore() != null){
-            if(clicked.getItemMeta().getLore().get(3).equals(Message.getMessage("unban_more"))){
+            if(clicked.getItemMeta().getLore().get(3).equals(Message.getMessage(p.getUniqueId(), "unban_more"))){
                 OfflinePlayer target_p = getServer().getOfflinePlayer(ChatColor.stripColor(clicked.getItemMeta().getDisplayName()));
                 if(target_p.isBanned()){
                     Bukkit.getBanList(BanList.Type.NAME).pardon(target_p.getName());
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_unban_player").replace("{player}", target_p.getName()));
-                    p.closeInventory();
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_unban_player").replace("{player}", target_p.getName()));
                 }else{
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_not_found"));
-                    p.closeInventory();
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
                 }
+                p.closeInventory();
             }
-        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("unban_back"))){
+        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "unban_back"))){
             p.openInventory(GUI_Main(p));
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("unban_previous"))){
-            unban_page.put(p, unban_page.get(p)-1);
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "unban_previous"))){
+            unban_page.put(p.getUniqueId(), unban_page.getOrDefault(p.getUniqueId(),1)-1);
             p.openInventory(GUI_Unban_Players(p));
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("unban_next"))){
-            unban_page.put(p, unban_page.get(p)+1);
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "unban_next"))){
+            unban_page.put(p.getUniqueId(), unban_page.getOrDefault(p.getUniqueId(),1)+1);
             p.openInventory(GUI_Unban_Players(p));
         }
 
@@ -1156,21 +1173,21 @@ public class AdminUI {
     public void clicked_players_settings(Player p, int slot, ItemStack clicked, Inventory inv, Player target_player){
 
         if(target_player.isOnline()){
-            if(InventoryGUI.getClickedItem(clicked,Message.getMessage("players_settings_back"))){
+            if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "players_settings_back"))){
                 p.openInventory(GUI_Players(p));
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("players_settings_info").replace("{player}", target_player.getName()))){
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_player.getName()))){
                 p.openInventory(GUI_Players_Settings(p, target_player));
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("players_settings_actions"))){
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "players_settings_actions"))){
                 p.openInventory(GUI_Actions(p, target_player));
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("players_settings_money"))){
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "players_settings_money"))){
                 p.openInventory(GUI_Money(p, target_player));
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("players_settings_kick_player"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "players_settings_kick_player"))){
                 p.openInventory(GUI_Kick(p, target_player));
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("players_settings_ban_player"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "players_settings_ban_player"))){
                 p.openInventory(GUI_Ban(p, target_player));
             }
         }else{
-            p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_not_found"));
+            p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
             p.closeInventory();
         }
 
@@ -1179,99 +1196,99 @@ public class AdminUI {
     public void clicked_actions(Player p, int slot, ItemStack clicked, Inventory inv, Player target_player){
 
         if(target_player.isOnline()){
-            if(InventoryGUI.getClickedItem(clicked,Message.getMessage("actions_back"))){
+            if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_back"))){
                 p.openInventory(GUI_Players_Settings(p, target_player));
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("actions_info").replace("{player}", target_player.getName()))){
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_info").replace("{player}", target_player.getName()))){
                 p.openInventory(GUI_Actions(p,target_player));
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("actions_survival"))){
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_survival"))){
                 target_player.setGameMode(GameMode.ADVENTURE);
                 p.openInventory(GUI_Actions(p,target_player));
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("actions_adventure"))){
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_adventure"))){
                 target_player.setGameMode(GameMode.CREATIVE);
                 p.openInventory(GUI_Actions(p,target_player));
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("actions_creative"))){
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_creative"))){
                 target_player.setGameMode(GameMode.SPECTATOR);
                 p.openInventory(GUI_Actions(p,target_player));
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("actions_spectator"))){
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_spectator"))){
                 target_player.setGameMode(GameMode.SURVIVAL);
                 p.openInventory(GUI_Actions(p,target_player));
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("actions_teleport_to_player"))){
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_teleport_to_player"))){
                 p.closeInventory();
                 p.teleport(target_player.getLocation());
-                p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_target_player_teleport").replace("{player}", target_player.getName()));
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("actions_kill_player"))){
+                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_teleport").replace("{player}", target_player.getName()));
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_kill_player"))){
                 target_player.setHealth(0);
-                p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_kill").replace("{player}", target_player.getName()));
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("actions_burn_player"))){
+                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kill").replace("{player}", target_player.getName()));
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_burn_player"))){
                 target_player.setFireTicks(500);
-                p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_burn").replace("{player}", target_player.getName()));
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("actions_teleport_player_to_you"))){
+                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_burn").replace("{player}", target_player.getName()));
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_teleport_player_to_you"))){
                 p.closeInventory();
                 target_player.teleport(p.getLocation());
-                target_player.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_target_player_teleport").replace("{player}", p.getName()));
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("actions_heal"))){
+                target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_teleport").replace("{player}", p.getName()));
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_heal"))){
                 target_player.setHealth(20);
                 target_player.setFireTicks(0);
-                target_player.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_target_player_heal").replace("{player}", p.getName()));
-                p.sendMessage(Message.chat(Message.getMessage("prefix") + Message.getMessage("message_player_heal").replace("{player}", target_player.getName())));
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("actions_feed"))){
+                target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_heal").replace("{player}", p.getName()));
+                p.sendMessage(Message.chat(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_heal").replace("{player}", target_player.getName())));
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_feed"))){
                 target_player.setFoodLevel(20);
-                target_player.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_target_player_feed").replace("{player}", p.getName()));
-                p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_feed").replace("{player}", target_player.getName()));
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("actions_god_enabled"))){
+                target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_feed").replace("{player}", p.getName()));
+                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_feed").replace("{player}", target_player.getName()));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_god_enabled"))){
                 if(Bukkit.getVersion().contains("1.8")){
-                    god.put(target_player, true);
+                    god.put(target_player.getUniqueId(), true);
                 }else{
                     target_player.setInvulnerable(true);
                 }
-                p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_god_enabled").replace("{player}", target_player.getName()));
-                target_player.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_target_player_god_enabled").replace("{player}", p.getName()));
+                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_god_enabled").replace("{player}", target_player.getName()));
+                target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_god_enabled").replace("{player}", p.getName()));
                 p.openInventory(GUI_Actions(p,target_player));
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("actions_god_disabled"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_god_disabled"))){
                 if(Bukkit.getVersion().contains("1.8")){
-                    god.put(target_player, false);
+                    god.put(target_player.getUniqueId(), false);
                 }else{
                     target_player.setInvulnerable(false);
                 }
-                p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_god_disabled").replace("{player}", target_player.getName()));
-                target_player.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_target_player_god_disabled").replace("{player}", p.getName()));
+                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_god_disabled").replace("{player}", target_player.getName()));
+                target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_god_disabled").replace("{player}", p.getName()));
                 p.openInventory(GUI_Actions(p,target_player));
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("actions_potions"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_potions"))){
                 p.openInventory(GUI_potions(p, target_player));
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("actions_spawner"))){
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_spawner"))){
                 p.openInventory(GUI_Spawner(p, target_player));
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("actions_inventory"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_inventory"))){
                 p.openInventory(GUI_Inventory(p, target_player));
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("actions_vanish_enabled"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_vanish_enabled"))){
                 if (Bukkit.getPluginManager().isPluginEnabled("SuperVanish") || Bukkit.getPluginManager().isPluginEnabled("PremiumVanish")) {
                     VanishAPI.hidePlayer(target_player);
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_hide").replace("{player}", target_player.getName()));
-                    target_player.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_hide"));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_hide").replace("{player}", target_player.getName()));
+                    target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_hide"));
                 }else{
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("vanish_required"));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "vanish_required"));
                 }
                 p.closeInventory();
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("actions_vanish_disabled"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_vanish_disabled"))){
                 if (Bukkit.getPluginManager().isPluginEnabled("SuperVanish") || Bukkit.getPluginManager().isPluginEnabled("PremiumVanish")) {
                     VanishAPI.showPlayer(target_player);
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_visible").replace("{player}", target_player.getName()));
-                    target_player.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_visible"));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_visible").replace("{player}", target_player.getName()));
+                    target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_visible"));
                 }else{
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("vanish_required"));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "vanish_required"));
                 }
                 p.closeInventory();
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("actions_lightning"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_lightning"))){
                 target_player.getWorld().strikeLightning(target_player.getLocation());
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("actions_firework"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_firework"))){
                 Fireworks.createRandom(target_player);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("actions_fakeop"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_fakeop"))){
                 Bukkit.broadcastMessage(Message.chat("&7&o[Server: Made " + target_player.getName() +" a server operator]"));
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("actions_custom"))){
-                custom_method.put(p, 2);
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_custom"))){
+                custom_method.put(p.getUniqueId(), 2);
                 p.openInventory(GUI_Plugins(p));
             }
         }else{
-            p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_not_found"));
+            p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
             p.closeInventory();
         }
 
@@ -1280,65 +1297,59 @@ public class AdminUI {
     public void clicked_kick(Player p, int slot, ItemStack clicked, Inventory inv, Player target_player){
 
         if(target_player.isOnline()){
-            if(InventoryGUI.getClickedItem(clicked,Message.getMessage("kick_back"))){
+            if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "kick_back"))){
                 p.openInventory(GUI_Players_Settings(p, target_player));
             }else if(clicked.getType() != Material.AIR && clicked.getType() != XMaterial.LIGHT_BLUE_STAINED_GLASS_PANE.parseMaterial()){
                 if(target_player.hasPermission("admingui.kick.bypass")){
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_kick_bypass"));
-                    p.closeInventory();
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_kick_bypass"));
                 }else{
-                    target_player.kickPlayer(Message.getMessage("prefix") + Message.getMessage("kick") + Message.chat(AdminGUI.getInstance().getKick().getString("slots."+(slot+1)+".name")));
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_kick").replace("{player}", target_player.getName()));
-                    p.closeInventory();
+                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "kick") + Message.chat(AdminGUI.getInstance().getKick().getString("slots."+(slot+1)+".name")));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kick").replace("{player}", target_player.getName()));
                 }
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("kick_hacking"))){
+                p.closeInventory();
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "kick_hacking"))){
                 if(target_player.hasPermission("admingui.kick.bypass")){
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_kick_bypass"));
-                    p.closeInventory();
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_kick_bypass"));
                 }else{
-                    target_player.kickPlayer(Message.getMessage("prefix") + Message.getMessage("kick") + Message.getMessage("kick_hacking"));
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_kick").replace("{player}", target_player.getName()));
-                    p.closeInventory();
+                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "kick") + Message.getMessage(p.getUniqueId(), "kick_hacking"));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kick").replace("{player}", target_player.getName()));
                 }
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("kick_griefing"))){
+                p.closeInventory();
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "kick_griefing"))){
                 if(target_player.hasPermission("admingui.kick.bypass")){
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_kick_bypass"));
-                    p.closeInventory();
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_kick_bypass"));
                 }else{
-                    target_player.kickPlayer(Message.getMessage("prefix") + Message.getMessage("kick") + Message.getMessage("kick_griefing"));
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_kick").replace("{player}", target_player.getName()));
-                    p.closeInventory();
+                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "kick") + Message.getMessage(p.getUniqueId(), "kick_griefing"));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kick").replace("{player}", target_player.getName()));
                 }
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("kick_spamming"))){
+                p.closeInventory();
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "kick_spamming"))){
                 if(target_player.hasPermission("admingui.kick.bypass")){
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_kick_bypass"));
-                    p.closeInventory();
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_kick_bypass"));
                 }else{
-                    target_player.kickPlayer(Message.getMessage("prefix") + Message.getMessage("kick") + Message.getMessage("kick_spamming"));
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_kick").replace("{player}", target_player.getName()));
-                    p.closeInventory();
+                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "kick") + Message.getMessage(p.getUniqueId(), "kick_spamming"));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kick").replace("{player}", target_player.getName()));
                 }
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("kick_advertising"))){
+                p.closeInventory();
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "kick_advertising"))){
                 if(target_player.hasPermission("admingui.kick.bypass")){
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_kick_bypass"));
-                    p.closeInventory();
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_kick_bypass"));
                 }else{
-                    target_player.kickPlayer(Message.getMessage("prefix") + Message.getMessage("kick") + Message.getMessage("kick_advertising"));
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_kick").replace("{player}", target_player.getName()));
-                    p.closeInventory();
+                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "kick") + Message.getMessage(p.getUniqueId(), "kick_advertising"));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kick").replace("{player}", target_player.getName()));
                 }
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("kick_swearing"))){
+                p.closeInventory();
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "kick_swearing"))){
                 if(target_player.hasPermission("admingui.kick.bypass")){
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_kick_bypass"));
-                    p.closeInventory();
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_kick_bypass"));
                 }else{
-                    target_player.kickPlayer(Message.getMessage("prefix") + Message.getMessage("kick") + Message.getMessage("kick_swearing"));
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_kick").replace("{player}", target_player.getName()));
-                    p.closeInventory();
+                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "kick") + Message.getMessage(p.getUniqueId(), "kick_swearing"));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kick").replace("{player}", target_player.getName()));
                 }
+                p.closeInventory();
             }
         }else{
-            p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_not_found"));
+            p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
             p.closeInventory();
         }
 
@@ -1352,282 +1363,277 @@ public class AdminUI {
         long mil_hour = 3600000L;
         long mil_minute = 60000L;
 
-        Date time = new Date(System.currentTimeMillis()+(mil_minute*ban_minutes.getOrDefault(p,0))+(mil_hour*ban_hours.getOrDefault(p,0))+(mil_day*ban_days.getOrDefault(p,0))+(mil_month*ban_months.getOrDefault(p,0))+(mil_year*ban_years.getOrDefault(p,0)));
+        Date time = new Date(System.currentTimeMillis()+(mil_minute*ban_minutes.getOrDefault(p.getUniqueId(),0))+(mil_hour*ban_hours.getOrDefault(p.getUniqueId(),0))+(mil_day*ban_days.getOrDefault(p.getUniqueId(),0))+(mil_month*ban_months.getOrDefault(p.getUniqueId(),0))+(mil_year*ban_years.getOrDefault(p.getUniqueId(),0)));
 
         if(target_player.isOnline()){
-            if(InventoryGUI.getClickedItem(clicked,Message.getMessage("ban_back"))){
+            if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "ban_back"))){
                 p.openInventory(GUI_Players_Settings(p, target_player));
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("ban_hacking"))){
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "ban_hacking"))){
                 if(target_player.hasPermission("admingui.ban.bypass")){
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_ban_bypass"));
-                    p.closeInventory();
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_ban_bypass"));
                 }else{
-                    TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason("ban_hacking", time), time);
-                    target_player.kickPlayer(Message.getMessage("prefix") + TargetPlayer.banReason("ban_hacking", time));
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_ban").replace("{player}", target_player.getName()));
-                    p.closeInventory();
+                    TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_hacking", time), time);
+                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_hacking", time));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
                 }
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("ban_griefing"))){
+                p.closeInventory();
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "ban_griefing"))){
                 if(target_player.hasPermission("admingui.ban.bypass")){
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_ban_bypass"));
-                    p.closeInventory();
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_ban_bypass"));
                 }else{
-                    TargetPlayer.ban(target_player.getName(), TargetPlayer.banReason("ban_griefing", time), time);
-                    target_player.kickPlayer(Message.getMessage("prefix") + TargetPlayer.banReason("ban_griefing", time));
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_ban").replace("{player}", target_player.getName()));
-                    p.closeInventory();
+                    TargetPlayer.ban(target_player.getName(), TargetPlayer.banReason(target_player.getUniqueId(), "ban_griefing", time), time);
+                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_griefing", time));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
                 }
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("ban_spamming"))){
+                p.closeInventory();
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "ban_spamming"))){
                 if(target_player.hasPermission("admingui.ban.bypass")){
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_ban_bypass"));
-                    p.closeInventory();
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_ban_bypass"));
                 }else{
-                    TargetPlayer.ban(target_player.getName(), TargetPlayer.banReason("ban_spamming", time), time);
-                    target_player.kickPlayer(Message.getMessage("prefix") + TargetPlayer.banReason("ban_spamming", time));
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_ban").replace("{player}", target_player.getName()));
-                    p.closeInventory();
+                    TargetPlayer.ban(target_player.getName(), TargetPlayer.banReason(target_player.getUniqueId(), "ban_spamming", time), time);
+                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_spamming", time));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
                 }
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("ban_advertising"))){
+                p.closeInventory();
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "ban_advertising"))){
                 if(target_player.hasPermission("admingui.ban.bypass")){
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_ban_bypass"));
-                    p.closeInventory();
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_ban_bypass"));
                 }else{
-                    TargetPlayer.ban(target_player.getName(), TargetPlayer.banReason("ban_advertising", time), time);
-                    target_player.kickPlayer(Message.getMessage("prefix") + TargetPlayer.banReason("ban_advertising", time));
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_ban").replace("{player}", target_player.getName()));
-                    p.closeInventory();
+                    TargetPlayer.ban(target_player.getName(), TargetPlayer.banReason(target_player.getUniqueId(), "ban_advertising", time), time);
+                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(),"ban_advertising", time));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
                 }
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("ban_swearing"))){
+                p.closeInventory();
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "ban_swearing"))){
                 if(target_player.hasPermission("admingui.ban.bypass")){
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_ban_bypass"));
-                    p.closeInventory();
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_ban_bypass"));
                 }else{
-                    TargetPlayer.ban(target_player.getName(), TargetPlayer.banReason("ban_swearing", time), time);
-                    target_player.kickPlayer(Message.getMessage("prefix") + TargetPlayer.banReason("ban_swearing", time));
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_ban").replace("{player}", target_player.getName()));
-                    p.closeInventory();
+                    TargetPlayer.ban(target_player.getName(), TargetPlayer.banReason(target_player.getUniqueId(), "ban_swearing", time), time);
+                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_swearing", time));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
                 }
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("ban_years"))){
-                switch (ban_years.getOrDefault(p,0)){
+                p.closeInventory();
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "ban_years"))){
+                switch (ban_years.getOrDefault(p.getUniqueId(),0)){
                     case 0:
-                        ban_years.put(p, 1);
+                        ban_years.put(p.getUniqueId(), 1);
                         break;
                     case 1:
-                        ban_years.put(p, 2);
+                        ban_years.put(p.getUniqueId(), 2);
                         break;
                     case 2:
-                        ban_years.put(p, 3);
+                        ban_years.put(p.getUniqueId(), 3);
                         break;
                     case 3:
-                        ban_years.put(p, 4);
+                        ban_years.put(p.getUniqueId(), 4);
                         break;
                     case 4:
-                        ban_years.put(p, 5);
+                        ban_years.put(p.getUniqueId(), 5);
                         break;
                     case 5:
-                        ban_years.put(p, 6);
+                        ban_years.put(p.getUniqueId(), 6);
                         break;
                     case 6:
-                        ban_years.put(p, 7);
+                        ban_years.put(p.getUniqueId(), 7);
                         break;
                     case 7:
-                        ban_years.put(p, 8);
+                        ban_years.put(p.getUniqueId(), 8);
                         break;
                     case 8:
-                        ban_years.put(p, 9);
+                        ban_years.put(p.getUniqueId(), 9);
                         break;
                     case 9:
-                        ban_years.put(p, 10);
+                        ban_years.put(p.getUniqueId(), 10);
                         break;
                     case 10:
-                        ban_years.put(p, 15);
+                        ban_years.put(p.getUniqueId(), 15);
                         break;
                     case 15:
-                        ban_years.put(p, 20);
+                        ban_years.put(p.getUniqueId(), 20);
                         break;
                     case 20:
-                        ban_years.put(p, 30);
+                        ban_years.put(p.getUniqueId(), 30);
                         break;
                     case 30:
-                        ban_years.put(p, 0);
+                        ban_years.put(p.getUniqueId(), 0);
                         break;
                 }
                 p.openInventory(GUI_Ban(p, target_player));
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("ban_months"))){
-                switch (ban_months.getOrDefault(p,0)){
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "ban_months"))){
+                switch (ban_months.getOrDefault(p.getUniqueId(),0)){
                     case 0:
-                        ban_months.put(p, 1);
+                        ban_months.put(p.getUniqueId(), 1);
                         break;
                     case 1:
-                        ban_months.put(p, 2);
+                        ban_months.put(p.getUniqueId(), 2);
                         break;
                     case 2:
-                        ban_months.put(p, 3);
+                        ban_months.put(p.getUniqueId(), 3);
                         break;
                     case 3:
-                        ban_months.put(p, 4);
+                        ban_months.put(p.getUniqueId(), 4);
                         break;
                     case 4:
-                        ban_months.put(p, 5);
+                        ban_months.put(p.getUniqueId(), 5);
                         break;
                     case 5:
-                        ban_months.put(p, 6);
+                        ban_months.put(p.getUniqueId(), 6);
                         break;
                     case 6:
-                        ban_months.put(p, 7);
+                        ban_months.put(p.getUniqueId(), 7);
                         break;
                     case 7:
-                        ban_months.put(p, 8);
+                        ban_months.put(p.getUniqueId(), 8);
                         break;
                     case 8:
-                        ban_months.put(p, 9);
+                        ban_months.put(p.getUniqueId(), 9);
                         break;
                     case 9:
-                        ban_months.put(p, 10);
+                        ban_months.put(p.getUniqueId(), 10);
                         break;
                     case 10:
-                        ban_months.put(p, 11);
+                        ban_months.put(p.getUniqueId(), 11);
                         break;
                     case 11:
-                        ban_months.put(p, 12);
+                        ban_months.put(p.getUniqueId(), 12);
                         break;
                     case 12:
-                        ban_months.put(p, 0);
+                        ban_months.put(p.getUniqueId(), 0);
                         break;
                 }
                 p.openInventory(GUI_Ban(p, target_player));
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("ban_days"))){
-                switch (ban_days.getOrDefault(p,0)){
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "ban_days"))){
+                switch (ban_days.getOrDefault(p.getUniqueId(),0)){
                     case 0:
-                        ban_days.put(p, 1);
+                        ban_days.put(p.getUniqueId(), 1);
                         break;
                     case 1:
-                        ban_days.put(p, 2);
+                        ban_days.put(p.getUniqueId(), 2);
                         break;
                     case 2:
-                        ban_days.put(p, 3);
+                        ban_days.put(p.getUniqueId(), 3);
                         break;
                     case 3:
-                        ban_days.put(p, 4);
+                        ban_days.put(p.getUniqueId(), 4);
                         break;
                     case 4:
-                        ban_days.put(p, 5);
+                        ban_days.put(p.getUniqueId(), 5);
                         break;
                     case 5:
-                        ban_days.put(p, 6);
+                        ban_days.put(p.getUniqueId(), 6);
                         break;
                     case 6:
-                        ban_days.put(p, 7);
+                        ban_days.put(p.getUniqueId(), 7);
                         break;
                     case 7:
-                        ban_days.put(p, 8);
+                        ban_days.put(p.getUniqueId(), 8);
                         break;
                     case 8:
-                        ban_days.put(p, 9);
+                        ban_days.put(p.getUniqueId(), 9);
                         break;
                     case 9:
-                        ban_days.put(p, 10);
+                        ban_days.put(p.getUniqueId(), 10);
                         break;
                     case 10:
-                        ban_days.put(p, 15);
+                        ban_days.put(p.getUniqueId(), 15);
                         break;
                     case 15:
-                        ban_days.put(p, 20);
+                        ban_days.put(p.getUniqueId(), 20);
                         break;
                     case 20:
-                        ban_days.put(p, 30);
+                        ban_days.put(p.getUniqueId(), 30);
                         break;
                     case 30:
-                        ban_days.put(p, 0);
+                        ban_days.put(p.getUniqueId(), 0);
                         break;
                 }
                 p.openInventory(GUI_Ban(p, target_player));
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("ban_hours"))){
-                switch (ban_hours.getOrDefault(p, 0)){
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "ban_hours"))){
+                switch (ban_hours.getOrDefault(p.getUniqueId(), 0)){
                     case 0:
-                        ban_hours.put(p, 1);
+                        ban_hours.put(p.getUniqueId(), 1);
                         break;
                     case 1:
-                        ban_hours.put(p, 2);
+                        ban_hours.put(p.getUniqueId(), 2);
                         break;
                     case 2:
-                        ban_hours.put(p, 3);
+                        ban_hours.put(p.getUniqueId(), 3);
                         break;
                     case 3:
-                        ban_hours.put(p, 4);
+                        ban_hours.put(p.getUniqueId(), 4);
                         break;
                     case 4:
-                        ban_hours.put(p, 5);
+                        ban_hours.put(p.getUniqueId(), 5);
                         break;
                     case 5:
-                        ban_hours.put(p, 6);
+                        ban_hours.put(p.getUniqueId(), 6);
                         break;
                     case 6:
-                        ban_hours.put(p, 7);
+                        ban_hours.put(p.getUniqueId(), 7);
                         break;
                     case 7:
-                        ban_hours.put(p, 8);
+                        ban_hours.put(p.getUniqueId(), 8);
                         break;
                     case 8:
-                        ban_hours.put(p, 9);
+                        ban_hours.put(p.getUniqueId(), 9);
                         break;
                     case 9:
-                        ban_hours.put(p, 10);
+                        ban_hours.put(p.getUniqueId(), 10);
                         break;
                     case 10:
-                        ban_hours.put(p, 15);
+                        ban_hours.put(p.getUniqueId(), 15);
                         break;
                     case 15:
-                        ban_hours.put(p, 20);
+                        ban_hours.put(p.getUniqueId(), 20);
                         break;
                     case 20:
-                        ban_hours.put(p, 0);
+                        ban_hours.put(p.getUniqueId(), 0);
                         break;
                 }
                 p.openInventory(GUI_Ban(p, target_player));
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage("ban_minutes"))){
-                switch (ban_minutes.getOrDefault(p,0)){
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "ban_minutes"))){
+                switch (ban_minutes.getOrDefault(p.getUniqueId(),0)){
                     case 0:
-                        ban_minutes.put(p, 5);
+                        ban_minutes.put(p.getUniqueId(), 5);
                         break;
                     case 5:
-                        ban_minutes.put(p, 10);
+                        ban_minutes.put(p.getUniqueId(), 10);
                         break;
                     case 10:
-                        ban_minutes.put(p, 15);
+                        ban_minutes.put(p.getUniqueId(), 15);
                         break;
                     case 15:
-                        ban_minutes.put(p, 20);
+                        ban_minutes.put(p.getUniqueId(), 20);
                         break;
                     case 20:
-                        ban_minutes.put(p, 25);
+                        ban_minutes.put(p.getUniqueId(), 25);
                         break;
                     case 25:
-                        ban_minutes.put(p, 30);
+                        ban_minutes.put(p.getUniqueId(), 30);
                         break;
                     case 30:
-                        ban_minutes.put(p, 35);
+                        ban_minutes.put(p.getUniqueId(), 35);
                         break;
                     case 35:
-                        ban_minutes.put(p, 40);
+                        ban_minutes.put(p.getUniqueId(), 40);
                         break;
                     case 40:
-                        ban_minutes.put(p, 45);
+                        ban_minutes.put(p.getUniqueId(), 45);
                         break;
                     case 45:
-                        ban_minutes.put(p, 50);
+                        ban_minutes.put(p.getUniqueId(), 50);
                         break;
                     case 50:
-                        ban_minutes.put(p, 55);
+                        ban_minutes.put(p.getUniqueId(), 55);
                         break;
                     case 55:
-                        ban_minutes.put(p, 0);
+                        ban_minutes.put(p.getUniqueId(), 0);
                         break;
                 }
                 p.openInventory(GUI_Ban(p, target_player));
             }
         }else{
-            p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_not_found"));
+            p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
             p.closeInventory();
         }
 
@@ -1638,127 +1644,127 @@ public class AdminUI {
         TargetPlayer targetPlayer = new TargetPlayer();
 
         if(target_player.isOnline()){
-            if(InventoryGUI.getClickedItem(clicked, Message.getMessage("potions_back"))){
+            if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_back"))){
                 if(p.getName().equals(target_player.getName())){
                     p.openInventory(GUI_Player(p));
                 }else{
                     p.openInventory(GUI_Actions(p,target_player));
                 }
 
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("potions_time"))){
-                switch (duration.getOrDefault(p, 1)){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_time"))){
+                switch (duration.getOrDefault(p.getUniqueId(), 1)){
                     case 1:
-                        duration.put(p, 2);
+                        duration.put(p.getUniqueId(), 2);
                         break;
                     case 2:
-                        duration.put(p, 3);
+                        duration.put(p.getUniqueId(), 3);
                         break;
                     case 3:
-                        duration.put(p, 4);
+                        duration.put(p.getUniqueId(), 4);
                         break;
                     case 4:
-                        duration.put(p, 5);
+                        duration.put(p.getUniqueId(), 5);
                         break;
                     case 5:
-                        duration.put(p, 7);
+                        duration.put(p.getUniqueId(), 7);
                         break;
                     case 7:
-                        duration.put(p, 10);
+                        duration.put(p.getUniqueId(), 10);
                         break;
                     case 10:
-                        duration.put(p, 15);
+                        duration.put(p.getUniqueId(), 15);
                         break;
                     case 15:
-                        duration.put(p, 20);
+                        duration.put(p.getUniqueId(), 20);
                         break;
                     case 20:
-                        duration.put(p, 1000000);
+                        duration.put(p.getUniqueId(), 1000000);
                         break;
                     case 1000000:
-                        duration.put(p, 1);
+                        duration.put(p.getUniqueId(), 1);
                         break;
                 }
                 p.openInventory(GUI_potions(p, target_player));
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("potions_level"))){
-                switch (level.getOrDefault(p, 1)){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_level"))){
+                switch (level.getOrDefault(p.getUniqueId(), 1)){
                     case 1:
-                        level.put(p, 2);
+                        level.put(p.getUniqueId(), 2);
                         break;
                     case 2:
-                        level.put(p, 3);
+                        level.put(p.getUniqueId(), 3);
                         break;
                     case 3:
-                        level.put(p, 4);
+                        level.put(p.getUniqueId(), 4);
                         break;
                     case 4:
-                        level.put(p, 5);
+                        level.put(p.getUniqueId(), 5);
                         break;
                     case 5:
-                        level.put(p, 1);
+                        level.put(p.getUniqueId(), 1);
                         break;
                 }
                 p.openInventory(GUI_potions(p, target_player));
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("potions_remove_all"))) {
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_remove_all"))) {
                 for (PotionEffect effect : target_player.getActivePotionEffects()){
                     target_player.removePotionEffect(effect.getType());
                 }
 
                 if(p.getName().equals(target_player.getName())){
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_potions_remove"));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_potions_remove"));
                 }else{
-                    target_player.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_target_player_potions_remove").replace("{player}", p.getName()));
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_potions_remove").replace("{player}", target_player.getName()));
+                    target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_potions_remove").replace("{player}", p.getName()));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_potions_remove").replace("{player}", target_player.getName()));
                 }
 
                 p.openInventory(GUI_potions(p, target_player));
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("potions_night_vision"))){
-                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.NIGHT_VISION, "potions_night_vision", duration.getOrDefault(p, 1), level.getOrDefault(p, 1));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_night_vision"))){
+                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.NIGHT_VISION, "potions_night_vision", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
                 p.closeInventory();
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("potions_invisibility"))){
-                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.INVISIBILITY, "potions_invisibility", duration.getOrDefault(p, 1), level.getOrDefault(p, 1));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_invisibility"))){
+                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.INVISIBILITY, "potions_invisibility", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
                 p.closeInventory();
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("potions_jump_boost"))){
-                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.JUMP, "potions_jump_boost", duration.getOrDefault(p, 1), level.getOrDefault(p, 1));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_jump_boost"))){
+                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.JUMP, "potions_jump_boost", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
                 p.closeInventory();
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("potions_fire_resistance"))){
-                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.FIRE_RESISTANCE, "potions_fire_resistance", duration.getOrDefault(p, 1), level.getOrDefault(p, 1));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_fire_resistance"))){
+                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.FIRE_RESISTANCE, "potions_fire_resistance", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
                 p.closeInventory();
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("potions_speed"))){
-                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.SPEED, "potions_speed", duration.getOrDefault(p, 1), level.getOrDefault(p, 1));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_speed"))){
+                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.SPEED, "potions_speed", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
                 p.closeInventory();
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("potions_slowness"))){
-                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.SLOW, "potions_slowness", duration.getOrDefault(p, 1), level.getOrDefault(p, 1));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_slowness"))){
+                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.SLOW, "potions_slowness", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
                 p.closeInventory();
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("potions_water_breathing"))){
-                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.WATER_BREATHING, "potions_water_breathing", duration.getOrDefault(p, 1), level.getOrDefault(p, 1));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_water_breathing"))){
+                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.WATER_BREATHING, "potions_water_breathing", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
                 p.closeInventory();
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("potions_instant_health"))){
-                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.HEAL, "potions_instant_health", duration.getOrDefault(p, 1), level.getOrDefault(p, 1));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_instant_health"))){
+                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.HEAL, "potions_instant_health", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
                 p.closeInventory();
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("potions_instant_damage"))){
-                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.HARM, "potions_instant_damage", duration.getOrDefault(p, 1), level.getOrDefault(p, 1));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_instant_damage"))){
+                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.HARM, "potions_instant_damage", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
                 p.closeInventory();
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("potions_poison"))){
-                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.POISON, "potions_poison", duration.getOrDefault(p, 1), level.getOrDefault(p, 1));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_poison"))){
+                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.POISON, "potions_poison", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
                 p.closeInventory();
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("potions_regeneration"))){
-                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.REGENERATION, "potions_regeneration", duration.getOrDefault(p, 1), level.getOrDefault(p, 1));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_regeneration"))){
+                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.REGENERATION, "potions_regeneration", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
                 p.closeInventory();
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("potions_strength"))){
-                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.INCREASE_DAMAGE, "potions_strength", duration.getOrDefault(p, 1), level.getOrDefault(p, 1));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_strength"))){
+                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.INCREASE_DAMAGE, "potions_strength", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
                 p.closeInventory();
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("potions_weakness"))){
-                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.WEAKNESS, "potions_weakness", duration.getOrDefault(p, 1), level.getOrDefault(p, 1));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_weakness"))){
+                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.WEAKNESS, "potions_weakness", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
                 p.closeInventory();
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("potions_luck"))){
-                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.LUCK, "potions_luck", duration.getOrDefault(p, 1), level.getOrDefault(p, 1));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_luck"))){
+                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.LUCK, "potions_luck", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
                 p.closeInventory();
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("potions_slow_falling"))){
-                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.SLOW_FALLING, "potions_slow_falling", duration.getOrDefault(p, 1), level.getOrDefault(p, 1));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_slow_falling"))){
+                targetPlayer.setPotionEffect(p, target_player, PotionEffectType.SLOW_FALLING, "potions_slow_falling", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
                 p.closeInventory();
             }
         }else{
-            p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_not_found"));
+            p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
             p.closeInventory();
         }
     }
@@ -1766,166 +1772,166 @@ public class AdminUI {
     public void clicked_spawner(Player p, int slot, ItemStack clicked, Inventory inv, Player target_player){
 
         if(target_player.isOnline()){
-            if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_back"))){
+            if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_back"))){
                 if(p.getName().equals(target_player.getName())){
                     p.openInventory(GUI_Player(p));
                 }else{
                     p.openInventory(GUI_Actions(p, target_player));
                 }
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_bat"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_bat"))){
                 Entity.spawn(target_player.getLocation(), EntityType.BAT);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_blaze"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_blaze"))){
                 Entity.spawn(target_player.getLocation(), EntityType.BLAZE);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_cat"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_cat"))){
                 Entity.spawn(target_player.getLocation(), EntityType.CAT);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_cave_spider"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_cave_spider"))){
                 Entity.spawn(target_player.getLocation(), EntityType.CAVE_SPIDER);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_chicken"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_chicken"))){
                 Entity.spawn(target_player.getLocation(), EntityType.CHICKEN);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_cod"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_cod"))){
                 Entity.spawn(target_player.getLocation(), EntityType.COD);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_cow"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_cow"))){
                 Entity.spawn(target_player.getLocation(), EntityType.COW);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_creeper"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_creeper"))){
                 Entity.spawn(target_player.getLocation(), EntityType.CREEPER);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_dolphin"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_dolphin"))){
                 Entity.spawn(target_player.getLocation(), EntityType.DOLPHIN);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_donkey"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_donkey"))){
                 Entity.spawn(target_player.getLocation(), EntityType.DONKEY);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_drowned"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_drowned"))){
                 Entity.spawn(target_player.getLocation(), EntityType.DROWNED);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_elder_guardian"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_elder_guardian"))){
                 Entity.spawn(target_player.getLocation(), EntityType.ELDER_GUARDIAN);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_enderman"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_enderman"))){
                 Entity.spawn(target_player.getLocation(), EntityType.ENDERMAN);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_endermite"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_endermite"))){
                 Entity.spawn(target_player.getLocation(), EntityType.ENDERMITE);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_evoker"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_evoker"))){
                 Entity.spawn(target_player.getLocation(), EntityType.EVOKER);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_fox"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_fox"))){
                 Entity.spawn(target_player.getLocation(), EntityType.FOX);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_ghast"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_ghast"))){
                 Entity.spawn(target_player.getLocation(), EntityType.GHAST);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_guardian"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_guardian"))){
                 Entity.spawn(target_player.getLocation(), EntityType.GUARDIAN);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_horse"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_horse"))){
                 Entity.spawn(target_player.getLocation(), EntityType.HORSE);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_husk"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_husk"))){
                 Entity.spawn(target_player.getLocation(), EntityType.HUSK);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_llama"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_llama"))){
                 Entity.spawn(target_player.getLocation(), EntityType.LLAMA);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_magma_cube"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_magma_cube"))){
                 Entity.spawn(target_player.getLocation(), EntityType.MAGMA_CUBE);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_mooshroom"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_mooshroom"))){
                 Entity.spawn(target_player.getLocation(), EntityType.MUSHROOM_COW);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_mule"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_mule"))){
                 Entity.spawn(target_player.getLocation(), EntityType.MULE);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_ocelot"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_ocelot"))){
                 Entity.spawn(target_player.getLocation(), EntityType.OCELOT);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_panda"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_panda"))){
                 Entity.spawn(target_player.getLocation(), EntityType.PANDA);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_parrot"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_parrot"))){
                 Entity.spawn(target_player.getLocation(), EntityType.PARROT);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_phantom"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_phantom"))){
                 Entity.spawn(target_player.getLocation(), EntityType.PHANTOM);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_pig"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_pig"))){
                 Entity.spawn(target_player.getLocation(), EntityType.PIG);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_pillager"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_pillager"))){
                 Entity.spawn(target_player.getLocation(), EntityType.PILLAGER);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_polar_bear"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_polar_bear"))){
                 Entity.spawn(target_player.getLocation(), EntityType.POLAR_BEAR);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_pufferfish"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_pufferfish"))){
                 Entity.spawn(target_player.getLocation(), EntityType.PUFFERFISH);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_rabbit"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_rabbit"))){
                 Entity.spawn(target_player.getLocation(), EntityType.RABBIT);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_ravager"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_ravager"))){
                 Entity.spawn(target_player.getLocation(), EntityType.RAVAGER);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_salmon"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_salmon"))){
                 Entity.spawn(target_player.getLocation(), EntityType.SALMON);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_sheep"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_sheep"))){
                 Entity.spawn(target_player.getLocation(), EntityType.SHEEP);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_shulker"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_shulker"))){
                 Entity.spawn(target_player.getLocation(), EntityType.SHULKER);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_silverfish"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_silverfish"))){
                 Entity.spawn(target_player.getLocation(), EntityType.SILVERFISH);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_skeleton"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_skeleton"))){
                 Entity.spawn(target_player.getLocation(), EntityType.SKELETON);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_skeleton_horse"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_skeleton_horse"))){
                 Entity.spawn(target_player.getLocation(), EntityType.SKELETON_HORSE);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_slime"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_slime"))){
                 Entity.spawn(target_player.getLocation(), EntityType.SLIME);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_spider"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_spider"))){
                 Entity.spawn(target_player.getLocation(), EntityType.SPIDER);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_squid"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_squid"))){
                 Entity.spawn(target_player.getLocation(), EntityType.SQUID);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_stray"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_stray"))){
                 Entity.spawn(target_player.getLocation(), EntityType.STRAY);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_tropical_fish"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_tropical_fish"))){
                 Entity.spawn(target_player.getLocation(), EntityType.TROPICAL_FISH);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_turtle"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_turtle"))){
                 Entity.spawn(target_player.getLocation(), EntityType.TURTLE);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_vex"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_vex"))){
                 Entity.spawn(target_player.getLocation(), EntityType.VEX);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_villager"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_villager"))){
                 Entity.spawn(target_player.getLocation(), EntityType.VILLAGER);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_vindicator"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_vindicator"))){
                 Entity.spawn(target_player.getLocation(), EntityType.VINDICATOR);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_wandering_trader"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_wandering_trader"))){
                 Entity.spawn(target_player.getLocation(), EntityType.WANDERING_TRADER);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_witch"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_witch"))){
                 Entity.spawn(target_player.getLocation(), EntityType.WITCH);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_wolf"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_wolf"))){
                 Entity.spawn(target_player.getLocation(), EntityType.WOLF);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_zombie"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_zombie"))){
                 Entity.spawn(target_player.getLocation(), EntityType.ZOMBIE);
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("spawner_zombie_pigman"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_zombie_pigman"))){
                 Entity.spawn(target_player.getLocation(), EntityType.PIG_ZOMBIE);
             }
         }else{
-            p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_not_found"));
+            p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
             p.closeInventory();
         }
     }
 
     public void clicked_money(Player p, int slot, ItemStack clicked, Inventory inv, Player target_player){
         if(target_player.isOnline()){
-            if(InventoryGUI.getClickedItem(clicked, Message.getMessage("money_back"))){
+            if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "money_back"))){
                 if(p.getName().equals(target_player.getName())){
                     p.openInventory(GUI_Player(p));
                 }else{
                     p.openInventory(GUI_Players_Settings(p, target_player));
                 }
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("money_give"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "money_give"))){
                 if(AdminGUI.vault){
                     p.openInventory(GUI_Money_Amount(p, target_player, 1));
                 }else{
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("vault_required"));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "vault_required"));
                     p.closeInventory();
                 }
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("money_set"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "money_set"))){
                 if(AdminGUI.vault){
                     p.openInventory(GUI_Money_Amount(p, target_player, 2));
                 }else{
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("vault_required"));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "vault_required"));
                     p.closeInventory();
                 }
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("money_take"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "money_take"))){
                 if(AdminGUI.vault){
                     p.openInventory(GUI_Money_Amount(p, target_player, 3));
                 }else{
-                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("vault_required"));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "vault_required"));
                     p.closeInventory();
                 }
             }
         }else{
-            p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_not_found"));
+            p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
             p.closeInventory();
         }
     }
 
     public void clicked_money_amount(Player p, int slot, ItemStack clicked, Inventory inv, Player target_player, int option){
         if(target_player.isOnline()){
-            if(InventoryGUI.getClickedItem(clicked, Message.getMessage("money_amount_back"))){
+            if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "money_amount_back"))){
                 p.openInventory(GUI_Money(p, target_player));
             }else {
                     if (clicked.hasItemMeta()) {
@@ -1938,13 +1944,13 @@ public class AdminUI {
                                             EconomyResponse r = AdminGUI.getEconomy().depositPlayer(target_player, Double.parseDouble(amount));
                                             if (r.transactionSuccess()) {
                                                 if(p.getName().equals(target_player.getName())){
-                                                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_give").replace("{amount}", AdminGUI.getEconomy().format(r.amount)).replace("{player}", target_player.getName()).replace("{balance}", AdminGUI.getEconomy().format(r.balance)));
+                                                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_give").replace("{amount}", AdminGUI.getEconomy().format(r.amount)).replace("{player}", target_player.getName()).replace("{balance}", AdminGUI.getEconomy().format(r.balance)));
                                                 }else{
-                                                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_give").replace("{amount}", AdminGUI.getEconomy().format(r.amount)).replace("{player}", target_player.getName()).replace("{balance}", AdminGUI.getEconomy().format(r.balance)));
-                                                    target_player.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_target_player_give").replace("{amount}", AdminGUI.getEconomy().format(r.amount)).replace("{player}", p.getName()).replace("{balance}", AdminGUI.getEconomy().format(r.balance)));
+                                                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_give").replace("{amount}", AdminGUI.getEconomy().format(r.amount)).replace("{player}", target_player.getName()).replace("{balance}", AdminGUI.getEconomy().format(r.balance)));
+                                                    target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_give").replace("{amount}", AdminGUI.getEconomy().format(r.amount)).replace("{player}", p.getName()).replace("{balance}", AdminGUI.getEconomy().format(r.balance)));
                                                 }
                                             } else {
-                                                p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_transaction_error").replace("{amount}", AdminGUI.getEconomy().format(r.amount)).replace("{player}", target_player.getName()));
+                                                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_transaction_error").replace("{amount}", AdminGUI.getEconomy().format(r.amount)).replace("{player}", target_player.getName()));
                                             }
                                             p.closeInventory();
                                             break;
@@ -1953,23 +1959,22 @@ public class AdminUI {
                                                 EconomyResponse s = AdminGUI.getEconomy().withdrawPlayer(target_player, Double.parseDouble(amount));
                                                 if(s.transactionSuccess()) {
                                                     if(p.getName().equals(target_player.getName())){
-                                                        p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_take").replace("{amount}", AdminGUI.getEconomy().format(s.amount)).replace("{player}", target_player.getName()).replace("{balance}", AdminGUI.getEconomy().format(s.balance)));
+                                                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_take").replace("{amount}", AdminGUI.getEconomy().format(s.amount)).replace("{player}", target_player.getName()).replace("{balance}", AdminGUI.getEconomy().format(s.balance)));
                                                     }else{
-                                                        p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_take").replace("{amount}", AdminGUI.getEconomy().format(s.amount)).replace("{player}", target_player.getName()).replace("{balance}", AdminGUI.getEconomy().format(s.balance)));
-                                                        target_player.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_target_player_take").replace("{amount}", AdminGUI.getEconomy().format(s.amount)).replace("{player}", p.getName()).replace("{balance}", AdminGUI.getEconomy().format(s.balance)));
+                                                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_take").replace("{amount}", AdminGUI.getEconomy().format(s.amount)).replace("{player}", target_player.getName()).replace("{balance}", AdminGUI.getEconomy().format(s.balance)));
+                                                        target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_take").replace("{amount}", AdminGUI.getEconomy().format(s.amount)).replace("{player}", p.getName()).replace("{balance}", AdminGUI.getEconomy().format(s.balance)));
                                                     }
                                                 }else{
-                                                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_transaction_error").replace("{amount}", AdminGUI.getEconomy().format(s.amount)).replace("{player}", target_player.getName()));
+                                                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_transaction_error").replace("{amount}", AdminGUI.getEconomy().format(s.amount)).replace("{player}", target_player.getName()));
                                                 }
-                                                p.closeInventory();
                                             }else{
                                                 if(p.getName().equals(target_player.getName())){
-                                                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_take_error"));
+                                                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_take_error"));
                                                 }else{
-                                                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_take_error"));
+                                                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_take_error"));
                                                 }
-                                                p.closeInventory();
                                             }
+                                            p.closeInventory();
                                             break;
                                         default:
                                             double balance = AdminGUI.getEconomy().getBalance(target_player);
@@ -1977,29 +1982,29 @@ public class AdminUI {
                                             EconomyResponse t = AdminGUI.getEconomy().depositPlayer(target_player, Double.parseDouble(amount));
                                             if(t.transactionSuccess()) {
                                                 if(p.getName().equals(target_player.getName())){
-                                                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_set").replace("{amount}", AdminGUI.getEconomy().format(t.amount)).replace("{player}", target_player.getName()).replace("{balance}", AdminGUI.getEconomy().format(t.balance)));
+                                                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_set").replace("{amount}", AdminGUI.getEconomy().format(t.amount)).replace("{player}", target_player.getName()).replace("{balance}", AdminGUI.getEconomy().format(t.balance)));
                                                 }else{
-                                                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_set").replace("{amount}", AdminGUI.getEconomy().format(t.amount)).replace("{player}", target_player.getName()).replace("{balance}", AdminGUI.getEconomy().format(t.balance)));
-                                                    target_player.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_target_player_set").replace("{amount}", AdminGUI.getEconomy().format(t.amount)).replace("{player}", p.getName()).replace("{balance}", AdminGUI.getEconomy().format(t.balance)));
+                                                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_set").replace("{amount}", AdminGUI.getEconomy().format(t.amount)).replace("{player}", target_player.getName()).replace("{balance}", AdminGUI.getEconomy().format(t.balance)));
+                                                    target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_set").replace("{amount}", AdminGUI.getEconomy().format(t.amount)).replace("{player}", p.getName()).replace("{balance}", AdminGUI.getEconomy().format(t.balance)));
                                                 }
                                             }else{
-                                                p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_transaction_error").replace("{amount}", AdminGUI.getEconomy().format(t.amount)).replace("{player}", target_player.getName()));
+                                                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_transaction_error").replace("{amount}", AdminGUI.getEconomy().format(t.amount)).replace("{player}", target_player.getName()));
                                             }
                                             p.closeInventory();
                                     }
                                 } else {
-                                    p.sendMessage(Message.getMessage("prefix") + Message.getMessage("vault_required"));
+                                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "vault_required"));
                                     p.closeInventory();
                                 }
                             } else {
-                                p.sendMessage(Message.getMessage("prefix") + Message.getMessage("is_not_a_number").replace("{number}", amount));
+                                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "is_not_a_number").replace("{number}", amount));
                                 p.closeInventory();
                             }
                         }
                     }
             }
         }else{
-            p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_not_found"));
+            p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
             p.closeInventory();
         }
     }
@@ -2007,12 +2012,12 @@ public class AdminUI {
     public void clicked_inventory(Player p, int slot, ItemStack clicked, Inventory inv, Player target_player, boolean left_click){
 
         if(target_player.isOnline()){
-            if(InventoryGUI.getClickedItem(clicked, Message.getMessage("inventory_back"))){
+            if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "inventory_back"))){
                 p.openInventory(GUI_Actions(p, target_player));
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("inventory_clear"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "inventory_clear"))){
                 target_player.getInventory().clear();
                 p.openInventory(GUI_Inventory(p, target_player));
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage("inventory_refresh"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "inventory_refresh"))){
                 p.openInventory(GUI_Inventory(p, target_player));
             }else{
                 if(p.hasPermission("admingui.inventory.edit")){
@@ -2028,7 +2033,7 @@ public class AdminUI {
                 }
             }
         }else{
-            p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_not_found"));
+            p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
             p.closeInventory();
         }
     }

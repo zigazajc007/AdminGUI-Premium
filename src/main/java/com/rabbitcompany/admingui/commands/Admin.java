@@ -29,9 +29,9 @@ public class Admin implements CommandExecutor {
                 player.openInventory(adminUI.GUI_Main(player));
             }else if(args.length == 1){
                 if(args[0].equals("reload")){
-                    player.sendMessage(Message.getMessage("prefix") + Message.chat("&aPlugin is now reloading..."));
+                    player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.chat("&aPlugin is now reloading..."));
                     AdminGUI.getInstance().loadYamls();
-                    player.sendMessage(Message.getMessage("prefix") + Message.chat("&aPlugin reloaded successfully!"));
+                    player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.chat("&aPlugin reloaded successfully!"));
                 }else{
                     Player target_player = Bukkit.getServer().getPlayer(ChatColor.stripColor(args[0]));
                     if(target_player != null){
@@ -42,14 +42,14 @@ public class Admin implements CommandExecutor {
                             player.openInventory(adminUI.GUI_Players_Settings(player, target_player));
                         }
                     }else{
-                        player.sendMessage(Message.getMessage("prefix") + Message.getMessage("is_not_a_player").replace("{player}", args[0]));
+                        player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "is_not_a_player").replace("{player}", args[0]));
                     }
                 }
             }else{
-                player.sendMessage(Message.getMessage("prefix") + Message.getMessage("wrong_arguments"));
+                player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_arguments"));
             }
         }else{
-            player.sendMessage(Message.getMessage("prefix") + Message.getMessage("permission"));
+            player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "permission"));
         }
         return true;
     }

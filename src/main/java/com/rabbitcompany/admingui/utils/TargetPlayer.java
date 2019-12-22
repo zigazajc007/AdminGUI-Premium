@@ -6,6 +6,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.Date;
+import java.util.UUID;
 
 import static org.bukkit.Bukkit.getServer;
 
@@ -18,17 +19,17 @@ public class TargetPlayer {
         target_player.addPotionEffect(new PotionEffect(potion, duration*1200, level-1));
         if(duration == 1000000){
             if(p.getName().equals(target_player.getName())){
-                p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_potions").replace("{potion}", Message.getMessage(getPotionConfigName)).replace("{time}", "∞"));
+                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_potions").replace("{potion}", Message.getMessage(p.getUniqueId(), getPotionConfigName)).replace("{time}", "∞"));
             }else{
-                p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_potions").replace("{player}", target_player.getName()).replace("{potion}", Message.getMessage(getPotionConfigName)).replace("{time}", "∞"));
-                target_player.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_target_player_potions").replace("{player}", p.getName()).replace("{potion}", Message.getMessage(getPotionConfigName)).replace("{time}", "∞"));
+                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_potions").replace("{player}", target_player.getName()).replace("{potion}", Message.getMessage(p.getUniqueId(), getPotionConfigName)).replace("{time}", "∞"));
+                target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "message_target_player_potions").replace("{player}", p.getName()).replace("{potion}", Message.getMessage(target_player.getUniqueId(), getPotionConfigName)).replace("{time}", "∞"));
             }
         }else {
             if (p.getName().equals(target_player.getName())) {
-                p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_potions").replace("{potion}", Message.getMessage(getPotionConfigName)).replace("{time}", "" + duration));
+                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_potions").replace("{potion}", Message.getMessage(p.getUniqueId(), getPotionConfigName)).replace("{time}", "" + duration));
             } else {
-                p.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_player_potions").replace("{player}", target_player.getName()).replace("{potion}", Message.getMessage(getPotionConfigName)).replace("{time}", "" + duration));
-                target_player.sendMessage(Message.getMessage("prefix") + Message.getMessage("message_target_player_potions").replace("{player}", p.getName()).replace("{potion}", Message.getMessage(getPotionConfigName)).replace("{time}", "" + duration));
+                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_potions").replace("{player}", target_player.getName()).replace("{potion}", Message.getMessage(p.getUniqueId(), getPotionConfigName)).replace("{time}", "" + duration));
+                target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "message_target_player_potions").replace("{player}", p.getName()).replace("{potion}", Message.getMessage(target_player.getUniqueId(), getPotionConfigName)).replace("{time}", "" + duration));
             }
         }
     }
@@ -43,10 +44,10 @@ public class TargetPlayer {
 
     }
 
-    public static String banReason(String reason, Date time){
+    public static String banReason(UUID target, String reason, Date time){
         String bumper = org.apache.commons.lang.StringUtils.repeat("\n", 35);
 
-        return bumper + Message.getMessage("ban") + Message.getMessage(reason) + "\n" + Message.getMessage("ban_time").replace("{years}", ""+(time.getYear()+1900)).replace("{months}", ""+(time.getMonth()+1)).replace("{days}", ""+time.getDate()).replace("{hours}", ""+time.getHours()).replace("{minutes}", ""+time.getMinutes()).replace("{seconds}", ""+time.getSeconds()) + bumper;
+        return bumper + Message.getMessage(target, "ban") + Message.getMessage(target, reason) + "\n" + Message.getMessage(target, "ban_time").replace("{years}", ""+(time.getYear()+1900)).replace("{months}", ""+(time.getMonth()+1)).replace("{days}", ""+time.getDate()).replace("{hours}", ""+time.getHours()).replace("{minutes}", ""+time.getMinutes()).replace("{seconds}", ""+time.getSeconds()) + bumper;
     }
 
 }

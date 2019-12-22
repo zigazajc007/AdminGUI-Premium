@@ -52,6 +52,45 @@ public class Item {
         return item;
     }
 
+    public static ItemStack pre_createPlayerHead(String player){
+        ItemStack item;
+
+        item = new ItemStack(XMaterial.PLAYER_HEAD.parseMaterial(), 1, (short) SkullType.PLAYER.ordinal());
+
+        SkullMeta skullMeta = (SkullMeta) item.getItemMeta();
+
+        skullMeta.setOwner(player);
+        skullMeta.setDisplayName(Message.chat(player));
+        item.setItemMeta(skullMeta);
+
+        ItemMeta meta = item.getItemMeta();
+
+        item.setItemMeta(meta);
+        return item;
+    }
+
+    public static ItemStack after_createPlayerHead(Inventory inv, ItemStack item, int amount, int invSlot, String displayName, String... loreString){
+
+        ArrayList lore = new ArrayList();
+
+        //SkullMeta skullMeta = (SkullMeta) item.getItemMeta();
+
+        //skullMeta.setDisplayName(Message.chat(displayName));
+        //item.setItemMeta(skullMeta);
+
+        ItemMeta meta = item.getItemMeta();
+
+        meta.setDisplayName(Message.chat(displayName));
+
+        for(String s : loreString){
+            lore.add(Message.chat(s));
+        }
+        meta.setLore(lore);
+        item.setItemMeta(meta);
+        inv.setItem(invSlot - 1, item);
+        return item;
+    }
+
     public static ItemStack createByte(Inventory inv, String material, int byteId, int amount, int invSlot, String displayName, String... loreString){
         ItemStack item;
         ArrayList lore = new ArrayList();

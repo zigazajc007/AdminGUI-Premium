@@ -22,7 +22,7 @@ public class PlayerLoginListener implements Listener {
     public void onPlayerLogin(PlayerLoginEvent event){
         if(event.getResult() == PlayerLoginEvent.Result.ALLOWED){
             if(AdminUI.maintenance_mode && !event.getPlayer().hasPermission("admingui.maintenance")){
-                event.disallow(PlayerLoginEvent.Result.KICK_OTHER, Message.getMessage("prefix") + Message.getMessage("message_maintenance"));
+                event.disallow(PlayerLoginEvent.Result.KICK_OTHER, Message.getMessage(event.getPlayer().getUniqueId(), "prefix") + Message.getMessage(event.getPlayer().getUniqueId(), "message_maintenance"));
             }
         }
     }
