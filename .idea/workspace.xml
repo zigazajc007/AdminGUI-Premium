@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
+    <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="Russian language added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/AdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/AdminGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/PlayerJoinListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/PlayerJoinListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/ui/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/ui/AdminUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Chinese.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Chinese.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/English.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/English.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/German.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/German.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Russian.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Russian.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +201,7 @@
       <workItem from="1576943582196" duration="27676000" />
       <workItem from="1577031602871" duration="833000" />
       <workItem from="1577032578112" duration="38000" />
-      <workItem from="1577131189467" duration="385000" />
+      <workItem from="1577131189467" duration="10035000" />
     </task>
     <task id="LOCAL-00001" summary="Performance improvement">
       <created>1569016445205</created>
@@ -399,7 +406,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577031758845</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Russian language added">
+      <created>1577131608938</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1577131608938</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -422,7 +436,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/LiteBansAPI" />
     </ignored-roots>
-    <MESSAGE value="Added:&#10;   - Inventory view&#10;   - New permissions: admingui.inventory and admingui.maintenance.manage&#10;Fixed:&#10;   - Incorrect spawner entities" />
     <MESSAGE value="Redesigned the code" />
     <MESSAGE value="Fixed Inventory edit and added display names to items" />
     <MESSAGE value="Removed bunch of static methods and variables (Reduce RAM usage)" />
@@ -447,45 +460,46 @@
     <MESSAGE value="Added Unban system" />
     <MESSAGE value="Added LiteBans and Advanced Ban support" />
     <MESSAGE value="Saving UUIDs instead of Player objects. (Optimization), redesigned GUI and start working on multi language support." />
-    <option name="LAST_COMMIT_MESSAGE" value="Saving UUIDs instead of Player objects. (Optimization), redesigned GUI and start working on multi language support." />
+    <MESSAGE value="Russian language added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Russian language added" />
   </component>
   <component name="WindowStateProjectService">
     <state x="640" y="247" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1577032385617">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="247" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1577032385617" />
-    <state x="747" y="135" key="CommitChangelistDialog2" timestamp="1577031757145">
+    <state x="741" y="135" key="CommitChangelistDialog2" timestamp="1577131616899">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="747" y="135" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1577031757145" />
+    <state x="741" y="135" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1577131616899" />
     <state x="902" y="295" key="FileChooserDialogImpl" timestamp="1576319519444">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="902" y="295" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1576319519444" />
-    <state width="1877" height="220" key="GridCell.Tab.0.bottom" timestamp="1576974688596">
+    <state width="1340" height="220" key="GridCell.Tab.0.bottom" timestamp="1577141600842">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="220" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1576974688596" />
-    <state width="1877" height="220" key="GridCell.Tab.0.center" timestamp="1576974688596">
+    <state width="1340" height="220" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1577141600842" />
+    <state width="1340" height="220" key="GridCell.Tab.0.center" timestamp="1577141600842">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="220" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1576974688596" />
-    <state width="1877" height="220" key="GridCell.Tab.0.left" timestamp="1576974688596">
+    <state width="1340" height="220" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1577141600842" />
+    <state width="1340" height="220" key="GridCell.Tab.0.left" timestamp="1577141600842">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="220" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1576974688596" />
-    <state width="1877" height="220" key="GridCell.Tab.0.right" timestamp="1576974688596">
+    <state width="1340" height="220" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1577141600842" />
+    <state width="1340" height="220" key="GridCell.Tab.0.right" timestamp="1577141600842">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="220" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1576974688596" />
+    <state width="1340" height="220" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1577141600842" />
     <state x="459" y="105" key="SettingsEditor" timestamp="1576369585967">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="459" y="105" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1576369585967" />
-    <state x="714" y="273" key="Vcs.Push.Dialog.v2" timestamp="1577031773198">
+    <state x="714" y="273" key="Vcs.Push.Dialog.v2" timestamp="1577131624156">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="714" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1577031773198" />
+    <state x="714" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1577131624156" />
     <state x="656" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1577131192012">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -103,6 +103,25 @@ public class AdminGUI extends JavaPlugin {
         AdminUI.skulls.put("AverageJoe", Item.pre_createPlayerHead("AverageJoe"));
         AdminUI.skulls.put("Chaochris", Item.pre_createPlayerHead("Chaochris"));
         AdminUI.skulls.put("MHF_Redstone", Item.pre_createPlayerHead("MHF_Redstone"));
+        AdminUI.skulls.put("Ground15", Item.pre_createPlayerHead("Ground15"));
+        AdminUI.skulls.put("EDDxample", Item.pre_createPlayerHead("EDDxample"));
+        AdminUI.skulls.put("LapisBlock", Item.pre_createPlayerHead("LapisBlock"));
+        AdminUI.skulls.put("emack0714", Item.pre_createPlayerHead("emack0714"));
+        AdminUI.skulls.put("Super_Sniper", Item.pre_createPlayerHead("Super_Sniper"));
+        AdminUI.skulls.put("IM_", Item.pre_createPlayerHead("IM_"));
+        AdminUI.skulls.put("Burger_guy", Item.pre_createPlayerHead("Burger_guy"));
+        AdminUI.skulls.put("MFH_Spawner", Item.pre_createPlayerHead("MFH_Spawner"));
+        AdminUI.skulls.put("MrSnowDK", Item.pre_createPlayerHead("MrSnowDK"));
+        AdminUI.skulls.put("ZeeFear", Item.pre_createPlayerHead("ZeeFear"));
+        AdminUI.skulls.put("Opp", Item.pre_createPlayerHead("Opp"));
+        AdminUI.skulls.put("haohanklliu", Item.pre_createPlayerHead("haohanklliu"));
+        AdminUI.skulls.put("raichuthink", Item.pre_createPlayerHead("raichuthink"));
+        AdminUI.skulls.put("ThaBrick", Item.pre_createPlayerHead("ThaBrick"));
+        AdminUI.skulls.put("Mannahara", Item.pre_createPlayerHead("Mannahara"));
+        AdminUI.skulls.put("Zyne", Item.pre_createPlayerHead("Zyne"));
+        AdminUI.skulls.put("3i5g00d", Item.pre_createPlayerHead("3i5g00d"));
+
+        //AdminUI.skulls.put("", Item.pre_createPlayerHead(""));
     }
 
     @Override
@@ -296,7 +315,7 @@ public class AdminGUI extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Name: &bAdminGUI-Premium"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Developer: &bBlack1_TV"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b2.0.5"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b2.0.6"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
