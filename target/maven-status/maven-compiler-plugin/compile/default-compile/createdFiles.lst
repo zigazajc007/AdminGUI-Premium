@@ -20,6 +20,7 @@ com\rabbitcompany\admingui\utils\InventoryGUI.class
 com\rabbitcompany\admingui\MetricsLite$1.class
 com\rabbitcompany\admingui\utils\TargetPlayer.class
 com\rabbitcompany\admingui\MetricsLite.class
+com\rabbitcompany\admingui\listeners\PlayerJoinListener$1.class
 com\rabbitcompany\admingui\utils\spawners\messages\Message_Version_14.class
 com\rabbitcompany\admingui\listeners\PlayerDamageListener.class
 com\rabbitcompany\admingui\utils\potions\Version_14.class

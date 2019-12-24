@@ -120,8 +120,16 @@ public class AdminGUI extends JavaPlugin {
         AdminUI.skulls.put("Mannahara", Item.pre_createPlayerHead("Mannahara"));
         AdminUI.skulls.put("Zyne", Item.pre_createPlayerHead("Zyne"));
         AdminUI.skulls.put("3i5g00d", Item.pre_createPlayerHead("3i5g00d"));
+        AdminUI.skulls.put("MHF_ArrowLeft", Item.pre_createPlayerHead("MHF_ArrowLeft"));
+        AdminUI.skulls.put("MHF_Question", Item.pre_createPlayerHead("MHF_Question"));
+        AdminUI.skulls.put("MHF_ArrowRight", Item.pre_createPlayerHead("MHF_ArrowRight"));
+        AdminUI.skulls.put("ZiGmUnDo", Item.pre_createPlayerHead("ZiGmUnDo"));
+        AdminUI.skulls.put("Push_red_button", Item.pre_createPlayerHead("Push_red_button"));
+        AdminUI.skulls.put("ElMarcosFTW", Item.pre_createPlayerHead("ElMarcosFTW"));
+        AdminUI.skulls.put("DavidGriffiths", Item.pre_createPlayerHead("DavidGriffiths"));
 
         //AdminUI.skulls.put("", Item.pre_createPlayerHead(""));
+        //DavidGriffiths
     }
 
     @Override

@@ -319,15 +319,15 @@ public class AdminUI {
         }
 
         if(page.getOrDefault(p.getUniqueId(), 1) > 1){
-            Item.createPlayerHead(inv_players, "MHF_ArrowLeft", 1, 49, Message.getMessage(p.getUniqueId(), "players_previous"));
+            Item.after_createPlayerHead(inv_players, skulls.get("MHF_ArrowLeft"), 1, 49, Message.getMessage(p.getUniqueId(), "players_previous"));
         }
 
         if(pages.getOrDefault(p.getUniqueId(), 1) > 1){
-            Item.createPlayerHead(inv_players, "MHF_Question", page.getOrDefault(p.getUniqueId(), 1), 50, Message.getMessage(p.getUniqueId(), "players_page") + " " + page.getOrDefault(p.getUniqueId(), 1));
+            Item.after_createPlayerHead(inv_players, skulls.get("MHF_Question"), page.getOrDefault(p.getUniqueId(), 1), 50, Message.getMessage(p.getUniqueId(), "players_page") + " " + page.getOrDefault(p.getUniqueId(), 1));
         }
 
         if(pages.get(p.getUniqueId()) > page.getOrDefault(p.getUniqueId(), 1)){
-            Item.createPlayerHead(inv_players, "MHF_ArrowRight", 1, 51, Message.getMessage(p.getUniqueId(), "players_next"));
+            Item.after_createPlayerHead(inv_players, skulls.get("MHF_ArrowRight"), 1, 51, Message.getMessage(p.getUniqueId(), "players_next"));
         }
 
         //Item.create(inv_players, "REDSTONE_BLOCK", 1, 54, Message.getMessage(p.getUniqueId(), "players_back"));
@@ -450,15 +450,15 @@ public class AdminUI {
         }
 
         if(unban_page.getOrDefault(p.getUniqueId(), 1) > 1){
-            Item.createPlayerHead(inv_unban_players, "MHF_ArrowLeft", 1, 49, Message.getMessage(p.getUniqueId(), "unban_previous"));
+            Item.after_createPlayerHead(inv_unban_players, skulls.get("MHF_ArrowLeft"), 1, 49, Message.getMessage(p.getUniqueId(), "unban_previous"));
         }
 
         if(unban_pages.getOrDefault(p.getUniqueId(), 1) > 1){
-            Item.createPlayerHead(inv_unban_players, "MHF_Question", unban_page.getOrDefault(p.getUniqueId(), 1), 50, Message.getMessage(p.getUniqueId(), "unban_page") + " " + unban_page.getOrDefault(p.getUniqueId(), 1));
+            Item.after_createPlayerHead(inv_unban_players, skulls.get("MHF_Question"), unban_page.getOrDefault(p.getUniqueId(), 1), 50, Message.getMessage(p.getUniqueId(), "unban_page") + " " + unban_page.getOrDefault(p.getUniqueId(), 1));
         }
 
         if(unban_pages.get(p.getUniqueId()) > unban_page.getOrDefault(p.getUniqueId(), 1)){
-            Item.createPlayerHead(inv_unban_players, "MHF_ArrowRight", 1, 51, Message.getMessage(p.getUniqueId(), "unban_next"));
+            Item.after_createPlayerHead(inv_unban_players, skulls.get("MHF_ArrowRight"), 1, 51, Message.getMessage(p.getUniqueId(), "unban_next"));
         }
 
         //Item.create(inv_unban_players, "REDSTONE_BLOCK", 1, 54, Message.getMessage(p.getUniqueId(), "unban_back"));
@@ -486,22 +486,26 @@ public class AdminUI {
             Item.createPlayerHead(inv_players_settings, target_player.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_player.getName()));
         }
 
-        Item.create(inv_players_settings, "DIAMOND_SWORD", 1, 11, Message.getMessage(p.getUniqueId(), "players_settings_actions"));
+        //Item.create(inv_players_settings, "DIAMOND_SWORD", 1, 11, Message.getMessage(p.getUniqueId(), "players_settings_actions"));
+        Item.after_createPlayerHead(inv_players_settings, skulls.get("ZiGmUnDo"), 1, 11, Message.getMessage(p.getUniqueId(), "players_settings_actions"));
 
         if(p.hasPermission("admingui.money.other")) {
-            Item.create(inv_players_settings, "PAPER", 1, 13, Message.getMessage(p.getUniqueId(), "players_settings_money"));
+            //Item.create(inv_players_settings, "PAPER", 1, 13, Message.getMessage(p.getUniqueId(), "players_settings_money"));
+            Item.after_createPlayerHead(inv_players_settings, skulls.get("MrSnowDK"), 1, 13, Message.getMessage(p.getUniqueId(), "players_settings_money"));
         }else{
             Item.create(inv_players_settings, "RED_STAINED_GLASS_PANE", 1, 13,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.kick.other")) {
-            Item.create(inv_players_settings, "BLACK_TERRACOTTA", 1, 15, Message.getMessage(p.getUniqueId(), "players_settings_kick_player"));
+            //Item.create(inv_players_settings, "BLACK_TERRACOTTA", 1, 15, Message.getMessage(p.getUniqueId(), "players_settings_kick_player"));
+            Item.after_createPlayerHead(inv_players_settings, skulls.get("Push_red_button"), 1, 15, Message.getMessage(p.getUniqueId(), "players_settings_kick_player"));
         }else{
             Item.create(inv_players_settings, "RED_STAINED_GLASS_PANE", 1, 15,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.ban")) {
-            Item.create(inv_players_settings, "BEDROCK", 1, 17, Message.getMessage(p.getUniqueId(), "players_settings_ban_player"));
+            //Item.create(inv_players_settings, "BEDROCK", 1, 17, Message.getMessage(p.getUniqueId(), "players_settings_ban_player"));
+            Item.after_createPlayerHead(inv_players_settings, skulls.get("Chaochris"), 1, 17, Message.getMessage(p.getUniqueId(), "players_settings_ban_player"));
         }else{
             Item.create(inv_players_settings, "RED_STAINED_GLASS_PANE", 1, 17,  Message.getMessage(p.getUniqueId(), "permission"));
         }
@@ -534,30 +538,37 @@ public class AdminUI {
         }
 
         if(p.hasPermission("admingui.heal.other")) {
-            Item.create(inv_actions, "GOLDEN_APPLE", 1, 11, Message.getMessage(p.getUniqueId(), "actions_heal"));
+            //Item.create(inv_actions, "GOLDEN_APPLE", 1, 11, Message.getMessage(p.getUniqueId(), "actions_heal"));
+            Item.after_createPlayerHead(inv_actions, skulls.get("IM_"), 1, 11, Message.getMessage(p.getUniqueId(), "actions_heal"));
         }else{
             Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 11,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.feed.other")) {
-            Item.create(inv_actions, "COOKED_BEEF", 1, 13, Message.getMessage(p.getUniqueId(), "actions_feed"));
+            //Item.create(inv_actions, "COOKED_BEEF", 1, 13, Message.getMessage(p.getUniqueId(), "actions_feed"));
+            Item.after_createPlayerHead(inv_actions, skulls.get("Burger_guy"), 1, 13, Message.getMessage(p.getUniqueId(), "actions_feed"));
         }else{
             Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 13,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.gamemode.other")) {
             if (target.getGameMode() == GameMode.SURVIVAL) {
-                Item.create(inv_actions, "DIRT", 1, 15, Message.getMessage(p.getUniqueId(), "actions_survival"));
+                //Item.create(inv_actions, "DIRT", 1, 15, Message.getMessage(p.getUniqueId(), "actions_survival"));
+                Item.after_createPlayerHead(inv_actions, skulls.get("Zyne"), 1, 15, Message.getMessage(p.getUniqueId(), "actions_survival"));
             } else if (target.getGameMode() == GameMode.ADVENTURE) {
-                Item.create(inv_actions, "GRASS_BLOCK", 1, 15, Message.getMessage(p.getUniqueId(), "actions_adventure"));
+                //Item.create(inv_actions, "GRASS_BLOCK", 1, 15, Message.getMessage(p.getUniqueId(), "actions_adventure"));
+                Item.after_createPlayerHead(inv_actions, skulls.get("Mannahara"), 1, 15, Message.getMessage(p.getUniqueId(), "actions_adventure"));
             } else if (target.getGameMode() == GameMode.CREATIVE) {
-                Item.create(inv_actions, "BRICKS", 1, 15, Message.getMessage(p.getUniqueId(), "actions_creative"));
+                //Item.create(inv_actions, "BRICKS", 1, 15, Message.getMessage(p.getUniqueId(), "actions_creative"));
+                Item.after_createPlayerHead(inv_actions, skulls.get("ThaBrick"), 1, 15, Message.getMessage(p.getUniqueId(), "actions_creative"));
             } else if (target.getGameMode() == GameMode.SPECTATOR) {
+                /*
                 if(Bukkit.getVersion().contains("1.8")){
                     Item.create(inv_actions, "POTION", 1, 15, Message.getMessage(p.getUniqueId(), "actions_spectator"));
                 }else{
                     Item.create(inv_actions, "SPLASH_POTION", 1, 15, Message.getMessage(p.getUniqueId(), "actions_spectator"));
-                }
+                } */
+                Item.after_createPlayerHead(inv_actions, skulls.get("3i5g00d"), 1, 15, Message.getMessage(p.getUniqueId(), "actions_spectator"));
             }
         }else{
             Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 15,  Message.getMessage(p.getUniqueId(), "permission"));
@@ -566,15 +577,19 @@ public class AdminUI {
         if(p.hasPermission("admingui.god.other")) {
             if(!Bukkit.getVersion().contains("1.8")) {
                 if (target.isInvulnerable()) {
-                    Item.create(inv_actions, "RED_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_disabled"));
+                    //Item.create(inv_actions, "RED_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_disabled"));
+                    Item.after_createPlayerHead(inv_actions, skulls.get("Ground15"), 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_disabled"));
                 } else {
-                    Item.create(inv_actions, "LIME_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_enabled"));
+                    //Item.create(inv_actions, "LIME_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_enabled"));
+                    Item.after_createPlayerHead(inv_actions, skulls.get("EDDxample"), 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_enabled"));
                 }
             }else{
                 if(god.getOrDefault(target.getUniqueId(), false)){
-                    Item.create(inv_actions, "RED_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_disabled"));
+                    //Item.create(inv_actions, "RED_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_disabled"));
+                    Item.after_createPlayerHead(inv_actions, skulls.get("Ground15"), 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_disabled"));
                 }else{
-                    Item.create(inv_actions, "LIME_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_enabled"));
+                    //Item.create(inv_actions, "LIME_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_enabled"));
+                    Item.after_createPlayerHead(inv_actions, skulls.get("EDDxample"), 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_enabled"));
                 }
             }
         }else{
@@ -594,13 +609,15 @@ public class AdminUI {
         }
 
         if(p.hasPermission("admingui.kill.other")) {
-            Item.create(inv_actions, "DIAMOND_SWORD", 1, 23, Message.getMessage(p.getUniqueId(), "actions_kill_player"));
+            //Item.create(inv_actions, "DIAMOND_SWORD", 1, 23, Message.getMessage(p.getUniqueId(), "actions_kill_player"));
+            Item.after_createPlayerHead(inv_actions, skulls.get("ZeeFear"),1,23, Message.getMessage(p.getUniqueId(), "actions_kill_player"));
         }else{
             Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 23,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.spawner.other")) {
-            Item.create(inv_actions, "SPAWNER", 1, 25, Message.getMessage(p.getUniqueId(), "actions_spawner"));
+            //Item.create(inv_actions, "SPAWNER", 1, 25, Message.getMessage(p.getUniqueId(), "actions_spawner"));
+            Item.after_createPlayerHead(inv_actions, skulls.get("MFH_Spawner"), 1, 25, Message.getMessage(p.getUniqueId(), "actions_spawner"));
         }else{
             Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 25,  Message.getMessage(p.getUniqueId(), "permission"));
         }
@@ -616,13 +633,15 @@ public class AdminUI {
         }
 
         if(p.hasPermission("admingui.inventory")) {
-            Item.create(inv_actions, "BOOK", 1, 29, Message.getMessage(p.getUniqueId(), "actions_inventory"));
+            //Item.create(inv_actions, "BOOK", 1, 29, Message.getMessage(p.getUniqueId(), "actions_inventory"));
+            Item.after_createPlayerHead(inv_actions, skulls.get("ElMarcosFTW"), 1, 29, Message.getMessage(p.getUniqueId(), "actions_inventory"));
         }else{
             Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 29,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.burn.other")) {
-            Item.create(inv_actions, "FLINT_AND_STEEL", 1, 31, Message.getMessage(p.getUniqueId(), "actions_burn_player"));
+            //Item.create(inv_actions, "FLINT_AND_STEEL", 1, 31, Message.getMessage(p.getUniqueId(), "actions_burn_player"));
+            Item.after_createPlayerHead(inv_actions, skulls.get("haohanklliu"), 1, 31, Message.getMessage(p.getUniqueId(), "actions_burn_player"));
         }else{
             Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 31,  Message.getMessage(p.getUniqueId(), "permission"));
         }
@@ -643,9 +662,11 @@ public class AdminUI {
 
         if(p.hasPermission("admingui.lightning.other")){
             if(Bukkit.getVersion().contains("1.13") || Bukkit.getVersion().contains("1.14")){
-                Item.create(inv_actions, "TRIDENT", 1, 35, Message.getMessage(p.getUniqueId(), "actions_lightning"));
+                //Item.create(inv_actions, "TRIDENT", 1, 35, Message.getMessage(p.getUniqueId(), "actions_lightning"));
+                Item.after_createPlayerHead(inv_actions, skulls.get("raichuthink"), 1, 35, Message.getMessage(p.getUniqueId(), "actions_lightning"));
             }else{
-                Item.create(inv_actions, "STICK", 1, 35, Message.getMessage(p.getUniqueId(), "actions_lightning"));
+                //Item.create(inv_actions, "STICK", 1, 35, Message.getMessage(p.getUniqueId(), "actions_lightning"));
+                Item.after_createPlayerHead(inv_actions, skulls.get("raichuthink"), 1, 35, Message.getMessage(p.getUniqueId(), "actions_lightning"));
             }
         }else{
             Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 35, Message.getMessage(p.getUniqueId(), "permission"));
@@ -664,7 +685,8 @@ public class AdminUI {
         }
 
         if(p.hasPermission("admingui.custom")) {
-            Item.create(inv_actions, "PAINTING", 1, 41, Message.getMessage(p.getUniqueId(), "actions_custom"));
+            //Item.create(inv_actions, "PAINTING", 1, 41, Message.getMessage(p.getUniqueId(), "actions_custom"));
+            Item.after_createPlayerHead(inv_actions, skulls.get("Opp"),1,41, Message.getMessage(p.getUniqueId(), "actions_custom"));
         }else{
             Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 41,  Message.getMessage(p.getUniqueId(), "permission"));
         }
