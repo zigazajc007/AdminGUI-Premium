@@ -1138,8 +1138,12 @@ public class AdminUI {
             if(clicked.getItemMeta().getLore().get(0).equals(Message.getMessage(p.getUniqueId(), "players_more"))){
                 Player target_p = getServer().getPlayer(ChatColor.stripColor(clicked.getItemMeta().getDisplayName()));
                 if(target_p != null){
-                    target_player.put(p, target_p);
-                    p.openInventory(GUI_Players_Settings(p,target_p));
+                    if(p.getUniqueId() != target_p.getUniqueId()){
+                        target_player.put(p, target_p);
+                        p.openInventory(GUI_Players_Settings(p,target_p));
+                    }else{
+                        p.openInventory(GUI_Player(p));
+                    }
                 }else{
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
                     p.closeInventory();
