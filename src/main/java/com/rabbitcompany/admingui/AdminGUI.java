@@ -25,6 +25,10 @@ public class AdminGUI extends JavaPlugin {
     private static Economy econ = null;
     public static boolean vault = false;
 
+    //Config
+    private File co = null;
+    private YamlConfiguration conf = new YamlConfiguration();
+
     //English
     private File en = null;
     private YamlConfiguration engl = new YamlConfiguration();
@@ -60,14 +64,15 @@ public class AdminGUI extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+        this.co = new File(getDataFolder(), "config.yml");
         this.en = new File(getDataFolder(), "Languages/English.yml");
         this.ge = new File(getDataFolder(), "Languages/German.yml");
         this.ch = new File(getDataFolder(), "Languages/Chinese.yml");
         this.ru = new File(getDataFolder(), "Languages/Russian.yml");
         this.k = new File(getDataFolder(), "kick.yml");
-        this.p = new File(getDataFolder(), "plugins.yml");
-        this.c = new File(getDataFolder(), "commands.yml");
-        this.o = new File(getDataFolder(), "commands-other.yml");
+        this.p = new File(getDataFolder(), "Custom Commands/plugins.yml");
+        this.c = new File(getDataFolder(), "Custom Commands/commands.yml");
+        this.o = new File(getDataFolder(), "Custom Commands/commands-other.yml");
 
         mkdir();
         loadYamls();
@@ -128,8 +133,6 @@ public class AdminGUI extends JavaPlugin {
         AdminUI.skulls.put("ElMarcosFTW", Item.pre_createPlayerHead("ElMarcosFTW"));
         AdminUI.skulls.put("DavidGriffiths", Item.pre_createPlayerHead("DavidGriffiths"));
 
-        //AdminUI.skulls.put("", Item.pre_createPlayerHead(""));
-        //DavidGriffiths
     }
 
     @Override
@@ -155,6 +158,11 @@ public class AdminGUI extends JavaPlugin {
     }
 
     private void mkdir() {
+
+        if(!this.co.exists()){
+            saveResource("config.yml", false);
+        }
+
         if (!this.en.exists()) {
             saveResource("Languages/English.yml", false);
         }
@@ -176,19 +184,26 @@ public class AdminGUI extends JavaPlugin {
         }
 
         if(!this.p.exists()){
-            saveResource("plugins.yml", false);
+            saveResource("Custom Commands/plugins.yml", false);
         }
 
         if(!this.c.exists()){
-            saveResource("commands.yml", false);
+            saveResource("Custom Commands/commands.yml", false);
         }
 
         if(!this.o.exists()){
-            saveResource("commands-other.yml", false);
+            saveResource("Custom Commands/commands-other.yml", false);
         }
     }
 
     public void loadYamls(){
+
+        try{
+            this.conf.load(this.co);
+        } catch (IOException | InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+
         try {
             this.engl.load(this.en);
         } catch (IOException | InvalidConfigurationException e) {
@@ -230,6 +245,8 @@ public class AdminGUI extends JavaPlugin {
             e.printStackTrace();
         }
     }
+
+    public YamlConfiguration getConf() { return this.conf; }
 
     public YamlConfiguration getEngl() { return this.engl; }
 
@@ -323,7 +340,7 @@ public class AdminGUI extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Name: &bAdminGUI-Premium"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Developer: &bBlack1_TV"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b3.0.0"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b3.0.1"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));

@@ -26,23 +26,29 @@ public class PlayerJoinListener implements Listener {
         AdminUI.online_players.add(event.getPlayer().getName());
         AdminUI.skulls.put(event.getPlayer().getName(), Item.pre_createPlayerHead(event.getPlayer().getName()));
 
-        if(event.getPlayer().hasPermission("admingui.admin")){
-            int  max_value = AdminUI.skulls.size();
-            event.getPlayer().sendMessage(Message.getMessage(event.getPlayer().getUniqueId(), "prefix") + Message.getMessage(event.getPlayer().getUniqueId(), "message_initializing_start"));
-            getServer().getScheduler().scheduleSyncRepeatingTask(AdminGUI.getInstance(), new Runnable() {
-                int i = 0;
-                @Override
-                public void run() {
-                    if(i < max_value){
-                        event.getPlayer().getInventory().setHelmet(AdminUI.skulls.get(AdminUI.skulls.keySet().toArray()[i].toString()));
-                    }else{
-                        event.getPlayer().getInventory().setHelmet(null);
-                        event.getPlayer().sendMessage(Message.getMessage(event.getPlayer().getUniqueId(), "prefix") + Message.getMessage(event.getPlayer().getUniqueId(), "message_initializing_finish"));
-                        Bukkit.getServer().getScheduler().cancelTasks(AdminGUI.getInstance());
-                    }
-                    i++;
+        if(adminGUI.getConf().getInt("initialize_gui",1) == 1) {
+            if (event.getPlayer().hasPermission("admingui.admin")) {
+                int max_value = AdminUI.skulls.size();
+                if(adminGUI.getConf().getBoolean("initialize_reminder", true)){
+                    event.getPlayer().sendMessage(Message.getMessage(event.getPlayer().getUniqueId(), "prefix") + Message.getMessage(event.getPlayer().getUniqueId(), "message_initializing_start"));
                 }
-            }, 20L, 20L);
+                getServer().getScheduler().scheduleSyncRepeatingTask(AdminGUI.getInstance(), new Runnable() {
+                    int i = 0;
+                    @Override
+                    public void run() {
+                        if (i < max_value) {
+                            event.getPlayer().getInventory().setHelmet(AdminUI.skulls.get(AdminUI.skulls.keySet().toArray()[i].toString()));
+                        } else {
+                            event.getPlayer().getInventory().setHelmet(null);
+                            if(adminGUI.getConf().getBoolean("initialize_reminder", true)){
+                                event.getPlayer().sendMessage(Message.getMessage(event.getPlayer().getUniqueId(), "prefix") + Message.getMessage(event.getPlayer().getUniqueId(), "message_initializing_finish"));
+                            }
+                            Bukkit.getServer().getScheduler().cancelTasks(AdminGUI.getInstance());
+                        }
+                        i++;
+                    }
+                }, 20L, adminGUI.getConf().getInt("initialize_delay", 1) * 20L);
+            }
         }
     }
 }

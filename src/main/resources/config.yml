@@ -1,0 +1,44 @@
+#       ----------- + AdminGUI by Ziga Zajc + -----------   #
+#                                                           #
+#                            Config                         #
+#                                                           #
+#       --------- + ------------------------- + ---------   #
+#
+#       You can use chat colors:
+#                ________________________
+#               |   code: | color:       |
+#               |________________________|
+#               |     &0  |	Black	     |
+#               |     &1  |	Dark Blue	 |
+#               |     &2  |	Dark Green	 |
+#               |     &3  |	Dark Aqua	 |
+#               |     &4  |	Dark Red	 |
+#               |     &5  |	Dark Purple	 |
+#               |     &6  |	Gold	     |
+#               |     &7  |	Gray	     |
+#               |     &8  |	Dark Gray	 |
+#               |     &9  |	Blue	     |
+#               |     &a  |	Green	     |
+#               |     &b  |	Aqua	     |
+#               |     &c  |	Red	         |
+#               |     &d  |	Light Purple |
+#               |     &e  |	Yellow	     |
+#               |     &f  |	White	     |
+#               |     &k  |	Obfuscated	 |
+#               |     &l  |	Bold	     |
+#               |     &m  |	Strikethrough|
+#               |     &n  |	Underline	 |
+#               |     &o  |	Italic	     |
+#               |     &r  |	Reset	     |
+#               |________________________|
+#
+#----------------------------------------------------------
+#                        Config
+#----------------------------------------------------------
+# If initialize_gui is set to 0 then gui won't be initialized and will be very buggy on first use.
+# If initialize_gui is set to 1 then gui will be initialized when player join the game. (Default and recommended)
+initialize_gui: 1
+# How many seconds expires before next player head will start initializing. (Default is 2) (Lower number is faster but more buggier)
+initialize_delay: 2
+# If initialize_reminder is set to true then players will be reminded when GUI will start initializing and when it will finish. (Default is true)
+initialize_reminder: true
