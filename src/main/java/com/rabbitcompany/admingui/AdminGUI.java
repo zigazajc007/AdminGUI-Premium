@@ -41,6 +41,10 @@ public class AdminGUI extends JavaPlugin {
     private File ch = null;
     private YamlConfiguration chin = new YamlConfiguration();
 
+    //Italian
+    private File it = null;
+    private YamlConfiguration ital = new YamlConfiguration();
+
     //Russian
     private File ru = null;
     private YamlConfiguration russ = new YamlConfiguration();
@@ -68,6 +72,7 @@ public class AdminGUI extends JavaPlugin {
         this.en = new File(getDataFolder(), "Languages/English.yml");
         this.ge = new File(getDataFolder(), "Languages/German.yml");
         this.ch = new File(getDataFolder(), "Languages/Chinese.yml");
+        this.it = new File(getDataFolder(), "Languages/Italian.yml");
         this.ru = new File(getDataFolder(), "Languages/Russian.yml");
         this.k = new File(getDataFolder(), "kick.yml");
         this.p = new File(getDataFolder(), "Custom Commands/plugins.yml");
@@ -175,6 +180,10 @@ public class AdminGUI extends JavaPlugin {
             saveResource("Languages/Chinese.yml", false);
         }
 
+        if(!this.it.exists()){
+            saveResource("Languages/Italian.yml", false);
+        }
+
         if (!this.ru.exists()) {
             saveResource("Languages/Russian.yml", false);
         }
@@ -219,6 +228,11 @@ public class AdminGUI extends JavaPlugin {
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
+        try{
+            this.ital.load(this.it);
+        }catch (IOException | InvalidConfigurationException e){
+            e.printStackTrace();
+        }
         try {
             this.russ.load(this.ru);
         } catch (IOException | InvalidConfigurationException e) {
@@ -253,6 +267,8 @@ public class AdminGUI extends JavaPlugin {
     public YamlConfiguration getGerm() { return this.germ; }
 
     public YamlConfiguration getChin() { return this.chin; }
+
+    public YamlConfiguration getItal() { return this.ital; }
 
     public YamlConfiguration getRuss() { return this.russ; }
 
@@ -340,7 +356,7 @@ public class AdminGUI extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Name: &bAdminGUI-Premium"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Developer: &bBlack1_TV"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b3.0.1"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b3.0.2"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));

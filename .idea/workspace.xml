@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Languages/Italian.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/AdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/AdminGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/ui/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/ui/AdminUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/Message.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +202,8 @@
       <workItem from="1577194005353" duration="8484000" />
       <workItem from="1577306251448" duration="3447000" />
       <workItem from="1577725216137" duration="7109000" />
-      <workItem from="1578348949962" duration="234000" />
+      <workItem from="1578348949962" duration="293000" />
+      <workItem from="1578422894075" duration="968000" />
     </task>
     <task id="LOCAL-00001" summary="Performance improvement">
       <created>1569016445205</created>
@@ -439,7 +443,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577732309246</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Added Italian translation.">
+      <created>1578349214170</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1578349214170</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -462,7 +473,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/LiteBansAPI" />
     </ignored-roots>
-    <MESSAGE value="Replaced every &quot;Empty&quot; text with Empty box in Admin GUI inventory." />
     <MESSAGE value="Now you can edit players Inventories and some bug fixes" />
     <MESSAGE value="Removed 2 unnecessary lines of code." />
     <MESSAGE value="Integrated Vault and start working on money system." />
@@ -487,17 +497,18 @@
     <MESSAGE value="Added more awesome GUI designs." />
     <MESSAGE value="Fixed Players GUI and initialization." />
     <MESSAGE value="Added config.yml so now players will have more control about initializing GUI and more organized files." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added config.yml so now players will have more control about initializing GUI and more organized files." />
+    <MESSAGE value="Added Italian translation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Italian translation." />
   </component>
   <component name="WindowStateProjectService">
     <state x="640" y="247" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1577032385617">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="247" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1577032385617" />
-    <state x="741" y="135" key="CommitChangelistDialog2" timestamp="1577732308316">
+    <state x="741" y="135" key="CommitChangelistDialog2" timestamp="1578349213434">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="741" y="135" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1577732308316" />
+    <state x="741" y="135" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578349213434" />
     <state x="902" y="295" key="FileChooserDialogImpl" timestamp="1576319519444">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -522,14 +533,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="459" y="105" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1576369585967" />
-    <state x="714" y="273" key="Vcs.Push.Dialog.v2" timestamp="1577732314569">
+    <state x="714" y="273" key="Vcs.Push.Dialog.v2" timestamp="1578349220548">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="714" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1577732314569" />
-    <state x="656" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1578348949756">
+    <state x="714" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578349220548" />
+    <state x="656" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1578423094376">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578348949756" />
+    <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578423094376" />
     <state x="690" y="285" key="extract.method.dialog" timestamp="1576946742606">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -22,6 +22,9 @@ public class Message {
                 mess = AdminGUI.getInstance().getChin().getString(config);
                 break;
             case 3:
+                mess = AdminGUI.getInstance().getItal().getString(config);
+                break;
+            case 4:
                 mess = AdminGUI.getInstance().getRuss().getString(config);
                 break;
             default:

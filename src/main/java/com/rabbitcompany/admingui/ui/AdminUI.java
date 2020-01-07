@@ -1024,11 +1024,9 @@ public class AdminUI {
             p.setHealth(20);
             p.setFireTicks(0);
             p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_heal"));
-            p.closeInventory();
         }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_feed"))){
             p.setFoodLevel(20);
             p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_feed"));
-            p.closeInventory();
         }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "player_survival"))){
             p.setGameMode(GameMode.ADVENTURE);
             p.openInventory(GUI_Player(p));
@@ -1257,7 +1255,6 @@ public class AdminUI {
                 target_player.setGameMode(GameMode.SURVIVAL);
                 p.openInventory(GUI_Actions(p,target_player));
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_teleport_to_player"))){
-                p.closeInventory();
                 p.teleport(target_player.getLocation());
                 p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_teleport").replace("{player}", target_player.getName()));
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_kill_player"))){
@@ -1267,7 +1264,6 @@ public class AdminUI {
                 target_player.setFireTicks(500);
                 p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_burn").replace("{player}", target_player.getName()));
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_teleport_player_to_you"))){
-                p.closeInventory();
                 target_player.teleport(p.getLocation());
                 target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_teleport").replace("{player}", p.getName()));
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_heal"))){
@@ -1763,49 +1759,34 @@ public class AdminUI {
                 p.openInventory(GUI_potions(p, target_player));
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_night_vision"))){
                 targetPlayer.setPotionEffect(p, target_player, PotionEffectType.NIGHT_VISION, "potions_night_vision", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
-                p.closeInventory();
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_invisibility"))){
                 targetPlayer.setPotionEffect(p, target_player, PotionEffectType.INVISIBILITY, "potions_invisibility", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
-                p.closeInventory();
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_jump_boost"))){
                 targetPlayer.setPotionEffect(p, target_player, PotionEffectType.JUMP, "potions_jump_boost", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
-                p.closeInventory();
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_fire_resistance"))){
                 targetPlayer.setPotionEffect(p, target_player, PotionEffectType.FIRE_RESISTANCE, "potions_fire_resistance", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
-                p.closeInventory();
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_speed"))){
                 targetPlayer.setPotionEffect(p, target_player, PotionEffectType.SPEED, "potions_speed", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
-                p.closeInventory();
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_slowness"))){
                 targetPlayer.setPotionEffect(p, target_player, PotionEffectType.SLOW, "potions_slowness", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
-                p.closeInventory();
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_water_breathing"))){
                 targetPlayer.setPotionEffect(p, target_player, PotionEffectType.WATER_BREATHING, "potions_water_breathing", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
-                p.closeInventory();
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_instant_health"))){
                 targetPlayer.setPotionEffect(p, target_player, PotionEffectType.HEAL, "potions_instant_health", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
-                p.closeInventory();
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_instant_damage"))){
                 targetPlayer.setPotionEffect(p, target_player, PotionEffectType.HARM, "potions_instant_damage", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
-                p.closeInventory();
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_poison"))){
                 targetPlayer.setPotionEffect(p, target_player, PotionEffectType.POISON, "potions_poison", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
-                p.closeInventory();
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_regeneration"))){
                 targetPlayer.setPotionEffect(p, target_player, PotionEffectType.REGENERATION, "potions_regeneration", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
-                p.closeInventory();
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_strength"))){
                 targetPlayer.setPotionEffect(p, target_player, PotionEffectType.INCREASE_DAMAGE, "potions_strength", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
-                p.closeInventory();
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_weakness"))){
                 targetPlayer.setPotionEffect(p, target_player, PotionEffectType.WEAKNESS, "potions_weakness", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
-                p.closeInventory();
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_luck"))){
                 targetPlayer.setPotionEffect(p, target_player, PotionEffectType.LUCK, "potions_luck", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
-                p.closeInventory();
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "potions_slow_falling"))){
                 targetPlayer.setPotionEffect(p, target_player, PotionEffectType.SLOW_FALLING, "potions_slow_falling", duration.getOrDefault(p.getUniqueId(), 1), level.getOrDefault(p.getUniqueId(), 1));
-                p.closeInventory();
             }
         }else{
             p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
