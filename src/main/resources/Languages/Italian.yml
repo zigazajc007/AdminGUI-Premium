@@ -44,6 +44,7 @@ permission: "&cNon hai il permesso di fare questo!"
 is_not_a_player: "&c{player} non è un giocatore!"
 is_not_a_number: "&c{number} non è un numero!"
 wrong_arguments: "&cPuoi usare solo /admin o /admin <player>"
+wrong_initialize: "&cPuoi usare solo /admin initialize gui o /admin initialize players"
 vault_required: "&cIl tuo server non ha installato il plugin Vault per completare questa azione!"
 vanish_required: "&cIl tuo server non ha installato il plugin Super Vanish or Premium Vanish per completare questa azione!"
 #----------------------------------------------------------

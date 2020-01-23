@@ -2,6 +2,7 @@ package com.rabbitcompany.admingui.commands;
 
 import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
+import com.rabbitcompany.admingui.utils.Initialize;
 import com.rabbitcompany.admingui.utils.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -28,10 +29,12 @@ public class Admin implements CommandExecutor {
                 AdminUI.target_player.put(player, player);
                 player.openInventory(adminUI.GUI_Main(player));
             }else if(args.length == 1){
-                if(args[0].equals("reload")){
+                if(args[0].equals("reload")) {
                     player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.chat("&aPlugin is now reloading..."));
                     AdminGUI.getInstance().loadYamls();
                     player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.chat("&aPlugin reloaded successfully!"));
+                }else if(args[0].equals("initialize")){
+                    player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_initialize"));
                 }else{
                     Player target_player = Bukkit.getServer().getPlayer(ChatColor.stripColor(args[0]));
                     if(target_player != null){
@@ -44,6 +47,16 @@ public class Admin implements CommandExecutor {
                     }else{
                         player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "is_not_a_player").replace("{player}", args[0]));
                     }
+                }
+            }else if(args.length == 2){
+                if(args[0].equals("initialize") && (args[1].equals("gui") || args[1].equals("players"))){
+                    if(args[1].equals("gui")){
+                        Initialize.GUI(player);
+                    }else{
+                        Initialize.Players(player);
+                    }
+                }else{
+                    player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_initialize"));
                 }
             }else{
                 player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_arguments"));

@@ -16,7 +16,8 @@ public class TabCompletion implements TabCompleter {
 
         if(command.getName().equalsIgnoreCase("admin")){
             List<String> completions = new ArrayList<>();
-            if(args.length == 1){
+
+           if(args.length == 1){
 
                 for(Player all : Bukkit.getServer().getOnlinePlayers()) {
                     completions.add(all.getName());
@@ -25,7 +26,13 @@ public class TabCompletion implements TabCompleter {
                 if(sender.hasPermission("admingui.reload")){
                     completions.add("reload");
                 }
-            }
+
+                completions.add("initialize");
+
+           }else if(args.length == 2 && args[0].equals("initialize")){
+               completions.add("gui");
+               completions.add("players");
+           }
             return completions;
         }
 

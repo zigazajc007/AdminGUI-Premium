@@ -44,6 +44,7 @@ permission: "&cYou don't have permission to do this!"
 is_not_a_player: "&c{player} isn't a player!"
 is_not_a_number: "&c{number} isn't a number!"
 wrong_arguments: "&cYou can only use /admin or /admin <player>"
+wrong_initialize: "&cYou can only use /admin initialize gui or /admin initialize players"
 vault_required: "&cYour server don't have installed Vault to complete this action!"
 vanish_required: "&cYour server don't have installed Super Vanish or Premium Vanish to complete this action!"
 #----------------------------------------------------------

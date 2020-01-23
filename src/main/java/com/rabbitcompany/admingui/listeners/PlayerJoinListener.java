@@ -2,6 +2,7 @@ package com.rabbitcompany.admingui.listeners;
 
 import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
+import com.rabbitcompany.admingui.utils.Initialize;
 import com.rabbitcompany.admingui.utils.Item;
 import com.rabbitcompany.admingui.utils.Message;
 import org.bukkit.Bukkit;
@@ -24,31 +25,10 @@ public class PlayerJoinListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
         AdminUI.online_players.add(event.getPlayer().getName());
-        AdminUI.skulls.put(event.getPlayer().getName(), Item.pre_createPlayerHead(event.getPlayer().getName()));
+        AdminUI.skulls_players.put(event.getPlayer().getName(), Item.pre_createPlayerHead(event.getPlayer().getName()));
 
         if(adminGUI.getConf().getInt("initialize_gui",1) == 1) {
-            if (event.getPlayer().hasPermission("admingui.admin")) {
-                int max_value = AdminUI.skulls.size();
-                if(adminGUI.getConf().getBoolean("initialize_reminder", true)){
-                    event.getPlayer().sendMessage(Message.getMessage(event.getPlayer().getUniqueId(), "prefix") + Message.getMessage(event.getPlayer().getUniqueId(), "message_initializing_start"));
-                }
-                getServer().getScheduler().scheduleSyncRepeatingTask(AdminGUI.getInstance(), new Runnable() {
-                    int i = 0;
-                    @Override
-                    public void run() {
-                        if (i < max_value) {
-                            event.getPlayer().getInventory().setHelmet(AdminUI.skulls.get(AdminUI.skulls.keySet().toArray()[i].toString()));
-                        } else {
-                            event.getPlayer().getInventory().setHelmet(null);
-                            if(adminGUI.getConf().getBoolean("initialize_reminder", true)){
-                                event.getPlayer().sendMessage(Message.getMessage(event.getPlayer().getUniqueId(), "prefix") + Message.getMessage(event.getPlayer().getUniqueId(), "message_initializing_finish"));
-                            }
-                            Bukkit.getServer().getScheduler().cancelTasks(AdminGUI.getInstance());
-                        }
-                        i++;
-                    }
-                }, 20L, adminGUI.getConf().getInt("initialize_delay", 1) * 20L);
-            }
+            Initialize.GUI(event.getPlayer());
         }
     }
 }

@@ -20,5 +20,6 @@ public class PlayerLeaveListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerQuitEvent event){
         AdminUI.online_players.remove(event.getPlayer().getName());
+        AdminUI.skulls_players.remove(event.getPlayer().getName());
     }
 }

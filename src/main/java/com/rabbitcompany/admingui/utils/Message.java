@@ -34,7 +34,7 @@ public class Message {
         if(mess != null){
             return chat(mess);
         }else{
-            return chat("&cValue: &6" + config + "&c is missing in language.yml file! Please add it or delete language.yml file.");
+            return chat("&cValue: &6" + config + "&c is missing in English.yml file! Please add it or delete English.yml file.");
         }
     }
 }

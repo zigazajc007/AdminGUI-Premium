@@ -45,6 +45,7 @@ permission: "&c&lУ вас нет разрешения на это!"
 is_not_a_player: "&c&l{player} не игрок!"
 is_not_a_number: "&c&l{number} не число!"
 wrong_arguments: "&c&lВы можете использовать только /admin или /admin <player>"
+wrong_initialize: "&c&lВы можете использовать только /admin initialize gui или /admin initialize players"
 vault_required: "&c&lНа вашем сервере не установлено Vault для выполнения этого действия!"
 vanish_required: "&c&lНа вашем сервере не установлены Super Vanish или Premium Vanish для выполнения этого действия!"
 #----------------------------------------------------------

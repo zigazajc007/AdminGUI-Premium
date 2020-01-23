@@ -35,10 +35,10 @@
 #----------------------------------------------------------
 #                        Config
 #----------------------------------------------------------
-# If initialize_gui is set to 0 then gui won't be initialized and will be very buggy on first use.
+# If initialize_gui is set to 0 then gui won't be initialized and will be very buggy on first use. (You still will be able to initialize the gui in game with /admin initialize gui)
 # If initialize_gui is set to 1 then gui will be initialized when player join the game. (Default and recommended)
 initialize_gui: 1
 # How many seconds expires before next player head will start initializing. (Default is 2) (Lower number is faster but more buggier)
 initialize_delay: 2
-# If initialize_reminder is set to true then players will be reminded when GUI will start initializing and when it will finish. (Default is true)
-initialize_reminder: true
+# If initialize_reminder is set to true then players will be reminded when GUI will start initializing and when it will finish. Only use on versions 1.14.x+ (Default is false)
+initialize_reminder: false

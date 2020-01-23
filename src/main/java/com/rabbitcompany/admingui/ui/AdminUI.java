@@ -31,6 +31,7 @@ public class AdminUI {
 
     //Skulls
     public static HashMap<String, ItemStack> skulls = new HashMap<>();
+    public static HashMap<String, ItemStack> skulls_players = new HashMap<>();
 
     //Online players
     public static ArrayList<String> online_players = new ArrayList<>();
@@ -75,7 +76,7 @@ public class AdminUI {
                 Item.create(inv_main, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
         }
 
-        Item.after_createPlayerHead(inv_main, skulls.get(p.getName()), 1, 11, Message.getMessage(p.getUniqueId(),"main_player").replace("{player}", p.getName()));
+        Item.after_createPlayerHead(inv_main, skulls_players.get(p.getName()), 1, 11, Message.getMessage(p.getUniqueId(),"main_player").replace("{player}", p.getName()));
         Item.after_createPlayerHead(inv_main, skulls.get("0qt"), 1, 13, Message.getMessage(p.getUniqueId(), "main_world"));
         Item.after_createPlayerHead(inv_main, skulls.get("Black1_TV"), 1, 15, Message.getMessage(p.getUniqueId(), "main_players"));
         Item.after_createPlayerHead(inv_main, skulls.get("mattijs"), 1, 17, Message.getMessage(p.getUniqueId(), "main_plugins"));
