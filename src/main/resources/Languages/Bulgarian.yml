@@ -1,0 +1,348 @@
+#       ----------- + Админ Меню от Ziga Zajc + ----------- #
+#                                                           #
+#                           Български                       #
+#                     Преведено от: teddyHV11               #
+#       --------- + ------------------------- + ---------   #
+#
+#       You can use chat colors:
+#                ________________________
+#               |   code: | color:       |
+#               |________________________|
+#               |     &0  | Black        |
+#               |     &1  | Dark Blue    |
+#               |     &2  | Dark Green   |
+#               |     &3  | Dark Aqua    |
+#               |     &4  | Dark Red     |
+#               |     &5  | Dark Purple  |
+#               |     &6  | Gold         |
+#               |     &7  | Gray         |
+#               |     &8  | Dark Gray    |
+#               |     &9  | Blue         |
+#               |     &a  | Green        |
+#               |     &b  | Aqua         |
+#               |     &c  | Red          |
+#               |     &d  | Light Purple |
+#               |     &e  | Yellow       |
+#               |     &f  | White        |
+#               |     &k  | Obfuscated   |
+#               |     &l  | Bold         |
+#               |     &m  | Strikethrough|
+#               |     &n  | Underline    |
+#               |     &o  | Italic       |
+#               |     &r  | Reset        |
+#               |________________________|
+#
+#----------------------------------------------------------
+#                        Префикс
+#----------------------------------------------------------
+prefix: "&7[&cAдмин Меню&7] "
+#----------------------------------------------------------
+#----------------------------------------------------------
+#                       Команди
+#----------------------------------------------------------
+permission: "&cНямате право да правите това!!"
+is_not_a_player: "&c{player} не е играч!"
+is_not_a_number: "&c{number} не е число!"
+wrong_arguments: "&cМожете да използвате само /admin или /admin <player>"
+wrong_initialize: "&cМожете да използвате само/admin initialize gui или /admin initialize players"
+vault_required: "&cВашия сървър няма Vault за да завърши това действие!"
+vanish_required: "&cВашия сървър няма инсталиран Super Vanish или Premium Vanish за да завървши това действие!"
+#----------------------------------------------------------
+#                   Имена на инвентар
+#----------------------------------------------------------
+inventory_main: "&4&lАдмин Меню &c&lПремиум"
+inventory_player: "&5&l{player}"
+inventory_world: "&2&lСвят"
+inventory_players: "&1&lИграчи"
+inventory_plugins: "&e&lПлъгини"
+inventory_commands: "&2&lКоманди"
+inventory_unban: "&c&lПремхване на забрана"
+inventory_actions: "&9&lДействия &2&l{player}"
+inventory_kick: "&8&lИзгони &2&l{player}"
+inventory_ban: "&8&lЗабрани &2&l{player}"
+inventory_potions: "&c&lОтвари &2&l{player}"
+inventory_spawner: "&8&lСпаунар &2&l{player}"
+inventory_money: "&2&lПари &2&l{player}"
+inventory_money_give: "&2&lДай пари на {player}"
+inventory_money_set: "&2&lПари&9&l Сложи &2&l{player}"
+inventory_money_take: "&2&lПари&c&l Вземи &2&l{player}"
+inventory_inventory: "&a&lИнвентар &2&l{player}"
+#----------------------------------------------------------
+#                       Админ Меню
+#----------------------------------------------------------
+main_player: "&5&l{player}"
+main_world: "&2&lСвят"
+main_players: "&9&lИграчи"
+main_plugins: "&6&lПлъгини"
+main_maintenance_mode: "&c&lПодръжка мод"
+main_unban_players: "&c&lПремахни Забраната на Играчи"
+main_quit: "&c&lИзход"
+#----------------------------------------------------------
+#                      Играчи Меню
+#----------------------------------------------------------
+player_info: "&2&l{player}"
+player_heal: "&e&l"
+player_feed: "&7&lНахрани"
+player_survival: "&a&lОцеляване"
+player_adventure: "&2&lПриключение"
+player_creative: "&3&lТворчески"
+player_spectator: "&9&lЗрител"
+player_god_enabled: "&c&lГоспод"
+player_god_disabled: "&a&lГоспод"
+player_potions: "&c&lОтвари"
+player_spawner: "&8&lСпаунар"
+player_kill: "&8&lУбий"
+player_burn: "&c&lИзгори"
+player_lightning: "&5&lСветкавица"
+player_firework: "&4&lФойерверка"
+player_money: "&2&lПари"
+player_vanish_enabled: "&a&lИзчезни"
+player_vanish_disabled: "&c&lИзчезни"
+player_custom: "&6&lПерсонализирани Команди"
+player_back: "&c&lПо-назад"
+#----------------------------------------------------------
+#                       Световно Меню
+#----------------------------------------------------------
+world_day: "&e&lДен"
+world_night: "&8&lНощ"
+world_thunder: "&9&lМълния"
+world_rain: "&3&lДъжд"
+world_clear: "&b&lИзчисти"
+world_back: "&c&lПо-назад"
+#----------------------------------------------------------
+#                     Играчи Меню
+#----------------------------------------------------------
+players_color: "&2&l{player}"
+players_more: "&cНатиснете тук за повече действия"
+players_previous: "&c&lПредишно"
+players_page: "&a&lСтраница"
+players_next: "&2&lПо-напред"
+players_back: "&c&lПо-назад"
+#----------------------------------------------------------
+#                     Плъгин Меню
+#----------------------------------------------------------
+plugins_back: "&c&lПо-назад"
+#----------------------------------------------------------
+#                     Команди Меню
+#----------------------------------------------------------
+commands_back: "&c&lПо-назад"
+#----------------------------------------------------------
+#                     Премхаване на забрана
+#----------------------------------------------------------
+unban_color: "&2&l{player}"
+unban_more: "&cНатиснете тук за да премахнете забрана "
+unban_previous: "&c&lПредишно"
+unban_page: "&a&lСтраница"
+unban_next: "&2&lПо-напред"
+unban_back: "&c&lПо-назад"
+#----------------------------------------------------------
+#                 Настройки на играчи Меню
+#----------------------------------------------------------
+players_settings_info: "&2&l{player}"
+players_settings_actions: "&9&lДействия"
+players_settings_money: "&2&lПари"
+players_settings_kick_player: "&8&lИгони играч"
+players_settings_ban_player: "&8&lЗабрани достъп на играч"
+players_settings_back: "&c&lПо-назад"
+#----------------------------------------------------------
+#                   Действия Меню
+#----------------------------------------------------------
+actions_heal: "&e&lИзлекувай"
+actions_feed: "&7&lХрани"
+actions_info: "&2&l{player}"
+actions_survival: "&a&lОцеляване"
+actions_adventure: "&2&lПриключение"
+actions_creative: "&3&lТворчески"
+actions_spectator: "&9&lНаблюдател"
+actions_teleport_to_player: "&d&lТелепортирай играч"
+actions_kill_player: "&8&lУбий играч"
+actions_burn_player: "&c&lИзгори играч"
+actions_teleport_player_to_you: "&d&lТелепортирай играч към теб"
+actions_god_enabled: "&c&lГоспод"
+actions_god_disabled: "&a&lГоспод"
+actions_potions: "&c&lОтвари"
+actions_spawner: "&8&lСпаунар"
+actions_inventory: "&a&lИнвентар"
+actions_vanish_enabled: "&a&lИзчезни"
+actions_vanish_disabled: "&c&lИзчезни"
+actions_lightning: "&5&lСветкавица"
+actions_firework: "&4&lФойерверка"
+actions_fakeop: "&c&lФълшиви команди"
+actions_custom: "&6&lПерсонализирани команди"
+actions_back: "&c&lПо-назад"
+#----------------------------------------------------------
+#                       Изритване Меню
+#----------------------------------------------------------
+kick: "&4Вие бяхте изритани за"
+kick_back: "&c&lПо-назад"
+#----------------------------------------------------------
+#                       Забрана Меню
+#----------------------------------------------------------
+ban: "&4Вие бяхте лишени от достъп заради "
+ban_time: "&cВашиата веремена забрана ще бъде повдигната след &c&l{days}.{months}.{years}&c и &c&l{hours}:{minutes}:{seconds}."
+ban_years: "&e&lГодини"
+ban_months: "&e&lМесеци"
+ban_days: "&e&lДни"
+ban_hours: "&e&lЧаса"
+ban_minutes: "&e&lМинути"
+ban_hacking: "&7&lХакване!"
+ban_griefing: "&6&lЧупене!"
+ban_spamming: "&d&lСпамване!"
+ban_advertising: "&3&lРекламиране!"
+ban_swearing: "&e&lПсуване!"
+ban_back: "&c&lПо-назад"
+#----------------------------------------------------------
+#                     Отвари Меню
+#----------------------------------------------------------
+potions_night_vision: "&8&lНощно виждане"
+potions_invisibility: "&7&lНевидимост"
+potions_jump_boost: "&a&lПо-високо Скачане"
+potions_fire_resistance: "&c&lОгнеопорство"
+potions_speed: "&b&lБързина"
+potions_slowness: "&4&lБавност"
+potions_water_breathing: "&9&lПодводно Дишане"
+potions_instant_health: "&a&lМигновено Лечение"
+potions_instant_damage: "&4&lМигновена Щета"
+potions_poison: "&5&lОтрова"
+potions_regeneration: "&e&lРегенарация"
+potions_strength: "&e&lСила"
+potions_weakness: "&4&lСлабост"
+potions_luck: "&6&lКъсмет"
+potions_slow_falling: "&3&lБавно падане"
+potions_time: "&a&lВреме"
+potions_remove_all: "&4&lМахни всички"
+potions_level: "&a&lНиво"
+potions_back: "&c&lПо-назад"
+#----------------------------------------------------------
+#                     Призовавщо Меню
+#----------------------------------------------------------
+spawner_bat: "&a&lПрилеп"
+spawner_blaze: "&c&lПламък"
+spawner_cat: "&a&lКотка"
+spawner_cave_spider: "&c&lПещерен Паяк"
+spawner_chicken: "&a&lКокошка"
+spawner_cod: "&b&lТреска"
+spawner_cow: "&a&lКрава"
+spawner_creeper: "&c&lКрийпър"
+spawner_dolphin: "&b&lДелфин"
+spawner_donkey: "&a&lМагаре"
+spawner_drowned: "&c&lОдавник"
+spawner_elder_guardian: "&c&lЕлдърски Пазител"
+spawner_enderman: "&c&lЕндърман"
+spawner_endermite: "&c&lЕндърмит"
+spawner_evoker: "&c&lЕвокър"
+spawner_fox: "&a&lЛисица"
+spawner_ghast: "&c&lГаст"
+spawner_guardian: "&c&lПазител"
+spawner_horse: "&a&lКон"
+spawner_husk: "&c&lХъск"
+spawner_llama: "&a&Лама"
+spawner_magma_cube: "&c&lМагма Куб"
+spawner_mooshroom: "&a&lГъба"
+spawner_mule: "&a&lМул"
+spawner_ocelot: "&a&lОцелот"
+spawner_panda: "&a&lПанда"
+spawner_parrot: "&a&lПапагал"
+spawner_phantom: "&c&lФантом"
+spawner_pig: "&a&lПрасе"
+spawner_pillager: "&c&lПилиджър"
+spawner_polar_bear: "&a&lПолярна Мечка"
+spawner_pufferfish: "&b&lРиба Балон"
+spawner_rabbit: "&a&lЗаяк"
+spawner_ravager: "&c&lРазорител"
+spawner_salmon: "&b&lСьомга"
+spawner_sheep: "&a&lОфца"
+spawner_shulker: "&c&lШулкър"
+spawner_silverfish: "&c&lЛюспеница"
+spawner_skeleton: "&c&lСкелет"
+spawner_skeleton_horse: "&c&lСкелет Кон"
+spawner_slime: "&c&lСлайм"
+spawner_spider: "&c&lПаяк"
+spawner_squid: "&b&lСепия"
+spawner_stray: "&c&lХълк"
+spawner_trader_llama: "&a&lЛама Пордавач"
+spawner_tropical_fish: "&b&lТропическа Риба"
+spawner_turtle: "&a&lКостенурка"
+spawner_vex: "&c&lДразняч"
+spawner_villager: "&a&lСелянин"
+spawner_vindicator: "&c&lВиндикатор"
+spawner_wandering_trader: "&a&lПродавач"
+spawner_witch: "&c&lВещица"
+spawner_wither: "&c&lУитър"
+spawner_wolf: "&a&lВълк"
+spawner_zombie: "&c&lЗомби"
+spawner_zombie_pigman: "&c&lЗомби Прасе"
+spawner_zombie_villager: "&c&lЗомби Селянин"
+spawner_back: "&c&lПо-назад"
+#----------------------------------------------------------
+#                      Пари Меню
+#----------------------------------------------------------
+money_give: "&2&lДай"
+money_set: "&9&lСложи"
+money_take: "&c&lВземи"
+money_back: "&c&По-наазад"
+#----------------------------------------------------------
+#                 Пари Количество Меню
+#----------------------------------------------------------
+money_amount_back: "&c&lПо-назад"
+#----------------------------------------------------------
+#                   Инвентар Меню
+#----------------------------------------------------------
+inventory_refresh: "&a&lРефрешни"
+inventory_clear: "&b&lИзчисти"
+inventory_back: "&c&lПо-назад"
+#----------------------------------------------------------
+#                   Съобщения Меню
+#----------------------------------------------------------
+message_target_player_teleport: "&aВие бяхте телепортирани до {player}."
+message_player_kill: "&aВие убихте {player}."
+message_player_burn: "&aВие сложихте {player} на &cогън&a!"
+message_target_player_creeper: "&a&lКрийпър, охх човек!"
+message_player_creeper: "&aКрийпър е спаунат на {player}."
+message_target_player_heal: "&e{player} ви излекува."
+message_player_heal: "&aВие излекувахте {player}."
+message_target_player_feed: "&e{player} ви нахрани."
+message_player_feed: "&aВие нахранихте {player}."
+message_player_kick: "&a{player} беше изгонен."
+message_player_ban: "&a{player} има забрана вече."
+message_player_god_enabled: "&a{player} е вече в велик мод."
+message_player_god_disabled: "&a{player} не е вече в велик мод."
+message_target_player_god_enabled: "&a{player} ви даде да бъдете в велик мод."
+message_target_player_god_disabled: "&a{player} ви премахна великия мод."
+message_target_player_potions: "&a{player} ви даде {potion}&a за {time} минути."
+message_player_potions: "&aВие дадохте на {player} {potion}&a за {time} минути."
+message_target_player_potions_remove: "&a{player} &cпремахна &aвсичките ви ефекти."
+message_player_potions_remove: "&aВие премхнахте всичките ефекти на {player} ."
+message_heal: "&aВие бяхте излекувани."
+message_feed: "&aВие бяхте най."
+message_god_enabled: "&aВие активирахте велик мод."
+message_god_disabled: "&aВие деактивирахте велик мод."
+message_kill: "&cВие се убихте."
+message_burn: "&cВие се запалихте"
+message_potions_remove: "&aВие премхнахте всичките си ефекти."
+message_potions: "&aВие сложихте {potion}&a за {time} за себе си."
+message_maintenance: "&aServer is now in &cMaintenance mode&a. Please come back later."
+message_maintenance_enabled: "&aПоддържащ мод е &a&lвклочен."
+message_maintenance_disabled: "&aMaintenance mode is now &c&lизключен."
+message_player_not_found: "&cИграчът не е на разположение"
+message_ban_bypass: "&cВие не можете да забраните достъпа на този играч!"
+message_kick_bypass: "&cВие не можете да изгоните този играч.!"
+message_give: "&aВие изпратихте {amount} към ваз и сега имате {balance}."
+message_player_give: "&aВие дадохте {amount} към {player} и сега има {balance}."
+message_target_player_give: "&a{player} ви даде {amount} и сега имате {balance}."
+message_set: "&aВие сложихте на себе си {amount}."
+message_player_set: "&aВие туко-що сложихте парите на {player} към {amount}."
+message_target_player_set: "&a{player} сложи ваще пари към {amount}."
+message_take: "&aВие взехте {amount} от Ваз и сега имате {balance}."
+message_player_take: "&aВие взехте {amount} от {player} ис сега има {balance}."
+message_target_player_take: "&c{player} взе от Ваз {amount} и сега имате {balance}."
+message_transaction_error: "&cНещо се обърка!"
+message_take_error: "&cВие не можете да вземете повече от колкото имате!"
+message_player_take_error: "&cНе може да вземете повече пари от играча от колкото той има!!"
+message_visible: "&aВие сега сте &a&l видими&a към дръгите играчи."
+message_player_visible: "&a{player} вече е &a&l видим &a към други играчи."
+message_hide: "&aВие сега &c&l сте невидими&a към други играчи."
+message_player_hide: "&a{player} сега&c&l скрит&a от фръгите играчи."
+message_unban_player: "&a{player} вече няма забрана."
+message_initializing_start: "&aПлъгина се интълизира"
+message_initializing_finish: "&aМенюто е готово за използване"
