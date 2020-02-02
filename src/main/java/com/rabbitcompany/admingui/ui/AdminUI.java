@@ -37,7 +37,7 @@ public class AdminUI {
     public static ArrayList<String> online_players = new ArrayList<>();
 
     //Language
-    public static HashMap<UUID, Integer> language = new HashMap<>();
+    public static HashMap<UUID, String> language = new HashMap<>();
 
     //Ban
     private HashMap<UUID, Integer> ban_years = new HashMap<>();
@@ -90,6 +90,8 @@ public class AdminUI {
         if(p.hasPermission("admingui.unban")) {
             Item.after_createPlayerHead(inv_main, skulls.get("Chaochris"),1,32, Message.getMessage(p.getUniqueId(), "main_unban_players"));
         }
+
+        Item.after_createPlayerHead(inv_main, skulls.get("Opp"), 1, 34, Message.getMessage(p.getUniqueId(), "main_language") + language.getOrDefault(p.getUniqueId(), "English"));
 
         Item.after_createPlayerHead(inv_main, skulls.get("MHF_Redstone"),1,36, Message.getMessage(p.getUniqueId(), "main_quit"));
 
@@ -1011,6 +1013,26 @@ public class AdminUI {
             }
         }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "main_unban_players"))){
             p.openInventory(GUI_Unban_Players(p));
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "main_language") + language.getOrDefault(p.getUniqueId(), "English"))){
+            switch (language.getOrDefault(p.getUniqueId(), "English")){
+                case "English":
+                    language.put(p.getUniqueId(), "Spanish");
+                    break;
+                case "Spanish":
+                    language.put(p.getUniqueId(), "Russian");
+                    break;
+                case "Russian":
+                    language.put(p.getUniqueId(), "Italian");
+                    break;
+                case "Italian":
+                    language.put(p.getUniqueId(), "Bulgarian");
+                    break;
+                case "Bulgarian":
+                default:
+                    language.put(p.getUniqueId(), "English");
+                    break;
+            }
+            p.openInventory(GUI_Main(p));
         }
 
     }

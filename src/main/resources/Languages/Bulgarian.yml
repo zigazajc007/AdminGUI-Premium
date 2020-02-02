@@ -76,12 +76,13 @@ main_players: "&9&lИграчи"
 main_plugins: "&6&lПлъгини"
 main_maintenance_mode: "&c&lПодръжка мод"
 main_unban_players: "&c&lПремахни Забраната на Играчи"
+main_language: "&b&l"
 main_quit: "&c&lИзход"
 #----------------------------------------------------------
 #                      Играчи Меню
 #----------------------------------------------------------
 player_info: "&2&l{player}"
-player_heal: "&e&l"
+player_heal: "&e&lИзлекувай"
 player_feed: "&7&lНахрани"
 player_survival: "&a&lОцеляване"
 player_adventure: "&2&lПриключение"
@@ -323,7 +324,7 @@ message_potions_remove: "&aВие премхнахте всичките си е�
 message_potions: "&aВие сложихте {potion}&a за {time} за себе си."
 message_maintenance: "&aServer is now in &cMaintenance mode&a. Please come back later."
 message_maintenance_enabled: "&aПоддържащ мод е &a&lвклочен."
-message_maintenance_disabled: "&aMaintenance mode is now &c&lизключен."
+message_maintenance_disabled: "&aПоддържащ мод е &c&lизключен."
 message_player_not_found: "&cИграчът не е на разположение"
 message_ban_bypass: "&cВие не можете да забраните достъпа на този играч!"
 message_kick_bypass: "&cВие не можете да изгоните този играч.!"

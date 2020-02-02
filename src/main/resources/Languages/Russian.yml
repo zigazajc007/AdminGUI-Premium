@@ -77,6 +77,7 @@ main_players: "&9&lИгроки"
 main_plugins: "&6&lПлагин"
 main_maintenance_mode: "&c&lТехнический перерыв!"
 main_unban_players: "&c&lРазбан игроков"
+main_language: "&b&l"
 main_quit: "&c&lВыход"
 #----------------------------------------------------------
 #                      Player GUI
@@ -114,7 +115,7 @@ world_back: "&c&lНазад"
 #                     Players GUI
 #----------------------------------------------------------
 players_color: "&2&l{player}"
-players_lore: "&cНажми чтоб увидеть больше возможностей"
+players_more: "&cНажми чтоб увидеть больше возможностей"
 players_previous: "&c&lПредведущий"
 players_page: "&a&lСтраница"
 players_next: "&2&lВперёд"

@@ -76,6 +76,7 @@ main_players: "&9&lPlayers"
 main_plugins: "&6&lPlugins"
 main_maintenance_mode: "&c&lMaintenance Mode"
 main_unban_players: "&c&lUnban Players"
+main_language: "&b&l"
 main_quit: "&c&lQuit"
 #----------------------------------------------------------
 #                      Player GUI

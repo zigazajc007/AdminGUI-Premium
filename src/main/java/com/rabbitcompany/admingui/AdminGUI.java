@@ -49,6 +49,14 @@ public class AdminGUI extends JavaPlugin {
     private File ru = null;
     private YamlConfiguration russ = new YamlConfiguration();
 
+    //Bulgarian
+    private File bu = null;
+    private YamlConfiguration bulg = new YamlConfiguration();
+
+    //Spanish
+    private File sp = null;
+    private YamlConfiguration span = new YamlConfiguration();
+
     //Kick
     private File k = null;
     private YamlConfiguration kick = new YamlConfiguration();
@@ -74,6 +82,8 @@ public class AdminGUI extends JavaPlugin {
         this.ch = new File(getDataFolder(), "Languages/Chinese.yml");
         this.it = new File(getDataFolder(), "Languages/Italian.yml");
         this.ru = new File(getDataFolder(), "Languages/Russian.yml");
+        this.bu = new File(getDataFolder(), "Languages/Bulgarian.yml");
+        this.sp = new File(getDataFolder(), "Languages/Spanish.yml");
         this.k = new File(getDataFolder(), "kick.yml");
         this.p = new File(getDataFolder(), "Custom Commands/plugins.yml");
         this.c = new File(getDataFolder(), "Custom Commands/commands.yml");
@@ -188,6 +198,14 @@ public class AdminGUI extends JavaPlugin {
             saveResource("Languages/Russian.yml", false);
         }
 
+        if (!this.bu.exists()) {
+            saveResource("Languages/Bulgarian.yml", false);
+        }
+
+        if (!this.sp.exists()) {
+            saveResource("Languages/Spanish.yml", false);
+        }
+
         if(!this.k.exists()){
             saveResource("kick.yml", false);
         }
@@ -239,6 +257,16 @@ public class AdminGUI extends JavaPlugin {
             e.printStackTrace();
         }
         try {
+            this.bulg.load(this.bu);
+        } catch (IOException | InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+        try {
+            this.span.load(this.sp);
+        } catch (IOException | InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+        try {
             this.kick.load(this.k);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
@@ -271,6 +299,10 @@ public class AdminGUI extends JavaPlugin {
     public YamlConfiguration getItal() { return this.ital; }
 
     public YamlConfiguration getRuss() { return this.russ; }
+
+    public YamlConfiguration getBulg() { return this.bulg; }
+
+    public YamlConfiguration getSpan() { return this.span; }
 
     public YamlConfiguration getKick() { return this.kick; }
 
@@ -356,7 +388,7 @@ public class AdminGUI extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Name: &bAdminGUI-Premium"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Developer: &bBlack1_TV"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b3.0.3"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b3.0.4"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
