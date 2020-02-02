@@ -29,7 +29,7 @@ public class AdminUI {
 
     public static HashMap<Player, Player> target_player = new HashMap<>();
 
-    //Skulls
+
     public static HashMap<String, ItemStack> skulls = new HashMap<>();
     public static HashMap<String, ItemStack> skulls_players = new HashMap<>();
 
@@ -91,7 +91,7 @@ public class AdminUI {
             Item.after_createPlayerHead(inv_main, skulls.get("Chaochris"),1,32, Message.getMessage(p.getUniqueId(), "main_unban_players"));
         }
 
-        Item.after_createPlayerHead(inv_main, skulls.get("Opp"), 1, 34, Message.getMessage(p.getUniqueId(), "main_language") + language.getOrDefault(p.getUniqueId(), "English"));
+        Item.after_createPlayerHead(inv_main, skulls.get("Opp"), 1, 34, Message.getMessage(p.getUniqueId(), "main_language") + language.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("default_language")));
 
         Item.after_createPlayerHead(inv_main, skulls.get("MHF_Redstone"),1,36, Message.getMessage(p.getUniqueId(), "main_quit"));
 
@@ -119,14 +119,14 @@ public class AdminUI {
         }
 
         if(p.hasPermission("admingui.heal")) {
-            //Item.create(inv_player, "GOLDEN_APPLE", 1, 11, Message.getMessage(p.getUniqueId(), "player_heal"));
+
             Item.after_createPlayerHead(inv_player, skulls.get("IM_"), 1, 11, Message.getMessage(p.getUniqueId(), "player_heal"));
         }else{
             Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 11,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.feed")) {
-            //Item.create(inv_player, "COOKED_BEEF", 1, 13, Message.getMessage(p.getUniqueId(), "player_feed"));
+
             Item.after_createPlayerHead(inv_player, skulls.get("Burger_guy"), 1, 13, Message.getMessage(p.getUniqueId(), "player_feed"));
         }else{
             Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 13,  Message.getMessage(p.getUniqueId(), "permission"));
@@ -134,22 +134,12 @@ public class AdminUI {
 
         if(p.hasPermission("admingui.gamemode")) {
             if (p.getPlayer().getGameMode() == GameMode.SURVIVAL) {
-                //Item.create(inv_player, "DIRT", 1, 15, Message.getMessage(p.getUniqueId(), "player_survival"));
                 Item.after_createPlayerHead(inv_player, skulls.get("Zyne"), 1, 15, Message.getMessage(p.getUniqueId(), "player_survival"));
             } else if (p.getPlayer().getGameMode() == GameMode.ADVENTURE) {
-                //Item.create(inv_player, "GRASS_BLOCK", 1, 15, Message.getMessage(p.getUniqueId(), "player_adventure"));
                 Item.after_createPlayerHead(inv_player, skulls.get("Mannahara"), 1, 15, Message.getMessage(p.getUniqueId(), "player_adventure"));
             } else if (p.getPlayer().getGameMode() == GameMode.CREATIVE) {
-                //Item.create(inv_player, "BRICKS", 1, 15, Message.getMessage(p.getUniqueId(), "player_creative"));
                 Item.after_createPlayerHead(inv_player, skulls.get("ThaBrick"), 1, 15, Message.getMessage(p.getUniqueId(), "player_creative"));
             } else if (p.getPlayer().getGameMode() == GameMode.SPECTATOR) {
-                /*
-                if(Bukkit.getVersion().contains("1.8")){
-                    Item.create(inv_player, "POTION", 1, 15, Message.getMessage(p.getUniqueId(), "player_spectator"));
-                }else{
-                    Item.create(inv_player, "SPLASH_POTION", 1, 15, Message.getMessage(p.getUniqueId(), "player_spectator"));
-                }
-                */
                 Item.after_createPlayerHead(inv_player, skulls.get("3i5g00d"), 1, 15, Message.getMessage(p.getUniqueId(), "player_spectator"));
             }
         }else{
@@ -159,18 +149,16 @@ public class AdminUI {
         if(p.hasPermission("admingui.god")) {
             if(!Bukkit.getVersion().contains("1.8")) {
                 if (p.isInvulnerable()) {
-                    //Item.create(inv_player, "RED_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "player_god_disabled"));
                     Item.after_createPlayerHead(inv_player, skulls.get("Ground15"), 1, 17, Message.getMessage(p.getUniqueId(), "player_god_disabled"));
                 } else {
-                    //Item.create(inv_player, "LIME_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "player_god_enabled"));
+
                     Item.after_createPlayerHead(inv_player, skulls.get("EDDxample"), 1, 17, Message.getMessage(p.getUniqueId(), "player_god_enabled"));
                 }
             }else{
                 if(god.getOrDefault(p.getUniqueId(), false)){
-                    //Item.create(inv_player, "RED_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "player_god_disabled"));
+
                     Item.after_createPlayerHead(inv_player, skulls.get("Ground15"), 1, 17, Message.getMessage(p.getUniqueId(), "player_god_disabled"));
                 }else{
-                    //Item.create(inv_player, "LIME_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "player_god_enabled"));
                     Item.after_createPlayerHead(inv_player, skulls.get("EDDxample"), 1, 17, Message.getMessage(p.getUniqueId(), "player_god_enabled"));
                 }
             }
@@ -185,34 +173,25 @@ public class AdminUI {
         }
 
         if(p.hasPermission("admingui.spawner")) {
-            //Item.create(inv_player, "SPAWNER", 1, 21, Message.getMessage(p.getUniqueId(), "player_spawner"));
             Item.after_createPlayerHead(inv_player, skulls.get("MFH_Spawner"), 1, 21, Message.getMessage(p.getUniqueId(), "player_spawner"));
         }else{
             Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 21,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.kill")) {
-            //Item.create(inv_player, "DIAMOND_SWORD", 1, 23, Message.getMessage(p.getUniqueId(), "player_kill"));
             Item.after_createPlayerHead(inv_player, skulls.get("ZeeFear"),1,23, Message.getMessage(p.getUniqueId(), "player_kill"));
         }else{
             Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 23,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.burn")) {
-            //Item.create(inv_player, "FLINT_AND_STEEL", 1, 25, Message.getMessage(p.getUniqueId(), "player_burn"));
             Item.after_createPlayerHead(inv_player, skulls.get("haohanklliu"), 1, 25, Message.getMessage(p.getUniqueId(), "player_burn"));
         }else{
             Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 25,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.lightning")) {
-            if(Bukkit.getVersion().contains("1.13") || Bukkit.getVersion().contains("1.14")){
-                //Item.create(inv_player, "TRIDENT", 1, 27, Message.getMessage(p.getUniqueId(), "player_lightning"));
-                Item.after_createPlayerHead(inv_player, skulls.get("raichuthink"), 1, 27, Message.getMessage(p.getUniqueId(), "player_lightning"));
-            }else{
-                //Item.create(inv_player, "STICK", 1, 27, Message.getMessage(p.getUniqueId(), "player_lightning"));
-                Item.after_createPlayerHead(inv_player, skulls.get("raichuthink"), 1, 27, Message.getMessage(p.getUniqueId(), "player_lightning"));
-            }
+            Item.after_createPlayerHead(inv_player, skulls.get("raichuthink"), 1, 27, Message.getMessage(p.getUniqueId(), "player_lightning"));
         }else{
             Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 27,  Message.getMessage(p.getUniqueId(), "permission"));
         }
@@ -224,7 +203,6 @@ public class AdminUI {
         }
 
         if(p.hasPermission("admingui.money")) {
-            //Item.create(inv_player, "PAPER", 1, 31, Message.getMessage(p.getUniqueId(), "player_money"));
             Item.after_createPlayerHead(inv_player, skulls.get("MrSnowDK"), 1, 31, Message.getMessage(p.getUniqueId(), "player_money"));
         }else{
             Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 31,  Message.getMessage(p.getUniqueId(), "permission"));
@@ -245,13 +223,11 @@ public class AdminUI {
         }
 
         if(p.hasPermission("admingui.custom")) {
-            //Item.create(inv_player, "PAINTING", 1, 35, Message.getMessage(p.getUniqueId(), "player_custom"));
             Item.after_createPlayerHead(inv_player, skulls.get("Opp"),1,35, Message.getMessage(p.getUniqueId(), "player_custom"));
         }else{
             Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 35,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
-        //Item.create(inv_player, "REDSTONE_BLOCK", 1, 45, Message.getMessage(p.getUniqueId(), "player_back"));
         Item.after_createPlayerHead(inv_player, skulls.get("MHF_Redstone"),1,45, Message.getMessage(p.getUniqueId(), "player_back"));
 
         return inv_player;
@@ -267,10 +243,8 @@ public class AdminUI {
 
         if(p.hasPermission("admingui.time")) {
             if (p.getPlayer().getWorld().getTime() < 13000) {
-                //Item.create(inv_world, "GOLD_BLOCK", 1, 11, Message.getMessage(p.getUniqueId(), "world_day"));
                 Item.createPlayerHead(inv_world,  "Ground15",1, 11, Message.getMessage(p.getUniqueId(), "world_day"));
             } else {
-                //Item.create(inv_world, "COAL_BLOCK", 1, 11, Message.getMessage(p.getUniqueId(), "world_night"));
                 Item.createPlayerHead(inv_world,  "EDDxample",1, 11, Message.getMessage(p.getUniqueId(), "world_night"));
             }
         }else{
@@ -280,19 +254,15 @@ public class AdminUI {
         if(p.hasPermission("admingui.weather")) {
             if (p.getPlayer().getWorld().isThundering()) {
                 Item.createPlayerHead(inv_world,  "LapisBlock",1, 13, Message.getMessage(p.getUniqueId(), "world_thunder"));
-                //Item.create(inv_world, " BLUE_TERRACOTTA", 1, 13, Message.getMessage(p.getUniqueId(), "world_thunder"));
             } else if (p.getPlayer().getWorld().hasStorm()) {
                 Item.createPlayerHead(inv_world,  "emack0714",1, 13, Message.getMessage(p.getUniqueId(), "world_rain"));
-                //Item.create(inv_world, "CYAN_TERRACOTTA", 1, 13, Message.getMessage(p.getUniqueId(), "world_rain"));
             } else {
                 Item.createPlayerHead(inv_world,  "Super_Sniper",1, 13, Message.getMessage(p.getUniqueId(), "world_clear"));
-                //Item.create(inv_world, "LIGHT_BLUE_TERRACOTTA", 1, 13, Message.getMessage(p.getUniqueId(), "world_clear"));
             }
         }else{
             Item.create(inv_world, "RED_STAINED_GLASS_PANE", 1, 13,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
-        //Item.create(inv_world, "REDSTONE_BLOCK", 1, 27, Message.getMessage(p.getUniqueId(), "world_back"));
         Item.createPlayerHead(inv_world,  "MHF_Redstone",1, 27, Message.getMessage(p.getUniqueId(), "world_back"));
 
         return inv_world;
@@ -333,7 +303,6 @@ public class AdminUI {
             Item.after_createPlayerHead(inv_players, skulls.get("MHF_ArrowRight"), 1, 51, Message.getMessage(p.getUniqueId(), "players_next"));
         }
 
-        //Item.create(inv_players, "REDSTONE_BLOCK", 1, 54, Message.getMessage(p.getUniqueId(), "players_back"));
         Item.after_createPlayerHead(inv_players, skulls.get("MHF_Redstone"),1,54, Message.getMessage(p.getUniqueId(), "players_back"));
 
         return inv_players;
@@ -370,7 +339,6 @@ public class AdminUI {
             Item.create(inv_plugins, yamlConfiguration.getString("plugins."+i+".material"), 1, i, yamlConfiguration.getString("plugins."+i+".name"));
         }
 
-        //Item.create(inv_plugins, "REDSTONE_BLOCK", 1, 54, Message.getMessage(p.getUniqueId(), "plugins_back"));
         Item.after_createPlayerHead(inv_plugins, skulls.get("MHF_Redstone"),1,54, Message.getMessage(p.getUniqueId(), "plugins_back"));
 
         return inv_plugins;
@@ -415,7 +383,6 @@ public class AdminUI {
             }
         }
 
-        //Item.create(inv_commands, "REDSTONE_BLOCK", 1, 54, Message.getMessage(p.getUniqueId(), "commands_back"));
         Item.after_createPlayerHead(inv_commands, skulls.get("MHF_Redstone"),1,54, Message.getMessage(p.getUniqueId(), "commands_back"));
 
         return inv_commands;
@@ -464,7 +431,6 @@ public class AdminUI {
             Item.after_createPlayerHead(inv_unban_players, skulls.get("MHF_ArrowRight"), 1, 51, Message.getMessage(p.getUniqueId(), "unban_next"));
         }
 
-        //Item.create(inv_unban_players, "REDSTONE_BLOCK", 1, 54, Message.getMessage(p.getUniqueId(), "unban_back"));
         Item.after_createPlayerHead(inv_unban_players, skulls.get("MHF_Redstone"),1,54, Message.getMessage(p.getUniqueId(), "unban_back"));
 
         return inv_unban_players;
@@ -489,31 +455,26 @@ public class AdminUI {
             Item.createPlayerHead(inv_players_settings, target_player.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_player.getName()));
         }
 
-        //Item.create(inv_players_settings, "DIAMOND_SWORD", 1, 11, Message.getMessage(p.getUniqueId(), "players_settings_actions"));
         Item.after_createPlayerHead(inv_players_settings, skulls.get("ZiGmUnDo"), 1, 11, Message.getMessage(p.getUniqueId(), "players_settings_actions"));
 
         if(p.hasPermission("admingui.money.other")) {
-            //Item.create(inv_players_settings, "PAPER", 1, 13, Message.getMessage(p.getUniqueId(), "players_settings_money"));
             Item.after_createPlayerHead(inv_players_settings, skulls.get("MrSnowDK"), 1, 13, Message.getMessage(p.getUniqueId(), "players_settings_money"));
         }else{
             Item.create(inv_players_settings, "RED_STAINED_GLASS_PANE", 1, 13,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.kick.other")) {
-            //Item.create(inv_players_settings, "BLACK_TERRACOTTA", 1, 15, Message.getMessage(p.getUniqueId(), "players_settings_kick_player"));
             Item.after_createPlayerHead(inv_players_settings, skulls.get("Push_red_button"), 1, 15, Message.getMessage(p.getUniqueId(), "players_settings_kick_player"));
         }else{
             Item.create(inv_players_settings, "RED_STAINED_GLASS_PANE", 1, 15,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.ban")) {
-            //Item.create(inv_players_settings, "BEDROCK", 1, 17, Message.getMessage(p.getUniqueId(), "players_settings_ban_player"));
             Item.after_createPlayerHead(inv_players_settings, skulls.get("Chaochris"), 1, 17, Message.getMessage(p.getUniqueId(), "players_settings_ban_player"));
         }else{
             Item.create(inv_players_settings, "RED_STAINED_GLASS_PANE", 1, 17,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
-        //Item.create(inv_players_settings, "REDSTONE_BLOCK", 1, 27, Message.getMessage(p.getUniqueId(), "players_settings_back"));
         Item.after_createPlayerHead(inv_players_settings, skulls.get("MHF_Redstone"),1,27, Message.getMessage(p.getUniqueId(), "players_settings_back"));
 
         return inv_players_settings;
@@ -541,14 +502,12 @@ public class AdminUI {
         }
 
         if(p.hasPermission("admingui.heal.other")) {
-            //Item.create(inv_actions, "GOLDEN_APPLE", 1, 11, Message.getMessage(p.getUniqueId(), "actions_heal"));
             Item.after_createPlayerHead(inv_actions, skulls.get("IM_"), 1, 11, Message.getMessage(p.getUniqueId(), "actions_heal"));
         }else{
             Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 11,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.feed.other")) {
-            //Item.create(inv_actions, "COOKED_BEEF", 1, 13, Message.getMessage(p.getUniqueId(), "actions_feed"));
             Item.after_createPlayerHead(inv_actions, skulls.get("Burger_guy"), 1, 13, Message.getMessage(p.getUniqueId(), "actions_feed"));
         }else{
             Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 13,  Message.getMessage(p.getUniqueId(), "permission"));
@@ -556,21 +515,12 @@ public class AdminUI {
 
         if(p.hasPermission("admingui.gamemode.other")) {
             if (target.getGameMode() == GameMode.SURVIVAL) {
-                //Item.create(inv_actions, "DIRT", 1, 15, Message.getMessage(p.getUniqueId(), "actions_survival"));
                 Item.after_createPlayerHead(inv_actions, skulls.get("Zyne"), 1, 15, Message.getMessage(p.getUniqueId(), "actions_survival"));
             } else if (target.getGameMode() == GameMode.ADVENTURE) {
-                //Item.create(inv_actions, "GRASS_BLOCK", 1, 15, Message.getMessage(p.getUniqueId(), "actions_adventure"));
                 Item.after_createPlayerHead(inv_actions, skulls.get("Mannahara"), 1, 15, Message.getMessage(p.getUniqueId(), "actions_adventure"));
             } else if (target.getGameMode() == GameMode.CREATIVE) {
-                //Item.create(inv_actions, "BRICKS", 1, 15, Message.getMessage(p.getUniqueId(), "actions_creative"));
                 Item.after_createPlayerHead(inv_actions, skulls.get("ThaBrick"), 1, 15, Message.getMessage(p.getUniqueId(), "actions_creative"));
             } else if (target.getGameMode() == GameMode.SPECTATOR) {
-                /*
-                if(Bukkit.getVersion().contains("1.8")){
-                    Item.create(inv_actions, "POTION", 1, 15, Message.getMessage(p.getUniqueId(), "actions_spectator"));
-                }else{
-                    Item.create(inv_actions, "SPLASH_POTION", 1, 15, Message.getMessage(p.getUniqueId(), "actions_spectator"));
-                } */
                 Item.after_createPlayerHead(inv_actions, skulls.get("3i5g00d"), 1, 15, Message.getMessage(p.getUniqueId(), "actions_spectator"));
             }
         }else{
@@ -580,18 +530,14 @@ public class AdminUI {
         if(p.hasPermission("admingui.god.other")) {
             if(!Bukkit.getVersion().contains("1.8")) {
                 if (target.isInvulnerable()) {
-                    //Item.create(inv_actions, "RED_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_disabled"));
                     Item.after_createPlayerHead(inv_actions, skulls.get("Ground15"), 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_disabled"));
                 } else {
-                    //Item.create(inv_actions, "LIME_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_enabled"));
                     Item.after_createPlayerHead(inv_actions, skulls.get("EDDxample"), 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_enabled"));
                 }
             }else{
                 if(god.getOrDefault(target.getUniqueId(), false)){
-                    //Item.create(inv_actions, "RED_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_disabled"));
                     Item.after_createPlayerHead(inv_actions, skulls.get("Ground15"), 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_disabled"));
                 }else{
-                    //Item.create(inv_actions, "LIME_TERRACOTTA", 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_enabled"));
                     Item.after_createPlayerHead(inv_actions, skulls.get("EDDxample"), 1, 17, Message.getMessage(p.getUniqueId(), "actions_god_enabled"));
                 }
             }
@@ -612,14 +558,12 @@ public class AdminUI {
         }
 
         if(p.hasPermission("admingui.kill.other")) {
-            //Item.create(inv_actions, "DIAMOND_SWORD", 1, 23, Message.getMessage(p.getUniqueId(), "actions_kill_player"));
             Item.after_createPlayerHead(inv_actions, skulls.get("ZeeFear"),1,23, Message.getMessage(p.getUniqueId(), "actions_kill_player"));
         }else{
             Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 23,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.spawner.other")) {
-            //Item.create(inv_actions, "SPAWNER", 1, 25, Message.getMessage(p.getUniqueId(), "actions_spawner"));
             Item.after_createPlayerHead(inv_actions, skulls.get("MFH_Spawner"), 1, 25, Message.getMessage(p.getUniqueId(), "actions_spawner"));
         }else{
             Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 25,  Message.getMessage(p.getUniqueId(), "permission"));
@@ -636,14 +580,12 @@ public class AdminUI {
         }
 
         if(p.hasPermission("admingui.inventory")) {
-            //Item.create(inv_actions, "BOOK", 1, 29, Message.getMessage(p.getUniqueId(), "actions_inventory"));
             Item.after_createPlayerHead(inv_actions, skulls.get("ElMarcosFTW"), 1, 29, Message.getMessage(p.getUniqueId(), "actions_inventory"));
         }else{
             Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 29,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(p.hasPermission("admingui.burn.other")) {
-            //Item.create(inv_actions, "FLINT_AND_STEEL", 1, 31, Message.getMessage(p.getUniqueId(), "actions_burn_player"));
             Item.after_createPlayerHead(inv_actions, skulls.get("haohanklliu"), 1, 31, Message.getMessage(p.getUniqueId(), "actions_burn_player"));
         }else{
             Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 31,  Message.getMessage(p.getUniqueId(), "permission"));
@@ -665,10 +607,8 @@ public class AdminUI {
 
         if(p.hasPermission("admingui.lightning.other")){
             if(Bukkit.getVersion().contains("1.13") || Bukkit.getVersion().contains("1.14")){
-                //Item.create(inv_actions, "TRIDENT", 1, 35, Message.getMessage(p.getUniqueId(), "actions_lightning"));
                 Item.after_createPlayerHead(inv_actions, skulls.get("raichuthink"), 1, 35, Message.getMessage(p.getUniqueId(), "actions_lightning"));
             }else{
-                //Item.create(inv_actions, "STICK", 1, 35, Message.getMessage(p.getUniqueId(), "actions_lightning"));
                 Item.after_createPlayerHead(inv_actions, skulls.get("raichuthink"), 1, 35, Message.getMessage(p.getUniqueId(), "actions_lightning"));
             }
         }else{
@@ -688,13 +628,11 @@ public class AdminUI {
         }
 
         if(p.hasPermission("admingui.custom")) {
-            //Item.create(inv_actions, "PAINTING", 1, 41, Message.getMessage(p.getUniqueId(), "actions_custom"));
             Item.after_createPlayerHead(inv_actions, skulls.get("Opp"),1,41, Message.getMessage(p.getUniqueId(), "actions_custom"));
         }else{
             Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 41,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
-        //Item.create(inv_actions, "REDSTONE_BLOCK", 1, 54, Message.getMessage(p.getUniqueId(), "actions_back"));
         Item.after_createPlayerHead(inv_actions, skulls.get("MHF_Redstone"),1,54, Message.getMessage(p.getUniqueId(), "actions_back"));
 
         return inv_actions;
@@ -716,7 +654,6 @@ public class AdminUI {
             Item.create(inv_kick, AdminGUI.getInstance().getKick().getString("slots."+i+".material"), 1, i, AdminGUI.getInstance().getKick().getString("slots."+i+".name"));
         }
 
-        //Item.create(inv_kick, "REDSTONE_BLOCK", 1, 27, Message.getMessage(p.getUniqueId(), "kick_back"));
         Item.after_createPlayerHead(inv_kick, skulls.get("MHF_Redstone"),1,27, Message.getMessage(p.getUniqueId(), "kick_back"));
 
         return inv_kick;
@@ -769,7 +706,6 @@ public class AdminUI {
         Item.create(inv_ban, "LIGHT_BLUE_TERRACOTTA", 1, 33, Message.getMessage(p.getUniqueId(), "ban_advertising"));
         Item.create(inv_ban, "YELLOW_TERRACOTTA", 1, 34, Message.getMessage(p.getUniqueId(), "ban_swearing"));
 
-        //Item.create(inv_ban, "REDSTONE_BLOCK", 1, 36, Message.getMessage(p.getUniqueId(), "ban_back"));
         Item.after_createPlayerHead(inv_ban, skulls.get("MHF_Redstone"),1,36, Message.getMessage(p.getUniqueId(), "ban_back"));
 
         return inv_ban;
@@ -804,7 +740,6 @@ public class AdminUI {
         Item.create(inv_potions, "RED_STAINED_GLASS_PANE", 1, 32, Message.getMessage(p.getUniqueId(), "potions_remove_all"));
         Item.create(inv_potions, "BEACON", level.getOrDefault(p.getUniqueId(), 1), 33, Message.getMessage(p.getUniqueId(), "potions_level"));
 
-        //Item.create(inv_potions, "REDSTONE_BLOCK", 1, 36, Message.getMessage(p.getUniqueId(), "potions_back"));
         Item.after_createPlayerHead(inv_potions, skulls.get("MHF_Redstone"),1,36, Message.getMessage(p.getUniqueId(), "potions_back"));
 
         return inv_potions;
@@ -847,7 +782,6 @@ public class AdminUI {
             }
         }
 
-        //Item.create(inv_spawner, "REDSTONE_BLOCK", 1, 54, Message.getMessage(p.getUniqueId(), "spawner_back"));
         Item.after_createPlayerHead(inv_spawner, skulls.get("MHF_Redstone"),1,54, Message.getMessage(p.getUniqueId(), "spawner_back"));
 
         return inv_spawner;
@@ -875,7 +809,7 @@ public class AdminUI {
             p.closeInventory();
         }
 
-        //Item.create(inv_money, "REDSTONE_BLOCK", 1, 27, Message.getMessage(p.getUniqueId(), "money_back"));
+
         Item.after_createPlayerHead(inv_money, skulls.get("MHF_Redstone"),1,27, Message.getMessage(p.getUniqueId(), "money_back"));
 
         return inv_money;
@@ -926,7 +860,6 @@ public class AdminUI {
             p.closeInventory();
         }
 
-        //Item.create(inv_money_amount, "REDSTONE_BLOCK", 1, 36, Message.getMessage(p.getUniqueId(), "money_back"));
         Item.after_createPlayerHead(inv_money_amount, skulls.get("MHF_Redstone"),1,36, Message.getMessage(p.getUniqueId(), "money_back"));
 
         return inv_money_amount;
@@ -972,7 +905,6 @@ public class AdminUI {
 
         Item.create(inv_inventory, "BLUE_TERRACOTTA", 1, 50, Message.getMessage(p.getUniqueId(), "inventory_clear"));
 
-        //Item.create(inv_inventory, "REDSTONE_BLOCK", 1, 54, Message.getMessage(p.getUniqueId(), "inventory_back"));
         Item.after_createPlayerHead(inv_inventory, skulls.get("MHF_Redstone"),1,54, Message.getMessage(p.getUniqueId(), "inventory_back"));
 
         return inv_inventory;
@@ -1013,8 +945,8 @@ public class AdminUI {
             }
         }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "main_unban_players"))){
             p.openInventory(GUI_Unban_Players(p));
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "main_language") + language.getOrDefault(p.getUniqueId(), "English"))){
-            switch (language.getOrDefault(p.getUniqueId(), "English")){
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "main_language") + language.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("default_language")))){
+            switch (language.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("default_language"))){
                 case "English":
                     language.put(p.getUniqueId(), "Spanish");
                     break;
@@ -1288,15 +1220,15 @@ public class AdminUI {
                 p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_burn").replace("{player}", target_player.getName()));
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_teleport_player_to_you"))){
                 target_player.teleport(p.getLocation());
-                target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_teleport").replace("{player}", p.getName()));
+                target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "message_target_player_teleport").replace("{player}", p.getName()));
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_heal"))){
                 target_player.setHealth(20);
                 target_player.setFireTicks(0);
-                target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_heal").replace("{player}", p.getName()));
+                target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "message_target_player_heal").replace("{player}", p.getName()));
                 p.sendMessage(Message.chat(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_heal").replace("{player}", target_player.getName())));
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_feed"))){
                 target_player.setFoodLevel(20);
-                target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_feed").replace("{player}", p.getName()));
+                target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "message_target_player_feed").replace("{player}", p.getName()));
                 p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_feed").replace("{player}", target_player.getName()));
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_god_enabled"))){
                 if(Bukkit.getVersion().contains("1.8")){
@@ -1305,7 +1237,7 @@ public class AdminUI {
                     target_player.setInvulnerable(true);
                 }
                 p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_god_enabled").replace("{player}", target_player.getName()));
-                target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_god_enabled").replace("{player}", p.getName()));
+                target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "message_target_player_god_enabled").replace("{player}", p.getName()));
                 p.openInventory(GUI_Actions(p,target_player));
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_god_disabled"))){
                 if(Bukkit.getVersion().contains("1.8")){
@@ -1314,7 +1246,7 @@ public class AdminUI {
                     target_player.setInvulnerable(false);
                 }
                 p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_god_disabled").replace("{player}", target_player.getName()));
-                target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_god_disabled").replace("{player}", p.getName()));
+                target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "message_target_player_god_disabled").replace("{player}", p.getName()));
                 p.openInventory(GUI_Actions(p,target_player));
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_potions"))){
                 p.openInventory(GUI_potions(p, target_player));
@@ -1326,7 +1258,7 @@ public class AdminUI {
                 if (Bukkit.getPluginManager().isPluginEnabled("SuperVanish") || Bukkit.getPluginManager().isPluginEnabled("PremiumVanish")) {
                     VanishAPI.hidePlayer(target_player);
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_hide").replace("{player}", target_player.getName()));
-                    target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_hide"));
+                    target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "message_hide"));
                 }else{
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "vanish_required"));
                 }
@@ -1335,7 +1267,7 @@ public class AdminUI {
                 if (Bukkit.getPluginManager().isPluginEnabled("SuperVanish") || Bukkit.getPluginManager().isPluginEnabled("PremiumVanish")) {
                     VanishAPI.showPlayer(target_player);
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_visible").replace("{player}", target_player.getName()));
-                    target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_visible"));
+                    target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "message_visible"));
                 }else{
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "vanish_required"));
                 }
@@ -1366,7 +1298,7 @@ public class AdminUI {
                 if(target_player.hasPermission("admingui.kick.bypass")){
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_kick_bypass"));
                 }else{
-                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "kick") + Message.chat(AdminGUI.getInstance().getKick().getString("slots."+(slot+1)+".name")));
+                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "kick") + Message.chat(AdminGUI.getInstance().getKick().getString("slots."+(slot+1)+".name")));
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kick").replace("{player}", target_player.getName()));
                 }
                 p.closeInventory();
@@ -1374,7 +1306,7 @@ public class AdminUI {
                 if(target_player.hasPermission("admingui.kick.bypass")){
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_kick_bypass"));
                 }else{
-                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "kick") + Message.getMessage(p.getUniqueId(), "kick_hacking"));
+                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "kick") + Message.getMessage(target_player.getUniqueId(), "kick_hacking"));
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kick").replace("{player}", target_player.getName()));
                 }
                 p.closeInventory();
@@ -1382,7 +1314,7 @@ public class AdminUI {
                 if(target_player.hasPermission("admingui.kick.bypass")){
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_kick_bypass"));
                 }else{
-                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "kick") + Message.getMessage(p.getUniqueId(), "kick_griefing"));
+                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "kick") + Message.getMessage(target_player.getUniqueId(), "kick_griefing"));
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kick").replace("{player}", target_player.getName()));
                 }
                 p.closeInventory();
@@ -1390,7 +1322,7 @@ public class AdminUI {
                 if(target_player.hasPermission("admingui.kick.bypass")){
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_kick_bypass"));
                 }else{
-                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "kick") + Message.getMessage(p.getUniqueId(), "kick_spamming"));
+                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "kick") + Message.getMessage(target_player.getUniqueId(), "kick_spamming"));
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kick").replace("{player}", target_player.getName()));
                 }
                 p.closeInventory();
@@ -1398,7 +1330,7 @@ public class AdminUI {
                 if(target_player.hasPermission("admingui.kick.bypass")){
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_kick_bypass"));
                 }else{
-                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "kick") + Message.getMessage(p.getUniqueId(), "kick_advertising"));
+                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "kick") + Message.getMessage(target_player.getUniqueId(), "kick_advertising"));
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kick").replace("{player}", target_player.getName()));
                 }
                 p.closeInventory();
@@ -1406,7 +1338,7 @@ public class AdminUI {
                 if(target_player.hasPermission("admingui.kick.bypass")){
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_kick_bypass"));
                 }else{
-                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "kick") + Message.getMessage(p.getUniqueId(), "kick_swearing"));
+                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "kick") + Message.getMessage(target_player.getUniqueId(), "kick_swearing"));
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kick").replace("{player}", target_player.getName()));
                 }
                 p.closeInventory();
@@ -1436,7 +1368,7 @@ public class AdminUI {
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_ban_bypass"));
                 }else{
                     TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_hacking", time), time);
-                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_hacking", time));
+                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_hacking", time));
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
                 }
                 p.closeInventory();
@@ -1445,7 +1377,7 @@ public class AdminUI {
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_ban_bypass"));
                 }else{
                     TargetPlayer.ban(target_player.getName(), TargetPlayer.banReason(target_player.getUniqueId(), "ban_griefing", time), time);
-                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_griefing", time));
+                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_griefing", time));
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
                 }
                 p.closeInventory();
@@ -1454,7 +1386,7 @@ public class AdminUI {
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_ban_bypass"));
                 }else{
                     TargetPlayer.ban(target_player.getName(), TargetPlayer.banReason(target_player.getUniqueId(), "ban_spamming", time), time);
-                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_spamming", time));
+                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_spamming", time));
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
                 }
                 p.closeInventory();
@@ -1463,7 +1395,7 @@ public class AdminUI {
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_ban_bypass"));
                 }else{
                     TargetPlayer.ban(target_player.getName(), TargetPlayer.banReason(target_player.getUniqueId(), "ban_advertising", time), time);
-                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(),"ban_advertising", time));
+                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(),"ban_advertising", time));
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
                 }
                 p.closeInventory();
@@ -1472,7 +1404,7 @@ public class AdminUI {
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_ban_bypass"));
                 }else{
                     TargetPlayer.ban(target_player.getName(), TargetPlayer.banReason(target_player.getUniqueId(), "ban_swearing", time), time);
-                    target_player.kickPlayer(Message.getMessage(p.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_swearing", time));
+                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_swearing", time));
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
                 }
                 p.closeInventory();
@@ -1775,7 +1707,7 @@ public class AdminUI {
                 if(p.getName().equals(target_player.getName())){
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_potions_remove"));
                 }else{
-                    target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_potions_remove").replace("{player}", p.getName()));
+                    target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_potions_remove").replace("{player}", p.getName()));
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_potions_remove").replace("{player}", target_player.getName()));
                 }
 
@@ -1995,7 +1927,7 @@ public class AdminUI {
                                                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_give").replace("{amount}", AdminGUI.getEconomy().format(r.amount)).replace("{player}", target_player.getName()).replace("{balance}", AdminGUI.getEconomy().format(r.balance)));
                                                 }else{
                                                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_give").replace("{amount}", AdminGUI.getEconomy().format(r.amount)).replace("{player}", target_player.getName()).replace("{balance}", AdminGUI.getEconomy().format(r.balance)));
-                                                    target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_give").replace("{amount}", AdminGUI.getEconomy().format(r.amount)).replace("{player}", p.getName()).replace("{balance}", AdminGUI.getEconomy().format(r.balance)));
+                                                    target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "message_target_player_give").replace("{amount}", AdminGUI.getEconomy().format(r.amount)).replace("{player}", p.getName()).replace("{balance}", AdminGUI.getEconomy().format(r.balance)));
                                                 }
                                             } else {
                                                 p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_transaction_error").replace("{amount}", AdminGUI.getEconomy().format(r.amount)).replace("{player}", target_player.getName()));
@@ -2010,7 +1942,7 @@ public class AdminUI {
                                                         p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_take").replace("{amount}", AdminGUI.getEconomy().format(s.amount)).replace("{player}", target_player.getName()).replace("{balance}", AdminGUI.getEconomy().format(s.balance)));
                                                     }else{
                                                         p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_take").replace("{amount}", AdminGUI.getEconomy().format(s.amount)).replace("{player}", target_player.getName()).replace("{balance}", AdminGUI.getEconomy().format(s.balance)));
-                                                        target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_take").replace("{amount}", AdminGUI.getEconomy().format(s.amount)).replace("{player}", p.getName()).replace("{balance}", AdminGUI.getEconomy().format(s.balance)));
+                                                        target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "message_target_player_take").replace("{amount}", AdminGUI.getEconomy().format(s.amount)).replace("{player}", p.getName()).replace("{balance}", AdminGUI.getEconomy().format(s.balance)));
                                                     }
                                                 }else{
                                                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_transaction_error").replace("{amount}", AdminGUI.getEconomy().format(s.amount)).replace("{player}", target_player.getName()));
@@ -2033,7 +1965,7 @@ public class AdminUI {
                                                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_set").replace("{amount}", AdminGUI.getEconomy().format(t.amount)).replace("{player}", target_player.getName()).replace("{balance}", AdminGUI.getEconomy().format(t.balance)));
                                                 }else{
                                                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_set").replace("{amount}", AdminGUI.getEconomy().format(t.amount)).replace("{player}", target_player.getName()).replace("{balance}", AdminGUI.getEconomy().format(t.balance)));
-                                                    target_player.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_set").replace("{amount}", AdminGUI.getEconomy().format(t.amount)).replace("{player}", p.getName()).replace("{balance}", AdminGUI.getEconomy().format(t.balance)));
+                                                    target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "message_target_player_set").replace("{amount}", AdminGUI.getEconomy().format(t.amount)).replace("{player}", p.getName()).replace("{balance}", AdminGUI.getEconomy().format(t.balance)));
                                                 }
                                             }else{
                                                 p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_transaction_error").replace("{amount}", AdminGUI.getEconomy().format(t.amount)).replace("{player}", target_player.getName()));

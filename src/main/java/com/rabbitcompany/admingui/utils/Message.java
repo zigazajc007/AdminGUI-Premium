@@ -14,7 +14,7 @@ public class Message {
 
     public static String getMessage(UUID uuid, String config){
         String mess;
-        String lang = AdminUI.language.getOrDefault(uuid, "English");
+        String lang = AdminUI.language.getOrDefault(uuid, AdminGUI.getInstance().getConf().getString("default_language"));
         switch (lang){
             case "Germany":
                 mess = AdminGUI.getInstance().getGerm().getString(config);

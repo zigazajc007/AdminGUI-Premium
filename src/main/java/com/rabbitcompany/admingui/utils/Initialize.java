@@ -58,5 +58,9 @@ public class Initialize {
             }, 20L, AdminGUI.getInstance().getConf().getInt("initialize_delay", 1) * 20L);
         }
     }
+
+    public static void StopTask(int taskID){
+        Bukkit.getServer().getScheduler().cancelTask(taskID);
+    }
     
 }
