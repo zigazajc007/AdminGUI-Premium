@@ -57,6 +57,10 @@ public class AdminGUI extends JavaPlugin {
     private File sp = null;
     private YamlConfiguration span = new YamlConfiguration();
 
+    //French
+    private File fr = null;
+    private YamlConfiguration fren = new YamlConfiguration();
+
     //Kick
     private File k = null;
     private YamlConfiguration kick = new YamlConfiguration();
@@ -84,6 +88,7 @@ public class AdminGUI extends JavaPlugin {
         this.ru = new File(getDataFolder(), "Languages/Russian.yml");
         this.bu = new File(getDataFolder(), "Languages/Bulgarian.yml");
         this.sp = new File(getDataFolder(), "Languages/Spanish.yml");
+        this.fr = new File(getDataFolder(), "Languages/French.yml");
         this.k = new File(getDataFolder(), "kick.yml");
         this.p = new File(getDataFolder(), "Custom Commands/plugins.yml");
         this.c = new File(getDataFolder(), "Custom Commands/commands.yml");
@@ -206,6 +211,10 @@ public class AdminGUI extends JavaPlugin {
             saveResource("Languages/Spanish.yml", false);
         }
 
+        if(!this.fr.exists()){
+            saveResource("Languages/French.yml", false);
+        }
+
         if(!this.k.exists()){
             saveResource("kick.yml", false);
         }
@@ -267,6 +276,11 @@ public class AdminGUI extends JavaPlugin {
             e.printStackTrace();
         }
         try {
+            this.fren.load(this.fr);
+        } catch (IOException | InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+        try {
             this.kick.load(this.k);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
@@ -303,6 +317,8 @@ public class AdminGUI extends JavaPlugin {
     public YamlConfiguration getBulg() { return this.bulg; }
 
     public YamlConfiguration getSpan() { return this.span; }
+
+    public YamlConfiguration getFren() { return this.fren; }
 
     public YamlConfiguration getKick() { return this.kick; }
 
@@ -388,7 +404,7 @@ public class AdminGUI extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Name: &bAdminGUI-Premium"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Developer: &bBlack1_TV"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b3.0.5"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b3.0.6"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
