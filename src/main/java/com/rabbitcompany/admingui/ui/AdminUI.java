@@ -27,11 +27,16 @@ import static org.bukkit.Bukkit.getServer;
 
 public class AdminUI {
 
+    //Target players
     public static HashMap<Player, Player> target_player = new HashMap<>();
 
-
+    //Player heads
     public static HashMap<String, ItemStack> skulls = new HashMap<>();
     public static HashMap<String, ItemStack> skulls_players = new HashMap<>();
+
+    //Initialize task
+    public static HashMap<UUID, Integer> task_gui = new HashMap<>();
+    public static HashMap<UUID, Integer> task_players = new HashMap<>();
 
     //Online players
     public static ArrayList<String> online_players = new ArrayList<>();
@@ -969,7 +974,6 @@ public class AdminUI {
             }
             p.openInventory(GUI_Main(p));
         }
-
     }
 
     public void clicked_player(Player p, int slot, ItemStack clicked, Inventory inv){

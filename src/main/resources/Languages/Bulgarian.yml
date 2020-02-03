@@ -347,3 +347,4 @@ message_player_hide: "&a{player} сега&c&l скрит&a от фръгите �
 message_unban_player: "&a{player} вече няма забрана."
 message_initializing_start: "&aПлъгина се интълизира"
 message_initializing_finish: "&aМенюто е готово за използване"
+message_already_initializing: "&cМенюто вече се инитализира..."

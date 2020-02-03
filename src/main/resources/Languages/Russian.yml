@@ -348,3 +348,4 @@ message_player_hide: "&a&l{player} теперь &c&l скрыт &a от друг
 message_unban_player: "&a&l{player} был разбанен."
 message_initializing_start: "&aPlugin is initializing..."
 message_initializing_finish: "&aGUI is ready to use."
+message_already_initializing: "&cGUI is already initializing..."

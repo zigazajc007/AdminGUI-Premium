@@ -28,7 +28,9 @@ public class PlayerJoinListener implements Listener {
         AdminUI.skulls_players.put(event.getPlayer().getName(), Item.pre_createPlayerHead(event.getPlayer().getName()));
 
         if(adminGUI.getConf().getInt("initialize_gui",1) == 1) {
-            Initialize.GUI(event.getPlayer());
+            if(!AdminUI.task_gui.containsKey(event.getPlayer().getUniqueId())){
+                Initialize.GUI(event.getPlayer());
+            }
         }
     }
 }
