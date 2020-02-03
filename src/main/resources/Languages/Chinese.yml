@@ -1,349 +1,349 @@
 #       ----------- + AdminGUI by Ziga Zajc + -----------   #
 #                                                           #
-#                           Chinese                         #
-#                                                           #
+#                           繁體中文                         #
+#                         翻譯: 亞倫                         #
 #       --------- + ------------------------- + ---------   #
 #
-#       You can use chat colors:
+#       你可以使用這些顏色代碼:
 #                ________________________
-#               |   code: | color:       |
-#               |________________________|
-#               |     &0  |	Black	     |
-#               |     &1  |	Dark Blue	 |
-#               |     &2  |	Dark Green	 |
-#               |     &3  |	Dark Aqua	 |
-#               |     &4  |	Dark Red	 |
-#               |     &5  |	Dark Purple	 |
-#               |     &6  |	Gold	     |
-#               |     &7  |	Gray	     |
-#               |     &8  |	Dark Gray	 |
-#               |     &9  |	Blue	     |
-#               |     &a  |	Green	     |
-#               |     &b  |	Aqua	     |
-#               |     &c  |	Red	         |
-#               |     &d  |	Light Purple |
-#               |     &e  |	Yellow	     |
-#               |     &f  |	White	     |
-#               |     &k  |	Obfuscated	 |
-#               |     &l  |	Bold	     |
-#               |     &m  |	Strikethrough|
-#               |     &n  |	Underline	 |
-#               |     &o  |	Italic	     |
-#               |     &r  |	Reset	     |
+#               |   代碼: | 顏色:        |
+#               |________ |_____________|
+#               |     &0  |	黑   	    |
+#               |     &1  |	深藍    	    |
+#               |     &2  |	深綠    	    |
+#               |     &3  |	深青    	    |
+#               |     &4  |	深紅    	    |
+#               |     &5  |	深紫    	    |
+#               |     &6  |	黃金	        |
+#               |     &7  |	灰  	    |
+#               |     &8  |	深灰    	    |
+#               |     &9  |	藍   	    |
+#               |     &a  |	綠   	    |
+#               |     &b  |	青   	    |
+#               |     &c  |	紅	        |
+#               |     &d  |	亮紫         |
+#               |     &e  |	黃	        |
+#               |     &f  |	白           |
+#               |     &k  |	亂碼         |
+#               |     &l  |	粗體	         |
+#               |     &m  |	刪除線        |
+#               |     &n  |	底線     	 |
+#               |     &o  |	斜體	         |
+#               |     &r  |	重置字體      |
 #               |________________________|
 #
 #----------------------------------------------------------
-#                         Prefix
+#                         前綴
 #----------------------------------------------------------
 prefix: "&7[&cAdmin GUI&7] "
 #----------------------------------------------------------
 #----------------------------------------------------------
-#                       Commands
+#                       指令
 #----------------------------------------------------------
-permission: "&cYou don't have permission to do this!"
-is_not_a_player: "&c{player} isn't a player!"
-is_not_a_number: "&c{number} isn't a number!"
-wrong_arguments: "&cYou can only use /admin or /admin <player>"
-wrong_initialize: "&cYou can only use /admin initialize gui or /admin initialize players"
-vault_required: "&cYour server don't have installed Vault to complete this action!"
-vanish_required: "&cYour server don't have installed Super Vanish or Premium Vanish to complete this action!"
+permission: "&c你沒有權限執行此指令!"
+is_not_a_player: "&c{player} 並非一名玩家!"
+is_not_a_number: "&c{number} 並非一個數字!"
+wrong_arguments: "&c你只能用 /admin 或 /admin <玩家>"
+wrong_initialize: "&c你只能用 /admin initialize gui 或 /admin initialize players"
+vault_required: "&c你的伺服器並未安裝 Vault !"
+vanish_required: "&c你的伺服器並未安裝 Super Vanish 或 Premium Vanish !"
 #----------------------------------------------------------
-#                    Inventory names
+#                    介面名稱
 #----------------------------------------------------------
 inventory_main: "&4&lAdmin GUI &c&lPremium"
 inventory_player: "&5&l{player}"
-inventory_world: "&2&lWorld"
-inventory_players: "&1&lPlayers"
-inventory_plugins: "&e&lPlugins"
-inventory_commands: "&2&lCommands"
-inventory_unban: "&c&lUnban"
-inventory_actions: "&9&lActions &2&l{player}"
-inventory_kick: "&8&lKick &2&l{player}"
-inventory_ban: "&8&lBan &2&l{player}"
-inventory_potions: "&c&lPotions &2&l{player}"
-inventory_spawner: "&8&lSpawner &2&l{player}"
-inventory_money: "&2&lMoney &2&l{player}"
-inventory_money_give: "&2&lMoney GIVE {player}"
-inventory_money_set: "&2&lMoney&9&l SET &2&l{player}"
-inventory_money_take: "&2&lMoney&c&l TAKE &2&l{player}"
-inventory_inventory: "&a&lInventory &2&l{player}"
+inventory_world: "&2&l世界"
+inventory_players: "&1&l玩家"
+inventory_plugins: "&e&l插件"
+inventory_commands: "&2&l指令"
+inventory_unban: "&c&l解除封鎖"
+inventory_actions: "&9&l執行 &2&l{player}"
+inventory_kick: "&8&l踢除 &2&l{player}"
+inventory_ban: "&8&l封鎖 &2&l{player}"
+inventory_potions: "&c&l藥水效果 &2&l{player}"
+inventory_spawner: "&8&l生怪 &2&l{player}"
+inventory_money: "&2&l金錢 &2&l{player}"
+inventory_money_give: "&2&l金錢 給予 {player}"
+inventory_money_set: "&2&l金錢&9&l 設定 &2&l{player}"
+inventory_money_take: "&2&l金錢&c&l 拿走 &2&l{player}"
+inventory_inventory: "&a&l介面 &2&l{player}"
 #----------------------------------------------------------
-#                       Admin GUI
+#                       管理員介面
 #----------------------------------------------------------
 main_player: "&5&l{player}"
-main_world: "&2&lWorld"
-main_players: "&9&lPlayers"
-main_plugins: "&6&lPlugins"
-main_maintenance_mode: "&c&lMaintenance Mode"
-main_unban_players: "&c&lUnban Players"
+main_world: "&2&l世界"
+main_players: "&9&l玩家"
+main_plugins: "&6&l插件"
+main_maintenance_mode: "&c&l維修模式"
+main_unban_players: "&c&l解除玩家封鎖"
 main_language: "&b&l"
-main_quit: "&c&lQuit"
+main_quit: "&c&l退出"
 #----------------------------------------------------------
-#                      Player GUI
+#                      玩家介面
 #----------------------------------------------------------
 player_info: "&2&l{player}"
-player_heal: "&e&lHeal"
-player_feed: "&7&lFeed"
-player_survival: "&a&lSurvival"
-player_adventure: "&2&lAdventure"
-player_creative: "&3&lCreative"
-player_spectator: "&9&lSpectator"
-player_god_enabled: "&c&lGod"
-player_god_disabled: "&a&lGod"
-player_potions: "&c&lPotions"
-player_spawner: "&8&lSpawner"
-player_kill: "&8&lKill"
-player_burn: "&c&lBurn"
-player_lightning: "&5&lLightning"
-player_firework: "&4&lFirework"
-player_money: "&2&lMoney"
-player_vanish_enabled: "&a&lVanish"
-player_vanish_disabled: "&c&lVanish"
-player_custom: "&6&lCustom Commands"
-player_back: "&c&lBack"
+player_heal: "&e&l治癒"
+player_feed: "&7&l餵食"
+player_survival: "&a&l生存"
+player_adventure: "&2&l冒險"
+player_creative: "&3&l創造"
+player_spectator: "&9&l觀察者"
+player_god_enabled: "&c&l上帝"
+player_god_disabled: "&a&l上帝"
+player_potions: "&c&l藥水效果"
+player_spawner: "&8&l生怪"
+player_kill: "&8&l殺死"
+player_burn: "&c&l燃燒"
+player_lightning: "&5&l雷擊"
+player_firework: "&4&l煙火"
+player_money: "&2&l金錢"
+player_vanish_enabled: "&a&l隱形"
+player_vanish_disabled: "&c&l隱形"
+player_custom: "&6&l自訂指令"
+player_back: "&c&l返回"
 #----------------------------------------------------------
-#                       World GUI
+#                       世界介面
 #----------------------------------------------------------
-world_day: "&e&lDay"
-world_night: "&8&lNight"
-world_thunder: "&9&lThunder"
-world_rain: "&3&lRain"
-world_clear: "&b&lClear"
-world_back: "&c&lBack"
+world_day: "&e&l白天"
+world_night: "&8&l黑夜"
+world_thunder: "&9&l雷雨天"
+world_rain: "&3&l雨天"
+world_clear: "&b&l晴天"
+world_back: "&c&l返回"
 #----------------------------------------------------------
-#                     Players GUI
+#                     玩家介面
 #----------------------------------------------------------
 players_color: "&2&l{player}"
-players_more: "&cClick here for more actions"
-players_previous: "&c&lPrevious"
-players_page: "&a&lPage"
-players_next: "&2&lNext"
-players_back: "&c&lBack"
+players_more: "&c點擊我執行更多動作"
+players_previous: "&c&l上一頁"
+players_page: "&a&l頁"
+players_next: "&2&l下一頁"
+players_back: "&c&l返回"
 #----------------------------------------------------------
-#                     Plugins GUI
+#                     插件介面
 #----------------------------------------------------------
-plugins_back: "&c&lBack"
+plugins_back: "&c&l返回"
 #----------------------------------------------------------
-#                     Commands GUI
+#                     指令介面
 #----------------------------------------------------------
-commands_back: "&c&lBack"
+commands_back: "&c&l返回"
 #----------------------------------------------------------
-#                     Unban GUI
+#                     解除封鎖介面
 #----------------------------------------------------------
 unban_color: "&2&l{player}"
-unban_more: "&cClick here to unban this player"
-unban_previous: "&c&lPrevious"
-unban_page: "&a&lPage"
-unban_next: "&2&lNext"
-unban_back: "&c&lBack"
+unban_more: "&c點擊我執行更多動作"
+unban_previous: "&c&l上一頁"
+unban_page: "&a&l頁"
+unban_next: "&2&l下一頁"
+unban_back: "&c&l返回"
 #----------------------------------------------------------
-#                 Players Settings GUI
+#                 玩家設定介面
 #----------------------------------------------------------
 players_settings_info: "&2&l{player}"
-players_settings_actions: "&9&lActions"
-players_settings_money: "&2&lMoney"
-players_settings_kick_player: "&8&lKick player"
-players_settings_ban_player: "&8&lBan player"
-players_settings_back: "&c&lBack"
+players_settings_actions: "&9&l執行"
+players_settings_money: "&2&l金錢"
+players_settings_kick_player: "&8&l踢除玩家"
+players_settings_ban_player: "&8&l封鎖玩家"
+players_settings_back: "&c&l返回"
 #----------------------------------------------------------
-#                   Actions GUI
+#                   動作介面
 #----------------------------------------------------------
-actions_heal: "&e&lHeal"
-actions_feed: "&7&lFeed"
+actions_heal: "&e&l治癒"
+actions_feed: "&7&l餵食"
 actions_info: "&2&l{player}"
-actions_survival: "&a&lSurvival"
-actions_adventure: "&2&lAdventure"
-actions_creative: "&3&lCreative"
-actions_spectator: "&9&lSpectator"
-actions_teleport_to_player: "&d&lTeleport to player"
-actions_kill_player: "&8&lKill player"
-actions_burn_player: "&c&lBurn player"
-actions_teleport_player_to_you: "&d&lTeleport player to you"
-actions_god_enabled: "&c&lGod"
-actions_god_disabled: "&a&lGod"
-actions_potions: "&c&lPotions"
-actions_spawner: "&8&lSpawner"
-actions_inventory: "&a&lInventory"
-actions_vanish_enabled: "&a&lVanish"
-actions_vanish_disabled: "&c&lVanish"
-actions_lightning: "&5&lLightning"
-actions_firework: "&4&lFirework"
-actions_fakeop: "&c&lFake OP"
-actions_custom: "&6&lCustom Commands"
-actions_back: "&c&lBack"
+actions_survival: "&a&l生存"
+actions_adventure: "&2&l冒險"
+actions_creative: "&3&l創造"
+actions_spectator: "&9&l觀察者模式"
+actions_teleport_to_player: "&d&l傳送至玩家"
+actions_kill_player: "&8&l殺死玩家"
+actions_burn_player: "&c&l燃燒玩家"
+actions_teleport_player_to_you: "&d&l將玩家傳送至你"
+actions_god_enabled: "&c&l上帝"
+actions_god_disabled: "&a&l上帝"
+actions_potions: "&c&l藥水效果"
+actions_spawner: "&8&l生怪"
+actions_inventory: "&a&l背包"
+actions_vanish_enabled: "&a&l隱形"
+actions_vanish_disabled: "&c&l隱形"
+actions_lightning: "&5&l雷擊"
+actions_firework: "&4&l煙火"
+actions_fakeop: "&c&l假OP"
+actions_custom: "&6&l自訂指令"
+actions_back: "&c&l返回"
 #----------------------------------------------------------
-#                       Kick GUI
+#                       踢除介面
 #----------------------------------------------------------
-kick: "&4You have been kicked for "
-kick_back: "&c&lBack"
+kick: "&4你被踢出伺服器, 原因: "
+kick_back: "&c&l返回"
 #----------------------------------------------------------
-#                       Ban GUI
+#                       封鎖介面
 #----------------------------------------------------------
-ban: "&4You have been banned for "
-ban_time: "&cYour suspension expires on &c&l{days}.{months}.{years}&c at &c&l{hours}:{minutes}:{seconds}."
-ban_years: "&e&lYears"
-ban_months: "&e&lMonths"
-ban_days: "&e&lDays"
-ban_hours: "&e&lHours"
-ban_minutes: "&e&lMinutes"
-ban_hacking: "&7&lHacking!"
-ban_griefing: "&6&lGriefing!"
-ban_spamming: "&d&lSpamming!"
-ban_advertising: "&3&lAdvertising!"
-ban_swearing: "&e&lSwearing!"
-ban_back: "&c&lBack"
+ban: "&4你被禁止進入伺服器, 原因: "
+ban_time: "&c你將在 &c&l{days}/{months}/{years} {hours}:{minutes}:{seconds} &c解除封鎖."
+ban_years: "&e&l年"
+ban_months: "&e&l月"
+ban_days: "&e&l天"
+ban_hours: "&e&l小時"
+ban_minutes: "&e&l分鐘"
+ban_hacking: "&7&l外掛!"
+ban_griefing: "&6&l破壞!"
+ban_spamming: "&d&l刷頻!"
+ban_advertising: "&3&l宣傳!"
+ban_swearing: "&e&l辱罵!"
+ban_back: "&c&l返回"
 #----------------------------------------------------------
-#                     Potions GUI
+#                     藥水介面
 #----------------------------------------------------------
-potions_night_vision: "&8&lNight Vision"
-potions_invisibility: "&7&lInvisibility"
-potions_jump_boost: "&a&lJump Boost"
-potions_fire_resistance: "&c&lFire Resistance"
-potions_speed: "&b&lSpeed"
-potions_slowness: "&4&lSlowness"
-potions_water_breathing: "&9&lWater Breathing"
-potions_instant_health: "&a&lInstant Health"
-potions_instant_damage: "&4&lInstant Damage"
-potions_poison: "&5&lPoison"
-potions_regeneration: "&e&lRegeneration"
-potions_strength: "&e&lStrength"
-potions_weakness: "&4&lWeakness"
-potions_luck: "&6&lLuck"
-potions_slow_falling: "&3&lSlow falling"
-potions_time: "&a&lTime"
-potions_remove_all: "&4&lRemove All"
-potions_level: "&a&lLevel"
-potions_back: "&c&lBack"
+potions_night_vision: "&8&l夜視"
+potions_invisibility: "&7&l隱形"
+potions_jump_boost: "&a&l跳躍提升"
+potions_fire_resistance: "&c&l抗火"
+potions_speed: "&b&l加速"
+potions_slowness: "&4&l緩速"
+potions_water_breathing: "&9&l水中呼吸"
+potions_instant_health: "&a&l立即恢復"
+potions_instant_damage: "&4&l立即傷害"
+potions_poison: "&5&l劇毒"
+potions_regeneration: "&e&l恢復"
+potions_strength: "&e&l力量"
+potions_weakness: "&4&l虛弱"
+potions_luck: "&6&l幸運"
+potions_slow_falling: "&3&l緩降"
+potions_time: "&a&l時效"
+potions_remove_all: "&4&l全部清除"
+potions_level: "&a&l等級"
+potions_back: "&c&l返回"
 #----------------------------------------------------------
-#                     Spawner GUI
+#                     升怪介面
 #----------------------------------------------------------
-spawner_bat: "&a&lBat"
-spawner_blaze: "&c&lBlaze"
-spawner_cat: "&a&lCat"
-spawner_cave_spider: "&c&lCave Spider"
-spawner_chicken: "&a&lChicken"
-spawner_cod: "&b&lCod"
-spawner_cow: "&a&lCow"
-spawner_creeper: "&c&lCreeper"
-spawner_dolphin: "&b&lDolphin"
-spawner_donkey: "&a&lDonkey"
-spawner_drowned: "&c&lDrowned"
-spawner_elder_guardian: "&c&lElder Guardian"
-spawner_enderman: "&c&lEnderman"
-spawner_endermite: "&c&lEndermite"
-spawner_evoker: "&c&lEvoker"
-spawner_fox: "&a&lFox"
-spawner_ghast: "&c&lGhast"
-spawner_guardian: "&c&lGuardian"
-spawner_horse: "&a&lHorse"
-spawner_husk: "&c&lHusk"
-spawner_llama: "&a&Llama"
-spawner_magma_cube: "&c&lMagma Cube"
-spawner_mooshroom: "&a&lMooshroom"
-spawner_mule: "&a&lMule"
-spawner_ocelot: "&a&lOcelot"
-spawner_panda: "&a&lPanda"
-spawner_parrot: "&a&lParrot"
-spawner_phantom: "&c&lPhantom"
-spawner_pig: "&a&lPig"
-spawner_pillager: "&c&lPillager"
-spawner_polar_bear: "&a&lPolar Bear"
-spawner_pufferfish: "&b&lPufferfish"
-spawner_rabbit: "&a&lRabbit"
-spawner_ravager: "&c&lRavager"
-spawner_salmon: "&b&lSalmon"
-spawner_sheep: "&a&lSheep"
-spawner_shulker: "&c&lShulker"
-spawner_silverfish: "&c&lSilverfish"
-spawner_skeleton: "&c&lSkeleton"
-spawner_skeleton_horse: "&c&lSkeleton Horse"
-spawner_slime: "&c&lSlime"
-spawner_spider: "&c&lSpider"
-spawner_squid: "&b&lSquid"
-spawner_stray: "&c&lStray"
-spawner_trader_llama: "&a&lTrader Llama"
-spawner_tropical_fish: "&b&lTropical Fish"
-spawner_turtle: "&a&lTurtle"
-spawner_vex: "&c&lVex"
-spawner_villager: "&a&lVillager"
-spawner_vindicator: "&c&lVindicator"
-spawner_wandering_trader: "&a&lWandering Trader"
-spawner_witch: "&c&lWitch"
-spawner_wither: "&c&lWither"
-spawner_wolf: "&a&lWolf"
-spawner_zombie: "&c&lZombie"
-spawner_zombie_pigman: "&c&lZombie Pigman"
-spawner_zombie_villager: "&c&lZombie Villager"
-spawner_back: "&c&lBack"
+spawner_bat: "&a&l蝙蝠"
+spawner_blaze: "&c&l烈焰使者"
+spawner_cat: "&a&l貓"
+spawner_cave_spider: "&c&l洞穴蜘蛛"
+spawner_chicken: "&a&l雞"
+spawner_cod: "&b&l鱈魚"
+spawner_cow: "&a&l牛"
+spawner_creeper: "&c&l苦力帕 (爬行者)"
+spawner_dolphin: "&b&l海豚"
+spawner_donkey: "&a&l驢子"
+spawner_drowned: "&c&l沉屍"
+spawner_elder_guardian: "&c&l遠古守衛"
+spawner_enderman: "&c&l終界使者"
+spawner_endermite: "&c&l終界蟎"
+spawner_evoker: "&c&l喚魔者"
+spawner_fox: "&a&l狐狸"
+spawner_ghast: "&c&l地域幽靈"
+spawner_guardian: "&c&l深海守衛"
+spawner_horse: "&a&l馬"
+spawner_husk: "&c&l屍殼"
+spawner_llama: "&a&羊駝"
+spawner_magma_cube: "&c&l熔岩立方怪"
+spawner_mooshroom: "&a&l哞菇"
+spawner_mule: "&a&l騾子"
+spawner_ocelot: "&a&l豹貓"
+spawner_panda: "&a&l熊貓"
+spawner_parrot: "&a&l鸚鵡"
+spawner_phantom: "&c&l夜魅"
+spawner_pig: "&a&l豬"
+spawner_pillager: "&c&l刌民"
+spawner_polar_bear: "&a&l北極熊"
+spawner_pufferfish: "&b&l河豚"
+spawner_rabbit: "&a&l兔子"
+spawner_ravager: "&c&l劫毀獸"
+spawner_salmon: "&b&l鮭魚"
+spawner_sheep: "&a&l綿羊"
+spawner_shulker: "&c&l界伏蚌"
+spawner_silverfish: "&c&l蠹魚"
+spawner_skeleton: "&c&l骷髏"
+spawner_skeleton_horse: "&c&l骷髏馬"
+spawner_slime: "&c&l史萊姆"
+spawner_spider: "&c&l蜘蛛"
+spawner_squid: "&b&l魷魚"
+spawner_stray: "&c&l流髑"
+spawner_trader_llama: "&a&l行商駱馬"
+spawner_tropical_fish: "&b&l熱帶魚"
+spawner_turtle: "&a&l烏龜"
+spawner_vex: "&c&l惱鬼"
+spawner_villager: "&a&l村民"
+spawner_vindicator: "&c&l衛道士"
+spawner_wandering_trader: "&a&l流浪商人"
+spawner_witch: "&c&l女巫"
+spawner_wither: "&c&l凋零"
+spawner_wolf: "&a&l狼"
+spawner_zombie: "&c&l殭屍"
+spawner_zombie_pigman: "&c&l殭屍豬人"
+spawner_zombie_villager: "&c&l殭屍村民"
+spawner_back: "&c&l返回"
 #----------------------------------------------------------
-#                      Money GUI
+#                      金錢介面
 #----------------------------------------------------------
-money_give: "&2&lGive"
-money_set: "&9&lSet"
-money_take: "&c&lTake"
-money_back: "&c&lBack"
+money_give: "&2&l給予"
+money_set: "&9&l設置"
+money_take: "&c&l拿走"
+money_back: "&c&l返回"
 #----------------------------------------------------------
-#                      Money Amount GUI
+#                      金錢數量介面
 #----------------------------------------------------------
-money_amount_back: "&c&lBack"
+money_amount_back: "&c&l返回"
 #----------------------------------------------------------
-#                    Inventory GUI
+#                    背包介面
 #----------------------------------------------------------
-inventory_refresh: "&a&lRefresh"
-inventory_clear: "&b&lClear"
-inventory_back: "&c&lBack"
+inventory_refresh: "&a&l刷新"
+inventory_clear: "&b&l清除"
+inventory_back: "&c&l返回"
 #----------------------------------------------------------
-#                       Messages
+#                       訊息
 #----------------------------------------------------------
-message_target_player_teleport: "&aYou have been teleported to {player}."
-message_player_kill: "&aYou have killed {player}."
-message_player_burn: "&aYou have set {player} on &cfire&a!"
+message_target_player_teleport: "&a你傳送至 {player}."
+message_player_kill: "&a你殺死了 {player}."
+message_player_burn: "&a你讓 {player} &c燃燒&a!"
 message_target_player_creeper: "&a&lCreeper, Aww Man!"
-message_player_creeper: "&aCreeper has been spawned on {player}."
-message_target_player_heal: "&e{player} healed you."
-message_player_heal: "&aYou have healed {player}."
-message_target_player_feed: "&e{player} fed you."
-message_player_feed: "&aYou have feeded {player}."
-message_player_kick: "&a{player} has been kicked."
-message_player_ban: "&a{player} has been banned."
-message_player_god_enabled: "&a{player} is now in god mode."
-message_player_god_disabled: "&a{player} is not in god mode anymore."
-message_target_player_god_enabled: "&a{player} enabled you god mode."
-message_target_player_god_disabled: "&a{player} disabled you god mode."
-message_target_player_potions: "&a{player} give you {potion}&a effect for {time} minutes."
-message_player_potions: "&aYou just give {player} {potion}&a effect for {time} minutes."
-message_target_player_potions_remove: "&a{player} &cremoved &aall your potion effects."
-message_player_potions_remove: "&aYou have just removed all {player} potion effects."
-message_heal: "&aYou have been healed."
-message_feed: "&aYou have been feeded."
-message_god_enabled: "&aYou have enabled god mode."
-message_god_disabled: "&aYou have disabled god mode."
-message_kill: "&cYou have killed yourself."
-message_burn: "&cYou set yourself on fire."
-message_potions_remove: "&aYou have removed all your potion effects."
-message_potions: "&aYou just set {potion}&a effect for {time} minutes to yourself."
-message_maintenance: "&aServer is now in &cMaintenance mode&a. Please come back later."
-message_maintenance_enabled: "&aMaintenance mode is now &a&lEnabled."
-message_maintenance_disabled: "&aMaintenance mode is now &c&lDisabled."
-message_player_not_found: "&cPlayer is not available right now!"
-message_ban_bypass: "&cYou can not ban this player!"
-message_kick_bypass: "&cYou can not kick this player!"
-message_give: "&aYou just send {amount} to yourself and now you have {balance}."
-message_player_give: "&aYou were given {amount} to {player} and now he has {balance}."
-message_target_player_give: "&a{player} sended you {amount} and now you have {balance}."
-message_set: "&aYou just set yourself {amount}."
-message_player_set: "&aYou just set {player} money to {amount}."
-message_target_player_set: "&a{player} set your money to {amount}."
-message_take: "&aYou just take {amount} from yourself and now you have {balance}."
-message_player_take: "&aYou just take {amount} from {player} and now he has {balance}."
-message_target_player_take: "&c{player} take you {amount} and now you have {balance}."
-message_transaction_error: "&cSomething went wrong with transaction!"
-message_take_error: "&cYou can't take more money then you have!"
-message_player_take_error: "&cYou can't take more money then player have!"
-message_visible: "&aYou are now&a&l visible&a to other players."
-message_player_visible: "&a{player} is now&a&l visible&a to other players."
-message_hide: "&aYou are now&c&l hidden&a from other players."
-message_player_hide: "&a{player} is now&c&l hidden&a from other players."
-message_unban_player: "&a{player} is now unbanned."
-message_initializing_start: "&aPlugin is initializing..."
-message_initializing_finish: "&aGUI is ready to use."
+message_player_creeper: "&召喚了苦力帕至 {player}."
+message_target_player_heal: "&e{player} 治癒了你."
+message_player_heal: "&a你治癒了 {player}."
+message_target_player_feed: "&e{player} 餵食了你."
+message_player_feed: "&a你餵食了 {player}."
+message_player_kick: "&a{player} 被踢出伺服器."
+message_player_ban: "&a{player} 被封鎖."
+message_player_god_enabled: "&a{player} 現在是上帝模式."
+message_player_god_disabled: "&a{player} 再也不是上帝模式."
+message_target_player_god_enabled: "&a{player} 啟用你的上帝模式."
+message_target_player_god_disabled: "&a{player} 關閉你的上帝模式."
+message_target_player_potions: "&a{player} 給予你 {potion}&a 效果, 時效 {time} 分鐘."
+message_player_potions: "&a你給予了 {player} {potion}&a 效果 {time} 分鐘."
+message_target_player_potions_remove: "&a{player} &c清除 &a了你所有的效果."
+message_player_potions_remove: "&a你清除了 {player} 的藥水效果."
+message_heal: "&a你被治癒了."
+message_feed: "&a你被餵食了."
+message_god_enabled: "&a你啟用了上帝模式."
+message_god_disabled: "&a你關閉了上帝模式."
+message_kill: "&c你殺死了自己."
+message_burn: "&c你將自己點燃."
+message_potions_remove: "&a你將身上所有效果清除."
+message_potions: "&a你給予自己 {potion}&a 效果, 時效 {time} 分鐘."
+message_maintenance: "&a伺服器現在是 &c維修模式&a. 請晚點再加入."
+message_maintenance_enabled: "&a維修模式現在 &a&l啟用."
+message_maintenance_disabled: "&a維修模式現在 &c&l關閉."
+message_player_not_found: "&c玩家不存在!"
+message_ban_bypass: "&c你無法封鎖此玩家!"
+message_kick_bypass: "&c你無法踢除此玩家!"
+message_give: "&a你給予自己 {amount} 而你現在有 {balance}."
+message_player_give: "&a你給予 {amount} 至 {player} 而他現在有 {balance}."
+message_target_player_give: "&a{player} 給予你 {amount} 而你現在有 {balance}."
+message_set: "&a你設定自己的金錢至 {amount}."
+message_player_set: "&a你將 {player} 的金錢設置為 {amount}."
+message_target_player_set: "&a{player} 將你的金錢設置為 {amount}."
+message_take: "&a你從自己身上拿走 {amount} 而你現在有 {balance}."
+message_player_take: "&a你從 {player} 身上拿走 {amount} 而他現在有 {balance}."
+message_target_player_take: "&c{player} 從你身上拿走 {amount} 而你現在有 {balance}."
+message_transaction_error: "&c交易時發生一些錯誤!"
+message_take_error: "&c你不能拿走比你身上更多的金錢!"
+message_player_take_error: "&c你不能拿走筆玩家深上更多的金錢!"
+message_visible: "&a你現在對其他玩家&a&l 現形&a."
+message_player_visible: "&a{player} 現在對其他玩家&a&l 現形&a."
+message_hide: "&a你現在對其他玩家&c&l 隱形&a."
+message_player_hide: "&a{player} 現在對其他玩家&c&l 隱形&a."
+message_unban_player: "&a{player} 解除封鎖."
+message_initializing_start: "&a插件初始化..."
+message_initializing_finish: "&a介面現在可以正常使用."

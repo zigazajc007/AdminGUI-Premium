@@ -948,6 +948,9 @@ public class AdminUI {
         }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "main_language") + language.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("default_language")))){
             switch (language.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("default_language"))){
                 case "English":
+                    language.put(p.getUniqueId(), "Chinese");
+                    break;
+                case "Chinese":
                     language.put(p.getUniqueId(), "Spanish");
                     break;
                 case "Spanish":
