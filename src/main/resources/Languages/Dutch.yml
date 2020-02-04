@@ -1,0 +1,350 @@
+#       ----------- + AdminGUI by Ziga Zajc + -----------   #
+#                                                           #
+#                             Dutch                         #
+#                                                           #
+#       --------- + ------------------------- + ---------   #
+#
+#       You can use chat colors:
+#                ________________________
+#               |   code: | color:       |
+#               |________________________|
+#               |     &0  |	Black	     |
+#               |     &1  |	Dark Blue	 |
+#               |     &2  |	Dark Green	 |
+#               |     &3  |	Dark Aqua	 |
+#               |     &4  |	Dark Red	 |
+#               |     &5  |	Dark Purple	 |
+#               |     &6  |	Gold	     |
+#               |     &7  |	Gray	     |
+#               |     &8  |	Dark Gray	 |
+#               |     &9  |	Blue	     |
+#               |     &a  |	Green	     |
+#               |     &b  |	Aqua	     |
+#               |     &c  |	Red	         |
+#               |     &d  |	Light Purple |
+#               |     &e  |	Yellow	     |
+#               |     &f  |	White	     |
+#               |     &k  |	Obfuscated	 |
+#               |     &l  |	Bold	     |
+#               |     &m  |	Strikethrough|
+#               |     &n  |	Underline	 |
+#               |     &o  |	Italic	     |
+#               |     &r  |	Reset	     |
+#               |________________________|
+#
+#----------------------------------------------------------
+#                         Prefix
+#----------------------------------------------------------
+prefix: "&7[&cAdmin GUI&7] "
+#----------------------------------------------------------
+#----------------------------------------------------------
+#                       Commands
+#----------------------------------------------------------
+permission: "&cJe hebt geen toestemming om dit te doen!"
+is_not_a_player: "&c{player} is geen speler!"
+is_not_a_number: "&c{number} is geen getal!"
+wrong_arguments: "&cJe kunt alleen /admin of /admin <player> gebruiken"
+wrong_initialize: "&cJe kunt alleen /admin initialize gui of /admin initialize players gebruiken"
+vault_required: "&cJe moet de Vault plugin hebben om deze actie te kunnen uitvoeren!"
+vanish_required: "&cJe moet Super Vanish of Premium Vanish om deze actie te kunnen uitvoeren!"
+#----------------------------------------------------------
+#                    Inventory names
+#----------------------------------------------------------
+inventory_main: "&4&lAdmin GUI &c&lPremium"
+inventory_player: "&5&l{player}"
+inventory_world: "&2&lWereld"
+inventory_players: "&1&lSpelers"
+inventory_plugins: "&e&lPlugins"
+inventory_commands: "&2&lCommands"
+inventory_unban: "&c&lUnban"
+inventory_actions: "&9&lActies &l{player}"
+inventory_kick: "&8&lKick &2&l{player}"
+inventory_ban: "&8&lBan &2&l{player}"
+inventory_potions: "&c&lDranken &2&l{player}"
+inventory_spawner: "&8&lSpawner &2&l{player}"
+inventory_money: "&2&lGeld &2&l{player}"
+inventory_money_give: "&2&lGEEF geld aan {player}"
+inventory_money_set: "&2&lSTEL het saldo IN van &2&l{player}"
+inventory_money_take: "&2&lNEEM geld van &2&l{player}"
+inventory_inventory: "&a&lInventory &2&l{player}"
+#----------------------------------------------------------
+#                       Admin GUI
+#----------------------------------------------------------
+main_player: "&5&l{player}"
+main_world: "&2&lWereld"
+main_players: "&9&lSpelers"
+main_plugins: "&6&lPlugins"
+main_maintenance_mode: "&c&lOnderhoud modus"
+main_unban_players: "&c&lUnban spelers"
+main_language: "&b&l"
+main_quit: "&c&lSluit"
+#----------------------------------------------------------
+#                      Player GUI
+#----------------------------------------------------------
+player_info: "&2&l{player}"
+player_heal: "&e&lGenees"
+player_feed: "&7&lVoed"
+player_survival: "&a&lOverleven"
+player_adventure: "&2&lAvontuur"
+player_creative: "&3&lCreatief"
+player_spectator: "&9&lSpectator"
+player_god_enabled: "&a&lGod"
+player_god_disabled: "&c&lGod"
+player_potions: "&c&lDranken"
+player_spawner: "&8&lSpawner"
+player_kill: "&8&lDood"
+player_burn: "&c&lVerbrand"
+player_lightning: "&5&lBliksem"
+player_firework: "&4&lVuurwerk"
+player_money: "&2&lGeld"
+player_vanish_enabled: "&a&lVerdwijn"
+player_vanish_disabled: "&c&lVerdwijn"
+player_custom: "&6&lEigen Commands"
+player_back: "&c&lTerug"
+#----------------------------------------------------------
+#                       World GUI
+#----------------------------------------------------------
+world_day: "&e&lDag"
+world_night: "&8&lNacht"
+world_thunder: "&9&lOnweer"
+world_rain: "&3&lRegen"
+world_clear: "&b&lHelder"
+world_back: "&c&lTerug"
+#----------------------------------------------------------
+#                     Players GUI
+#----------------------------------------------------------
+players_color: "&2&l{player}"
+players_more: "&cKlik hier voor meer acties"
+players_previous: "&c&lVorige"
+players_page: "&a&lPagina"
+players_next: "&2&lVolgende"
+players_back: "&c&lTerug"
+#----------------------------------------------------------
+#                     Plugins GUI
+#----------------------------------------------------------
+plugins_back: "&c&lBack"
+#----------------------------------------------------------
+#                     Commands GUI
+#----------------------------------------------------------
+commands_back: "&c&lBack"
+#----------------------------------------------------------
+#                     Unban GUI
+#----------------------------------------------------------
+unban_color: "&2&l{player}"
+unban_more: "&cKlik hier om deze speler te unbannen"
+unban_previous: "&c&lTerug"
+unban_page: "&a&lPagina"
+unban_next: "&2&lVolgende"
+unban_back: "&c&lTerug"
+#----------------------------------------------------------
+#                 Players Settings GUI
+#----------------------------------------------------------
+players_settings_info: "&2&l{player}"
+players_settings_actions: "&9&lActies"
+players_settings_money: "&2&lGeld"
+players_settings_kick_player: "&8&lKick speler"
+players_settings_ban_player: "&8&lBan speler"
+players_settings_back: "&c&lTerug"
+#----------------------------------------------------------
+#                   Actions GUI
+#----------------------------------------------------------
+actions_heal: "&e&lGenees"
+actions_feed: "&7&lVoed"
+actions_info: "&2&l{player}"
+actions_survival: "&a&lOverleven"
+actions_adventure: "&2&lAvontuur"
+actions_creative: "&3&lCreatief"
+actions_spectator: "&9&lSpectator"
+actions_teleport_to_player: "&d&lTeleporteer naar speler"
+actions_kill_player: "&8&lDood speler"
+actions_burn_player: "&c&lVerbrand speler"
+actions_teleport_player_to_you: "&d&lTeleporteer speler naar jou"
+actions_god_enabled: "&a&lGod"
+actions_god_disabled: "&c&lGod"
+actions_potions: "&c&lDranken"
+actions_spawner: "&8&lSpawner"
+actions_inventory: "&a&lInventory"
+actions_vanish_enabled: "&a&lVerdwijn"
+actions_vanish_disabled: "&c&lVerdwijn"
+actions_lightning: "&5&lBliksem"
+actions_firework: "&4&lVuurwerk"
+actions_fakeop: "&c&lNep OP"
+actions_custom: "&6&lEigen Commands"
+actions_back: "&c&lTerug"
+#----------------------------------------------------------
+#                       Kick GUI
+#----------------------------------------------------------
+kick: "&4Je bent gekickt vanwege "
+kick_back: "&c&lTerug"
+#----------------------------------------------------------
+#                       Ban GUI
+#----------------------------------------------------------
+ban: "&4Je bent gebanned vanwege "
+ban_time: "&cJe straf vervalt op &c&l{days}.{months}.{years}&c om &c&l{hours}:{minutes}:{seconds}."
+ban_years: "&e&lJaren"
+ban_months: "&e&lMaanden"
+ban_days: "&e&lDagen"
+ban_hours: "&e&lUren"
+ban_minutes: "&e&lMinuten"
+ban_hacking: "&7&lHacken!"
+ban_griefing: "&6&lGriefen!"
+ban_spamming: "&d&lSpammen!"
+ban_advertising: "&3&lAdverteren!"
+ban_swearing: "&e&lSchelden!"
+ban_back: "&c&lTerug"
+#----------------------------------------------------------
+#                     Potions GUI
+#----------------------------------------------------------
+potions_night_vision: "&8&lNacht zicht"
+potions_invisibility: "&7&lOnzichtbaarheid"
+potions_jump_boost: "&a&lSpring hoger"
+potions_fire_resistance: "&c&lVuur bescherming"
+potions_speed: "&b&lSnelheid"
+potions_slowness: "&4&lTraagheid"
+potions_water_breathing: "&9&lOnderwater ademen"
+potions_instant_health: "&a&lGenees meteen"
+potions_instant_damage: "&4&lVerwond meteen"
+potions_poison: "&5&lVergif"
+potions_regeneration: "&e&lGenezing"
+potions_strength: "&e&lKracht"
+potions_weakness: "&4&lZwakte"
+potions_luck: "&6&lGeluk"
+potions_slow_falling: "&3&lLangzaam vallen"
+potions_time: "&a&lTijd"
+potions_remove_all: "&4&lVerwijder alles"
+potions_level: "&a&lLevel"
+potions_back: "&c&lTerug"
+#----------------------------------------------------------
+#                     Spawner GUI
+#----------------------------------------------------------
+spawner_bat: "&a&lVleermuis"
+spawner_blaze: "&c&lBlaze"
+spawner_cat: "&a&lKat"
+spawner_cave_spider: "&c&lGrotten Spin"
+spawner_chicken: "&a&lKip"
+spawner_cod: "&b&lVis"
+spawner_cow: "&a&lKoe"
+spawner_creeper: "&c&lCreeper"
+spawner_dolphin: "&b&lDolfijn"
+spawner_donkey: "&a&lAap"
+spawner_drowned: "&c&lVerdrenkeling"
+spawner_elder_guardian: "&c&lOude bewaarder"
+spawner_enderman: "&c&lEnderman"
+spawner_endermite: "&c&lEndermite"
+spawner_evoker: "&c&lEvoker"
+spawner_fox: "&a&lVos"
+spawner_ghast: "&c&lGhast"
+spawner_guardian: "&c&lBewaarder"
+spawner_horse: "&a&lPaard"
+spawner_husk: "&c&lHusk"
+spawner_llama: "&a&lLama"
+spawner_magma_cube: "&c&lMagma Kubes"
+spawner_mooshroom: "&a&lPaddestoel"
+spawner_mule: "&a&lEzel"
+spawner_ocelot: "&a&lOcelot"
+spawner_panda: "&a&lPanda"
+spawner_parrot: "&a&lVogel"
+spawner_phantom: "&c&lPhantoom"
+spawner_pig: "&a&lVarken"
+spawner_pillager: "&c&lPlunderaar"
+spawner_polar_bear: "&a&lIjsbeer"
+spawner_pufferfish: "&b&lKogelvis"
+spawner_rabbit: "&a&lKonijn"
+spawner_ravager: "&c&lRavager"
+spawner_salmon: "&b&lZalm"
+spawner_sheep: "&a&lSchaap"
+spawner_shulker: "&c&lShulker"
+spawner_silverfish: "&c&lSilverfish"
+spawner_skeleton: "&c&lSkelet"
+spawner_skeleton_horse: "&c&lSkelet paard"
+spawner_slime: "&c&lSlijm"
+spawner_spider: "&c&lSpin"
+spawner_squid: "&b&lInktvis"
+spawner_stray: "&c&lZwerver"
+spawner_trader_llama: "&a&lHanderlaar lama"
+spawner_tropical_fish: "&b&lTropische vis"
+spawner_turtle: "&a&lSchildpad"
+spawner_vex: "&c&lVex"
+spawner_villager: "&a&lDorpeling"
+spawner_vindicator: "&c&lVerdediger"
+spawner_wandering_trader: "&a&lVerdwaalde Handelaar"
+spawner_witch: "&c&lHeks"
+spawner_wither: "&c&lWither"
+spawner_wolf: "&a&lWolf"
+spawner_zombie: "&c&lZombie"
+spawner_zombie_pigman: "&c&lVarkensman zombie"
+spawner_zombie_villager: "&c&lDorpeling zombie"
+spawner_back: "&c&lTerug"
+#----------------------------------------------------------
+#                      Money GUI
+#----------------------------------------------------------
+money_give: "&2&lGeef"
+money_set: "&9&lStel in"
+money_take: "&c&lNeem"
+money_back: "&c&lTerug"
+#----------------------------------------------------------
+#                      Money Amount GUI
+#----------------------------------------------------------
+money_amount_back: "&c&lTerug"
+#----------------------------------------------------------
+#                    Inventory GUI
+#----------------------------------------------------------
+inventory_refresh: "&a&lVernieuw"
+inventory_clear: "&b&lLeeg"
+inventory_back: "&c&lTerug"
+#----------------------------------------------------------
+#                       Messages
+#----------------------------------------------------------
+message_target_player_teleport: "&aJe bent geteleporteerd naar {player}"
+message_player_kill: "&aJe hebt {player} gedood"
+message_player_burn: "&aJe hebt {player} &cverbrand&a!"
+message_target_player_creeper: "&a&lCreeper, Ach Man!"
+message_player_creeper: "&aCreeper is gespawned bij {player}"
+message_target_player_heal: "&e{player} heeft je genezen."
+message_player_heal: "&aJe hebt {player} genezen"
+message_target_player_feed: "&e{player} heeft je gevoed."
+message_player_feed: "&aJe hebt {player} gevoed"
+message_player_kick: "&a{player} is gekicked."
+message_player_ban: "&a{player} is gebanned."
+message_player_god_enabled: "&a{player} is nu in god modus."
+message_player_god_disabled: "&a{player} is niet in meer god modus."
+message_target_player_god_enabled: "&a{player} heeft jou in god modus gezet."
+message_target_player_god_disabled: "&a{player} heeft jou uit god modus gehaald."
+message_target_player_potions: "&a{player} heeft jou het {potion}&a effect gegeven voor {time} minuten."
+message_player_potions: "&aJe hebt {player} het {potion}&a effect gegeven voor {time} minuten."
+message_target_player_potions_remove: "&a{player} &cverwijderde &aal je drank effecten."
+message_player_potions_remove: "&aJe hebt alle drank effecten van {player} verwijderd."
+message_heal: "&aJe bent genezen."
+message_feed: "&aJe bent gevoed."
+message_god_enabled: "&aJe hebt god modus aangezet."
+message_god_disabled: "&aJe hebt god modus uitgezet."
+message_kill: "&cJe hebt jezelf gedood."
+message_burn: "&cJe hebt jezelf verbrand."
+message_potions_remove: "&aJe hebt al je drank effecten verwijderd."
+message_potions: "&aJe hebt jezelf het {potion}&a effect voor {time} minuten gegeven."
+message_maintenance: "&aDe server is nu in &cOnderhoud modus&a. Probeer het later opnieuw."
+message_maintenance_enabled: "&aOnderhoud modus is nu &a&laan."
+message_maintenance_disabled: "&aOnderhoud modus is nu &c&luit."
+message_player_not_found: "&cSpeler is nu niet beschikbaar!"
+message_ban_bypass: "&cJe kunt deze speler niet bannen!"
+message_kick_bypass: "&cJe kunt deze speler niet kicken!"
+message_give: "&aJe hebt jezelf {amount} gegeven je saldo is nu {balance}"
+message_player_give: "&aJe hebt {amount} aan {player} gegeven, zijn saldo is nu {balance}"
+message_target_player_give: "&a{player} gaf {amount} aan jou, je saldo is nu {balance}"
+message_set: "&aJe hebt je saldo ingesteld op {amount}"
+message_player_set: "&aJe hebt het saldo van {player} ingesteld op {amount}"
+message_target_player_set: "&a{player} heeft jouw saldo ingesteld op {amount}"
+message_take: "&aJe hebt {amount} van jezelf gestolen, je saldo is nu {balance}"
+message_player_take: "&aJe nam {amount} van {player} en zijn saldo is nu {balance}"
+message_target_player_take: "&c{player} nam {amount} van jou, je saldo is nu {balance}"
+message_transaction_error: "&cEr is iets misgegaan met de overdracht!"
+message_take_error: "&cJe kunt niet meer geld nemen dan je nu hebt!"
+message_player_take_error: "&cJe kunt niet meer geld van een speler nemen dan dat deze heeft!"
+message_visible: "&aJe bent nu&a&l zichtbaar&a voor andere spelers"
+message_player_visible: "&a{player} is nu&a&l zichtbaar&a voor andere spelers"
+message_hide: "&aJe bent nu&c&l verborgen&a voor andere spelers"
+message_player_hide: "&a{player} is nu&c&l verborgen&a voor andere spelers"
+message_unban_player: "&a{player} is nu unbanned."
+message_initializing_start: "&aPlugin is aan het initialiseren..."
+message_initializing_finish: "&aGUI is klaar voor gebruik."
+message_already_initializing: "&cGUI is al aan het initialiseren..."

@@ -37,6 +37,9 @@ public class Message {
             case "French":
                 mess = AdminGUI.getInstance().getFren().getString(config);
                 break;
+            case "Dutch":
+                mess = AdminGUI.getInstance().getDutc().getString(config);
+                break;
             default:
                 mess = AdminGUI.getInstance().getEngl().getString(config);
                 break;

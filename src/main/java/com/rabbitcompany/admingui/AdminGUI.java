@@ -61,6 +61,10 @@ public class AdminGUI extends JavaPlugin {
     private File fr = null;
     private YamlConfiguration fren = new YamlConfiguration();
 
+    //Dutch
+    private File du = null;
+    private YamlConfiguration dutc = new YamlConfiguration();
+
     //Kick
     private File k = null;
     private YamlConfiguration kick = new YamlConfiguration();
@@ -89,6 +93,7 @@ public class AdminGUI extends JavaPlugin {
         this.bu = new File(getDataFolder(), "Languages/Bulgarian.yml");
         this.sp = new File(getDataFolder(), "Languages/Spanish.yml");
         this.fr = new File(getDataFolder(), "Languages/French.yml");
+        this.du = new File(getDataFolder(), "Languages/Dutch.yml");
         this.k = new File(getDataFolder(), "kick.yml");
         this.p = new File(getDataFolder(), "Custom Commands/plugins.yml");
         this.c = new File(getDataFolder(), "Custom Commands/commands.yml");
@@ -215,6 +220,10 @@ public class AdminGUI extends JavaPlugin {
             saveResource("Languages/French.yml", false);
         }
 
+        if(!this.du.exists()){
+            saveResource("Languages/Dutch.yml", false);
+        }
+
         if(!this.k.exists()){
             saveResource("kick.yml", false);
         }
@@ -281,6 +290,11 @@ public class AdminGUI extends JavaPlugin {
             e.printStackTrace();
         }
         try {
+            this.dutc.load(this.du);
+        } catch (IOException | InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+        try {
             this.kick.load(this.k);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
@@ -319,6 +333,8 @@ public class AdminGUI extends JavaPlugin {
     public YamlConfiguration getSpan() { return this.span; }
 
     public YamlConfiguration getFren() { return this.fren; }
+
+    public YamlConfiguration getDutc() { return this.dutc; }
 
     public YamlConfiguration getKick() { return this.kick; }
 
