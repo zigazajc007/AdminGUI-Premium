@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Spanish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Spanish.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Italian.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Italian.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -526,7 +525,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580846860540</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Updated Spanish language.">
+      <created>1580991605126</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1580991605126</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -549,7 +555,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/LiteBansAPI" />
     </ignored-roots>
-    <MESSAGE value="Now you can add custom commands to each player" />
     <MESSAGE value="Fixed bug where GUI isn't detected when you do /admin &lt;target player&gt;" />
     <MESSAGE value="Added custom kick" />
     <MESSAGE value="Removed useless kick messages in language.yml" />
@@ -574,7 +579,8 @@
     <MESSAGE value="Added Dutch language." />
     <MESSAGE value="Added more languages in config.yml." />
     <MESSAGE value="Fixed Chinese language." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Chinese language." />
+    <MESSAGE value="Updated Spanish language." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Spanish language." />
   </component>
   <component name="WindowStateProjectService">
     <state x="808" y="445" width="293" height="223" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1579467027548">
@@ -585,11 +591,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="247" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1577032385617" />
-    <state x="741" y="164" width="810" height="812" key="CommitChangelistDialog2" timestamp="1580846860503">
+    <state x="741" y="164" width="810" height="812" key="CommitChangelistDialog2" timestamp="1580991605045">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="741" y="135" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578349213434" />
-    <state x="741" y="164" width="810" height="812" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1580846860503" />
+    <state x="741" y="164" width="810" height="812" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1580991605045" />
     <state x="902" y="295" key="FileChooserDialogImpl" timestamp="1576319519444">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -618,16 +624,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="459" y="105" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1576369585967" />
-    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1580846864850">
+    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1580991609345">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="714" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578349220548" />
-    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1580846864850" />
-    <state x="504" y="330" width="578" height="180" key="com.intellij.ide.util.TipDialog" timestamp="1580991502790">
+    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1580991609345" />
+    <state x="504" y="330" width="578" height="180" key="com.intellij.ide.util.TipDialog" timestamp="1581150635759">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578423094376" />
-    <state x="504" y="330" width="578" height="180" key="com.intellij.ide.util.TipDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1580991502790" />
+    <state x="504" y="330" width="578" height="180" key="com.intellij.ide.util.TipDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1581150635759" />
     <state x="690" y="285" key="extract.method.dialog" timestamp="1576946742606">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

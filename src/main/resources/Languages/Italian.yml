@@ -8,28 +8,28 @@
 #                ________________________
 #               |   code: | color:       |
 #               |________________________|
-#               |     &0  |	Black	     |
-#               |     &1  |	Dark Blue	 |
-#               |     &2  |	Dark Green	 |
-#               |     &3  |	Dark Aqua	 |
-#               |     &4  |	Dark Red	 |
-#               |     &5  |	Dark Purple	 |
-#               |     &6  |	Gold	     |
-#               |     &7  |	Gray	     |
-#               |     &8  |	Dark Gray	 |
-#               |     &9  |	Blue	     |
-#               |     &a  |	Green	     |
-#               |     &b  |	Aqua	     |
-#               |     &c  |	Red	         |
-#               |     &d  |	Light Purple |
-#               |     &e  |	Yellow	     |
-#               |     &f  |	White	     |
-#               |     &k  |	Obfuscated	 |
-#               |     &l  |	Bold	     |
-#               |     &m  |	Strikethrough|
-#               |     &n  |	Underline	 |
-#               |     &o  |	Italic	     |
-#               |     &r  |	Reset	     |
+#               |     &0  | Black        |
+#               |     &1  | Dark Blue    |
+#               |     &2  | Dark Green   |
+#               |     &3  | Dark Aqua    |
+#               |     &4  | Dark Red     |
+#               |     &5  | Dark Purple  |
+#               |     &6  | Gold         |
+#               |     &7  | Gray         |
+#               |     &8  | Dark Gray    |
+#               |     &9  | Blue         |
+#               |     &a  | Green        |
+#               |     &b  | Aqua         |
+#               |     &c  | Red          |
+#               |     &d  | Light Purple |
+#               |     &e  | Yellow       |
+#               |     &f  | White        |
+#               |     &k  | Obfuscated   |
+#               |     &l  | Bold         |
+#               |     &m  | Strikethrough|
+#               |     &n  | Underline    |
+#               |     &o  | Italic       |
+#               |     &r  | Reset        |
 #               |________________________|
 #
 #----------------------------------------------------------
@@ -46,7 +46,7 @@ is_not_a_number: "&c{number} non è un numero!"
 wrong_arguments: "&cPuoi usare solo /admin o /admin <player>"
 wrong_initialize: "&cPuoi usare solo /admin initialize gui o /admin initialize players"
 vault_required: "&cIl tuo server non ha installato il plugin Vault per completare questa azione!"
-vanish_required: "&cIl tuo server non ha installato il plugin Super Vanish or Premium Vanish per completare questa azione!"
+vanish_required: "&cIl tuo server non ha installato il plugin Super Vanish o Premium Vanish per completare questa azione!"
 #----------------------------------------------------------
 #                     Inventory names
 #----------------------------------------------------------
@@ -55,7 +55,7 @@ inventory_player: "&5&l{player}"
 inventory_world: "&2&lMondo"
 inventory_players: "&1&lGiocatori"
 inventory_plugins: "&e&lPlugins"
-inventory_commands: "&2Comandi"
+inventory_commands: "&2&lComandi"
 inventory_unban: "&c&lSbanna"
 inventory_actions: "&9&lAzioni &2&l{player}"
 inventory_kick: "&8&lCaccia &2&l{player}"
@@ -74,7 +74,7 @@ main_player: "&5&l{player}"
 main_world: "&2&lMondo"
 main_players: "&9&lGiocatori"
 main_plugins: "&6&lPlugins"
-main_maintenance_mode: "&c&lModalità di manutenzione"
+main_maintenance_mode: "&c&lModalità di Manutenzione"
 main_unban_players: "&c&lSbanna Giocatori"
 main_language: "&b&l"
 main_quit: "&c&lChiudi"
@@ -95,11 +95,11 @@ player_spawner: "&8&lEvoca"
 player_kill: "&8&lUccidi"
 player_burn: "&c&lBrucia"
 player_lightning: "&5&lFulmina"
-player_firework: "&4&lFuochi d'artificio"
+player_firework: "&4&lFuochi d'Artificio"
 player_money: "&2&lSoldi"
 player_vanish_enabled: "&a&lSparizione"
 player_vanish_disabled: "&c&lSparizione"
-player_custom: "&6&lComandi personalizzati"
+player_custom: "&6&lComandi Personalizzati"
 player_back: "&c&lIndietro"
 #----------------------------------------------------------
 #                        World GUI
@@ -143,7 +143,7 @@ players_settings_info: "&2&l{player}"
 players_settings_actions: "&9&lAzioni"
 players_settings_money: "&2&lSoldi"
 players_settings_kick_player: "&8&lCaccia il giocatore"
-players_settings_ban_player: "&8Banna giocatore"
+players_settings_ban_player: "&8&lBanna giocatore"
 players_settings_back: "&c&lIndietro"
 #----------------------------------------------------------
 #                       Actions GUI
@@ -167,9 +167,9 @@ actions_inventory: "&a&lInventario"
 actions_vanish_enabled: "&a&lSparizione"
 actions_vanish_disabled: "&c&lSparizione"
 actions_lightning: "&5&lFulmina"
-actions_firework: "&4&lFuochi d'artificio"
+actions_firework: "&4&lFuochi d'Artificio"
 actions_fakeop: "&c&lFalso OP"
-actions_custom: "&6&lComandi personalizzati"
+actions_custom: "&6&lComandi Personalizzati"
 actions_back: "&c&lIndietro"
 #----------------------------------------------------------
 #                         Kick GUI
@@ -186,7 +186,7 @@ ban_months: "&e&lMesi"
 ban_days: "&e&lGiorni"
 ban_hours: "&e&lOre"
 ban_minutes: "&e&lMinuti"
-ban_hacking: "&7Cheating!"
+ban_hacking: "&7&lCheating!"
 ban_griefing: "&6&lGriefing!"
 ban_spamming: "&d&lSpamming!"
 ban_advertising: "&3&lPubblicità!"
@@ -309,9 +309,9 @@ message_player_ban: "&a{player} è stato bannato."
 message_player_god_enabled: "&a{player} è ora in God Mode."
 message_player_god_disabled: "&a{player} non è più in God Mode."
 message_target_player_god_enabled: "&a{player} ha abilitato la God Mode per te."
-message_target_player_god_disabled: "&a{player} ha disabilitato la God Mode."
-message_target_player_potions: "&a{player} ti ha dato l' effetto {potion}&a per {time} minuti."
-message_player_potions: "&aHai appena dato a {player} l' effetto {potion}&a per {time} minuti."
+message_target_player_god_disabled: "&a{player} ha disabilitato la God Mode per te."
+message_target_player_potions: "&a{player} ti ha dato l'effetto {potion}&a per {time} minuti."
+message_player_potions: "&aHai appena dato a {player} l'effetto {potion}&a per {time} minuti."
 message_target_player_potions_remove: "&a{player} &cha rimosso &atutti i tuoi effetti."
 message_player_potions_remove: "&aHai appena rimosso tutti gli effetti di {player}."
 message_heal: "&aSei stato curato."
@@ -321,10 +321,10 @@ message_god_disabled: "&aHai disabilitato la God Mode."
 message_kill: "&cTi sei ucciso."
 message_burn: "&cTi sei bruciato."
 message_potions_remove: "&aHai rimosso tutti gli effetti di pozione."
-message_potions: "&aHai appena impostato l' effetto {potion} &a per {time} minuti a te stesso."
+message_potions: "&aHai appena impostato l'effetto {potion} &a per {time} minuti a te stesso."
 message_maintenance: "&aIl server è ora in &cModalità di Manutenzione&a. Per favore torna più tardi."
 message_maintenance_enabled: "&aLa modalità manutenzione è ora &a&lAttiva."
-message_maintenance_disabled: "&aLa Modalità Manutenzione è ora &c&Disattiva."
+message_maintenance_disabled: "&aLa Modalità Manutenzione è ora &c&lDisattiva."
 message_player_not_found: "&cIl giocatore non è disponibile in questo momento!"
 message_ban_bypass: "&cNon puoi bannare questo giocatore!"
 message_kick_bypass: "&cNon puoi espellere questo giocatore!"
@@ -342,9 +342,9 @@ message_take_error: "&cNon puoi prendere più soldi di quanti ne hai!"
 message_player_take_error: "&cNon puoi prendere più soldi di quanti ne ha!"
 message_visible: "&aOra sei&a&l visibile&a ad altri giocatori."
 message_player_visible: "&a{player} è ora&a&l visibile&a ad altri giocatori."
-message_hide: "&aOra sei&c&l nascosto&a da altri giocatori."
-message_player_hide: "&a{player} è ora&c&l nascosto&a da altri giocatori."
+message_hide: "&aOra sei&c&l nascosto&a a altri giocatori."
+message_player_hide: "&a{player} è ora&c&l nascosto&a a altri giocatori."
 message_unban_player: "&a{player} è stato sbannato."
 message_initializing_start: "&aIl plugin sta inizializzando..."
 message_initializing_finish: "&aLa GUI è pronta all'uso."
-message_already_initializing: "&cGUI is already initializing..."
+message_already_initializing: "&cLa GUI sta già inizializzando..."
