@@ -4,12 +4,13 @@ import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import static org.bukkit.Bukkit.getServer;
 
 public class Initialize {
 
-    public static void GUI(Player player){
+    public static void GUI(Player player, ItemStack helmet){
         if (player.hasPermission("admingui.admin")) {
             int max_value = AdminUI.skulls.size();
             if(AdminGUI.getInstance().getConf().getBoolean("initialize_reminder", true)){
@@ -23,7 +24,7 @@ public class Initialize {
                         if (i < max_value) {
                             player.getInventory().setHelmet(AdminUI.skulls.get(AdminUI.skulls.keySet().toArray()[i].toString()));
                         } else {
-                            player.getInventory().setHelmet(null);
+                            player.getInventory().setHelmet(helmet);
                             if(AdminGUI.getInstance().getConf().getBoolean("initialize_reminder", true)){
                                 player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_initializing_finish"));
                             }
@@ -41,7 +42,7 @@ public class Initialize {
         }
     }
     
-    public static void Players(Player player){
+    public static void Players(Player player, ItemStack helmet){
         if (player.hasPermission("admingui.admin")) {
             int max_value = AdminUI.skulls_players.size();
             if(AdminGUI.getInstance().getConf().getBoolean("initialize_reminder", true)){
@@ -55,7 +56,7 @@ public class Initialize {
                         if (i < max_value) {
                             player.getInventory().setHelmet(AdminUI.skulls_players.get(AdminUI.skulls_players.keySet().toArray()[i].toString()));
                         } else {
-                            player.getInventory().setHelmet(null);
+                            player.getInventory().setHelmet(helmet);
                             if(AdminGUI.getInstance().getConf().getBoolean("initialize_reminder", true)){
                                 player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_initializing_finish"));
                             }

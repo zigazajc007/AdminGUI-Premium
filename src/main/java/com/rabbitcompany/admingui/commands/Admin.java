@@ -52,13 +52,13 @@ public class Admin implements CommandExecutor {
                 if(args[0].equals("initialize") && (args[1].equals("gui") || args[1].equals("players"))){
                     if(args[1].equals("gui")){
                         if(!AdminUI.task_gui.containsKey(player.getUniqueId()) && !AdminUI.task_players.containsKey(player.getUniqueId())){
-                            Initialize.GUI(player);
+                            Initialize.GUI(player, player.getInventory().getHelmet());
                         }else{
                             player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_already_initializing"));
                         }
                     }else{
                         if(!AdminUI.task_gui.containsKey(player.getUniqueId()) && !AdminUI.task_players.containsKey(player.getUniqueId())){
-                            Initialize.Players(player);
+                            Initialize.Players(player, player.getInventory().getHelmet());
                         }else{
                             player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_already_initializing"));
                         }

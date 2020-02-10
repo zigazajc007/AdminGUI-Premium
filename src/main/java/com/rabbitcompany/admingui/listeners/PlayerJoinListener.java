@@ -29,7 +29,7 @@ public class PlayerJoinListener implements Listener {
 
         if(adminGUI.getConf().getInt("initialize_gui",1) == 1) {
             if(!AdminUI.task_gui.containsKey(event.getPlayer().getUniqueId())){
-                Initialize.GUI(event.getPlayer());
+                Initialize.GUI(event.getPlayer(), event.getPlayer().getInventory().getHelmet());
             }
         }
     }
