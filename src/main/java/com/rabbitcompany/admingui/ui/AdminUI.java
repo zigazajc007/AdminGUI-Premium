@@ -50,6 +50,7 @@ public class AdminUI {
     private HashMap<UUID, Integer> ban_days = new HashMap<>();
     private HashMap<UUID, Integer> ban_hours = new HashMap<>();
     private HashMap<UUID, Integer> ban_minutes = new HashMap<>();
+    private HashMap<UUID, Boolean> ban_silence = new HashMap<>();
 
     //Page
     private HashMap<UUID, Integer> page = new HashMap<>();
@@ -703,6 +704,12 @@ public class AdminUI {
             Item.create(inv_ban, "RED_STAINED_GLASS_PANE", 1, 16, Message.getMessage(p.getUniqueId(), "ban_minutes"));
         }else{
             Item.create(inv_ban, "CLOCK", ban_minutes.getOrDefault(p.getUniqueId(),0), 16, Message.getMessage(p.getUniqueId(), "ban_minutes"));
+        }
+
+        if(ban_silence.getOrDefault(p.getUniqueId(), false)){
+            Item.after_createPlayerHead(inv_ban, skulls.get("Ground15"), 1, 28, Message.getMessage(p.getUniqueId(), "ban_silence_enabled"));
+        }else{
+            Item.after_createPlayerHead(inv_ban, skulls.get("EDDxample"), 1, 28, Message.getMessage(p.getUniqueId(), "ban_silence_disabled"));
         }
 
         Item.create(inv_ban, "WHITE_TERRACOTTA", 1, 30, Message.getMessage(p.getUniqueId(), "ban_hacking"));
@@ -1374,15 +1381,25 @@ public class AdminUI {
         Date time = new Date(System.currentTimeMillis()+(mil_minute*ban_minutes.getOrDefault(p.getUniqueId(),0))+(mil_hour*ban_hours.getOrDefault(p.getUniqueId(),0))+(mil_day*ban_days.getOrDefault(p.getUniqueId(),0))+(mil_month*ban_months.getOrDefault(p.getUniqueId(),0))+(mil_year*ban_years.getOrDefault(p.getUniqueId(),0)));
 
         if(target_player.isOnline()){
-            if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "ban_back"))){
+            if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "ban_back"))) {
                 p.openInventory(GUI_Players_Settings(p, target_player));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "ban_silence_disabled"))){
+                ban_silence.put(p.getUniqueId(), true);
+                p.openInventory(GUI_Ban(p, target_player));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "ban_silence_enabled"))){
+                ban_silence.put(p.getUniqueId(), false);
+                p.openInventory(GUI_Ban(p, target_player));
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "ban_hacking"))){
                 if(target_player.hasPermission("admingui.ban.bypass")){
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_ban_bypass"));
                 }else{
                     TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_hacking", time), time);
                     target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_hacking", time));
-                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                    if(ban_silence.getOrDefault(p.getUniqueId(), false)){
+                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                    }else{
+                        getServer().broadcastMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                    }
                 }
                 p.closeInventory();
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "ban_griefing"))){
@@ -1391,7 +1408,11 @@ public class AdminUI {
                 }else{
                     TargetPlayer.ban(target_player.getName(), TargetPlayer.banReason(target_player.getUniqueId(), "ban_griefing", time), time);
                     target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_griefing", time));
-                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                    if(ban_silence.getOrDefault(p.getUniqueId(), false)){
+                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                    }else{
+                        getServer().broadcastMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                    }
                 }
                 p.closeInventory();
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "ban_spamming"))){
@@ -1400,7 +1421,11 @@ public class AdminUI {
                 }else{
                     TargetPlayer.ban(target_player.getName(), TargetPlayer.banReason(target_player.getUniqueId(), "ban_spamming", time), time);
                     target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_spamming", time));
-                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                    if(ban_silence.getOrDefault(p.getUniqueId(), false)){
+                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                    }else{
+                        getServer().broadcastMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                    }
                 }
                 p.closeInventory();
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "ban_advertising"))){
@@ -1409,7 +1434,11 @@ public class AdminUI {
                 }else{
                     TargetPlayer.ban(target_player.getName(), TargetPlayer.banReason(target_player.getUniqueId(), "ban_advertising", time), time);
                     target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(),"ban_advertising", time));
-                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                    if(ban_silence.getOrDefault(p.getUniqueId(), false)){
+                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                    }else{
+                        getServer().broadcastMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                    }
                 }
                 p.closeInventory();
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "ban_swearing"))){
@@ -1418,7 +1447,11 @@ public class AdminUI {
                 }else{
                     TargetPlayer.ban(target_player.getName(), TargetPlayer.banReason(target_player.getUniqueId(), "ban_swearing", time), time);
                     target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_swearing", time));
-                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                    if(ban_silence.getOrDefault(p.getUniqueId(), false)){
+                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                    }else{
+                        getServer().broadcastMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                    }
                 }
                 p.closeInventory();
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "ban_years"))){

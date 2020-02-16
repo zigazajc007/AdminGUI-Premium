@@ -191,6 +191,8 @@ ban_griefing: "&6&lGriefing!"
 ban_spamming: "&d&lSpamming!"
 ban_advertising: "&3&lAdvertising!"
 ban_swearing: "&e&lSwearing!"
+ban_silence_disabled: "&c&lSilence"
+ban_silence_enabled: "&a&lSilence"
 ban_back: "&c&lBack"
 #----------------------------------------------------------
 #                     Potions GUI

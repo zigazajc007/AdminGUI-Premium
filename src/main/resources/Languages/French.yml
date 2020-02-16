@@ -114,7 +114,7 @@ world_back: "&c&lRetour"
 #                     Joueurs GUI
 #----------------------------------------------------------
 players_color: "&2&l{player}"
-players_lore: "&cCliquez-moi pour plus d'actions"
+players_more: "&cCliquez-moi pour plus d'actions"
 players_previous: "&c&lPrécédent"
 players_page: "&a&lPage"
 players_next: "&2&lSuivant"
@@ -191,6 +191,8 @@ ban_griefing: "&6&lDestruction!"
 ban_spamming: "&d&lSpam/Flood!"
 ban_advertising: "&3&lPublicité!"
 ban_swearing: "&e&lInsulte!"
+ban_silence_disabled: "&c&lSilence"
+ban_silence_enabled: "&a&lSilence"
 ban_back: "&c&lRetour"
 #----------------------------------------------------------
 #                     Potions GUI

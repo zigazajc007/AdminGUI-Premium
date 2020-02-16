@@ -191,6 +191,8 @@ ban_griefing: "&6&lЧупене!"
 ban_spamming: "&d&lСпамване!"
 ban_advertising: "&3&lРекламиране!"
 ban_swearing: "&e&lПсуване!"
+ban_silence_disabled: "&c&lмълчание"
+ban_silence_enabled: "&a&lмълчание"
 ban_back: "&c&lПо-назад"
 #----------------------------------------------------------
 #                     Отвари Меню

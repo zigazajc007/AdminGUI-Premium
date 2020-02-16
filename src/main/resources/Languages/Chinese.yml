@@ -191,6 +191,8 @@ ban_griefing: "&6&l破壞!"
 ban_spamming: "&d&l刷頻!"
 ban_advertising: "&3&l宣傳!"
 ban_swearing: "&e&l辱罵!"
+ban_silence_disabled: "&c&l安靜"
+ban_silence_enabled: "&a&l安靜"
 ban_back: "&c&l返回"
 #----------------------------------------------------------
 #                     藥水介面

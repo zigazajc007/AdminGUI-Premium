@@ -192,6 +192,8 @@ ban_griefing: "&6&lГриферство!"
 ban_spamming: "&d&lСпам!"
 ban_advertising: "&3&lРеклама!"
 ban_swearing: "&e&lНенормативаня лексика!"
+ban_silence_disabled: "&c&lбезмолвие"
+ban_silence_enabled: "&a&lбезмолвие"
 ban_back: "&c&lНазад"
 #----------------------------------------------------------
 #                     Potions GUI
