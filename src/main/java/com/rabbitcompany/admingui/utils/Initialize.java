@@ -6,6 +6,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.sql.SQLException;
+
 import static org.bukkit.Bukkit.getServer;
 
 public class Initialize {
@@ -37,7 +39,7 @@ public class Initialize {
                         AdminUI.task_gui.remove(player.getUniqueId());
                     }
                 }
-            }, 20L, AdminGUI.getInstance().getConf().getInt("initialize_delay", 1) * 20L);
+            }, 5*20L, AdminGUI.getInstance().getConf().getInt("initialize_delay", 1) * 20L);
             AdminUI.task_gui.put(player.getUniqueId(), taskID);
         }
     }
@@ -69,8 +71,28 @@ public class Initialize {
                         AdminUI.task_players.remove(player.getUniqueId());
                     }
                 }
-            }, 20L, AdminGUI.getInstance().getConf().getInt("initialize_delay", 1) * 20L);
+            }, 20L, AdminGUI.getInstance().getConf().getInt("initialize_delay", 2) * 20L);
             AdminUI.task_players.put(player.getUniqueId(), taskID);
         }
+    }
+
+    public static void Database(){
+        getServer().getScheduler().scheduleSyncRepeatingTask(AdminGUI.getInstance(), new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    AdminGUI.mySQL.query("SELECT * FROM players;", results -> {
+                        if (results != null) {
+                            AdminUI.online_players.clear();
+                            AdminUI.skulls_players.clear();
+                            while (results.next()){
+                                AdminUI.online_players.add(results.getString("username"));
+                                AdminUI.skulls_players.put(results.getString("username"), Item.pre_createPlayerHead(results.getString("username")));
+                            }
+                        }
+                    });
+                } catch (SQLException ignored) { }
+            }
+        }, 20L, AdminGUI.getInstance().getConf().getInt("mysql_delay", 5) * 20L);
     }
 }

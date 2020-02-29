@@ -10,6 +10,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import java.sql.SQLException;
+
+import static org.bukkit.Bukkit.getPlayer;
 import static org.bukkit.Bukkit.getServer;
 
 public class PlayerJoinListener implements Listener {
@@ -24,8 +27,15 @@ public class PlayerJoinListener implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
-        AdminUI.online_players.add(event.getPlayer().getName());
-        AdminUI.skulls_players.put(event.getPlayer().getName(), Item.pre_createPlayerHead(event.getPlayer().getName()));
+        //SQL
+        if(AdminGUI.conn != null){
+            try {
+                AdminGUI.mySQL.update("INSERT INTO players() VALUES ('" + event.getPlayer().getName() + "');");
+            } catch (SQLException ignored) { }
+        }else{
+            AdminUI.online_players.add(event.getPlayer().getName());
+            AdminUI.skulls_players.put(event.getPlayer().getName(), Item.pre_createPlayerHead(event.getPlayer().getName()));
+        }
 
         if(adminGUI.getConf().getInt("initialize_gui",1) == 1) {
             if(!AdminUI.task_gui.containsKey(event.getPlayer().getUniqueId())){

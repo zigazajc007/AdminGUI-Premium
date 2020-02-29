@@ -25,6 +25,7 @@ com/rabbitcompany/admingui/utils/Entity.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_8.class
 com/rabbitcompany/admingui/utils/potions/Version_14.class
 com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_12.class
+com/rabbitcompany/admingui/utils/Initialize$3.class
 com/rabbitcompany/admingui/MetricsLite.class
 com/rabbitcompany/admingui/listeners/PlayerDamageListener.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_11.class

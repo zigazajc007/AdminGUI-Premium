@@ -7,6 +7,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import java.sql.SQLException;
+
 public class PlayerLeaveListener implements Listener {
 
     private AdminGUI adminGUI;
@@ -18,8 +20,16 @@ public class PlayerLeaveListener implements Listener {
     }
 
     @EventHandler
-    public void onPlayerJoin(PlayerQuitEvent event){
-        AdminUI.online_players.remove(event.getPlayer().getName());
-        AdminUI.skulls_players.remove(event.getPlayer().getName());
+    public void onPlayerLeave(PlayerQuitEvent event){
+        //SQL
+        if(AdminGUI.conn != null){
+            try {
+                AdminGUI.mySQL.update("DELETE FROM players WHERE username = '" + event.getPlayer().getName() + "';");
+            } catch (SQLException ignored) { }
+        }else{
+            AdminUI.online_players.remove(event.getPlayer().getName());
+            AdminUI.skulls_players.remove(event.getPlayer().getName());
+        }
+
     }
 }

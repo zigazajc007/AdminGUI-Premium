@@ -1,5 +1,6 @@
 package com.rabbitcompany.admingui;
 
+import com.rabbitcompany.admingui.ui.AdminUI;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -19,8 +20,13 @@ public class TabCompletion implements TabCompleter {
 
            if(args.length == 1){
 
-                for(Player all : Bukkit.getServer().getOnlinePlayers()) {
-                    completions.add(all.getName());
+               //SQL
+                if(AdminGUI.conn != null){
+                    completions.addAll(AdminUI.online_players);
+                }else{
+                    for(Player all : Bukkit.getServer().getOnlinePlayers()) {
+                        completions.add(all.getName());
+                    }
                 }
 
                 if(sender.hasPermission("admingui.reload")){

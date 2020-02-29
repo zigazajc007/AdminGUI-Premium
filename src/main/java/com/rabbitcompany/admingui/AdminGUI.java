@@ -3,6 +3,7 @@ package com.rabbitcompany.admingui;
 import com.rabbitcompany.admingui.commands.Admin;
 import com.rabbitcompany.admingui.listeners.*;
 import com.rabbitcompany.admingui.ui.AdminUI;
+import com.rabbitcompany.admingui.utils.Initialize;
 import com.rabbitcompany.admingui.utils.Item;
 import com.rabbitcompany.admingui.utils.Message;
 import net.milkbowl.vault.economy.Economy;
@@ -10,16 +11,24 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import pro.husk.mysql.MySQL;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 
 public class AdminGUI extends JavaPlugin {
 
     private static AdminGUI instance;
+
+    //SQL
+    public static MySQL mySQL;
+    public static Connection conn = null;
 
     //VaultAPI
     private static Economy econ = null;
@@ -119,6 +128,18 @@ public class AdminGUI extends JavaPlugin {
             vault = true;
         }
 
+        //SQL
+        if(getConf().getBoolean("mysql", false)){
+            try {
+                mySQL = new MySQL(getConf().getString("mysql_host"), getConf().getString("mysql_port"), getConf().getString("mysql_database"), getConf().getString("mysql_user"), getConf().getString("mysql_password"), "?useSSL=" + getConf().getBoolean("mysql_useSSL") +"&allowPublicKeyRetrieval=true");
+                conn = mySQL.getConnection();
+                conn.createStatement().execute("CREATE TABLE IF NOT EXISTS players(username varchar(25) NOT NULL PRIMARY KEY);");
+                Initialize.Database();
+            } catch (SQLException e) {
+                conn = null;
+            }
+        }
+
         //Listeners
         new InventoryClickListener(this);
         new PlayerDamageListener(this);
@@ -168,6 +189,20 @@ public class AdminGUI extends JavaPlugin {
     @Override
     public void onDisable() {
         info("&4Disabling");
+
+        //SQL
+        if(conn != null){
+
+            for(Player all : Bukkit.getServer().getOnlinePlayers()){
+                try {
+                    AdminGUI.mySQL.update("DELETE FROM players WHERE username = '" + all.getName() + "';");
+                } catch (SQLException ignored) { }
+            }
+
+            try {
+                conn.close();
+            } catch (SQLException ignored) { }
+        }
     }
 
     //VaultAPI

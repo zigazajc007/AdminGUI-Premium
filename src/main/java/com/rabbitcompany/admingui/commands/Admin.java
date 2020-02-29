@@ -6,6 +6,7 @@ import com.rabbitcompany.admingui.utils.Initialize;
 import com.rabbitcompany.admingui.utils.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -45,7 +46,17 @@ public class Admin implements CommandExecutor {
                             player.openInventory(adminUI.GUI_Players_Settings(player, target_player));
                         }
                     }else{
-                        player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "is_not_a_player").replace("{player}", args[0]));
+                        //SQL
+                        if(AdminGUI.conn != null){
+                            String sql_player = ChatColor.stripColor(args[0]);
+                            if(AdminUI.online_players.contains(sql_player)){
+                                player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.chat("&cPlayer " + sql_player + " is not located in the same server as you."));
+                            }else{
+                                player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "is_not_a_player").replace("{player}", args[0]));
+                            }
+                        }else{
+                            player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "is_not_a_player").replace("{player}", args[0]));
+                        }
                     }
                 }
             }else if(args.length == 2){

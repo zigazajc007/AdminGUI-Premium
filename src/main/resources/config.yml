@@ -45,3 +45,16 @@ initialize_reminder: false
 # Players will see messages in default language (Default is English) - Available options: English, Chinese, French, Spanish, Russian, Italian, Dutch and Bulgarian.
 # If you translate plugin into any other language feel free to send it and I will include it into this plugin.
 default_language: "English"
+# Here you can specify default GUI color - Only works with stained glass panes.
+gui_default_color: "LIGHT_BLUE_STAINED_GLASS_PANE"
+# Do you want to use mysql database?
+mysql: false
+# Here are all data for connection to Mysql database. Please create database, user and password by yourself. Do not use root as user, because of security risk!
+mysql_host: "localhost"
+mysql_port: "3306"
+mysql_database: "AdminGUI"
+mysql_user: "root"
+mysql_password: ""
+mysql_useSSL: false
+# How many seconds expires before plugin will collect data from MySQl again. (Default is 5)
+mysql_delay: 5

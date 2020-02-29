@@ -34,6 +34,9 @@ public class AdminUI {
     public static HashMap<String, ItemStack> skulls = new HashMap<>();
     public static HashMap<String, ItemStack> skulls_players = new HashMap<>();
 
+    //Player GUI color
+    private static HashMap<UUID, String> gui_color = new HashMap<>();
+
     //Initialize task
     public static HashMap<UUID, Integer> task_gui = new HashMap<>();
     public static HashMap<UUID, Integer> task_players = new HashMap<>();
@@ -79,7 +82,7 @@ public class AdminUI {
         Inventory inv_main = Bukkit.createInventory(null, 36, Message.getMessage(p.getUniqueId(), "inventory_main"));
 
         for(int i = 1; i < 36; i++){
-                Item.create(inv_main, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
+                Item.create(inv_main, gui_color.getOrDefault(p.getUniqueId(), gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
         }
 
         Item.after_createPlayerHead(inv_main, skulls_players.get(p.getName()), 1, 11, Message.getMessage(p.getUniqueId(),"main_player").replace("{player}", p.getName()));
@@ -91,6 +94,57 @@ public class AdminUI {
             Item.after_createPlayerHead(inv_main, skulls.get("BKing2012"),1,28, Message.getMessage(p.getUniqueId(), "main_maintenance_mode"));
         }else{
             Item.after_createPlayerHead(inv_main, skulls.get("AverageJoe"),1,28, Message.getMessage(p.getUniqueId(), "main_maintenance_mode"));
+        }
+
+        switch (gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color"))){
+            case "LIGHT_BLUE_STAINED_GLASS_PANE":
+                    Item.create(inv_main, "RED_STAINED_GLASS_PANE", 1, 30, "  ");
+                break;
+            case "RED_STAINED_GLASS_PANE":
+                    Item.create(inv_main, "ORANGE_STAINED_GLASS_PANE", 1, 30, "  ");
+                break;
+            case "ORANGE_STAINED_GLASS_PANE":
+                Item.create(inv_main, "PINK_STAINED_GLASS_PANE", 1, 30, "  ");
+                break;
+            case "PINK_STAINED_GLASS_PANE":
+                Item.create(inv_main, "YELLOW_STAINED_GLASS_PANE", 1, 30, "  ");
+                break;
+            case "YELLOW_STAINED_GLASS_PANE":
+                Item.create(inv_main, "LIME_STAINED_GLASS_PANE", 1, 30, "  ");
+                break;
+            case "LIME_STAINED_GLASS_PANE":
+                Item.create(inv_main, "GREEN_STAINED_GLASS_PANE", 1, 30, "  ");
+                break;
+            case "GREEN_STAINED_GLASS_PANE":
+                Item.create(inv_main, "CYAN_STAINED_GLASS_PANE", 1, 30, "  ");
+                break;
+            case "CYAN_STAINED_GLASS_PANE":
+                Item.create(inv_main, "BLUE_STAINED_GLASS_PANE", 1, 30, "  ");
+                break;
+            case "BLUE_STAINED_GLASS_PANE":
+                Item.create(inv_main, "MAGENTA_STAINED_GLASS_PANE", 1, 30, "  ");
+                break;
+            case "MAGENTA_STAINED_GLASS_PANE":
+                Item.create(inv_main, "PURPLE_STAINED_GLASS_PANE", 1, 30, "  ");
+                break;
+            case "PURPLE_STAINED_GLASS_PANE":
+                Item.create(inv_main, "BROWN_STAINED_GLASS_PANE", 1, 30, "  ");
+                break;
+            case "BROWN_STAINED_GLASS_PANE":
+                Item.create(inv_main, "GRAY_STAINED_GLASS_PANE", 1, 30, "  ");
+                break;
+            case "GRAY_STAINED_GLASS_PANE":
+                Item.create(inv_main, "LIGHT_GRAY_STAINED_GLASS_PANE", 1, 30, "  ");
+                break;
+            case "LIGHT_GRAY_STAINED_GLASS_PANE":
+                Item.create(inv_main, "BLACK_STAINED_GLASS_PANE", 1, 30, "  ");
+                break;
+            case "BLACK_STAINED_GLASS_PANE":
+                Item.create(inv_main, "WHITE_STAINED_GLASS_PANE", 1, 30, "  ");
+                break;
+            case "WHITE_STAINED_GLASS_PANE":
+                Item.create(inv_main, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, 30, "  ");
+                break;
         }
 
         if(p.hasPermission("admingui.unban")) {
@@ -111,7 +165,7 @@ public class AdminUI {
         Inventory inv_player = Bukkit.createInventory(null, 45, inventory_player_name);
 
         for(int i = 1; i < 45; i++){
-            Item.create(inv_player, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
+            Item.create(inv_player, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
         }
 
         if(p.hasPermission("admingui.info")) {
@@ -244,7 +298,7 @@ public class AdminUI {
         Inventory inv_world = Bukkit.createInventory(null, 27, Message.getMessage(p.getUniqueId(), "inventory_world"));
 
         for(int i = 1; i < 27; i++){
-            Item.create(inv_world, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
+            Item.create(inv_world, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
         }
 
         if(p.hasPermission("admingui.time")) {
@@ -283,7 +337,7 @@ public class AdminUI {
         pages.put(p.getUniqueId(), (int) Math.ceil((float)online / 45));
 
         for (int i = 46; i <= 53; i++){
-            Item.create(inv_players, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
+            Item.create(inv_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
         }
 
         int player_slot = (page.getOrDefault(p.getUniqueId(),1)-1) * 45;
@@ -293,7 +347,7 @@ public class AdminUI {
                 Item.createPlayerHead(inv_players, online_players.get(player_slot),1, i+1, Message.getMessage(p.getUniqueId(), "players_color").replace("{player}", online_players.get(player_slot)), Message.getMessage(p.getUniqueId(), "players_more"));
                 player_slot++;
             }else{
-                Item.create(inv_players, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i+1, " ");
+                Item.create(inv_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i+1, " ");
             }
         }
 
@@ -337,7 +391,7 @@ public class AdminUI {
         Inventory inv_plugins = Bukkit.createInventory(null, 54, Message.getMessage(p.getUniqueId(), "inventory_plugins"));
 
         for (int i = 1; i < 54; i++){
-            Item.create(inv_plugins, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
+            Item.create(inv_plugins, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
         }
 
         for (Map.Entry<String, Object> plug_slot : one.getValues(false).entrySet()) {
@@ -373,7 +427,7 @@ public class AdminUI {
         Inventory inv_commands = Bukkit.createInventory(null, 54, Message.chat(yamlConfiguration.getString("plugins."+slot+".name"))+ " " + Message.getMessage(p.getUniqueId(), "inventory_commands"));
 
         for (int i = 1; i < 54; i++){
-            Item.create(inv_commands, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
+            Item.create(inv_commands, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
         }
 
         for (Map.Entry<String, Object> comm_slot : two.getValues(false).entrySet()) {
@@ -411,7 +465,7 @@ public class AdminUI {
         unban_pages.put(p.getUniqueId(), (int) Math.ceil((float)online / 45));
 
         for (int i = 46; i <= 53; i++){
-            Item.create(inv_unban_players, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
+            Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
         }
 
         int player_slot = (unban_page.getOrDefault(p.getUniqueId(),1)-1) * 45;
@@ -421,7 +475,7 @@ public class AdminUI {
                 Item.createPlayerHead(inv_unban_players, pl.get(player_slot), 1, i + 1, Message.getMessage(p.getUniqueId(), "unban_color").replace("{player}", pl.get(player_slot)), Message.chat("&aBanned: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getCreated()), Message.chat("&aExpiration: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getExpiration()), " ", Message.getMessage(p.getUniqueId(), "unban_more"));
                 player_slot++;
             }else{
-                Item.create(inv_unban_players, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i+1, " ");
+                Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i+1, " ");
             }
         }
 
@@ -448,7 +502,7 @@ public class AdminUI {
         Inventory inv_players_settings = Bukkit.createInventory(null, 27, inventory_players_settings_name);
 
         for(int i = 1; i < 27; i++){
-                Item.create(inv_players_settings, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
+                Item.create(inv_players_settings, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
         }
 
         if(p.hasPermission("admingui.info")) {
@@ -494,7 +548,7 @@ public class AdminUI {
         Inventory inv_actions = Bukkit.createInventory(null, 54, inventory_actions_name);
 
         for(int i = 1; i < 54; i++){
-            Item.create(inv_actions, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
+            Item.create(inv_actions, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
         }
 
         if(p.hasPermission("admingui.info")) {
@@ -652,7 +706,7 @@ public class AdminUI {
         Inventory inv_kick = Bukkit.createInventory(null, 27, inventory_kick_name);
 
         for (int i = 1; i < 27; i++){
-                Item.create(inv_kick, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
+                Item.create(inv_kick, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
         }
 
         for (Map.Entry<String, Object> kick_slot : AdminGUI.getInstance().getKick().getConfigurationSection("slots").getValues(false).entrySet()) {
@@ -673,7 +727,7 @@ public class AdminUI {
         Inventory inv_ban = Bukkit.createInventory(null, 36, inventory_ban_name);
 
         for (int i = 1; i < 36; i++){
-            Item.create(inv_ban, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
+            Item.create(inv_ban, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
         }
 
         if(ban_years.getOrDefault(p.getUniqueId(), 0) == 0){
@@ -731,7 +785,7 @@ public class AdminUI {
         Inventory inv_potions = Bukkit.createInventory(null, 36, inventory_potions_name);
 
         for (int i = 1; i < 36; i++){
-            Item.create(inv_potions, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
+            Item.create(inv_potions, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
         }
 
         if (Bukkit.getVersion().contains("1.15") || Bukkit.getVersion().contains("1.14") || Bukkit.getVersion().contains("1.13")) {
@@ -809,7 +863,7 @@ public class AdminUI {
         if(target.isOnline()){
 
             for(int i = 1; i < 27; i++){
-                Item.create(inv_money, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
+                Item.create(inv_money, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
             }
 
             Item.create(inv_money, "PAPER", 1, 12, Message.getMessage(p.getUniqueId(), "money_give"));
@@ -848,7 +902,7 @@ public class AdminUI {
         if(target.isOnline()){
 
             for(int i = 1; i < 36; i++){
-                Item.create(inv_money_amount, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
+                Item.create(inv_money_amount, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
             }
 
             for (int i = 1; i <= 10; i++){
@@ -910,7 +964,7 @@ public class AdminUI {
         }
 
         for (int i = 42; i < 54; i++){
-            Item.create(inv_inventory, "LIGHT_BLUE_STAINED_GLASS_PANE", 1, i, " ");
+            Item.create(inv_inventory, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
         }
 
         Item.create(inv_inventory, "GREEN_TERRACOTTA", 1, 46, Message.getMessage(p.getUniqueId(), "inventory_refresh"));
@@ -988,6 +1042,9 @@ public class AdminUI {
                     language.put(p.getUniqueId(), "English");
                     break;
             }
+            p.openInventory(GUI_Main(p));
+        }else if(InventoryGUI.getClickedItem(clicked, "  ")){
+            gui_color.put(p.getUniqueId(), clicked.getType().toString());
             p.openInventory(GUI_Main(p));
         }
     }
@@ -1120,6 +1177,8 @@ public class AdminUI {
                     }else{
                         p.openInventory(GUI_Player(p));
                     }
+                }else if(AdminGUI.conn != null) {
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.chat("&cPlayer " + ChatColor.stripColor(clicked.getItemMeta().getDisplayName()) + " is not located in the same server as you."));
                 }else{
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
                     p.closeInventory();
