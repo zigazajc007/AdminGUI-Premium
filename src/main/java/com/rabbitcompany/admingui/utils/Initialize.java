@@ -81,7 +81,7 @@ public class Initialize {
             @Override
             public void run() {
                 try {
-                    AdminGUI.mySQL.query("SELECT * FROM players;", results -> {
+                    AdminGUI.mySQL.query("SELECT * FROM admingui_players;", results -> {
                         if (results != null) {
                             AdminUI.online_players.clear();
                             AdminUI.skulls_players.clear();

@@ -42,11 +42,23 @@ initialize_gui: 1
 initialize_delay: 2
 # If initialize_reminder is set to true then players will be reminded when GUI will start initializing and when it will finish. Only use on versions 1.14.x+ (Default is false)
 initialize_reminder: false
-# Players will see messages in default language (Default is English) - Available options: English, Chinese, French, Spanish, Russian, Italian, Dutch and Bulgarian.
+# Players will see messages in default language (Default is English) - Available options: English, Chinese, French, Spanish, Russian, Italian, Dutch, Bulgarian and Portuguese.
 # If you translate plugin into any other language feel free to send it and I will include it into this plugin.
 default_language: "English"
 # Here you can specify default GUI color - Only works with stained glass panes.
 gui_default_color: "LIGHT_BLUE_STAINED_GLASS_PANE"
+#----------------------------------------------------------
+#                        Admin Chat
+#----------------------------------------------------------
+# Do you want Admin Chat to be enabled?
+ac_enabled: true;
+# Here you can set your own Admin Chat format (Valid tags are {name}, {display_name} and {message})
+ac_format: "&7[&cAdmin Chat&7] &5{name} &7> {message}"
+#----------------------------------------------------------
+#                        Bungeecord
+#----------------------------------------------------------
+# You can write what ever you want in server_name, but 2 servers can't have same name. (I suggest same names as in bungeecord config file)
+server_name: "Lobby"
 # Do you want to use mysql database?
 mysql: false
 # Here are all data for connection to Mysql database. Please create database, user and password by yourself. Do not use root as user, because of security risk!

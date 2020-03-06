@@ -6,7 +6,6 @@ import com.rabbitcompany.admingui.utils.Initialize;
 import com.rabbitcompany.admingui.utils.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -31,11 +30,31 @@ public class Admin implements CommandExecutor {
                 player.openInventory(adminUI.GUI_Main(player));
             }else if(args.length == 1){
                 if(args[0].equals("reload")) {
-                    player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.chat("&aPlugin is now reloading..."));
-                    AdminGUI.getInstance().loadYamls();
-                    player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.chat("&aPlugin reloaded successfully!"));
-                }else if(args[0].equals("initialize")){
+                    if(player.hasPermission("admingui.reload")){
+                        player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_reload_start"));
+                        AdminGUI.getInstance().loadYamls();
+                        player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_reload_finish"));
+                    }else{
+                        player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "permission"));
+                    }
+                }else if(args[0].equals("initialize")) {
                     player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_initialize"));
+                }else if(args[0].equals("chat")){
+                    if(!AdminGUI.getInstance().getConf().getBoolean("ac_enabled")) {
+                        if (player.hasPermission("admingui.chat")) {
+                            if (!AdminUI.admin_chat.getOrDefault(player.getUniqueId(), false)) {
+                                AdminUI.admin_chat.put(player.getUniqueId(), true);
+                                player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_admin_chat_enabled"));
+                            } else {
+                                AdminUI.admin_chat.put(player.getUniqueId(), false);
+                                player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_admin_chat_disabled"));
+                            }
+                        } else {
+                            player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "permission"));
+                        }
+                    }else{
+                        player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_admin_chat_server_disabled"));
+                    }
                 }else{
                     Player target_player = Bukkit.getServer().getPlayer(ChatColor.stripColor(args[0]));
                     if(target_player != null){
@@ -47,13 +66,9 @@ public class Admin implements CommandExecutor {
                         }
                     }else{
                         //SQL
-                        if(AdminGUI.conn != null){
-                            String sql_player = ChatColor.stripColor(args[0]);
-                            if(AdminUI.online_players.contains(sql_player)){
-                                player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.chat("&cPlayer " + sql_player + " is not located in the same server as you."));
-                            }else{
-                                player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "is_not_a_player").replace("{player}", args[0]));
-                            }
+                        String sql_player = ChatColor.stripColor(args[0]);
+                        if(AdminGUI.conn != null && AdminUI.online_players.contains(sql_player)){
+                            player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.chat("&cPlayer " + sql_player + " is not located in the same server as you."));
                         }else{
                             player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "is_not_a_player").replace("{player}", args[0]));
                         }

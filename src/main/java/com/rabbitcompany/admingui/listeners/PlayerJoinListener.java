@@ -30,7 +30,7 @@ public class PlayerJoinListener implements Listener {
         //SQL
         if(AdminGUI.conn != null){
             try {
-                AdminGUI.mySQL.update("INSERT INTO players() VALUES ('" + event.getPlayer().getName() + "');");
+                AdminGUI.mySQL.update("INSERT INTO admingui_players() VALUES ('" + event.getPlayer().getName() + "', '" + AdminGUI.getInstance().getConf().getString("server_name") + "');");
             } catch (SQLException ignored) { }
         }else{
             AdminUI.online_players.add(event.getPlayer().getName());

@@ -33,6 +33,10 @@ public class TabCompletion implements TabCompleter {
                     completions.add("reload");
                 }
 
+                if(sender.hasPermission("admingui.chat")){
+                    completions.add("chat");
+                }
+
                 completions.add("initialize");
 
            }else if(args.length == 2 && args[0].equals("initialize")){

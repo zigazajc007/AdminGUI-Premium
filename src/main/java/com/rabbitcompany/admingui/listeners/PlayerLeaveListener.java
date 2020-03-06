@@ -24,7 +24,7 @@ public class PlayerLeaveListener implements Listener {
         //SQL
         if(AdminGUI.conn != null){
             try {
-                AdminGUI.mySQL.update("DELETE FROM players WHERE username = '" + event.getPlayer().getName() + "';");
+                AdminGUI.mySQL.update("DELETE FROM admingui_players WHERE username = '" + event.getPlayer().getName() + "';");
             } catch (SQLException ignored) { }
         }else{
             AdminUI.online_players.remove(event.getPlayer().getName());

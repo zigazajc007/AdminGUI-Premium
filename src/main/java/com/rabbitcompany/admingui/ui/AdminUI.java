@@ -37,6 +37,9 @@ public class AdminUI {
     //Player GUI color
     private static HashMap<UUID, String> gui_color = new HashMap<>();
 
+    //Admin chat
+    public static HashMap<UUID, Boolean> admin_chat = new HashMap<>();
+
     //Initialize task
     public static HashMap<UUID, Integer> task_gui = new HashMap<>();
     public static HashMap<UUID, Integer> task_players = new HashMap<>();
@@ -1177,7 +1180,7 @@ public class AdminUI {
                     }else{
                         p.openInventory(GUI_Player(p));
                     }
-                }else if(AdminGUI.conn != null) {
+                }else if(AdminGUI.conn != null && online_players.contains(ChatColor.stripColor(clicked.getItemMeta().getDisplayName()))) {
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.chat("&cPlayer " + ChatColor.stripColor(clicked.getItemMeta().getDisplayName()) + " is not located in the same server as you."));
                 }else{
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));

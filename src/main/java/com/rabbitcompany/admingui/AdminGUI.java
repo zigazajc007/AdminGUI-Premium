@@ -133,7 +133,8 @@ public class AdminGUI extends JavaPlugin {
             try {
                 mySQL = new MySQL(getConf().getString("mysql_host"), getConf().getString("mysql_port"), getConf().getString("mysql_database"), getConf().getString("mysql_user"), getConf().getString("mysql_password"), "?useSSL=" + getConf().getBoolean("mysql_useSSL") +"&allowPublicKeyRetrieval=true");
                 conn = mySQL.getConnection();
-                conn.createStatement().execute("CREATE TABLE IF NOT EXISTS players(username varchar(25) NOT NULL PRIMARY KEY);");
+                conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admingui_players(username varchar(25) NOT NULL PRIMARY KEY, server varchar(30) NOT NULL);");
+                conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admingui_tasks(id varchar(50) NOT NULL PRIMARY KEY, from_server varchar(30) NOT NULL, to_server varchar(30), command varchar(30) NOT NULL, player varchar(25) NOT NULL, target_player varchar(25) NOT NULL, param1 varchar(255), param2 varchar(255), param3 varchar(255), status varchar(15) NOT NULL DEFAULT 'waiting', created TIMESTAMP NOT NULL DEFAULT NOW());");
                 Initialize.Database();
             } catch (SQLException e) {
                 conn = null;
@@ -146,6 +147,7 @@ public class AdminGUI extends JavaPlugin {
         new PlayerJoinListener(this);
         new PlayerLeaveListener(this);
         new PlayerLoginListener(this);
+        new PlayerMessageListener(this);
 
         //Commands
         this.getCommand("admin").setExecutor((CommandExecutor) new Admin());
@@ -195,7 +197,7 @@ public class AdminGUI extends JavaPlugin {
 
             for(Player all : Bukkit.getServer().getOnlinePlayers()){
                 try {
-                    AdminGUI.mySQL.update("DELETE FROM players WHERE username = '" + all.getName() + "';");
+                    AdminGUI.mySQL.update("DELETE FROM admingui_players WHERE username = '" + all.getName() + "';");
                 } catch (SQLException ignored) { }
             }
 
@@ -471,7 +473,7 @@ public class AdminGUI extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Name: &bAdminGUI-Premium"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Developer: &bBlack1_TV"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b3.0.9"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b3.1.0"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
