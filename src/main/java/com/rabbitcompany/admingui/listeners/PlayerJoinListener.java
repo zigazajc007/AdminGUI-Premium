@@ -28,7 +28,7 @@ public class PlayerJoinListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
         //SQL
-        if(AdminGUI.conn != null){
+        if(AdminGUI.conn != null && AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false)){
             try {
                 AdminGUI.mySQL.update("INSERT INTO admingui_players() VALUES ('" + event.getPlayer().getName() + "', '" + AdminGUI.getInstance().getConf().getString("server_name") + "');");
             } catch (SQLException ignored) { }

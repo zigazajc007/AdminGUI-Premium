@@ -37,7 +37,7 @@
 #----------------------------------------------------------
 # If initialize_gui is set to 0 then gui won't be initialized and will be very buggy on first use. (You still will be able to initialize the gui in game with /admin initialize gui)
 # If initialize_gui is set to 1 then gui will be initialized when player join the game. (Default and recommended)
-initialize_gui: 1
+initialize_gui: 0
 # How many seconds expires before next player head will start initializing. (Default is 2) (Lower number is faster but more buggier)
 initialize_delay: 2
 # If initialize_reminder is set to true then players will be reminded when GUI will start initializing and when it will finish. Only use on versions 1.14.x+ (Default is false)
@@ -48,17 +48,15 @@ default_language: "English"
 # Here you can specify default GUI color - Only works with stained glass panes.
 gui_default_color: "LIGHT_BLUE_STAINED_GLASS_PANE"
 #----------------------------------------------------------
-#                        Admin Chat
+#                       Admin Chat
 #----------------------------------------------------------
 # Do you want Admin Chat to be enabled?
 ac_enabled: true;
 # Here you can set your own Admin Chat format (Valid tags are {name}, {display_name} and {message})
 ac_format: "&7[&cAdmin Chat&7] &5{name} &7> {message}"
 #----------------------------------------------------------
-#                        Bungeecord
+#                      MySQL Database
 #----------------------------------------------------------
-# You can write what ever you want in server_name, but 2 servers can't have same name. (I suggest same names as in bungeecord config file)
-server_name: "Lobby"
 # Do you want to use mysql database?
 mysql: false
 # Here are all data for connection to Mysql database. Please create database, user and password by yourself. Do not use root as user, because of security risk!
@@ -70,3 +68,13 @@ mysql_password: ""
 mysql_useSSL: false
 # How many seconds expires before plugin will collect data from MySQl again. (Default is 5)
 mysql_delay: 5
+#----------------------------------------------------------
+#              Bungeecord (require mysql enabled)
+#----------------------------------------------------------
+# You can write what ever you want in server_name, but 2 servers can't have same name. (I suggest same names as in bungeecord config file)
+bungeecord_enabled: false
+server_name: "Lobby"
+#----------------------------------------------------------
+#                    Admin Ban System
+#----------------------------------------------------------
+admin_ban_system_enabled: false

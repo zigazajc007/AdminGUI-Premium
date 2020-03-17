@@ -133,9 +133,17 @@ public class AdminGUI extends JavaPlugin {
             try {
                 mySQL = new MySQL(getConf().getString("mysql_host"), getConf().getString("mysql_port"), getConf().getString("mysql_database"), getConf().getString("mysql_user"), getConf().getString("mysql_password"), "?useSSL=" + getConf().getBoolean("mysql_useSSL") +"&allowPublicKeyRetrieval=true");
                 conn = mySQL.getConnection();
-                conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admingui_players(username varchar(25) NOT NULL PRIMARY KEY, server varchar(30) NOT NULL);");
-                conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admingui_tasks(id varchar(50) NOT NULL PRIMARY KEY, from_server varchar(30) NOT NULL, to_server varchar(30), command varchar(30) NOT NULL, player varchar(25) NOT NULL, target_player varchar(25) NOT NULL, param1 varchar(255), param2 varchar(255), param3 varchar(255), status varchar(15) NOT NULL DEFAULT 'waiting', created TIMESTAMP NOT NULL DEFAULT NOW());");
-                Initialize.Database();
+                if(getConf().getBoolean("bungeecord_enabled", false)){
+                    conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admingui_players(username varchar(25) NOT NULL PRIMARY KEY, server varchar(30) NOT NULL);");
+                    conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admingui_tasks(id varchar(50) NOT NULL PRIMARY KEY, from_server varchar(30) NOT NULL, to_server varchar(30), command varchar(30) NOT NULL, player varchar(25) NOT NULL, target_player varchar(25) NOT NULL, param1 varchar(255), param2 varchar(255), param3 varchar(255), status varchar(15) NOT NULL DEFAULT 'waiting', created TIMESTAMP NOT NULL DEFAULT NOW());");
+                    Initialize.Database();
+                }
+                if(getConf().getBoolean("admin_ban_system_enabled", false)){
+                    conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admin_gui_banned_players(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, uuid_from CHAR(36) NOT NULL, username_from varchar(25) NOT NULL, uuid_to CHAR(36) NOT NULL, username_to varchar(25) NOT NULL, reason VARCHAR(255), until DATETIME NOT NULL, created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)");
+                    conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admin_gui_muted_players(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, uuid_from CHAR(36) NOT NULL, username_from varchar(25) NOT NULL, uuid_to CHAR(36) NOT NULL, username_to varchar(25) NOT NULL, reason VARCHAR(255), until DATETIME NOT NULL, created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)");
+                    conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admin_gui_warned_players(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, uuid_from CHAR(36) NOT NULL, username_from varchar(25) NOT NULL, uuid_to CHAR(36) NOT NULL, username_to varchar(25) NOT NULL, reason VARCHAR(255), until DATETIME NOT NULL, created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)");
+                    conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admin_gui_kicked_players(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, uuid_from CHAR(36) NOT NULL, username_from varchar(25) NOT NULL, uuid_to CHAR(36) NOT NULL, username_to varchar(25) NOT NULL, reason VARCHAR(255), until DATETIME NOT NULL, created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)");
+                }
             } catch (SQLException e) {
                 conn = null;
             }

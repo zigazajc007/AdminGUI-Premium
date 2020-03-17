@@ -22,7 +22,7 @@ public class PlayerLeaveListener implements Listener {
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent event){
         //SQL
-        if(AdminGUI.conn != null){
+        if(AdminGUI.conn != null && AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false)){
             try {
                 AdminGUI.mySQL.update("DELETE FROM admingui_players WHERE username = '" + event.getPlayer().getName() + "';");
             } catch (SQLException ignored) { }
