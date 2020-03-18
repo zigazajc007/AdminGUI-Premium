@@ -1,6 +1,7 @@
 package com.rabbitcompany.admingui;
 
 import com.rabbitcompany.admingui.commands.Admin;
+import com.rabbitcompany.admingui.commands.Ban;
 import com.rabbitcompany.admingui.listeners.*;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Initialize;
@@ -141,8 +142,8 @@ public class AdminGUI extends JavaPlugin {
                 if(getConf().getBoolean("admin_ban_system_enabled", false)){
                     conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admin_gui_banned_players(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, uuid_from CHAR(36) NOT NULL, username_from varchar(25) NOT NULL, uuid_to CHAR(36) NOT NULL, username_to varchar(25) NOT NULL, reason VARCHAR(255), until DATETIME NOT NULL, created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)");
                     conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admin_gui_muted_players(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, uuid_from CHAR(36) NOT NULL, username_from varchar(25) NOT NULL, uuid_to CHAR(36) NOT NULL, username_to varchar(25) NOT NULL, reason VARCHAR(255), until DATETIME NOT NULL, created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)");
-                    conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admin_gui_warned_players(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, uuid_from CHAR(36) NOT NULL, username_from varchar(25) NOT NULL, uuid_to CHAR(36) NOT NULL, username_to varchar(25) NOT NULL, reason VARCHAR(255), until DATETIME NOT NULL, created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)");
-                    conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admin_gui_kicked_players(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, uuid_from CHAR(36) NOT NULL, username_from varchar(25) NOT NULL, uuid_to CHAR(36) NOT NULL, username_to varchar(25) NOT NULL, reason VARCHAR(255), until DATETIME NOT NULL, created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)");
+                    conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admin_gui_warned_players(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, uuid_from CHAR(36) NOT NULL, username_from varchar(25) NOT NULL, uuid_to CHAR(36) NOT NULL, username_to varchar(25) NOT NULL, reason VARCHAR(255), created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)");
+                    conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admin_gui_kicked_players(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, uuid_from CHAR(36) NOT NULL, username_from varchar(25) NOT NULL, uuid_to CHAR(36) NOT NULL, username_to varchar(25) NOT NULL, reason VARCHAR(255), created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)");
                 }
             } catch (SQLException e) {
                 conn = null;
@@ -155,11 +156,19 @@ public class AdminGUI extends JavaPlugin {
         new PlayerJoinListener(this);
         new PlayerLeaveListener(this);
         new PlayerLoginListener(this);
-        new PlayerMessageListener(this);
+        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){
+            new PlayerPlaceholderMessageListener(this);
+        }else{
+            new PlayerMessageListener(this);
+        }
 
         //Commands
-        this.getCommand("admin").setExecutor((CommandExecutor) new Admin());
+        this.getCommand("admin").setExecutor(new Admin());
         this.getCommand("admin").setTabCompleter(new TabCompletion());
+
+        if(conn != null && getConf().getBoolean("admin_ban_system_enabled", false)){
+            this.getCommand("ban").setExecutor(new Ban());
+        }
 
         //Skulls
         AdminUI.skulls.put("0qt", Item.pre_createPlayerHead("0qt"));
@@ -481,7 +490,7 @@ public class AdminGUI extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Name: &bAdminGUI-Premium"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Developer: &bBlack1_TV"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b3.1.0"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b4.0.0"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));

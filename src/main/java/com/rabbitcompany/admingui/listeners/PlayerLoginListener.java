@@ -6,6 +6,7 @@ import com.rabbitcompany.admingui.utils.AdminBanSystem;
 import com.rabbitcompany.admingui.utils.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 
@@ -19,13 +20,13 @@ public class PlayerLoginListener implements Listener {
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerLogin(PlayerLoginEvent event){
         if(event.getResult() == PlayerLoginEvent.Result.ALLOWED){
 
             //Admin Ban System
             if(AdminGUI.conn != null && AdminGUI.getInstance().getConf().getBoolean("admin_ban_system_enabled", false)){
-                if(AdminBanSystem.isPlayerBanned(event.getPlayer().getUniqueId().toString())){
+                if(AdminBanSystem.isPlayerBannedUUID(event.getPlayer().getUniqueId().toString())){
                     event.disallow(PlayerLoginEvent.Result.KICK_OTHER, AdminBanSystem.playerBannedMessage(event.getPlayer().getUniqueId().toString()));
                 }
             }

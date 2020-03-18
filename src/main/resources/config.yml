@@ -33,7 +33,7 @@
 #               |________________________|
 #
 #----------------------------------------------------------
-#                        Config
+#                       Admin GUI
 #----------------------------------------------------------
 # If initialize_gui is set to 0 then gui won't be initialized and will be very buggy on first use. (You still will be able to initialize the gui in game with /admin initialize gui)
 # If initialize_gui is set to 1 then gui will be initialized when player join the game. (Default and recommended)
@@ -48,14 +48,31 @@ default_language: "English"
 # Here you can specify default GUI color - Only works with stained glass panes.
 gui_default_color: "LIGHT_BLUE_STAINED_GLASS_PANE"
 #----------------------------------------------------------
-#                       Admin Chat
+#            Admin Chat - Support PlaceholderAPI
 #----------------------------------------------------------
-# Do you want Admin Chat to be enabled?
-ac_enabled: true;
+# Do you want Admin Staff Chat to be enabled?
+ac_enabled: false
 # Here you can set your own Admin Chat format (Valid tags are {name}, {display_name} and {message})
-ac_format: "&7[&cAdmin Chat&7] &5{name} &7> {message}"
+ac_format: "{display_name} &7> {message}"
 #----------------------------------------------------------
-#                      MySQL Database
+#         Admin Staff Chat - Support PlaceholderAPI
+#----------------------------------------------------------
+# Do you want Admin Staff Chat to be enabled?
+asc_enabled: true
+# Here you can set your own Admin Staff Chat format (Valid tags are {name}, {display_name} and {message})
+asc_format: "&7[&cAdmin Chat&7] &5{name} &7> {message}"
+#----------------------------------------------------------
+#         Admin Ban System (require mysql enabled)
+#----------------------------------------------------------
+admin_ban_system_enabled: false
+#----------------------------------------------------------
+#            Bungeecord (require mysql enabled)
+#----------------------------------------------------------
+# You can write what ever you want in server_name, but 2 servers can't have same name. (I suggest same names as in bungeecord config file)
+bungeecord_enabled: false
+server_name: "Lobby"
+#----------------------------------------------------------
+#                    MySQL Database
 #----------------------------------------------------------
 # Do you want to use mysql database?
 mysql: false
@@ -68,13 +85,3 @@ mysql_password: ""
 mysql_useSSL: false
 # How many seconds expires before plugin will collect data from MySQl again. (Default is 5)
 mysql_delay: 5
-#----------------------------------------------------------
-#              Bungeecord (require mysql enabled)
-#----------------------------------------------------------
-# You can write what ever you want in server_name, but 2 servers can't have same name. (I suggest same names as in bungeecord config file)
-bungeecord_enabled: false
-server_name: "Lobby"
-#----------------------------------------------------------
-#                    Admin Ban System
-#----------------------------------------------------------
-admin_ban_system_enabled: false

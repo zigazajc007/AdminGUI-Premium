@@ -40,13 +40,13 @@ public class Admin implements CommandExecutor {
                 }else if(args[0].equals("initialize")) {
                     player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_initialize"));
                 }else if(args[0].equals("chat")){
-                    if(!AdminGUI.getInstance().getConf().getBoolean("ac_enabled")) {
-                        if (player.hasPermission("admingui.chat")) {
-                            if (!AdminUI.admin_chat.getOrDefault(player.getUniqueId(), false)) {
-                                AdminUI.admin_chat.put(player.getUniqueId(), true);
+                    if(AdminGUI.getInstance().getConf().getBoolean("asc_enabled", false)) {
+                        if (player.hasPermission("admingui.chat.staff")) {
+                            if (!AdminUI.admin_staff_chat.getOrDefault(player.getUniqueId(), false)) {
+                                AdminUI.admin_staff_chat.put(player.getUniqueId(), true);
                                 player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_admin_chat_enabled"));
                             } else {
-                                AdminUI.admin_chat.put(player.getUniqueId(), false);
+                                AdminUI.admin_staff_chat.put(player.getUniqueId(), false);
                                 player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_admin_chat_disabled"));
                             }
                         } else {

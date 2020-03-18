@@ -39,8 +39,8 @@ public class AdminUI {
     //Player GUI color
     private static HashMap<UUID, String> gui_color = new HashMap<>();
 
-    //Admin chat
-    public static HashMap<UUID, Boolean> admin_chat = new HashMap<>();
+    //Admin Staff chat
+    public static HashMap<UUID, Boolean> admin_staff_chat = new HashMap<>();
 
     //Initialize task
     public static HashMap<UUID, Integer> task_gui = new HashMap<>();
@@ -51,6 +51,9 @@ public class AdminUI {
 
     //Language
     public static HashMap<UUID, String> language = new HashMap<>();
+
+    //Kick
+    private HashMap<UUID, Boolean> kick_silence = new HashMap<>();
 
     //Ban
     private HashMap<UUID, Integer> ban_years = new HashMap<>();
@@ -455,32 +458,55 @@ public class AdminUI {
 
     public Inventory GUI_Unban_Players(Player p){
 
-        ArrayList<String> pl = new ArrayList<>();
-
         Inventory inv_unban_players = Bukkit.createInventory(null, 54, Message.getMessage(p.getUniqueId(), "inventory_unban"));
 
-        for (OfflinePlayer all : getServer().getBannedPlayers()) {
-            pl.add(all.getName());
-        }
+        if(AdminGUI.conn != null && AdminGUI.getInstance().getConf().getBoolean("admin_ban_system_enabled", false)){
+            ArrayList<BannedPlayer> abs = new ArrayList<>(AdminBanSystem.getBannedPlayers());
 
-        Collections.sort(pl);
+            int online = abs.size();
 
-        int online = pl.size();
+            unban_pages.put(p.getUniqueId(), (int) Math.ceil((float)online / 45));
 
-        unban_pages.put(p.getUniqueId(), (int) Math.ceil((float)online / 45));
+            for (int i = 46; i <= 53; i++){
+                Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
+            }
 
-        for (int i = 46; i <= 53; i++){
-            Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
-        }
+            int player_slot = (unban_page.getOrDefault(p.getUniqueId(),1)-1) * 45;
 
-        int player_slot = (unban_page.getOrDefault(p.getUniqueId(),1)-1) * 45;
+            for (int i = 0; i < 45; i++){
+                if(player_slot < online){
+                    Item.createPlayerHead(inv_unban_players, abs.get(player_slot).username_to, 1, i + 1, Message.getMessage(p.getUniqueId(), "unban_color").replace("{player}", abs.get(player_slot).username_to), Message.chat("&aBanned by: &6" + abs.get(player_slot).username_from), Message.chat("&aBanned on: &6" + abs.get(player_slot).created), Message.chat("&aExpiration: &6" + abs.get(player_slot).until), " ", Message.getMessage(p.getUniqueId(), "unban_more"));
+                    player_slot++;
+                }else{
+                    Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i+1, " ");
+                }
+            }
+        }else{
+            ArrayList<String> pl = new ArrayList<>();
 
-        for (int i = 0; i < 45; i++){
-            if(player_slot < online){
-                Item.createPlayerHead(inv_unban_players, pl.get(player_slot), 1, i + 1, Message.getMessage(p.getUniqueId(), "unban_color").replace("{player}", pl.get(player_slot)), Message.chat("&aBanned: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getCreated()), Message.chat("&aExpiration: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getExpiration()), " ", Message.getMessage(p.getUniqueId(), "unban_more"));
-                player_slot++;
-            }else{
-                Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i+1, " ");
+            for (OfflinePlayer all : getServer().getBannedPlayers()) {
+                pl.add(all.getName());
+            }
+
+            Collections.sort(pl);
+
+            int online = pl.size();
+
+            unban_pages.put(p.getUniqueId(), (int) Math.ceil((float)online / 45));
+
+            for (int i = 46; i <= 53; i++){
+                Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
+            }
+
+            int player_slot = (unban_page.getOrDefault(p.getUniqueId(),1)-1) * 45;
+
+            for (int i = 0; i < 45; i++){
+                if(player_slot < online){
+                    Item.createPlayerHead(inv_unban_players, pl.get(player_slot), 1, i + 1, Message.getMessage(p.getUniqueId(), "unban_color").replace("{player}", pl.get(player_slot)), Message.chat("&aBanned: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getCreated()), Message.chat("&aExpiration: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getExpiration()), " ", Message.getMessage(p.getUniqueId(), "unban_more"));
+                    player_slot++;
+                }else{
+                    Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i+1, " ");
+                }
             }
         }
 
@@ -717,6 +743,12 @@ public class AdminUI {
         for (Map.Entry<String, Object> kick_slot : AdminGUI.getInstance().getKick().getConfigurationSection("slots").getValues(false).entrySet()) {
             int i = Integer.parseInt(kick_slot.getKey());
             Item.create(inv_kick, AdminGUI.getInstance().getKick().getString("slots."+i+".material"), 1, i, AdminGUI.getInstance().getKick().getString("slots."+i+".name"));
+        }
+
+        if(kick_silence.getOrDefault(p.getUniqueId(), false)){
+            Item.after_createPlayerHead(inv_kick, skulls.get("Ground15"), 1, 19, Message.getMessage(p.getUniqueId(), "ban_silence_enabled"));
+        }else{
+            Item.after_createPlayerHead(inv_kick, skulls.get("EDDxample"), 1, 19, Message.getMessage(p.getUniqueId(), "ban_silence_disabled"));
         }
 
         Item.after_createPlayerHead(inv_kick, skulls.get("MHF_Redstone"),1,27, Message.getMessage(p.getUniqueId(), "kick_back"));
@@ -1232,14 +1264,23 @@ public class AdminUI {
     public void clicked_unban_players(Player p, int slot, ItemStack clicked, Inventory inv){
 
         if(clicked.getItemMeta().getLore() != null){
-            if(clicked.getItemMeta().getLore().get(3).equals(Message.getMessage(p.getUniqueId(), "unban_more"))){
-                OfflinePlayer target_p = getServer().getOfflinePlayer(ChatColor.stripColor(clicked.getItemMeta().getDisplayName()));
-                if(target_p.isBanned()){
-                    Bukkit.getBanList(BanList.Type.NAME).pardon(target_p.getName());
-                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_unban_player").replace("{player}", target_p.getName()));
+            if(clicked.getItemMeta().getLore().contains(Message.getMessage(p.getUniqueId(), "unban_more"))){
+                if(AdminGUI.conn != null && AdminGUI.getInstance().getConf().getBoolean("admin_ban_system_enabled", false)){
+                    if(AdminBanSystem.unBanPlayerName(ChatColor.stripColor(clicked.getItemMeta().getDisplayName()))){
+                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_unban_player").replace("{player}", ChatColor.stripColor(clicked.getItemMeta().getDisplayName())));
+                    }else{
+                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
+                    }
                 }else{
-                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
+                    OfflinePlayer target_p = getServer().getOfflinePlayer(ChatColor.stripColor(clicked.getItemMeta().getDisplayName()));
+                    if(target_p.isBanned()){
+                        Bukkit.getBanList(BanList.Type.NAME).pardon(target_p.getName());
+                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_unban_player").replace("{player}", target_p.getName()));
+                    }else{
+                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
+                    }
                 }
+
                 p.closeInventory();
             }
         }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "unban_back"))){
@@ -1381,52 +1422,25 @@ public class AdminUI {
         if(target_player.isOnline()){
             if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "kick_back"))){
                 p.openInventory(GUI_Players_Settings(p, target_player));
-            }else if(clicked.getType() != Material.AIR && clicked.getType() != XMaterial.LIGHT_BLUE_STAINED_GLASS_PANE.parseMaterial()){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "ban_silence_disabled"))){
+                kick_silence.put(p.getUniqueId(), true);
+                p.openInventory(GUI_Kick(p, target_player));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "ban_silence_enabled"))){
+                kick_silence.put(p.getUniqueId(), false);
+                p.openInventory(GUI_Kick(p, target_player));
+            }else if(clicked.getType() != Material.AIR && !Objects.requireNonNull(clicked.getItemMeta()).getDisplayName().equals(" ")){
                 if(target_player.hasPermission("admingui.kick.bypass")){
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_kick_bypass"));
                 }else{
+                    if(AdminGUI.conn != null && AdminGUI.getInstance().getConf().getBoolean("admin_ban_system_enabled", false)){
+                        AdminBanSystem.kickPlayer(p.getUniqueId().toString(), p.getName(), target_player.getUniqueId().toString(), target_player.getName(), AdminGUI.getInstance().getKick().getString("slots."+(slot+1)+".name"));
+                    }
                     target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "kick") + Message.chat(AdminGUI.getInstance().getKick().getString("slots."+(slot+1)+".name")));
-                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kick").replace("{player}", target_player.getName()));
-                }
-                p.closeInventory();
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "kick_hacking"))){
-                if(target_player.hasPermission("admingui.kick.bypass")){
-                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_kick_bypass"));
-                }else{
-                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "kick") + Message.getMessage(target_player.getUniqueId(), "kick_hacking"));
-                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kick").replace("{player}", target_player.getName()));
-                }
-                p.closeInventory();
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "kick_griefing"))){
-                if(target_player.hasPermission("admingui.kick.bypass")){
-                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_kick_bypass"));
-                }else{
-                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "kick") + Message.getMessage(target_player.getUniqueId(), "kick_griefing"));
-                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kick").replace("{player}", target_player.getName()));
-                }
-                p.closeInventory();
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "kick_spamming"))){
-                if(target_player.hasPermission("admingui.kick.bypass")){
-                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_kick_bypass"));
-                }else{
-                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "kick") + Message.getMessage(target_player.getUniqueId(), "kick_spamming"));
-                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kick").replace("{player}", target_player.getName()));
-                }
-                p.closeInventory();
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "kick_advertising"))){
-                if(target_player.hasPermission("admingui.kick.bypass")){
-                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_kick_bypass"));
-                }else{
-                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "kick") + Message.getMessage(target_player.getUniqueId(), "kick_advertising"));
-                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kick").replace("{player}", target_player.getName()));
-                }
-                p.closeInventory();
-            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "kick_swearing"))){
-                if(target_player.hasPermission("admingui.kick.bypass")){
-                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_kick_bypass"));
-                }else{
-                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "kick") + Message.getMessage(target_player.getUniqueId(), "kick_swearing"));
-                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kick").replace("{player}", target_player.getName()));
+                    if(kick_silence.getOrDefault(p.getUniqueId(), false)){
+                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kick").replace("{player}", target_player.getName()).replace("{reason}", Message.chat(AdminGUI.getInstance().getKick().getString("slots."+(slot+1)+".name"))));
+                    }else{
+                        Bukkit.broadcastMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kick").replace("{player}", target_player.getName()).replace("{reason}", Message.chat(AdminGUI.getInstance().getKick().getString("slots."+(slot+1)+".name"))));
+                    }
                 }
                 p.closeInventory();
             }
@@ -1471,9 +1485,9 @@ public class AdminUI {
                     }
                     target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_hacking", time));
                     if(ban_silence.getOrDefault(p.getUniqueId(), false)){
-                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_hacking")));
                     }else{
-                        getServer().broadcastMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                        getServer().broadcastMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_hacking")));
                     }
                 }
                 p.closeInventory();
@@ -1489,9 +1503,9 @@ public class AdminUI {
                     }
                     target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_griefing", time));
                     if(ban_silence.getOrDefault(p.getUniqueId(), false)){
-                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_griefing")));
                     }else{
-                        getServer().broadcastMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                        getServer().broadcastMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_griefing")));
                     }
                 }
                 p.closeInventory();
@@ -1507,9 +1521,9 @@ public class AdminUI {
                     }
                     target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_spamming", time));
                     if(ban_silence.getOrDefault(p.getUniqueId(), false)){
-                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_spamming")));
                     }else{
-                        getServer().broadcastMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                        getServer().broadcastMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_spamming")));
                     }
                 }
                 p.closeInventory();
@@ -1525,9 +1539,9 @@ public class AdminUI {
                     }
                     target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(),"ban_advertising", time));
                     if(ban_silence.getOrDefault(p.getUniqueId(), false)){
-                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_advertising")));
                     }else{
-                        getServer().broadcastMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                        getServer().broadcastMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_advertising")));
                     }
                 }
                 p.closeInventory();
@@ -1543,9 +1557,9 @@ public class AdminUI {
                     }
                     target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_swearing", time));
                     if(ban_silence.getOrDefault(p.getUniqueId(), false)){
-                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_swearing")));
                     }else{
-                        getServer().broadcastMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()));
+                        getServer().broadcastMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_swearing")));
                     }
                 }
                 p.closeInventory();
