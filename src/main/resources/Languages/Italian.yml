@@ -180,7 +180,7 @@ kick_back: "&c&lIndietro"
 #                        Ban GUI
 #----------------------------------------------------------
 ban: "&4Sei stato bannato per "
-ban_time: "&cLa tua sospensione scade il &c&l{days}.{months}.{years}&c alle &c&l{hours}:{minutes}:{seconds}."
+ban_time: "&cLa tua sospensione scade il &c&l"
 ban_years: "&e&lAnni"
 ban_months: "&e&lMesi"
 ban_days: "&e&lGiorni"

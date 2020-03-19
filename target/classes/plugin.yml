@@ -11,4 +11,7 @@ commands:
     description: Show Admin GUI
   ban:
     usage: /<command>
-    description: Ban players
+    description: Ban player
+  unban:
+    usage: /<command>
+    description: Unban player

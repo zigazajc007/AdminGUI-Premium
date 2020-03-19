@@ -2,6 +2,7 @@ package com.rabbitcompany.admingui;
 
 import com.rabbitcompany.admingui.commands.Admin;
 import com.rabbitcompany.admingui.commands.Ban;
+import com.rabbitcompany.admingui.commands.Unban;
 import com.rabbitcompany.admingui.listeners.*;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Initialize;
@@ -9,7 +10,6 @@ import com.rabbitcompany.admingui.utils.Item;
 import com.rabbitcompany.admingui.utils.Message;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -168,6 +168,9 @@ public class AdminGUI extends JavaPlugin {
 
         if(conn != null && getConf().getBoolean("admin_ban_system_enabled", false)){
             this.getCommand("ban").setExecutor(new Ban());
+            this.getCommand("ban").setTabCompleter(new TabCompletion());
+            this.getCommand("unban").setExecutor(new Unban());
+            this.getCommand("unban").setTabCompleter(new TabCompletion());
         }
 
         //Skulls
@@ -212,10 +215,12 @@ public class AdminGUI extends JavaPlugin {
         //SQL
         if(conn != null){
 
-            for(Player all : Bukkit.getServer().getOnlinePlayers()){
-                try {
-                    AdminGUI.mySQL.update("DELETE FROM admingui_players WHERE username = '" + all.getName() + "';");
-                } catch (SQLException ignored) { }
+            if(getConf().getBoolean("bungeecord_enabled", false)){
+                for(Player all : Bukkit.getServer().getOnlinePlayers()){
+                    try {
+                        AdminGUI.mySQL.update("DELETE FROM admingui_players WHERE username = '" + all.getName() + "';");
+                    } catch (SQLException ignored) { }
+                }
             }
 
             try {

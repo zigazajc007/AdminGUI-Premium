@@ -44,10 +44,17 @@ public class TargetPlayer {
 
     }
 
-    public static String banReason(UUID target, String reason, Date time){
+    public static String banReason(UUID target, String reason, String time){
         String bumper = org.apache.commons.lang.StringUtils.repeat("\n", 35);
 
-        return bumper + Message.getMessage(target, "ban") + Message.getMessage(target, reason) + "\n" + Message.getMessage(target, "ban_time").replace("{years}", ""+(time.getYear()+1900)).replace("{months}", ""+(time.getMonth()+1)).replace("{days}", ""+time.getDate()).replace("{hours}", ""+time.getHours()).replace("{minutes}", ""+time.getMinutes()).replace("{seconds}", ""+time.getSeconds()) + bumper;
+        return bumper + Message.getMessage(target, "ban") + Message.getMessage(target, reason) + "\n" + Message.getMessage(target, "ban_time") + time + bumper;
+    }
+
+    public static String banCustomReason(UUID target, String reason, String time){
+        String bumper = org.apache.commons.lang.StringUtils.repeat("\n", 35);
+
+        return bumper + Message.getMessage(target, "ban") + Message.chat(reason) + "\n" + Message.getMessage(target, "ban_time") + time + bumper;
+
     }
 
 }

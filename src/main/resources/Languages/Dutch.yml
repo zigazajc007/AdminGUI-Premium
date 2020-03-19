@@ -180,7 +180,7 @@ kick_back: "&c&lTerug"
 #                       Ban GUI
 #----------------------------------------------------------
 ban: "&4Je bent gebanned vanwege "
-ban_time: "&cJe straf vervalt op &c&l{days}.{months}.{years}&c om &c&l{hours}:{minutes}:{seconds}."
+ban_time: "&cJe straf vervalt op &c&l"
 ban_years: "&e&lJaren"
 ban_months: "&e&lMaanden"
 ban_days: "&e&lDagen"

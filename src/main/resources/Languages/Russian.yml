@@ -181,7 +181,7 @@ kick_back: "&c&lНазад"
 #                       Ban GUI
 #----------------------------------------------------------
 ban: "&4&lВы были забанены за "
-ban_time: "&cБан истекает через &c&l{days}.&c&l{months}.&c&l{years}.&c&l-&c&l{hours}:&c&l{minutes}:&c&l{seconds}."
+ban_time: "&cБан истекает через &c&l"
 ban_years: "&e&lГод"
 ban_months: "&e&lМесяц"
 ban_days: "&e&lДня"

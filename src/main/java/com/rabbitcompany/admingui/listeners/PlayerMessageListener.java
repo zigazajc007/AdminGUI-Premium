@@ -37,14 +37,10 @@ public class PlayerMessageListener implements Listener {
             if(adminGUI.getConf().getBoolean("ac_enabled", false)){
                 event.setCancelled(true);
 
-                if(p.hasPermission("admingui.chat")){
-                    if(p.hasPermission("admingui.chat.color") || p.hasPermission("admingui.chat.colors")){
-                        Bukkit.broadcastMessage(Message.chat(adminGUI.getConf().getString("ac_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
-                    }else{
-                        Bukkit.broadcastMessage(adminGUI.getConf().getString("ac_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message));
-                    }
+                if(p.hasPermission("admingui.chat.color") || p.hasPermission("admingui.chat.colors")){
+                    Bukkit.broadcastMessage(Message.chat(adminGUI.getConf().getString("ac_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
                 }else{
-                    p.sendMessage(Message.getMessage(p.getUniqueId(), "permission"));
+                    Bukkit.broadcastMessage(adminGUI.getConf().getString("ac_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message));
                 }
             }
         }

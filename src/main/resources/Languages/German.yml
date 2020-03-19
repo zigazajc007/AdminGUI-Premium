@@ -180,7 +180,7 @@ kick_back: "&c&lBack"
 #                       Ban GUI
 #----------------------------------------------------------
 ban: "&4You have been banned for "
-ban_time: "&cYour suspension expires on &c&l{days}.{months}.{years}&c at &c&l{hours}:{minutes}:{seconds}."
+ban_time: "&cYour suspension expires on &c&l"
 ban_years: "&e&lYears"
 ban_months: "&e&lMonths"
 ban_days: "&e&lDays"

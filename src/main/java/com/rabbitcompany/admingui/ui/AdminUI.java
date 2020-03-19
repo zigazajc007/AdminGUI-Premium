@@ -473,9 +473,11 @@ public class AdminUI {
 
             int player_slot = (unban_page.getOrDefault(p.getUniqueId(),1)-1) * 45;
 
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
             for (int i = 0; i < 45; i++){
                 if(player_slot < online){
-                    Item.createPlayerHead(inv_unban_players, abs.get(player_slot).username_to, 1, i + 1, Message.getMessage(p.getUniqueId(), "unban_color").replace("{player}", abs.get(player_slot).username_to), Message.chat("&aBanned by: &6" + abs.get(player_slot).username_from), Message.chat("&aBanned on: &6" + abs.get(player_slot).created), Message.chat("&aExpiration: &6" + abs.get(player_slot).until), " ", Message.getMessage(p.getUniqueId(), "unban_more"));
+                    Item.createPlayerHead(inv_unban_players, abs.get(player_slot).username_to, 1, i + 1, Message.getMessage(p.getUniqueId(), "unban_color").replace("{player}", abs.get(player_slot).username_to), Message.chat("&aBanned by: &6" + abs.get(player_slot).username_from), Message.chat("&aBanned on: &6" + sdf.format(abs.get(player_slot).created)), Message.chat("&aExpiration: &6" + sdf.format(abs.get(player_slot).until)), " ", Message.getMessage(p.getUniqueId(), "unban_more"));
                     player_slot++;
                 }else{
                     Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i+1, " ");
@@ -1214,7 +1216,7 @@ public class AdminUI {
                     }else{
                         p.openInventory(GUI_Player(p));
                     }
-                }else if(AdminGUI.conn != null && online_players.contains(ChatColor.stripColor(clicked.getItemMeta().getDisplayName()))) {
+                }else if(AdminGUI.conn != null && AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false) && online_players.contains(ChatColor.stripColor(clicked.getItemMeta().getDisplayName()))) {
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.chat("&cPlayer " + ChatColor.stripColor(clicked.getItemMeta().getDisplayName()) + " is not located in the same server as you."));
                 }else{
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
@@ -1481,9 +1483,9 @@ public class AdminUI {
                     if(AdminGUI.conn != null && AdminGUI.getInstance().getConf().getBoolean("admin_ban_system_enabled", false)) {
                         AdminBanSystem.banPlayer(p.getUniqueId().toString(), p.getName(), target_player.getUniqueId().toString(), target_player.getName(), "ban_hacking", until);
                     }else{
-                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_hacking", time), time);
+                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_hacking", AdminBanSystem.sdf.format(time)), time);
                     }
-                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_hacking", time));
+                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_hacking", AdminBanSystem.sdf.format(time)));
                     if(ban_silence.getOrDefault(p.getUniqueId(), false)){
                         p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_hacking")));
                     }else{
@@ -1499,9 +1501,9 @@ public class AdminUI {
                     if(AdminGUI.conn != null && AdminGUI.getInstance().getConf().getBoolean("admin_ban_system_enabled", false)) {
                         AdminBanSystem.banPlayer(p.getUniqueId().toString(), p.getName(), target_player.getUniqueId().toString(), target_player.getName(), "ban_griefing", until);
                     }else{
-                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_griefing", time), time);
+                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_griefing", AdminBanSystem.sdf.format(time)), time);
                     }
-                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_griefing", time));
+                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_griefing", AdminBanSystem.sdf.format(time)));
                     if(ban_silence.getOrDefault(p.getUniqueId(), false)){
                         p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_griefing")));
                     }else{
@@ -1517,9 +1519,9 @@ public class AdminUI {
                     if(AdminGUI.conn != null && AdminGUI.getInstance().getConf().getBoolean("admin_ban_system_enabled", false)) {
                         AdminBanSystem.banPlayer(p.getUniqueId().toString(), p.getName(), target_player.getUniqueId().toString(), target_player.getName(), "ban_spamming", until);
                     }else{
-                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_spamming", time), time);
+                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_spamming", AdminBanSystem.sdf.format(time)), time);
                     }
-                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_spamming", time));
+                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_spamming", AdminBanSystem.sdf.format(time)));
                     if(ban_silence.getOrDefault(p.getUniqueId(), false)){
                         p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_spamming")));
                     }else{
@@ -1535,9 +1537,9 @@ public class AdminUI {
                     if(AdminGUI.conn != null && AdminGUI.getInstance().getConf().getBoolean("admin_ban_system_enabled", false)) {
                         AdminBanSystem.banPlayer(p.getUniqueId().toString(), p.getName(), target_player.getUniqueId().toString(), target_player.getName(), "ban_advertising", until);
                     }else{
-                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_advertising", time), time);
+                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_advertising", AdminBanSystem.sdf.format(time)), time);
                     }
-                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(),"ban_advertising", time));
+                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(),"ban_advertising", AdminBanSystem.sdf.format(time)));
                     if(ban_silence.getOrDefault(p.getUniqueId(), false)){
                         p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_advertising")));
                     }else{
@@ -1553,9 +1555,9 @@ public class AdminUI {
                     if(AdminGUI.conn != null && AdminGUI.getInstance().getConf().getBoolean("admin_ban_system_enabled", false)) {
                         AdminBanSystem.banPlayer(p.getUniqueId().toString(), p.getName(), target_player.getUniqueId().toString(), target_player.getName(), "ban_swearing", until);
                     }else{
-                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_swearing", time), time);
+                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_swearing", AdminBanSystem.sdf.format(time)), time);
                     }
-                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_swearing", time));
+                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_swearing", AdminBanSystem.sdf.format(time)));
                     if(ban_silence.getOrDefault(p.getUniqueId(), false)){
                         p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_swearing")));
                     }else{

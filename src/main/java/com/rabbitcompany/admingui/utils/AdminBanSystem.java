@@ -13,6 +13,8 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class AdminBanSystem {
 
+    public static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
     public static boolean isPlayerBanned(String player){
         String query = "SELECT * FROM admin_gui_banned_players WHERE username_to = '" + player + "' ORDER BY until DESC;";
         AtomicBoolean isPlayerBanned = new AtomicBoolean(false);
@@ -55,12 +57,12 @@ public class AdminBanSystem {
         if(AdminGUI.conn != null && AdminGUI.getInstance().getConf().getBoolean("admin_ban_system_enabled", false)) {
             try {
                 AdminGUI.mySQL.update("INSERT INTO admin_gui_banned_players(uuid_from, username_from, uuid_to, username_to, reason, until) VALUES ('" + uuid_from + "', '" + username_from + "', '" + uuid_to + "', '" + username_to + "', '" + reason + "', '" + until + "');");
-                return "&aYou have banned " + username_to + " until " + until;
+                return Message.chat("&aYou have banned " + username_to + " until " + until);
             } catch (SQLException ignored) {
-                return "&cSomething went wrong while trying to ban " + username_to + ".";
+                return Message.chat("&cSomething went wrong while trying to ban " + username_to + ".");
             }
         }else{
-            return "&cYou don't have enabled Admin Ban System in config or settled up correctly Mysql database!";
+            return Message.chat("&cYou don't have enabled Admin Ban System in config or settled up correctly Mysql database!");
         }
     }
 
@@ -68,12 +70,12 @@ public class AdminBanSystem {
         if(AdminGUI.conn != null && AdminGUI.getInstance().getConf().getBoolean("admin_ban_system_enabled", false)) {
             try {
                 AdminGUI.mySQL.update("INSERT INTO admin_gui_kicked_players(uuid_from, username_from, uuid_to, username_to, reason) VALUES ('" + uuid_from + "', '" + username_from + "', '" + uuid_to + "', '" + username_to + "', '" + reason + "');");
-                return "&aYou have kicked " + username_to;
+                return Message.chat("&aYou have kicked " + username_to);
             } catch (SQLException ignored) {
-                return "&cSomething went wrong while trying to ban " + username_to + ".";
+                return Message.chat("&cSomething went wrong while trying to kick " + username_to + ".");
             }
         }else{
-            return "&cYou don't have enabled Admin Ban System in config or settled up correctly Mysql database!";
+            return Message.chat("&cYou don't have enabled Admin Ban System in config or settled up correctly Mysql database!");
         }
     }
 
@@ -81,10 +83,8 @@ public class AdminBanSystem {
         if(AdminGUI.conn != null && AdminGUI.getInstance().getConf().getBoolean("admin_ban_system_enabled", false)) {
             if(isPlayerBanned(player)){
                 try {
-                    Date time = new Date(System.currentTimeMillis());
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    String until = sdf.format(time);
-                    AdminGUI.mySQL.update("UPDATE admin_gui_banned_players SET until = '" + until + "' WHERE username_to = '" + player + "';");
+                    Date until = new Date(System.currentTimeMillis());
+                    AdminGUI.mySQL.update("UPDATE admin_gui_banned_players SET until = '" + sdf.format(until) + "' WHERE username_to = '" + player + "';");
                     return true;
                 } catch (SQLException ignored) { }
             }
@@ -96,10 +96,8 @@ public class AdminBanSystem {
         if(AdminGUI.conn != null && AdminGUI.getInstance().getConf().getBoolean("admin_ban_system_enabled", false)) {
             if(isPlayerBannedUUID(uuid)){
                 try {
-                    Date time = new Date(System.currentTimeMillis());
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    String until = sdf.format(time);
-                    AdminGUI.mySQL.update("UPDATE admin_gui_banned_players SET until = '" + until + "' WHERE uuid_to = '" + uuid + "';");
+                    Date until = new Date(System.currentTimeMillis());
+                    AdminGUI.mySQL.update("UPDATE admin_gui_banned_players SET until = '" + sdf.format(until) + "' WHERE uuid_to = '" + uuid + "';");
                     return true;
                 } catch (SQLException ignored) { }
             }
@@ -144,7 +142,12 @@ public class AdminBanSystem {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            return TargetPlayer.banReason(UUID.fromString(uuid), reason.get(), until.get());
+
+            if(TargetPlayer.banReason(UUID.fromString(uuid), reason.get(), sdf.format(until.get())).contains(".yml file! Please add it or delete")){
+                return TargetPlayer.banCustomReason(UUID.fromString(uuid), reason.get(), sdf.format(until.get()));
+            }else{
+                return TargetPlayer.banReason(UUID.fromString(uuid), reason.get(), sdf.format(until.get()));
+            }
         }else{
             return "";
         }

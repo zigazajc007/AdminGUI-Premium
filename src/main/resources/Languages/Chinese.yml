@@ -180,7 +180,7 @@ kick_back: "&c&l返回"
 #                       封鎖介面
 #----------------------------------------------------------
 ban: "&4你被禁止進入伺服器, 原因: "
-ban_time: "&c你將在 &c&l{days}/{months}/{years} {hours}:{minutes}:{seconds} &c解除封鎖."
+ban_time: "&c你將在 &c&l"
 ban_years: "&e&l年"
 ban_months: "&e&l月"
 ban_days: "&e&l天"
