@@ -1,6 +1,8 @@
 package com.rabbitcompany.admingui;
 
 import com.rabbitcompany.admingui.ui.AdminUI;
+import com.rabbitcompany.admingui.utils.AdminBanSystem;
+import com.rabbitcompany.admingui.utils.BannedPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -48,13 +50,10 @@ public class TabCompletion implements TabCompleter {
             List<String> completions = new ArrayList<>();
 
             if(args.length == 1){
-                //SQL
-                if(AdminGUI.conn != null){
-                    completions.addAll(AdminUI.online_players);
-                }else{
-                    for(Player all : Bukkit.getServer().getOnlinePlayers()) {
-                        completions.add(all.getName());
-                    }
+                ArrayList<BannedPlayer> bp = AdminBanSystem.getBannedPlayers();
+
+                for (BannedPlayer bannedPlayer : bp) {
+                    completions.add(bannedPlayer.username_to);
                 }
             }
             return completions;

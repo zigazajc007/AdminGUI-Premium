@@ -53,7 +53,7 @@ gui_default_color: "LIGHT_BLUE_STAINED_GLASS_PANE"
 # Do you want Admin Staff Chat to be enabled?
 ac_enabled: false
 # Here you can set your own Admin Chat format (Valid tags are {name}, {display_name} and {message})
-ac_format: "&7{display_name} > {message}"
+ac_format: "&7{display_name} &7> {message}"
 #----------------------------------------------------------
 #         Admin Staff Chat - Support PlaceholderAPI
 #----------------------------------------------------------
