@@ -1,0 +1,357 @@
+#       ----------- + AdminGUI by Ziga Zajc + -----------   #
+#                                                           #
+#                           Hebrew                          #
+#                                                           #
+#       --------- + ------------------------- + ---------   #
+#
+#       You can use chat colors:
+#                ________________________
+#               |   code: | color:       |
+#               |________________________|
+#               |     &0  | Black        |
+#               |     &1  | Dark Blue    |
+#               |     &2  | Dark Green   |
+#               |     &3  | Dark Aqua    |
+#               |     &4  | Dark Red     |
+#               |     &5  | Dark Purple  |
+#               |     &6  | Gold         |
+#               |     &7  | Gray         |
+#               |     &8  | Dark Gray    |
+#               |     &9  | Blue         |
+#               |     &a  | Green        |
+#               |     &b  | Aqua         |
+#               |     &c  | Red          |
+#               |     &d  | Light Purple |
+#               |     &e  | Yellow       |
+#               |     &f  | White        |
+#               |     &k  | Obfuscated   |
+#               |     &l  | Bold         |
+#               |     &m  | Strikethrough|
+#               |     &n  | Underline    |
+#               |     &o  | Italic       |
+#               |     &r  | Reset        |
+#               |________________________|
+#
+#----------------------------------------------------------
+#                         Prefix
+#----------------------------------------------------------
+prefix: "&7[&cחלון מנהל&7] "
+#----------------------------------------------------------
+#----------------------------------------------------------
+#                       Commands
+#----------------------------------------------------------
+permission: "&cאין לך הרשאות לעשות זאת!"
+is_not_a_player: "&c{player} אינו שחקן"
+is_not_a_number: "&c{number} אינו מספר"
+wrong_arguments: "&cאפשר להשתמש רק ב-/admin או /admin <שחקן>"
+wrong_initialize: "&cאפשר להשתמש רק ב-/admin initialize gui או /admin initialize players"
+vault_required: "&cVault לא מותקן על השרת"
+vanish_required: "&cSuperVanish או PremiumVanish לא מותקנים על השרת"
+#----------------------------------------------------------
+#                    Inventory names
+#----------------------------------------------------------
+inventory_main: "&4&lחלון מנהל &c&lפרימיום"
+inventory_player: "&5&l{player}"
+inventory_world: "&2&lעולם"
+inventory_players: "&1&lשחקנים"
+inventory_plugins: "&e&lתוספים/פלאגינים"
+inventory_commands: "&2&lפקודות"
+inventory_unban: "&c&lביטול הרחקה"
+inventory_actions: "&9&lפעולות &2&l{player}"
+inventory_kick: "&8&lהוצאת &2&l{player}"
+inventory_ban: "&8&lהרחקת &2&l{player}"
+inventory_potions: "&c&lשיקויים &2&l{player}"
+inventory_spawner: "&8&lיוצר &2&l{player}"
+inventory_money: "&2&lכסף &2&l{player}"
+inventory_money_give: "&2&lלתת כסף {player}"
+inventory_money_set: "&2&lכסף&9&l לשנות &2&l{player}"
+inventory_money_take: "&2&lכסף&c&l לקחת &2&l{player}"
+inventory_inventory: "&a&lתיק &2&l{player}"
+#----------------------------------------------------------
+#                       Admin GUI
+#----------------------------------------------------------
+main_player: "&5&l{player}"
+main_world: "&2&lעולם"
+main_players: "&9&lשחקנים"
+main_plugins: "&6&lתוספים/פלאגינים"
+main_maintenance_mode: "&c&lמצב תחזוקה"
+main_unban_players: "&c&lביטול הרחקת שחקנים"
+main_language: "&b&l"
+main_quit: "&c&lסגור"
+#----------------------------------------------------------
+#                      Player GUI
+#----------------------------------------------------------
+player_info: "&2&l{player}"
+player_heal: "&e&lרפא"
+player_feed: "&7&lהאכל"
+player_survival: "&a&lהישרדותי"
+player_adventure: "&2&lהרפתקה"
+player_creative: "&3&lיציתי"
+player_spectator: "&9&lצופה"
+player_god_enabled: "&c&lאל"
+player_god_disabled: "&a&lאל"
+player_potions: "&c&lשיקויים"
+player_spawner: "&8&lיוצר"
+player_kill: "&8&lהרוג"
+player_burn: "&c&lשרוף"
+player_lightning: "&5&lברק"
+player_firework: "&4&lזיקוקים"
+player_money: "&2&lכסף"
+player_vanish_enabled: "&a&lנעלם"
+player_vanish_disabled: "&c&lנעלם"
+player_custom: "&6&lפקודות מותאמות אישית"
+player_back: "&c&lחזור"
+#----------------------------------------------------------
+#                       World GUI
+#----------------------------------------------------------
+world_day: "&e&lיום"
+world_night: "&8&lלילה"
+world_thunder: "&9&lסופת רעמים"
+world_rain: "&3&lגשם"
+world_clear: "&b&lשמשי"
+world_back: "&c&lחזור"
+#----------------------------------------------------------
+#                     Players GUI
+#----------------------------------------------------------
+players_color: "&2&l{player}"
+players_more: "&cלחץ כאן לעוד פעולות"
+players_previous: "&c&lהקודם"
+players_page: "&a&lדף"
+players_next: "&2&lהבא"
+players_back: "&c&lחזור"
+#----------------------------------------------------------
+#                     Plugins GUI
+#----------------------------------------------------------
+plugins_back: "&c&lחזור"
+#----------------------------------------------------------
+#                     Commands GUI
+#----------------------------------------------------------
+commands_back: "&c&lחזור"
+#----------------------------------------------------------
+#                     Unban GUI
+#----------------------------------------------------------
+unban_color: "&2&l{player}"
+unban_more: "&cלחץ כאן לביטול הרחקה של השחקן"
+unban_previous: "&c&lהקודם"
+unban_page: "&a&lדף"
+unban_next: "&2&lהבא"
+unban_back: "&c&lחזור"
+#----------------------------------------------------------
+#                 Players Settings GUI
+#----------------------------------------------------------
+players_settings_info: "&2&l{player}"
+players_settings_actions: "&9&lפעולות"
+players_settings_money: "&2&lכסף"
+players_settings_kick_player: "&8&lהוצא שחקן"
+players_settings_ban_player: "&8&lהרחק שחקן"
+players_settings_back: "&c&lחזור"
+#----------------------------------------------------------
+#                   Actions GUI
+#----------------------------------------------------------
+actions_heal: "&e&lרפא"
+actions_feed: "&7&lהאכל"
+actions_info: "&2&l{player}"
+actions_survival: "&a&lהישרדותי"
+actions_adventure: "&2&lהרפתקה"
+actions_creative: "&3&lיצירתי"
+actions_spectator: "&9&lצופה"
+actions_teleport_to_player: "&d&lהשתגר אל שחקן"
+actions_kill_player: "&8&lהרוג שחקן"
+actions_burn_player: "&c&lשרוף שחקן"
+actions_teleport_player_to_you: "&d&lשגר שחקן אליך"
+actions_god_enabled: "&c&lאל"
+actions_god_disabled: "&a&lאל"
+actions_potions: "&c&lשיקויים"
+actions_spawner: "&8&lיוצר"
+actions_inventory: "&a&lתיק"
+actions_vanish_enabled: "&a&lנעלם"
+actions_vanish_disabled: "&c&lנעלם"
+actions_lightning: "&5&lברק"
+actions_firework: "&4&lזיקוקים"
+actions_fakeop: "&c&lמנהל מזויף"
+actions_custom: "&6&lפקודות מותאמות אישית"
+actions_back: "&c&lחזור"
+#----------------------------------------------------------
+#                       Kick GUI
+#----------------------------------------------------------
+kick: "&4הוציאו אותך בגלל ש "
+kick_back: "&c&lחזור"
+#----------------------------------------------------------
+#                       Ban GUI
+#----------------------------------------------------------
+ban: "&4הורחקת בגלל ש "
+ban_time: "ההרחקה תיגמר ב "
+ban_years: "&e&lשנים"
+ban_months: "&e&lחודשים"
+ban_days: "&e&lימים"
+ban_hours: "&e&lשעות"
+ban_minutes: "&e&lדקות"
+ban_hacking: "&7&lרמאות!"
+ban_griefing: "&6&lהשחתת רכוש!"
+ban_spamming: "&d&lהספמה!"
+ban_advertising: "&3&lפרסום!"
+ban_swearing: "&e&lלקלל!"
+ban_silence_disabled: "&c&lשתיקה"
+ban_silence_enabled: "&a&lשתיקה"
+ban_back: "&c&lחזור"
+#----------------------------------------------------------
+#                     Potions GUI
+#----------------------------------------------------------
+potions_night_vision: "&8&lראיית לילה"
+potions_invisibility: "&7&lבלתי נראות"
+potions_jump_boost: "&a&lקפיצה לגובה"
+potions_fire_resistance: "&c&lחסינות לאש"
+potions_speed: "&b&lמהירות"
+potions_slowness: "&4&lאיטיות"
+potions_water_breathing: "&9&lנשימה מתחת למים"
+potions_instant_health: "&a&lריפוי"
+potions_instant_damage: "&4&lהורדת לבבות"
+potions_poison: "&5&lרעל"
+potions_regeneration: "&e&lריפוי מתמשך"
+potions_strength: "&e&lחוזק"
+potions_weakness: "&4&lחולשה"
+potions_luck: "&6&lמזל"
+potions_slow_falling: "&3&lנפילה איטית"
+potions_time: "&a&lזמן"
+potions_remove_all: "&4&lהסר הכול"
+potions_level: "&a&lרמה/שלב"
+potions_back: "&c&lחזור"
+#----------------------------------------------------------
+#                     Spawner GUI
+#----------------------------------------------------------
+spawner_bat: "&a&lעטלף"
+spawner_blaze: "&c&lלהבון"
+spawner_cat: "&a&lחתול"
+spawner_cave_spider: "&c&lעכביש מערות"
+spawner_chicken: "&a&lתרנגולת"
+spawner_cod: "&b&lבקלה"
+spawner_cow: "&a&lפרה"
+spawner_creeper: "&c&lקריפר"
+spawner_dolphin: "&b&lדולפין"
+spawner_donkey: "&a&lחמור"
+spawner_drowned: "&c&lטובע"
+spawner_elder_guardian: "&c&lשומר עציק"
+spawner_enderman: "&c&lאנדרמן"
+spawner_endermite: "&c&lאנדרמייט"
+spawner_evoker: "&c&lמעורר"
+spawner_fox: "&a&lשועל"
+spawner_ghast: "&c&lגאסט"
+spawner_guardian: "&c&lשומר"
+spawner_horse: "&a&lסוס"
+spawner_husk: "&c&lהאסק"
+spawner_llama: "&a&lלמה"
+spawner_magma_cube: "&c&lקוביית מגמה"
+spawner_mooshroom: "&a&lמושרום"
+spawner_mule: "&a&lפרד"
+spawner_ocelot: "&a&lאוצלוט"
+spawner_panda: "&a&lפנדה"
+spawner_parrot: "&a&lתוכי"
+spawner_phantom: "&c&lפנטום"
+spawner_pig: "&a&lחזיר"
+spawner_pillager: "&c&lשודד כפרים"
+spawner_polar_bear: "&a&lדוב קוטב"
+spawner_pufferfish: "&b&lאבו נפחא"
+spawner_rabbit: "&a&lעכבר"
+spawner_ravager: "&c&lהרסן"
+spawner_salmon: "&b&lסלמון"
+spawner_sheep: "&a&lכבשה"
+spawner_shulker: "&c&lשולקר"
+spawner_silverfish: "&c&lדג נושך"
+spawner_skeleton: "&c&lשלד"
+spawner_skeleton_horse: "&c&lסוס שלדי"
+spawner_slime: "&c&lרפש"
+spawner_spider: "&c&lעכביש"
+spawner_squid: "&b&lדיונון"
+spawner_stray: "&c&lתועה"
+spawner_trader_llama: "&a&lלמת סוחר"
+spawner_tropical_fish: "&b&lדג טרופי"
+spawner_turtle: "&a&lצב"
+spawner_vex: "&c&lווקס"
+spawner_villager: "&a&lכפרי"
+spawner_vindicator: "&c&lמרטש"
+spawner_wandering_trader: "&a&lסוחר תועה"
+spawner_witch: "&c&lמכשפה"
+spawner_wither: "&c&lוית'ר"
+spawner_wolf: "&a&lזאב"
+spawner_zombie: "&c&lזומבי"
+spawner_zombie_pigman: "&c&lזומבי חזיר"
+spawner_zombie_villager: "&c&lזומבי כפרי"
+spawner_back: "&c&lחזור"
+#----------------------------------------------------------
+#                      Money GUI
+#----------------------------------------------------------
+money_give: "&2&lתן"
+money_set: "&9&lשנה"
+money_take: "&c&lקח"
+money_back: "&c&lחזור"
+#----------------------------------------------------------
+#                      Money Amount GUI
+#----------------------------------------------------------
+money_amount_back: "&c&lחזור"
+#----------------------------------------------------------
+#                    Inventory GUI
+#----------------------------------------------------------
+inventory_refresh: "&a&lטען מחדש"
+inventory_clear: "&b&lנקה"
+inventory_back: "&c&lחזור"
+#----------------------------------------------------------
+#                       Messages
+#----------------------------------------------------------
+message_target_player_teleport: "&aהשתגרת ל {player}"
+message_player_kill: "&aהרגת את {player}"
+message_player_burn: "&aהבערת את {player}"
+message_target_player_creeper: "&a&lקריפר!"
+message_player_creeper: "&aקריפר נוצר על {player}"
+message_target_player_heal: "&e{player} ריפא אותך"
+message_player_heal: "&aריפאת את {player}"
+message_target_player_feed: "&e{player} האכיל אותך"
+message_player_feed: "&aהאכלת את {player}"
+message_player_kick: "&a{player} הוצא בגלל ש {reason}"
+message_player_ban: "&a{player} הוצא בגלל ש {reason}"
+message_player_god_enabled: "&a{player} עכשיו במצב אל"
+message_player_god_disabled: "&a{player} כבר לא במצב אל"
+message_target_player_god_enabled: "&a{player} הפעיל עליך מצב אל"
+message_target_player_god_disabled: "&a{player} ביטל את מצב אל"
+message_target_player_potions: "{player} נתן לך אפקט {potion} ל {time} דקות"
+message_player_potions: "&aנתת ל {player} אפקט {potion} ל {time} דקות"
+message_target_player_potions_remove: "&a{player} מחק את כל האפקטים שלך"
+message_player_potions_remove: "&aמחקת את כל האפקטים של {player}"
+message_heal: "&aרופאת"
+message_feed: "&aהואכלת"
+message_god_enabled: "&aהפעלת מצב אל"
+message_god_disabled: "&aביטלת מצב אל"
+message_kill: "&cהרגת את עצמך"
+message_burn: "&cשרפת את עצמך"
+message_potions_remove: "&aמחקת את כל האפקטים שלך"
+message_potions: "&aהבאת לעצמך את אפקט {potion} ל {time} דקות"
+message_maintenance: "&aהשרת עכשיו במצב תחזוקה - חזור מאוחר יותר"
+message_maintenance_enabled: "&aהפעלת את מצב תחזוקה"
+message_maintenance_disabled: "&aכיבית את מצב תחזוקה"
+message_player_not_found: "&cשחקן לא זמין כרגע"
+message_ban_bypass: "&cאת/ה לא יכול/ה להרחיק שחקן זה"
+message_kick_bypass: "&cאת/ה לא יכול/ה להוציא שחקן זה"
+message_give: "&aשלחת {amount} לעצמך ועכשיו יש לך {balance}"
+message_player_give: "&aנתת {amount} ל {player} ועכשיו יש לו {balance}"
+message_target_player_give: "&a{player} שלח לך {amount} ועכשיו יש לך {balance}"
+message_set: "&aשינית את עצמך ל {amount}"
+message_player_set: "&aשינית את הכסף של {player} ל {amount}"
+message_target_player_set: "&a{player} שינה את כספך ל {amount}"
+message_take: "&aלקחת {amount} מעצמך ועכשיו יש לך {balance}"
+message_player_take: "&aלקחת {amount} מ {player} ועכשיו יש לו {balance}"
+message_target_player_take: "&c{player} לקח לך {amount} ועכשיו יש לך {balance}"
+message_transaction_error: "&cמשהו לא עבד בעסקה"
+message_take_error: "&cאי אפשר לקחת יותר כסף משיש לך"
+message_player_take_error: "&cאי אפשר לקחת יותר כסף משיש לשחקן"
+message_visible: "&aאתה נראה לאחרים"
+message_player_visible: "&a{player} עכשיו נראה לאחרים"
+message_hide: "&aאתה עכשיו מוסתר מכול האחרים"
+message_player_hide: "&a{player} עכשיו מוסתר מכול האחרים"
+message_unban_player: "&a{player} כבר לא מורחק"
+message_initializing_start: "&aפלאגין מתחיל..."
+message_initializing_finish: "&aמסך מוכן לשימוש"
+message_already_initializing: "&cמסך כבר מתחיל!"
+message_reload_start: "&aפלאגין נטען מחדש..."
+message_reload_finish: "&aפלאגין נטען מחדש!"
+message_admin_chat_enabled: "&aצ'אט מנהל הופעל"
+message_admin_chat_disabled: "&cצ'אט מנהל כובה"
+message_admin_chat_server_disabled: "&cצ'אט מנהל מבוטל על השרת הזה"

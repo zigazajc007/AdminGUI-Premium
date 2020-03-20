@@ -1077,6 +1077,9 @@ public class AdminUI {
                     language.put(p.getUniqueId(), "Bulgarian");
                     break;
                 case "Bulgarian":
+                    language.put(p.getUniqueId(), "Hebrew");
+                    break;
+                case "Hebrew":
                 default:
                     language.put(p.getUniqueId(), "English");
                     break;

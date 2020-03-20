@@ -79,6 +79,10 @@ public class AdminGUI extends JavaPlugin {
     private File po = null;
     private YamlConfiguration port = new YamlConfiguration();
 
+    //Hebrew
+    private File he = null;
+    private YamlConfiguration hebr = new YamlConfiguration();
+
     //Kick
     private File k = null;
     private YamlConfiguration kick = new YamlConfiguration();
@@ -109,6 +113,7 @@ public class AdminGUI extends JavaPlugin {
         this.fr = new File(getDataFolder(), "Languages/French.yml");
         this.du = new File(getDataFolder(), "Languages/Dutch.yml");
         this.po = new File(getDataFolder(), "Languages/Portuguese.yml");
+        this.he = new File(getDataFolder(), "Languages/Hebrew.yml");
         this.k = new File(getDataFolder(), "kick.yml");
         this.p = new File(getDataFolder(), "Custom Commands/plugins.yml");
         this.c = new File(getDataFolder(), "Custom Commands/commands.yml");
@@ -292,6 +297,10 @@ public class AdminGUI extends JavaPlugin {
             saveResource("Languages/Portuguese.yml", false);
         }
 
+        if(!this.he.exists()){
+            saveResource("Languages/Hebrew.yml", false);
+        }
+
         if(!this.k.exists()){
             saveResource("kick.yml", false);
         }
@@ -368,6 +377,11 @@ public class AdminGUI extends JavaPlugin {
             e.printStackTrace();
         }
         try {
+            this.hebr.load(this.he);
+        } catch (IOException | InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+        try {
             this.kick.load(this.k);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
@@ -410,6 +424,8 @@ public class AdminGUI extends JavaPlugin {
     public YamlConfiguration getDutc() { return this.dutc; }
 
     public YamlConfiguration getPort() { return this.port; }
+
+    public YamlConfiguration getHebr() { return this.hebr; }
 
     public YamlConfiguration getKick() { return this.kick; }
 
@@ -495,7 +511,7 @@ public class AdminGUI extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Name: &bAdminGUI-Premium"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Developer: &bBlack1_TV"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b4.0.0"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b4.0.1"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
