@@ -60,7 +60,12 @@ public class Ban implements CommandExecutor {
 
                     Date until = new Date(System.currentTimeMillis() + (number * time));
 
-                    sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + AdminBanSystem.banPlayer("Console", "Console", Bukkit.getOfflinePlayer(str_player).getUniqueId().toString(), str_player, reason.toString(), AdminBanSystem.sdf.format(until)));
+                    if(silence){
+                        sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + AdminBanSystem.banPlayer("Console", "Console", Bukkit.getOfflinePlayer(str_player).getUniqueId().toString(), str_player, reason.toString(), AdminBanSystem.sdf.format(until)));
+                    }else{
+                        Bukkit.broadcastMessage(Message.getMessage(UUID.randomUUID(), "prefix") + AdminBanSystem.banPlayer("Console", "Console", Bukkit.getOfflinePlayer(str_player).getUniqueId().toString(), str_player, reason.toString(), AdminBanSystem.sdf.format(until)));
+                    }
+
                     Player target_player = Bukkit.getServer().getPlayer(ChatColor.stripColor(str_player));
                     if(target_player != null){
                         if(target_player.isOnline()){
@@ -118,7 +123,11 @@ public class Ban implements CommandExecutor {
 
                     Date until = new Date(System.currentTimeMillis() + (number * time));
 
-                    player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + AdminBanSystem.banPlayer(player.getUniqueId().toString(), player.getName(), Bukkit.getOfflinePlayer(str_player).getUniqueId().toString(), str_player, reason.toString(), AdminBanSystem.sdf.format(until)));
+                    if(silence){
+                        player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + AdminBanSystem.banPlayer(player.getUniqueId().toString(), player.getName(), Bukkit.getOfflinePlayer(str_player).getUniqueId().toString(), str_player, reason.toString(), AdminBanSystem.sdf.format(until)));
+                    }else{
+                        Bukkit.broadcastMessage(Message.getMessage(player.getUniqueId(), "prefix") + AdminBanSystem.banPlayer(player.getUniqueId().toString(), player.getName(), Bukkit.getOfflinePlayer(str_player).getUniqueId().toString(), str_player, reason.toString(), AdminBanSystem.sdf.format(until)));
+                    }
                     Player target_player = Bukkit.getServer().getPlayer(ChatColor.stripColor(str_player));
                     if(target_player != null){
                         if(target_player.isOnline()){

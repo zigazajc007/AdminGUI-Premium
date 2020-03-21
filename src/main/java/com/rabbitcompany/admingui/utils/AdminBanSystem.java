@@ -57,7 +57,7 @@ public class AdminBanSystem {
         if(AdminGUI.conn != null && AdminGUI.getInstance().getConf().getBoolean("admin_ban_system_enabled", false)) {
             try {
                 AdminGUI.mySQL.update("INSERT INTO admin_gui_banned_players(uuid_from, username_from, uuid_to, username_to, reason, until) VALUES ('" + uuid_from + "', '" + username_from + "', '" + uuid_to + "', '" + username_to + "', '" + reason + "', '" + until + "');");
-                return Message.chat("&aYou have banned " + username_to + " until " + until);
+                return Message.getMessage(UUID.randomUUID(), "message_ban_bypass").replace("{player}", username_to).replace("{reason}", reason);
             } catch (SQLException ignored) {
                 return Message.chat("&cSomething went wrong while trying to ban " + username_to + ".");
             }

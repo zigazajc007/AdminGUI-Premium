@@ -104,6 +104,27 @@ public class TabCompletion implements TabCompleter {
             }
 
             return completions;
+        }else if(command.getName().equalsIgnoreCase("kick")){
+            List<String> completions = new ArrayList<>();
+
+            if(args.length == 1){
+                //SQL
+                if(AdminGUI.conn != null){
+                    completions.addAll(AdminUI.online_players);
+                }else{
+                    for(Player all : Bukkit.getServer().getOnlinePlayers()) {
+                        completions.add(all.getName());
+                    }
+                }
+            }else if(args.length == 2){
+                completions.add("Advertising");
+                completions.add("Hacking");
+                completions.add("Swearing");
+                completions.add("Griefing");
+                completions.add("Spamming");
+            }
+
+            return completions;
         }
 
         return null;

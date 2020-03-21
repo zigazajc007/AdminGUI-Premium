@@ -21,7 +21,7 @@ public class Admin implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
 
         if(!(sender instanceof Player)) {
-            sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.chat("&cYou can only use admin GUI in game"));
+            sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.chat("&cYou can only use admin GUI in game."));
             return true;
         }
 
@@ -42,22 +42,6 @@ public class Admin implements CommandExecutor {
                     }
                 }else if(args[0].equals("initialize")) {
                     player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_initialize"));
-                }else if(args[0].equals("chat")){
-                    if(AdminGUI.getInstance().getConf().getBoolean("asc_enabled", false)) {
-                        if (player.hasPermission("admingui.chat.staff")) {
-                            if (!AdminUI.admin_staff_chat.getOrDefault(player.getUniqueId(), false)) {
-                                AdminUI.admin_staff_chat.put(player.getUniqueId(), true);
-                                player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_admin_chat_enabled"));
-                            } else {
-                                AdminUI.admin_staff_chat.put(player.getUniqueId(), false);
-                                player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_admin_chat_disabled"));
-                            }
-                        } else {
-                            player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "permission"));
-                        }
-                    }else{
-                        player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_admin_chat_server_disabled"));
-                    }
                 }else{
                     Player target_player = Bukkit.getServer().getPlayer(ChatColor.stripColor(args[0]));
                     if(target_player != null){

@@ -1,8 +1,6 @@
 package com.rabbitcompany.admingui;
 
-import com.rabbitcompany.admingui.commands.Admin;
-import com.rabbitcompany.admingui.commands.Ban;
-import com.rabbitcompany.admingui.commands.Unban;
+import com.rabbitcompany.admingui.commands.*;
 import com.rabbitcompany.admingui.listeners.*;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Initialize;
@@ -170,12 +168,15 @@ public class AdminGUI extends JavaPlugin {
         //Commands
         this.getCommand("admin").setExecutor(new Admin());
         this.getCommand("admin").setTabCompleter(new TabCompletion());
+        this.getCommand("adminchat").setExecutor(new AdminChat());
 
         if(conn != null && getConf().getBoolean("admin_ban_system_enabled", false)){
             this.getCommand("ban").setExecutor(new Ban());
             this.getCommand("ban").setTabCompleter(new TabCompletion());
             this.getCommand("unban").setExecutor(new Unban());
             this.getCommand("unban").setTabCompleter(new TabCompletion());
+            this.getCommand("kick").setExecutor(new Kick());
+            this.getCommand("kick").setTabCompleter(new TabCompletion());
         }
 
         //Skulls

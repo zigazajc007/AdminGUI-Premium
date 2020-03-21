@@ -33,6 +33,7 @@ public class PlayerMessageListener implements Listener {
                     player.sendMessage(Message.chat(adminGUI.getConf().getString("asc_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
                 }
             }
+            Bukkit.getConsoleSender().sendMessage(Message.chat(adminGUI.getConf().getString("asc_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
         }else{
             if(adminGUI.getConf().getBoolean("ac_enabled", false)){
                 event.setCancelled(true);

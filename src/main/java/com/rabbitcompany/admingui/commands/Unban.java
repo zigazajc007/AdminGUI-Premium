@@ -21,7 +21,7 @@ public class Unban implements CommandExecutor {
                 String str_player = args[0];
                 if(AdminBanSystem.isPlayerBanned(str_player)){
                     AdminBanSystem.unBanPlayerName(str_player);
-                    sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.chat("&aYou have unbanned " + str_player + "."));
+                    sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_unban_player").replace("{player}", str_player));
                 }else{
                     sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.chat("&a" + str_player + " isn't banned."));
                 }
