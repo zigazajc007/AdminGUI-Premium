@@ -23,3 +23,9 @@ commands:
   kick:
     usage: /<command>
     description: Kick player
+  mute:
+    usage: /<command>
+    description: Mute player
+  unmute:
+    usage: /<command>
+    description: Unmute player

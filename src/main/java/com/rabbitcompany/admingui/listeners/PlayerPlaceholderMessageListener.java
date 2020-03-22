@@ -2,6 +2,7 @@ package com.rabbitcompany.admingui.listeners;
 
 import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
+import com.rabbitcompany.admingui.utils.AdminBanSystem;
 import com.rabbitcompany.admingui.utils.Message;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
@@ -37,14 +38,19 @@ public class PlayerPlaceholderMessageListener implements Listener {
                     player.sendMessage(Message.chat(chat_staff_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
                 }
             }
+            Bukkit.getConsoleSender().sendMessage(chat_staff_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message));
         }else{
             if(adminGUI.getConf().getBoolean("ac_enabled", false)){
                 event.setCancelled(true);
 
-                if(p.hasPermission("admingui.chat.color") || p.hasPermission("admingui.chat.colors")){
-                    Bukkit.broadcastMessage(Message.chat(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
+                if(!AdminBanSystem.isPlayerMuted(p.getName())) {
+                    if (p.hasPermission("admingui.chat.color") || p.hasPermission("admingui.chat.colors")) {
+                        Bukkit.broadcastMessage(Message.chat(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
+                    } else {
+                        Bukkit.broadcastMessage(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message));
+                    }
                 }else{
-                    Bukkit.broadcastMessage(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.chat("&cYou are muted!"));
                 }
             }
         }

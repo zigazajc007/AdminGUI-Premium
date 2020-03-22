@@ -1,5 +1,5 @@
 name: AdminGUI-Premium
-version: 4.0.1
+version: 4.0.2
 main: com.rabbitcompany.admingui.AdminGUI
 api-version: 1.13
 authors: [RabbitCompany]
@@ -23,3 +23,9 @@ commands:
   kick:
     usage: /<command>
     description: Kick player
+  mute:
+    usage: /<command>
+    description: Mute player
+  unmute:
+    usage: /<command>
+    description: Unmute player

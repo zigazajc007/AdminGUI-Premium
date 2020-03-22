@@ -2,6 +2,7 @@ package com.rabbitcompany.admingui.listeners;
 
 import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
+import com.rabbitcompany.admingui.utils.AdminBanSystem;
 import com.rabbitcompany.admingui.utils.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -38,10 +39,14 @@ public class PlayerMessageListener implements Listener {
             if(adminGUI.getConf().getBoolean("ac_enabled", false)){
                 event.setCancelled(true);
 
-                if(p.hasPermission("admingui.chat.color") || p.hasPermission("admingui.chat.colors")){
-                    Bukkit.broadcastMessage(Message.chat(adminGUI.getConf().getString("ac_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
+                if(!AdminBanSystem.isPlayerMuted(p.getName())){
+                    if(p.hasPermission("admingui.chat.color") || p.hasPermission("admingui.chat.colors")){
+                        Bukkit.broadcastMessage(Message.chat(adminGUI.getConf().getString("ac_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
+                    }else{
+                        Bukkit.broadcastMessage(adminGUI.getConf().getString("ac_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message));
+                    }
                 }else{
-                    Bukkit.broadcastMessage(adminGUI.getConf().getString("ac_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message));
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.chat("&cYou are muted!"));
                 }
             }
         }
