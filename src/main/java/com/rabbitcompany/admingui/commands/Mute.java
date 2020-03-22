@@ -74,7 +74,7 @@ public class Mute implements CommandExecutor {
 
         Player player = (Player) sender;
 
-        if(player.hasPermission("admingui.ban")){
+        if(player.hasPermission("admingui.mute")){
             if(args.length < 3){
                 player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.chat("&cPlease use /mute <player> <time> <reason>"));
             }else{
