@@ -1,5 +1,6 @@
 package com.rabbitcompany.admingui.listeners;
 
+import com.rabbitcompany.adminbans.AdminBansAPI;
 import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Message;
@@ -39,6 +40,12 @@ public class PlayerMessageListener implements Listener {
         }else{
             if(adminGUI.getConf().getBoolean("ac_enabled", false)){
                 event.setCancelled(true);
+
+                if(Bukkit.getServer().getPluginManager().getPlugin("AdminBans") != null){
+                    if(AdminBansAPI.isPlayerMuted(event.getPlayer().getUniqueId())){
+                        return;
+                    }
+                }
 
                 List<String> filters = adminGUI.getConf().getStringList("ac_filter");
                 String lower_msg = message.toLowerCase();
