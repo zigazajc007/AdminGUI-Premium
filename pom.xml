@@ -6,7 +6,7 @@
 
     <groupId>com.rabbitcompany</groupId>
     <artifactId>AdminGUI-Premium</artifactId>
-    <version>4.0.2</version>
+    <version>4.0.3</version>
     <packaging>jar</packaging>
 
     <name>AdminGUI Premium</name>
@@ -75,6 +75,10 @@
             <id>placeholderapi</id>
             <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
         </repository>
+        <repository>
+            <id>rabbit-company</id>
+            <url>http://maven.rabbit-company.com:8090/repository/maven-releases/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -111,6 +115,11 @@
             <artifactId>placeholderapi</artifactId>
             <version>2.10.4</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.rabbitcompany</groupId>
+            <artifactId>AdminBans</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 

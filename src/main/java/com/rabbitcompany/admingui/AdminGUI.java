@@ -142,12 +142,6 @@ public class AdminGUI extends JavaPlugin {
                     conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admingui_tasks(id varchar(50) NOT NULL PRIMARY KEY, from_server varchar(30) NOT NULL, to_server varchar(30), command varchar(30) NOT NULL, player varchar(25) NOT NULL, target_player varchar(25) NOT NULL, param1 varchar(255), param2 varchar(255), param3 varchar(255), status varchar(15) NOT NULL DEFAULT 'waiting', created TIMESTAMP NOT NULL DEFAULT NOW());");
                     Initialize.Database();
                 }
-                if(getConf().getBoolean("admin_ban_system_enabled", false)){
-                    conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admin_gui_banned_players(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, uuid_from CHAR(36) NOT NULL, username_from varchar(25) NOT NULL, uuid_to CHAR(36) NOT NULL, username_to varchar(25) NOT NULL, reason VARCHAR(255), until DATETIME NOT NULL, created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)");
-                    conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admin_gui_muted_players(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, uuid_from CHAR(36) NOT NULL, username_from varchar(25) NOT NULL, uuid_to CHAR(36) NOT NULL, username_to varchar(25) NOT NULL, reason VARCHAR(255), until DATETIME NOT NULL, created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)");
-                    conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admin_gui_warned_players(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, uuid_from CHAR(36) NOT NULL, username_from varchar(25) NOT NULL, uuid_to CHAR(36) NOT NULL, username_to varchar(25) NOT NULL, reason VARCHAR(255), created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)");
-                    conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admin_gui_kicked_players(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, uuid_from CHAR(36) NOT NULL, username_from varchar(25) NOT NULL, uuid_to CHAR(36) NOT NULL, username_to varchar(25) NOT NULL, reason VARCHAR(255), created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)");
-                }
             } catch (SQLException e) {
                 conn = null;
             }
@@ -169,19 +163,6 @@ public class AdminGUI extends JavaPlugin {
         this.getCommand("admin").setExecutor(new Admin());
         this.getCommand("admin").setTabCompleter(new TabCompletion());
         this.getCommand("adminchat").setExecutor(new AdminChat());
-
-        if(conn != null && getConf().getBoolean("admin_ban_system_enabled", false)){
-            this.getCommand("ban").setExecutor(new Ban());
-            this.getCommand("ban").setTabCompleter(new TabCompletion());
-            this.getCommand("unban").setExecutor(new Unban());
-            this.getCommand("unban").setTabCompleter(new TabCompletion());
-            this.getCommand("kick").setExecutor(new Kick());
-            this.getCommand("kick").setTabCompleter(new TabCompletion());
-            this.getCommand("mute").setExecutor(new Mute());
-            this.getCommand("mute").setTabCompleter(new TabCompletion());
-            this.getCommand("unmute").setExecutor(new Unmute());
-            this.getCommand("unmute").setTabCompleter(new TabCompletion());
-        }
 
         //Skulls
         AdminUI.skulls.put("0qt", Item.pre_createPlayerHead("0qt"));
@@ -516,7 +497,7 @@ public class AdminGUI extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Name: &bAdminGUI-Premium"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Developer: &bBlack1_TV"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b4.0.2"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b4.0.3"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));

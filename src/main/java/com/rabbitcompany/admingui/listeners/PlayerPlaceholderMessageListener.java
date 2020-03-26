@@ -2,7 +2,6 @@ package com.rabbitcompany.admingui.listeners;
 
 import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
-import com.rabbitcompany.admingui.utils.AdminBanSystem;
 import com.rabbitcompany.admingui.utils.Message;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
@@ -11,6 +10,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+
+import java.util.List;
 
 public class PlayerPlaceholderMessageListener implements Listener {
 
@@ -43,14 +44,22 @@ public class PlayerPlaceholderMessageListener implements Listener {
             if(adminGUI.getConf().getBoolean("ac_enabled", false)){
                 event.setCancelled(true);
 
-                if(!AdminBanSystem.isPlayerMuted(p.getName())) {
-                    if (p.hasPermission("admingui.chat.color") || p.hasPermission("admingui.chat.colors")) {
-                        Bukkit.broadcastMessage(Message.chat(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
-                    } else {
-                        Bukkit.broadcastMessage(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message));
+                List<String> filters = adminGUI.getConf().getStringList("ac_filter");
+
+                if(!p.hasPermission("admingui.chat.filter.bypass")){
+                    for (String filter : filters) {
+                        message = message.replace(filter, "****");
                     }
-                }else{
-                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.chat("&cYou are muted!"));
+                }
+
+                if(!p.hasPermission("admingui.chat.advertisement.bypass")){
+                    message = message.replace("."," ");
+                }
+
+                if (p.hasPermission("admingui.chat.color") || p.hasPermission("admingui.chat.colors")) {
+                    Bukkit.broadcastMessage(Message.chat(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
+                } else {
+                    Bukkit.broadcastMessage(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message));
                 }
             }
         }

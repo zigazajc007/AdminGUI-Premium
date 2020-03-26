@@ -1,5 +1,6 @@
 package com.rabbitcompany.admingui.utils;
 
+import com.rabbitcompany.adminbans.AdminBansAPI;
 import org.bukkit.BanList;
 import org.bukkit.Bukkit;
 import org.bukkit.potion.PotionEffect;
@@ -35,7 +36,10 @@ public class TargetPlayer {
     }
 
     public static void ban(String target, String reason, Date expired){
-        if(getServer().getPluginManager().getPlugin("LiteBans") != null || getServer().getPluginManager().getPlugin("AdvancedBan") != null) {
+        if(getServer().getPluginManager().getPlugin("AdminBans") != null){
+            Date date = new Date(System.currentTimeMillis());
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ban " + target + " " + ((expired.getTime() - date.getTime())/60000) + "m " + reason);
+        }else if(getServer().getPluginManager().getPlugin("LiteBans") != null || getServer().getPluginManager().getPlugin("AdvancedBan") != null) {
             Date date = new Date(System.currentTimeMillis());
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tempban " + target + " " + ((expired.getTime() - date.getTime())/60000) + "m " + reason);
         }else{
@@ -48,13 +52,6 @@ public class TargetPlayer {
         String bumper = org.apache.commons.lang.StringUtils.repeat("\n", 35);
 
         return bumper + Message.getMessage(target, "ban") + Message.getMessage(target, reason) + "\n" + Message.getMessage(target, "ban_time") + time + bumper;
-    }
-
-    public static String banCustomReason(UUID target, String reason, String time){
-        String bumper = org.apache.commons.lang.StringUtils.repeat("\n", 35);
-
-        return bumper + Message.getMessage(target, "ban") + Message.chat(reason) + "\n" + Message.getMessage(target, "ban_time") + time + bumper;
-
     }
 
 }

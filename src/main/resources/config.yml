@@ -54,6 +54,15 @@ gui_default_color: "LIGHT_BLUE_STAINED_GLASS_PANE"
 ac_enabled: false
 # Here you can set your own Admin Chat format (Valid tags are {name}, {display_name} and {message})
 ac_format: "&7{display_name} &7> {message}"
+# Which bad words should be blocked in chat?
+ac_filter:
+  - "fuck"
+  - "shit"
+  - "pussy"
+  - "dick"
+  - "nigger"
+  - "cock"
+  - "bitch"
 #----------------------------------------------------------
 #         Admin Staff Chat - Support PlaceholderAPI
 #----------------------------------------------------------
@@ -61,10 +70,6 @@ ac_format: "&7{display_name} &7> {message}"
 asc_enabled: true
 # Here you can set your own Admin Staff Chat format (Valid tags are {name}, {display_name} and {message})
 asc_format: "&7[&cAdmin Chat&7] &5{name} &7> {message}"
-#----------------------------------------------------------
-#         Admin Ban System (require mysql enabled)
-#----------------------------------------------------------
-admin_ban_system_enabled: false
 #----------------------------------------------------------
 #            Bungeecord (require mysql enabled)
 #----------------------------------------------------------

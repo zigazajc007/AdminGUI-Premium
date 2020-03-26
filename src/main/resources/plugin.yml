@@ -5,7 +5,7 @@ api-version: 1.13
 authors: [RabbitCompany]
 description: Easy manage your Minecraft server with Admin GUI
 website: rabbit-company.com
-softdepend: [Vault, SuperVanish, PremiumVanish, LiteBans, AdvancedBan, PlaceholderAPI]
+softdepend: [Vault, SuperVanish, PremiumVanish, LiteBans, AdvancedBan, AdminBans, PlaceholderAPI]
 commands:
   admin:
     usage: /<command>
@@ -14,18 +14,3 @@ commands:
     usage: /<command>
     description: Communicate with staffs only
     aliases: [achat, ac]
-  ban:
-    usage: /<command>
-    description: Ban player
-  unban:
-    usage: /<command>
-    description: Unban player
-  kick:
-    usage: /<command>
-    description: Kick player
-  mute:
-    usage: /<command>
-    description: Mute player
-  unmute:
-    usage: /<command>
-    description: Unmute player
