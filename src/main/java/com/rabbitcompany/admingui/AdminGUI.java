@@ -170,7 +170,7 @@ public class AdminGUI extends JavaPlugin {
         AdminUI.skulls.put("mattijs", Item.pre_createPlayerHead("mattijs"));
         AdminUI.skulls.put("BKing2012", Item.pre_createPlayerHead("BKing2012"));
         AdminUI.skulls.put("AverageJoe", Item.pre_createPlayerHead("AverageJoe"));
-        AdminUI.skulls.put("Chaochris", Item.pre_createPlayerHead("Chaochris"));
+        AdminUI.skulls.put("LobbyPlugin", Item.pre_createPlayerHead("LobbyPlugin"));
         AdminUI.skulls.put("MHF_Redstone", Item.pre_createPlayerHead("MHF_Redstone"));
         AdminUI.skulls.put("Ground15", Item.pre_createPlayerHead("Ground15"));
         AdminUI.skulls.put("EDDxample", Item.pre_createPlayerHead("EDDxample"));
@@ -497,7 +497,7 @@ public class AdminGUI extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Name: &bAdminGUI-Premium"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Developer: &bBlack1_TV"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b4.0.3"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b4.0.5"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
