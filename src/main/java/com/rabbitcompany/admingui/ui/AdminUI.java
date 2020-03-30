@@ -1,6 +1,5 @@
 package com.rabbitcompany.admingui.ui;
 
-import com.rabbitcompany.adminbans.AdminBans;
 import com.rabbitcompany.adminbans.AdminBansAPI;
 import com.rabbitcompany.adminbans.utils.BannedPlayer;
 import com.rabbitcompany.admingui.AdminGUI;
@@ -24,7 +23,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -84,6 +82,9 @@ public class AdminUI {
     //Custom commands
     public static HashMap<UUID, Integer> custom_method = new HashMap<>();
     public static HashMap<UUID, Integer> plugin_slot = new HashMap<>();
+
+    //Date Format
+    public static SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     //Maintenance mode
     public static boolean maintenance_mode = false;
@@ -1440,7 +1441,7 @@ public class AdminUI {
                 if(target_player.hasPermission("admingui.kick.bypass")){
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_kick_bypass"));
                 }else{
-                    if(getServer().getPluginManager().getPlugin("AdminBans") != null){
+                    if(getServer().getPluginManager().isPluginEnabled("AdminBans")){
                         AdminBansAPI.kickPlayer(p.getUniqueId().toString(), p.getName(), target_player.getUniqueId().toString(), target_player.getName(), AdminGUI.getInstance().getKick().getString("slots."+(slot+1)+".name"));
                     }else{
                         target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "kick") + Message.chat(AdminGUI.getInstance().getKick().getString("slots."+(slot+1)+".name")));
@@ -1490,8 +1491,8 @@ public class AdminUI {
                     if(Bukkit.getPluginManager().isPluginEnabled("AdminBans")) {
                         AdminBansAPI.banPlayer(p.getUniqueId().toString(), p.getName(), target_player.getUniqueId().toString(), target_player.getName(), Message.getMessage(target_player.getUniqueId(), "ban_hacking"), until);
                     }else{
-                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_hacking", AdminBansAPI.date_format.format(time)), time);
-                        target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_hacking", AdminBansAPI.date_format.format(time)));
+                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_hacking", date_format.format(time)), time);
+                        target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_hacking", date_format.format(time)));
                     }
                     if(ban_silence.getOrDefault(p.getUniqueId(), false)){
                         p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_hacking")));
@@ -1508,8 +1509,8 @@ public class AdminUI {
                     if(Bukkit.getPluginManager().isPluginEnabled("AdminBans")) {
                         AdminBansAPI.banPlayer(p.getUniqueId().toString(), p.getName(), target_player.getUniqueId().toString(), target_player.getName(), Message.getMessage(target_player.getUniqueId(), "ban_griefing"), until);
                     }else{
-                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_griefing", AdminBansAPI.date_format.format(time)), time);
-                        target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_griefing", AdminBansAPI.date_format.format(time)));
+                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_griefing", date_format.format(time)), time);
+                        target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_griefing", date_format.format(time)));
                     }
                     if(ban_silence.getOrDefault(p.getUniqueId(), false)){
                         p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_griefing")));
@@ -1526,8 +1527,8 @@ public class AdminUI {
                     if(Bukkit.getPluginManager().isPluginEnabled("AdminBans")) {
                         AdminBansAPI.banPlayer(p.getUniqueId().toString(), p.getName(), target_player.getUniqueId().toString(), target_player.getName(), Message.getMessage(target_player.getUniqueId(), "ban_spamming"), until);
                     }else{
-                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_spamming", AdminBansAPI.date_format.format(time)), time);
-                        target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_spamming", AdminBansAPI.date_format.format(time)));
+                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_spamming", date_format.format(time)), time);
+                        target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_spamming", date_format.format(time)));
                     }
                     if(ban_silence.getOrDefault(p.getUniqueId(), false)){
                         p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_spamming")));
@@ -1544,8 +1545,8 @@ public class AdminUI {
                     if(Bukkit.getPluginManager().isPluginEnabled("AdminBans")) {
                         AdminBansAPI.banPlayer(p.getUniqueId().toString(), p.getName(), target_player.getUniqueId().toString(), target_player.getName(), Message.getMessage(target_player.getUniqueId(), "ban_advertising"), until);
                     }else{
-                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_advertising", AdminBansAPI.date_format.format(time)), time);
-                        target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(),"ban_advertising", AdminBansAPI.date_format.format(time)));
+                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_advertising", date_format.format(time)), time);
+                        target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(),"ban_advertising", date_format.format(time)));
                     }
                     if(ban_silence.getOrDefault(p.getUniqueId(), false)){
                         p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_advertising")));
@@ -1562,8 +1563,8 @@ public class AdminUI {
                     if(Bukkit.getPluginManager().isPluginEnabled("AdminBans")) {
                         AdminBansAPI.banPlayer(p.getUniqueId().toString(), p.getName(), target_player.getUniqueId().toString(), target_player.getName(), Message.getMessage(target_player.getUniqueId(), "ban_swearing"), until);
                     }else{
-                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_swearing", AdminBansAPI.date_format.format(time)), time);
-                        target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_swearing", AdminBansAPI.date_format.format(time)));
+                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_swearing", date_format.format(time)), time);
+                        target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_swearing", date_format.format(time)));
                     }
                     if(ban_silence.getOrDefault(p.getUniqueId(), false)){
                         p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_swearing")));

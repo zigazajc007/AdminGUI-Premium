@@ -6,7 +6,7 @@
 
     <groupId>com.rabbitcompany</groupId>
     <artifactId>AdminGUI-Premium</artifactId>
-    <version>4.0.5</version>
+    <version>4.0.6</version>
     <packaging>jar</packaging>
 
     <name>AdminGUI Premium</name>
@@ -119,7 +119,7 @@
         <dependency>
             <groupId>com.rabbitcompany</groupId>
             <artifactId>AdminBans</artifactId>
-            <version>1.0.2</version>
+            <version>1.0.3</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

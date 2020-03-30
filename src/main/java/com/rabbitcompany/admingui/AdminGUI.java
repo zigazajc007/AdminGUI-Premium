@@ -149,7 +149,9 @@ public class AdminGUI extends JavaPlugin {
 
         //Listeners
         new InventoryClickListener(this);
-        new PlayerDamageListener(this);
+        if(Bukkit.getVersion().contains("1.8")) {
+            new PlayerDamageListener(this);
+        }
         new PlayerJoinListener(this);
         new PlayerLeaveListener(this);
         new PlayerLoginListener(this);
@@ -497,7 +499,7 @@ public class AdminGUI extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Name: &bAdminGUI-Premium"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Developer: &bBlack1_TV"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b4.0.5"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b4.0.6"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
