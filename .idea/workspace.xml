@@ -3,10 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/PlayerMessageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/PlayerMessageListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/PlayerPlaceholderMessageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/PlayerPlaceholderMessageListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/AdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/AdminGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/InventoryClickListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/InventoryClickListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/AdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/AdminGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/ui/AdminUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/ui/AdminUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/InventoryClickListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/InventoryClickListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -206,13 +208,6 @@
       <workItem from="1577725216137" duration="7109000" />
       <workItem from="1578348949962" duration="293000" />
       <workItem from="1578422894075" duration="968000" />
-    </task>
-    <task id="LOCAL-00017" summary="Added support for Super Vanish and Premium Vanish plugins, Redesigned Player GUI and now player can set,take or give money to himself.">
-      <created>1569954390115</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1569954390115</updated>
     </task>
     <task id="LOCAL-00018" summary="Added support for 1.8 version and now plugin remind the player when config is not written correctly.">
       <created>1570913206606</created>
@@ -550,7 +545,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585598236461</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Admin Chat now support other chat managing plugins.">
+      <created>1585633987817</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1585633987818</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -573,7 +575,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/LiteBansAPI" />
     </ignored-roots>
-    <MESSAGE value="Added Chinese language." />
     <MESSAGE value="Fixed initialize bug." />
     <MESSAGE value="Added French language." />
     <MESSAGE value="Added Dutch language." />
@@ -598,7 +599,8 @@
     <MESSAGE value="Added support for AdminBans plugin." />
     <MESSAGE value="Updated AdminBans API and fixed some small bugs." />
     <MESSAGE value="Fixed some bugs and updated AdminBans API" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed some bugs and updated AdminBans API" />
+    <MESSAGE value="Admin Chat now support other chat managing plugins." />
+    <option name="LAST_COMMIT_MESSAGE" value="Admin Chat now support other chat managing plugins." />
   </component>
   <component name="WindowStateProjectService">
     <state x="698" y="359" width="514" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584707150223">
@@ -622,49 +624,49 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="693" y="303" width="524" height="508" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585167161065" />
-    <state x="757" y="219" width="810" height="812" key="CommitChangelistDialog2" timestamp="1585598236373">
+    <state x="757" y="219" width="810" height="812" key="CommitChangelistDialog2" timestamp="1585633987714">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="741" y="135" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578349213434" />
-    <state x="757" y="219" width="810" height="812" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1585598236373" />
-    <state x="902" y="326" width="424" height="491" key="FileChooserDialogImpl" timestamp="1585596970867">
+    <state x="757" y="219" width="810" height="812" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1585633987714" />
+    <state x="902" y="326" width="424" height="491" key="FileChooserDialogImpl" timestamp="1585637214864">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="902" y="326" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1585596970867" />
-    <state width="1878" height="325" key="GridCell.Tab.0.bottom" timestamp="1585633950535">
+    <state x="902" y="326" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1585637214864" />
+    <state width="1878" height="386" key="GridCell.Tab.0.bottom" timestamp="1585644905870">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1340" height="261" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1577732349651" />
-    <state width="1878" height="325" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1585633950535" />
-    <state width="1878" height="325" key="GridCell.Tab.0.center" timestamp="1585633950533">
+    <state width="1878" height="386" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1585644905870" />
+    <state width="1878" height="386" key="GridCell.Tab.0.center" timestamp="1585644905868">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1340" height="261" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1577732349651" />
-    <state width="1878" height="325" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1585633950533" />
-    <state width="1878" height="325" key="GridCell.Tab.0.left" timestamp="1585633950532">
+    <state width="1878" height="386" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1585644905868" />
+    <state width="1878" height="386" key="GridCell.Tab.0.left" timestamp="1585644905866">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1340" height="261" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1577732349651" />
-    <state width="1878" height="325" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1585633950532" />
-    <state width="1878" height="325" key="GridCell.Tab.0.right" timestamp="1585633950534">
+    <state width="1878" height="386" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1585644905866" />
+    <state width="1878" height="386" key="GridCell.Tab.0.right" timestamp="1585644905869">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1340" height="261" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1577732349651" />
-    <state width="1878" height="325" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1585633950534" />
+    <state width="1878" height="386" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1585644905869" />
     <state x="459" y="133" width="1024" height="852" key="SettingsEditor" timestamp="1582457732870">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="459" y="133" width="1024" height="852" key="SettingsEditor/0.27.1920.1053@0.27.1920.1053" timestamp="1582457732870" />
-    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1585598241395">
+    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1585633992980">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="714" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578349220548" />
-    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1585598241395" />
-    <state x="548" y="372" width="578" height="441" key="com.intellij.ide.util.TipDialog" timestamp="1585303962766">
+    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1585633992980" />
+    <state x="548" y="372" width="578" height="441" key="com.intellij.ide.util.TipDialog" timestamp="1585637203508">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578423094376" />
-    <state x="548" y="372" width="578" height="441" key="com.intellij.ide.util.TipDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585303962766" />
+    <state x="548" y="372" width="578" height="441" key="com.intellij.ide.util.TipDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585637203508" />
     <state x="498" y="228" width="1168" height="781" key="new project wizard" timestamp="1585079406592">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>

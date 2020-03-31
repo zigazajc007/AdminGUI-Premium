@@ -31,8 +31,6 @@ public class InventoryClickListener implements Listener {
 
                     e.setCancelled(true);
 
-                    if(e.getClickedInventory().equals(e.getView().getTopInventory())) {
-
                         if (title.equals(Message.getMessage(p.getUniqueId(), "inventory_main"))) {
 
                             if (e.getCurrentItem() != null) {
@@ -138,9 +136,6 @@ public class InventoryClickListener implements Listener {
                             }
                         }
                 }
-            }
-        }catch (Exception i){
-            Bukkit.getConsoleSender().sendMessage(i.getMessage());
-        }
+        }catch (Exception ignored){ }
     }
 }
