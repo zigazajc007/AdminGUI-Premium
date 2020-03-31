@@ -43,10 +43,9 @@ public class PlayerPlaceholderMessageListener implements Listener {
             Bukkit.getConsoleSender().sendMessage(chat_staff_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message));
         }else{
             if(adminGUI.getConf().getBoolean("ac_enabled", false)){
-                event.setCancelled(true);
 
                 if(Bukkit.getServer().getPluginManager().getPlugin("AdminBans") != null){
-                    if(AdminBansAPI.isPlayerMuted(event.getPlayer().getUniqueId())){
+                    if(AdminBansAPI.isPlayerMuted(event.getPlayer().getUniqueId(), AdminBansAPI.server_name)){
                         return;
                     }
                 }
@@ -64,9 +63,9 @@ public class PlayerPlaceholderMessageListener implements Listener {
                 }
 
                 if (p.hasPermission("admingui.chat.color") || p.hasPermission("admingui.chat.colors")) {
-                    Bukkit.broadcastMessage(Message.chat(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
+                    event.setFormat(Message.chat(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
                 } else {
-                    Bukkit.broadcastMessage(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message));
+                    event.setFormat(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message));
                 }
             }
         }
