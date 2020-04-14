@@ -57,6 +57,7 @@ inventory_players: "&1&lSpelers"
 inventory_plugins: "&e&lPlugins"
 inventory_commands: "&2&lCommands"
 inventory_unban: "&c&lUnban"
+inventory_unmute: "&c&lUnmute"
 inventory_actions: "&9&lActies &l{player}"
 inventory_kick: "&8&lKick &2&l{player}"
 inventory_ban: "&8&lBan &2&l{player}"
@@ -75,7 +76,7 @@ main_world: "&2&lWereld"
 main_players: "&9&lSpelers"
 main_plugins: "&6&lPlugins"
 main_maintenance_mode: "&c&lOnderhoud modus"
-main_unban_players: "&c&lUnban spelers"
+main_unban_players: "&c&lUnban/Unmute"
 main_language: "&b&l"
 main_quit: "&c&lSluit"
 #----------------------------------------------------------
@@ -136,6 +137,15 @@ unban_previous: "&c&lTerug"
 unban_page: "&a&lPagina"
 unban_next: "&2&lVolgende"
 unban_back: "&c&lTerug"
+#----------------------------------------------------------
+#                     Unmute GUI
+#----------------------------------------------------------
+unmute_color: "&2&l{player}"
+unmute_more: "&cKlik hier om deze speler te unbannen"
+unmute_previous: "&c&lTerug"
+unmute_page: "&a&lPagina"
+unmute_next: "&2&lVolgende"
+unmute_back: "&c&lTerug"
 #----------------------------------------------------------
 #                 Players Settings GUI
 #----------------------------------------------------------

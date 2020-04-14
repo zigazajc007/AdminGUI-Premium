@@ -1,0 +1,369 @@
+#       ----------- + AdminGUI av Ziga Zajc + -----------   #
+#                                                           #
+#                           Svenska                         #
+#                                                           #
+#       --------- + ------------------------- + ---------   #
+#
+#       Du kan använda dig av följande chatt färger:
+#                ________________________
+#               |   Färg kod: | Färger:  |
+#               |________________________|
+#               |     &0  | Svart        |
+#               |     &1  | Mörk blå     |
+#               |     &2  | Mörk grön    |
+#               |     &3  | Mörk aqua    |
+#               |     &4  | Mörk röd     |
+#               |     &5  | Mörk lila    |
+#               |     &6  | Guld         |
+#               |     &7  | Grå          |
+#               |     &8  | Mörk grå     |
+#               |     &9  | Blå          |
+#               |     &a  | Grön         |
+#               |     &b  | Aqua         |
+#               |     &c  | Röd          |
+#               |     &d  | Ljus lila    |
+#               |     &e  | Gult         |
+#               |     &f  | Vit          |
+#               |     &k  | Förvrängd    |
+#               |     &l  | Fet          |
+#               |     &m  | Struken      |
+#               |     &n  | Understrykt  |
+#               |     &o  | Kursiv       |
+#               |     &r  | Återställ    |
+#               |________________________|
+#
+#----------------------------------------------------------
+#                         Prefix
+#----------------------------------------------------------
+prefix: "&7[&cAdmin GUI&7] "
+#----------------------------------------------------------
+#----------------------------------------------------------
+#                       Kommandon
+#----------------------------------------------------------
+permission: "&cDu har inte tillåtelse att göra detta!"
+is_not_a_player: "&c{player} är inte en spelare!"
+is_not_a_number: "&c{number} är inte ett nummer!"
+wrong_arguments: "&cDu kan endast använda dig av /admin eller /admin <player>"
+wrong_initialize: "&cDu kan endast använda /admin initialize gui eller /admin initialize players"
+vault_required: "&cDin server har inte Vault installerat för att slutföra den här åtgärden!"
+vanish_required: "&cDin server har inte Super Vanish eller Premium Vanish för att slutföra den här åtgärden!"
+#----------------------------------------------------------
+#                    Utrustning namn
+#----------------------------------------------------------
+inventory_main: "&4&lAdmin GUI &c&lPremium"
+inventory_player: "&5&l{player}"
+inventory_world: "&2&lVärld"
+inventory_players: "&1&lSpelare"
+inventory_plugins: "&e&lPlugins"
+inventory_commands: "&2&lKommandon"
+inventory_unban: "&c&lTa bort bannlysning"
+inventory_unmute: "&c&lUnmute"
+inventory_actions: "&9&lInsatser &2&l{player}"
+inventory_kick: "&8&lSparka &2&l{player}"
+inventory_ban: "&8&lBannlys &2&l{player}"
+inventory_potions: "&c&lBrygder &2&l{player}"
+inventory_spawner: "&8&lMonsterskapare &2&l{player}"
+inventory_money: "&2&lPengar &2&l{player}"
+inventory_money_give: "&2&lPengar GIVE {player}"
+inventory_money_set: "&2&lPengar&9&l SET &2&l{player}"
+inventory_money_take: "&2&lPengar&c&l TAKE &2&l{player}"
+inventory_inventory: "&a&lUtrustning &2&l{player}"
+#----------------------------------------------------------
+#                      Administrativ GUI
+#----------------------------------------------------------
+main_player: "&5&l{player}"
+main_world: "&2&lVärld"
+main_players: "&9&lSpelare"
+main_plugins: "&6&lPlugins"
+main_maintenance_mode: "&c&lUnderhållsläge"
+main_unban_players: "&c&lTa bort bannlysningar"
+main_language: "&b&l"
+main_quit: "&c&lAvsluta"
+#----------------------------------------------------------
+#                      Spelare GUI
+#----------------------------------------------------------
+player_info: "&2&l{player}"
+player_heal: "&e&lLäka"
+player_feed: "&7&lMata"
+player_survival: "&a&lÖverlevnadsläge"
+player_adventure: "&2&lÄventyrsläge"
+player_creative: "&3&lKreativtläge"
+player_spectator: "&9&lÅskådarläge"
+player_god_enabled: "&c&lDu är nu i gudaläge"
+player_god_disabled: "&a&lDu är inte längre i gudaläge"
+player_potions: "&c&lBrygder"
+player_spawner: "&8&lMonsterskapare"
+player_kill: "&8&lDöda"
+player_burn: "&c&lBränn"
+player_lightning: "&5&lBlixt-"
+player_firework: "&4&lFyverkeri"
+player_money: "&2&lPengar"
+player_vanish_enabled: "&a&lOsynlig"
+player_vanish_disabled: "&c&lOsynlig"
+player_custom: "&6&lAnpassade kommandon"
+player_back: "&c&lTillbaka"
+#----------------------------------------------------------
+#                     Världs GUI
+#----------------------------------------------------------
+world_day: "&e&lDag"
+world_night: "&8&lNatt"
+world_thunder: "&9&lÅska"
+world_rain: "&3&lRegn"
+world_clear: "&b&lKlart"
+world_back: "&c&lTillbaka"
+#----------------------------------------------------------
+#                     Spelare GUI
+#----------------------------------------------------------
+players_color: "&2&l{player}"
+players_more: "&cKlicka här för fler åtgärder"
+players_previous: "&c&lFöregående"
+players_page: "&a&lSida"
+players_next: "&2&lNästa"
+players_back: "&c&lTillbaka"
+#----------------------------------------------------------
+#                     Plugins GUI
+#----------------------------------------------------------
+plugins_back: "&c&lTillbaka"
+#----------------------------------------------------------
+#                     Kommandon GUI
+#----------------------------------------------------------
+commands_back: "&c&lTillbaka"
+#----------------------------------------------------------
+#                 Ta bort bannlysning GUI
+#----------------------------------------------------------
+unban_color: "&2&l{player}"
+unban_more: "&cKlicka här för att ta bort bannlysningen ifrån denna spelare"
+unban_previous: "&c&lFöregående"
+unban_page: "&a&lSida"
+unban_next: "&2&lNästa"
+unban_back: "&c&lTillbaka"
+#----------------------------------------------------------
+#                    Unmute GUI
+#----------------------------------------------------------
+unmute_color: "&2&l{player}"
+unmute_more: "&cKlicka här för att ta bort bannlysningen ifrån denna spelare"
+unmute_previous: "&c&lFöregående"
+unmute_page: "&a&lSida"
+unmute_next: "&2&lNästa"
+unmute_back: "&c&lTillbaka"
+#----------------------------------------------------------
+#                 Spelarinställningar GUI
+#----------------------------------------------------------
+players_settings_info: "&2&l{player}"
+players_settings_actions: "&9&lÅtgärder"
+players_settings_money: "&2&lPengar"
+players_settings_kick_player: "&8&lSparka spelare"
+players_settings_ban_player: "&8&lBannlys spelare"
+players_settings_back: "&c&lTillbaka"
+#----------------------------------------------------------
+#                   Åtgärder GUI
+#----------------------------------------------------------
+actions_heal: "&e&lLäka"
+actions_feed: "&7&lMata"
+actions_info: "&2&l{player}"
+actions_survival: "&a&lÖverlevnadsläge"
+actions_adventure: "&2&lÄventyrsläge"
+actions_creative: "&3&lKreativtläge"
+actions_spectator: "&9&lÅskådarläge"
+actions_teleport_to_player: "&d&lTeleportera till spelare"
+actions_kill_player: "&8&lDöda spelaren"
+actions_burn_player: "&c&lBränn spelaren"
+actions_teleport_player_to_you: "&d&lTeleportera spelaren till dig"
+actions_god_enabled: "&c&lGudaläge På"
+actions_god_disabled: "&a&lGudaläge Av"
+actions_potions: "&c&lBrygder"
+actions_spawner: "&8&lMonsterskapare"
+actions_inventory: "&a&lUtrustning"
+actions_vanish_enabled: "&a&lOsynlig"
+actions_vanish_disabled: "&c&lOsynlig"
+actions_lightning: "&5&lBlixt-"
+actions_firework: "&4&lFyverkeri"
+actions_fakeop: "&c&lFejka OP läge"
+actions_custom: "&6&lAnpassade kommandon"
+actions_back: "&c&lTillbaka"
+#----------------------------------------------------------
+#                Sparkningsalternativ GUI
+#----------------------------------------------------------
+kick: "&4Du har blivit kickad på grund av "
+kick_back: "&c&lTillbaka"
+#----------------------------------------------------------
+#                Förbudsalternativ GUI
+#----------------------------------------------------------
+ban: "&4Du har blivit bannlyst på grund av "
+ban_time: "&cDin bannlysning går ut om &c&l"
+ban_years: "&e&lÅr"
+ban_months: "&e&lMånader"
+ban_days: "&e&lDagar"
+ban_hours: "&e&lTimmar"
+ban_minutes: "&e&lMinuter"
+ban_hacking: "&7&lFuskare!"
+ban_griefing: "&6&lBesvärlig!"
+ban_spamming: "&d&lSpammar!"
+ban_advertising: "&3&lReklam!"
+ban_swearing: "&e&lSvordomar!"
+ban_silence_disabled: "&c&lTyst läge är nu inaktiverat"
+ban_silence_enabled: "&a&lTyst läge är nu aktiverat"
+ban_back: "&c&lTillbaka"
+#----------------------------------------------------------
+#                     Brygder GUI
+#----------------------------------------------------------
+potions_night_vision: "&8&lNattseende"
+potions_invisibility: "&7&lOsynlighetsgbrygd"
+potions_jump_boost: "&a&lHoppstyrkebrygd"
+potions_fire_resistance: "&c&lEldresistansbrygd"
+potions_speed: "&b&lSnabbhetsbrygd"
+potions_slowness: "&4&lLångsamhetsbrygd"
+potions_water_breathing: "&9&lVattenandningsbrygd"
+potions_instant_health: "&a&lLäkningsbrygd"
+potions_instant_damage: "&4&lSkadebrygd"
+potions_poison: "&5&lGiftbrygd"
+potions_regeneration: "&e&lÅterhämtningsbrygd"
+potions_strength: "&e&lStyrkebrygd"
+potions_weakness: "&4&lSvaghetsbrygd"
+potions_luck: "&6&lTurbrygd"
+potions_slow_falling: "&3&lAntigravitationsbrygd"
+potions_time: "&a&lTid"
+potions_remove_all: "&4&lTa bort alla"
+potions_level: "&a&lNivå"
+potions_back: "&c&lTillbaka"
+#----------------------------------------------------------
+#                     Spawner GUI
+#----------------------------------------------------------
+spawner_bat: "&a&lFladdermus"
+spawner_blaze: "&c&lBlaze"
+spawner_cat: "&a&lKatt"
+spawner_cave_spider: "&c&lGrottspindel"
+spawner_chicken: "&a&lHöna"
+spawner_cod: "&b&lTorsk"
+spawner_cow: "&a&lKossa"
+spawner_creeper: "&c&lCreeper"
+spawner_dolphin: "&b&lDelfin"
+spawner_donkey: "&a&lÅsna"
+spawner_drowned: "&c&lDrunknad zombie"
+spawner_elder_guardian: "&c&lÅldersväktare"
+spawner_enderman: "&c&lEnderman"
+spawner_endermite: "&c&lEndermite"
+spawner_evoker: "&c&lFrammanare"
+spawner_fox: "&a&lRäv"
+spawner_ghast: "&c&lGhast"
+spawner_guardian: "&c&lVäktare"
+spawner_horse: "&a&lHäst"
+spawner_husk: "&c&lUttorkad zombie"
+spawner_llama: "&a&Lama"
+spawner_magma_cube: "&c&lMagmakub"
+spawner_mooshroom: "&a&lMooshroom"
+spawner_mule: "&a&lMula"
+spawner_ocelot: "&a&lOzelot"
+spawner_panda: "&a&lPanda"
+spawner_parrot: "&a&lPapegoja"
+spawner_phantom: "&c&lFantom"
+spawner_pig: "&a&lGris"
+spawner_pillager: "&c&lPlundrare"
+spawner_polar_bear: "&a&lIs björn"
+spawner_pufferfish: "&b&lBlåsfisk"
+spawner_rabbit: "&a&lKanin"
+spawner_ravager: "&c&lÖdeläggare"
+spawner_salmon: "&b&lLax"
+spawner_sheep: "&a&lFår"
+spawner_shulker: "&c&lShulker"
+spawner_silverfish: "&c&lSilverfisk"
+spawner_skeleton: "&c&lSkelett"
+spawner_skeleton_horse: "&c&lSkeletthäst"
+spawner_slime: "&c&lSlemkub"
+spawner_spider: "&c&lSpindel"
+spawner_squid: "&b&lBläckfisk"
+spawner_stray: "&c&lVandrare"
+spawner_trader_llama: "&a&lByteshandlarlama"
+spawner_tropical_fish: "&b&lTropisk fisk"
+spawner_turtle: "&a&lSköldpadda"
+spawner_vex: "&c&lVex"
+spawner_villager: "&a&lBybo"
+spawner_vindicator: "&c&lFörsvarare"
+spawner_wandering_trader: "&a&lVandrande byteshandlare"
+spawner_witch: "&c&lHäxa"
+spawner_wither: "&c&lWitherskelett"
+spawner_wolf: "&a&lVarg"
+spawner_zombie: "&c&lZombie"
+spawner_zombie_pigman: "&c&lZombiegris"
+spawner_zombie_villager: "&c&lZombiebybo"
+spawner_back: "&c&lTillbaka"
+#----------------------------------------------------------
+#                      Pengar GUI
+#----------------------------------------------------------
+money_give: "&2&lGe"
+money_set: "&9&lStäll in"
+money_take: "&c&lTa"
+money_back: "&c&lTillbaka"
+#----------------------------------------------------------
+#                     Pengar belopp GUI
+#----------------------------------------------------------
+money_amount_back: "&c&lTillbaka"
+#----------------------------------------------------------
+#                     Inventarier GUI
+#----------------------------------------------------------
+inventory_refresh: "&a&lUppdatera"
+inventory_clear: "&b&lRensa"
+inventory_back: "&c&lTillbaka"
+#----------------------------------------------------------
+#                       Meddelanden
+#----------------------------------------------------------
+message_target_player_teleport: "&aDu har blivit teleporterad till {player}."
+message_player_kill: "&aDu har dödat {player}."
+message_player_burn: "&aDu har satt {player} i &cbrand&a!"
+message_target_player_creeper: "&a&lCreeper, Åh nej!"
+message_player_creeper: "&aCreeper har spawnat på {player}."
+message_target_player_heal: "&e{player} Läkte dig."
+message_player_heal: "&aDu har läkt {player}."
+message_target_player_feed: "&e{player} matade dig."
+message_player_feed: "&aDu har matat {player}."
+message_player_kick: "&a{player} blev kickad på grund av {reason}"
+message_player_ban: "&a{player} blev bannlyst på grund av {reason}"
+message_player_mute: "&a{player} blev tystad på grund av {reason}"
+message_player_god_enabled: "&a{player} är nu osynlig för andra spelare."
+message_player_god_disabled: "&a{player} är inte längre osynlig för andra spelare."
+message_target_player_god_enabled: "&a{player} satte dig i gudaläge."
+message_target_player_god_disabled: "&a{player} tog bort ditt gudaläge."
+message_target_player_potions: "&a{player} gav dig {potion}&a effekt i {time} minuter."
+message_player_potions: "&aDu gav precis {player} {potion}&a effekt i {time} minuter."
+message_target_player_potions_remove: "&a{player} &ctog bort &aalla dina brygd effekter."
+message_player_potions_remove: "&aDu har precis tagit bort alla {player} brygd effekter."
+message_heal: "&aDu har blivit läkt."
+message_feed: "&aDu har blivit matad."
+message_god_enabled: "&aDu är nu i gudaläge."
+message_god_disabled: "&aDu är inte längre i gudaläge."
+message_kill: "&cDu dödade dig själv precis."
+message_burn: "&cDu satte eld på dig själv."
+message_potions_remove: "&aDu har tagit bort alla dina brygd effekter."
+message_potions: "&aDu satte precis {potion}&a effekten till {time} minuter för dig själv."
+message_maintenance: "&aServern är nu i &cUnderhållsläge&a. Kom tillbaka snart."
+message_maintenance_enabled: "&aUnderhållsläge är nu &a&lPå."
+message_maintenance_disabled: "&aUnderhållsläge is now &c&lAv."
+message_player_not_found: "&cDen här spelaren är inte tillgänglig just nu!"
+message_ban_bypass: "&cDu kan inte bannlysa den här spelaren!"
+message_kick_bypass: "&cDu kan inte kicka den här spelaren!"
+message_give: "&aDu har precis skickat {amount} till dig själv och har nu {balance}."
+message_player_give: "&aDu har fått {amount} ifrån {player} och nu har du {balance}."
+message_target_player_give: "&a{player} skickade dig {amount} och nu har du {balance}."
+message_set: "&aDu gav dig själv {amount}."
+message_player_set: "&aDu satte precis {player} pengar till {amount}."
+message_target_player_set: "&a{player} satte dina pengar till {amount}."
+message_take: "&aDu tog {amount} ifrån dig själv och nu har du {balance}."
+message_player_take: "&aDu tog {amount} ifrån {player} och nu har han {balance}."
+message_target_player_take: "&c{player} tog {amount} och nu har du {balance}."
+message_transaction_error: "&cNågonting gick fel i transaktionen!"
+message_take_error: "&cDu kan inte ta mer pengar än du har!"
+message_player_take_error: "&cDu kan inte ta mer pengar än spelaren har!"
+message_visible: "&aDu är nu&a&l synlig&a för andra spelare."
+message_player_visible: "&a{player} är nu&a&l synlig&a för andra spelare."
+message_hide: "&aDu är nu&c&l osynlig&a för andra spelare."
+message_player_hide: "&a{player} är nu&c&l osynlig&a för andra spelare."
+message_unban_player: "&a{player} bannlysning är nu borttagen."
+message_unmute_player: "&a{player} kan nu prata igen."
+message_initializing_start: "&aPlugin laddar..."
+message_initializing_finish: "&aGUI är redo att användas."
+message_already_initializing: "&cGUI har redan initialiserats..."
+message_reload_start: "&aPlugin laddas nu om..."
+message_reload_finish: "&aPlugin har laddats om utan problem!"
+message_admin_chat_enabled: "&aAdmin chatten har blivit aktiverad"
+message_admin_chat_disabled: "&cAdmin chatten har blivit avaktiverad"
+message_admin_chat_server_disabled: "&cAdmin chatten är avstängd på denna server."

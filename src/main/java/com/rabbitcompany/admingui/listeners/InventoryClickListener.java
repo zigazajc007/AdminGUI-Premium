@@ -27,14 +27,14 @@ public class InventoryClickListener implements Listener {
         Player p = (Player) e.getWhoClicked();
 
         try{
-                if (title.equals(Message.getMessage(p.getUniqueId(), "inventory_main")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_player").replace("{player}", player)) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_world")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_players")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_plugins")) || title.contains(Message.getMessage(p.getUniqueId(), "inventory_commands")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_unban")) || title.equals(Message.getMessage(p.getUniqueId(), "players_color").replace("{player}", AdminUI.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_actions").replace("{player}", AdminUI.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_kick").replace("{player}", AdminUI.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_ban").replace("{player}", AdminUI.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_potions").replace("{player}", AdminUI.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_spawner").replace("{player}", AdminUI.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_inventory").replace("{player}", AdminUI.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_money_give").replace("{player}", AdminUI.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_money_set").replace("{player}", AdminUI.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_money_take").replace("{player}", AdminUI.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_money").replace("{player}", AdminUI.target_player.get(p).getName()))) {
+                if (title.equals(Message.getMessage(p.getUniqueId(), "inventory_main")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_player").replace("{player}", player)) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_world")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_players")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_plugins")) || title.contains(Message.getMessage(p.getUniqueId(), "inventory_commands")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_unban")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_unmute")) || title.equals(Message.getMessage(p.getUniqueId(), "players_color").replace("{player}", AdminUI.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_actions").replace("{player}", AdminUI.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_kick").replace("{player}", AdminUI.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_ban").replace("{player}", AdminUI.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_potions").replace("{player}", AdminUI.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_spawner").replace("{player}", AdminUI.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_inventory").replace("{player}", AdminUI.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_money_give").replace("{player}", AdminUI.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_money_set").replace("{player}", AdminUI.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_money_take").replace("{player}", AdminUI.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_money").replace("{player}", AdminUI.target_player.get(p).getName()))) {
 
                     e.setCancelled(true);
 
                         if (title.equals(Message.getMessage(p.getUniqueId(), "inventory_main"))) {
 
                             if (e.getCurrentItem() != null) {
-                                adminUI.clicked_main(p, e.getSlot(), e.getCurrentItem(), e.getInventory());
+                                adminUI.clicked_main(p, e.getSlot(), e.getCurrentItem(), e.getInventory(), e.isLeftClick());
                             }
 
                         } else if (title.equals(Message.getMessage(p.getUniqueId(), "inventory_player").replace("{player}", player))) {
@@ -71,6 +71,12 @@ public class InventoryClickListener implements Listener {
 
                             if (e.getCurrentItem() != null) {
                                 adminUI.clicked_unban_players(p, e.getSlot(), e.getCurrentItem(), e.getInventory());
+                            }
+
+                        } else if (title.equals(Message.getMessage(p.getUniqueId(), "inventory_unmute"))) {
+
+                            if (e.getCurrentItem() != null) {
+                                adminUI.clicked_unmute_players(p, e.getSlot(), e.getCurrentItem(), e.getInventory());
                             }
 
                         } else if (title.equals(Message.getMessage(p.getUniqueId(), "players_color").replace("{player}", AdminUI.target_player.get(p).getName()))) {
@@ -128,11 +134,7 @@ public class InventoryClickListener implements Listener {
                         } else if (title.equals(Message.getMessage(p.getUniqueId(), "inventory_inventory").replace("{player}", AdminUI.target_player.get(p).getName()))) {
 
                             if (e.getCurrentItem() != null) {
-                                if (e.isLeftClick()) {
-                                    adminUI.clicked_inventory(p, e.getSlot(), e.getCurrentItem(), e.getInventory(), AdminUI.target_player.get(p), true);
-                                } else {
-                                    adminUI.clicked_inventory(p, e.getSlot(), e.getCurrentItem(), e.getInventory(), AdminUI.target_player.get(p), false);
-                                }
+                                adminUI.clicked_inventory(p, e.getSlot(), e.getCurrentItem(), e.getInventory(), AdminUI.target_player.get(p), e.isLeftClick());
                             }
                         }
                 }

@@ -2,6 +2,7 @@ package com.rabbitcompany.admingui.ui;
 
 import com.rabbitcompany.adminbans.AdminBansAPI;
 import com.rabbitcompany.adminbans.utils.BannedPlayer;
+import com.rabbitcompany.adminbans.utils.MutedPlayer;
 import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.XMaterial;
 import com.rabbitcompany.admingui.utils.*;
@@ -71,6 +72,10 @@ public class AdminUI {
     //Unban Page
     private HashMap<UUID, Integer> unban_page = new HashMap<>();
     private HashMap<UUID, Integer> unban_pages = new HashMap<>();
+
+    //Unmute Page
+    private HashMap<UUID, Integer> unmute_page = new HashMap<>();
+    private HashMap<UUID, Integer> unmute_pages = new HashMap<>();
 
     //Potions
     private HashMap<UUID, Integer> duration = new HashMap<>();
@@ -159,7 +164,7 @@ public class AdminUI {
                 break;
         }
 
-        if(p.hasPermission("admingui.unban")) {
+        if(p.hasPermission("admingui.unban") || p.hasPermission("admingui.unmute")) {
             Item.after_createPlayerHead(inv_main, skulls.get("LobbyPlugin"),1,32, Message.getMessage(p.getUniqueId(), "main_unban_players"));
         }
 
@@ -531,6 +536,57 @@ public class AdminUI {
         Item.after_createPlayerHead(inv_unban_players, skulls.get("MHF_Redstone"),1,54, Message.getMessage(p.getUniqueId(), "unban_back"));
 
         return inv_unban_players;
+    }
+
+    public Inventory GUI_Unmute_Players(Player p){
+
+        Inventory inv_unmute_players = Bukkit.createInventory(null, 54, Message.getMessage(p.getUniqueId(), "inventory_unmute"));
+
+        if(Bukkit.getPluginManager().isPluginEnabled("AdminBans")){
+            ArrayList<MutedPlayer> abs = new ArrayList<>(AdminBansAPI.getMutedPlayers());
+
+            int online = abs.size();
+
+            unmute_pages.put(p.getUniqueId(), (int) Math.ceil((float)online / 45));
+
+            for (int i = 46; i <= 53; i++){
+                Item.create(inv_unmute_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
+            }
+
+            int player_slot = (unmute_page.getOrDefault(p.getUniqueId(),1)-1) * 45;
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+            for (int i = 0; i < 45; i++){
+                if(player_slot < online){
+                    Item.createPlayerHead(inv_unmute_players, abs.get(player_slot).username_to, 1, i + 1, Message.getMessage(p.getUniqueId(), "unmute_color").replace("{player}", abs.get(player_slot).username_to), Message.chat("&aMuted by: &6" + abs.get(player_slot).username_from), Message.chat("&aMuted on: &6" + sdf.format(abs.get(player_slot).created)), Message.chat("&aExpiration: &6" + sdf.format(abs.get(player_slot).until)), " ", Message.getMessage(p.getUniqueId(), "unmute_more"));
+                    player_slot++;
+                }else{
+                    Item.create(inv_unmute_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i+1, " ");
+                }
+            }
+
+            if(unmute_page.getOrDefault(p.getUniqueId(), 1) > 1){
+                Item.after_createPlayerHead(inv_unmute_players, skulls.get("MHF_ArrowLeft"), 1, 49, Message.getMessage(p.getUniqueId(), "unmute_previous"));
+            }
+
+            if(unmute_pages.getOrDefault(p.getUniqueId(), 1) > 1){
+                Item.after_createPlayerHead(inv_unmute_players, skulls.get("MHF_Question"), unmute_page.getOrDefault(p.getUniqueId(), 1), 50, Message.getMessage(p.getUniqueId(), "unmute_page") + " " + unmute_page.getOrDefault(p.getUniqueId(), 1));
+            }
+
+            if(unmute_pages.get(p.getUniqueId()) > unmute_page.getOrDefault(p.getUniqueId(), 1)){
+                Item.after_createPlayerHead(inv_unmute_players, skulls.get("MHF_ArrowRight"), 1, 51, Message.getMessage(p.getUniqueId(), "unmute_next"));
+            }
+
+        }else{
+            for (int i = 0; i < 53; i++){
+                Item.create(inv_unmute_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i+1, " ");
+            }
+        }
+
+        Item.after_createPlayerHead(inv_unmute_players, skulls.get("MHF_Redstone"),1,54, Message.getMessage(p.getUniqueId(), "unmute_back"));
+
+        return inv_unmute_players;
     }
 
     public Inventory GUI_Players_Settings(Player p, Player target_player){
@@ -1019,7 +1075,7 @@ public class AdminUI {
         return inv_inventory;
     }
 
-    public void clicked_main(Player p, int slot, ItemStack clicked, Inventory inv){
+    public void clicked_main(Player p, int slot, ItemStack clicked, Inventory inv, boolean isLeftClick){
 
         if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "main_quit"))){
             p.closeInventory();
@@ -1053,7 +1109,11 @@ public class AdminUI {
                 p.closeInventory();
             }
         }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "main_unban_players"))){
-            p.openInventory(GUI_Unban_Players(p));
+            if(isLeftClick){
+                p.openInventory(GUI_Unban_Players(p));
+            }else{
+                p.openInventory(GUI_Unmute_Players(p));
+            }
         }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "main_language") + language.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("default_language")))){
             switch (language.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("default_language"))){
                 case "English":
@@ -1078,6 +1138,9 @@ public class AdminUI {
                     language.put(p.getUniqueId(), "Dutch");
                     break;
                 case "Dutch":
+                    language.put(p.getUniqueId(), "Swedish");
+                    break;
+                case "Swedish":
                     language.put(p.getUniqueId(), "Bulgarian");
                     break;
                 case "Bulgarian":
@@ -1299,6 +1362,32 @@ public class AdminUI {
             p.openInventory(GUI_Unban_Players(p));
         }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "unban_next"))){
             unban_page.put(p.getUniqueId(), unban_page.getOrDefault(p.getUniqueId(),1)+1);
+            p.openInventory(GUI_Unban_Players(p));
+        }
+
+    }
+
+    public void clicked_unmute_players(Player p, int slot, ItemStack clicked, Inventory inv){
+
+        if(clicked.getItemMeta().getLore() != null){
+            if(clicked.getItemMeta().getLore().contains(Message.getMessage(p.getUniqueId(), "unmute_more"))){
+                if(Bukkit.getPluginManager().isPluginEnabled("AdminBans")){
+                    if(AdminBansAPI.unMutePlayer(ChatColor.stripColor(clicked.getItemMeta().getDisplayName()))){
+                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_unmute_player").replace("{player}", ChatColor.stripColor(clicked.getItemMeta().getDisplayName())));
+                    }else{
+                        p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
+                    }
+                }
+
+                p.closeInventory();
+            }
+        }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "unmute_back"))){
+            p.openInventory(GUI_Main(p));
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "unmute_previous"))){
+            unmute_page.put(p.getUniqueId(), unmute_page.getOrDefault(p.getUniqueId(),1)-1);
+            p.openInventory(GUI_Unban_Players(p));
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "unmute_next"))){
+            unmute_page.put(p.getUniqueId(), unmute_page.getOrDefault(p.getUniqueId(),1)+1);
             p.openInventory(GUI_Unban_Players(p));
         }
 

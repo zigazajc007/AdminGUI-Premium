@@ -57,6 +57,7 @@ inventory_players: "&1&lJogadores"
 inventory_plugins: "&e&lPlugins"
 inventory_commands: "&2&lComandos"
 inventory_unban: "&c&lDesbanir"
+inventory_unmute: "&c&lUnmute"
 inventory_actions: "&9&lAcções &2&l{player}"
 inventory_kick: "&8&lExpulsar &2&l{player}"
 inventory_ban: "&8&lBanir &2&l{player}"
@@ -136,6 +137,15 @@ unban_previous: "&c&lAnterior"
 unban_page: "&a&lPagina"
 unban_next: "&2&lPróxima"
 unban_back: "&c&lVoltar"
+#----------------------------------------------------------
+#                   GUI de Unmute
+#----------------------------------------------------------
+unmute_color: "&2&l{player}"
+unmute_more: "&cClique aqui para desbanir este jogador"
+unmute_previous: "&c&lAnterior"
+unmute_page: "&a&lPagina"
+unmute_next: "&2&lPróxima"
+unmute_back: "&c&lVoltar"
 #----------------------------------------------------------
 #             GUI de Configurações de Jogador
 #----------------------------------------------------------

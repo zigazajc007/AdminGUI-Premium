@@ -25,6 +25,8 @@ public class AdminGUI extends JavaPlugin {
 
     private static AdminGUI instance;
 
+    String username = "%%__USERNAME__%%";
+
     //SQL
     public static MySQL mySQL;
     public static Connection conn = null;
@@ -73,6 +75,10 @@ public class AdminGUI extends JavaPlugin {
     private File du = null;
     private YamlConfiguration dutc = new YamlConfiguration();
 
+    //Swedish
+    private File sw = null;
+    private YamlConfiguration swed = new YamlConfiguration();
+
     //Portuguese
     private File po = null;
     private YamlConfiguration port = new YamlConfiguration();
@@ -110,6 +116,7 @@ public class AdminGUI extends JavaPlugin {
         this.sp = new File(getDataFolder(), "Languages/Spanish.yml");
         this.fr = new File(getDataFolder(), "Languages/French.yml");
         this.du = new File(getDataFolder(), "Languages/Dutch.yml");
+        this.sw = new File(getDataFolder(), "Languages/Swedish.yml");
         this.po = new File(getDataFolder(), "Languages/Portuguese.yml");
         this.he = new File(getDataFolder(), "Languages/Hebrew.yml");
         this.k = new File(getDataFolder(), "kick.yml");
@@ -281,6 +288,10 @@ public class AdminGUI extends JavaPlugin {
             saveResource("Languages/Dutch.yml", false);
         }
 
+        if(!this.sw.exists()){
+            saveResource("Languages/Swedish.yml", false);
+        }
+
         if(!this.po.exists()){
             saveResource("Languages/Portuguese.yml", false);
         }
@@ -360,6 +371,11 @@ public class AdminGUI extends JavaPlugin {
             e.printStackTrace();
         }
         try {
+            this.swed.load(this.sw);
+        } catch (IOException | InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+        try {
             this.port.load(this.po);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
@@ -410,6 +426,8 @@ public class AdminGUI extends JavaPlugin {
     public YamlConfiguration getFren() { return this.fren; }
 
     public YamlConfiguration getDutc() { return this.dutc; }
+
+    public YamlConfiguration getSwed() { return this.swed; }
 
     public YamlConfiguration getPort() { return this.port; }
 
@@ -493,21 +511,22 @@ public class AdminGUI extends JavaPlugin {
 
     private void info(String message){
         Bukkit.getConsoleSender().sendMessage(Message.chat(""));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8[]=====[" + message + " &cAdminGUI-Premium&8]=====[]"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8| &cInformation:"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Name: &bAdminGUI-Premium"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Developer: &bBlack1_TV"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b4.0.8"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8| &cSupport:"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Discord: &bCrazy Rabbit#0001"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Mail: &bziga.zajc007@gmail.com"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Discord: &bhttps://discord.gg/hUNymXX"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8[]=====================================[]"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6[]=====[" + message + " &cAdminGUI-Premium&6]=====[]"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cInformation:"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Name: &bAdminGUI-Premium"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Developer: &bBlack1_TV"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &b" + username));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b4.0.9"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cSupport:"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Discord: &bCrazy Rabbit#0001"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Mail: &bziga.zajc007@gmail.com"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Discord: &bhttps://discord.gg/hUNymXX"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6[]=====================================[]"));
         Bukkit.getConsoleSender().sendMessage(Message.chat(""));
     }
 

@@ -57,6 +57,7 @@ inventory_players: "&1&lИграчи"
 inventory_plugins: "&e&lПлъгини"
 inventory_commands: "&2&lКоманди"
 inventory_unban: "&c&lПремхване на забрана"
+inventory_unmute: "&c&lUnmute"
 inventory_actions: "&9&lДействия &2&l{player}"
 inventory_kick: "&8&lИзгони &2&l{player}"
 inventory_ban: "&8&lЗабрани &2&l{player}"
@@ -136,6 +137,15 @@ unban_previous: "&c&lПредишно"
 unban_page: "&a&lСтраница"
 unban_next: "&2&lПо-напред"
 unban_back: "&c&lПо-назад"
+#----------------------------------------------------------
+#                     Unmute на забрана
+#----------------------------------------------------------
+unmute_color: "&2&l{player}"
+unmute_more: "&cНатиснете тук за да премахнете забрана "
+unmute_previous: "&c&lПредишно"
+unmute_page: "&a&lСтраница"
+unmute_next: "&2&lПо-напред"
+unmute_back: "&c&lПо-назад"
 #----------------------------------------------------------
 #                 Настройки на играчи Меню
 #----------------------------------------------------------

@@ -57,6 +57,7 @@ inventory_players: "&1&lשחקנים"
 inventory_plugins: "&e&lתוספים/פלאגינים"
 inventory_commands: "&2&lפקודות"
 inventory_unban: "&c&lביטול הרחקה"
+inventory_unmute: "&c&lUnmute"
 inventory_actions: "&9&lפעולות &2&l{player}"
 inventory_kick: "&8&lהוצאת &2&l{player}"
 inventory_ban: "&8&lהרחקת &2&l{player}"
@@ -136,6 +137,15 @@ unban_previous: "&c&lהקודם"
 unban_page: "&a&lדף"
 unban_next: "&2&lהבא"
 unban_back: "&c&lחזור"
+#----------------------------------------------------------
+#                     Unmute GUI
+#----------------------------------------------------------
+unmute_color: "&2&l{player}"
+unmute_more: "&cלחץ כאן לביטול הרחקה של השחקן"
+unmute_previous: "&c&lהקודם"
+unmute_page: "&a&lדף"
+unmute_next: "&2&lהבא"
+unmute_back: "&c&lחזור"
 #----------------------------------------------------------
 #                 Players Settings GUI
 #----------------------------------------------------------

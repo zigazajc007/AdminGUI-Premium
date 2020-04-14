@@ -57,6 +57,7 @@ inventory_players: "&1&l玩家"
 inventory_plugins: "&e&l插件"
 inventory_commands: "&2&l指令"
 inventory_unban: "&c&l解除封鎖"
+inventory_unmute: "&c&lUnmute"
 inventory_actions: "&9&l執行 &2&l{player}"
 inventory_kick: "&8&l踢除 &2&l{player}"
 inventory_ban: "&8&l封鎖 &2&l{player}"
@@ -136,6 +137,15 @@ unban_previous: "&c&l上一頁"
 unban_page: "&a&l頁"
 unban_next: "&2&l下一頁"
 unban_back: "&c&l返回"
+#----------------------------------------------------------
+#                   Unmute GUI
+#----------------------------------------------------------
+unmute_color: "&2&l{player}"
+unmute_more: "&c點擊我執行更多動作"
+unmute_previous: "&c&l上一頁"
+unmute_page: "&a&l頁"
+unmute_next: "&2&l下一頁"
+unmute_back: "&c&l返回"
 #----------------------------------------------------------
 #                 玩家設定介面
 #----------------------------------------------------------
