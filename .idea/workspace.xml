@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Russian.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Russian.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/InventoryClickListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/InventoryClickListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/English.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/English.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +52,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.statistic.project.settings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -189,13 +188,6 @@
       <workItem from="1577725216137" duration="7109000" />
       <workItem from="1578348949962" duration="293000" />
       <workItem from="1578422894075" duration="968000" />
-    </task>
-    <task id="LOCAL-00020" summary="Added reload and custom commands">
-      <created>1571774987869</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1571774987869</updated>
     </task>
     <task id="LOCAL-00021" summary="Now you can add custom commands to each player">
       <created>1572048362264</created>
@@ -533,7 +525,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586852115626</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="Fixed Russian language.">
+      <created>1586962696178</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1586962696178</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -555,7 +554,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/LiteBansAPI" />
     </ignored-roots>
-    <MESSAGE value="Added Dutch language." />
     <MESSAGE value="Added more languages in config.yml." />
     <MESSAGE value="Fixed Chinese language." />
     <MESSAGE value="Updated Spanish language." />
@@ -580,7 +578,8 @@
     <MESSAGE value="Admin Chat now support other chat managing plugins." />
     <MESSAGE value="InventoryClickListener null exception error fix" />
     <MESSAGE value="Added Unmute option and Sweden language." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Unmute option and Sweden language." />
+    <MESSAGE value="Fixed Russian language." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Russian language." />
   </component>
   <component name="WindowStateProjectService">
     <state x="543" y="211" width="800" height="719" key="#Plugins" timestamp="1586843662300">
@@ -607,15 +606,14 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="693" y="303" width="524" height="508" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585167161065" />
-    <state x="757" y="219" width="810" height="812" key="CommitChangelistDialog2" timestamp="1586852115530">
+    <state x="757" y="219" width="810" height="812" key="CommitChangelistDialog2" timestamp="1586962696094">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="741" y="135" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578349213434" />
-    <state x="757" y="219" width="810" height="812" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1586852115530" />
-    <state x="902" y="326" width="424" height="491" key="FileChooserDialogImpl" timestamp="1586950704845">
+    <state x="757" y="219" width="810" height="812" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1586962696094" />
+    <state x="902" y="326" width="424" height="491" key="FileChooserDialogImpl" timestamp="1587726311086">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="902" y="326" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1586950704845" />
+    <state x="902" y="326" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1587726311086" />
     <state width="1878" height="342" key="GridCell.Tab.0.bottom" timestamp="1586852130736">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -648,19 +646,17 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1878" height="342" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1586852130737" />
-    <state x="459" y="133" width="1024" height="852" key="SettingsEditor" timestamp="1582457732870">
+    <state x="459" y="133" width="1024" height="852" key="SettingsEditor" timestamp="1587384088844">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="459" y="133" width="1024" height="852" key="SettingsEditor/0.27.1920.1053@0.27.1920.1053" timestamp="1582457732870" />
-    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1586852119791">
+    <state x="459" y="133" width="1024" height="852" key="SettingsEditor/0.27.1920.1053@0.27.1920.1053" timestamp="1587384088844" />
+    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1586962699330">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="714" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578349220548" />
-    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1586852119791" />
+    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1586962699330" />
     <state x="548" y="372" width="578" height="441" key="com.intellij.ide.util.TipDialog" timestamp="1586165648561">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578423094376" />
     <state x="548" y="372" width="578" height="441" key="com.intellij.ide.util.TipDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1586165648561" />
     <state x="498" y="228" width="1168" height="781" key="new project wizard" timestamp="1586104255318">
       <screen x="0" y="27" width="1920" height="1053" />
