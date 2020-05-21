@@ -35,7 +35,10 @@
 #----------------------------------------------------------
 #                       Admin GUI
 #----------------------------------------------------------
-# If initialize_gui is set to 0 then gui won't be initialized and will be very buggy on first use. (You still will be able to initialize the gui in game with /admin initialize gui)
+# If gui_type is set to 0, then Minecraft items will be used in gui (faster).
+# If gui_type is set to 1, then Player heads will be used in gui (slower but nicer).
+gui_type: 0
+# If initialize_gui is set to 0 then gui won't be initialized and will be very buggy on first use. (You will be still able to initialize the gui in game with /admin initialize gui)
 # If initialize_gui is set to 1 then gui will be initialized when player join the game. (Default and recommended)
 initialize_gui: 0
 # How many seconds expires before next player head will start initializing. (Default is 2) (Lower number is faster but more buggier)

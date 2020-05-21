@@ -1,0 +1,368 @@
+#       ----------- + AdminGUI by Ziga Zajc + -----------   #
+#                                                           #
+#                           Korean                          #
+#                                                           #
+#       --------- + ------------------------- + ---------   #
+#
+#       You can use chat colors:
+#                ________________________
+#               |   code: | color:       |
+#               |________________________|
+#               |     &0  |	Black	     |
+#               |     &1  |	Dark Blue	 |
+#               |     &2  |	Dark Green	 |
+#               |     &3  |	Dark Aqua	 |
+#               |     &4  |	Dark Red	 |
+#               |     &5  |	Dark Purple	 |
+#               |     &6  |	Gold	     |
+#               |     &7  |	Gray	     |
+#               |     &8  |	Dark Gray	 |
+#               |     &9  |	Blue	     |
+#               |     &a  |	Green	     |
+#               |     &b  |	Aqua	     |
+#               |     &c  |	Red	         |
+#               |     &d  |	Light Purple |
+#               |     &e  |	Yellow	     |
+#               |     &f  |	White	     |
+#               |     &k  |	Obfuscated	 |
+#               |     &l  |	Bold	     |
+#               |     &m  |	Strikethrough|
+#               |     &n  |	Underline	 |
+#               |     &o  |	Italic	     |
+#               |     &r  |	Reset	     |
+#               |________________________|
+#
+#----------------------------------------------------------
+#                         Prefix
+#----------------------------------------------------------
+prefix: "&7[&cAdmin GUI&7] "
+#----------------------------------------------------------
+#----------------------------------------------------------
+#                       Commands
+#----------------------------------------------------------
+permission: "&c이 작업을 수행할 수 있는 권한이 없습니다!"
+is_not_a_player: "&c{player}은(는) 플레이어가 아닙니다!"
+is_not_a_number: "&c{number}은(는) 숫자가 아닙니다!"
+wrong_arguments: "&c/admin 또는 /admin <플레이어>만 사용할 수 있습니다."
+wrong_initialize: "&c/admin initialize gui 또는 /admin initialize players 만 사용할 수 있습니다."
+vault_required: "&c이 작업을 완료하려면, 서버에 Vault가 설치되어 있어야 합니다!"
+vanish_required: "&c서버에서 이 작업을 완료하기 위해 Super Vanish 또는 Premium Vanish를 설치하지 않았습니다!"
+#----------------------------------------------------------
+#                    Inventory names
+#----------------------------------------------------------
+inventory_main: "&4&lAdmin GUI &c&lPremium"
+inventory_player: "&5&l{player}"
+inventory_world: "&2&l월드"
+inventory_players: "&1&l플레이어"
+inventory_plugins: "&e&l플러그인"
+inventory_commands: "&2&l커맨드"
+inventory_unban: "&c&l언밴"
+inventory_unmute: "&c&l언뮤트"
+inventory_actions: "&9&l액션 &2&l{player}"
+inventory_kick: "&8&l킥 &2&l{player}"
+inventory_ban: "&8&l밴 &2&l{player}"
+inventory_potions: "&c&l포션 &2&l{player}"
+inventory_spawner: "&8&l스포너 &2&l{player}"
+inventory_money: "&2&l돈 &2&l{player}"
+inventory_money_give: "&2&l돈 주기 {player}"
+inventory_money_set: "&2&l돈&9&l 설정 &2&l{player}"
+inventory_money_take: "&2&l돈&c&l 가져가기 &2&l{player}"
+inventory_inventory: "&a&l인벤토리 &2&l{player}"
+#----------------------------------------------------------
+#                       Admin GUI
+#----------------------------------------------------------
+main_player: "&5&l{player}"
+main_world: "&2&l월드"
+main_players: "&9&l플레이어"
+main_plugins: "&6&l플러그인"
+main_maintenance_mode: "&c&l점검 모드"
+main_unban_players: "&c&l언밴/언뮤트"
+main_language: "&b&l"
+main_quit: "&c&l나가기"
+#----------------------------------------------------------
+#                      Player GUI
+#----------------------------------------------------------
+player_info: "&2&l{player}"
+player_heal: "&e&l힐"
+player_feed: "&7&l밥"
+player_survival: "&a&l서바이벌"
+player_adventure: "&2&l모험"
+player_creative: "&3&l크리에이티브"
+player_spectator: "&9&l관전"
+player_god_enabled: "&a&lGod 모드"
+player_god_disabled: "&c&lGod 모드"
+player_potions: "&c&l포션"
+player_spawner: "&8&l스포너"
+player_kill: "&8&l즉사"
+player_burn: "&c&l태우기"
+player_lightning: "&5&l번개"
+player_firework: "&4&l폭죽"
+player_money: "&2&l돈"
+player_vanish_enabled: "&a&l사라지기"
+player_vanish_disabled: "&c&l사라지기"
+player_custom: "&6&l커스텀 커맨드"
+player_back: "&c&l돌아가기"
+#----------------------------------------------------------
+#                       World GUI
+#----------------------------------------------------------
+world_day: "&e&l아침"
+world_night: "&8&l밤"
+world_thunder: "&9&l천둥"
+world_rain: "&3&l비"
+world_clear: "&b&l맑음"
+world_back: "&c&l돌아가기"
+#----------------------------------------------------------
+#                     Players GUI
+#----------------------------------------------------------
+players_color: "&2&l{player}"
+players_more: "&c더 많은 작업을 수행하려면 저를 클릭하세요"
+players_previous: "&c&l이전"
+players_page: "&a&l페이지"
+players_next: "&2&l다음"
+players_back: "&c&l돌아가기"
+#----------------------------------------------------------
+#                     Plugins GUI
+#----------------------------------------------------------
+plugins_back: "&c&l돌아가기"
+#----------------------------------------------------------
+#                     Commands GUI
+#----------------------------------------------------------
+commands_back: "&c&l돌아가기"
+#----------------------------------------------------------
+#                     Unban GUI
+#----------------------------------------------------------
+unban_color: "&2&l{player}"
+unban_more: "&c이 플레이어를 언밴하려면 여기를 클릭하세요"
+unban_previous: "&c&l이전"
+unban_page: "&a&l페이지"
+unban_next: "&2&l다음"
+unban_back: "&c&l뒤로가기"
+#----------------------------------------------------------
+#                     Unmute GUI
+#----------------------------------------------------------
+unmute_color: "&2&l{player}"
+unmute_more: "&c이 플레이어를 언뮤트하려면 여기를 클릭하세요"
+unmute_previous: "&c&l이전"
+unmute_page: "&a&l페이지"
+unmute_next: "&2&l다음"
+unmute_back: "&c&l뒤로가기"
+#----------------------------------------------------------
+#                 Players Settings GUI
+#----------------------------------------------------------
+players_settings_info: "&2&l{player}"
+players_settings_actions: "&9&l액션"
+players_settings_money: "&2&l돈"
+players_settings_kick_player: "&8&l플레이어 킥"
+players_settings_ban_player: "&8&l플레이어 밴"
+players_settings_back: "&c&l돌아가기"
+#----------------------------------------------------------
+#                   Actions GUI
+#----------------------------------------------------------
+actions_heal: "&e&l힐"
+actions_feed: "&7&l밥"
+actions_info: "&2&l{player}"
+actions_survival: "&a&l서바이벌"
+actions_adventure: "&2&l모험"
+actions_creative: "&3&l크리에이티브"
+actions_spectator: "&9&l관전"
+actions_teleport_to_player: "&d&l플레이어에게 텔레포트 하기"
+actions_kill_player: "&8&l플레이어 죽이기"
+actions_burn_player: "&c&l플레이어 태우기"
+actions_teleport_player_to_you: "&d&l플레이어를 자신에게 텔레포트 하기"
+actions_god_enabled: "&a&lGod 모드"
+actions_god_disabled: "&c&lGod 모드"
+actions_potions: "&c&l포션"
+actions_spawner: "&8&l스포너"
+actions_inventory: "&a&l인벤토리"
+actions_vanish_enabled: "&a&l사라지기"
+actions_vanish_disabled: "&c&l사라지기"
+actions_lightning: "&5&l번개"
+actions_firework: "&4&l폭죽"
+actions_fakeop: "&c&l가짜 오피"
+actions_custom: "&6&l커스텀 커맨드"
+actions_back: "&c&l돌아가기"
+#----------------------------------------------------------
+#                       Kick GUI
+#----------------------------------------------------------
+kick: "&4당신은 다음과 같은 이유로 킥을 당했습니다 : "
+kick_back: "&c&l돌아가기"
+#----------------------------------------------------------
+#                       Ban GUI
+#----------------------------------------------------------
+ban: "&4당신은 다음과 같은 이유로 밴을 당했습니다 : "
+ban_time: "&c다음 날짜에 밴이 만료됩니다 : &c&l"
+ban_years: "&e&l년"
+ban_months: "&e&l달"
+ban_days: "&e&l일"
+ban_hours: "&e&l시간"
+ban_minutes: "&e&l분"
+ban_hacking: "&7&l해킹"
+ban_griefing: "&6&l테러"
+ban_spamming: "&d&l도배"
+ban_advertising: "&3&l광고"
+ban_swearing: "&e&l비속어 사용"
+ban_silence_disabled: "&c&l침묵"
+ban_silence_enabled: "&a&l침묵"
+ban_back: "&c&l돌아가기"
+#----------------------------------------------------------
+#                     Potions GUI
+#----------------------------------------------------------
+potions_night_vision: "&8&l야간투시"
+potions_invisibility: "&7&l투명화"
+potions_jump_boost: "&a&l점프 강화"
+potions_fire_resistance: "&c&l화염 저항"
+potions_speed: "&b&l속도 증가"
+potions_slowness: "&4&l속도 감소"
+potions_water_breathing: "&9&l수중 호흡"
+potions_instant_health: "&a&l즉시 치유"
+potions_instant_damage: "&4&l즉시 피해"
+potions_poison: "&5&l독"
+potions_regeneration: "&e&l재생"
+potions_strength: "&e&l힘"
+potions_weakness: "&4&l나약함"
+potions_luck: "&6&l행운"
+potions_slow_falling: "&3&l느린 낙하"
+potions_time: "&a&l시간"
+potions_remove_all: "&4&l효과 전부 제거"
+potions_level: "&a&l레벨"
+potions_back: "&c&l돌아가기"
+#----------------------------------------------------------
+#                     Spawner GUI
+#----------------------------------------------------------
+spawner_bat: "&a&l박쥐"
+spawner_blaze: "&c&l블레이즈"
+spawner_cat: "&a&l고양이"
+spawner_cave_spider: "&c&l동굴 거미"
+spawner_chicken: "&a&l닭"
+spawner_cod: "&b&l대구"
+spawner_cow: "&a&l소"
+spawner_creeper: "&c&l크리퍼"
+spawner_dolphin: "&b&l돌고래"
+spawner_donkey: "&a&l당나귀"
+spawner_drowned: "&c&l드라운드"
+spawner_elder_guardian: "&c&l엘더 가디언"
+spawner_enderman: "&c&l엔더맨"
+spawner_endermite: "&c&l엔더마이트"
+spawner_evoker: "&c&l소환사"
+spawner_fox: "&a&l여우"
+spawner_ghast: "&c&l가스트"
+spawner_guardian: "&c&l가디언"
+spawner_horse: "&a&l말"
+spawner_husk: "&c&l허스크"
+spawner_llama: "&a&라마"
+spawner_magma_cube: "&c&l마그마 큐브"
+spawner_mooshroom: "&a&l무시룸"
+spawner_mule: "&a&l노새"
+spawner_ocelot: "&a&l오실롯"
+spawner_panda: "&a&l판다"
+spawner_parrot: "&a&l앵무새"
+spawner_phantom: "&c&l팬텀"
+spawner_pig: "&a&l돼지"
+spawner_pillager: "&c&l약탈자"
+spawner_polar_bear: "&a&l북극곰"
+spawner_pufferfish: "&b&l복어"
+spawner_rabbit: "&a&l토끼"
+spawner_ravager: "&c&l파괴수"
+spawner_salmon: "&b&l연어"
+spawner_sheep: "&a&l양"
+spawner_shulker: "&c&l셜커"
+spawner_silverfish: "&c&l좀벌레"
+spawner_skeleton: "&c&l스켈레톤"
+spawner_skeleton_horse: "&c&l스켈레톤 말"
+spawner_slime: "&c&l슬라임"
+spawner_spider: "&c&l거미"
+spawner_squid: "&b&l오징어"
+spawner_stray: "&c&l스트레이"
+spawner_trader_llama: "&a&l상인 라마"
+spawner_tropical_fish: "&b&l열대어"
+spawner_turtle: "&a&l거북이"
+spawner_vex: "&c&l벡스"
+spawner_villager: "&a&l주민"
+spawner_vindicator: "&c&l변명자"
+spawner_wandering_trader: "&a&l떠돌이 상인"
+spawner_witch: "&c&l마녀"
+spawner_wither: "&c&l위더"
+spawner_wolf: "&a&l늑대"
+spawner_zombie: "&c&l좀비"
+spawner_zombie_pigman: "&c&l좀비 피그맨"
+spawner_zombie_villager: "&c&l좀비 주민"
+spawner_back: "&c&l돌아가기"
+#----------------------------------------------------------
+#                      Money GUI
+#----------------------------------------------------------
+money_give: "&2&l주기"
+money_set: "&9&l설정"
+money_take: "&c&l가져가기"
+money_back: "&c&l돌아가기"
+#----------------------------------------------------------
+#                      Money Amount GUI
+#----------------------------------------------------------
+money_amount_back: "&c&l돌아가기"
+#----------------------------------------------------------
+#                    Inventory GUI
+#----------------------------------------------------------
+inventory_refresh: "&a&l새로고침"
+inventory_clear: "&b&l클리어"
+inventory_back: "&c&l돌아가기"
+#----------------------------------------------------------
+#                       Messages
+#----------------------------------------------------------
+message_target_player_teleport: "&a{player}(으)로 텔레포트되었습니다."
+message_player_kill: "&a{player}을(를) 죽였습니다."
+message_player_burn: "&a{player}에게 &c불&a을 붙였습니다!"
+message_target_player_creeper: "&a&l크리퍼,어우우우 맨!"
+message_player_creeper: "&a크리퍼가 {player}에게 생성되었습니다."
+message_target_player_heal: "&e{player}이(가) 당신을 치료했습니다."
+message_player_heal: "&a{player}이(가) 치료되었습니다."
+message_target_player_feed: "&e{player}이(가) 배고픔을 채워줬습니다."
+message_player_feed: "&a{player}에게 배고픔을 채워줬습니다."
+message_player_kick: "&a{player}이(가) 킥을 당하였습니다."
+message_player_ban: "&a{player}이(가) 밴을 당하였습니다."
+message_player_god_enabled: "&a{player}이(가) god(신) 모드에 있습니다."
+message_player_god_disabled: "&a{player}이(가) 더 이상 god(신) 모드가 아닙니다."
+message_target_player_god_enabled: "&a{player}이(가) god(신) 모드를 활성화 했습니다!"
+message_target_player_god_disabled: "&a{player}이(가) god(신) 모드를 비활성화 했습니다!"
+message_target_player_potions: "&a{player}이(가) {potion}&a 이펙트를 {time} 분동안 적용했습니다."
+message_player_potions: "&a{player}에게 {potion}&a 이펙트를 {time} 분동안 적용했습니다."
+message_target_player_potions_remove: "&a{player} &a당신의 포션 호과를 &c제거 &a했습니다."
+message_player_potions_remove: "&a당신은 {player}에게 있는 포션 호과를 제거 했습니다."
+message_heal: "&a당신은 치료되었습니다."
+message_feed: "&a당신은 배고픔이 채워졌습니다."
+message_god_enabled: "&agod 모드를 활성화했습니다."
+message_god_disabled: "&agod 모드를 비활성화했습니다."
+message_kill: "&c당신은 자살하였습니다."
+message_burn: "&c당신은 불에 지펴졌습니다."
+message_potions_remove: "&a물약 효과를 모두 제거했습니다."
+message_potions: "&a{time}분 동안 {potion}&a 효과를 자신에게 설정합니다."
+message_maintenance: "&a서버가 현재 &c점검 모드&a에 있습니다. 나중에 다시 와주세요."
+message_maintenance_enabled: "&a점검 모드가 &a&l활성화 &a되었습니다."
+message_maintenance_disabled: "&a점검 모드가 &c&l비활성화 &a되었습니다."
+message_player_not_found: "&c플레이어가 지금 존재하지 않습니다!"
+message_ban_bypass: "&c당신은 이 플레이어를 밴할수 없습니다!"
+message_kick_bypass: "&c당신은 이 플레이어를 킥할수 없습니다!"
+message_give: "&a{amount}원을 자신에게 보내고 이제 {balance}원이 있습니다."
+message_player_give: "&a{player}에게 {amount}원을 주었으며 현재 {balance}원이 있습니다."
+message_target_player_give: "&a{player}이(가) {amount}원을 주었으며 현재 {balance}원이 있습니다."
+message_set: "&a{amount}원으로 설정했습니다."
+message_player_set: "&a{player}의 돈을 {금액}원으로 설정했습니다."
+message_target_player_set: "&a{player}이(가) 돈을 {금액}원으로 설정했습니다."
+message_take: "&a{amount}원을 당신에게서 가져가고 이제 {balance}원이 있습니다."
+message_player_take: "&a{player}에서 {amount}원을 가져가고 이제 {balance}원이 있습니다."
+message_target_player_take: "&c{player}이(가) {amount}원을 가져가고 이제 {balance}원이 있습니다."
+message_transaction_error: "&c거래에 문제가 생겼습니다!"
+message_take_error: "&c가진 돈보다 더 많은 돈을 가져갈 수는 없습니다!"
+message_player_take_error: "&c플레이어가 가진 돈보다 더 많은 돈을 가져갈 수는 없습니다!"
+message_visible: "&a당신은 지금 다른 플레이어들에게&a&l 보입니다&a. "
+message_player_visible: "&a{player}가 지금 다른 플레이어들에게 &a&l 보입니다&a."
+message_hide: "&a당신은 지금 다른 플레이어들에게 w&c&l 보이지 않습니다&a."
+message_player_hide: "&a{player}가 지금 다른 플레이어들에게&c&l 보이지 않습니다&a."
+message_unban_player: "&a{player}이(가) 언밴 되었습니다."
+message_unmute_player: "&a{player}이(가) 언뮤트 되었습니다."
+message_initializing_start: "&a플러그인 초기화중..."
+message_initializing_finish: "&aGUI를 사용할 준비가 되었습니다."
+message_already_initializing: "&cGUI가 이미 초기화 중입니다..."
+message_reload_start: "&a플러그인 리로드중..."
+message_reload_finish: "&a플러그인이 성공적으로 리로드 되었습니다!"
+message_admin_chat_enabled: "&a관리자 채팅이 활성화 되었습니다."
+message_admin_chat_disabled: "&c관리자 채팅이 비활성화 되었습니다."
+message_admin_chat_server_disabled: "&c이 서버에서 관리자 채팅을 사용할 수 없습니다."

@@ -27,6 +27,8 @@ public class AdminGUI extends JavaPlugin {
 
     String username = "%%__USERNAME__%%";
 
+    public static int gui_type = 0;
+
     //SQL
     public static MySQL mySQL;
     public static Connection conn = null;
@@ -50,6 +52,10 @@ public class AdminGUI extends JavaPlugin {
     //Chinese
     private File ch = null;
     private YamlConfiguration chin = new YamlConfiguration();
+
+    //Korean
+    private File ko = null;
+    private YamlConfiguration kore = new YamlConfiguration();
 
     //Italian
     private File it = null;
@@ -110,6 +116,7 @@ public class AdminGUI extends JavaPlugin {
         this.en = new File(getDataFolder(), "Languages/English.yml");
         this.ge = new File(getDataFolder(), "Languages/German.yml");
         this.ch = new File(getDataFolder(), "Languages/Chinese.yml");
+        this.ko = new File(getDataFolder(), "Languages/Korean.yml");
         this.it = new File(getDataFolder(), "Languages/Italian.yml");
         this.ru = new File(getDataFolder(), "Languages/Russian.yml");
         this.bu = new File(getDataFolder(), "Languages/Bulgarian.yml");
@@ -138,6 +145,8 @@ public class AdminGUI extends JavaPlugin {
         if(setupEconomy()){
             vault = true;
         }
+
+        gui_type = getConf().getInt("gui_type", 0);
 
         //SQL
         if(getConf().getBoolean("mysql", false)){
@@ -174,37 +183,44 @@ public class AdminGUI extends JavaPlugin {
         this.getCommand("adminchat").setExecutor(new AdminChat());
 
         //Skulls
-        AdminUI.skulls.put("0qt", Item.pre_createPlayerHead("0qt"));
-        AdminUI.skulls.put("Black1_TV", Item.pre_createPlayerHead("Black1_TV"));
-        AdminUI.skulls.put("mattijs", Item.pre_createPlayerHead("mattijs"));
-        AdminUI.skulls.put("BKing2012", Item.pre_createPlayerHead("BKing2012"));
-        AdminUI.skulls.put("AverageJoe", Item.pre_createPlayerHead("AverageJoe"));
-        AdminUI.skulls.put("LobbyPlugin", Item.pre_createPlayerHead("LobbyPlugin"));
-        AdminUI.skulls.put("MHF_Redstone", Item.pre_createPlayerHead("MHF_Redstone"));
-        AdminUI.skulls.put("Ground15", Item.pre_createPlayerHead("Ground15"));
-        AdminUI.skulls.put("EDDxample", Item.pre_createPlayerHead("EDDxample"));
-        AdminUI.skulls.put("LapisBlock", Item.pre_createPlayerHead("LapisBlock"));
-        AdminUI.skulls.put("emack0714", Item.pre_createPlayerHead("emack0714"));
-        AdminUI.skulls.put("Super_Sniper", Item.pre_createPlayerHead("Super_Sniper"));
-        AdminUI.skulls.put("IM_", Item.pre_createPlayerHead("IM_"));
-        AdminUI.skulls.put("Burger_guy", Item.pre_createPlayerHead("Burger_guy"));
-        AdminUI.skulls.put("MFH_Spawner", Item.pre_createPlayerHead("MFH_Spawner"));
-        AdminUI.skulls.put("MrSnowDK", Item.pre_createPlayerHead("MrSnowDK"));
-        AdminUI.skulls.put("ZeeFear", Item.pre_createPlayerHead("ZeeFear"));
-        AdminUI.skulls.put("Opp", Item.pre_createPlayerHead("Opp"));
-        AdminUI.skulls.put("haohanklliu", Item.pre_createPlayerHead("haohanklliu"));
-        AdminUI.skulls.put("raichuthink", Item.pre_createPlayerHead("raichuthink"));
-        AdminUI.skulls.put("ThaBrick", Item.pre_createPlayerHead("ThaBrick"));
-        AdminUI.skulls.put("Mannahara", Item.pre_createPlayerHead("Mannahara"));
-        AdminUI.skulls.put("Zyne", Item.pre_createPlayerHead("Zyne"));
-        AdminUI.skulls.put("3i5g00d", Item.pre_createPlayerHead("3i5g00d"));
-        AdminUI.skulls.put("MHF_ArrowLeft", Item.pre_createPlayerHead("MHF_ArrowLeft"));
-        AdminUI.skulls.put("MHF_Question", Item.pre_createPlayerHead("MHF_Question"));
-        AdminUI.skulls.put("MHF_ArrowRight", Item.pre_createPlayerHead("MHF_ArrowRight"));
-        AdminUI.skulls.put("ZiGmUnDo", Item.pre_createPlayerHead("ZiGmUnDo"));
-        AdminUI.skulls.put("Push_red_button", Item.pre_createPlayerHead("Push_red_button"));
-        AdminUI.skulls.put("ElMarcosFTW", Item.pre_createPlayerHead("ElMarcosFTW"));
-        AdminUI.skulls.put("DavidGriffiths", Item.pre_createPlayerHead("DavidGriffiths"));
+        switch (gui_type){
+            case 1:
+                AdminUI.skulls.put("0qt", Item.pre_createPlayerHead("0qt"));
+                AdminUI.skulls.put("Black1_TV", Item.pre_createPlayerHead("Black1_TV"));
+                AdminUI.skulls.put("mattijs", Item.pre_createPlayerHead("mattijs"));
+                AdminUI.skulls.put("BKing2012", Item.pre_createPlayerHead("BKing2012"));
+                AdminUI.skulls.put("AverageJoe", Item.pre_createPlayerHead("AverageJoe"));
+                AdminUI.skulls.put("LobbyPlugin", Item.pre_createPlayerHead("LobbyPlugin"));
+                AdminUI.skulls.put("MHF_Redstone", Item.pre_createPlayerHead("MHF_Redstone"));
+                AdminUI.skulls.put("Ground15", Item.pre_createPlayerHead("Ground15"));
+                AdminUI.skulls.put("EDDxample", Item.pre_createPlayerHead("EDDxample"));
+                AdminUI.skulls.put("LapisBlock", Item.pre_createPlayerHead("LapisBlock"));
+                AdminUI.skulls.put("emack0714", Item.pre_createPlayerHead("emack0714"));
+                AdminUI.skulls.put("Super_Sniper", Item.pre_createPlayerHead("Super_Sniper"));
+                AdminUI.skulls.put("IM_", Item.pre_createPlayerHead("IM_"));
+                AdminUI.skulls.put("Burger_guy", Item.pre_createPlayerHead("Burger_guy"));
+                AdminUI.skulls.put("MFH_Spawner", Item.pre_createPlayerHead("MFH_Spawner"));
+                AdminUI.skulls.put("MrSnowDK", Item.pre_createPlayerHead("MrSnowDK"));
+                AdminUI.skulls.put("ZeeFear", Item.pre_createPlayerHead("ZeeFear"));
+                AdminUI.skulls.put("Opp", Item.pre_createPlayerHead("Opp"));
+                AdminUI.skulls.put("haohanklliu", Item.pre_createPlayerHead("haohanklliu"));
+                AdminUI.skulls.put("raichuthink", Item.pre_createPlayerHead("raichuthink"));
+                AdminUI.skulls.put("ThaBrick", Item.pre_createPlayerHead("ThaBrick"));
+                AdminUI.skulls.put("Mannahara", Item.pre_createPlayerHead("Mannahara"));
+                AdminUI.skulls.put("Zyne", Item.pre_createPlayerHead("Zyne"));
+                AdminUI.skulls.put("3i5g00d", Item.pre_createPlayerHead("3i5g00d"));
+                AdminUI.skulls.put("MHF_ArrowLeft", Item.pre_createPlayerHead("MHF_ArrowLeft"));
+                AdminUI.skulls.put("MHF_Question", Item.pre_createPlayerHead("MHF_Question"));
+                AdminUI.skulls.put("MHF_ArrowRight", Item.pre_createPlayerHead("MHF_ArrowRight"));
+                AdminUI.skulls.put("ZiGmUnDo", Item.pre_createPlayerHead("ZiGmUnDo"));
+                AdminUI.skulls.put("Push_red_button", Item.pre_createPlayerHead("Push_red_button"));
+                AdminUI.skulls.put("ElMarcosFTW", Item.pre_createPlayerHead("ElMarcosFTW"));
+                AdminUI.skulls.put("DavidGriffiths", Item.pre_createPlayerHead("DavidGriffiths"));
+                break;
+            default:
+                AdminUI.skulls.put("Black1_TV", Item.pre_createPlayerHead("Black1_TV"));
+                break;
+        }
 
     }
 
@@ -262,6 +278,10 @@ public class AdminGUI extends JavaPlugin {
 
         if (!this.ch.exists()) {
             saveResource("Languages/Chinese.yml", false);
+        }
+
+        if (!this.ko.exists()) {
+            saveResource("Languages/Korean.yml", false);
         }
 
         if(!this.it.exists()){
@@ -340,6 +360,11 @@ public class AdminGUI extends JavaPlugin {
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
+        try {
+            this.kore.load(this.ko);
+        } catch (IOException | InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
         try{
             this.ital.load(this.it);
         }catch (IOException | InvalidConfigurationException e){
@@ -414,6 +439,8 @@ public class AdminGUI extends JavaPlugin {
     public YamlConfiguration getGerm() { return this.germ; }
 
     public YamlConfiguration getChin() { return this.chin; }
+
+    public YamlConfiguration getKore() { return this.kore; }
 
     public YamlConfiguration getItal() { return this.ital; }
 
@@ -518,7 +545,7 @@ public class AdminGUI extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Name: &bAdminGUI-Premium"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Developer: &bBlack1_TV"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &b" + username));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b4.0.9"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b4.1.0"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
