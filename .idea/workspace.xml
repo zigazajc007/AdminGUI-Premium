@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/PlayerInteractListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/AdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/AdminGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/TabCompletion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/TabCompletion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/commands/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/commands/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/commands/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/commands/Admin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/utils/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/utils/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/AdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/AdminGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/TabCompletion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/TabCompletion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,13 +193,6 @@
       <workItem from="1577725216137" duration="7109000" />
       <workItem from="1578348949962" duration="293000" />
       <workItem from="1578422894075" duration="968000" />
-    </task>
-    <task id="LOCAL-00023" summary="Added custom kick">
-      <created>1572437173139</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1572437173139</updated>
     </task>
     <task id="LOCAL-00024" summary="Removed useless kick messages in language.yml">
       <created>1572437717871</created>
@@ -539,7 +530,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590061397632</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="Added Admin tools and fixed some small visual bugs.">
+      <created>1590485710560</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1590485710560</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -561,7 +559,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/LiteBansAPI" />
     </ignored-roots>
-    <MESSAGE value="Updated Spanish language." />
     <MESSAGE value="Fixed Italian language." />
     <MESSAGE value="Now helmet will be saved when player initialize gui." />
     <MESSAGE value="Updated XMaterials to support 1.15 minecraft version, fixed French language and added silent ban option." />
@@ -586,7 +583,8 @@
     <MESSAGE value="Fixed Russian language." />
     <MESSAGE value="Fixed English.yml file." />
     <MESSAGE value="Now users can change between old (Minecraft items) and new (Player heads) GUI and Korean language is added." />
-    <option name="LAST_COMMIT_MESSAGE" value="Now users can change between old (Minecraft items) and new (Player heads) GUI and Korean language is added." />
+    <MESSAGE value="Added Admin tools and fixed some small visual bugs." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Admin tools and fixed some small visual bugs." />
   </component>
   <component name="WindowStateProjectService">
     <state x="543" y="211" width="800" height="719" key="#Plugins" timestamp="1586843662300">
@@ -613,30 +611,30 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="693" y="303" width="524" height="508" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1585167161065" />
-    <state x="757" y="219" width="810" height="812" key="CommitChangelistDialog2" timestamp="1590061397531">
+    <state x="757" y="219" width="810" height="812" key="CommitChangelistDialog2" timestamp="1590485710479">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="757" y="219" width="810" height="812" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1590061397531" />
+    <state x="757" y="219" width="810" height="812" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1590485710479" />
     <state x="902" y="326" width="424" height="491" key="FileChooserDialogImpl" timestamp="1588844283770">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="902" y="326" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1588844283770" />
-    <state width="1878" height="327" key="GridCell.Tab.0.bottom" timestamp="1590485345642">
+    <state width="1878" height="327" key="GridCell.Tab.0.bottom" timestamp="1590485539145">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1878" height="327" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1590485345642" />
-    <state width="1878" height="327" key="GridCell.Tab.0.center" timestamp="1590485345640">
+    <state width="1878" height="327" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1590485539145" />
+    <state width="1878" height="327" key="GridCell.Tab.0.center" timestamp="1590485539144">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1878" height="327" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1590485345640" />
-    <state width="1878" height="327" key="GridCell.Tab.0.left" timestamp="1590485345639">
+    <state width="1878" height="327" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1590485539144" />
+    <state width="1878" height="327" key="GridCell.Tab.0.left" timestamp="1590485539143">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1878" height="327" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1590485345639" />
-    <state width="1878" height="327" key="GridCell.Tab.0.right" timestamp="1590485345641">
+    <state width="1878" height="327" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1590485539143" />
+    <state width="1878" height="327" key="GridCell.Tab.0.right" timestamp="1590485539144">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1878" height="327" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1590485345641" />
+    <state width="1878" height="327" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1590485539144" />
     <state width="1878" height="342" key="GridCell.Tab.1.bottom" timestamp="1586852130737">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -657,10 +655,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="459" y="133" width="1024" height="852" key="SettingsEditor/0.27.1920.1053@0.27.1920.1053" timestamp="1587384088844" />
-    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1590061401887">
+    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1590485713799">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1590061401887" />
+    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1590485713799" />
     <state x="548" y="372" width="578" height="441" key="com.intellij.ide.util.TipDialog" timestamp="1586165648561">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>

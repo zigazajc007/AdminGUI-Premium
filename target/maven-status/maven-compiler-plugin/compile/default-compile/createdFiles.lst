@@ -9,6 +9,7 @@ com/rabbitcompany/admingui/utils/Fireworks.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_14.class
 com/rabbitcompany/admingui/utils/Colors.class
 com/rabbitcompany/admingui/utils/Item.class
+com/rabbitcompany/admingui/listeners/PlayerInteractListener.class
 com/rabbitcompany/admingui/listeners/PlayerMessageListener.class
 com/rabbitcompany/admingui/utils/InventoryGUI.class
 com/rabbitcompany/admingui/MetricsLite$2.class
