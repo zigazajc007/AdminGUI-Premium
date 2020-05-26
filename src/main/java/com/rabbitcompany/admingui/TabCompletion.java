@@ -33,6 +33,8 @@ public class TabCompletion implements TabCompleter {
                     completions.add("reload");
                 }
 
+                completions.add("tools");
+
                 completions.add("initialize");
 
            }else if(args.length == 2 && args[0].equals("initialize")){

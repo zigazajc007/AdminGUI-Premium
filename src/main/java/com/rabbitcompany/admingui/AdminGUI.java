@@ -171,6 +171,11 @@ public class AdminGUI extends JavaPlugin {
         new PlayerJoinListener(this);
         new PlayerLeaveListener(this);
         new PlayerLoginListener(this);
+
+        if(getConf().getBoolean("admin_tools_enabled", true)){
+            new PlayerInteractListener(this);
+        }
+
         if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){
             new PlayerPlaceholderMessageListener(this);
         }else{

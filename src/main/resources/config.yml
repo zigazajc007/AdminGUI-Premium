@@ -51,6 +51,13 @@ default_language: "English"
 # Here you can specify default GUI color - Only works with stained glass panes.
 gui_default_color: "LIGHT_BLUE_STAINED_GLASS_PANE"
 #----------------------------------------------------------
+#                       Admin Tools
+#----------------------------------------------------------
+admin_tools_enabled: true
+admin_tools_name: "&c&lAdmin Tools"
+admin_tools_material: "NETHER_STAR"
+admin_tools_lore: "&dClick me to open Admin GUI"
+#----------------------------------------------------------
 #            Admin Chat - Support PlaceholderAPI
 #----------------------------------------------------------
 # Do you want Admin Staff Chat to be enabled?

@@ -1,6 +1,7 @@
 package com.rabbitcompany.admingui.commands;
 
 import com.rabbitcompany.admingui.AdminGUI;
+import com.rabbitcompany.admingui.XMaterial;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Initialize;
 import com.rabbitcompany.admingui.utils.Message;
@@ -10,8 +11,10 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.UUID;
+import java.util.*;
 
 public class Admin implements CommandExecutor {
 
@@ -52,6 +55,21 @@ public class Admin implements CommandExecutor {
                     }
                 }else if(args[0].equals("initialize")) {
                     player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_initialize"));
+                }else if(args[0].equals("tools")){
+                    if(player.hasPermission("admingui.admin") && AdminGUI.getInstance().getConf().getBoolean("admin_tools_enabled", true)){
+                        List<String> lore = Collections.singletonList(Message.chat(AdminGUI.getInstance().getConf().getString("admin_tools_lore", "&dClick me to open Admin GUI")));
+                        ItemStack item = new ItemStack(XMaterial.matchXMaterial(AdminGUI.getInstance().getConf().getString("admin_tools_material", "NETHER_STAR")).get().parseMaterial(true), 1, XMaterial.matchXMaterial(AdminGUI.getInstance().getConf().getString("admin_tools_material", "NETHER_STAR")).get().getData());
+
+                        ItemMeta meta = item.getItemMeta();
+                        meta.setDisplayName(Message.chat(AdminGUI.getInstance().getConf().getString("admin_tools_name", "&c&lAdmin Tools")));
+                        meta.setLore(lore);
+
+                        item.setItemMeta(meta);
+
+                        player.getInventory().setItem(0, item);
+                    }else{
+                        player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "permission"));
+                    }
                 }else{
                     Player target_player = Bukkit.getServer().getPlayer(ChatColor.stripColor(args[0]));
                     if(target_player != null){
@@ -72,22 +90,24 @@ public class Admin implements CommandExecutor {
                     }
                 }
             }else if(args.length == 2){
-                if(args[0].equals("initialize") && (args[1].equals("gui") || args[1].equals("players"))){
+                if(args[0].equals("initialize")){
                     if(args[1].equals("gui")){
                         if(!AdminUI.task_gui.containsKey(player.getUniqueId()) && !AdminUI.task_players.containsKey(player.getUniqueId())){
                             Initialize.GUI(player, player.getInventory().getHelmet());
                         }else{
                             player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_already_initializing"));
                         }
-                    }else{
+                    }else if(args[1].equals("players")){
                         if(!AdminUI.task_gui.containsKey(player.getUniqueId()) && !AdminUI.task_players.containsKey(player.getUniqueId())){
                             Initialize.Players(player, player.getInventory().getHelmet());
                         }else{
                             player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_already_initializing"));
                         }
+                    }else{
+                        player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_initialize"));
                     }
                 }else{
-                    player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_initialize"));
+                    player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_arguments"));
                 }
             }else{
                 player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_arguments"));
