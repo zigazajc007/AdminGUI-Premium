@@ -39,75 +39,75 @@ public class AdminGUI extends JavaPlugin {
 
     //Config
     private File co = null;
-    private YamlConfiguration conf = new YamlConfiguration();
+    private final YamlConfiguration conf = new YamlConfiguration();
 
     //English
     private File en = null;
-    private YamlConfiguration engl = new YamlConfiguration();
+    private final YamlConfiguration engl = new YamlConfiguration();
 
     //German
     private File ge = null;
-    private YamlConfiguration germ = new YamlConfiguration();
+    private final YamlConfiguration germ = new YamlConfiguration();
 
     //Chinese
     private File ch = null;
-    private YamlConfiguration chin = new YamlConfiguration();
+    private final YamlConfiguration chin = new YamlConfiguration();
 
     //Korean
     private File ko = null;
-    private YamlConfiguration kore = new YamlConfiguration();
+    private final YamlConfiguration kore = new YamlConfiguration();
 
     //Italian
     private File it = null;
-    private YamlConfiguration ital = new YamlConfiguration();
+    private final YamlConfiguration ital = new YamlConfiguration();
 
     //Russian
     private File ru = null;
-    private YamlConfiguration russ = new YamlConfiguration();
+    private final YamlConfiguration russ = new YamlConfiguration();
 
     //Bulgarian
     private File bu = null;
-    private YamlConfiguration bulg = new YamlConfiguration();
+    private final YamlConfiguration bulg = new YamlConfiguration();
 
     //Spanish
     private File sp = null;
-    private YamlConfiguration span = new YamlConfiguration();
+    private final YamlConfiguration span = new YamlConfiguration();
 
     //French
     private File fr = null;
-    private YamlConfiguration fren = new YamlConfiguration();
+    private final YamlConfiguration fren = new YamlConfiguration();
 
     //Dutch
     private File du = null;
-    private YamlConfiguration dutc = new YamlConfiguration();
+    private final YamlConfiguration dutc = new YamlConfiguration();
 
     //Swedish
     private File sw = null;
-    private YamlConfiguration swed = new YamlConfiguration();
+    private final YamlConfiguration swed = new YamlConfiguration();
 
     //Portuguese
     private File po = null;
-    private YamlConfiguration port = new YamlConfiguration();
+    private final YamlConfiguration port = new YamlConfiguration();
 
     //Hebrew
     private File he = null;
-    private YamlConfiguration hebr = new YamlConfiguration();
+    private final YamlConfiguration hebr = new YamlConfiguration();
 
     //Kick
     private File k = null;
-    private YamlConfiguration kick = new YamlConfiguration();
+    private final YamlConfiguration kick = new YamlConfiguration();
 
     //Plugins
     private File p = null;
-    private YamlConfiguration plug = new YamlConfiguration();
+    private final YamlConfiguration plug = new YamlConfiguration();
 
     //Commands
     private File c = null;
-    private YamlConfiguration comm = new YamlConfiguration();
+    private final YamlConfiguration comm = new YamlConfiguration();
 
     //Commands other
     private File o = null;
-    private YamlConfiguration como = new YamlConfiguration();
+    private final YamlConfiguration como = new YamlConfiguration();
 
     @Override
     public void onEnable() {
@@ -550,7 +550,7 @@ public class AdminGUI extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Name: &bAdminGUI-Premium"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Developer: &bBlack1_TV"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &b" + username));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b4.1.1"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b4.1.2"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));

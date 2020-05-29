@@ -56,6 +56,7 @@ gui_default_color: "LIGHT_BLUE_STAINED_GLASS_PANE"
 admin_tools_enabled: true
 admin_tools_name: "&c&lAdmin Tools"
 admin_tools_material: "NETHER_STAR"
+admin_tools_enchantment: false
 admin_tools_lore: "&dClick me to open Admin GUI"
 #----------------------------------------------------------
 #            Admin Chat - Support PlaceholderAPI
