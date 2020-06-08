@@ -92,6 +92,9 @@ public class AdminUI {
     //Date Format
     public static SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
+    //Command Spy
+    public static HashMap<UUID, Boolean> command_spy = new HashMap<>();
+
     //Maintenance mode
     public static boolean maintenance_mode = false;
 
@@ -1241,7 +1244,7 @@ public class AdminUI {
             Item.create(inv_potions, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
         }
 
-        if (Bukkit.getVersion().contains("1.15") || Bukkit.getVersion().contains("1.14") || Bukkit.getVersion().contains("1.13")) {
+        if (Bukkit.getVersion().contains("1.16") || Bukkit.getVersion().contains("1.15") || Bukkit.getVersion().contains("1.14") || Bukkit.getVersion().contains("1.13")) {
             for(Version_14 potion : Version_14.values()){
                 Item.create(inv_potions, "POTION", 1, potion.ordinal() + 1, Message.getMessage(p.getUniqueId(), potion.name()));
             }
@@ -1278,7 +1281,7 @@ public class AdminUI {
 
         target_player.put(p, target);
 
-        if (Bukkit.getVersion().contains("1.15") || Bukkit.getVersion().contains("1.14")) {
+        if (Bukkit.getVersion().contains("1.16") || Bukkit.getVersion().contains("1.15") || Bukkit.getVersion().contains("1.14")) {
             for(Material_Version_14 material : Material_Version_14.values()){
                 Item.create(inv_spawner, material.name(), 1, material.ordinal()+1, Message.getMessage(p.getUniqueId(), Message_Version_14.values()[material.ordinal()].name()));
             }

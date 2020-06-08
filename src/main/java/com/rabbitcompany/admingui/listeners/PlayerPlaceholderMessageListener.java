@@ -29,8 +29,8 @@ public class PlayerPlaceholderMessageListener implements Listener {
         Player p = event.getPlayer();
         String message = event.getMessage();
 
-        String chat_format = PlaceholderAPI.setPlaceholders(event.getPlayer(), adminGUI.getConf().getString("ac_format"));
-        String chat_staff_format = PlaceholderAPI.setPlaceholders(event.getPlayer(), adminGUI.getConf().getString("asc_format"));
+        String chat_format = PlaceholderAPI.setPlaceholders(p, adminGUI.getConf().getString("ac_format"));
+        String chat_staff_format = PlaceholderAPI.setPlaceholders(p, adminGUI.getConf().getString("asc_format"));
 
         if(p.hasPermission("admingui.chat.staff") && AdminUI.admin_staff_chat.getOrDefault(p.getUniqueId(), false)){
             event.setCancelled(true);
@@ -68,6 +68,7 @@ public class PlayerPlaceholderMessageListener implements Listener {
                     event.setFormat(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message));
                 }
             }
+
         }
     }
 

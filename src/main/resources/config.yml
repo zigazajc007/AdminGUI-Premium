@@ -75,6 +75,13 @@ ac_filter:
   - "cock"
   - "bitch"
 #----------------------------------------------------------
+#         Admin Command Spy - Support PlaceholderAPI
+#----------------------------------------------------------
+# Do you want Admin Command Spy to be enabled?
+acs_enabled: false
+# Here you can set your own Admin Command Spy format (Valid tags are {name}, {display_name} and {message})
+acs_format: "&7[Command Spy] {name} &7> {message}"
+#----------------------------------------------------------
 #         Admin Staff Chat - Support PlaceholderAPI
 #----------------------------------------------------------
 # Do you want Admin Staff Chat to be enabled?

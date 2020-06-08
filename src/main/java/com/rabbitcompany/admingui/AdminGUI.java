@@ -178,14 +178,17 @@ public class AdminGUI extends JavaPlugin {
 
         if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){
             new PlayerPlaceholderMessageListener(this);
+            new PlayerPlaceholderCommandListener(this);
         }else{
             new PlayerMessageListener(this);
+            new PlayerCommandListener(this);
         }
 
         //Commands
         this.getCommand("admin").setExecutor(new Admin());
         this.getCommand("admin").setTabCompleter(new TabCompletion());
         this.getCommand("adminchat").setExecutor(new AdminChat());
+        this.getCommand("admincommandspy").setExecutor(new CommandSpy());
 
         //Skulls
         switch (gui_type){
@@ -550,7 +553,7 @@ public class AdminGUI extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Name: &bAdminGUI-Premium"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Developer: &bBlack1_TV"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &b" + username));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b4.1.2"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b4.1.3"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));

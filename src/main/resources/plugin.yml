@@ -14,3 +14,7 @@ commands:
     usage: /<command>
     description: Communicate with staffs only
     aliases: [achat, ac]
+  admincommandspy:
+    usage: /<command>
+    description: Spy on players commands
+    aliases: [acommandspy, admincs, acs]

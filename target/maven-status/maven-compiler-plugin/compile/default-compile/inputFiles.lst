@@ -2,6 +2,7 @@
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/Fireworks.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/Message.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_14.java
+/home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/listeners/PlayerCommandListener.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/listeners/PlayerLoginListener.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/listeners/PlayerInteractListener.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/listeners/InventoryClickListener.java
@@ -14,6 +15,7 @@
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/TabCompletion.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_13.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_13.java
+/home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/listeners/PlayerPlaceholderCommandListener.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/commands/AdminChat.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/AdminGUI.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_10.java
@@ -32,6 +34,7 @@
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/listeners/PlayerDamageListener.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/listeners/PlayerMessageListener.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/MetricsLite.java
+/home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/commands/CommandSpy.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_9.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/potions/Version_14.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/Colors.java
