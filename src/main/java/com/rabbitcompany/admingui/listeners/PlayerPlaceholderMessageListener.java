@@ -50,6 +50,21 @@ public class PlayerPlaceholderMessageListener implements Listener {
                     }
                 }
 
+                message = message.replace("%", "‰");
+
+                if(!p.hasPermission("admingui.chat.advertisement.bypass")){
+                    if(!message.endsWith(".")) {
+                        message = message.replace(".", " ");
+                    }
+                }
+
+                if(adminGUI.getConf().getBoolean("ac_beautifier", true)){
+                    message = message.toLowerCase();
+                    if(!message.endsWith(".") && !message.endsWith("!") && !message.endsWith("?")){
+                        message = message + ".";
+                    }
+                }
+
                 List<String> filters = adminGUI.getConf().getStringList("ac_filter");
 
                 if(!p.hasPermission("admingui.chat.filter.bypass")){
@@ -58,8 +73,8 @@ public class PlayerPlaceholderMessageListener implements Listener {
                     }
                 }
 
-                if(!p.hasPermission("admingui.chat.advertisement.bypass")){
-                    message = message.replace("."," ");
+                if(adminGUI.getConf().getBoolean("ac_beautifier", true)){
+                    message = Character.toUpperCase(message.charAt(0)) + message.substring(1);
                 }
 
                 if (p.hasPermission("admingui.chat.color") || p.hasPermission("admingui.chat.colors")) {

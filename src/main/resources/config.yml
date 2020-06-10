@@ -65,6 +65,8 @@ admin_tools_lore: "&dClick me to open Admin GUI"
 ac_enabled: false
 # Here you can set your own Admin Chat format (Valid tags are {name}, {display_name} and {message})
 ac_format: "&7{display_name} &7> {message}"
+# If beautifier is enabled, every message will start with uppercase and end with dot.
+ac_beautifier: true
 # Which bad words should be blocked in chat?
 ac_filter:
   - "fuck"
