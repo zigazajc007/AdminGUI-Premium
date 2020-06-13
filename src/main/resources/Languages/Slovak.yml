@@ -1,0 +1,369 @@
+#       ----------- + AdminGUI by Ziga Zajc + -----------   #
+#                                                           #
+#                           Slovak                          #
+#                                                           #
+#       --------- + ------------------------- + ---------   #
+#
+#       Môžeš použiť chatové farby:
+#                ________________________
+#               |   kód:  | farba:       |
+#               |________________________|
+#               |     &0  |	Čierna	     |
+#               |     &1  |	Tmavomodrá   |
+#               |     &2  |	Tmavozelená  |
+#               |     &3  |	Tmavá Aqua   |
+#               |     &4  |	Tmavočervená |
+#               |     &5  |	Tmavofialová |
+#               |     &6  |	Zlatá	     |
+#               |     &7  |	Sivá	     |
+#               |     &8  |	Tmavosivá    |
+#               |     &9  |	Modrá	     |
+#               |     &a  |	Zelená	     |
+#               |     &b  |	Aqua	     |
+#               |     &c  |	Červená	     |
+#               |     &d  |	Ružová       |
+#               |     &e  |	Žltá	     |
+#               |     &f  |	Biela	     |
+#               |     &k  |	Zmätené	     |
+#               |     &l  |	Hrubé	     |
+#               |     &m  |	Prečiarknuté |
+#               |     &n  |	Podčiarknuté |
+#               |     &o  |	Naklonené    |
+#               |     &r  |	Obnoviť	     |
+#               |________________________|
+#
+#----------------------------------------------------------
+#                         Prefix
+#----------------------------------------------------------
+prefix: "&7[&cAdmin GUI&7] "
+#----------------------------------------------------------
+#----------------------------------------------------------
+#                       Príkazy
+#----------------------------------------------------------
+permission: "&cNemáš povolenie na vykonanie tohto príkazu!"
+is_not_a_player: "&c{player} nie je hráč!"
+is_not_a_number: "&c{number} nie je číslo!"
+wrong_arguments: "&cMôžeš použiť iba /admin alebo /admin <player>"
+wrong_initialize: "&cMôžeš použiť iba /admin initialize gui alebo /admin initialize players"
+vault_required: "&cTvoj server nemá nainštalovaný Vault na dokončenie tejto akcie!"
+vanish_required: "&cTvoj server nemá nainštalovaný Super Vanish alebo Premium Vanish na dokončenie tejto akcie!"
+#----------------------------------------------------------
+#                    Mená Inventárov
+#----------------------------------------------------------
+inventory_main: "&4&lAdmin GUI &c&lPremium"
+inventory_player: "&5&l{player}"
+inventory_world: "&2&lSvet"
+inventory_players: "&1&lHráči"
+inventory_plugins: "&e&lPluginy"
+inventory_commands: "&2&lPríkazy"
+inventory_unban: "&c&lUnban"
+inventory_unmute: "&c&lUnmute"
+inventory_actions: "&9&lAkcie &2&l{player}"
+inventory_kick: "&8&lVyhodiť &2&l{player}"
+inventory_ban: "&8&lBan &2&l{player}"
+inventory_potions: "&c&lLektvary &2&l{player}"
+inventory_spawner: "&8&lSpawner &2&l{player}"
+inventory_money: "&2&lPeniaze &2&l{player}"
+inventory_money_give: "&2&lDarovať Peniaze {player}"
+inventory_money_set: "&9&l NASTAVIŤ &2&lPeniaze &2&l{player}"
+inventory_money_take: "&c&l VZIAŤ &2&lPeniaze &2&l{player}"
+inventory_inventory: "&a&lInventár &2&l{player}"
+#----------------------------------------------------------
+#                     Admin GUI
+#----------------------------------------------------------
+main_player: "&5&l{player}"
+main_world: "&2&lSvet"
+main_players: "&9&lHráči"
+main_plugins: "&6&lPluginy"
+main_maintenance_mode: "&c&lÚdržba"
+main_unban_players: "&c&lUnban/Unmute"
+main_language: "&b&l"
+main_quit: "&c&lOdísť"
+#----------------------------------------------------------
+#                      Hráč GUI
+#----------------------------------------------------------
+player_info: "&2&l{player}"
+player_heal: "&e&lUzdraviť"
+player_feed: "&7&lNakŕmiť"
+player_survival: "&a&lPrežitie"
+player_adventure: "&2&lAdventúra"
+player_creative: "&3&lTvorivosť"
+player_spectator: "&9&lDivák"
+player_god_enabled: "&c&lBoh"
+player_god_disabled: "&a&lBoh"
+player_potions: "&c&lLektvari"
+player_spawner: "&8&lSpawner"
+player_kill: "&8&lZabiť"
+player_burn: "&c&lZapáliť"
+player_lightning: "&5&lBlesk"
+player_firework: "&4&lOhňostroj"
+player_money: "&2&lPeniaze"
+player_vanish_enabled: "&a&lNeviditeľnosť"
+player_vanish_disabled: "&c&lNeviditeľnosť"
+player_custom: "&6&lVlastné príkazy"
+player_back: "&c&lSpäť"
+#----------------------------------------------------------
+#                       Svet GUI
+#----------------------------------------------------------
+world_day: "&e&lDeň"
+world_night: "&8&lNoc"
+world_thunder: "&9&lMrholenie"
+world_rain: "&3&lDážď"
+world_clear: "&b&lJasno"
+world_back: "&c&lSpäť"
+#----------------------------------------------------------
+#                     Hráči GUI
+#----------------------------------------------------------
+players_color: "&2&l{player}"
+players_more: "&cKlikni sem pre viac akcií!"
+players_previous: "&c&lPredchádzajúce"
+players_page: "&a&lStrana"
+players_next: "&2&lĎalej"
+players_back: "&c&lSpäť"
+#----------------------------------------------------------
+#                     Pluginy GUI
+#----------------------------------------------------------
+plugins_back: "&c&lSpäť"
+#----------------------------------------------------------
+#                     Príkazy GUI
+#----------------------------------------------------------
+commands_back: "&c&lSpäť"
+#----------------------------------------------------------
+#                     Unban GUI
+#----------------------------------------------------------
+unban_color: "&2&l{player}"
+unban_more: "&cKlikni sem pre zrušenie banu hráčovi"
+unban_previous: "&c&lPredchádzajúce"
+unban_page: "&a&lStrana"
+unban_next: "&2&lĎalej"
+unban_back: "&c&lSpäť"
+#----------------------------------------------------------
+#                     Unmute GUI
+#----------------------------------------------------------
+unmute_color: "&2&l{player}"
+unmute_more: "&cKlikni sem pre zbavenie mlčanlivosti hráča"
+unmute_previous: "&c&lPredchádzajúce"
+unmute_page: "&a&lStrana"
+unmute_next: "&2&lĎalej"
+unmute_back: "&c&lSpäť"
+#----------------------------------------------------------
+#                 Players Settings GUI
+#----------------------------------------------------------
+players_settings_info: "&2&l{player}"
+players_settings_actions: "&9&lAkcie"
+players_settings_money: "&2&lPeniaze"
+players_settings_kick_player: "&8&lVyhodiť hráča"
+players_settings_ban_player: "&8&lUdeliť ban hráčovi"
+players_settings_back: "&c&lSpäť"
+#----------------------------------------------------------
+#                   Akcie GUI
+#----------------------------------------------------------
+actions_heal: "&e&lUzdraviť"
+actions_feed: "&7&lNakŕmiť"
+actions_info: "&2&l{player}"
+actions_survival: "&a&lPrežitie"
+actions_adventure: "&2&lAdventúra"
+actions_creative: "&3&lTvorivosť"
+actions_spectator: "&9&lDivák"
+actions_teleport_to_player: "&d&lTeleportovať sa na hráča"
+actions_kill_player: "&8&lZabiť hráča"
+actions_burn_player: "&c&lZapáliť hráča"
+actions_teleport_player_to_you: "&d&lTeleportovať hráča k sebe"
+actions_god_enabled: "&c&lBoh"
+actions_god_disabled: "&a&lBoh"
+actions_potions: "&c&lLektvary"
+actions_spawner: "&8&lSpawner"
+actions_inventory: "&a&lInventár"
+actions_vanish_enabled: "&a&lNeviditeľnosť"
+actions_vanish_disabled: "&c&lNeviditeľnosť"
+actions_lightning: "&5&lBlesk"
+actions_firework: "&4&lOhňostroj"
+actions_fakeop: "&c&lFalošné OP"
+actions_custom: "&6&lVlastné príkazy"
+actions_back: "&c&lSpäť"
+#----------------------------------------------------------
+#                       Vyhodenie GUI
+#----------------------------------------------------------
+kick: "&4Bol si vyhodený za "
+kick_back: "&c&lSpäť"
+#----------------------------------------------------------
+#                       Ban GUI
+#----------------------------------------------------------
+ban: "&4Dostal si ban za "
+ban_time: "&cTvoj trest vyprší o &c&l"
+ban_years: "&e&lRokoy/ov"
+ban_months: "&e&lMesiace/ov"
+ban_days: "&e&lDní"
+ban_hours: "&e&lHodín"
+ban_minutes: "&e&lMinút"
+ban_hacking: "&7&lPodvádzanie!"
+ban_griefing: "&6&lGriefovanie!"
+ban_spamming: "&d&lSpamovanie!"
+ban_advertising: "&3&lTvorenie reklamy!"
+ban_swearing: "&e&lNadávanie!"
+ban_silence_disabled: "&c&lUtíšiť"
+ban_silence_enabled: "&a&lUtíšiť"
+ban_back: "&c&lSpäť"
+#----------------------------------------------------------
+#                     Lektváry GUI
+#----------------------------------------------------------
+potions_night_vision: "&8&lNočné videnie"
+potions_invisibility: "&7&lNeviditeľnosť"
+potions_jump_boost: "&a&lSkákanie"
+potions_fire_resistance: "&c&lOhňuvdornosť"
+potions_speed: "&b&lRýchlosť"
+potions_slowness: "&4&lSpomalenie"
+potions_water_breathing: "&9&lDýchanie Pod Vodou"
+potions_instant_health: "&a&lOkamžité Uzdravenie"
+potions_instant_damage: "&4&lOkamžité Zranenie"
+potions_poison: "&5&lJed"
+potions_regeneration: "&e&lRegenerácia"
+potions_strength: "&e&lSila"
+potions_weakness: "&4&lSlabosť"
+potions_luck: "&6&lŠťastie"
+potions_slow_falling: "&3&lPomalý Pád"
+potions_time: "&a&lČas"
+potions_remove_all: "&4&lOdstrániť Všetko"
+potions_level: "&a&lÚroveň"
+potions_back: "&c&lSpäť"
+#----------------------------------------------------------
+#                     Spawner GUI
+#----------------------------------------------------------
+spawner_bat: "&a&lNetopier"
+spawner_blaze: "&c&lOhnivák"
+spawner_cat: "&a&lMačka"
+spawner_cave_spider: "&c&lJaskynný Pavúk"
+spawner_chicken: "&a&lKura"
+spawner_cod: "&b&lTreska"
+spawner_cow: "&a&lKrava"
+spawner_creeper: "&c&lCreeper"
+spawner_dolphin: "&b&lDelfín"
+spawner_donkey: "&a&lSomár"
+spawner_drowned: "&c&lUtopenec"
+spawner_elder_guardian: "&c&lPrastrážca"
+spawner_enderman: "&c&lEnderman"
+spawner_endermite: "&c&lEndermit"
+spawner_evoker: "&c&lVyvolávač"
+spawner_fox: "&a&lLíška"
+spawner_ghast: "&c&lGhast"
+spawner_guardian: "&c&lStrážca"
+spawner_horse: "&a&lKôň"
+spawner_husk: "&c&lZdochliak"
+spawner_llama: "&a&Llama"
+spawner_magma_cube: "&c&lMagmový Sliziak"
+spawner_mooshroom: "&a&lMuchotrávka"
+spawner_mule: "&a&lMulica"
+spawner_ocelot: "&a&lOcelot"
+spawner_panda: "&a&lPanda"
+spawner_parrot: "&a&lPapagáj"
+spawner_phantom: "&c&lPrízrak"
+spawner_pig: "&a&lPrasa"
+spawner_pillager: "&c&lZbojník"
+spawner_polar_bear: "&a&lPolárny Medveď"
+spawner_pufferfish: "&b&lŠtvorzubec"
+spawner_rabbit: "&a&lZajac"
+spawner_ravager: "&c&lNičiteľ"
+spawner_salmon: "&b&lLosos"
+spawner_sheep: "&a&lOvca"
+spawner_shulker: "&c&lShulker"
+spawner_silverfish: "&c&lŠvehla"
+spawner_skeleton: "&c&lKostlivec"
+spawner_skeleton_horse: "&c&lKostlivý Kôň"
+spawner_slime: "&c&lSliz"
+spawner_spider: "&c&lPavúk"
+spawner_squid: "&b&lChobotnica"
+spawner_stray: "&c&lTulák"
+spawner_trader_llama: "&a&lLlama Pocesného"
+spawner_tropical_fish: "&b&lTropická Ryba"
+spawner_turtle: "&a&lKorytnačka"
+spawner_vex: "&c&lŠkodca"
+spawner_villager: "&a&lOsadník"
+spawner_vindicator: "&c&lPomstiteľ"
+spawner_wandering_trader: "&a&lPotulný Obchodník"
+spawner_witch: "&c&lČarodejnica"
+spawner_wither: "&c&lWither"
+spawner_wolf: "&a&lVlk"
+spawner_zombie: "&c&lZombík"
+spawner_zombie_pigman: "&c&lPrasačí Muž"
+spawner_zombie_villager: "&c&lZombie Osadník"
+spawner_back: "&c&lSpäť"
+#----------------------------------------------------------
+#                      Peniaze GUI
+#----------------------------------------------------------
+money_give: "&2&lDarovať"
+money_set: "&9&lNastaviť"
+money_take: "&c&lVziať"
+money_back: "&c&lSpäť"
+#----------------------------------------------------------
+#                      Počet Peňazí GUI
+#----------------------------------------------------------
+money_amount_back: "&c&lSpäť"
+#----------------------------------------------------------
+#                    Inventár GUI
+#----------------------------------------------------------
+inventory_refresh: "&a&lObnoviť"
+inventory_clear: "&b&lVyprázdniť"
+inventory_back: "&c&lSpäť"
+#----------------------------------------------------------
+#                       Správy
+#----------------------------------------------------------
+message_target_player_teleport: "&aBol si teleportovaný/á na {player}."
+message_player_kill: "&aZabil/a si {player}."
+message_player_burn: "&aZapálil/a si {player} &cohňom&a!"
+message_target_player_creeper: "&a&lCreeper, Aww Man!"
+message_player_creeper: "&aCreeper bol zrodený na {player}."
+message_target_player_heal: "&e{player} ti doplnil/a život."
+message_player_heal: "&aVyliečil/a si {player}."
+message_target_player_feed: "&e{player} ťa nakŕmil/a."
+message_player_feed: "&aNakŕmil/a si {player}."
+message_player_kick: "&a{player} bol vyhodený/á za {reason}"
+message_player_ban: "&a{player} obdržal/a ban za {reason}"
+message_player_mute: "&a{player} bol umlčaný/á za {reason}"
+message_player_god_enabled: "&a{player} je odteraz bohom."
+message_player_god_disabled: "&a{player} už nie je naďalej bohom."
+message_target_player_god_enabled: "&a{player} ťa spravil/a bohom."
+message_target_player_god_disabled: "&a{player} ti vzal/a božiu moc."
+message_target_player_potions: "&a{player} ti dal/a {potion}&a na {time} minút."
+message_player_potions: "&aPráve si dal/a {player} {potion}&a na {time} minút."
+message_target_player_potions_remove: "&a{player} ti &codstránil/a &avšetky tvoje elixírové efekty."
+message_player_potions_remove: "&aPráve si odstránil/a všetky efekty, ktoré mal/a {player}."
+message_heal: "&aBol si uzdravený/á."
+message_feed: "&aBol si nakŕmený/á."
+message_god_enabled: "&aStal/a si sa bohom."
+message_god_disabled: "&aVzal/a si si božiu moc."
+message_kill: "&cZabil/a si sa."
+message_burn: "&cZapálil/a si sa."
+message_potions_remove: "&aOdstránil/a si všetky tvoje efekty."
+message_potions: "&aNastavil/a si si {potion}&a na {time} minút."
+message_maintenance: "&aServer je práve v &cÚdržbe&a. Prosím, príď neskôr."
+message_maintenance_enabled: "&aÚdržba je teraz &a&lZapnutá."
+message_maintenance_disabled: "&aÚdržba je teraz &c&lVypnutá."
+message_player_not_found: "&cHráč teraz nie je dosiahnuteľný!"
+message_ban_bypass: "&cNemôžeš dať ban tomuto hráčovi!"
+message_kick_bypass: "&cNemôžeš vyhodiť tohto hráča!"
+message_give: "&aPráve si si poslal/a {amount} a teraz máš{balance}."
+message_player_give: "&aPoslal/a si {amount} pre {player} a teraz má {balance}."
+message_target_player_give: "&a{player} ti poslal/a {amount} a teraz máš {balance}."
+message_set: "&aNastavil/a si si peniaze na {amount}."
+message_player_set: "&aNastavil/a si hráčovi {player} jeho/jej peniaze na {amount}."
+message_target_player_set: "&a{player} ti nastavil/a peniaze na {amount}."
+message_take: "&aZobral/a si {amount} zo svojich peňazí a teraz máš {balance}."
+message_player_take: "&aPráve si zobral/a {amount} od {player} a teraz má {balance}."
+message_target_player_take: "&c{player} ti vzal/a {amount} a teraz máš {balance}."
+message_transaction_error: "&cTransakcia sa nepodarila!"
+message_take_error: "&cNemôžeš si vziať viac peňazí ako máš!"
+message_player_take_error: "&cNemôžeš vziať viac peňazí ako má tento hráč!"
+message_visible: "&aTeraz si&a&l viditeľný/á&a pre ostatných hráčov."
+message_player_visible: "&a{player} je teraz&a&l viditeľný/á&a pre ostatných hráčov."
+message_hide: "&aTeraz si&c&l skrytý/á&a pred ostatnými hráčmi."
+message_player_hide: "&a{player} je teraz&c&l skrytý/á&a pred ostatnými hráčmi."
+message_unban_player: "&a{player} už naďalej nemá ban."
+message_unmute_player: "&a{player} bol zbavený/á mlčanlivosti."
+message_initializing_start: "&aPlugin sa inicializuje..."
+message_initializing_finish: "&aGUI je pripravený na použitie."
+message_already_initializing: "&cGUI sa už inicializuje..."
+message_reload_start: "&aPlugin sa začal prenačítavať..."
+message_reload_finish: "&aPlugin bol úspešne prenačítaný!"
+message_admin_chat_enabled: "&aČet pre Adminov je zapnutý!"
+message_admin_chat_disabled: "&cČet pre Adminov je vypnutý!"
+message_admin_chat_server_disabled: "&cČet pre Adminov je vypnutý."
