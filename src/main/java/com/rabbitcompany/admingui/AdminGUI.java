@@ -482,6 +482,8 @@ public class AdminGUI extends JavaPlugin {
 
     public YamlConfiguration getHebr() { return this.hebr; }
 
+    public YamlConfiguration getSlov() { return this.slov; }
+
     public YamlConfiguration getKick() { return this.kick; }
 
     public YamlConfiguration getPlug() { return this.plug; }
@@ -567,7 +569,7 @@ public class AdminGUI extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Name: &bAdminGUI-Premium"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Developer: &bBlack1_TV"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &b" + username));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b4.1.4"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b4.1.5"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
