@@ -24,6 +24,9 @@ public class Message {
             case "Chinese":
                 mess = AdminGUI.getInstance().getChin().getString(config);
                 break;
+            case "Japanese":
+                mess = AdminGUI.getInstance().getJapa().getString(config);
+                break;
             case "Korean":
                 mess = AdminGUI.getInstance().getKore().getString(config);
                 break;

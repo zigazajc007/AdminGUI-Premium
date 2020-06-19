@@ -1,0 +1,370 @@
+#       ----------- + AdminGUI by Ziga Zajc + -----------   #
+#                                                           #
+#                           Language                        #
+#                       Japanese - SNAKE                    #
+#        https://github.com/mcplay/Admin-GUI-translation    #
+#                        Premium version                    #
+#       --------- + ------------------------- + ---------   #
+#
+#       You can use chat colors:
+#                ________________________
+#               |   code: | color:       |
+#               |________________________|
+#               |     &0  |	Black	     |
+#               |     &1  |	Dark Blue	 |
+#               |     &2  |	Dark Green	 |
+#               |     &3  |	Dark Aqua	 |
+#               |     &4  |	Dark Red	 |
+#               |     &5  |	Dark Purple	 |
+#               |     &6  |	Gold	     |
+#               |     &7  |	Gray	     |
+#               |     &8  |	Dark Gray	 |
+#               |     &9  |	Blue	     |
+#               |     &a  |	Green	     |
+#               |     &b  |	Aqua	     |
+#               |     &c  |	Red	         |
+#               |     &d  |	Light Purple |
+#               |     &e  |	Yellow	     |
+#               |     &f  |	White	     |
+#               |     &k  |	Obfuscated	 |
+#               |     &l  |	Bold	     |
+#               |     &m  |	Strikethrough|
+#               |     &n  |	Underline	 |
+#               |     &o  |	Italic	     |
+#               |     &r  |	Reset	     |
+#               |________________________|
+#
+#----------------------------------------------------------
+#                         Prefix
+#----------------------------------------------------------
+prefix: "&7[&cAdmin GUI&7] "
+#----------------------------------------------------------
+#----------------------------------------------------------
+#                       Commands
+#----------------------------------------------------------
+permission: "&c実行する権限を持っていません！"
+is_not_a_player: "&c{player} はプレイヤーではありません！"
+is_not_a_number: "&c{number} は数字ではありません！"
+wrong_arguments: "&c/admin もしくは /admin <player> のみ使えます。"
+vault_required: "&cこのアクションを完了するためのVaultがインストールされていません！"
+vanish_required: "&cこのアクションを完了するためのSuper VanishもしくはPremium Vanishがインストールされていません！"
+#----------------------------------------------------------
+#                    Inventory names
+#----------------------------------------------------------
+inventory_main: "&4&lAdmin GUI"
+inventory_player: "&5&l{player}"
+inventory_world: "&2&lワールド"
+inventory_players: "&1&lプレイヤー"
+inventory_plugins: "&e&lプラグイン"
+inventory_commands: "&2&lコマンド"
+inventory_unban: "&c&lBAN解除"
+inventory_unmute: "&c&lミュート解除"
+inventory_actions: "&9&lアクション &2&l{player}"
+inventory_kick: "&8&lキック &2&l{player}"
+inventory_ban: "&8&lBAN &2&l{player}"
+inventory_potions: "&c&lポーション &2&l{player}"
+inventory_spawner: "&8&lスポーン &2&l{player}"
+inventory_money: "&2&lお金 &2&l{player}"
+inventory_money_give: "&2&lお金を与える {player}"
+inventory_money_set: "&2&lお金を&9&l設定 &2&l{player}"
+inventory_money_take: "&2&lお金を&c&l取る &2&l{player}"
+inventory_inventory: "&a&lインベントリ &2&l{player}"
+#----------------------------------------------------------
+#                       Admin GUI
+#----------------------------------------------------------
+main_player: "&5&l{player}"
+main_world: "&2&lワールド"
+main_players: "&9&lプレイヤー"
+main_plugins: "&6&lプラグイン"
+main_maintenance_mode: "&c&lメンテナンスモード"
+main_unban_players: "&c&lBAN/ミュート解除"
+main_language: "&b&l"
+main_quit: "&c&l抜ける"
+#----------------------------------------------------------
+#                      Player GUI
+#----------------------------------------------------------
+player_info: "&2&l{player}"
+player_heal: "&e&l回復"
+player_feed: "&7&l満腹"
+player_survival: "&a&lサバイバル"
+player_adventure: "&2&lアドベンチャー"
+player_creative: "&3&lクリエイティブ"
+player_spectator: "&9&lスペクテイター"
+player_god_enabled: "&a&l無敵"
+player_god_disabled: "&c&l無敵"
+player_potions: "&c&lポーション"
+player_spawner: "&8&lスポーン"
+player_kill: "&8&l殺す"
+player_burn: "&c&l燃やす"
+player_lightning: "&5&l雷"
+player_firework: "&4&l花火"
+player_money: "&2&lお金"
+player_vanish_enabled: "&a&l姿を消す"
+player_vanish_disabled: "&c&l姿を消す"
+player_custom: "&6&lカスタムコマンド"
+player_back: "&c&l戻る"
+#----------------------------------------------------------
+#                       World GUI
+#----------------------------------------------------------
+world_day: "&e&l昼"
+world_night: "&8&l夜"
+world_thunder: "&9&l雷雨"
+world_rain: "&3&l雨"
+world_clear: "&b&lクリア"
+world_back: "&c&l戻る"
+#----------------------------------------------------------
+#                     Players GUI
+#----------------------------------------------------------
+players_color: "&2&l{player}"
+players_more: "&cクリックして更にアクションを見る"
+players_previous: "&c&l前"
+players_page: "&a&lページ"
+players_next: "&2&l次"
+players_back: "&c&l戻る"
+#----------------------------------------------------------
+#                     Plugins GUI
+#----------------------------------------------------------
+plugins_back: "&c&l戻る"
+#----------------------------------------------------------
+#                     Commands GUI
+#----------------------------------------------------------
+commands_back: "&c&l戻る"
+#----------------------------------------------------------
+#                     Unban GUI
+#----------------------------------------------------------
+unban_color: "&2&l{player}"
+unban_more: "&cクリックしてこのプレイヤーのBANを解除する"
+unban_previous: "&c&l前"
+unban_page: "&a&lページ"
+unban_next: "&2&l次"
+unban_back: "&c&l戻る"
+#----------------------------------------------------------
+#                     Unmute GUI
+#----------------------------------------------------------
+unmute_color: "&2&l{player}"
+unmute_more: "&cクリックしてこのプレイヤーのミュートを解除する"
+unmute_previous: "&c&l前"
+unmute_page: "&a&lページ"
+unmute_next: "&2&l次"
+unmute_back: "&c&l戻る"
+#----------------------------------------------------------
+#                 Players Settings GUI
+#----------------------------------------------------------
+players_settings_info: "&2&l{player}"
+players_settings_actions: "&9&lアクション"
+players_settings_money: "&2&lお金"
+players_settings_kick_player: "&8&lプレイヤーをキック"
+players_settings_ban_player: "&8&lプレイヤーをBAN"
+players_settings_back: "&c&l戻る"
+#----------------------------------------------------------
+#                   Actions GUI
+#----------------------------------------------------------
+actions_heal: "&e&l回復"
+actions_feed: "&7&l満腹"
+actions_info: "&2&l{player}"
+actions_survival: "&a&lサバイバル"
+actions_adventure: "&2&lアドベンチャー"
+actions_creative: "&3&lクリエイティブ"
+actions_spectator: "&9&lスペクテイター"
+actions_teleport_to_player: "&d&lプレイヤーにてレポート"
+actions_kill_player: "&8&lプレイヤーを殺す"
+actions_burn_player: "&c&lプレイヤーを燃やす"
+actions_teleport_player_to_you: "&d&lプレイヤーをあなたにテレポート"
+actions_god_enabled: "&a&l無敵"
+actions_god_disabled: "&c&l無敵"
+actions_potions: "&c&lポーション"
+actions_spawner: "&8&lスポーン"
+actions_inventory: "&a&lインベントリ"
+actions_vanish_enabled: "&a&l姿を消す"
+actions_vanish_disabled: "&c&l姿を消す"
+actions_lightning: "&5&l雷"
+actions_firework: "&4&l花火"
+actions_fakeop: "&c&lフェイクOP"
+actions_custom: "&6&lカスタムコマンド"
+actions_back: "&c&l戻る"
+#----------------------------------------------------------
+#                       Kick GUI
+#----------------------------------------------------------
+kick: "&4あなたはキックされました："
+kick_back: "&c&l戻る"
+#----------------------------------------------------------
+#                       Ban GUI
+#----------------------------------------------------------
+ban: "&4あなたはBANされました："
+ban_time: "&c期間 "
+ban_years: "&e&l年"
+ban_months: "&e&l月"
+ban_days: "&e&l日"
+ban_hours: "&e&l時間"
+ban_minutes: "&e&l分"
+ban_hacking: "&7&lハック"
+ban_griefing: "&6&lグリーフィング"
+ban_spamming: "&d&lスパム"
+ban_advertising: "&3&l宣伝"
+ban_swearing: "&e&l悪口"
+ban_silence_disabled: "&c&lサイレンス"
+ban_silence_enabled: "&a&lサイレンス"
+ban_back: "&c&l戻る"
+#----------------------------------------------------------
+#                     Potions GUI
+#----------------------------------------------------------
+potions_night_vision: "&8&l暗視"
+potions_invisibility: "&7&l透明化"
+potions_jump_boost: "&a&l跳躍力上昇"
+potions_fire_resistance: "&c&l火炎耐性"
+potions_speed: "&b&l移動速度上昇"
+potions_slowness: "&4&l移動速度低下"
+potions_water_breathing: "&9&l水中呼吸"
+potions_instant_health: "&a&l即時回復"
+potions_instant_damage: "&4&l即時ダメージ"
+potions_poison: "&5&l毒"
+potions_regeneration: "&e&l再生能力"
+potions_strength: "&e&l攻撃力上昇"
+potions_weakness: "&4&l弱体化"
+potions_luck: "&6&l幸運"
+potions_slow_falling: "&3&l落下速度低下"
+potions_time: "&a&l時間"
+potions_remove_all: "&4&l全て消す"
+potions_level: "&a&lレベル"
+potions_back: "&c&l戻る"
+#----------------------------------------------------------
+#                     Spawner GUI
+#----------------------------------------------------------
+spawner_bat: "&a&lコウモリ"
+spawner_blaze: "&c&lブレイズ"
+spawner_cat: "&a&l猫"
+spawner_cave_spider: "&c&l洞窟グモ"
+spawner_chicken: "&a&lニワトリ"
+spawner_cod: "&b&lタラ"
+spawner_cow: "&a&l牛"
+spawner_creeper: "&c&lクリーパー"
+spawner_dolphin: "&b&lイルカ"
+spawner_donkey: "&a&lロバ"
+spawner_drowned: "&c&lドラウンド"
+spawner_elder_guardian: "&c&lエルダーガーディアン"
+spawner_enderman: "&c&lエンダーマン"
+spawner_endermite: "&c&lエンダーマイト"
+spawner_evoker: "&c&lエヴォーカー"
+spawner_fox: "&a&lキツネ"
+spawner_ghast: "&c&lガスト"
+spawner_guardian: "&c&lガーディアン"
+spawner_horse: "&a&lウマ"
+spawner_husk: "&c&lハスク"
+spawner_llama: "&a&ラマ"
+spawner_magma_cube: "&c&lマグマキューブ"
+spawner_mooshroom: "&a&lムーシュルーム"
+spawner_mule: "&a&lラバ"
+spawner_ocelot: "&a&lヤマネコ"
+spawner_panda: "&a&lパンダ"
+spawner_parrot: "&a&lオウム"
+spawner_phantom: "&c&lファントム"
+spawner_pig: "&a&lブタ"
+spawner_pillager: "&c&lピリジャー"
+spawner_polar_bear: "&a&lシロクマ"
+spawner_pufferfish: "&b&lフグ"
+spawner_rabbit: "&a&lウサギ"
+spawner_ravager: "&c&lラベンジャー"
+spawner_salmon: "&b&lサーモン"
+spawner_sheep: "&a&lヒツジ"
+spawner_shulker: "&c&lシュルカー"
+spawner_silverfish: "&c&lシルバーフィッシュ"
+spawner_skeleton: "&c&lスケルトン"
+spawner_skeleton_horse: "&c&lスケルトンホース"
+spawner_slime: "&c&lスライム"
+spawner_spider: "&c&lクモ"
+spawner_squid: "&b&lイカ"
+spawner_stray: "&c&lストレイ"
+spawner_trader_llama: "&a&l行商人 ラマ"
+spawner_tropical_fish: "&b&l熱帯魚"
+spawner_turtle: "&a&lカメ"
+spawner_vex: "&c&lヴェックス"
+spawner_villager: "&a&l村人"
+spawner_vindicator: "&c&lヴィンディケーター"
+spawner_wandering_trader: "&a&l行商人"
+spawner_witch: "&c&lウィッチ"
+spawner_wither: "&c&lウィザー"
+spawner_wolf: "&a&lオオカミ"
+spawner_zombie: "&c&lゾンビ"
+spawner_zombie_pigman: "&c&lZゾンビピッグマン"
+spawner_zombie_villager: "&c&l村人ゾンビ"
+spawner_back: "&c&l戻る"
+#----------------------------------------------------------
+#                      Money GUI
+#----------------------------------------------------------
+money_give: "&2&l与える"
+money_set: "&9&l設定"
+money_take: "&c&l取る"
+money_back: "&c&l戻る"
+#----------------------------------------------------------
+#                      Money Amount GUI
+#----------------------------------------------------------
+money_amount_back: "&c&l戻る"
+#----------------------------------------------------------
+#                    Inventory GUI
+#----------------------------------------------------------
+inventory_refresh: "&a&l更新"
+inventory_clear: "&b&l消去"
+inventory_back: "&c&l戻る"
+#----------------------------------------------------------
+#                       Messages
+#----------------------------------------------------------
+message_target_player_teleport: "&a{player}にテレポートされました。"
+message_player_kill: "&a{player}を殺しました。"
+message_player_burn: "&a{player}に&c火&aを着けました！"
+message_target_player_creeper: "&a&lクリーパー！"
+message_player_creeper: "&aクリーパーが{player}にスポーンされました。"
+message_target_player_heal: "&e{player}があなたを回復しました。"
+message_player_heal: "&a{player}を回復しました。"
+message_target_player_feed: "&e{player}があなたを満腹にしました。"
+message_player_feed: "&a{player}を満腹にしました。"
+message_player_kick: "&a{player}がキックされました。理由 {reason}"
+message_player_ban: "&a{player}がBANされました。理由 {reason}"
+message_player_mute: "&a{player}がミュートされました。理由 {reason}"
+message_player_god_enabled: "&a{player}の無敵を有効にしました"
+message_player_god_disabled: "&a{player}の無敵を無効にしました。"
+message_target_player_god_enabled: "&a{player}があなたを無敵にしました。"
+message_target_player_god_disabled: "&a{player}があなたの無敵を解除しました。"
+message_target_player_potions: "&a{player}があなたに{potion}&aを{time}分与えました。"
+message_player_potions: "&a{player}に{potion}&aを{time}分与えました。"
+message_target_player_potions_remove: "&a{player}があなたの全てのエフェクト効果を&c除去&aしました。"
+message_player_potions_remove: "&a{player}の全てのエフェクト効果を除去しました。"
+message_heal: "&aあなたは回復されました。"
+message_feed: "&aあなたは満腹になりました。"
+message_god_enabled: "&a無敵を有効にしました。"
+message_god_disabled: "&a無敵を無効にしました。"
+message_kill: "&c自殺しました。"
+message_burn: "&c自分に火を着けました。"
+message_potions_remove: "&aエフェクト効果を除去しました。"
+message_potions: "&a自分に{potion}&aを{time}分与えました。"
+message_maintenance: "&aサーバーが&cメンテナンスモード&aになりました。また後に来てください。"
+message_maintenance_enabled: "&aメンテナンスモードは現在、&a&l有効"
+message_maintenance_disabled: "&aメンテナンスモードは現在、&c&l無効"
+message_player_not_found: "&cプレイヤーは現在存在しません！"
+message_ban_bypass: "&cこのプレイヤーをBANできません！"
+message_kick_bypass: "&cこのプレイヤーをキックできません！"
+message_give: "&a{amount}を自分に与えました。現在{balance}を所持しています。"
+message_player_give: "&a{player}に{amount}を与えました。現在{balance}を所持しています。"
+message_target_player_give: "&a{player}があなたに{amount}を与えました。現在{balance}を所持しています。"
+message_set: "&a{amount}に設定しました。"
+message_player_set: "&a{player}のお金を{amount}に設定しました。"
+message_target_player_set: "&a{player}があなたのお金を{amount}に設定しました。"
+message_take: "&a{amount}を自分から取りました。現在{balance}を所持しています。"
+message_player_take: "&a{player}が{amount}を取りました。現在{balance}を所持しています。"
+message_target_player_take: "&c{player}があなたから{amount}を取りました。現在{balance}を所持しています。"
+message_transaction_error: "&c取引に問題が発生しました。"
+message_take_error: "&cそれ以上のお金を取ることは出来ません！"
+message_player_take_error: "&cプレイヤーが持っている以上のお金を取ることは出来ません！"
+message_visible: "&a他のプレイヤーから見えるようになりました。"
+message_player_visible: "&a{player}が他のプレイヤーから見えるようになりました。"
+message_hide: "&c他のプレイヤーから見えなくなりました。"
+message_player_hide: "&c{player}が他のプレイヤーから見えなくなりました。"
+message_unban_player: "&a{player}のBANが解除されました。"
+message_unmute_player: "&a{player}のミュートが解除されました。"
+message_initializing_start: "&aプラグインの初期化中..."
+message_initializing_finish: "&aGUIが使えるようになりました。"
+message_already_initializing: "&cGUIは既に初期化済み..."
+message_reload_start: "&aプラグインのリロード中..."
+message_reload_finish: "&aプラグインのリロードに成功しました！"
+message_admin_chat_enabled: "&a管理者チャットが有効"
+message_admin_chat_disabled: "&c管理者チャットが無効"
+message_admin_chat_server_disabled: "&cこのサーバーでは管理者チャットが無効になっています。"
