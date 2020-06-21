@@ -1,11 +1,13 @@
 package com.rabbitcompany.admingui;
 
+import com.rabbitcompany.adminbans.AdminBans;
 import com.rabbitcompany.admingui.commands.*;
 import com.rabbitcompany.admingui.listeners.*;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Initialize;
 import com.rabbitcompany.admingui.utils.Item;
 import com.rabbitcompany.admingui.utils.Message;
+import com.zaxxer.hikari.HikariDataSource;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -13,7 +15,6 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
-import pro.husk.mysql.MySQL;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,11 +27,12 @@ public class AdminGUI extends JavaPlugin {
     private static AdminGUI instance;
 
     String username = "%%__USERNAME__%%";
+    String user_id = "%%__USER__%%";
 
     public static int gui_type = 0;
 
     //SQL
-    public static MySQL mySQL;
+    public static HikariDataSource hikari;
     public static Connection conn = null;
 
     //VaultAPI
@@ -161,13 +163,23 @@ public class AdminGUI extends JavaPlugin {
         //SQL
         if(getConf().getBoolean("mysql", false)){
             try {
-                mySQL = new MySQL(getConf().getString("mysql_host"), getConf().getString("mysql_port"), getConf().getString("mysql_database"), getConf().getString("mysql_user"), getConf().getString("mysql_password"), "?useSSL=" + getConf().getBoolean("mysql_useSSL") +"&allowPublicKeyRetrieval=true");
-                conn = mySQL.getConnection();
+                hikari = new HikariDataSource();
+                hikari.setMaximumPoolSize(10);
+                hikari.setJdbcUrl("jdbc:mysql://" + getConf().getString("mysql_host") + ":" + getConf().getString("mysql_port") + "/" + getConf().getString("mysql_database"));
+                hikari.setUsername(getConf().getString("mysql_user"));
+                hikari.setPassword(getConf().getString("mysql_password"));
+                hikari.addDataSourceProperty("useSSL", getConf().getString("mysql_useSSL"));
+                hikari.addDataSourceProperty("cachePrepStmts", "true");
+                hikari.addDataSourceProperty("prepStmtCacheSize", "250");
+                hikari.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+                conn = hikari.getConnection();
+
                 if(getConf().getBoolean("bungeecord_enabled", false)){
                     conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admingui_players(username varchar(25) NOT NULL PRIMARY KEY, server varchar(30) NOT NULL);");
                     conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admingui_tasks(id varchar(50) NOT NULL PRIMARY KEY, from_server varchar(30) NOT NULL, to_server varchar(30), command varchar(30) NOT NULL, player varchar(25) NOT NULL, target_player varchar(25) NOT NULL, param1 varchar(255), param2 varchar(255), param3 varchar(255), status varchar(15) NOT NULL DEFAULT 'waiting', created TIMESTAMP NOT NULL DEFAULT NOW());");
                     Initialize.Database();
                 }
+                conn.close();
             } catch (SQLException e) {
                 conn = null;
             }
@@ -252,7 +264,9 @@ public class AdminGUI extends JavaPlugin {
             if(getConf().getBoolean("bungeecord_enabled", false)){
                 for(Player all : Bukkit.getServer().getOnlinePlayers()){
                     try {
-                        AdminGUI.mySQL.update("DELETE FROM admingui_players WHERE username = '" + all.getName() + "';");
+                        Connection conn = AdminBans.hikari.getConnection();
+                        conn.createStatement().executeUpdate("DELETE FROM admingui_players WHERE username = '" + all.getName() + "';");
+                        conn.close();
                     } catch (SQLException ignored) { }
                 }
             }
@@ -584,7 +598,11 @@ public class AdminGUI extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Name: &bAdminGUI-Premium"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Developer: &bBlack1_TV"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &b" + username));
+        if(username.contains("%%__")){
+            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &b" + user_id));
+        }else{
+            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &b" + username));
+        }
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b4.1.6"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cSupport:"));

@@ -51,7 +51,7 @@ vanish_required: "&cこのアクションを完了するためのSuper Vanishも
 #----------------------------------------------------------
 #                    Inventory names
 #----------------------------------------------------------
-inventory_main: "&4&lAdmin GUI"
+inventory_main: "&4&lAdmin GUI &c&lPremium"
 inventory_player: "&5&l{player}"
 inventory_world: "&2&lワールド"
 inventory_players: "&1&lプレイヤー"
