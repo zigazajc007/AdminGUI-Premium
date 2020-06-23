@@ -101,6 +101,7 @@ player_money: "&2&lDinero"
 player_vanish_enabled: "&a&lInvisible"
 player_vanish_disabled: "&c&lInvisible"
 player_custom: "&6&lComandos customizados"
+player_chat_color: "&3&lChat &6&lColor"
 player_back: "&c&lVolver"
 #----------------------------------------------------------
 #                       World GUI
@@ -180,6 +181,7 @@ actions_lightning: "&5&lTirarle un rayo"
 actions_firework: "&4&lFuegos artificiales"
 actions_fakeop: "&c&lAdmin falso"
 actions_custom: "&6&lComandos customizados"
+actions_chat_color: "&3&lChat &6&lColor"
 actions_back: "&c&lVolver"
 #----------------------------------------------------------
 #                       Kick GUI

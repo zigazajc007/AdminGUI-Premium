@@ -6,7 +6,7 @@
 
     <groupId>com.rabbitcompany</groupId>
     <artifactId>AdminGUI-Premium</artifactId>
-    <version>4.1.7</version>
+    <version>4.1.8</version>
     <packaging>jar</packaging>
 
     <name>AdminGUI Premium</name>
@@ -105,6 +105,12 @@
             <groupId>me.clip</groupId>
             <artifactId>placeholderapi</artifactId>
             <version>2.10.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.gitlab.ruany</groupId>
+            <artifactId>LiteBansAPI</artifactId>
+            <version>0.3.3</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

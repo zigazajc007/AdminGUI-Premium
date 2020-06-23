@@ -138,6 +138,6 @@ public class InventoryClickListener implements Listener {
                             }
                         }
                 }
-        }catch (Exception ignored){ }
+        }catch (Exception ignored){}
     }
 }

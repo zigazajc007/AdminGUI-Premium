@@ -102,6 +102,7 @@ player_money: "&2&lお金"
 player_vanish_enabled: "&a&l姿を消す"
 player_vanish_disabled: "&c&l姿を消す"
 player_custom: "&6&lカスタムコマンド"
+player_chat_color: "&3&lChat &6&lColor"
 player_back: "&c&l戻る"
 #----------------------------------------------------------
 #                       World GUI
@@ -181,6 +182,7 @@ actions_lightning: "&5&l雷"
 actions_firework: "&4&l花火"
 actions_fakeop: "&c&lフェイクOP"
 actions_custom: "&6&lカスタムコマンド"
+actions_chat_color: "&3&lChat &6&lColor"
 actions_back: "&c&l戻る"
 #----------------------------------------------------------
 #                       Kick GUI

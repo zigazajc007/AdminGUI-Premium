@@ -101,6 +101,7 @@ player_money: "&2&l돈"
 player_vanish_enabled: "&a&l사라지기"
 player_vanish_disabled: "&c&l사라지기"
 player_custom: "&6&l커스텀 커맨드"
+player_chat_color: "&3&lChat &6&lColor"
 player_back: "&c&l돌아가기"
 #----------------------------------------------------------
 #                       World GUI
@@ -180,6 +181,7 @@ actions_lightning: "&5&l번개"
 actions_firework: "&4&l폭죽"
 actions_fakeop: "&c&l가짜 오피"
 actions_custom: "&6&l커스텀 커맨드"
+actions_chat_color: "&3&lChat &6&lColor"
 actions_back: "&c&l돌아가기"
 #----------------------------------------------------------
 #                       Kick GUI

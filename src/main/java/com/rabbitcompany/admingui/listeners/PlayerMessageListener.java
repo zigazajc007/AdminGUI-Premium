@@ -5,6 +5,7 @@ import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Message;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -46,6 +47,10 @@ public class PlayerMessageListener implements Listener {
                     }
                 }
 
+                if (!p.hasPermission("admingui.chat.color") && !p.hasPermission("admingui.chat.colors")) {
+                    message = message.replace("&", "");
+                }
+
                 if(!p.hasPermission("admingui.chat.advertisement.bypass")){
                     if(!message.endsWith(".")){
                         message = message.replace("."," ");
@@ -69,6 +74,51 @@ public class PlayerMessageListener implements Listener {
 
                 if(adminGUI.getConf().getBoolean("ac_beautifier", true)){
                     message = Character.toUpperCase(message.charAt(0)) + message.substring(1);
+                }
+
+                switch (AdminUI.chat_color.getOrDefault(p.getUniqueId(), "LIGHT_GRAY_WOOL")){
+                    case "WHITE_WOOL":
+                        message = Message.chat("&f" + message);
+                        break;
+                    case "ORANGE_WOOL":
+                        message = Message.chat("&6" + message);
+                        break;
+                    case "MAGENTA_WOOL":
+                        message = Message.chat("&d" + message);
+                        break;
+                    case "LIGHT_BLUE_WOOL":
+                        message = Message.chat("&b" + message);
+                        break;
+                    case "YELLOW_WOOL":
+                        message = Message.chat("&e" + message);
+                        break;
+                    case "LIME_WOOL":
+                        message = Message.chat("&a" + message);
+                        break;
+                    case "GRAY_WOOL":
+                        message = Message.chat("&8" + message);
+                        break;
+                    case "LIGHT_GRAY_WOOL":
+                        message = Message.chat("&7" + message);
+                        break;
+                    case "CYAN_WOOL":
+                        message = Message.chat("&3" + message);
+                        break;
+                    case "PURPLE_WOOL":
+                        message = Message.chat("&5" + message);
+                        break;
+                    case "BLUE_WOOL":
+                        message = Message.chat("&9" + message);
+                        break;
+                    case "GREEN_WOOL":
+                        message = Message.chat("&2" + message);
+                        break;
+                    case "RED_WOOL":
+                        message = Message.chat("&4" + message);
+                        break;
+                    case "BLACK_WOOL":
+                        message = Message.chat("&0" + message);
+                        break;
                 }
 
                 if(p.hasPermission("admingui.chat.color") || p.hasPermission("admingui.chat.colors")){

@@ -598,12 +598,14 @@ public class AdminGUI extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Name: &bAdminGUI-Premium"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Developer: &bBlack1_TV"));
-        if(username.contains("%%__")){
+        if(!username.contains("%%__")){
+            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &b" + username));
+        }else if(!user_id.contains("%%__")){
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &b" + user_id));
         }else{
-            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &b" + username));
+            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &4&lCRACKED"));
         }
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b4.1.6"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b4.1.8"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));

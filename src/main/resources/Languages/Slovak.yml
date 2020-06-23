@@ -101,6 +101,7 @@ player_money: "&2&lPeniaze"
 player_vanish_enabled: "&a&lNeviditeľnosť"
 player_vanish_disabled: "&c&lNeviditeľnosť"
 player_custom: "&6&lVlastné príkazy"
+player_chat_color: "&3&lChat &6&lColor"
 player_back: "&c&lSpäť"
 #----------------------------------------------------------
 #                       Svet GUI
@@ -180,6 +181,7 @@ actions_lightning: "&5&lBlesk"
 actions_firework: "&4&lOhňostroj"
 actions_fakeop: "&c&lFalošné OP"
 actions_custom: "&6&lVlastné príkazy"
+actions_chat_color: "&3&lChat &6&lColor"
 actions_back: "&c&lSpäť"
 #----------------------------------------------------------
 #                       Vyhodenie GUI

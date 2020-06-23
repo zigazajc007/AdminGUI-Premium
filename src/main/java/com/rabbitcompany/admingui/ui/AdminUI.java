@@ -27,7 +27,6 @@ import org.bukkit.potion.PotionEffectType;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import static org.bukkit.Bukkit.broadcast;
 import static org.bukkit.Bukkit.getServer;
 
 public class AdminUI {
@@ -84,6 +83,9 @@ public class AdminUI {
 
     //God
     public static HashMap<UUID, Boolean> god = new HashMap<>();
+
+    //Chat Color
+    public static HashMap<UUID, String> chat_color = new HashMap<>();
 
     //Custom commands
     public static HashMap<UUID, Integer> custom_method = new HashMap<>();
@@ -415,6 +417,12 @@ public class AdminUI {
             Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 33, Message.getMessage(p.getUniqueId(), "permission"));
         }
 
+        if(p.hasPermission("admingui.chat.color.change") && AdminGUI.getInstance().getConf().getBoolean("ac_enabled")){
+            Item.create(inv_player, chat_color.getOrDefault(p.getUniqueId(), "LIGHT_GRAY_WOOL"),1,37, Message.getMessage(p.getUniqueId(), "player_chat_color"));
+        }else{
+            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 37,  Message.getMessage(p.getUniqueId(), "permission"));
+        }
+
         return inv_player;
     }
 
@@ -640,6 +648,7 @@ public class AdminUI {
         Inventory inv_unban_players = Bukkit.createInventory(null, 54, Message.getMessage(p.getUniqueId(), "inventory_unban"));
 
         if(Bukkit.getPluginManager().isPluginEnabled("AdminBans")){
+
             ArrayList<BannedPlayer> abs = new ArrayList<>(AdminBansAPI.getBannedPlayers());
 
             int online = abs.size();
@@ -1119,6 +1128,12 @@ public class AdminUI {
             Item.create(inv_actions, "PAPER", 1, 39, Message.getMessage(p.getUniqueId(), "actions_fakeop"));
         }else{
             Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 39, Message.getMessage(p.getUniqueId(), "permission"));
+        }
+
+        if(p.hasPermission("admingui.chat.color.change.other") && AdminGUI.getInstance().getConf().getBoolean("ac_enabled")){
+            Item.create(inv_actions, chat_color.getOrDefault(target.getUniqueId(), "LIGHT_GRAY_WOOL"),1,41, Message.getMessage(p.getUniqueId(), "actions_chat_color"));
+        }else{
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 41,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         return inv_actions;
@@ -1634,6 +1649,52 @@ public class AdminUI {
         }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_custom"))){
             custom_method.put(p.getUniqueId(), 1);
             p.openInventory(GUI_Plugins(p));
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_chat_color"))){
+            switch (chat_color.getOrDefault(p.getUniqueId(), "LIGHT_GRAY_WOOL")){
+                case "WHITE_WOOL":
+                    chat_color.put(p.getUniqueId(), "ORANGE_WOOL");
+                    break;
+                case "ORANGE_WOOL":
+                    chat_color.put(p.getUniqueId(), "MAGENTA_WOOL");
+                    break;
+                case "MAGENTA_WOOL":
+                    chat_color.put(p.getUniqueId(), "LIGHT_BLUE_WOOL");
+                    break;
+                case "LIGHT_BLUE_WOOL":
+                    chat_color.put(p.getUniqueId(), "YELLOW_WOOL");
+                    break;
+                case "YELLOW_WOOL":
+                    chat_color.put(p.getUniqueId(), "LIME_WOOL");
+                    break;
+                case "LIME_WOOL":
+                    chat_color.put(p.getUniqueId(), "GRAY_WOOL");
+                    break;
+                case "GRAY_WOOL":
+                    chat_color.put(p.getUniqueId(), "LIGHT_GRAY_WOOL");
+                    break;
+                case "LIGHT_GRAY_WOOL":
+                    chat_color.put(p.getUniqueId(), "CYAN_WOOL");
+                    break;
+                case "CYAN_WOOL":
+                    chat_color.put(p.getUniqueId(), "PURPLE_WOOL");
+                    break;
+                case "PURPLE_WOOL":
+                    chat_color.put(p.getUniqueId(), "BLUE_WOOL");
+                    break;
+                case "BLUE_WOOL":
+                    chat_color.put(p.getUniqueId(), "GREEN_WOOL");
+                    break;
+                case "GREEN_WOOL":
+                    chat_color.put(p.getUniqueId(), "RED_WOOL");
+                    break;
+                case "RED_WOOL":
+                    chat_color.put(p.getUniqueId(), "BLACK_WOOL");
+                    break;
+                case "BLACK_WOOL":
+                    chat_color.put(p.getUniqueId(), "WHITE_WOOL");
+                    break;
+            }
+            p.openInventory(GUI_Player(p));
         }
     }
 
@@ -1743,6 +1804,8 @@ public class AdminUI {
                     }else{
                         p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
                     }
+                }else if(Bukkit.getPluginManager().isPluginEnabled("LiteBans")) {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "unban " + ChatColor.stripColor(clicked.getItemMeta().getDisplayName()));
                 }else{
                     OfflinePlayer target_p = getServer().getOfflinePlayer(ChatColor.stripColor(clicked.getItemMeta().getDisplayName()));
                     if(target_p.isBanned()){
@@ -1777,8 +1840,9 @@ public class AdminUI {
                     }else{
                         p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
                     }
+                }else if(Bukkit.getPluginManager().isPluginEnabled("LiteBans")) {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "unmute " + ChatColor.stripColor(clicked.getItemMeta().getDisplayName()));
                 }
-
                 p.closeInventory();
             }
         }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "unmute_back"))){
@@ -1907,6 +1971,52 @@ public class AdminUI {
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_custom"))){
                 custom_method.put(p.getUniqueId(), 2);
                 p.openInventory(GUI_Plugins(p));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_chat_color"))){
+                switch (chat_color.getOrDefault(target_player.getUniqueId(), "LIGHT_GRAY_WOOL")){
+                    case "WHITE_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "ORANGE_WOOL");
+                        break;
+                    case "ORANGE_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "MAGENTA_WOOL");
+                        break;
+                    case "MAGENTA_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "LIGHT_BLUE_WOOL");
+                        break;
+                    case "LIGHT_BLUE_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "YELLOW_WOOL");
+                        break;
+                    case "YELLOW_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "LIME_WOOL");
+                        break;
+                    case "LIME_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "GRAY_WOOL");
+                        break;
+                    case "GRAY_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "LIGHT_GRAY_WOOL");
+                        break;
+                    case "LIGHT_GRAY_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "CYAN_WOOL");
+                        break;
+                    case "CYAN_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "PURPLE_WOOL");
+                        break;
+                    case "PURPLE_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "BLUE_WOOL");
+                        break;
+                    case "BLUE_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "GREEN_WOOL");
+                        break;
+                    case "GREEN_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "RED_WOOL");
+                        break;
+                    case "RED_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "BLACK_WOOL");
+                        break;
+                    case "BLACK_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "WHITE_WOOL");
+                        break;
+                }
+                p.openInventory(GUI_Actions(p, target_player));
             }
         }else{
             p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));

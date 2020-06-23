@@ -1,6 +1,5 @@
 package com.rabbitcompany.admingui.utils;
 
-import com.rabbitcompany.adminbans.AdminBansAPI;
 import org.bukkit.BanList;
 import org.bukkit.Bukkit;
 import org.bukkit.potion.PotionEffect;

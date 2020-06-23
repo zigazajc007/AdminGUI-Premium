@@ -101,6 +101,7 @@ player_money: "&2&lGeld"
 player_vanish_enabled: "&a&lVerdwijn"
 player_vanish_disabled: "&c&lVerdwijn"
 player_custom: "&6&lEigen Commands"
+player_chat_color: "&3&lChat &6&lColor"
 player_back: "&c&lTerug"
 #----------------------------------------------------------
 #                       World GUI
@@ -180,6 +181,7 @@ actions_lightning: "&5&lBliksem"
 actions_firework: "&4&lVuurwerk"
 actions_fakeop: "&c&lNep OP"
 actions_custom: "&6&lEigen Commands"
+actions_chat_color: "&3&lChat &6&lColor"
 actions_back: "&c&lTerug"
 #----------------------------------------------------------
 #                       Kick GUI

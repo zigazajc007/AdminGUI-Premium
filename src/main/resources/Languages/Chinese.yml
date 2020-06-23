@@ -101,6 +101,7 @@ player_money: "&2&l金錢"
 player_vanish_enabled: "&a&l隱形"
 player_vanish_disabled: "&c&l隱形"
 player_custom: "&6&l自訂指令"
+player_chat_color: "&3&lChat &6&lColor"
 player_back: "&c&l返回"
 #----------------------------------------------------------
 #                       世界介面
@@ -180,6 +181,7 @@ actions_lightning: "&5&l雷擊"
 actions_firework: "&4&l煙火"
 actions_fakeop: "&c&l假OP"
 actions_custom: "&6&l自訂指令"
+actions_chat_color: "&3&lChat &6&lColor"
 actions_back: "&c&l返回"
 #----------------------------------------------------------
 #                       踢除介面
