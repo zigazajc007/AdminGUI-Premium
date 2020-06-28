@@ -417,10 +417,12 @@ public class AdminUI {
             Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 33, Message.getMessage(p.getUniqueId(), "permission"));
         }
 
-        if(p.hasPermission("admingui.chat.color.change") && AdminGUI.getInstance().getConf().getBoolean("ac_enabled")){
-            Item.create(inv_player, chat_color.getOrDefault(p.getUniqueId(), "LIGHT_GRAY_WOOL"),1,37, Message.getMessage(p.getUniqueId(), "player_chat_color"));
-        }else{
-            Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 37,  Message.getMessage(p.getUniqueId(), "permission"));
+        if(AdminGUI.getInstance().getConf().getBoolean("ac_enabled")){
+            if(p.hasPermission("admingui.chat.color.change")){
+                Item.create(inv_player, chat_color.getOrDefault(p.getUniqueId(), "LIGHT_GRAY_WOOL"),1,37, Message.getMessage(p.getUniqueId(), "player_chat_color"));
+            }else{
+                Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 37,  Message.getMessage(p.getUniqueId(), "permission"));
+            }
         }
 
         return inv_player;
@@ -1130,10 +1132,12 @@ public class AdminUI {
             Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 39, Message.getMessage(p.getUniqueId(), "permission"));
         }
 
-        if(p.hasPermission("admingui.chat.color.change.other") && AdminGUI.getInstance().getConf().getBoolean("ac_enabled")){
-            Item.create(inv_actions, chat_color.getOrDefault(target.getUniqueId(), "LIGHT_GRAY_WOOL"),1,41, Message.getMessage(p.getUniqueId(), "actions_chat_color"));
-        }else{
-            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 41,  Message.getMessage(p.getUniqueId(), "permission"));
+        if(AdminGUI.getInstance().getConf().getBoolean("ac_enabled")){
+            if(p.hasPermission("admingui.chat.color.change.other")){
+                Item.create(inv_actions, chat_color.getOrDefault(target.getUniqueId(), "LIGHT_GRAY_WOOL"),1,41, Message.getMessage(p.getUniqueId(), "actions_chat_color"));
+            }else{
+                Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 41,  Message.getMessage(p.getUniqueId(), "permission"));
+            }
         }
 
         return inv_actions;
@@ -1296,7 +1300,11 @@ public class AdminUI {
 
         target_player.put(p, target);
 
-        if (Bukkit.getVersion().contains("1.16") || Bukkit.getVersion().contains("1.15") || Bukkit.getVersion().contains("1.14")) {
+        if(Bukkit.getVersion().contains("1.16") || Bukkit.getVersion().contains("1.15")){
+            for(Material_Version_15 material : Material_Version_15.values()){
+                Item.create(inv_spawner, material.name(), 1, material.ordinal()+1, Message.getMessage(p.getUniqueId(), Message_Version_15.values()[material.ordinal()].name()));
+            }
+        }else if (Bukkit.getVersion().contains("1.14")) {
             for(Material_Version_14 material : Material_Version_14.values()){
                 Item.create(inv_spawner, material.name(), 1, material.ordinal()+1, Message.getMessage(p.getUniqueId(), Message_Version_14.values()[material.ordinal()].name()));
             }
@@ -2524,6 +2532,8 @@ public class AdminUI {
                 }
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_bat"))){
                 Entity.spawn(target_player.getLocation(), EntityType.BAT);
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_bee"))){
+                Entity.spawn(target_player.getLocation(), EntityType.BEE);
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_blaze"))){
                 Entity.spawn(target_player.getLocation(), EntityType.BLAZE);
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_cat"))){

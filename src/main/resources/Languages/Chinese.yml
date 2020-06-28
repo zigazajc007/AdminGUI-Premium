@@ -232,6 +232,7 @@ potions_back: "&c&l返回"
 #                     升怪介面
 #----------------------------------------------------------
 spawner_bat: "&a&l蝙蝠"
+spawner_bee: "&6&l蜜蜂"
 spawner_blaze: "&c&l烈焰使者"
 spawner_cat: "&a&l貓"
 spawner_cave_spider: "&c&l洞穴蜘蛛"

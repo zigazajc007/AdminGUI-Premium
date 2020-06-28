@@ -233,6 +233,7 @@ potions_back: "&cНазад"
 #                     Spawner GUI
 #----------------------------------------------------------
 spawner_bat: "&eЛетучья мыш"
+spawner_bee: "&6&lЛчелка"
 spawner_blaze: "&eИфрит"
 spawner_cat: "&eКот"
 spawner_cave_spider: "&eПещерный паук"

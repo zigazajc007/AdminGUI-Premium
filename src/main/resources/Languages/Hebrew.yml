@@ -232,6 +232,7 @@ potions_back: "&c&lחזור"
 #                     Spawner GUI
 #----------------------------------------------------------
 spawner_bat: "&a&lעטלף"
+spawner_bee: "&6&lדבורה"
 spawner_blaze: "&c&lלהבון"
 spawner_cat: "&a&lחתול"
 spawner_cave_spider: "&c&lעכביש מערות"

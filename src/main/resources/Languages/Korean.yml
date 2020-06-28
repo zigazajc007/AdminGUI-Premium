@@ -232,6 +232,7 @@ potions_back: "&c&l돌아가기"
 #                     Spawner GUI
 #----------------------------------------------------------
 spawner_bat: "&a&l박쥐"
+spawner_bee: "&6&l벌"
 spawner_blaze: "&c&l블레이즈"
 spawner_cat: "&a&l고양이"
 spawner_cave_spider: "&c&l동굴 거미"

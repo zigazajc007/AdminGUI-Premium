@@ -232,6 +232,7 @@ potions_back: "&c&lTillbaka"
 #                     Spawner GUI
 #----------------------------------------------------------
 spawner_bat: "&a&lFladdermus"
+spawner_bee: "&6&lBi"
 spawner_blaze: "&c&lBlaze"
 spawner_cat: "&a&lKatt"
 spawner_cave_spider: "&c&lGrottspindel"

@@ -232,6 +232,7 @@ potions_back: "&c&lRetour"
 #                     Spawner GUI
 #----------------------------------------------------------
 spawner_bat: "&a&lChauve sourie"
+spawner_bee: "&6&lAbeille"
 spawner_blaze: "&c&lBlaze"
 spawner_cat: "&a&lChat"
 spawner_cave_spider: "&c&lAraignée venimeuse"

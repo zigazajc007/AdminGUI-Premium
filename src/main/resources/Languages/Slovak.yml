@@ -232,6 +232,7 @@ potions_back: "&c&lSpäť"
 #                     Spawner GUI
 #----------------------------------------------------------
 spawner_bat: "&a&lNetopier"
+spawner_bee: "&6&lVčela"
 spawner_blaze: "&c&lOhnivák"
 spawner_cat: "&a&lMačka"
 spawner_cave_spider: "&c&lJaskynný Pavúk"

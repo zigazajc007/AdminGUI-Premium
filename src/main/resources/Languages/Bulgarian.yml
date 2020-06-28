@@ -232,6 +232,7 @@ potions_back: "&c&lПо-назад"
 #                     Призовавщо Меню
 #----------------------------------------------------------
 spawner_bat: "&a&lПрилеп"
+spawner_bee: "&6&lПчела"
 spawner_blaze: "&c&lПламък"
 spawner_cat: "&a&lКотка"
 spawner_cave_spider: "&c&lПещерен Паяк"

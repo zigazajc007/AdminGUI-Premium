@@ -233,6 +233,7 @@ potions_back: "&c&l戻る"
 #                     Spawner GUI
 #----------------------------------------------------------
 spawner_bat: "&a&lコウモリ"
+spawner_bee: "&6&l蜂"
 spawner_blaze: "&c&lブレイズ"
 spawner_cat: "&a&l猫"
 spawner_cave_spider: "&c&l洞窟グモ"

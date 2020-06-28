@@ -232,6 +232,7 @@ potions_back: "&c&lTerug"
 #                     Spawner GUI
 #----------------------------------------------------------
 spawner_bat: "&a&lVleermuis"
+spawner_bee: "&6&lBij"
 spawner_blaze: "&c&lBlaze"
 spawner_cat: "&a&lKat"
 spawner_cave_spider: "&c&lGrotten Spin"

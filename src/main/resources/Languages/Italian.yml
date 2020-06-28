@@ -232,6 +232,7 @@ potions_back: "&c&lIndietro"
 #                      Spawner GUI
 #----------------------------------------------------------
 spawner_bat: "&a&lPipistrello"
+spawner_bee: "&6&lApe"
 spawner_blaze: "&c&lBlaze"
 spawner_cat: "&a&lGatto"
 spawner_cave_spider: "&c&lRagno delle Caverne"

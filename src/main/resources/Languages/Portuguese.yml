@@ -232,6 +232,7 @@ potions_back: "&c&lVoltar"
 #                     GUI de Spawner
 #----------------------------------------------------------
 spawner_bat: "&a&lMorcego"
+spawner_bee: "&6&lAbelha"
 spawner_blaze: "&c&lBlaze"
 spawner_cat: "&a&lGato"
 spawner_cave_spider: "&c&lAranha-das-cavernas"
