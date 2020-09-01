@@ -3,6 +3,7 @@ package com.rabbitcompany.admingui.listeners;
 import com.rabbitcompany.adminbans.AdminBansAPI;
 import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
+import com.rabbitcompany.admingui.utils.Colors;
 import com.rabbitcompany.admingui.utils.Message;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
@@ -127,6 +128,9 @@ public class PlayerPlaceholderMessageListener implements Listener {
                 }
 
                 if (p.hasPermission("admingui.chat.color") || p.hasPermission("admingui.chat.colors")) {
+                    if(Bukkit.getVersion().contains("1.16")){
+                        message = Colors.toHex(message);
+                    }
                     event.setFormat(Message.chat(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
                 } else {
                     event.setFormat(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message));

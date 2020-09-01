@@ -3,6 +3,7 @@ package com.rabbitcompany.admingui.listeners;
 import com.rabbitcompany.adminbans.AdminBansAPI;
 import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
+import com.rabbitcompany.admingui.utils.Colors;
 import com.rabbitcompany.admingui.utils.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -122,6 +123,9 @@ public class PlayerMessageListener implements Listener {
                 }
 
                 if(p.hasPermission("admingui.chat.color") || p.hasPermission("admingui.chat.colors")){
+                    if(Bukkit.getVersion().contains("1.16")){
+                        message = Colors.toHex(message);
+                    }
                     event.setFormat(Message.chat(adminGUI.getConf().getString("ac_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
                 }else{
                     event.setFormat(adminGUI.getConf().getString("ac_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message));

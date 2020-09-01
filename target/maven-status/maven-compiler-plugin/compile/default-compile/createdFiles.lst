@@ -1,5 +1,6 @@
 com/rabbitcompany/admingui/utils/potions/Version_8.class
 com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_14.class
+com/rabbitcompany/admingui/utils/HexColors.class
 com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_9.class
 com/rabbitcompany/admingui/AdminGUI.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_10.class
@@ -11,6 +12,7 @@ com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_14.class
 com/rabbitcompany/admingui/utils/Colors.class
 com/rabbitcompany/admingui/utils/Item.class
 com/rabbitcompany/admingui/listeners/PlayerInteractListener.class
+com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_15.class
 com/rabbitcompany/admingui/listeners/PlayerMessageListener.class
 com/rabbitcompany/admingui/utils/InventoryGUI.class
 com/rabbitcompany/admingui/commands/CommandSpy.class
@@ -29,6 +31,7 @@ com/rabbitcompany/admingui/utils/BannedPlayerIn.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_12.class
 com/rabbitcompany/admingui/TabCompletion.class
 com/rabbitcompany/admingui/utils/Entity.class
+com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_15.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_8.class
 com/rabbitcompany/admingui/utils/potions/Version_14.class
 com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_12.class
