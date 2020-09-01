@@ -2639,7 +2639,7 @@ public class AdminUI {
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_zombie"))){
                 Entity.spawn(target_player.getLocation(), EntityType.ZOMBIE);
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "spawner_zombie_pigman"))){
-                Entity.spawn(target_player.getLocation(), EntityType.PIGLIN);
+                Entity.spawn(target_player.getLocation(), EntityType.valueOf("PIG_ZOMBIE"));
             }
         }else{
             p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
