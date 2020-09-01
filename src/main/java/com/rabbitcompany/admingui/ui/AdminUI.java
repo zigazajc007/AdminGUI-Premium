@@ -2045,8 +2045,13 @@ public class AdminUI {
                     freeze.put(target_player.getUniqueId(), false);
                     target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "message_freeze_disabled").replace("{player}", p.getName()));
                 }else{
-                    freeze.put(target_player.getUniqueId(), true);
-                    target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "message_freeze_enabled").replace("{player}", p.getName()));
+                    if(!target_player.hasPermission("admingui.freeze.bypass")){
+                        freeze.put(target_player.getUniqueId(), true);
+                        target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "message_freeze_enabled").replace("{player}", p.getName()));
+                    }else{
+                        p.closeInventory();
+                        p.sendMessage(Message.getMessage(p.getUniqueId(), "permission"));
+                    }
                 }
                 p.openInventory(GUI_Actions(p, target_player));
             }

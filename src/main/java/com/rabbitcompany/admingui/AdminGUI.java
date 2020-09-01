@@ -300,7 +300,7 @@ public class AdminGUI extends JavaPlugin {
         return econ;
     }
 
-    private void mkdir() {
+    public void mkdir() {
 
         if(!this.co.exists()){
             saveResource("config.yml", false);
@@ -611,7 +611,7 @@ public class AdminGUI extends JavaPlugin {
         }else{
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &4&lCRACKED"));
         }
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b4.2.0"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b4.2.1"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));

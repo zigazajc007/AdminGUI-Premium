@@ -29,6 +29,7 @@ public class Admin implements CommandExecutor {
             if(args.length == 1) {
                 if (args[0].equals("reload")) {
                     sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_reload_start"));
+                    AdminGUI.getInstance().mkdir();
                     AdminGUI.getInstance().loadYamls();
                     sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_reload_finish"));
                 }
@@ -49,6 +50,7 @@ public class Admin implements CommandExecutor {
                 if(args[0].equals("reload")) {
                     if(player.hasPermission("admingui.reload")){
                         player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_reload_start"));
+                        AdminGUI.getInstance().mkdir();
                         AdminGUI.getInstance().loadYamls();
                         player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_reload_finish"));
                     }else{
