@@ -97,6 +97,9 @@ public class AdminUI {
     //Command Spy
     public static HashMap<UUID, Boolean> command_spy = new HashMap<>();
 
+    //Freeze
+    public static HashMap<UUID, Boolean> freeze = new HashMap<>();
+
     //Maintenance mode
     public static boolean maintenance_mode = false;
 
@@ -1140,6 +1143,17 @@ public class AdminUI {
             }
         }
 
+        //TODO: Freeze
+        if(p.hasPermission("admingui.freeze.other")){
+            if(freeze.getOrDefault(target.getUniqueId(), false)){
+                Item.create(inv_actions, "ICE", 1, 43, Message.getMessage(p.getUniqueId(), "actions_freeze_disabled"));
+            }else{
+                Item.create(inv_actions, "ICE", 1, 43, Message.getMessage(p.getUniqueId(), "actions_freeze_enabled"));
+            }
+        }else{
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 43,  Message.getMessage(p.getUniqueId(), "permission"));
+        }
+
         return inv_actions;
     }
 
@@ -2023,6 +2037,16 @@ public class AdminUI {
                     case "BLACK_WOOL":
                         chat_color.put(target_player.getUniqueId(), "WHITE_WOOL");
                         break;
+                }
+                p.openInventory(GUI_Actions(p, target_player));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_freeze_enabled")) || InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_freeze_disabled"))){
+                //TODO: Freeze
+                if(freeze.getOrDefault(target_player.getUniqueId(), false)){
+                    freeze.put(target_player.getUniqueId(), false);
+                    target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "message_freeze_disabled").replace("{player}", p.getName()));
+                }else{
+                    freeze.put(target_player.getUniqueId(), true);
+                    target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "message_freeze_enabled").replace("{player}", p.getName()));
                 }
                 p.openInventory(GUI_Actions(p, target_player));
             }

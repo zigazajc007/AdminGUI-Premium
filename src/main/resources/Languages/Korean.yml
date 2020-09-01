@@ -182,6 +182,8 @@ actions_firework: "&4&l폭죽"
 actions_fakeop: "&c&l가짜 오피"
 actions_custom: "&6&l커스텀 커맨드"
 actions_chat_color: "&3&lChat &6&lColor"
+actions_freeze_enabled: "&b&lFreeze"
+actions_freeze_disabled: "&c&lFreeze"
 actions_back: "&c&l돌아가기"
 #----------------------------------------------------------
 #                       Kick GUI
@@ -369,3 +371,5 @@ message_reload_finish: "&a플러그인이 성공적으로 리로드 되었습니
 message_admin_chat_enabled: "&a관리자 채팅이 활성화 되었습니다."
 message_admin_chat_disabled: "&c관리자 채팅이 비활성화 되었습니다."
 message_admin_chat_server_disabled: "&c이 서버에서 관리자 채팅을 사용할 수 없습니다."
+message_freeze_enabled: "&a{player} &bfroze you!"
+message_freeze_disabled: "&a{player} &bunfroze you!"

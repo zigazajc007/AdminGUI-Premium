@@ -183,6 +183,8 @@ actions_firework: "&4&l花火"
 actions_fakeop: "&c&lフェイクOP"
 actions_custom: "&6&lカスタムコマンド"
 actions_chat_color: "&3&lChat &6&lColor"
+actions_freeze_enabled: "&b&lFreeze"
+actions_freeze_disabled: "&c&lFreeze"
 actions_back: "&c&l戻る"
 #----------------------------------------------------------
 #                       Kick GUI
@@ -371,3 +373,5 @@ message_reload_finish: "&aプラグインのリロードに成功しました！
 message_admin_chat_enabled: "&a管理者チャットが有効"
 message_admin_chat_disabled: "&c管理者チャットが無効"
 message_admin_chat_server_disabled: "&cこのサーバーでは管理者チャットが無効になっています。"
+message_freeze_enabled: "&a{player} &bfroze you!"
+message_freeze_disabled: "&a{player} &bunfroze you!"

@@ -206,6 +206,12 @@ public class AdminGUI extends JavaPlugin {
             new PlayerCommandListener(this);
         }
 
+        //Freeze
+        new PlayerMoveListener(this);
+        new PlayerBlockBreakListener(this);
+        new PlayerBlockPlaceListener(this);
+        new PlayersDroppingItemsListener(this);
+
         //Commands
         this.getCommand("admin").setExecutor(new Admin());
         this.getCommand("admin").setTabCompleter(new TabCompletion());

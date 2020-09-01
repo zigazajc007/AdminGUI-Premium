@@ -26,6 +26,11 @@ public class PlayerPlaceholderCommandListener implements Listener {
         String message = event.getMessage();
         String chat_command_spy_format = PlaceholderAPI.setPlaceholders(p, adminGUI.getConf().getString("acs_format"));
 
+        if(AdminUI.freeze.getOrDefault(p.getUniqueId(), false) && AdminGUI.getInstance().getConf().getBoolean("freeze_execute_commands", true)){
+            event.setCancelled(true);
+            return;
+        }
+
         if(adminGUI.getConf().getBoolean("acs_enabled")){
             for (Player player : Bukkit.getServer().getOnlinePlayers()) {
                 if(player.hasPermission("admingui.chat.spy") && AdminUI.command_spy.getOrDefault(player.getUniqueId(), false) && !player.getUniqueId().equals(p.getUniqueId())){

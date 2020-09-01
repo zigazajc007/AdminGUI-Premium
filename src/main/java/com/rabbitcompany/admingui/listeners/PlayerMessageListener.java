@@ -30,6 +30,11 @@ public class PlayerMessageListener implements Listener {
         Player p = event.getPlayer();
         String message = event.getMessage();
 
+        if(AdminUI.freeze.getOrDefault(p.getUniqueId(), false) && AdminGUI.getInstance().getConf().getBoolean("freeze_send_message", true)){
+            event.setCancelled(true);
+            return;
+        }
+
         if(p.hasPermission("admingui.chat.staff") && AdminUI.admin_staff_chat.getOrDefault(p.getUniqueId(), false)){
             event.setCancelled(true);
 

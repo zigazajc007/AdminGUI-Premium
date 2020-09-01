@@ -93,6 +93,17 @@ asc_enabled: true
 # Here you can set your own Admin Staff Chat format (Valid tags are {name}, {display_name} and {message})
 asc_format: "&7[&cAdmin Chat&7] &5{name} &7> {message}"
 #----------------------------------------------------------
+#                   Freeze Settings
+#----------------------------------------------------------
+# Decide what players can't do when they are frozen. (true = can't do and false = can do)
+freeze_player_move: true
+freeze_move_inventory: true
+freeze_execute_commands: true
+freeze_send_message: true
+freeze_break_blocks: true
+freeze_place_block: true
+freeze_drop_items: true
+#----------------------------------------------------------
 #            Bungeecord (require mysql enabled)
 #----------------------------------------------------------
 # You can write what ever you want in server_name, but 2 servers can't have same name. (I suggest same names as in bungeecord config file)

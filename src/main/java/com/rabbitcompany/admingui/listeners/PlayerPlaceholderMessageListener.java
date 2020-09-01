@@ -30,6 +30,11 @@ public class PlayerPlaceholderMessageListener implements Listener {
         Player p = event.getPlayer();
         String message = event.getMessage();
 
+        if(AdminUI.freeze.getOrDefault(p.getUniqueId(), false) && AdminGUI.getInstance().getConf().getBoolean("freeze_send_message", true)){
+            event.setCancelled(true);
+            return;
+        }
+
         String chat_format = PlaceholderAPI.setPlaceholders(p, adminGUI.getConf().getString("ac_format"));
         String chat_staff_format = PlaceholderAPI.setPlaceholders(p, adminGUI.getConf().getString("asc_format"));
 
