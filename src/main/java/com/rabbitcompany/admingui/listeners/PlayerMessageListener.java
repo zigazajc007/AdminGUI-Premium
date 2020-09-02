@@ -32,6 +32,16 @@ public class PlayerMessageListener implements Listener {
 
         if(AdminUI.freeze.getOrDefault(p.getUniqueId(), false) && AdminGUI.getInstance().getConf().getBoolean("freeze_send_message", true)){
             event.setCancelled(true);
+
+            if(AdminGUI.getInstance().getConf().getBoolean("freeze_admin_chat", true) && AdminUI.admin_staff_chat.getOrDefault(p.getUniqueId(), false)) {
+                for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+                    if(player.hasPermission("admingui.chat.staff") || AdminUI.freeze.getOrDefault(player.getUniqueId(), false)){
+                        player.sendMessage(Message.chat(adminGUI.getConf().getString("asc_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
+                    }
+                }
+                Bukkit.getConsoleSender().sendMessage(Message.chat(adminGUI.getConf().getString("asc_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
+            }
+
             return;
         }
 

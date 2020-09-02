@@ -1,7 +1,6 @@
 package com.rabbitcompany.admingui.utils;
 
 import com.rabbitcompany.admingui.AdminGUI;
-import org.bukkit.Bukkit;
 import org.bukkit.Color;
 
 import java.util.regex.Matcher;
@@ -91,6 +90,10 @@ public class Colors {
         }
 
         return message;
+    }
+
+    public static String RGBtoHex(int r, int g, int b){
+        return String.format("#%02x%02x%02x", r, g, b);
     }
 
 }

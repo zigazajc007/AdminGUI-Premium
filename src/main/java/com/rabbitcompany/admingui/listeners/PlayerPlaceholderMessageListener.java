@@ -30,13 +30,23 @@ public class PlayerPlaceholderMessageListener implements Listener {
         Player p = event.getPlayer();
         String message = event.getMessage();
 
-        if(AdminUI.freeze.getOrDefault(p.getUniqueId(), false) && AdminGUI.getInstance().getConf().getBoolean("freeze_send_message", true)){
-            event.setCancelled(true);
-            return;
-        }
-
         String chat_format = PlaceholderAPI.setPlaceholders(p, adminGUI.getConf().getString("ac_format"));
         String chat_staff_format = PlaceholderAPI.setPlaceholders(p, adminGUI.getConf().getString("asc_format"));
+
+        if(AdminUI.freeze.getOrDefault(p.getUniqueId(), false) && AdminGUI.getInstance().getConf().getBoolean("freeze_send_message", true)){
+            event.setCancelled(true);
+
+            if(AdminGUI.getInstance().getConf().getBoolean("freeze_admin_chat", true) && AdminUI.admin_staff_chat.getOrDefault(p.getUniqueId(), false)){
+                for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+                    if(player.hasPermission("admingui.chat.staff") || AdminUI.freeze.getOrDefault(player.getUniqueId(), false)){
+                        player.sendMessage(Message.chat(chat_staff_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
+                    }
+                }
+                Bukkit.getConsoleSender().sendMessage(chat_staff_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message));
+            }
+
+            return;
+        }
 
         if(p.hasPermission("admingui.chat.staff") && AdminUI.admin_staff_chat.getOrDefault(p.getUniqueId(), false)){
             event.setCancelled(true);

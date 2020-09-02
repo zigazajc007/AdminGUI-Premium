@@ -103,6 +103,7 @@ freeze_send_message: true
 freeze_break_blocks: true
 freeze_place_block: true
 freeze_drop_items: true
+freeze_admin_chat: true
 #----------------------------------------------------------
 #            Bungeecord (require mysql enabled)
 #----------------------------------------------------------
