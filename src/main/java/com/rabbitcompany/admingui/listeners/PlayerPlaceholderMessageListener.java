@@ -140,6 +140,9 @@ public class PlayerPlaceholderMessageListener implements Listener {
                     case "BLACK_WOOL":
                         message = Message.chat("&0" + message);
                         break;
+                    case "EXPERIENCE_BOTTLE":
+                        message = Colors.rainbowText(message);
+                        break;
                 }
 
                 if (p.hasPermission("admingui.chat.color") || p.hasPermission("admingui.chat.colors")) {

@@ -1,6 +1,7 @@
 package com.rabbitcompany.admingui.utils;
 
 import com.rabbitcompany.admingui.AdminGUI;
+import org.bukkit.Bukkit;
 import org.bukkit.Color;
 
 import java.util.regex.Matcher;
@@ -90,6 +91,39 @@ public class Colors {
         }
 
         return message;
+    }
+
+    public static String rainbowText(String text)
+    {
+        StringBuilder builder = new StringBuilder(text.length() + 7 * (text.length())+1);
+
+        int index = 0;
+        int index_color = 0;
+        String prefix = "#80f320";
+        while (index < text.length())
+        {
+            builder.append(prefix);
+
+            index_color++;
+            if(index_color >= 32) index_color = 0;
+
+            prefix = rainbowHex(index_color);
+
+            builder.append(text.substring(index, Math.min(index + 1, text.length())));
+            index++;
+            index_color++;
+        }
+        return builder.toString();
+    }
+
+    public static String rainbowHex(int i){
+        double frequency = .3;
+
+        int red = (int) Math.round(Math.sin(frequency*i + 0) * 127 + 128);
+        int green = (int) Math.round(Math.sin(frequency*i + 2) * 127 + 128);
+        int blue  = (int) Math.round(Math.sin(frequency*i + 4) * 127 + 128);
+
+        return RGBtoHex(red, green, blue);
     }
 
     public static String RGBtoHex(int r, int g, int b){
