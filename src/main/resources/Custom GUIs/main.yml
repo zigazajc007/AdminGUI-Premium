@@ -1,0 +1,90 @@
+#       ----------- + AdminGUI by Ziga Zajc + -----------   #
+#                                                           #
+#                          Main Menu                        #
+#                                                           #
+#       --------- + ------------------------- + ---------   #
+#
+#       You can use chat colors:
+#                ________________________
+#               |   code: | color:       |
+#               |________________________|
+#               |     &0  |	Black	     |
+#               |     &1  |	Dark Blue	 |
+#               |     &2  |	Dark Green	 |
+#               |     &3  |	Dark Aqua	 |
+#               |     &4  |	Dark Red	 |
+#               |     &5  |	Dark Purple	 |
+#               |     &6  |	Gold	     |
+#               |     &7  |	Gray	     |
+#               |     &8  |	Dark Gray	 |
+#               |     &9  |	Blue	     |
+#               |     &a  |	Green	     |
+#               |     &b  |	Aqua	     |
+#               |     &c  |	Red	         |
+#               |     &d  |	Light Purple |
+#               |     &e  |	Yellow	     |
+#               |     &f  |	White	     |
+#               |     &k  |	Obfuscated	 |
+#               |     &l  |	Bold	     |
+#               |     &m  |	Strikethrough|
+#               |     &n  |	Underline	 |
+#               |     &o  |	Italic	     |
+#               |     &r  |	Reset	     |
+#               |________________________|
+#
+#----------------------------------------------------------
+#                     Main Menu
+#----------------------------------------------------------
+inventory:
+  title: "lang:inventory_main"
+  size: 36
+  background: true
+slots:
+  11:
+    name: "lang:main_player"
+    material: "head:{player}"
+    amount: 1
+    action: "open:player"
+  13:
+    name: "lang:main_world"
+    material: "GRASS_BLOCK"
+    amount: 1
+    action: "open:world"
+  15:
+    name: "lang:main_players"
+    material: "head:Black1_TV"
+    amount: 1
+    action: "open:players"
+  17:
+    name: "lang:main_plugins"
+    material: "BOOKSHELF"
+    amount: 1
+    action: "open:plugins"
+  28:
+    name: "lang:main_maintenance_mode"
+    material: "REDSTONE"
+    amount: 1
+    action: "run:maintenance_mode"
+    options:
+      enabled:
+        name: "lang:main_maintenance_mode"
+        material: "GLOWSTONE_DUST"
+        amount: 1
+  32:
+    name: "lang:main_unban_players"
+    material: "BARRIER"
+    amount: 1
+    action: "open:unban"
+    options:
+      right_click:
+        action: "open:unmute"
+  34:
+    name: "&b&l{language}"
+    material: "COMMAND_BLOCK"
+    amount: 1
+    action: "run:language"
+  36:
+    name: "lang:main_quit"
+    material: "REDSTONE_BLOCK"
+    amount: 1
+    action: "open:close"

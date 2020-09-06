@@ -1,7 +1,6 @@
 package com.rabbitcompany.admingui.utils;
 
 import com.rabbitcompany.admingui.AdminGUI;
-import org.bukkit.Bukkit;
 import org.bukkit.Color;
 
 import java.util.regex.Matcher;
