@@ -3,6 +3,7 @@ com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_14.class
 com/rabbitcompany/admingui/utils/HexColors.class
 com/rabbitcompany/admingui/listeners/PlayerBlockPlaceListener.class
 com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_9.class
+com/rabbitcompany/adminguibungee/listeners/PluginMessageListener.class
 com/rabbitcompany/admingui/AdminGUI.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_10.class
 com/rabbitcompany/admingui/listeners/PlayerMoveListener.class
@@ -40,12 +41,14 @@ com/rabbitcompany/admingui/utils/potions/Version_14.class
 com/rabbitcompany/admingui/listeners/PlayerBlockBreakListener.class
 com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_12.class
 com/rabbitcompany/admingui/MetricsLite.class
+com/rabbitcompany/adminguibungee/utils/Channel.class
 com/rabbitcompany/admingui/listeners/PlayerDamageListener.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_11.class
 com/rabbitcompany/admingui/utils/Initialize.class
 com/rabbitcompany/admingui/XMaterial.class
 com/rabbitcompany/admingui/commands/AdminChat.class
 com/rabbitcompany/admingui/utils/TargetPlayer.class
+com/rabbitcompany/adminguibungee/AdminGUIBungee.class
 com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_10.class
 com/rabbitcompany/admingui/utils/Initialize$1.class
 com/rabbitcompany/admingui/listeners/PlayerLeaveListener.class

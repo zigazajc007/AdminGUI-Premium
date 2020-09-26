@@ -1,0 +1,5 @@
+name: AdminGUI-Bungee
+version: 1.0.0
+main: com.rabbitcompany.adminguibungee.AdminGUIBungee
+description: Admin GUI Bungee connector
+author: Black1_TV
