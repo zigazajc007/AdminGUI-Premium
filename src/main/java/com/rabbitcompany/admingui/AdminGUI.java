@@ -1,5 +1,7 @@
 package com.rabbitcompany.admingui;
 
+import com.google.common.io.ByteArrayDataInput;
+import com.google.common.io.ByteStreams;
 import com.rabbitcompany.adminbans.AdminBans;
 import com.rabbitcompany.admingui.commands.*;
 import com.rabbitcompany.admingui.listeners.*;
@@ -10,19 +12,21 @@ import com.rabbitcompany.admingui.utils.Message;
 import com.zaxxer.hikari.HikariDataSource;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.messaging.PluginMessageListener;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-
-public class AdminGUI extends JavaPlugin {
+//TODO: Bungee
+public class AdminGUI extends JavaPlugin implements PluginMessageListener {
 
     private static AdminGUI instance;
 
@@ -30,10 +34,6 @@ public class AdminGUI extends JavaPlugin {
     String user_id = "%%__USER__%%";
 
     public static int gui_type = 0;
-
-    //SQL
-    public static HikariDataSource hikari;
-    public static Connection conn = null;
 
     //VaultAPI
     private static Economy econ = null;
@@ -160,29 +160,10 @@ public class AdminGUI extends JavaPlugin {
 
         gui_type = getConf().getInt("gui_type", 0);
 
-        //SQL
-        if(getConf().getBoolean("mysql", false)){
-            try {
-                hikari = new HikariDataSource();
-                hikari.setMaximumPoolSize(10);
-                hikari.setJdbcUrl("jdbc:mysql://" + getConf().getString("mysql_host") + ":" + getConf().getString("mysql_port") + "/" + getConf().getString("mysql_database"));
-                hikari.setUsername(getConf().getString("mysql_user"));
-                hikari.setPassword(getConf().getString("mysql_password"));
-                hikari.addDataSourceProperty("useSSL", getConf().getString("mysql_useSSL"));
-                hikari.addDataSourceProperty("cachePrepStmts", "true");
-                hikari.addDataSourceProperty("prepStmtCacheSize", "250");
-                hikari.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
-                conn = hikari.getConnection();
-
-                if(getConf().getBoolean("bungeecord_enabled", false)){
-                    conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admingui_players(username varchar(25) NOT NULL PRIMARY KEY, server varchar(30) NOT NULL);");
-                    conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admingui_tasks(id varchar(50) NOT NULL PRIMARY KEY, from_server varchar(30) NOT NULL, to_server varchar(30), command varchar(30) NOT NULL, player varchar(25) NOT NULL, target_player varchar(25) NOT NULL, param1 varchar(255), param2 varchar(255), param3 varchar(255), status varchar(15) NOT NULL DEFAULT 'waiting', created TIMESTAMP NOT NULL DEFAULT NOW());");
-                    Initialize.Database();
-                }
-                conn.close();
-            } catch (SQLException e) {
-                conn = null;
-            }
+        //TODO: Bungee
+        if(getConf().getBoolean("bungeecord_enabled", false)){
+            getServer().getMessenger().registerOutgoingPluginChannel(this, "my:admingui");
+            getServer().getMessenger().registerIncomingPluginChannel(this, "my:admingui", this);
         }
 
         //Listeners
@@ -263,24 +244,6 @@ public class AdminGUI extends JavaPlugin {
     @Override
     public void onDisable() {
         info("&4Disabling");
-
-        //SQL
-        if(conn != null){
-
-            if(getConf().getBoolean("bungeecord_enabled", false)){
-                for(Player all : Bukkit.getServer().getOnlinePlayers()){
-                    try {
-                        Connection conn = AdminBans.hikari.getConnection();
-                        conn.createStatement().executeUpdate("DELETE FROM admingui_players WHERE username = '" + all.getName() + "';");
-                        conn.close();
-                    } catch (SQLException ignored) { }
-                }
-            }
-
-            try {
-                conn.close();
-            } catch (SQLException ignored) { }
-        }
     }
 
     //VaultAPI
@@ -625,5 +588,57 @@ public class AdminGUI extends JavaPlugin {
 
     public static AdminGUI getInstance(){
         return instance;
+    }
+
+    //TODO: Bungee
+    @Override
+    public void onPluginMessageReceived(String channel, Player pla, byte[] message) {
+
+        if (!channel.equalsIgnoreCase("my:admingui")) return;
+
+        ByteArrayDataInput in = ByteStreams.newDataInput(message);
+        String sender = in.readUTF();
+        String subchannel = in.readUTF();
+
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&dSender: " + sender));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&dSubchannel: " + subchannel));
+
+        switch (subchannel){
+            case "online_players":
+                String online_players = in.readUTF();
+                String[] op = online_players.split(";");
+                AdminUI.online_players.clear();
+                for (String on: op) {
+                    AdminUI.online_players.add(on);
+                    AdminUI.skulls_players.put(on, Item.pre_createPlayerHead(on));
+                }
+                break;
+            case "gamemode":
+                String player = in.readUTF();
+                String gamemode = in.readLine();
+
+                Player target = Bukkit.getServer().getPlayer(player);
+
+                if(target != null){
+                    if(target.isOnline()){
+                        switch (gamemode){
+                            case "spectator":
+                                target.setGameMode(GameMode.SPECTATOR);
+                                break;
+                            case "creative":
+                                target.setGameMode(GameMode.CREATIVE);
+                                break;
+                            case "adventure":
+                                target.setGameMode(GameMode.ADVENTURE);
+                                break;
+                            default:
+                                target.setGameMode(GameMode.SURVIVAL);
+                                break;
+                        }
+                    }
+                }
+                break;
+        }
+
     }
 }

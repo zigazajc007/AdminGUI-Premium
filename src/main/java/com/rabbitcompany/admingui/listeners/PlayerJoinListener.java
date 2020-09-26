@@ -3,6 +3,7 @@ package com.rabbitcompany.admingui.listeners;
 import com.rabbitcompany.adminbans.AdminBans;
 import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
+import com.rabbitcompany.admingui.utils.Channel;
 import com.rabbitcompany.admingui.utils.Initialize;
 import com.rabbitcompany.admingui.utils.Item;
 import com.rabbitcompany.admingui.utils.Message;
@@ -29,17 +30,14 @@ public class PlayerJoinListener implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
-        //SQL
-        if(AdminGUI.conn != null && AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false)){
-            try {
-                Connection conn = AdminBans.hikari.getConnection();
-                conn.createStatement().executeUpdate("INSERT INTO admingui_players() VALUES ('" + event.getPlayer().getName() + "', '" + AdminGUI.getInstance().getConf().getString("server_name") + "');");
-                conn.close();
-            } catch (SQLException ignored) { }
+
+        if(AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false)){
+            Channel.send(event.getPlayer().getName(),"send", "online_players");
         }else{
             AdminUI.online_players.add(event.getPlayer().getName());
-            AdminUI.skulls_players.put(event.getPlayer().getName(), Item.pre_createPlayerHead(event.getPlayer().getName()));
         }
+
+        AdminUI.skulls_players.put(event.getPlayer().getName(), Item.pre_createPlayerHead(event.getPlayer().getName()));
 
         if(adminGUI.getConf().getInt("initialize_gui",0) == 1) {
             if(!AdminUI.task_gui.containsKey(event.getPlayer().getUniqueId())){

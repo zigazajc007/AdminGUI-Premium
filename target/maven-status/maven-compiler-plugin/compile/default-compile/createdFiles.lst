@@ -11,6 +11,7 @@ com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_11.class
 com/rabbitcompany/admingui/listeners/PlayerPlaceholderMessageListener.class
 com/rabbitcompany/admingui/utils/Fireworks.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_14.class
+com/rabbitcompany/admingui/utils/Channel.class
 com/rabbitcompany/admingui/utils/Colors.class
 com/rabbitcompany/admingui/utils/Item.class
 com/rabbitcompany/admingui/listeners/PlayerInteractListener.class
@@ -38,7 +39,6 @@ com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_8.class
 com/rabbitcompany/admingui/utils/potions/Version_14.class
 com/rabbitcompany/admingui/listeners/PlayerBlockBreakListener.class
 com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_12.class
-com/rabbitcompany/admingui/utils/Initialize$3.class
 com/rabbitcompany/admingui/MetricsLite.class
 com/rabbitcompany/admingui/listeners/PlayerDamageListener.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_11.class

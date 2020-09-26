@@ -3,6 +3,7 @@ package com.rabbitcompany.admingui.commands;
 import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.XMaterial;
 import com.rabbitcompany.admingui.ui.AdminUI;
+import com.rabbitcompany.admingui.utils.Channel;
 import com.rabbitcompany.admingui.utils.Initialize;
 import com.rabbitcompany.admingui.utils.Message;
 import org.bukkit.Bukkit;
@@ -43,6 +44,10 @@ public class Admin implements CommandExecutor {
         Player player = (Player) sender;
 
         if(player.hasPermission("admingui.admin")){
+
+            //TODO: Bungee
+            Channel.send(player.getName(),"send", "online_players");
+
             if(args.length == 0){
                 AdminUI.target_player.put(player, player);
                 player.openInventory(adminUI.GUI_Main(player));
@@ -84,16 +89,24 @@ public class Admin implements CommandExecutor {
                         if(player.getName().equals(target_player.getName())){
                             player.openInventory(adminUI.GUI_Player(player));
                         }else{
-                            player.openInventory(adminUI.GUI_Players_Settings(player, target_player));
+                            player.openInventory(adminUI.GUI_Players_Settings(player, target_player, target_player.getName()));
+                        }
+                    }else if(AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false) && AdminUI.online_players.contains(ChatColor.stripColor(args[0]))){
+                        //TODO: Bungee
+                        switch(AdminGUI.getInstance().getConf().getInt("control_type", 0)){
+                            case 0:
+                                Channel.send(player.getName(),"connect", ChatColor.stripColor(args[0]));
+                                break;
+                            case 1:
+                                AdminUI.target_player.put(player, null);
+                                player.openInventory(adminUI.GUI_Players_Settings(player,null, ChatColor.stripColor(args[0])));
+                                break;
+                            default:
+                                player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.chat("&cPlayer " + ChatColor.stripColor(args[0]) + " is not located in the same server as you."));
+                                break;
                         }
                     }else{
-                        //SQL
-                        String sql_player = ChatColor.stripColor(args[0]);
-                        if(AdminGUI.conn != null && AdminUI.online_players.contains(sql_player)){
-                            player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.chat("&cPlayer " + sql_player + " is not located in the same server as you."));
-                        }else{
-                            player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "is_not_a_player").replace("{player}", args[0]));
-                        }
+                        player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "is_not_a_player").replace("{player}", args[0]));
                     }
                 }
             }else if(args.length == 2){

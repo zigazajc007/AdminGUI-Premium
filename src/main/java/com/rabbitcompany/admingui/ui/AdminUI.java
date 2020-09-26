@@ -817,9 +817,9 @@ public class AdminUI {
         return inv_unmute_players;
     }
 
-    public Inventory GUI_Players_Settings(Player p, Player target_player){
+    public Inventory GUI_Players_Settings(Player p, Player target_player, String target_name){
 
-        String inventory_players_settings_name = Message.getMessage(p.getUniqueId(), "players_color").replace("{player}", target_player.getName());
+        String inventory_players_settings_name = Message.getMessage(p.getUniqueId(), "players_color").replace("{player}", target_name);
         Inventory inv_players_settings = Bukkit.createInventory(null, 27, inventory_players_settings_name);
 
         for(int i = 1; i < 27; i++){
@@ -827,13 +827,18 @@ public class AdminUI {
         }
 
         if(p.hasPermission("admingui.info")) {
-            if(AdminGUI.vault){
-                Item.createPlayerHead(inv_players_settings, target_player.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_player.getName()), Message.chat("&eHeal: " + Math.round(target_player.getHealth())), Message.chat("&7Feed: " + Math.round(target_player.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(target_player.getName()))) ,Message.chat("&aGamemode: " + target_player.getGameMode().toString()), Message.chat("&5IP: " + target_player.getAddress()));
+            //TODO: Bungee
+            if(AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false) && target_player == null){
+                Item.createPlayerHead(inv_players_settings, target_name, 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_name));
             }else{
-                Item.createPlayerHead(inv_players_settings, target_player.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_player.getName()), Message.chat("&eHeal: " + Math.round(target_player.getHealth())), Message.chat("&7Feed: " + Math.round(target_player.getFoodLevel())), Message.chat("&aGamemode: " + target_player.getGameMode().toString()), Message.chat("&5IP: " + target_player.getAddress()));
+                if(AdminGUI.vault){
+                    Item.createPlayerHead(inv_players_settings, target_name, 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_name), Message.chat("&eHeal: " + Math.round(target_player.getHealth())), Message.chat("&7Feed: " + Math.round(target_player.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(target_name))) ,Message.chat("&aGamemode: " + target_player.getGameMode().toString()), Message.chat("&5IP: " + target_player.getAddress()));
+                }else{
+                    Item.createPlayerHead(inv_players_settings, target_name, 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_name), Message.chat("&eHeal: " + Math.round(target_player.getHealth())), Message.chat("&7Feed: " + Math.round(target_player.getFoodLevel())), Message.chat("&aGamemode: " + target_player.getGameMode().toString()), Message.chat("&5IP: " + target_player.getAddress()));
+                }
             }
         }else{
-            Item.createPlayerHead(inv_players_settings, target_player.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_player.getName()));
+            Item.createPlayerHead(inv_players_settings, target_name, 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_name));
         }
 
         switch (AdminGUI.gui_type){
@@ -1513,6 +1518,10 @@ public class AdminUI {
         }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "main_world"))){
             p.openInventory(GUI_World(p));
         }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "main_players"))){
+            //TODO: Bungee
+            if(AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false)){
+                Channel.send(p.getName(),"send", "online_players");
+            }
             p.openInventory(GUI_Players(p));
         }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "main_plugins"))){
             custom_method.put(p.getUniqueId(), 0);
@@ -1773,12 +1782,24 @@ public class AdminUI {
                 if(target_p != null){
                     if(p.getUniqueId() != target_p.getUniqueId()){
                         target_player.put(p, target_p);
-                        p.openInventory(GUI_Players_Settings(p,target_p));
+                        p.openInventory(GUI_Players_Settings(p,target_p, target_p.getName()));
                     }else{
                         p.openInventory(GUI_Player(p));
                     }
-                }else if(AdminGUI.conn != null && AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false) && online_players.contains(ChatColor.stripColor(clicked.getItemMeta().getDisplayName()))) {
-                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.chat("&cPlayer " + ChatColor.stripColor(clicked.getItemMeta().getDisplayName()) + " is not located in the same server as you."));
+                }else if(AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false) && online_players.contains(ChatColor.stripColor(clicked.getItemMeta().getDisplayName()))) {
+                    //TODO: Bungee
+                    switch(AdminGUI.getInstance().getConf().getInt("control_type", 0)){
+                        case 0:
+                            Channel.send(p.getName(),"connect", ChatColor.stripColor(clicked.getItemMeta().getDisplayName()));
+                            break;
+                        case 1:
+                            target_player.put(p, null);
+                            p.openInventory(GUI_Players_Settings(p,null, ChatColor.stripColor(clicked.getItemMeta().getDisplayName())));
+                            break;
+                        default:
+                            p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.chat("&cPlayer " + ChatColor.stripColor(clicked.getItemMeta().getDisplayName()) + " is not located in the same server as you."));
+                            break;
+                    }
                 }else{
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
                     p.closeInventory();
@@ -1893,7 +1914,7 @@ public class AdminUI {
             if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "players_settings_back"))){
                 p.openInventory(GUI_Players(p));
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_player.getName()))){
-                p.openInventory(GUI_Players_Settings(p, target_player));
+                p.openInventory(GUI_Players_Settings(p, target_player, target_player.getName()));
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "players_settings_actions"))){
                 p.openInventory(GUI_Actions(p, target_player));
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "players_settings_money"))){
@@ -1914,7 +1935,7 @@ public class AdminUI {
 
         if(target_player.isOnline()){
             if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_back"))){
-                p.openInventory(GUI_Players_Settings(p, target_player));
+                p.openInventory(GUI_Players_Settings(p, target_player, target_player.getName()));
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_info").replace("{player}", target_player.getName()))){
                 p.openInventory(GUI_Actions(p,target_player));
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_survival"))){
@@ -2055,7 +2076,167 @@ public class AdminUI {
                 }
                 p.openInventory(GUI_Actions(p, target_player));
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_freeze_enabled")) || InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_freeze_disabled"))){
-                //TODO: Freeze
+                if(freeze.getOrDefault(target_player.getUniqueId(), false)){
+                    freeze.put(target_player.getUniqueId(), false);
+                    AdminUI.admin_staff_chat.put(target_player.getUniqueId(), false);
+                    target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "message_freeze_disabled").replace("{player}", p.getName()));
+                }else{
+                    if(!target_player.hasPermission("admingui.freeze.bypass")){
+                        freeze.put(target_player.getUniqueId(), true);
+                        AdminUI.admin_staff_chat.put(target_player.getUniqueId(), true);
+                        target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "message_freeze_enabled").replace("{player}", p.getName()));
+                    }else{
+                        p.closeInventory();
+                        p.sendMessage(Message.getMessage(p.getUniqueId(), "permission"));
+                    }
+                }
+                p.openInventory(GUI_Actions(p, target_player));
+            }
+        }else if(AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false)){
+            //TODO: Bungee
+            if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_back"))){
+                p.openInventory(GUI_Players_Settings(p, target_player, target_player.getName()));
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_info").replace("{player}", target_player.getName()))){
+                p.openInventory(GUI_Actions(p,target_player));
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_survival"))){
+                Channel.send(p.getName(),"gamemode", target_player.getName(), "adventure");
+                //target_player.setGameMode(GameMode.ADVENTURE);
+                p.openInventory(GUI_Actions(p,target_player));
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_adventure"))){
+                target_player.setGameMode(GameMode.CREATIVE);
+                p.openInventory(GUI_Actions(p,target_player));
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_creative"))){
+                target_player.setGameMode(GameMode.SPECTATOR);
+                p.openInventory(GUI_Actions(p,target_player));
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_spectator"))){
+                target_player.setGameMode(GameMode.SURVIVAL);
+                p.openInventory(GUI_Actions(p,target_player));
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_teleport_to_player"))){
+                p.teleport(target_player.getLocation());
+                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_target_player_teleport").replace("{player}", target_player.getName()));
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_kill_player"))){
+                target_player.setHealth(0);
+                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_kill").replace("{player}", target_player.getName()));
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_burn_player"))){
+                target_player.setFireTicks(500);
+                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_burn").replace("{player}", target_player.getName()));
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_teleport_player_to_you"))){
+                target_player.teleport(p.getLocation());
+                target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "message_target_player_teleport").replace("{player}", p.getName()));
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_heal"))){
+                target_player.setHealth(20);
+                target_player.setFireTicks(0);
+                target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "message_target_player_heal").replace("{player}", p.getName()));
+                p.sendMessage(Message.chat(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_heal").replace("{player}", target_player.getName())));
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_feed"))){
+                target_player.setFoodLevel(20);
+                target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "message_target_player_feed").replace("{player}", p.getName()));
+                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_feed").replace("{player}", target_player.getName()));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_god_enabled"))){
+                if(Bukkit.getVersion().contains("1.8")){
+                    god.put(target_player.getUniqueId(), true);
+                }else{
+                    target_player.setInvulnerable(true);
+                }
+                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_god_enabled").replace("{player}", target_player.getName()));
+                target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "message_target_player_god_enabled").replace("{player}", p.getName()));
+                p.openInventory(GUI_Actions(p,target_player));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_god_disabled"))){
+                if(Bukkit.getVersion().contains("1.8")){
+                    god.put(target_player.getUniqueId(), false);
+                }else{
+                    target_player.setInvulnerable(false);
+                }
+                p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_god_disabled").replace("{player}", target_player.getName()));
+                target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "message_target_player_god_disabled").replace("{player}", p.getName()));
+                p.openInventory(GUI_Actions(p,target_player));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_potions"))){
+                p.openInventory(GUI_potions(p, target_player));
+            }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_spawner"))){
+                p.openInventory(GUI_Spawner(p, target_player));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_inventory"))){
+                p.openInventory(GUI_Inventory(p, target_player));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_vanish_enabled"))){
+                if (Bukkit.getPluginManager().isPluginEnabled("SuperVanish") || Bukkit.getPluginManager().isPluginEnabled("PremiumVanish")) {
+                    VanishAPI.hidePlayer(target_player);
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_hide").replace("{player}", target_player.getName()));
+                    target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "message_hide"));
+                }else{
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "vanish_required"));
+                }
+                p.closeInventory();
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_vanish_disabled"))){
+                if (Bukkit.getPluginManager().isPluginEnabled("SuperVanish") || Bukkit.getPluginManager().isPluginEnabled("PremiumVanish")) {
+                    VanishAPI.showPlayer(target_player);
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_visible").replace("{player}", target_player.getName()));
+                    target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "message_visible"));
+                }else{
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "vanish_required"));
+                }
+                p.closeInventory();
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_lightning"))){
+                target_player.getWorld().strikeLightning(target_player.getLocation());
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_firework"))){
+                Fireworks.createRandom(target_player);
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_fakeop"))){
+                Bukkit.broadcastMessage(Message.chat("&7&o[Server: Made " + target_player.getName() +" a server operator]"));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_custom"))){
+                custom_method.put(p.getUniqueId(), 2);
+                p.openInventory(GUI_Plugins(p));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_chat_color"))){
+                switch (chat_color.getOrDefault(target_player.getUniqueId(), "LIGHT_GRAY_WOOL")){
+                    case "WHITE_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "ORANGE_WOOL");
+                        break;
+                    case "ORANGE_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "MAGENTA_WOOL");
+                        break;
+                    case "MAGENTA_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "LIGHT_BLUE_WOOL");
+                        break;
+                    case "LIGHT_BLUE_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "YELLOW_WOOL");
+                        break;
+                    case "YELLOW_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "LIME_WOOL");
+                        break;
+                    case "LIME_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "GRAY_WOOL");
+                        break;
+                    case "GRAY_WOOL":
+                        if(getVersion().contains("1.16")){
+                            chat_color.put(p.getUniqueId(), "EXPERIENCE_BOTTLE");
+                        }else{
+                            chat_color.put(p.getUniqueId(), "LIGHT_GRAY_WOOL");
+                        }
+                        break;
+                    case "EXPERIENCE_BOTTLE":
+                        chat_color.put(p.getUniqueId(), "LIGHT_GRAY_WOOL");
+                        break;
+                    case "LIGHT_GRAY_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "CYAN_WOOL");
+                        break;
+                    case "CYAN_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "PURPLE_WOOL");
+                        break;
+                    case "PURPLE_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "BLUE_WOOL");
+                        break;
+                    case "BLUE_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "GREEN_WOOL");
+                        break;
+                    case "GREEN_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "RED_WOOL");
+                        break;
+                    case "RED_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "BLACK_WOOL");
+                        break;
+                    case "BLACK_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "WHITE_WOOL");
+                        break;
+                }
+                p.openInventory(GUI_Actions(p, target_player));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_freeze_enabled")) || InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_freeze_disabled"))){
                 if(freeze.getOrDefault(target_player.getUniqueId(), false)){
                     freeze.put(target_player.getUniqueId(), false);
                     AdminUI.admin_staff_chat.put(target_player.getUniqueId(), false);
@@ -2083,7 +2264,7 @@ public class AdminUI {
 
         if(target_player.isOnline()){
             if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "kick_back"))){
-                p.openInventory(GUI_Players_Settings(p, target_player));
+                p.openInventory(GUI_Players_Settings(p, target_player, target_player.getName()));
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "ban_silence_disabled"))){
                 kick_silence.put(p.getUniqueId(), true);
                 p.openInventory(GUI_Kick(p, target_player));
@@ -2129,7 +2310,7 @@ public class AdminUI {
 
         if(target_player.isOnline()){
             if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "ban_back"))) {
-                p.openInventory(GUI_Players_Settings(p, target_player));
+                p.openInventory(GUI_Players_Settings(p, target_player, target_player.getName()));
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "ban_silence_disabled"))){
                 ban_silence.put(p.getUniqueId(), true);
                 p.openInventory(GUI_Ban(p, target_player));
@@ -2699,7 +2880,7 @@ public class AdminUI {
                 if(p.getName().equals(target_player.getName())){
                     p.openInventory(GUI_Player(p));
                 }else{
-                    p.openInventory(GUI_Players_Settings(p, target_player));
+                    p.openInventory(GUI_Players_Settings(p, target_player, target_player.getName()));
                 }
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "money_give"))){
                 if(AdminGUI.vault){

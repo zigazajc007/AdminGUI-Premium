@@ -79,28 +79,4 @@ public class Initialize {
             AdminUI.task_players.put(player.getUniqueId(), taskID);
         }
     }
-
-    public static void Database(){
-        getServer().getScheduler().scheduleSyncRepeatingTask(AdminGUI.getInstance(), new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Connection conn = AdminBans.hikari.getConnection();
-                    PreparedStatement ps = conn.prepareStatement("SELECT * FROM admingui_players;");
-                    ResultSet rs = ps.executeQuery();
-                    if(rs != null){
-                        AdminUI.online_players.clear();
-                        AdminUI.skulls_players.clear();
-                        while (rs.next()){
-                            AdminUI.online_players.add(rs.getString("username"));
-                            AdminUI.skulls_players.put(rs.getString("username"), Item.pre_createPlayerHead(rs.getString("username")));
-                        }
-                    }
-                    conn.close();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-            }
-        }, 20L, AdminGUI.getInstance().getConf().getInt("mysql_delay", 5) * 20L);
-    }
 }

@@ -1,6 +1,7 @@
 package com.rabbitcompany.admingui;
 
 import com.rabbitcompany.admingui.ui.AdminUI;
+import com.rabbitcompany.admingui.utils.Channel;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -20,8 +21,8 @@ public class TabCompletion implements TabCompleter {
 
            if(args.length == 1){
 
-               //SQL
-                if(AdminGUI.conn != null){
+                if(AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false)){
+                    Channel.send(sender.getName(),"send", "online_players");
                     completions.addAll(AdminUI.online_players);
                 }else{
                     for(Player all : Bukkit.getServer().getOnlinePlayers()) {

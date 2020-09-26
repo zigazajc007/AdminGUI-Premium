@@ -3,6 +3,7 @@ package com.rabbitcompany.admingui.listeners;
 import com.rabbitcompany.adminbans.AdminBans;
 import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
+import com.rabbitcompany.admingui.utils.Channel;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,17 +24,13 @@ public class PlayerLeaveListener implements Listener {
 
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent event){
-        //SQL
-        if(AdminGUI.conn != null && AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false)){
-            try {
-                Connection conn = AdminBans.hikari.getConnection();
-                conn.createStatement().executeUpdate("DELETE FROM admingui_players WHERE username = '" + event.getPlayer().getName() + "';");
-                conn.close();
-            } catch (SQLException ignored) { }
+
+        if(AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false)){
+            Channel.send(event.getPlayer().getName(),"send", "online_players");
         }else{
             AdminUI.online_players.remove(event.getPlayer().getName());
-            AdminUI.skulls_players.remove(event.getPlayer().getName());
         }
 
+        AdminUI.skulls_players.remove(event.getPlayer().getName());
     }
 }

@@ -70,6 +70,11 @@ slots:
         name: "lang:main_maintenance_mode"
         material: "GLOWSTONE_DUST"
         amount: 1
+  30:
+    name: "  "
+    material: "LIGHT_BLUE_STAINED_GLASS_PANE"
+    amount: 1
+    action: "run:background"
   32:
     name: "lang:main_unban_players"
     material: "BARRIER"
