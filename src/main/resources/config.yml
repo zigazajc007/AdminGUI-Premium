@@ -105,12 +105,12 @@ freeze_place_block: true
 freeze_drop_items: true
 freeze_admin_chat: true
 #----------------------------------------------------------
-#          Bungeecord - Require AdminGUIBungee plugin
+#                       Bungeecord
 #----------------------------------------------------------
 # If you enable bungeecord you will have control over other players on other servers.
 bungeecord_enabled: false
 # You can write what ever you want in server_name, but 2 servers can't have the same name. (I suggest the same names as in bungeecord config file)
 server_name: "Lobby"
 # If control_type is set to 0, then you will be teleported on the same server as target player is located.
-# If control_type is set to 1, then you can control player even tho you aren't on the same server as target player is.
+# If control_type is set to 1, then you can control player even tho you aren't on the same server as target player is. (Coming soon...)
 control_type: 0

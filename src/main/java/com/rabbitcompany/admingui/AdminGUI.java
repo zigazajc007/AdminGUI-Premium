@@ -574,7 +574,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         }else{
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &4&lCRACKED"));
         }
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b4.2.1"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.0.0"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
@@ -600,8 +600,8 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         String sender = in.readUTF();
         String subchannel = in.readUTF();
 
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&dSender: " + sender));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&dSubchannel: " + subchannel));
+        //Bukkit.getConsoleSender().sendMessage(Message.chat("&dSender: " + sender));
+        //Bukkit.getConsoleSender().sendMessage(Message.chat("&dSubchannel: " + subchannel));
 
         switch (subchannel){
             case "online_players":

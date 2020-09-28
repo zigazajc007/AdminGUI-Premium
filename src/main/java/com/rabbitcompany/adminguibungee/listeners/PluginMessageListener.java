@@ -30,7 +30,6 @@ public class PluginMessageListener implements Listener {
                         break;
                     case "send":
                         String action = input.readUTF();
-                        AdminGUIBungee.getInstance().getLogger().info("Action: " + action);
                         switch (action){
                             case "online_players":
                                 StringBuilder online_players = new StringBuilder();
