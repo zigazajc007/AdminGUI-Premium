@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/AdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/AdminGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/adminguibungee/listeners/PluginMessageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/adminguibungee/listeners/PluginMessageListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/Channel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/Channel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/AdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/AdminGUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -200,13 +199,6 @@
       <workItem from="1577725216137" duration="7109000" />
       <workItem from="1578348949962" duration="293000" />
       <workItem from="1578422894075" duration="968000" />
-    </task>
-    <task id="LOCAL-00043" summary="Added French language.">
-      <created>1580762721309</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1580762721309</updated>
     </task>
     <task id="LOCAL-00044" summary="Added Dutch language.">
       <created>1580846412146</created>
@@ -544,7 +536,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601153569292</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Getting ready for first beta release of Admin GUI 5.0.0">
+      <created>1601277085028</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1601277085029</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -569,7 +568,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/LiteBansAPI" />
     </ignored-roots>
-    <MESSAGE value="Fixed some bugs and updated AdminBans API" />
     <MESSAGE value="Admin Chat now support other chat managing plugins." />
     <MESSAGE value="InventoryClickListener null exception error fix" />
     <MESSAGE value="Added Unmute option and Sweden language." />
@@ -594,37 +592,38 @@
     <MESSAGE value="Added main.yml file." />
     <MESSAGE value="Bungee support." />
     <MESSAGE value="Combined bungee connector with Admin GUI Premium." />
-    <option name="LAST_COMMIT_MESSAGE" value="Combined bungee connector with Admin GUI Premium." />
+    <MESSAGE value="Getting ready for first beta release of Admin GUI 5.0.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Getting ready for first beta release of Admin GUI 5.0.0" />
   </component>
   <component name="WindowStateProjectService">
     <state x="768" y="266" width="374" height="582" key="#com.intellij.ide.util.MemberChooser" timestamp="1601053391313">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="768" y="266" width="374" height="582" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1601053391313" />
-    <state x="757" y="219" width="810" height="812" key="CommitChangelistDialog2" timestamp="1601153569226">
+    <state x="757" y="219" width="810" height="812" key="CommitChangelistDialog2" timestamp="1601277084925">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="757" y="219" width="810" height="812" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1601153569226" />
+    <state x="757" y="219" width="810" height="812" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1601277084925" />
     <state x="902" y="326" width="424" height="491" key="FileChooserDialogImpl" timestamp="1601241155686">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="902" y="326" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1601241155686" />
-    <state width="1878" height="127" key="GridCell.Tab.0.bottom" timestamp="1601276500084">
+    <state width="1878" height="127" key="GridCell.Tab.0.bottom" timestamp="1601277122985">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1878" height="127" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1601276500084" />
-    <state width="1878" height="127" key="GridCell.Tab.0.center" timestamp="1601276500082">
+    <state width="1878" height="127" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1601277122985" />
+    <state width="1878" height="127" key="GridCell.Tab.0.center" timestamp="1601277122984">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1878" height="127" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1601276500082" />
-    <state width="1878" height="127" key="GridCell.Tab.0.left" timestamp="1601276500080">
+    <state width="1878" height="127" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1601277122984" />
+    <state width="1878" height="127" key="GridCell.Tab.0.left" timestamp="1601277122984">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1878" height="127" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1601276500080" />
-    <state width="1878" height="127" key="GridCell.Tab.0.right" timestamp="1601276500083">
+    <state width="1878" height="127" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1601277122984" />
+    <state width="1878" height="127" key="GridCell.Tab.0.right" timestamp="1601277122985">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1878" height="127" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1601276500083" />
+    <state width="1878" height="127" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1601277122985" />
     <state width="1878" height="342" key="GridCell.Tab.1.bottom" timestamp="1601138004902">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -641,10 +640,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1878" height="342" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1601138004901" />
-    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1601153574531">
+    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1601277091660">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1601153574531" />
+    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1601277091660" />
     <state x="764" y="469" width="392" height="175" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601107033618">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
