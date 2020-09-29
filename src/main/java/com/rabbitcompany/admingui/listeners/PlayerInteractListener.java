@@ -1,14 +1,19 @@
 package com.rabbitcompany.admingui.listeners;
 
 import com.rabbitcompany.admingui.AdminGUI;
+import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Message;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.InventoryView;
 
 public class PlayerInteractListener implements Listener {
 
+    private AdminUI adminUI = new AdminUI();
     private AdminGUI adminGUI;
 
     public PlayerInteractListener(AdminGUI plugin){
@@ -24,7 +29,15 @@ public class PlayerInteractListener implements Listener {
                 if(event.getItem().hasItemMeta() && event.getItem().getItemMeta() != null){
                     if(event.getItem().getItemMeta().hasLore() && event.getItem().getItemMeta().getLore() != null){
                         if(event.getItem().getItemMeta().getLore().contains(Message.chat(AdminGUI.getInstance().getConf().getString("admin_tools_lore", "&dClick me to open Admin GUI")))){
-                            event.getPlayer().performCommand("admin");
+                            Player player = event.getPlayer();
+                            if(player.getOpenInventory().getType() != InventoryType.CHEST){
+                                if(player.hasPermission("admingui.admin")){
+                                    AdminUI.target_player.put(player, player);
+                                    player.openInventory(adminUI.GUI_Main(player));
+                                }else{
+                                    player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "permission"));
+                                }
+                            }
                             event.setCancelled(true);
                         }
                     }

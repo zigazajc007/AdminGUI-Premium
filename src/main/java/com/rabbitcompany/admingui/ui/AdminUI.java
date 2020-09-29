@@ -93,7 +93,7 @@ public class AdminUI {
     public static HashMap<UUID, Integer> plugin_slot = new HashMap<>();
 
     //Date Format
-    public static SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    public static SimpleDateFormat date_format = new SimpleDateFormat(AdminGUI.getInstance().getConf().getString("date_format", "yyyy-MM-dd HH:mm:ss"));
 
     //Command Spy
     public static HashMap<UUID, Boolean> command_spy = new HashMap<>();
@@ -109,7 +109,7 @@ public class AdminUI {
         Inventory inv_main = Bukkit.createInventory(null, 36, Message.getMessage(p.getUniqueId(), "inventory_main"));
 
         for(int i = 1; i < 36; i++){
-                Item.create(inv_main, gui_color.getOrDefault(p.getUniqueId(), gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
+                Item.create(inv_main, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
         }
 
         Item.after_createPlayerHead(inv_main, skulls_players.get(p.getName()), 1, 11, Message.getMessage(p.getUniqueId(),"main_player").replace("{player}", p.getName()));
@@ -146,7 +146,7 @@ public class AdminUI {
                 break;
         }
 
-        switch (gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color"))){
+        switch (gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE"))){
             case "LIGHT_BLUE_STAINED_GLASS_PANE":
                     Item.create(inv_main, "RED_STAINED_GLASS_PANE", 1, 30, "  ");
                 break;
@@ -207,14 +207,14 @@ public class AdminUI {
         Inventory inv_player = Bukkit.createInventory(null, 45, inventory_player_name);
 
         for(int i = 1; i < 45; i++){
-            Item.create(inv_player, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
+            Item.create(inv_player, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
         }
 
         if(p.hasPermission("admingui.info")) {
             if(AdminGUI.vault){
-                Item.createPlayerHead(inv_player, p.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "player_info").replace("{player}", p.getName()), Message.chat("&eHeal: " + Math.round(p.getHealth())), Message.chat("&7Feed: " + Math.round(p.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(p.getName()))) ,Message.chat("&aGamemode: " + p.getGameMode().toString()), Message.chat("&5IP: " + p.getAddress()));
+                Item.createPlayerHead(inv_player, p.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "player_info").replace("{player}", p.getName()), Message.chat("&eHeal: " + Math.round(p.getHealth())), Message.chat("&7Feed: " + Math.round(p.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(p.getName()))) ,Message.chat("&aGamemode: " + p.getGameMode().toString()), Message.chat("&5IP: " + p.getAddress().getAddress().toString().replace("/", "")));
             }else{
-                Item.createPlayerHead(inv_player, p.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "player_info").replace("{player}", p.getName()), Message.chat("&eHeal: " + Math.round(p.getHealth())), Message.chat("&7Feed: " + Math.round(p.getFoodLevel())), Message.chat("&aGamemode: " + p.getGameMode().toString()), Message.chat("&5IP: " + p.getAddress()));
+                Item.createPlayerHead(inv_player, p.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "player_info").replace("{player}", p.getName()), Message.chat("&eHeal: " + Math.round(p.getHealth())), Message.chat("&7Feed: " + Math.round(p.getFoodLevel())), Message.chat("&aGamemode: " + p.getGameMode().toString()), Message.chat("&5IP: " + p.getAddress().getAddress().toString().replace("/", "")));
             }
         }else{
             Item.createPlayerHead(inv_player, p.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "player_info").replace("{player}", p.getName()));
@@ -437,7 +437,7 @@ public class AdminUI {
         Inventory inv_world = Bukkit.createInventory(null, 27, Message.getMessage(p.getUniqueId(), "inventory_world"));
 
         for(int i = 1; i < 27; i++){
-            Item.create(inv_world, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
+            Item.create(inv_world, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
         }
 
         switch (AdminGUI.gui_type){
@@ -505,7 +505,7 @@ public class AdminUI {
         pages.put(p.getUniqueId(), (int) Math.ceil((float)online / 45));
 
         for (int i = 46; i <= 53; i++){
-            Item.create(inv_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
+            Item.create(inv_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
         }
 
         int player_slot = (page.getOrDefault(p.getUniqueId(),1)-1) * 45;
@@ -515,7 +515,7 @@ public class AdminUI {
                 Item.createPlayerHead(inv_players, online_players.get(player_slot),1, i+1, Message.getMessage(p.getUniqueId(), "players_color").replace("{player}", online_players.get(player_slot)), Message.getMessage(p.getUniqueId(), "players_more"));
                 player_slot++;
             }else{
-                Item.create(inv_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i+1, " ");
+                Item.create(inv_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i+1, " ");
             }
         }
 
@@ -578,7 +578,7 @@ public class AdminUI {
         Inventory inv_plugins = Bukkit.createInventory(null, 54, Message.getMessage(p.getUniqueId(), "inventory_plugins"));
 
         for (int i = 1; i < 54; i++){
-            Item.create(inv_plugins, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
+            Item.create(inv_plugins, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
         }
 
         for (Map.Entry<String, Object> plug_slot : one.getValues(false).entrySet()) {
@@ -621,7 +621,7 @@ public class AdminUI {
         Inventory inv_commands = Bukkit.createInventory(null, 54, Message.chat(yamlConfiguration.getString("plugins."+slot+".name"))+ " " + Message.getMessage(p.getUniqueId(), "inventory_commands"));
 
         for (int i = 1; i < 54; i++){
-            Item.create(inv_commands, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
+            Item.create(inv_commands, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
         }
 
         for (Map.Entry<String, Object> comm_slot : two.getValues(false).entrySet()) {
@@ -662,19 +662,17 @@ public class AdminUI {
             unban_pages.put(p.getUniqueId(), (int) Math.ceil((float)online / 45));
 
             for (int i = 46; i <= 53; i++){
-                Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
+                Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
             }
 
             int player_slot = (unban_page.getOrDefault(p.getUniqueId(),1)-1) * 45;
 
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
             for (int i = 0; i < 45; i++){
                 if(player_slot < online){
-                    Item.createPlayerHead(inv_unban_players, abs.get(player_slot).username_to, 1, i + 1, Message.getMessage(p.getUniqueId(), "unban_color").replace("{player}", abs.get(player_slot).username_to), Message.chat("&aBanned by: &6" + abs.get(player_slot).username_from), Message.chat("&aBanned on: &6" + sdf.format(abs.get(player_slot).created)), Message.chat("&aExpiration: &6" + sdf.format(abs.get(player_slot).until)), " ", Message.getMessage(p.getUniqueId(), "unban_more"));
+                    Item.createPlayerHead(inv_unban_players, abs.get(player_slot).username_to, 1, i + 1, Message.getMessage(p.getUniqueId(), "unban_color").replace("{player}", abs.get(player_slot).username_to), Message.chat("&aBanned by: &6" + abs.get(player_slot).username_from), Message.chat("&aBanned on: &6" + AdminBansAPI.date_format.format(abs.get(player_slot).created)), Message.chat("&aExpiration: &6" + AdminBansAPI.date_format.format(abs.get(player_slot).until)), " ", Message.getMessage(p.getUniqueId(), "unban_more"));
                     player_slot++;
                 }else{
-                    Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i+1, " ");
+                    Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i+1, " ");
                 }
             }
         }else{
@@ -691,17 +689,21 @@ public class AdminUI {
             unban_pages.put(p.getUniqueId(), (int) Math.ceil((float)online / 45));
 
             for (int i = 46; i <= 53; i++){
-                Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
+                Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
             }
 
             int player_slot = (unban_page.getOrDefault(p.getUniqueId(),1)-1) * 45;
 
             for (int i = 0; i < 45; i++){
                 if(player_slot < online){
-                    Item.createPlayerHead(inv_unban_players, pl.get(player_slot), 1, i + 1, Message.getMessage(p.getUniqueId(), "unban_color").replace("{player}", pl.get(player_slot)), Message.chat("&aBanned: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getCreated()), Message.chat("&aExpiration: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getExpiration()), " ", Message.getMessage(p.getUniqueId(), "unban_more"));
+                    if(Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getExpiration() == null){
+                        Item.createPlayerHead(inv_unban_players, pl.get(player_slot), 1, i + 1, Message.getMessage(p.getUniqueId(), "unban_color").replace("{player}", pl.get(player_slot)), Message.chat("&aBanned: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getCreated()), Message.chat("&aExpiration: &6Never"), " ", Message.getMessage(p.getUniqueId(), "unban_more"));
+                    }else{
+                        Item.createPlayerHead(inv_unban_players, pl.get(player_slot), 1, i + 1, Message.getMessage(p.getUniqueId(), "unban_color").replace("{player}", pl.get(player_slot)), Message.chat("&aBanned: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getCreated()), Message.chat("&aExpiration: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getExpiration()), " ", Message.getMessage(p.getUniqueId(), "unban_more"));
+                    }
                     player_slot++;
                 }else{
-                    Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i+1, " ");
+                    Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i+1, " ");
                 }
             }
         }
@@ -754,7 +756,7 @@ public class AdminUI {
             unmute_pages.put(p.getUniqueId(), (int) Math.ceil((float)online / 45));
 
             for (int i = 46; i <= 53; i++){
-                Item.create(inv_unmute_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
+                Item.create(inv_unmute_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
             }
 
             int player_slot = (unmute_page.getOrDefault(p.getUniqueId(),1)-1) * 45;
@@ -766,7 +768,7 @@ public class AdminUI {
                     Item.createPlayerHead(inv_unmute_players, abs.get(player_slot).username_to, 1, i + 1, Message.getMessage(p.getUniqueId(), "unmute_color").replace("{player}", abs.get(player_slot).username_to), Message.chat("&aMuted by: &6" + abs.get(player_slot).username_from), Message.chat("&aMuted on: &6" + sdf.format(abs.get(player_slot).created)), Message.chat("&aExpiration: &6" + sdf.format(abs.get(player_slot).until)), " ", Message.getMessage(p.getUniqueId(), "unmute_more"));
                     player_slot++;
                 }else{
-                    Item.create(inv_unmute_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i+1, " ");
+                    Item.create(inv_unmute_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i+1, " ");
                 }
             }
 
@@ -801,7 +803,7 @@ public class AdminUI {
 
         }else{
             for (int i = 0; i < 53; i++){
-                Item.create(inv_unmute_players, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i+1, " ");
+                Item.create(inv_unmute_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i+1, " ");
             }
         }
 
@@ -823,7 +825,7 @@ public class AdminUI {
         Inventory inv_players_settings = Bukkit.createInventory(null, 27, inventory_players_settings_name);
 
         for(int i = 1; i < 27; i++){
-                Item.create(inv_players_settings, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
+                Item.create(inv_players_settings, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
         }
 
         if(p.hasPermission("admingui.info")) {
@@ -832,9 +834,9 @@ public class AdminUI {
                 Item.createPlayerHead(inv_players_settings, target_name, 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_name));
             }else{
                 if(AdminGUI.vault){
-                    Item.createPlayerHead(inv_players_settings, target_name, 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_name), Message.chat("&eHeal: " + Math.round(target_player.getHealth())), Message.chat("&7Feed: " + Math.round(target_player.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(target_name))) ,Message.chat("&aGamemode: " + target_player.getGameMode().toString()), Message.chat("&5IP: " + target_player.getAddress()));
+                    Item.createPlayerHead(inv_players_settings, target_name, 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_name), Message.chat("&eHeal: " + Math.round(target_player.getHealth())), Message.chat("&7Feed: " + Math.round(target_player.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(target_name))) ,Message.chat("&aGamemode: " + target_player.getGameMode().toString()), Message.chat("&5IP: " + target_player.getAddress().getAddress().toString().replace("/", "")));
                 }else{
-                    Item.createPlayerHead(inv_players_settings, target_name, 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_name), Message.chat("&eHeal: " + Math.round(target_player.getHealth())), Message.chat("&7Feed: " + Math.round(target_player.getFoodLevel())), Message.chat("&aGamemode: " + target_player.getGameMode().toString()), Message.chat("&5IP: " + target_player.getAddress()));
+                    Item.createPlayerHead(inv_players_settings, target_name, 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_name), Message.chat("&eHeal: " + Math.round(target_player.getHealth())), Message.chat("&7Feed: " + Math.round(target_player.getFoodLevel())), Message.chat("&aGamemode: " + target_player.getGameMode().toString()), Message.chat("&5IP: " + target_player.getAddress().getAddress().toString().replace("/", "")));
                 }
             }
         }else{
@@ -903,14 +905,14 @@ public class AdminUI {
         Inventory inv_actions = Bukkit.createInventory(null, 54, inventory_actions_name);
 
         for(int i = 1; i < 54; i++){
-            Item.create(inv_actions, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
+            Item.create(inv_actions, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
         }
 
         if(p.hasPermission("admingui.info")) {
             if(AdminGUI.vault){
-                Item.createPlayerHead(inv_actions, target.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target.getName()), Message.chat("&eHeal: " + Math.round(target.getHealth())), Message.chat("&7Feed: " + Math.round(target.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(target.getName()))) ,Message.chat("&aGamemode: " + target.getGameMode().toString()), Message.chat("&5IP: " + target.getAddress()));
+                Item.createPlayerHead(inv_actions, target.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target.getName()), Message.chat("&eHeal: " + Math.round(target.getHealth())), Message.chat("&7Feed: " + Math.round(target.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(target.getName()))) ,Message.chat("&aGamemode: " + target.getGameMode().toString()), Message.chat("&5IP: " + target.getAddress().getAddress().toString().replace("/", "")));
             }else{
-                Item.createPlayerHead(inv_actions, target.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target.getName()), Message.chat("&eHeal: " + Math.round(target.getHealth())), Message.chat("&7Feed: " + Math.round(target.getFoodLevel())), Message.chat("&aGamemode: " + target.getGameMode().toString()), Message.chat("&5IP: " + target.getAddress()));
+                Item.createPlayerHead(inv_actions, target.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target.getName()), Message.chat("&eHeal: " + Math.round(target.getHealth())), Message.chat("&7Feed: " + Math.round(target.getFoodLevel())), Message.chat("&aGamemode: " + target.getGameMode().toString()), Message.chat("&5IP: " + target.getAddress().getAddress().toString().replace("/", "")));
             }
         }else{
             Item.createPlayerHead(inv_actions, target.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "actions_info").replace("{player}", target.getName()));
@@ -1171,7 +1173,7 @@ public class AdminUI {
         Inventory inv_kick = Bukkit.createInventory(null, 27, inventory_kick_name);
 
         for (int i = 1; i < 27; i++){
-                Item.create(inv_kick, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
+                Item.create(inv_kick, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
         }
 
         for (Map.Entry<String, Object> kick_slot : AdminGUI.getInstance().getKick().getConfigurationSection("slots").getValues(false).entrySet()) {
@@ -1211,7 +1213,7 @@ public class AdminUI {
         Inventory inv_ban = Bukkit.createInventory(null, 36, inventory_ban_name);
 
         for (int i = 1; i < 36; i++){
-            Item.create(inv_ban, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
+            Item.create(inv_ban, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
         }
 
         if(ban_years.getOrDefault(p.getUniqueId(), 0) == 0){
@@ -1280,7 +1282,7 @@ public class AdminUI {
         Inventory inv_potions = Bukkit.createInventory(null, 36, inventory_potions_name);
 
         for (int i = 1; i < 36; i++){
-            Item.create(inv_potions, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
+            Item.create(inv_potions, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
         }
 
         if (Bukkit.getVersion().contains("1.16") || Bukkit.getVersion().contains("1.15") || Bukkit.getVersion().contains("1.14") || Bukkit.getVersion().contains("1.13")) {
@@ -1376,7 +1378,7 @@ public class AdminUI {
         if(target.isOnline()){
 
             for(int i = 1; i < 27; i++){
-                Item.create(inv_money, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
+                Item.create(inv_money, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
             }
 
             Item.create(inv_money, "PAPER", 1, 12, Message.getMessage(p.getUniqueId(), "money_give"));
@@ -1421,7 +1423,7 @@ public class AdminUI {
         if(target.isOnline()){
 
             for(int i = 1; i < 36; i++){
-                Item.create(inv_money_amount, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
+                Item.create(inv_money_amount, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
             }
 
             for (int i = 1; i <= 10; i++){
@@ -1490,7 +1492,7 @@ public class AdminUI {
         }
 
         for (int i = 42; i < 54; i++){
-            Item.create(inv_inventory, gui_color.getOrDefault(p.getUniqueId(), "LIGHT_BLUE_STAINED_GLASS_PANE"), 1, i, " ");
+            Item.create(inv_inventory, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
         }
 
         Item.create(inv_inventory, "GREEN_TERRACOTTA", 1, 46, Message.getMessage(p.getUniqueId(), "inventory_refresh"));
@@ -1619,16 +1621,48 @@ public class AdminUI {
             p.setFoodLevel(20);
             p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_feed"));
         }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "player_survival"))){
-            p.setGameMode(GameMode.ADVENTURE);
+            if(p.hasPermission("admingui.gamemode.adventure")){
+                p.setGameMode(GameMode.ADVENTURE);
+            }else if(p.hasPermission("admingui.gamemode.creative")){
+                p.setGameMode(GameMode.CREATIVE);
+            }else if(p.hasPermission("admingui.gamemode.spectator")){
+                p.setGameMode(GameMode.SPECTATOR);
+            }else{
+                p.setGameMode(GameMode.SURVIVAL);
+            }
             p.openInventory(GUI_Player(p));
         }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "player_adventure"))){
-            p.setGameMode(GameMode.CREATIVE);
+            if(p.hasPermission("admingui.gamemode.creative")){
+                p.setGameMode(GameMode.CREATIVE);
+            }else if(p.hasPermission("admingui.gamemode.spectator")){
+                p.setGameMode(GameMode.SPECTATOR);
+            }else if(p.hasPermission("admingui.gamemode.survival")){
+                p.setGameMode(GameMode.SURVIVAL);
+            }else{
+                p.setGameMode(GameMode.ADVENTURE);
+            }
             p.openInventory(GUI_Player(p));
         }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "player_creative"))){
-            p.setGameMode(GameMode.SPECTATOR);
+            if(p.hasPermission("admingui.gamemode.spectator")){
+                p.setGameMode(GameMode.SPECTATOR);
+            }else if(p.hasPermission("admingui.gamemode.survival")){
+                p.setGameMode(GameMode.SURVIVAL);
+            }else if(p.hasPermission("admingui.gamemode.adventure")){
+                p.setGameMode(GameMode.ADVENTURE);
+            }else{
+                p.setGameMode(GameMode.CREATIVE);
+            }
             p.openInventory(GUI_Player(p));
         }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "player_spectator"))){
-            p.setGameMode(GameMode.SURVIVAL);
+            if(p.hasPermission("admingui.gamemode.survival")){
+                p.setGameMode(GameMode.SURVIVAL);
+            }else if(p.hasPermission("admingui.gamemode.adventure")){
+                p.setGameMode(GameMode.ADVENTURE);
+            }else if(p.hasPermission("admingui.gamemode.creative")){
+                p.setGameMode(GameMode.CREATIVE);
+            }else{
+                p.setGameMode(GameMode.SPECTATOR);
+            }
             p.openInventory(GUI_Player(p));
         }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_god_enabled"))){
             if(Bukkit.getVersion().contains("1.8")){
@@ -1939,16 +1973,48 @@ public class AdminUI {
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_info").replace("{player}", target_player.getName()))){
                 p.openInventory(GUI_Actions(p,target_player));
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_survival"))){
-                target_player.setGameMode(GameMode.ADVENTURE);
+                if(p.hasPermission("admingui.gamemode.other.adventure")){
+                    target_player.setGameMode(GameMode.ADVENTURE);
+                }else if(p.hasPermission("admingui.gamemode.other.creative")){
+                    target_player.setGameMode(GameMode.CREATIVE);
+                }else if(p.hasPermission("admingui.gamemode.other.spectator")){
+                    target_player.setGameMode(GameMode.SPECTATOR);
+                }else{
+                    target_player.setGameMode(GameMode.SURVIVAL);
+                }
                 p.openInventory(GUI_Actions(p,target_player));
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_adventure"))){
-                target_player.setGameMode(GameMode.CREATIVE);
+                if(p.hasPermission("admingui.gamemode.other.creative")){
+                    target_player.setGameMode(GameMode.CREATIVE);
+                }else if(p.hasPermission("admingui.gamemode.other.spectator")){
+                    target_player.setGameMode(GameMode.SPECTATOR);
+                }else if(p.hasPermission("admingui.gamemode.other.survival")){
+                    target_player.setGameMode(GameMode.SURVIVAL);
+                }else{
+                    target_player.setGameMode(GameMode.ADVENTURE);
+                }
                 p.openInventory(GUI_Actions(p,target_player));
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_creative"))){
-                target_player.setGameMode(GameMode.SPECTATOR);
+                if(p.hasPermission("admingui.gamemode.other.spectator")){
+                    target_player.setGameMode(GameMode.SPECTATOR);
+                }else if(p.hasPermission("admingui.gamemode.other.survival")){
+                    target_player.setGameMode(GameMode.SURVIVAL);
+                }else if(p.hasPermission("admingui.gamemode.other.adventure")){
+                    target_player.setGameMode(GameMode.ADVENTURE);
+                }else{
+                    target_player.setGameMode(GameMode.CREATIVE);
+                }
                 p.openInventory(GUI_Actions(p,target_player));
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_spectator"))){
-                target_player.setGameMode(GameMode.SURVIVAL);
+                if(p.hasPermission("admingui.gamemode.other.survival")){
+                    target_player.setGameMode(GameMode.SURVIVAL);
+                }else if(p.hasPermission("admingui.gamemode.other.adventure")){
+                    target_player.setGameMode(GameMode.ADVENTURE);
+                }else if(p.hasPermission("admingui.gamemode.other.creative")){
+                    target_player.setGameMode(GameMode.CREATIVE);
+                }else{
+                    target_player.setGameMode(GameMode.SPECTATOR);
+                }
                 p.openInventory(GUI_Actions(p,target_player));
             }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "actions_teleport_to_player"))){
                 p.teleport(target_player.getLocation());
@@ -2303,10 +2369,14 @@ public class AdminUI {
         long mil_hour = 3600000L;
         long mil_minute = 60000L;
 
-        Date time = new Date(System.currentTimeMillis()+(mil_minute*ban_minutes.getOrDefault(p.getUniqueId(),0))+(mil_hour*ban_hours.getOrDefault(p.getUniqueId(),0))+(mil_day*ban_days.getOrDefault(p.getUniqueId(),0))+(mil_month*ban_months.getOrDefault(p.getUniqueId(),0))+(mil_year*ban_years.getOrDefault(p.getUniqueId(),0)));
+        Date time = null;
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String until = sdf.format(time);
+        if(!(ban_minutes.getOrDefault(p.getUniqueId(), 0) == 0 && ban_hours.getOrDefault(p.getUniqueId(), 0) == 0 && ban_days.getOrDefault(p.getUniqueId(), 0) == 0 && ban_months.getOrDefault(p.getUniqueId(), 0) == 0 && ban_years.getOrDefault(p.getUniqueId(), 0) == 0)){
+            time = new Date(System.currentTimeMillis()+(mil_minute*ban_minutes.getOrDefault(p.getUniqueId(),0))+(mil_hour*ban_hours.getOrDefault(p.getUniqueId(),0))+(mil_day*ban_days.getOrDefault(p.getUniqueId(),0))+(mil_month*ban_months.getOrDefault(p.getUniqueId(),0))+(mil_year*ban_years.getOrDefault(p.getUniqueId(),0)));
+            Bukkit.getConsoleSender().sendMessage("1. NOT Perm ban!");
+        }else{
+            Bukkit.getConsoleSender().sendMessage("1. Perm ban!");
+        }
 
         if(target_player.isOnline()){
             if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "ban_back"))) {
@@ -2321,13 +2391,8 @@ public class AdminUI {
                 if(target_player.hasPermission("admingui.ban.bypass")){
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_ban_bypass"));
                 }else{
-                    //Admin Ban System
-                    if(Bukkit.getPluginManager().isPluginEnabled("AdminBans")) {
-                        AdminBansAPI.banPlayer(p.getUniqueId().toString(), p.getName(), target_player.getUniqueId().toString(), target_player.getName(), Message.getMessage(target_player.getUniqueId(), "ban_hacking"), until);
-                    }else{
-                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_hacking", date_format.format(time)), time);
-                        target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_hacking", date_format.format(time)));
-                    }
+                    TargetPlayer.ban(p.getUniqueId(), p.getName(), target_player.getUniqueId(), target_player.getName(), Message.getMessage(target_player.getUniqueId(), "ban_hacking"), time);
+
                     if(ban_silence.getOrDefault(p.getUniqueId(), false)){
                         p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_hacking")));
                     }else{
@@ -2339,13 +2404,8 @@ public class AdminUI {
                 if(target_player.hasPermission("admingui.ban.bypass")){
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_ban_bypass"));
                 }else{
-                    //Admin Ban System
-                    if(Bukkit.getPluginManager().isPluginEnabled("AdminBans")) {
-                        AdminBansAPI.banPlayer(p.getUniqueId().toString(), p.getName(), target_player.getUniqueId().toString(), target_player.getName(), Message.getMessage(target_player.getUniqueId(), "ban_griefing"), until);
-                    }else{
-                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_griefing", date_format.format(time)), time);
-                        target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_griefing", date_format.format(time)));
-                    }
+                    TargetPlayer.ban(p.getUniqueId(), p.getName(), target_player.getUniqueId(), target_player.getName(), Message.getMessage(target_player.getUniqueId(), "ban_griefing"), time);
+
                     if(ban_silence.getOrDefault(p.getUniqueId(), false)){
                         p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_griefing")));
                     }else{
@@ -2357,13 +2417,8 @@ public class AdminUI {
                 if(target_player.hasPermission("admingui.ban.bypass")){
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_ban_bypass"));
                 }else{
-                    //Admin Ban System
-                    if(Bukkit.getPluginManager().isPluginEnabled("AdminBans")) {
-                        AdminBansAPI.banPlayer(p.getUniqueId().toString(), p.getName(), target_player.getUniqueId().toString(), target_player.getName(), Message.getMessage(target_player.getUniqueId(), "ban_spamming"), until);
-                    }else{
-                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_spamming", date_format.format(time)), time);
-                        target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_spamming", date_format.format(time)));
-                    }
+                    TargetPlayer.ban(p.getUniqueId(), p.getName(), target_player.getUniqueId(), target_player.getName(), Message.getMessage(target_player.getUniqueId(), "ban_spamming"), time);
+
                     if(ban_silence.getOrDefault(p.getUniqueId(), false)){
                         p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_spamming")));
                     }else{
@@ -2375,13 +2430,8 @@ public class AdminUI {
                 if(target_player.hasPermission("admingui.ban.bypass")){
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_ban_bypass"));
                 }else{
-                    //Admin Ban System
-                    if(Bukkit.getPluginManager().isPluginEnabled("AdminBans")) {
-                        AdminBansAPI.banPlayer(p.getUniqueId().toString(), p.getName(), target_player.getUniqueId().toString(), target_player.getName(), Message.getMessage(target_player.getUniqueId(), "ban_advertising"), until);
-                    }else{
-                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_advertising", date_format.format(time)), time);
-                        target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(),"ban_advertising", date_format.format(time)));
-                    }
+                    TargetPlayer.ban(p.getUniqueId(), p.getName(), target_player.getUniqueId(), target_player.getName(), Message.getMessage(target_player.getUniqueId(), "ban_advertising"), time);
+
                     if(ban_silence.getOrDefault(p.getUniqueId(), false)){
                         p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_advertising")));
                     }else{
@@ -2393,13 +2443,8 @@ public class AdminUI {
                 if(target_player.hasPermission("admingui.ban.bypass")){
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_ban_bypass"));
                 }else{
-                    //Admin Ban System
-                    if(Bukkit.getPluginManager().isPluginEnabled("AdminBans")) {
-                        AdminBansAPI.banPlayer(p.getUniqueId().toString(), p.getName(), target_player.getUniqueId().toString(), target_player.getName(), Message.getMessage(target_player.getUniqueId(), "ban_swearing"), until);
-                    }else{
-                        TargetPlayer.ban(target_player.getName(),  TargetPlayer.banReason(target_player.getUniqueId(), "ban_swearing", date_format.format(time)), time);
-                        target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), "ban_swearing", date_format.format(time)));
-                    }
+                    TargetPlayer.ban(p.getUniqueId(), p.getName(), target_player.getUniqueId(), target_player.getName(), Message.getMessage(target_player.getUniqueId(), "ban_swearing"), time);
+
                     if(ban_silence.getOrDefault(p.getUniqueId(), false)){
                         p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_ban").replace("{player}", target_player.getName()).replace("{reason}", Message.getMessage(p.getUniqueId(), "ban_swearing")));
                     }else{

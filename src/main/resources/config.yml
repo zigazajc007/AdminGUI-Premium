@@ -50,6 +50,8 @@ initialize_reminder: false
 default_language: "English"
 # Here you can specify default GUI color - Only works with stained glass panes.
 gui_default_color: "LIGHT_BLUE_STAINED_GLASS_PANE"
+# How would you like to display date in Admin GUI plugin? (y = year, M = month, d = day, H = hour, m = minute and s = second)
+date_format: "yyyy-MM-dd HH:mm:ss"
 #----------------------------------------------------------
 #                       Admin Tools
 #----------------------------------------------------------

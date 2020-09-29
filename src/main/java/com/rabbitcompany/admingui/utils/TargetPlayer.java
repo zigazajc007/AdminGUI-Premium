@@ -1,10 +1,14 @@
 package com.rabbitcompany.admingui.utils;
 
+import com.rabbitcompany.adminbans.AdminBansAPI;
+import com.rabbitcompany.admingui.ui.AdminUI;
 import org.bukkit.BanList;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -34,15 +38,32 @@ public class TargetPlayer {
         }
     }
 
-    public static void ban(String target, String reason, Date expired){
-        if(getServer().getPluginManager().getPlugin("AdminBans") != null){
-            Date date = new Date(System.currentTimeMillis());
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ban " + target + " " + ((expired.getTime() - date.getTime())/60000) + "m " + reason);
+    public static void ban(UUID player_uuid, String player_name, UUID target_uuid, String target, String reason, Date expired){
+        if(getServer().getPluginManager().getPlugin("AdminBans") != null && getServer().getPluginManager().isPluginEnabled("AdminBans")){
+            if(expired == null){
+                AdminBansAPI.banPlayer(player_uuid.toString(), player_name, target_uuid.toString(), target, reason, null);
+            }else{
+                String until = AdminBansAPI.date_format.format(expired);
+                AdminBansAPI.banPlayer(player_uuid.toString(), player_name, target_uuid.toString(), target, reason, until);
+            }
         }else if(getServer().getPluginManager().getPlugin("LiteBans") != null || getServer().getPluginManager().getPlugin("AdvancedBan") != null) {
-            Date date = new Date(System.currentTimeMillis());
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tempban " + target + " " + ((expired.getTime() - date.getTime())/60000) + "m " + reason);
+            if(expired == null){
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "ban " + target + " " + reason);
+            }else{
+                Date date = new Date(System.currentTimeMillis());
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tempban " + target + " " + ((expired.getTime() - date.getTime())/60000) + "m " + reason);
+            }
         }else{
-            Bukkit.getServer().getBanList(BanList.Type.NAME).addBan(target, reason, expired, null);
+            Player target_player = Bukkit.getPlayer(target_uuid);
+            if(expired == null){
+                Bukkit.getServer().getBanList(BanList.Type.NAME).addBan(target, banReason(target_uuid, reason, "... never!"), null, null);
+                if(target_player != null)
+                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), reason, "... never!"));
+            }else{
+                Bukkit.getServer().getBanList(BanList.Type.NAME).addBan(target, banReason(target_uuid, reason, AdminUI.date_format.format(expired)), expired, null);
+                if(target_player != null)
+                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), reason, AdminUI.date_format.format(expired)));
+            }
         }
 
     }
@@ -50,7 +71,7 @@ public class TargetPlayer {
     public static String banReason(UUID target, String reason, String time){
         String bumper = org.apache.commons.lang.StringUtils.repeat("\n", 35);
 
-        return bumper + Message.getMessage(target, "ban") + Message.getMessage(target, reason) + "\n" + Message.getMessage(target, "ban_time") + time + bumper;
+        return bumper + Message.getMessage(target, "ban") + reason + "\n" + Message.getMessage(target, "ban_time") + time + bumper;
     }
 
 }

@@ -6,7 +6,7 @@
 
     <groupId>com.rabbitcompany</groupId>
     <artifactId>AdminGUI-Premium</artifactId>
-    <version>5.0.0</version>
+    <version>5.0.1</version>
     <packaging>jar</packaging>
 
     <name>AdminGUI Premium</name>

@@ -177,6 +177,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
 
         if(getConf().getBoolean("admin_tools_enabled", true)){
             new PlayerInteractListener(this);
+            new PlayerEntityInteractListener(this);
         }
 
         if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){
@@ -574,7 +575,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         }else{
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &4&lCRACKED"));
         }
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.0.0"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.0.1"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
