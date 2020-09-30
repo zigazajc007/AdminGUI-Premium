@@ -8,7 +8,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -56,9 +55,9 @@ public class TargetPlayer {
         }else{
             Player target_player = Bukkit.getPlayer(target_uuid);
             if(expired == null){
-                Bukkit.getServer().getBanList(BanList.Type.NAME).addBan(target, banReason(target_uuid, reason, "... never!"), null, null);
+                Bukkit.getServer().getBanList(BanList.Type.NAME).addBan(target, permBanReason(target_uuid, reason), null, null);
                 if(target_player != null)
-                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), reason, "... never!"));
+                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.permBanReason(target_player.getUniqueId(), reason));
             }else{
                 Bukkit.getServer().getBanList(BanList.Type.NAME).addBan(target, banReason(target_uuid, reason, AdminUI.date_format.format(expired)), expired, null);
                 if(target_player != null)
@@ -71,7 +70,13 @@ public class TargetPlayer {
     public static String banReason(UUID target, String reason, String time){
         String bumper = org.apache.commons.lang.StringUtils.repeat("\n", 35);
 
-        return bumper + Message.getMessage(target, "ban") + reason + "\n" + Message.getMessage(target, "ban_time") + time + bumper;
+        return bumper + Message.getMessage(target, "ban_time").replace("{reason}", reason).replace("{time}", time) + bumper;
+    }
+
+    public static String permBanReason(UUID target, String reason){
+        String bumper = org.apache.commons.lang.StringUtils.repeat("\n", 35);
+
+        return bumper + Message.getMessage(target, "ban_perm").replace("{reason}", reason) + bumper;
     }
 
 }

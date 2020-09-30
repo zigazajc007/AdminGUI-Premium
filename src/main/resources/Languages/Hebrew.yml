@@ -193,8 +193,8 @@ kick_back: "&c&lחזור"
 #----------------------------------------------------------
 #                       Ban GUI
 #----------------------------------------------------------
-ban: "&4הורחקת בגלל ש "
-ban_time: "ההרחקה תיגמר ב "
+ban_time: "&4You have been banned for {reason}\n&cYour suspension expires on &c&l{time}"
+ban_perm: "&4You have been permanent banned for {reason}"
 ban_years: "&e&lשנים"
 ban_months: "&e&lחודשים"
 ban_days: "&e&lימים"

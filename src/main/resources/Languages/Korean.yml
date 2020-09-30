@@ -193,8 +193,8 @@ kick_back: "&c&l돌아가기"
 #----------------------------------------------------------
 #                       Ban GUI
 #----------------------------------------------------------
-ban: "&4당신은 다음과 같은 이유로 밴을 당했습니다 : "
-ban_time: "&c다음 날짜에 밴이 만료됩니다 : &c&l"
+ban_time: "&4You have been banned for {reason}\n&cYour suspension expires on &c&l{time}"
+ban_perm: "&4You have been permanent banned for {reason}"
 ban_years: "&e&l년"
 ban_months: "&e&l달"
 ban_days: "&e&l일"

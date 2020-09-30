@@ -193,8 +193,8 @@ kick_back: "&c&lSpäť"
 #----------------------------------------------------------
 #                       Ban GUI
 #----------------------------------------------------------
-ban: "&4Dostal si ban za "
-ban_time: "&cTvoj trest vyprší o &c&l"
+ban_time: "&4You have been banned for {reason}\n&cYour suspension expires on &c&l{time}"
+ban_perm: "&4You have been permanent banned for {reason}"
 ban_years: "&e&lRokoy/ov"
 ban_months: "&e&lMesiace/ov"
 ban_days: "&e&lDní"

@@ -28,6 +28,7 @@
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/listeners/PlayersDroppingItemsListener.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_12.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/listeners/PlayerMoveListener.java
+/home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/listeners/PlayerEntityInteractListener.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/Fireworks.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/Message.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_14.java

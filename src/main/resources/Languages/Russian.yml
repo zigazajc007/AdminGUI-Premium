@@ -194,8 +194,8 @@ kick_back: "&cНазад"
 #----------------------------------------------------------
 #                       Ban GUI
 #----------------------------------------------------------
-ban: "&4Вы были забанены за➟ "
-ban_time: "&cБан истекает через &f&l&o"
+ban_time: "&4You have been banned for {reason}\n&cYour suspension expires on &c&l{time}"
+ban_perm: "&4You have been permanent banned for {reason}"
 ban_years: "&eГод"
 ban_months: "&eМесяц"
 ban_days: "&eДня"

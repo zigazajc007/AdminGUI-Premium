@@ -193,8 +193,8 @@ kick_back: "&c&lTillbaka"
 #----------------------------------------------------------
 #                Förbudsalternativ GUI
 #----------------------------------------------------------
-ban: "&4Du har blivit bannlyst på grund av "
-ban_time: "&cDin bannlysning går ut om &c&l"
+ban_time: "&4You have been banned for {reason}\n&cYour suspension expires on &c&l{time}"
+ban_perm: "&4You have been permanent banned for {reason}"
 ban_years: "&e&lÅr"
 ban_months: "&e&lMånader"
 ban_days: "&e&lDagar"

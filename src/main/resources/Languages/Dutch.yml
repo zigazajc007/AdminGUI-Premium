@@ -193,8 +193,8 @@ kick_back: "&c&lTerug"
 #----------------------------------------------------------
 #                       Ban GUI
 #----------------------------------------------------------
-ban: "&4Je bent gebanned vanwege "
-ban_time: "&cJe straf vervalt op &c&l"
+ban_time: "&4You have been banned for {reason}\n&cYour suspension expires on &c&l{time}"
+ban_perm: "&4You have been permanent banned for {reason}"
 ban_years: "&e&lJaren"
 ban_months: "&e&lMaanden"
 ban_days: "&e&lDagen"

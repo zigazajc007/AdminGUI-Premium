@@ -2373,9 +2373,6 @@ public class AdminUI {
 
         if(!(ban_minutes.getOrDefault(p.getUniqueId(), 0) == 0 && ban_hours.getOrDefault(p.getUniqueId(), 0) == 0 && ban_days.getOrDefault(p.getUniqueId(), 0) == 0 && ban_months.getOrDefault(p.getUniqueId(), 0) == 0 && ban_years.getOrDefault(p.getUniqueId(), 0) == 0)){
             time = new Date(System.currentTimeMillis()+(mil_minute*ban_minutes.getOrDefault(p.getUniqueId(),0))+(mil_hour*ban_hours.getOrDefault(p.getUniqueId(),0))+(mil_day*ban_days.getOrDefault(p.getUniqueId(),0))+(mil_month*ban_months.getOrDefault(p.getUniqueId(),0))+(mil_year*ban_years.getOrDefault(p.getUniqueId(),0)));
-            Bukkit.getConsoleSender().sendMessage("1. NOT Perm ban!");
-        }else{
-            Bukkit.getConsoleSender().sendMessage("1. Perm ban!");
         }
 
         if(target_player.isOnline()){

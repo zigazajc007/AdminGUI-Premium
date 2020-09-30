@@ -193,8 +193,8 @@ kick_back: "&c&lПо-назад"
 #----------------------------------------------------------
 #                       Забрана Меню
 #----------------------------------------------------------
-ban: "&4Вие бяхте лишени от достъп заради "
-ban_time: "&cВашиата веремена забрана ще бъде повдигната след &c&l"
+ban_time: "&4You have been banned for {reason}\n&cYour suspension expires on &c&l{time}"
+ban_perm: "&4You have been permanent banned for {reason}"
 ban_years: "&e&lГодини"
 ban_months: "&e&lМесеци"
 ban_days: "&e&lДни"
