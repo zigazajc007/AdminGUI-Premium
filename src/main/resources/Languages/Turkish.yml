@@ -1,0 +1,376 @@
+#       ----------- + AdminGUI by Ziga Zajc + -----------   #
+#                                                           #
+#                           Türkçe                          #
+#                                                           #
+#       --------- + ------------------------- + ---------   #
+#
+#       You can use chat colors:
+#                ________________________
+#               |   code: | color:       |
+#               |________________________|
+#               |     &0  | Black        |
+#               |     &1  | Dark Blue    |
+#               |     &2  | Dark Green   |
+#               |     &3  | Dark Aqua    |
+#               |     &4  | Dark Red     |
+#               |     &5  | Dark Purple  |
+#               |     &6  | Gold         |
+#               |     &7  | Gray         |
+#               |     &8  | Dark Gray    |
+#               |     &9  | Blue         |
+#               |     &a  | Green        |
+#               |     &b  | Aqua         |
+#               |     &c  | Red          |
+#               |     &d  | Light Purple |
+#               |     &e  | Yellow       |
+#               |     &f  | White        |
+#               |     &k  | Obfuscated   |
+#               |     &l  | Bold         |
+#               |     &m  | Strikethrough|
+#               |     &n  | Underline    |
+#               |     &o  | Italic       |
+#               |     &r  | Reset        |
+#               |________________________|
+#
+#----------------------------------------------------------
+#                         Prefix
+#----------------------------------------------------------
+prefix: "&7[&cAdmin GUI&7] "
+#----------------------------------------------------------
+#----------------------------------------------------------
+#                       Commands
+#----------------------------------------------------------
+permission: "&cBunu yapmak için yetkin yok!"
+is_not_a_player: "&c{player} isimli oyuncu bulunmamakta!"
+is_not_a_number: "&c{number} gecersiz bir sayı!"
+wrong_arguments: "&cSadece /admin veya /admin <player> komutlarını kullanabilirsiniz"
+wrong_initialize: "&cSadece /admin initialize gui veya /admin initialize players komutlarını kullanabilirsiniz"
+vault_required: "&cSunucunuzda 'Vault' eklentisi bulunmamakta!"
+vanish_required: "&cBu eylemi tamamlamak için sunucunuzda 'Super Vanish' veya 'Premium Vanish' bulunmalıdır!"
+#----------------------------------------------------------
+#                    Inventory names
+#----------------------------------------------------------
+inventory_main: "&4&lAdmin GUI &c&lPremium"
+inventory_player: "&5&l{player}"
+inventory_world: "&2&lDünya"
+inventory_players: "&1&lOyuncular"
+inventory_plugins: "&e&lEklentiler"
+inventory_commands: "&2&lKomutlar"
+inventory_unban: "&c&lYasak kaldır"
+inventory_unmute: "&c&lSusturma kaldır"
+inventory_actions: "&9&lEylemler &2&l{player}"
+inventory_kick: "&8&lSunucudan at &2&l{player}"
+inventory_ban: "&8&lBan &2&l{player}"
+inventory_potions: "&c&lIksirler &2&l{player}"
+inventory_spawner: "&8&lCanavar çağır &2&l{player}"
+inventory_money: "&2&lPara &2&l{player}"
+inventory_money_give: "&2&lPara EKLE {player}"
+inventory_money_set: "&2&lPara&9&l AYARLA &2&l{player}"
+inventory_money_take: "&2&lPara&c&l AL &2&l{player}"
+inventory_inventory: "&a&lEnvanter &2&l{player}"
+#----------------------------------------------------------
+#                       Admin GUI
+#----------------------------------------------------------
+main_player: "&5&l{player}"
+main_world: "&2&lDünya"
+main_players: "&9&lOyuncular"
+main_plugins: "&6&lEklentiler"
+main_maintenance_mode: "&c&lBakım Modu"
+main_unban_players: "&c&lYasak kaldır/Susturma kaldır"
+main_language: "&b&l"
+main_quit: "&c&lÇık"
+#----------------------------------------------------------
+#                      Player GUI
+#----------------------------------------------------------
+player_info: "&2&l{player}"
+player_heal: "&e&lSağlık"
+player_feed: "&7&lYemek"
+player_survival: "&a&lHayatta Kalma"
+player_adventure: "&2&lMacera"
+player_creative: "&3&lYaratıcı"
+player_spectator: "&9&lIzleyici"
+player_god_enabled: "&c&lÖlümsüz"
+player_god_disabled: "&a&lÖlümsüz"
+player_potions: "&c&lIksirler"
+player_spawner: "&8&lCanavar çağır"
+player_kill: "&8&lÖldür"
+player_burn: "&c&lTutuştur"
+player_lightning: "&5&lYıldırım"
+player_firework: "&4&lHavai Fişek"
+player_money: "&2&lPara"
+player_vanish_enabled: "&a&lGizlen"
+player_vanish_disabled: "&c&lGizlen"
+player_custom: "&6&lÖzel Komutlar"
+player_chat_color: "&3&lSohbet &6&lRengi"
+player_back: "&c&lGeri"
+#----------------------------------------------------------
+#                       World GUI
+#----------------------------------------------------------
+world_day: "&e&lSabah"
+world_night: "&8&lGece"
+world_thunder: "&9&lGök Gürültüsü"
+world_rain: "&3&lYağmur"
+world_clear: "&b&lAçık Hava"
+world_back: "&c&lGeri"
+#----------------------------------------------------------
+#                     Players GUI
+#----------------------------------------------------------
+players_color: "&2&l{player}"
+players_more: "&cDaha fazla eylem için buraya tıkla"
+players_previous: "&c&lÖnceki"
+players_page: "&a&lSayfa"
+players_next: "&2&lSonraki"
+players_back: "&c&lGeri"
+#----------------------------------------------------------
+#                     Plugins GUI
+#----------------------------------------------------------
+plugins_back: "&c&lGeri"
+#----------------------------------------------------------
+#                     Commands GUI
+#----------------------------------------------------------
+commands_back: "&c&lGeri"
+#----------------------------------------------------------
+#                     Unban GUI
+#----------------------------------------------------------
+unban_color: "&2&l{player}"
+unban_more: "&cBu kişiyi banlananlardan kaldırmak için tıkla"
+unban_previous: "&c&lÖnceki"
+unban_page: "&a&lSayfa"
+unban_next: "&2&lSonraki"
+unban_back: "&c&lGeri"
+#----------------------------------------------------------
+#                     Unmute GUI
+#----------------------------------------------------------
+unmute_color: "&2&l{player}"
+unmute_more: "&cBu kişinin susturulmasını kaldırmak için buraya tıkla"
+unmute_previous: "&c&lÖnceki"
+unmute_page: "&a&lSayfa"
+unmute_next: "&2&lSonraki"
+unmute_back: "&c&lGeri"
+#----------------------------------------------------------
+#                 Players Settings GUI
+#----------------------------------------------------------
+players_settings_info: "&2&l{player}"
+players_settings_actions: "&9&lEylemler"
+players_settings_money: "&2&lPara"
+players_settings_kick_player: "&8&lSunucudan at"
+players_settings_ban_player: "&8&lYasakla"
+players_settings_back: "&c&lGeri"
+#----------------------------------------------------------
+#                   Actions GUI
+#----------------------------------------------------------
+actions_heal: "&e&lSağlık"
+actions_feed: "&7&lYemek"
+actions_info: "&2&l{player}"
+actions_survival: "&a&lHayatta Kalma"
+actions_adventure: "&2&lMacera"
+actions_creative: "&3&lYaratıcı"
+actions_spectator: "&9&lIzleyici"
+actions_teleport_to_player: "&d&lOyuncuya ışınlan"
+actions_kill_player: "&8&lOyuncuyu Öldür"
+actions_burn_player: "&c&lOyuncuyu Tutuştur"
+actions_teleport_player_to_you: "&d&lOyuncuyu kendine ışınla"
+actions_god_enabled: "&c&lÖlümsüz"
+actions_god_disabled: "&a&lÖlümsüz"
+actions_potions: "&c&lIksirler"
+actions_spawner: "&8&lCanavar çağır"
+actions_inventory: "&a&lEnvanter"
+actions_vanish_enabled: "&a&lGizlen"
+actions_vanish_disabled: "&c&lGizlen"
+actions_lightning: "&5&lYıldırım"
+actions_firework: "&4&lHavai Fişek"
+actions_fakeop: "&c&lSahte Operatör"
+actions_custom: "&6&lÖzel Komutlar"
+actions_chat_color: "&3&lSohbet &6&lRengi"
+actions_freeze_enabled: "&b&lDondur"
+actions_freeze_disabled: "&c&lDondur"
+actions_back: "&c&lGeri"
+#----------------------------------------------------------
+#                       Kick GUI
+#----------------------------------------------------------
+kick: "&4... nedeniyle sunucudan atıldınız"
+kick_back: "&c&lGeri"
+#----------------------------------------------------------
+#                       Ban GUI
+#----------------------------------------------------------
+ban_time: "&4{reason} nedeniyle yasaklandınız\n&cYasaklanmanız yandaki süre boyunca devam edecektir:&c&l{time}"
+ban_perm: "&4{reason} sebebiyle kalıcı olarak yasaklandınız"
+ban_years: "&e&lYıl"
+ban_months: "&e&lAy"
+ban_days: "&e&lGün"
+ban_hours: "&e&lSaat"
+ban_minutes: "&e&lDakika"
+ban_hacking: "&7&lHile"
+ban_griefing: "&6&lSunucuya zarar vermek"
+ban_spamming: "&d&lSpam atmak"
+ban_advertising: "&3&lReklam yapmak"
+ban_swearing: "&e&lKüfür etmek"
+ban_silence_disabled: "&c&lSessizlik"
+ban_silence_enabled: "&a&lSessizlik"
+ban_back: "&c&lGeri"
+#----------------------------------------------------------
+#                     Potions GUI
+#----------------------------------------------------------
+potions_night_vision: "&8&lGece Görüşü"
+potions_invisibility: "&7&lGörünmezlik"
+potions_jump_boost: "&a&lZıplama Yüksekliği"
+potions_fire_resistance: "&c&lAteş Koruması"
+potions_speed: "&b&lHız"
+potions_slowness: "&4&lYavaşlık"
+potions_water_breathing: "&9&lSuda Nefes Alma"
+potions_instant_health: "&a&lAnında Can"
+potions_instant_damage: "&4&lAnında Hasar"
+potions_poison: "&5&lZehir"
+potions_regeneration: "&e&lRejenerasyon"
+potions_strength: "&e&lKuvvet"
+potions_weakness: "&4&lZayıflık"
+potions_luck: "&6&lŞans"
+potions_slow_falling: "&3&lYavaş Düşme"
+potions_time: "&a&lZaman"
+potions_remove_all: "&4&lHepsini Kaldır"
+potions_level: "&a&lSeviye"
+potions_back: "&c&lGeri"
+#----------------------------------------------------------
+#                     Spawner GUI
+#----------------------------------------------------------
+spawner_bat: "&a&lYarasa"
+spawner_bee: "&6&lArı"
+spawner_blaze: "&c&lBlaze"
+spawner_cat: "&a&lKedi"
+spawner_cave_spider: "&c&lMağara Örümceği"
+spawner_chicken: "&a&lTavuk"
+spawner_cod: "&b&lMorina"
+spawner_cow: "&a&lInek"
+spawner_creeper: "&c&lCreeper"
+spawner_dolphin: "&b&lYunus"
+spawner_donkey: "&a&lEşek"
+spawner_drowned: "&c&lBoğulmuş"
+spawner_elder_guardian: "&c&lYaşlı Gardiyan"
+spawner_enderman: "&c&lEnderman"
+spawner_endermite: "&c&lEndermite"
+spawner_evoker: "&c&lEvoker"
+spawner_fox: "&a&lTilki"
+spawner_ghast: "&c&lGhast"
+spawner_guardian: "&c&lGardiyan"
+spawner_horse: "&a&lAt"
+spawner_husk: "&c&lKabuk"
+spawner_llama: "&a&Lama"
+spawner_magma_cube: "&c&lMagma Kübü"
+spawner_mooshroom: "&a&lMantar Inek"
+spawner_mule: "&a&lKatır"
+spawner_ocelot: "&a&lYabani Kedi"
+spawner_panda: "&a&lPanda"
+spawner_parrot: "&a&lPapağan"
+spawner_phantom: "&c&lFantom"
+spawner_pig: "&a&lDomuz"
+spawner_pillager: "&c&lYağmacı"
+spawner_polar_bear: "&a&lKutup Ayısı"
+spawner_pufferfish: "&b&lBalon Balığı"
+spawner_rabbit: "&a&lTavşan"
+spawner_ravager: "&c&lRavager"
+spawner_salmon: "&b&lSomon"
+spawner_sheep: "&a&lKoyun"
+spawner_shulker: "&c&lShulker"
+spawner_silverfish: "&c&lSilverfish"
+spawner_skeleton: "&c&lIskelet"
+spawner_skeleton_horse: "&c&lIskelet At"
+spawner_slime: "&c&lBalçık"
+spawner_spider: "&c&lÖrümcek"
+spawner_squid: "&b&lMürekkep Balığı"
+spawner_stray: "&c&lBaşıboş"
+spawner_trader_llama: "&a&lTakasçı Laması"
+spawner_tropical_fish: "&b&lTropik Balık"
+spawner_turtle: "&a&lKaplumbağa"
+spawner_vex: "&c&lVex"
+spawner_villager: "&a&lKöylü"
+spawner_vindicator: "&c&lVindicator"
+spawner_wandering_trader: "&a&lGezen Takasçı"
+spawner_witch: "&c&lCadı"
+spawner_wither: "&c&lWither"
+spawner_wolf: "&a&lKurt"
+spawner_zombie: "&c&lZombi"
+spawner_zombie_pigman: "&c&lZombi Domuz Adam"
+spawner_zombie_villager: "&c&lZombi Köylü"
+spawner_back: "&c&lGeri"
+#----------------------------------------------------------
+#                      Money GUI
+#----------------------------------------------------------
+money_give: "&2&lVer"
+money_set: "&9&lAyarla"
+money_take: "&c&lAl"
+money_back: "&c&lGeri"
+#----------------------------------------------------------
+#                      Money Amount GUI
+#----------------------------------------------------------
+money_amount_back: "&c&lGeri"
+#----------------------------------------------------------
+#                    Inventory GUI
+#----------------------------------------------------------
+inventory_refresh: "&a&lYenile"
+inventory_clear: "&b&lTemizle"
+inventory_back: "&c&lGeri"
+#----------------------------------------------------------
+#                       Messages
+#----------------------------------------------------------
+message_target_player_teleport: "&a{player} kişisine ışınlandınız."
+message_player_kill: "&a{player} kişisini öldürdünüz."
+message_player_burn: "&a{player} kişisini &ctutuşturdunuz&a!"
+message_target_player_creeper: "&a&lCreeper, Hadi be!"
+message_player_creeper: "&a{player} kişisine Creeper canlandırıldı."
+message_target_player_heal: "&e{player} senin sağlığını doldurdu."
+message_player_heal: "&a{player} kişisinin sağlığını doldurdunuz."
+message_target_player_feed: "&e{player} senin yemeğini doldurdu."
+message_player_feed: "&a{player} kişisinin yemeğini doldurdunuz."
+message_player_kick: "&a{player} kişisi sizi {reason} nedeniyle sunucudan attı."
+message_player_ban: "&a{player} kişisi sizi {reason} nedeniyle sunucuda yasakladı."
+message_player_mute: "&a{player} {reason} nedeniyle susturuldu"
+message_player_god_enabled: "&a{player} artık ölümsüz."
+message_player_god_disabled: "&a{player} artık ölümlü."
+message_target_player_god_enabled: "&a{player} sizi artık ölümsüz yaptı."
+message_target_player_god_disabled: "&a{player} sizi artık ölümlü yaptı."
+message_target_player_potions: "&a{player} size {potion}&a efektini {time} dakikalığına verdi."
+message_player_potions: "&a{player} kişisine {potion}&a efektini {time} dakikalığına verdiniz."
+message_target_player_potions_remove: "&a{player} senin bütün efektlerini &ckaldırdı&a."
+message_player_potions_remove: "&aBütün iksir efektlerin kaldırıldı."
+message_heal: "&aSağlığınız dolduruldu."
+message_feed: "&aYemeğiniz dolduruldu."
+message_god_enabled: "&aÖlümsüz modu açtınız."
+message_god_disabled: "&aÖlümsüz modu kapadınız."
+message_kill: "&cKendinizi öldürdünüz."
+message_burn: "&cKendinizi tutuşturdunuz."
+message_potions_remove: "&aIksir efektlerinizi kaldırdınız."
+message_potions: "&aKendinize {potion}&a efektini {time} dakikalığına ayarladınız."
+message_maintenance: "&aSunucu &cBakım Modu&anda. Daha sonra tekrar gelin."
+message_maintenance_enabled: "&aBakım Modu &a&lEtkin."
+message_maintenance_disabled: "&aBakım Modu &c&lKapandı."
+message_player_not_found: "&cOyuncu bulunamadı!"
+message_ban_bypass: "&cBu oyuncuyu yasaklayamazsın!"
+message_kick_bypass: "&cBu oyuncuyu sunucudan atamazsın!"
+message_give: "&aKendine {amount} kadar para yolladın. Artık paran {balance}."
+message_player_give: "&a{amount} kadar parayı {player} oyuncusuna verdin. Artık {balance} kadar parası var."
+message_target_player_give: "&a{player} sana {amount} kadar para yolladı. Artık paran {balance} kadar."
+message_set: "&aParanı {amount} kadar yaptın."
+message_player_set: "&a{player} oyuncusunun parasını {amount} kadar yaptın."
+message_target_player_set: "&a{player} senin paranı {amount} kadar yaptı."
+message_take: "&aKendinden {amount} kadar para aldın. Artık {balance} kadar paran var."
+message_player_take: "&a{player}dan {amount} kadar para aldın. Artık {balance} parası var."
+message_target_player_take: "&c{player} senden {amount} kadar para aldı. Artık {balance} paran var."
+message_transaction_error: "&cIşlemde bir hata oldu!"
+message_take_error: "&cSahip olduğunuzdan daha çok para alamazsınız!"
+message_player_take_error: "&cOyuncunun sahip olduğundan daha çok para alamazsınız!"
+message_visible: "&aArtık herkes tarafından&a&l görülebilir&asiniz."
+message_player_visible: "&a{player} artık herkes tarafından&a&l görülebilir&a."
+message_hide: "&aArtık oyunculardan &c&lgizlendin&a."
+message_player_hide: "&a{player} artık oyunculardan&c&l gizlendi&a."
+message_unban_player: "&a{player} artık yasaklı değil."
+message_unmute_player: "&a{player} artık susturulu değil."
+message_initializing_start: "&aPlugin başlatılıyor..."
+message_initializing_finish: "&aGUI kullanıma hazır."
+message_already_initializing: "&cGUI zaten başlatılıyor..."
+message_reload_start: "&aEklentiler yeniden yükleniyor..."
+message_reload_finish: "&aEklentiler yeniden yüklendi!"
+message_admin_chat_enabled: "&aAdmin sohbeti açıldı"
+message_admin_chat_disabled: "&cAdmin sohbeti kapatıldı"
+message_admin_chat_server_disabled: "&cAdmin Sohbeti bu sunucuda kapalı."
+message_freeze_enabled: "&a{player} &bseni dondurdu!"
+message_freeze_disabled: "&a{player} &bbuzunu eritti!"

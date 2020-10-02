@@ -60,6 +60,9 @@ public class Message {
             case "Slovak":
                 mess = AdminGUI.getInstance().getSlov().getString(config);
                 break;
+            case "Turkish":
+                mess = AdminGUI.getInstance().getTurk().getString(config);
+                break;
             default:
                 mess = AdminGUI.getInstance().getEngl().getString(config);
                 break;

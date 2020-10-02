@@ -45,7 +45,7 @@ initialize_gui: 0
 initialize_delay: 2
 # If initialize_reminder is set to true then players will be reminded when GUI will start initializing and when it will finish. Only use on versions 1.14.x+ (Default is false)
 initialize_reminder: false
-# Players will see messages in default language (Default is English) - Available options: English, Chinese, French, Spanish, Russian, Italian, Dutch, Dutch, Hebrew, Korean, Slovak, Swedish, Bulgarian and Portuguese.
+# Players will see messages in default language (Default is English) - Available options: English, Chinese, French, Spanish, Russian, Italian, Dutch, Dutch, Hebrew, Korean, Slovak, Swedish, Bulgarian, Turkish and Portuguese.
 # If you translate plugin into any other language feel free to send it and I will include it into this plugin.
 default_language: "English"
 # Here you can specify default GUI color - Only works with stained glass panes.

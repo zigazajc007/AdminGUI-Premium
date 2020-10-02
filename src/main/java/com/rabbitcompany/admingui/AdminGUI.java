@@ -103,6 +103,10 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
     private File sl = null;
     private final YamlConfiguration slov = new YamlConfiguration();
 
+    //Turkish
+    private File tu = null;
+    private final YamlConfiguration turk = new YamlConfiguration();
+
     //Kick
     private File k = null;
     private final YamlConfiguration kick = new YamlConfiguration();
@@ -138,6 +142,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         this.po = new File(getDataFolder(), "Languages/Portuguese.yml");
         this.he = new File(getDataFolder(), "Languages/Hebrew.yml");
         this.sl = new File(getDataFolder(), "Languages/Slovak.yml");
+        this.tu = new File(getDataFolder(), "Languages/Turkish.yml");
         this.k = new File(getDataFolder(), "kick.yml");
         this.p = new File(getDataFolder(), "Custom Commands/plugins.yml");
         this.c = new File(getDataFolder(), "Custom Commands/commands.yml");
@@ -330,6 +335,10 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
             saveResource("Languages/Slovak.yml", false);
         }
 
+        if(!this.tu.exists()){
+            saveResource("Languages/Turkish.yml", false);
+        }
+
         if(!this.k.exists()){
             saveResource("kick.yml", false);
         }
@@ -431,6 +440,11 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
             e.printStackTrace();
         }
         try {
+            this.turk.load(this.tu);
+        } catch (IOException | InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+        try {
             this.kick.load(this.k);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
@@ -484,6 +498,8 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
 
     public YamlConfiguration getSlov() { return this.slov; }
 
+    public YamlConfiguration getTurk() { return this.turk; }
+
     public YamlConfiguration getKick() { return this.kick; }
 
     public YamlConfiguration getPlug() { return this.plug; }
@@ -504,61 +520,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         }
     }
 
-    public void saveGerm() {
-        try {
-            this.germ.save(this.ge);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void saveChin() {
-        try {
-            this.chin.save(this.ch);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void saveRuss() {
-        try {
-            this.russ.save(this.ru);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void saveKick(){
-        try {
-            this.kick.save(this.k);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void savePlug(){
-        try {
-            this.plug.save(this.p);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void saveComm(){
-        try {
-            this.comm.save(this.c);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void saveComo(){
-        try {
-            this.como.save(this.o);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    } */
+    */
 
     private void info(String message){
         Bukkit.getConsoleSender().sendMessage(Message.chat(""));
@@ -575,7 +537,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         }else{
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &4&lCRACKED"));
         }
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.0.1"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.0.2"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));

@@ -1,5 +1,5 @@
 name: AdminGUI-Premium
-version: 5.0.1
+version: 5.0.2
 main: com.rabbitcompany.admingui.AdminGUI
 api-version: 1.13
 authors: [RabbitCompany]
