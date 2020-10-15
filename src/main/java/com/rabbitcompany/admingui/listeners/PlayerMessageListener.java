@@ -135,8 +135,11 @@ public class PlayerMessageListener implements Listener {
                     case "BLACK_WOOL":
                         message = Message.chat("&0" + message);
                         break;
+                    case "CLOCK":
+                        message = Message.chat(Colors.rainbowText(message));
+                        break;
                     case "EXPERIENCE_BOTTLE":
-                        message = Colors.rainbowText(message);
+                        message = Colors.gradientText(message);
                         break;
                 }
 

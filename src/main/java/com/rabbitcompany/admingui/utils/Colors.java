@@ -1,6 +1,8 @@
 package com.rabbitcompany.admingui.utils;
 
 import com.rabbitcompany.admingui.AdminGUI;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Color;
 
 import java.util.regex.Matcher;
@@ -92,7 +94,61 @@ public class Colors {
         return message;
     }
 
-    public static String rainbowText(String text)
+    public static String rainbowText(String text){
+
+        text = ChatColor.stripColor(text);
+
+        StringBuilder sb = new StringBuilder();
+
+        for(int i = 0, j = 0; i < text.length(); i++, j++){
+
+            if(text.charAt(i) == ' '){
+                j--;
+            }
+
+            switch(j){
+                case 0:
+                    sb.append("&4");
+                    break;
+                case 1:
+                    sb.append("&c");
+                    break;
+                case 2:
+                    sb.append("&6");
+                    break;
+                case 3:
+                    sb.append("&e");
+                    break;
+                case 4:
+                    sb.append("&a");
+                    break;
+                case 5:
+                    sb.append("&2");
+                    break;
+                case 6:
+                    sb.append("&b");
+                    break;
+                case 7:
+                    sb.append("&9");
+                    break;
+                case 8:
+                    sb.append("&1");
+                    break;
+                case 9:
+                    sb.append("&5");
+                    break;
+                case 10:
+                    sb.append("&d");
+                    j = 0;
+                    break;
+            }
+            sb.append(text.charAt(i));
+        }
+
+        return sb.toString();
+    }
+
+    public static String gradientText(String text)
     {
         StringBuilder builder = new StringBuilder(text.length() + 7 * (text.length())+1);
 
@@ -106,7 +162,7 @@ public class Colors {
             index_color++;
             if(index_color >= 32) index_color = 0;
 
-            prefix = rainbowHex(index_color);
+            prefix = gradientHex(index_color);
 
             builder.append(text.substring(index, Math.min(index + 1, text.length())));
             index++;
@@ -115,7 +171,7 @@ public class Colors {
         return builder.toString();
     }
 
-    public static String rainbowHex(int i){
+    public static String gradientHex(int i){
         double frequency = .3;
 
         int red = (int) Math.round(Math.sin(frequency*i + 0) * 127 + 128);

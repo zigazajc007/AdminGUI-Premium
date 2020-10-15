@@ -1739,6 +1739,9 @@ public class AdminUI {
                     chat_color.put(p.getUniqueId(), "GRAY_WOOL");
                     break;
                 case "GRAY_WOOL":
+                    chat_color.put(p.getUniqueId(), "CLOCK");
+                    break;
+                case "CLOCK":
                     if(getVersion().contains("1.16")){
                         chat_color.put(p.getUniqueId(), "EXPERIENCE_BOTTLE");
                     }else{
@@ -2112,14 +2115,17 @@ public class AdminUI {
                         chat_color.put(target_player.getUniqueId(), "GRAY_WOOL");
                         break;
                     case "GRAY_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "CLOCK");
+                        break;
+                    case "CLOCK":
                         if(getVersion().contains("1.16")){
-                            chat_color.put(p.getUniqueId(), "EXPERIENCE_BOTTLE");
+                            chat_color.put(target_player.getUniqueId(), "EXPERIENCE_BOTTLE");
                         }else{
-                            chat_color.put(p.getUniqueId(), "LIGHT_GRAY_WOOL");
+                            chat_color.put(target_player.getUniqueId(), "LIGHT_GRAY_WOOL");
                         }
                         break;
                     case "EXPERIENCE_BOTTLE":
-                        chat_color.put(p.getUniqueId(), "LIGHT_GRAY_WOOL");
+                        chat_color.put(target_player.getUniqueId(), "LIGHT_GRAY_WOOL");
                         break;
                     case "LIGHT_GRAY_WOOL":
                         chat_color.put(target_player.getUniqueId(), "CYAN_WOOL");
@@ -2273,14 +2279,17 @@ public class AdminUI {
                         chat_color.put(target_player.getUniqueId(), "GRAY_WOOL");
                         break;
                     case "GRAY_WOOL":
+                        chat_color.put(target_player.getUniqueId(), "CLOCK");
+                        break;
+                    case "CLOCK":
                         if(getVersion().contains("1.16")){
-                            chat_color.put(p.getUniqueId(), "EXPERIENCE_BOTTLE");
+                            chat_color.put(target_player.getUniqueId(), "EXPERIENCE_BOTTLE");
                         }else{
-                            chat_color.put(p.getUniqueId(), "LIGHT_GRAY_WOOL");
+                            chat_color.put(target_player.getUniqueId(), "LIGHT_GRAY_WOOL");
                         }
                         break;
                     case "EXPERIENCE_BOTTLE":
-                        chat_color.put(p.getUniqueId(), "LIGHT_GRAY_WOOL");
+                        chat_color.put(target_player.getUniqueId(), "LIGHT_GRAY_WOOL");
                         break;
                     case "LIGHT_GRAY_WOOL":
                         chat_color.put(target_player.getUniqueId(), "CYAN_WOOL");
