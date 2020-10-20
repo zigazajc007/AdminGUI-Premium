@@ -47,7 +47,6 @@ com/rabbitcompany/admingui/listeners/PlayerEntityInteractListener.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_11.class
 com/rabbitcompany/admingui/utils/Initialize.class
 com/rabbitcompany/admingui/XMaterial.class
-com/rabbitcompany/admingui/commands/AdminChat.class
 com/rabbitcompany/admingui/utils/TargetPlayer.class
 com/rabbitcompany/adminguibungee/AdminGUIBungee.class
 com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_10.class

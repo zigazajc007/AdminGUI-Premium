@@ -35,9 +35,8 @@ public class PlayerMessageListener implements Listener {
 
             String freeze_channel = AdminGUI.getInstance().getConf().getString("freeze_admin_chat", null);
 
-            if(freeze_channel != null && !AdminUI.custom_chat_channel.getOrDefault(p.getUniqueId(), "").equals("")) {
+            if(freeze_channel != null) {
                 String format = adminGUI.getConf().getString("ccc." + freeze_channel + ".format");
-
                 for (Player player : Bukkit.getServer().getOnlinePlayers()) {
                     if(player.hasPermission(adminGUI.getConf().getString("ccc." + freeze_channel + ".permission")) || AdminUI.freeze.getOrDefault(player.getUniqueId(), false)){
                         player.sendMessage(Message.chat(format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
@@ -45,6 +44,7 @@ public class PlayerMessageListener implements Listener {
                 }
                 Bukkit.getConsoleSender().sendMessage(Message.chat(format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
             }
+
 
             return;
         }

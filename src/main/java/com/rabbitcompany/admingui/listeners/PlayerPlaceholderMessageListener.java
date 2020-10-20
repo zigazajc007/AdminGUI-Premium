@@ -38,7 +38,7 @@ public class PlayerPlaceholderMessageListener implements Listener {
 
             String freeze_channel = AdminGUI.getInstance().getConf().getString("freeze_admin_chat", null);
 
-            if(freeze_channel != null && !AdminUI.custom_chat_channel.getOrDefault(p.getUniqueId(), "").equals("")) {
+            if(freeze_channel != null) {
                 String format = PlaceholderAPI.setPlaceholders(p, adminGUI.getConf().getString("ccc." + freeze_channel + ".format"));
 
                 for (Player player : Bukkit.getServer().getOnlinePlayers()) {

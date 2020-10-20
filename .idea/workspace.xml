@@ -6,36 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/AdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/AdminGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/commands/AdminChat.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/PlayerCommandListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/PlayerCommandListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/PlayerMessageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/PlayerMessageListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/PlayerPlaceholderCommandListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/PlayerPlaceholderCommandListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/PlayerPlaceholderMessageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/PlayerPlaceholderMessageListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/ui/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/ui/AdminUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Bulgarian.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Bulgarian.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Chinese.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Chinese.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Dutch.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Dutch.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/English.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/English.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/French.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/French.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/German.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/German.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Hebrew.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Hebrew.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Italian.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Italian.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Japanese.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Japanese.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Korean.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Korean.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Portuguese.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Portuguese.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Russian.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Russian.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Slovak.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Slovak.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Spanish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Spanish.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Swedish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Swedish.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Turkish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Turkish.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/AdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/AdminGUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/ui/AdminUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/ui/AdminUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,13 +204,6 @@
       <workItem from="1577725216137" duration="7109000" />
       <workItem from="1578348949962" duration="293000" />
       <workItem from="1578422894075" duration="968000" />
-    </task>
-    <task id="LOCAL-00049" summary="Now helmet will be saved when player initialize gui.">
-      <created>1581324364476</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1581324364476</updated>
     </task>
     <task id="LOCAL-00050" summary="Updated XMaterials to support 1.15 minecraft version, fixed French language and added silent ban option.">
       <created>1581887906061</created>
@@ -570,7 +541,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602786643846</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="- Fixed chat colors in admin chat&#10;- Added option for custom chat channels&#10;- Added ignore commands option in admin command spy">
+      <created>1603217499182</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1603217499183</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -595,7 +573,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/LiteBansAPI" />
     </ignored-roots>
-    <MESSAGE value="Now users can change between old (Minecraft items) and new (Player heads) GUI and Korean language is added." />
     <MESSAGE value="Added Admin tools and fixed some small visual bugs." />
     <MESSAGE value="Now you can added glow effect to admin tools." />
     <MESSAGE value="Added 1.16 compatibility and command spy." />
@@ -620,37 +597,38 @@
     <MESSAGE value="Optimized ban system." />
     <MESSAGE value="Added Turkish language." />
     <MESSAGE value="Fixed giving gradient chat color to other players bug and added rainbow chat color effect." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed giving gradient chat color to other players bug and added rainbow chat color effect." />
+    <MESSAGE value="- Fixed chat colors in admin chat&#10;- Added option for custom chat channels&#10;- Added ignore commands option in admin command spy" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Fixed chat colors in admin chat&#10;- Added option for custom chat channels&#10;- Added ignore commands option in admin command spy" />
   </component>
   <component name="WindowStateProjectService">
     <state x="768" y="266" width="374" height="582" key="#com.intellij.ide.util.MemberChooser" timestamp="1601053391313">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="768" y="266" width="374" height="582" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1601053391313" />
-    <state x="757" y="219" width="810" height="812" key="CommitChangelistDialog2" timestamp="1602786643751">
+    <state x="616" y="142" width="810" height="812" key="CommitChangelistDialog2" timestamp="1603217499078">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="757" y="219" width="810" height="812" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1602786643751" />
+    <state x="616" y="142" width="810" height="812" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1603217499078" />
     <state x="902" y="326" width="424" height="491" key="FileChooserDialogImpl" timestamp="1602776444595">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="902" y="326" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1602776444595" />
-    <state width="1878" height="208" key="GridCell.Tab.0.bottom" timestamp="1603217169943">
+    <state width="1878" height="208" key="GridCell.Tab.0.bottom" timestamp="1603218111167">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1878" height="208" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1603217169943" />
-    <state width="1878" height="208" key="GridCell.Tab.0.center" timestamp="1603217169941">
+    <state width="1878" height="208" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1603218111167" />
+    <state width="1878" height="208" key="GridCell.Tab.0.center" timestamp="1603218111166">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1878" height="208" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1603217169941" />
-    <state width="1878" height="208" key="GridCell.Tab.0.left" timestamp="1603217169940">
+    <state width="1878" height="208" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1603218111166" />
+    <state width="1878" height="208" key="GridCell.Tab.0.left" timestamp="1603218111165">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1878" height="208" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1603217169940" />
-    <state width="1878" height="208" key="GridCell.Tab.0.right" timestamp="1603217169942">
+    <state width="1878" height="208" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1603218111165" />
+    <state width="1878" height="208" key="GridCell.Tab.0.right" timestamp="1603218111167">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1878" height="208" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1603217169942" />
+    <state width="1878" height="208" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1603218111167" />
     <state width="1878" height="342" key="GridCell.Tab.1.bottom" timestamp="1601138004902">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -667,10 +645,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1878" height="342" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1601138004901" />
-    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1602786648929">
+    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1603217507315">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1602786648929" />
+    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1603217507315" />
     <state x="764" y="469" width="392" height="175" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601107033618">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>

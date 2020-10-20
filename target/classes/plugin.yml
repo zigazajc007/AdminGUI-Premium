@@ -10,10 +10,6 @@ commands:
   admin:
     usage: /<command>
     description: Show Admin GUI
-  #adminchat:
-    #usage: /<command>
-    #description: Communicate with staffs only
-    #aliases: [achat, ac]
   admincommandspy:
     usage: /<command>
     description: Spy on players commands
