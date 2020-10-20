@@ -33,27 +33,36 @@ public class PlayerMessageListener implements Listener {
         if(AdminUI.freeze.getOrDefault(p.getUniqueId(), false) && AdminGUI.getInstance().getConf().getBoolean("freeze_send_message", true)){
             event.setCancelled(true);
 
-            if(AdminGUI.getInstance().getConf().getBoolean("freeze_admin_chat", true) && AdminUI.admin_staff_chat.getOrDefault(p.getUniqueId(), false)) {
+            String freeze_channel = AdminGUI.getInstance().getConf().getString("freeze_admin_chat", null);
+
+            if(freeze_channel != null && !AdminUI.custom_chat_channel.getOrDefault(p.getUniqueId(), "").equals("")) {
+                String format = adminGUI.getConf().getString("ccc." + freeze_channel + ".format");
+
                 for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-                    if(player.hasPermission("admingui.chat.staff") || AdminUI.freeze.getOrDefault(player.getUniqueId(), false)){
-                        player.sendMessage(Message.chat(adminGUI.getConf().getString("asc_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
+                    if(player.hasPermission(adminGUI.getConf().getString("ccc." + freeze_channel + ".permission")) || AdminUI.freeze.getOrDefault(player.getUniqueId(), false)){
+                        player.sendMessage(Message.chat(format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
                     }
                 }
-                Bukkit.getConsoleSender().sendMessage(Message.chat(adminGUI.getConf().getString("asc_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
+                Bukkit.getConsoleSender().sendMessage(Message.chat(format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
             }
 
             return;
         }
 
-        if(p.hasPermission("admingui.chat.staff") && AdminUI.admin_staff_chat.getOrDefault(p.getUniqueId(), false)){
+        String command = AdminUI.custom_chat_channel.getOrDefault(p.getUniqueId(), "");
+        if(!command.equals("")){
             event.setCancelled(true);
 
+            String format = adminGUI.getConf().getString("ccc." + command + ".format");
+            String permission = adminGUI.getConf().getString("ccc." + command + ".permission");
+
             for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-                if(player.hasPermission("admingui.chat.staff")){
-                    player.sendMessage(Message.chat(adminGUI.getConf().getString("asc_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
+                if(player.hasPermission(permission)){
+                    player.sendMessage(Message.chat(format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
                 }
             }
-            Bukkit.getConsoleSender().sendMessage(Message.chat(adminGUI.getConf().getString("asc_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
+            Bukkit.getConsoleSender().sendMessage(Message.chat(format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
+
         }else{
             if(adminGUI.getConf().getBoolean("ac_enabled", false)){
 
@@ -144,12 +153,10 @@ public class PlayerMessageListener implements Listener {
                 }
 
                 if(p.hasPermission("admingui.chat.color") || p.hasPermission("admingui.chat.colors")){
-                    if(Bukkit.getVersion().contains("1.16")){
-                        message = Colors.toHex(message);
-                    }
+                    if(Bukkit.getVersion().contains("1.16")) message = Colors.toHex(message);
                     event.setFormat(Message.chat(adminGUI.getConf().getString("ac_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
                 }else{
-                    event.setFormat(adminGUI.getConf().getString("ac_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message));
+                    event.setFormat(Message.chat(adminGUI.getConf().getString("ac_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", ChatColor.stripColor(message))));
                 }
             }
         }

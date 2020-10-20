@@ -42,8 +42,8 @@ public class AdminUI {
     //Player GUI color
     private static HashMap<UUID, String> gui_color = new HashMap<>();
 
-    //Admin Staff chat
-    public static HashMap<UUID, Boolean> admin_staff_chat = new HashMap<>();
+    //Custom Chat Channels
+    public static HashMap<UUID, String> custom_chat_channel = new HashMap<>();
 
     //Initialize task
     public static HashMap<UUID, Integer> task_gui = new HashMap<>();
@@ -2153,12 +2153,12 @@ public class AdminUI {
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_freeze_enabled")) || InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_freeze_disabled"))){
                 if(freeze.getOrDefault(target_player.getUniqueId(), false)){
                     freeze.put(target_player.getUniqueId(), false);
-                    AdminUI.admin_staff_chat.put(target_player.getUniqueId(), false);
+                    custom_chat_channel.remove(p.getUniqueId());
                     target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "message_freeze_disabled").replace("{player}", p.getName()));
                 }else{
                     if(!target_player.hasPermission("admingui.freeze.bypass")){
                         freeze.put(target_player.getUniqueId(), true);
-                        AdminUI.admin_staff_chat.put(target_player.getUniqueId(), true);
+                        custom_chat_channel.put(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("freeze_admin_chat", "adminchat"));
                         target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "message_freeze_enabled").replace("{player}", p.getName()));
                     }else{
                         p.closeInventory();
@@ -2317,12 +2317,12 @@ public class AdminUI {
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_freeze_enabled")) || InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_freeze_disabled"))){
                 if(freeze.getOrDefault(target_player.getUniqueId(), false)){
                     freeze.put(target_player.getUniqueId(), false);
-                    AdminUI.admin_staff_chat.put(target_player.getUniqueId(), false);
+                    custom_chat_channel.remove(target_player.getUniqueId());
                     target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "message_freeze_disabled").replace("{player}", p.getName()));
                 }else{
                     if(!target_player.hasPermission("admingui.freeze.bypass")){
                         freeze.put(target_player.getUniqueId(), true);
-                        AdminUI.admin_staff_chat.put(target_player.getUniqueId(), true);
+                        custom_chat_channel.put(target_player.getUniqueId(), AdminGUI.getInstance().getConf().getString("freeze_admin_chat", "adminchat"));
                         target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "message_freeze_enabled").replace("{player}", p.getName()));
                     }else{
                         p.closeInventory();

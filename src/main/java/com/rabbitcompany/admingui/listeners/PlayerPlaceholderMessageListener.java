@@ -7,6 +7,7 @@ import com.rabbitcompany.admingui.utils.Colors;
 import com.rabbitcompany.admingui.utils.Message;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -31,33 +32,41 @@ public class PlayerPlaceholderMessageListener implements Listener {
         String message = event.getMessage();
 
         String chat_format = PlaceholderAPI.setPlaceholders(p, adminGUI.getConf().getString("ac_format"));
-        String chat_staff_format = PlaceholderAPI.setPlaceholders(p, adminGUI.getConf().getString("asc_format"));
 
         if(AdminUI.freeze.getOrDefault(p.getUniqueId(), false) && AdminGUI.getInstance().getConf().getBoolean("freeze_send_message", true)){
             event.setCancelled(true);
 
-            if(AdminGUI.getInstance().getConf().getBoolean("freeze_admin_chat", true) && AdminUI.admin_staff_chat.getOrDefault(p.getUniqueId(), false)){
+            String freeze_channel = AdminGUI.getInstance().getConf().getString("freeze_admin_chat", null);
+
+            if(freeze_channel != null && !AdminUI.custom_chat_channel.getOrDefault(p.getUniqueId(), "").equals("")) {
+                String format = PlaceholderAPI.setPlaceholders(p, adminGUI.getConf().getString("ccc." + freeze_channel + ".format"));
+
                 for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-                    if(player.hasPermission("admingui.chat.staff") || AdminUI.freeze.getOrDefault(player.getUniqueId(), false)){
-                        player.sendMessage(Message.chat(chat_staff_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
+                    if(player.hasPermission(adminGUI.getConf().getString("ccc." + freeze_channel + ".permission")) || AdminUI.freeze.getOrDefault(player.getUniqueId(), false)){
+                        player.sendMessage(Message.chat(format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
                     }
                 }
-                Bukkit.getConsoleSender().sendMessage(chat_staff_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message));
+                Bukkit.getConsoleSender().sendMessage(Message.chat(format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
             }
 
             return;
         }
 
-        if(p.hasPermission("admingui.chat.staff") && AdminUI.admin_staff_chat.getOrDefault(p.getUniqueId(), false)){
+        if(!AdminUI.custom_chat_channel.getOrDefault(p.getUniqueId(), "").equals("")){
             event.setCancelled(true);
+            String channel = AdminUI.custom_chat_channel.get(p.getUniqueId());
+            String format = PlaceholderAPI.setPlaceholders(p, adminGUI.getConf().getString("ccc." + channel + ".format"));
+            String permission = adminGUI.getConf().getString("ccc." + channel + ".permission");
 
             for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-                if(player.hasPermission("admingui.chat.staff")){
-                    player.sendMessage(Message.chat(chat_staff_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
+                if(player.hasPermission(permission)){
+                    player.sendMessage(Message.chat(format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
                 }
             }
-            Bukkit.getConsoleSender().sendMessage(chat_staff_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message));
+            Bukkit.getConsoleSender().sendMessage(Message.chat(format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
+
         }else{
+
             if(adminGUI.getConf().getBoolean("ac_enabled", false)){
 
                 if(Bukkit.getServer().getPluginManager().getPlugin("AdminBans") != null){
@@ -154,7 +163,7 @@ public class PlayerPlaceholderMessageListener implements Listener {
                     }
                     event.setFormat(Message.chat(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
                 } else {
-                    event.setFormat(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message));
+                    event.setFormat(Message.chat(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", ChatColor.stripColor(message))));
                 }
             }
 
