@@ -101,22 +101,30 @@ asc_format: "&7[&cAdmin Chat&7] &5{name} &7> {message}"
 #----------------------------------------------------------
 #         Custom Chat Channels - Support PlaceholderAPI
 #----------------------------------------------------------
-# You can create custom chat channels.
+# Here you can create custom chat channels.
 ccc:
   adminchat:
     name: "Admin Chat"
-    format: "&7[&cAdmin Chat&7] &5{name} &7> {message}"
+    format: "&2[&cAdmin Chat&2] &5{name} &f> {message}"
     permission: "admingui.chat.staff"
     aliases:
       - "ac"
       - "achat"
   devchat:
     name: "Dev Chat"
-    format: "&7[&6Dev Chat&7] &5{name} &7> {message}"
+    format: "&2[&6Dev Chat&2] &5{name} &f> {message}"
     permission: "admingui.chat.dev"
     aliases:
       - "dc"
       - "dchat"
+  vip++chat:
+    name: "Vip++ Chat"
+    format: "&2[&3Vip++ Chat&2] &5{name} &f> {message}"
+    permission: "admingui.chat.vip++"
+    aliases:
+      - "vc++"
+      - "vchat++"
+      - "vipchat++"
 #----------------------------------------------------------
 #                   Freeze Settings
 #----------------------------------------------------------
