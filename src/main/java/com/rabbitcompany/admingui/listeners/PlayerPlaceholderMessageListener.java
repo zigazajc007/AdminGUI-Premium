@@ -69,6 +69,12 @@ public class PlayerPlaceholderMessageListener implements Listener {
 
             if(adminGUI.getConf().getBoolean("ac_enabled", false)){
 
+                if(AdminUI.muted_chat && !p.hasPermission("admingui.chat.mute.bypass")){
+                    event.setCancelled(true);
+                    p.sendMessage(Message.getMessage(p.getUniqueId(), "message_admin_chat_muted"));
+                    return;
+                }
+
                 if(Bukkit.getServer().getPluginManager().getPlugin("AdminBans") != null){
                     if(AdminBansAPI.isPlayerMuted(event.getPlayer().getUniqueId(), AdminBansAPI.server_name)){
                         return;

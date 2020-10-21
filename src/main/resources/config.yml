@@ -92,24 +92,17 @@ acs_ignore:
   - "/login"
   - "/register"
 #----------------------------------------------------------
-#         Admin Staff Chat - Support PlaceholderAPI
-#----------------------------------------------------------
-# Do you want Admin Staff Chat to be enabled?
-asc_enabled: true
-# Here you can set your own Admin Staff Chat format (Valid tags are {name}, {display_name} and {message})
-asc_format: "&7[&cAdmin Chat&7] &5{name} &7> {message}"
-#----------------------------------------------------------
 #         Custom Chat Channels - Support PlaceholderAPI
 #----------------------------------------------------------
 # Here you can create custom chat channels.
 ccc:
-  adminchat:
-    name: "Admin Chat"
-    format: "&2[&cAdmin Chat&2] &5{name} &f> {message}"
+  staffchat:
+    name: "Staff Chat"
+    format: "&2[&cStaff Chat&2] &5{name} &f> {message}"
     permission: "admingui.chat.staff"
     aliases:
-      - "ac"
-      - "achat"
+      - "sc"
+      - "schat"
   devchat:
     name: "Dev Chat"
     format: "&2[&6Dev Chat&2] &5{name} &f> {message}"
@@ -137,7 +130,7 @@ freeze_break_blocks: true
 freeze_place_block: true
 freeze_drop_items: true
 # In which channel player will be able to chat when it will be frozen
-freeze_admin_chat: "adminchat"
+freeze_admin_chat: "staffchat"
 #----------------------------------------------------------
 #                       Bungeecord
 #----------------------------------------------------------

@@ -1,5 +1,5 @@
 name: AdminGUI-Premium
-version: 5.0.4
+version: 5.0.5
 main: com.rabbitcompany.admingui.AdminGUI
 api-version: 1.13
 authors: [RabbitCompany]
@@ -10,6 +10,10 @@ commands:
   admin:
     usage: /<command>
     description: Show Admin GUI
+  adminchat:
+    usage: /<command>
+    description: Manage with Admin Chat
+    aliases: [achat, ac]
   admincommandspy:
     usage: /<command>
     description: Spy on players commands

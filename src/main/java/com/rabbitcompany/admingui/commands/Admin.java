@@ -20,7 +20,7 @@ import java.util.*;
 
 public class Admin implements CommandExecutor {
 
-    private AdminUI adminUI = new AdminUI();
+    private final AdminUI adminUI = new AdminUI();
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args){

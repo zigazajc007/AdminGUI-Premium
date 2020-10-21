@@ -1,16 +1,10 @@
 package com.rabbitcompany.admingui.utils;
 
-import com.rabbitcompany.adminbans.AdminBans;
 import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import static org.bukkit.Bukkit.getServer;
 

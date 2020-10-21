@@ -45,6 +45,9 @@ public class AdminUI {
     //Custom Chat Channels
     public static HashMap<UUID, String> custom_chat_channel = new HashMap<>();
 
+    //Mute chat
+    public static boolean muted_chat = false;
+
     //Initialize task
     public static HashMap<UUID, Integer> task_gui = new HashMap<>();
     public static HashMap<UUID, Integer> task_players = new HashMap<>();

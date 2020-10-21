@@ -202,6 +202,8 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         //Commands
         this.getCommand("admin").setExecutor(new Admin());
         this.getCommand("admin").setTabCompleter(new TabCompletion());
+        this.getCommand("adminchat").setExecutor(new AdminChat());
+        this.getCommand("adminchat").setTabCompleter(new TabCompletion());
         this.getCommand("admincommandspy").setExecutor(new CommandSpy());
 
         //Skulls
@@ -536,7 +538,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         }else{
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &4&lCRACKED"));
         }
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.0.4"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.0.5"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));

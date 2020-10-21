@@ -43,6 +43,14 @@ public class TabCompletion implements TabCompleter {
                completions.add("players");
            }
             return completions;
+        }else if(command.getName().equalsIgnoreCase("adminchat")){
+            List<String> completions = new ArrayList<>();
+
+            if(args.length == 1){
+                completions.add("mute");
+            }
+
+            return completions;
         }
 
         return null;
