@@ -9,6 +9,7 @@
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/XMaterial.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/TabCompletion.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/listeners/PlayerPlaceholderCommandListener.java
+/home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/commands/AdminChat.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/AdminGUI.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_10.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_10.java
