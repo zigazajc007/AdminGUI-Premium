@@ -81,6 +81,17 @@ ac_filter:
   - "cock"
   - "bitch"
 #----------------------------------------------------------
+#         Admin Tablist - Support PlaceholderAPI
+#----------------------------------------------------------
+# Do you want Admin Tablist to be enabled?
+atl_enabled: false
+# Here you can set your own Admin Tablist format (Valid tags are {name} and {display_name})
+atl_format: "&a{display_name}"
+# Here you can set your own Tablist header (Valid tags are {name} and {display_name})
+atl_header: "\n &6&lWelcome &c&l{display_name} &6&lto my server! \n"
+# Here you can set your own Tablist footer (Valid tags are {name} and {display_name})
+atl_footer: "\n&cChange me in config.yml file!"
+#----------------------------------------------------------
 #         Admin Command Spy - Support PlaceholderAPI
 #----------------------------------------------------------
 # Do you want Admin Command Spy to be enabled?

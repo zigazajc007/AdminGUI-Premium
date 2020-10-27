@@ -20,7 +20,12 @@ public class AdminChat implements CommandExecutor {
 
             if(AdminGUI.getInstance().getConf().getBoolean("ac_enabled", false)){
                 if(args.length == 1) {
-                    if (args[0].equals("mute")) {
+                    if(args[0].equals("clear")){
+                        for (int i = 0; i < 50; i++){
+                            Bukkit.broadcastMessage("\n");
+                        }
+                        Bukkit.broadcastMessage(Message.getMessage(UUID.randomUUID(), "message_admin_chat_clear").replace("{player}", "Console"));
+                    }else if (args[0].equals("mute")) {
                         if(AdminUI.muted_chat){
                             AdminUI.muted_chat = false;
                             Bukkit.broadcastMessage(Message.getMessage(UUID.randomUUID(), "message_admin_chat_unmute"));
@@ -45,7 +50,16 @@ public class AdminChat implements CommandExecutor {
         if(player.hasPermission("admingui.chat")){
             if(AdminGUI.getInstance().getConf().getBoolean("ac_enabled", false)){
                 if(args.length == 1){
-                    if(args[0].equals("mute")){
+                    if(args[0].equals("clear")){
+                        if(player.hasPermission("admingui.chat.clear")){
+                            for (int i = 0; i < 50; i++){
+                                Bukkit.broadcastMessage("\n");
+                            }
+                            Bukkit.broadcastMessage(Message.getMessage(UUID.randomUUID(), "message_admin_chat_clear").replace("{player}", player.getName()));
+                        }else{
+                            player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "permission"));
+                        }
+                    }else if(args[0].equals("mute")){
                         if(player.hasPermission("admingui.chat.mute")){
                             if(AdminUI.muted_chat){
                                 AdminUI.muted_chat = false;

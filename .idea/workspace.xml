@@ -6,15 +6,32 @@
   <component name="ChangeListManager">
     <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/AdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/AdminGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/TabCompletion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/TabCompletion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/commands/AdminChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/commands/AdminChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/PlayerJoinListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/PlayerJoinListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Bulgarian.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Bulgarian.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Chinese.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Chinese.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Dutch.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Dutch.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/English.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/English.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/French.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/French.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/German.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/German.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Hebrew.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Hebrew.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Italian.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Italian.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Japanese.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Japanese.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Korean.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Korean.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Portuguese.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Portuguese.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Russian.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Russian.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/AdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/AdminGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Slovak.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Slovak.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Spanish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Spanish.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Swedish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Swedish.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Turkish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Turkish.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/TabCompletion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/TabCompletion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/commands/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/commands/Admin.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/PlayerJoinListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/PlayerJoinListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/ui/AdminUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/ui/AdminUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,13 +222,6 @@
       <workItem from="1577725216137" duration="7109000" />
       <workItem from="1578348949962" duration="293000" />
       <workItem from="1578422894075" duration="968000" />
-    </task>
-    <task id="LOCAL-00053" summary="Added Admin Chat and redesign database.">
-      <created>1583524649214</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1583524649214</updated>
     </task>
     <task id="LOCAL-00054" summary="Started working on custom ban system.">
       <created>1584487313309</created>
@@ -549,7 +559,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603312221121</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="Updated Russian language.">
+      <created>1603790317961</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1603790317961</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -574,7 +591,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/LiteBansAPI" />
     </ignored-roots>
-    <MESSAGE value="Added chat beautifier and fixed error when you type % in chat while Placeholders are enabled." />
     <MESSAGE value="Added Slovak Language." />
     <MESSAGE value="Added Japanese Language." />
     <MESSAGE value="Reduced plugin size by half with removing dependencies." />
@@ -599,37 +615,38 @@
     <MESSAGE value="fixed freeze player can't chat in channel." />
     <MESSAGE value="Changed custom chat channel colors" />
     <MESSAGE value="Added mute command" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added mute command" />
+    <MESSAGE value="Updated Russian language." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Russian language." />
   </component>
   <component name="WindowStateProjectService">
     <state x="768" y="266" width="374" height="582" key="#com.intellij.ide.util.MemberChooser" timestamp="1603301154236">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="768" y="266" width="374" height="582" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1603301154236" />
-    <state x="616" y="142" width="810" height="812" key="CommitChangelistDialog2" timestamp="1603312221017">
+    <state x="616" y="142" width="810" height="812" key="CommitChangelistDialog2" timestamp="1603790317857">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="616" y="142" width="810" height="812" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1603312221017" />
+    <state x="616" y="142" width="810" height="812" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1603790317857" />
     <state x="902" y="326" width="424" height="491" key="FileChooserDialogImpl" timestamp="1603385078239">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="902" y="326" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1603385078239" />
-    <state width="1000" height="148" key="GridCell.Tab.0.bottom" timestamp="1603312255106">
+    <state width="1675" height="203" key="GridCell.Tab.0.bottom" timestamp="1603820121720">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1000" height="148" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1603312255106" />
-    <state width="1000" height="148" key="GridCell.Tab.0.center" timestamp="1603312255106">
+    <state width="1675" height="203" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1603820121720" />
+    <state width="1675" height="203" key="GridCell.Tab.0.center" timestamp="1603820121719">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1000" height="148" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1603312255106" />
-    <state width="1000" height="148" key="GridCell.Tab.0.left" timestamp="1603312255105">
+    <state width="1675" height="203" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1603820121719" />
+    <state width="1675" height="203" key="GridCell.Tab.0.left" timestamp="1603820121718">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1000" height="148" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1603312255105" />
-    <state width="1000" height="148" key="GridCell.Tab.0.right" timestamp="1603312255106">
+    <state width="1675" height="203" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1603820121718" />
+    <state width="1675" height="203" key="GridCell.Tab.0.right" timestamp="1603820121720">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1000" height="148" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1603312255106" />
+    <state width="1675" height="203" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1603820121720" />
     <state width="1878" height="342" key="GridCell.Tab.1.bottom" timestamp="1601138004902">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -646,10 +663,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1878" height="342" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1601138004901" />
-    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1603312224678">
+    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1603790322544">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1603312224678" />
+    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1603790322544" />
     <state x="764" y="469" width="392" height="175" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601107033618">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>

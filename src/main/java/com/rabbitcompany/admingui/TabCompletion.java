@@ -48,6 +48,7 @@ public class TabCompletion implements TabCompleter {
 
             if(args.length == 1){
                 completions.add("mute");
+                completions.add("clear");
             }
 
             return completions;
