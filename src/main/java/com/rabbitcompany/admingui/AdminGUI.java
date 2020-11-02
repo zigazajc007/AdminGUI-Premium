@@ -91,6 +91,10 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
     private File sw = null;
     private final YamlConfiguration swed = new YamlConfiguration();
 
+    //Finnish
+    private File fi = null;
+    private final YamlConfiguration finn = new YamlConfiguration();
+
     //Portuguese
     private File po = null;
     private final YamlConfiguration port = new YamlConfiguration();
@@ -139,6 +143,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         this.fr = new File(getDataFolder(), "Languages/French.yml");
         this.du = new File(getDataFolder(), "Languages/Dutch.yml");
         this.sw = new File(getDataFolder(), "Languages/Swedish.yml");
+        this.fi = new File(getDataFolder(), "Languages/Finnish.yml");
         this.po = new File(getDataFolder(), "Languages/Portuguese.yml");
         this.he = new File(getDataFolder(), "Languages/Hebrew.yml");
         this.sl = new File(getDataFolder(), "Languages/Slovak.yml");
@@ -324,6 +329,10 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
             saveResource("Languages/Swedish.yml", false);
         }
 
+        if(!this.fi.exists()){
+            saveResource("Languages/Finnish.yml", false);
+        }
+
         if(!this.po.exists()){
             saveResource("Languages/Portuguese.yml", false);
         }
@@ -426,6 +435,11 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
             e.printStackTrace();
         }
         try {
+            this.finn.load(this.fi);
+        } catch (IOException | InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+        try {
             this.port.load(this.po);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
@@ -492,6 +506,8 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
     public YamlConfiguration getDutc() { return this.dutc; }
 
     public YamlConfiguration getSwed() { return this.swed; }
+
+    public YamlConfiguration getFinn() { return this.finn; }
 
     public YamlConfiguration getPort() { return this.port; }
 

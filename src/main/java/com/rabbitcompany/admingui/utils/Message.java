@@ -51,6 +51,9 @@ public class Message {
             case "Swedish":
                 mess = AdminGUI.getInstance().getSwed().getString(config);
                 break;
+            case "Finnish":
+                mess = AdminGUI.getInstance().getFinn().getString(config);
+                break;
             case "Portuguese":
                 mess = AdminGUI.getInstance().getPort().getString(config);
                 break;

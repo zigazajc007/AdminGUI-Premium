@@ -1593,6 +1593,9 @@ public class AdminUI {
                     language.put(p.getUniqueId(), "Swedish");
                     break;
                 case "Swedish":
+                    language.put(p.getUniqueId(), "Finnish");
+                    break;
+                case "Finnish":
                     language.put(p.getUniqueId(), "Bulgarian");
                     break;
                 case "Bulgarian":

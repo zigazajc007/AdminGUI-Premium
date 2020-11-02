@@ -1,0 +1,383 @@
+#       ----------- + AdminGUI by Ziga Zajc + -----------   #
+#                                                           #
+#                           Finnish                         #
+#                                                           #
+#       --------- + ------------------------- + ---------   #
+#
+#       Voit käyttää chat värejä:
+#                ________________________
+#               |   koodi: | väri:       |
+#               |________________________|
+#               |     &0  |    musta         |
+#               |     &1  |    tumma sininen     |
+#               |     &2  |    tumma vihrä     |
+#               |     &3  |    tumma aqua     |
+#               |     &4  |    tumma punainen     |
+#               |     &5  |    tumma violetti     |
+#               |     &6  |    kulta         |
+#               |     &7  |    harmaa         |
+#               |     &8  |    tumma harmaa     |
+#               |     &9  |    sininen         |
+#               |     &a  |    vihreä         |
+#               |     &b  |    aqua         |
+#               |     &c  |    punainen             |
+#               |     &d  |    vaalea violetti |
+#               |     &e  |    keltainen         |
+#               |     &f  |    valkoinen         |
+#               |     &k  |    hämmentynyt     |
+#               |     &l  |    lihavoitu         |
+#               |     &m  |    yliviivattu|
+#               |     &n  |    alleviivattu     |
+#               |     &o  |    kursiivi         |
+#               |     &r  |    tyhjää         |
+#               |________________________|
+#
+#----------------------------------------------------------
+#                         etuliite
+#----------------------------------------------------------
+prefix: "&7[&cAdmin GUI&7] "
+#----------------------------------------------------------
+#----------------------------------------------------------
+#                       komennot
+#----------------------------------------------------------
+permission: "&csinulla ei ole käyttö oikeuksia"
+is_not_a_player: "&c{player} ei ole pelaaja"
+is_not_a_number: "&c{number} ei ole numero"
+wrong_arguments: "&cvoit käyttää vain /admin tai /admin <player>"
+wrong_chat_arguments: "&cSinä voit kayttää vain /adminchat mute"
+wrong_initialize: "&cvoit käyttää vain  /admin initialize gui tai /admin initialize players"
+vault_required: "&csinun serverillä ei ole asennettu Vault suorittaakseen tätä"
+vanish_required: "&csinun serverillä ei ole asennettu Super Vanish tai Premium Vanish suorittaakseen tätä"
+#----------------------------------------------------------
+#                    Luettelo GUI
+#----------------------------------------------------------
+inventory_main: "&4&lAdmin GUI &c&lPremium"
+inventory_player: "&5&l{player}"
+inventory_world: "&2&lMaaima"
+inventory_players: "&1&lPelaajat"
+inventory_plugins: "&e&lLaajennukset"
+inventory_commands: "&2&lKomennot"
+inventory_unban: "&c&lPorttikiellon posto "
+inventory_unmute: "&c&lMykistyksen poisto"
+inventory_actions: "&9&lToiminnot &2&l{player}"
+inventory_kick: "&8&lPoista pleistä &2&l{player}"
+inventory_ban: "&8&lPorttikielto &2&l{player}"
+inventory_potions: "&c&lTaika juoma &2&l{player}"
+inventory_spawner: "&8&lLuoja&2&l{player}"
+inventory_money: "&2&lRaha &2&l{player}"
+inventory_money_give: "&2&lRaha anna {player}"
+inventory_money_set: "&2&lRaha&9&l Aseta &2&l{player}"
+inventory_money_take: "&2&lRaha&c&l Ota &2&l{player}"
+inventory_inventory: "&a&lTavaraluettelo &2&l{player}"
+#----------------------------------------------------------
+#                       Järjestelmänvalvoja GUI
+#----------------------------------------------------------
+main_player: "&5&l{player}"
+main_world: "&2&lMaailma"
+main_players: "&9&lPelaajat"
+main_plugins: "&6&lLaajennukset"
+main_maintenance_mode: "&c&lKorjaus Tila"
+main_unban_players: "&c&lPoista porttikielto/Poista mykistys"
+main_language: "&b&l"
+main_quit: "&c&lPoistu"
+#----------------------------------------------------------
+#                      Pelaaja GUI
+#----------------------------------------------------------
+player_info: "&2&l{player}"
+player_heal: "&e&lParanna"
+player_feed: "&7&lAnna Ruokaa"
+player_survival: "&a&lSelviytyjä"
+player_adventure: "&2&lSeikkailu"
+player_creative: "&3&lLuova"
+player_spectator: "&9&lKatsoja"
+player_god_enabled: "&c&lJumala"
+player_god_disabled: "&a&lJumala"
+player_potions: "&c&lTaika Juoma"
+player_spawner: "&8&lLuoja"
+player_kill: "&8&lTapa"
+player_burn: "&c&lPolta"
+player_lightning: "&5&lSalama"
+player_firework: "&4&lIlotulitus"
+player_money: "&2&lRaha"
+player_vanish_enabled: "&a&lHäviä"
+player_vanish_disabled: "&c&lHäviä"
+player_custom: "&6&l Omat Komennot"
+player_chat_color: "&3&lChat &6&lVäri"
+player_back: "&c&lTakaisin"
+#----------------------------------------------------------
+#                       Maailma GUI
+#----------------------------------------------------------
+world_day: "&e&lPäivä"
+world_night: "&8&lYö"
+world_thunder: "&9&lUkkonen"
+world_rain: "&3&lSade"
+world_clear: "&b&lKirkas"
+world_back: "&c&lTakaisin"
+#----------------------------------------------------------
+#                     Pelaajat GUI
+#----------------------------------------------------------
+players_color: "&2&l{player}"
+players_more: "&cPaina tästä saadaksesi lisää toimintoja"
+players_previous: "&c&lEdellinen"
+players_page: "&a&lSivu"
+players_next: "&2&lSeuraava"
+players_back: "&c&lTakaisin"
+#----------------------------------------------------------
+#                     Laajennukset GUI
+#----------------------------------------------------------
+plugins_back: "&c&lTakaisin"
+#----------------------------------------------------------
+#                     Komennot GUI
+#----------------------------------------------------------
+commands_back: "&c&lTakaisin"
+#----------------------------------------------------------
+#                     Porttikiellon poisto GUI
+#----------------------------------------------------------
+unban_color: "&2&l{player}"
+unban_more: "&cPaina tästä poistaaksesi porttikiellon"
+unban_previous: "&c&lEdellinen"
+unban_page: "&a&lSivu"
+unban_next: "&2&lSeuraava"
+unban_back: "&c&lTakaisin"
+#----------------------------------------------------------
+#                     poista mykistys GUI
+#----------------------------------------------------------
+unmute_color: "&2&l{player}"
+unmute_more: "&cPaina tästä poistaaksesi mykistyksen"
+unmute_previous: "&c&ledellinen"
+unmute_page: "&a&lSivu"
+unmute_next: "&2&lSeuraava"
+unmute_back: "&c&lTakaisin"
+#----------------------------------------------------------
+#                 Pelaajien asetukset GUI
+#----------------------------------------------------------
+players_settings_info: "&2&l{player}"
+players_settings_actions: "&9&lToiminnot"
+players_settings_money: "&2&lRaha"
+players_settings_kick_player: "&8&lPoista Pelistä"
+players_settings_ban_player: "&8&lAnna Porttikielto Pelaajalle"
+players_settings_back: "&c&lTakaisin"
+#----------------------------------------------------------
+#                   Toiminnot GUI
+#----------------------------------------------------------
+actions_heal: "&e&lParanna"
+actions_feed: "&7&lRuoki"
+actions_info: "&2&l{player}"
+actions_survival: "&a&lSelviytyminen"
+actions_adventure: "&2&lSeikkailu"
+actions_creative: "&3&lLuova"
+actions_spectator: "&9&lKatsoja"
+actions_teleport_to_player: "&d&lMene pelaajan luo"
+actions_kill_player: "&8&lTapa Pelaaja"
+actions_burn_player: "&c&lPolta Pelaaja"
+actions_teleport_player_to_you: "&d&lTuo pelaaja luoksesi"
+actions_god_enabled: "&c&lJumala"
+actions_god_disabled: "&a&lJumala"
+actions_potions: "&c&lTaika Juomat"
+actions_spawner: "&8&lLuoja"
+actions_inventory: "&a&lTavaraluettelo"
+actions_vanish_enabled: "&a&lHäviä"
+actions_vanish_disabled: "&c&lHäviä"
+actions_lightning: "&5&lSalama"
+actions_firework: "&4&lIlotulitus"
+actions_fakeop: "&c&lVäärä OP"
+actions_custom: "&6&lOmat Komennot"
+actions_chat_color: "&3&lChat &6&lVärit"
+actions_freeze_enabled: "&b&lJäädytä"
+actions_freeze_disabled: "&c&lJäädytä"
+actions_back: "&c&lTakaisin"
+#----------------------------------------------------------
+#                       Heitä ulos GUI
+#----------------------------------------------------------
+kick: "&4Sinut on heitetty ulos syystä"
+kick_back: "&c&lTakaisin"
+#----------------------------------------------------------
+#                       Porttikielto GUI
+#----------------------------------------------------------
+ban_time: "&4Sinulle on annettu porttikielto {reason}\n&cKielto Vanhenee &c&l{time}"
+ban_perm: "&4Sinulle on annettu pysyvä porttikielto syystä {reason}"
+ban_years: "&e&lVuodet"
+ban_months: "&e&lKuukaudet"
+ban_days: "&e&lPäivät"
+ban_hours: "&e&lTunnit"
+ban_minutes: "&e&lMinuutit"
+ban_hacking: "&7&lHäkkääminen"
+ban_griefing: "&6&lGrieffaaminen"
+ban_spamming: "&d&lSpammaaminen"
+ban_advertising: "&3&lMainostaminen"
+ban_swearing: "&e&lKiroileminen"
+ban_silence_disabled: "&c&lHiljennä"
+ban_silence_enabled: "&a&lHiljennä"
+ban_back: "&c&lTakaisin"
+#----------------------------------------------------------
+#                     Taikajuomat GUI
+#----------------------------------------------------------
+potions_night_vision: "&8&lYönäkö"
+potions_invisibility: "&7&lNäkymättömyys"
+potions_jump_boost: "&a&lHyppykorkeus"
+potions_fire_resistance: "&c&lTulen kesto"
+potions_speed: "&b&lNopeus"
+potions_slowness: "&4&lHitaisuus"
+potions_water_breathing: "&9&lVesi hengitys"
+potions_instant_health: "&a&lVälitön parannus"
+potions_instant_damage: "&4&lVälitön vahinko"
+potions_poison: "&5&lMyrkky"
+potions_regeneration: "&e&lParannus"
+potions_strength: "&e&lVoima"
+potions_weakness: "&4&lHeikkous"
+potions_luck: "&6&lOnni"
+potions_slow_falling: "&3&lHidas putoaminen"
+potions_time: "&a&lAika"
+potions_remove_all: "&4&lPoista Kaikki"
+potions_level: "&a&lTaso"
+potions_back: "&c&lTakaisin"
+#----------------------------------------------------------
+#                     Luoja GUI
+#----------------------------------------------------------
+spawner_bat: "&a&lLepakko"
+spawner_bee: "&6&lMehiläinen"
+spawner_blaze: "&c&lLoimu"
+spawner_cat: "&a&lKissa"
+spawner_cave_spider: "&c&lLuola Hämähäkki"
+spawner_chicken: "&a&lKana"
+spawner_cod: "&b&lTurska"
+spawner_cow: "&a&lLehmä"
+spawner_creeper: "&c&lCreeper"
+spawner_dolphin: "&b&lDelfiini"
+spawner_donkey: "&a&lAasi"
+spawner_drowned: "&c&lHukkunut"
+spawner_elder_guardian: "&c&lVanhempi Vartija"
+spawner_enderman: "&c&lÄäreläinen"
+spawner_endermite: "&c&äärihiiri"
+spawner_evoker: "&c&lEvoker"
+spawner_fox: "&a&lKettu"
+spawner_ghast: "&c&lGhast"
+spawner_guardian: "&c&lVartija"
+spawner_horse: "&a&lHevonen"
+spawner_husk: "&c&lSusi-Koira"
+spawner_llama: "&a&lLaama"
+spawner_magma_cube: "&c&lMagma Kuutio"
+spawner_mooshroom: "&a&lSieni Lehmä"
+spawner_mule: "&a&lMuuli"
+spawner_ocelot: "&a&lOselotti"
+spawner_panda: "&a&lPanda"
+spawner_parrot: "&a&lPapukaija"
+spawner_phantom: "&c&lFantomi"
+spawner_pig: "&a&lPossu"
+spawner_pillager: "&c&lPillager"
+spawner_polar_bear: "&a&lJääkarhu"
+spawner_pufferfish: "&b&lPallokala"
+spawner_rabbit: "&a&lJänis"
+spawner_ravager: "&c&lRaivoaja"
+spawner_salmon: "&b&lLohi"
+spawner_sheep: "&a&lLammas"
+spawner_shulker: "&c&lShulker"
+spawner_silverfish: "&c&lHopeakala"
+spawner_skeleton: "&c&lLuuranko"
+spawner_skeleton_horse: "&c&lLuuranko Hevonen"
+spawner_slime: "&c&lLima"
+spawner_spider: "&c&lHämähäkki"
+spawner_squid: "&b&lMustekala"
+spawner_stray: "&c&lEksynyt"
+spawner_trader_llama: "&a&lKaupittelijan Laama"
+spawner_tropical_fish: "&b&lTrooppinen Kala"
+spawner_turtle: "&a&lKilpikonna"
+spawner_vex: "&c&lVex"
+spawner_villager: "&a&lKyläläinen"
+spawner_vindicator: "&c&lVindicator"
+spawner_wandering_trader: "&a&lVaeltava kauppias"
+spawner_witch: "&c&lNoita"
+spawner_wither: "&c&lHäivyttäjä"
+spawner_wolf: "&a&lSusi"
+spawner_zombie: "&c&lZombi"
+spawner_zombie_pigman: "&c&lZombi Possumies"
+spawner_zombie_villager: "&c&lZombi Kyläläinen"
+spawner_back: "&c&lTakaisin"
+#----------------------------------------------------------
+#                      Raha GUI
+#----------------------------------------------------------
+money_give: "&2&lAnna"
+money_set: "&9&lAseta"
+money_take: "&c&lOta"
+money_back: "&c&lTakaisin"
+#----------------------------------------------------------
+#                      Rahan määrä GUI
+#----------------------------------------------------------
+money_amount_back: "&c&lTakaisin"
+#----------------------------------------------------------
+#                    Tavaraluettelo GUI
+#----------------------------------------------------------
+inventory_refresh: "&a&lLataa Uudelleen"
+inventory_clear: "&b&lTyhjennä"
+inventory_back: "&c&lTakaisin"
+#----------------------------------------------------------
+#                       Viestit
+#----------------------------------------------------------
+message_target_player_teleport: "&aSinut on viety pelaajan {player} luo."
+message_player_kill: "&aOlet tappanut pelaajan {player}."
+message_player_burn: "&aOlet asettanut pelaajan {player} &cTuleen&a!"
+message_target_player_creeper: "&a&lCreeper, Aww Man!"
+message_player_creeper: "&aCreeper on luotu pelaajan  {player} luo."
+message_target_player_heal: "&e{player} Paransi sinut."
+message_player_heal: "&aSinä olet parantanut pelaajan {player}."
+message_target_player_feed: "&e{player} Täytti mahasi."
+message_player_feed: "&aOlet ruokkinut pelaajan {player}."
+message_player_kick: "&a{player} on poistettu syystä {reason}"
+message_player_ban: "&aPelaajalle {player} on annettu porttikielt osyystä {reason}"
+message_player_mute: "&a{player} on mykistetty syystä {reason}"
+message_player_god_enabled: "&a{player} on nyt jumalatilassa."
+message_player_god_disabled: "&a{player} ei ole jumalatilassa."
+message_target_player_god_enabled: "&a{player} antoi  sinulle jumalatilan."
+message_target_player_god_disabled: "&a{player} otti sinulta jumalatilan pois."
+message_target_player_potions: "&a{player} antoi sinulle {potion}&a efektin {time} minuutiksi."
+message_player_potions: "&aAnnoit pelaajalle {player} {potion}&a efektin {time} minuutiksi."
+message_target_player_potions_remove: "&a{player} &cpoisti &akaikki sinun efektit."
+message_player_potions_remove: "&aPoistit kaikki pelaajan {player} efektin."
+message_heal: "&aSinut on parannettu"
+message_feed: "&aSinun mahasi on täytetty."
+message_god_enabled: "&aOlet nyt jumalatilassa."
+message_god_disabled: "&aet ole enää jumalatilassa."
+message_kill: "&cTapoit itsesi."
+message_burn: "&cSytytit itsesi tuleen."
+message_potions_remove: "&aOlet poistanut kaikki efektisi."
+message_potions: "&aOlet antanut {potion}&a efektin {time} minuutiksi itsellesi."
+message_maintenance: "&aServeri on nyt &cHuolto tilassa&a. Tule takaisin myöhemmin."
+message_maintenance_enabled: "&aHuolto tila on nyt &a&lKäytössä."
+message_maintenance_disabled: "&aHuolto tila ei ole enää &c&lKäytössä."
+message_player_not_found: "&cPelaaja ei ole tavoitettavissa nyt"
+message_ban_bypass: "&cEt voi antaa porttikieltoa tälle pelaajalle"
+message_kick_bypass: "&cet voi poistaa tätä pelaajaa serveriltä"
+message_give: "&aAnnoit juuri {amount} itsellesi ja nyt sinulla on rahaa {balance}."
+message_player_give: "&aSinä olet antanut {amount} pelaajalle {player} ja nyt hänellä on rahaa {balance}."
+message_target_player_give: "&a{player} lähetti sinulle {amount} ja nyt sinulla on rahaa {balance}."
+message_set: "&aSinä juuri asetit rahan {amount}."
+message_player_set: "&aSinä juuri asetit pelaajan {player} rahan määrään {amount}."
+message_target_player_set: "&a{player} asetti sinun rahamääräsi {amount}."
+message_take: "&aOtit itseltäsi {amount} Ja nyt sinulla on rahaa {balance}."
+message_player_take: "&aOtit {amount} pelaajalta {player} ja nyt hänellä on rahaa {balance}."
+message_target_player_take: "&c{player} otti sinulta {amount} ja nyt sinulla on rahaa {balance}."
+message_transaction_error: "&cJokin meni vikaan rahan siirrossa"
+message_take_error: "&cEt voi ottaa itseltäsi rahaa enempää kuin sinulla on"
+message_player_take_error: "&cEt voi ottaa rahaa niin paljoa kuin pelaajalla on"
+message_visible: "&aSinä olet nyt&a&l näkyvä&a muille pelaajille."
+message_player_visible: "&a{player} on nyt&a&l näkyvä&a muille pelaajille."
+message_hide: "&aSinä olet nyt&c&l näkymätön&a muilta pelaajilta."
+message_player_hide: "&a{player} on nyt&c&l näkymätön&a muille pelaajille."
+message_unban_player: "&apelaajalta {player} on otettu porttikielto pois."
+message_unmute_player: "&apelaajalta {player} on otettu mykistys pois."
+message_initializing_start: "&alaajennus latautuu..."
+message_initializing_finish: "&aGUI on valmiina käyttöön."
+message_already_initializing: "&cGUI latautuu..."
+message_reload_start: "&aLaajennus käynnistyy uudelleen..."
+message_reload_finish: "&aLaajennus on käynnistynyt uudelleen onnistuneesti!"
+message_enabled: "&a{name} on käytössä"
+message_disabled: "&c{name} ei ole käytössä"
+message_admin_chat_enabled: "&aJärjestelmän valvojien tekstikenttä on nyt käytössä"
+message_admin_chat_disabled: "&cJärjestelmän valvojien tekstikenttä ei ole enää käytössä"
+message_admin_chat_mute: "&aTekstikenttä on mykistetty."
+message_admin_chat_unmute: "&aTekstikenttä ei ole enää mykistetty."
+message_admin_chat_muted: "&cSinä et voi puhua kun tekstikenttä on mykistetty."
+message_admin_chat_clear: "&aTekstikenttä on tyhjennetty pelaajan {player} toimesta"
+message_admin_chat_server_disabled: "&cJärjestelmän valvojien tekstikenttä on otettu pois käytöstä tällä serverillä."
+message_freeze_enabled: "&a{player} &bjäädytti sinut!"
+message_freeze_disabled: "&a{player} &bsulatti sinut!"
