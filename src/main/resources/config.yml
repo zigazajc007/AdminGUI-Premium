@@ -61,11 +61,17 @@ admin_tools_material: "NETHER_STAR"
 admin_tools_enchantment: false
 admin_tools_lore: "&dClick me to open Admin GUI"
 #----------------------------------------------------------
+#                    Admin Permissions
+#----------------------------------------------------------
+# Do you want Admin Permissions to be enabled?
+ap_enabled: false
+#----------------------------------------------------------
 #            Admin Chat - Support PlaceholderAPI
 #----------------------------------------------------------
 # Do you want Admin Staff Chat to be enabled?
 ac_enabled: false
 # Here you can set your own Admin Chat format (Valid tags are {name}, {display_name} and {message})
+# If you have enabled Admin Permissions then you can use tags {prefix} and {suffix} to display player rank.
 ac_format: "&7{display_name} &7> {message}"
 # If beautifier is enabled, every message will start with uppercase and end with dot.
 ac_beautifier: true
@@ -86,10 +92,13 @@ ac_filter:
 # Do you want Admin Tablist to be enabled?
 atl_enabled: false
 # Here you can set your own Admin Tablist format (Valid tags are {name} and {display_name})
+# If you have enabled Admin Permissions you can use {prefix} and {suffix} tag to display players rank.
 atl_format: "&a{display_name}"
 # Here you can set your own Tablist header (Valid tags are {name} and {display_name})
+# If you have enabled Admin Permissions you can use {prefix} and {suffix} tag to display players rank.
 atl_header: "\n &6&lWelcome &c&l{display_name} &6&lto my server! \n"
 # Here you can set your own Tablist footer (Valid tags are {name} and {display_name})
+# If you have enabled Admin Permissions you can use {prefix} and {suffix} tag to display players rank.
 atl_footer: "\n&cChange me in config.yml file!"
 #----------------------------------------------------------
 #         Admin Command Spy - Support PlaceholderAPI

@@ -46,6 +46,7 @@ is_not_a_number: "&c{number} ei ole numero"
 wrong_arguments: "&cvoit käyttää vain /admin tai /admin <player>"
 wrong_chat_arguments: "&cSinä voit kayttää vain /adminchat mute"
 wrong_initialize: "&cvoit käyttää vain  /admin initialize gui tai /admin initialize players"
+wrong_rank_arguments: "&cYou can only use /admin rank set <player> <rank> or /admin rank <up/down> <player>"
 vault_required: "&csinun serverillä ei ole asennettu Vault suorittaakseen tätä"
 vanish_required: "&csinun serverillä ei ole asennettu Super Vanish tai Premium Vanish suorittaakseen tätä"
 #----------------------------------------------------------
@@ -381,3 +382,4 @@ message_admin_chat_clear: "&aTekstikenttä on tyhjennetty pelaajan {player} toim
 message_admin_chat_server_disabled: "&cJärjestelmän valvojien tekstikenttä on otettu pois käytöstä tällä serverillä."
 message_freeze_enabled: "&a{player} &bjäädytti sinut!"
 message_freeze_disabled: "&a{player} &bsulatti sinut!"
+message_admin_rank: "&a{player} is now {rank}."

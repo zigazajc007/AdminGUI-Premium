@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class TabCompletion implements TabCompleter {
 
@@ -30,17 +31,35 @@ public class TabCompletion implements TabCompleter {
                     }
                 }
 
-                if(sender.hasPermission("admingui.reload")){
-                    completions.add("reload");
-                }
+                if(sender.hasPermission("admingui.reload")) completions.add("reload");
+
+                if(sender.hasPermission("admingui.rank")) completions.add("rank");
 
                 completions.add("tools");
 
                 completions.add("initialize");
 
-           }else if(args.length == 2 && args[0].equals("initialize")){
-               completions.add("gui");
-               completions.add("players");
+           }else if(args.length == 2){
+               if(args[0].equals("initialize")){
+                   completions.add("gui");
+                   completions.add("players");
+               }else if(args[0].equals("rank")){
+                   if(sender.hasPermission("admingui.rank.set")) completions.add("set");
+                   if(sender.hasPermission("admingui.rank.up")) completions.add("up");
+                   if(sender.hasPermission("admingui.rank.down")) completions.add("down");
+               }
+           }else if(args.length == 3){
+               if(args[0].equals("rank") && (args[1].equals("set") || args[1].equals("up") || args[1].equals("down"))) {
+                   for(Player all : Bukkit.getServer().getOnlinePlayers()) {
+                       completions.add(all.getName());
+                   }
+               }
+           }else if(args.length == 4){
+               if(args[0].equals("rank") && (args[1].equals("set") || args[1].equals("up") || args[1].equals("down"))) {
+                   for (Map.Entry<String, Object> rank : AdminGUI.getInstance().getPermissions().getConfigurationSection("groups").getValues(false).entrySet()) {
+                       completions.add(rank.getKey());
+                   }
+               }
            }
             return completions;
         }else if(command.getName().equalsIgnoreCase("adminchat")){

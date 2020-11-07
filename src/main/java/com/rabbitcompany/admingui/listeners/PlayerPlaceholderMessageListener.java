@@ -163,13 +163,25 @@ public class PlayerPlaceholderMessageListener implements Listener {
                         break;
                 }
 
-                if (p.hasPermission("admingui.chat.color") || p.hasPermission("admingui.chat.colors")) {
-                    if(Bukkit.getVersion().contains("1.16")){
-                        message = Colors.toHex(message);
+                //TODO: Permissions
+                String prefix = "";
+                String suffix = "";
+                if(AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)){
+                    String rank = AdminGUI.getInstance().getPermissions().getString("ranks." + p.getUniqueId().toString(), null);
+                    if(rank == null){
+                        prefix = AdminGUI.getInstance().getPermissions().getString("groups.default.prefix", "");
+                        suffix = AdminGUI.getInstance().getPermissions().getString("groups.default.suffix", "");
+                    }else{
+                        prefix = AdminGUI.getInstance().getPermissions().getString("groups." + rank + ".prefix", "");
+                        suffix = AdminGUI.getInstance().getPermissions().getString("groups." + rank + ".suffix", "");
                     }
-                    event.setFormat(Message.chat(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
+                }
+
+                if (p.hasPermission("admingui.chat.color") || p.hasPermission("admingui.chat.colors")) {
+                    if(Bukkit.getVersion().contains("1.16")) message = Colors.toHex(message);
+                    event.setFormat(Message.chat(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix).replace("{message}", message)));
                 } else {
-                    event.setFormat(Message.chat(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", ChatColor.stripColor(message))));
+                    event.setFormat(Message.chat(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix).replace("{message}", ChatColor.stripColor(message))));
                 }
             }
 

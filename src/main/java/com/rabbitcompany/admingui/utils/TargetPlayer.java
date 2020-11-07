@@ -1,7 +1,9 @@
 package com.rabbitcompany.admingui.utils;
 
 import com.rabbitcompany.adminbans.AdminBansAPI;
+import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.BanList;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -34,6 +36,32 @@ public class TargetPlayer {
                 p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_potions").replace("{player}", target_player.getName()).replace("{potion}", Message.getMessage(p.getUniqueId(), getPotionConfigName)).replace("{time}", "" + duration));
                 target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "message_target_player_potions").replace("{player}", p.getName()).replace("{potion}", Message.getMessage(target_player.getUniqueId(), getPotionConfigName)).replace("{time}", "" + duration));
             }
+        }
+    }
+
+    public static void refreshPlayerTabList(Player player){
+
+        String prefix = "";
+        String suffix = "";
+        if(AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)){
+            String rank = AdminGUI.getInstance().getPermissions().getString("ranks." + player.getUniqueId().toString(), null);
+            if(rank == null){
+                prefix = AdminGUI.getInstance().getPermissions().getString("groups.default.prefix", "");
+                suffix = AdminGUI.getInstance().getPermissions().getString("groups.default.suffix", "");
+            }else{
+                prefix = AdminGUI.getInstance().getPermissions().getString("groups." + rank + ".prefix", "");
+                suffix = AdminGUI.getInstance().getPermissions().getString("groups." + rank + ".suffix", "");
+            }
+        }
+
+        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){
+            player.setPlayerListHeader(PlaceholderAPI.setPlaceholders(player, Message.chat(AdminGUI.getInstance().getConf().getString("atl_header", "&a{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix))));
+            player.setPlayerListName(PlaceholderAPI.setPlaceholders(player, Message.chat(AdminGUI.getInstance().getConf().getString("atl_format", "&a{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix))));
+            player.setPlayerListFooter(PlaceholderAPI.setPlaceholders(player, Message.chat(AdminGUI.getInstance().getConf().getString("atl_footer", "&a{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix))));
+        }else{
+            player.setPlayerListHeader(Message.chat(AdminGUI.getInstance().getConf().getString("atl_header", "&a{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix)));
+            player.setPlayerListName(Message.chat(AdminGUI.getInstance().getConf().getString("atl_format", "&a{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix)));
+            player.setPlayerListFooter(Message.chat(AdminGUI.getInstance().getConf().getString("atl_footer", "&a{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix)));
         }
     }
 

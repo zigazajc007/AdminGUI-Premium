@@ -43,6 +43,10 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
     private File co = null;
     private final YamlConfiguration conf = new YamlConfiguration();
 
+    //Permissions
+    private File pe = null;
+    private final YamlConfiguration perm = new YamlConfiguration();
+
     //English
     private File en = null;
     private final YamlConfiguration engl = new YamlConfiguration();
@@ -131,6 +135,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
     public void onEnable() {
         instance = this;
         this.co = new File(getDataFolder(), "config.yml");
+        this.pe = new File(getDataFolder(), "permissions.yml");
         this.en = new File(getDataFolder(), "Languages/English.yml");
         this.ge = new File(getDataFolder(), "Languages/German.yml");
         this.ch = new File(getDataFolder(), "Languages/Chinese.yml");
@@ -281,6 +286,10 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
             saveResource("config.yml", false);
         }
 
+        if(!this.pe.exists()){
+            saveResource("permissions.yml", false);
+        }
+
         if (!this.en.exists()) {
             saveResource("Languages/English.yml", false);
         }
@@ -367,114 +376,29 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
     }
 
     public void loadYamls(){
-
         try{
             this.conf.load(this.co);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-
-        try {
+            this.perm.load(this.pe);
             this.engl.load(this.en);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-        try {
             this.germ.load(this.ge);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-        try {
             this.chin.load(this.ch);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-        try {
             this.japa.load(this.ja);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-        try {
             this.kore.load(this.ko);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-        try{
             this.ital.load(this.it);
-        }catch (IOException | InvalidConfigurationException e){
-            e.printStackTrace();
-        }
-        try {
             this.russ.load(this.ru);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-        try {
             this.bulg.load(this.bu);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-        try {
             this.span.load(this.sp);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-        try {
             this.fren.load(this.fr);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-        try {
             this.dutc.load(this.du);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-        try {
             this.swed.load(this.sw);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-        try {
             this.finn.load(this.fi);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-        try {
             this.port.load(this.po);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-        try {
             this.hebr.load(this.he);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-        try {
             this.slov.load(this.sl);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-        try {
             this.turk.load(this.tu);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-        try {
             this.kick.load(this.k);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-        try {
             this.plug.load(this.p);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-        try {
             this.comm.load(this.c);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-        try {
             this.como.load(this.o);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
@@ -482,6 +406,8 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
     }
 
     public YamlConfiguration getConf() { return this.conf; }
+
+    public YamlConfiguration getPermissions() { return this.perm; }
 
     public YamlConfiguration getEngl() { return this.engl; }
 
@@ -525,19 +451,13 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
 
     public YamlConfiguration getComo() { return this.como; }
 
-    /*
-
-    //Saving files...
-
-    public void saveEngl() {
+    public void savePermissions() {
         try {
-            this.engl.save(this.en);
+            this.perm.save(this.pe);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-    */
 
     private void info(String message){
         Bukkit.getConsoleSender().sendMessage(Message.chat(""));
