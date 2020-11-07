@@ -49,6 +49,8 @@ groups:
     - essentials.tpahere
     - essentials.tpaccept
     - essentials.tpdeny
+    - essentials.msg
+    - essentials.time
     - essentials.warp
     - essentials.warp.list
     - essentials.warps.*
@@ -59,7 +61,45 @@ groups:
     inheritance:
       - default
     permissions:
+      - essentials.ptime
+      - essentials.workbench
+      - essentials.enderchest
+  helper:
+    prefix: "&7[&9Helper&7]"
+    suffix: ""
+    priority: 800
+    inheritance:
+      - member+
+    permissions:
       - essentials.fly
-      - essentials.heal
-      - essentials.feed
+      - essentials.time.set
+  builder:
+    prefix: "&7[&9Builder&7]"
+    suffix: ""
+    priority: 700
+    inheritance:
+      - helper
+    permissions:
       - essentials.gamemode
+      - essentials.gamemode.all
+  moderator:
+    prefix: "&7[&9Mod&7]"
+    suffix: ""
+    priority: 600
+    inheritance:
+      - builder
+    permissions:
+      - essentials.gamemode
+      - essentials.gamemode.all
+  admin:
+    prefix: "&7[&cAdmin&7]"
+    suffix: ""
+    priority: 500
+    permissions:
+      - essentials.*
+  owner:
+    prefix: "&7[&bOwner&7]"
+    suffix: ""
+    priority: 100
+    permissions:
+      - '*'

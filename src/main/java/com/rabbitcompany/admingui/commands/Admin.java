@@ -7,7 +7,6 @@ import com.rabbitcompany.admingui.utils.Channel;
 import com.rabbitcompany.admingui.utils.Initialize;
 import com.rabbitcompany.admingui.utils.Message;
 import com.rabbitcompany.admingui.utils.TargetPlayer;
-import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -18,7 +17,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Admin implements CommandExecutor {
@@ -138,48 +136,66 @@ public class Admin implements CommandExecutor {
                 }
             }else if(args.length == 3){
                 //TODO: Permissions
-                if(args[0].equals("rank")){
-                    if(args[1].equals("up")){
-                        if(player.hasPermission("admingui.rank.up")){
+                if(args[0].equals("rank")) {
+                    if (args[1].equals("up")) {
+                        if (player.hasPermission("admingui.rank.up")) {
                             Player target_player = Bukkit.getServer().getPlayer(ChatColor.stripColor(args[2]));
-                            if(target_player != null){
+                            if (target_player != null) {
                                 String cur_rank = AdminGUI.getInstance().getPermissions().getString("ranks." + target_player.getUniqueId().toString(), "default");
                                 int cur_priority = AdminGUI.getInstance().getPermissions().getInt("groups." + cur_rank + ".priority", Integer.MAX_VALUE);
-                                player.sendMessage("cur_priority: " + cur_priority);
                                 ArrayList<Integer> priorities = new ArrayList<>();
                                 for (Map.Entry<String, Object> priority : AdminGUI.getInstance().getPermissions().getConfigurationSection("groups").getValues(false).entrySet()) {
-                                    int pri = AdminGUI.getInstance().getPermissions().getInt("groups."+ priority.getKey() + ".priority");
-                                    player.sendMessage("pri: " + pri);
-                                    if(cur_priority < pri) priorities.add(pri);
+                                    int pri = AdminGUI.getInstance().getPermissions().getInt("groups." + priority.getKey() + ".priority");
+                                    if (cur_priority > pri) priorities.add(pri);
                                 }
-                                int max_pri = Collections.max(priorities);
-                                player.sendMessage("max_pri: " + max_pri);
+                                if (priorities.size() > 0) {
+                                    int max_pri = Collections.max(priorities);
+                                    for (Map.Entry<String, Object> priority : AdminGUI.getInstance().getPermissions().getConfigurationSection("groups").getValues(false).entrySet()) {
+                                        if (AdminGUI.getInstance().getPermissions().getInt("groups." + priority.getKey() + ".priority") == max_pri) {
+                                            AdminGUI.getInstance().getPermissions().set("ranks." + target_player.getUniqueId().toString(), priority.getKey());
+                                            AdminGUI.getInstance().savePermissions();
+                                            TargetPlayer.refreshPlayerTabList(player);
+                                            player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_admin_rank").replace("{player}", target_player.getName()).replace("{rank}", priority.getKey()));
+                                        }
+                                    }
+                                } else {
+                                    player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_admin_rank").replace("{player}", target_player.getName()).replace("{rank}", cur_rank));
+                                }
+                            } else {
+                                player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "is_not_a_player").replace("{player}", args[2]));
+                            }
+                        } else {
+                            player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "permission"));
+                        }
+                    } else if (args[1].equals("down")) {
+                        if (player.hasPermission("admingui.rank.down")) {
+                            Player target_player = Bukkit.getServer().getPlayer(ChatColor.stripColor(args[2]));
+                            if (target_player != null) {
+                                String cur_rank = AdminGUI.getInstance().getPermissions().getString("ranks." + target_player.getUniqueId().toString(), "owner");
+                                int cur_priority = AdminGUI.getInstance().getPermissions().getInt("groups." + cur_rank + ".priority", Integer.MIN_VALUE);
+                                ArrayList<Integer> priorities = new ArrayList<>();
                                 for (Map.Entry<String, Object> priority : AdminGUI.getInstance().getPermissions().getConfigurationSection("groups").getValues(false).entrySet()) {
-                                    if(AdminGUI.getInstance().getPermissions().getInt("groups."+ priority.getKey() + ".priority") == max_pri){
-                                        AdminGUI.getInstance().getPermissions().set("ranks." + target_player.getUniqueId().toString(), priority.getKey());
-                                        AdminGUI.getInstance().savePermissions();
-                                        TargetPlayer.refreshPlayerTabList(player);
-                                        player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_admin_rank").replace("{player}", target_player.getName()).replace("{rank}", priority.getKey()));
+                                    int pri = AdminGUI.getInstance().getPermissions().getInt("groups." + priority.getKey() + ".priority");
+                                    if (cur_priority < pri) priorities.add(pri);
+                                }
+                                if (priorities.size() > 0) {
+                                    int min_pri = Collections.min(priorities);
+                                    for (Map.Entry<String, Object> priority : AdminGUI.getInstance().getPermissions().getConfigurationSection("groups").getValues(false).entrySet()) {
+                                        if (AdminGUI.getInstance().getPermissions().getInt("groups." + priority.getKey() + ".priority") == min_pri) {
+                                            AdminGUI.getInstance().getPermissions().set("ranks." + target_player.getUniqueId().toString(), priority.getKey());
+                                            AdminGUI.getInstance().savePermissions();
+                                            TargetPlayer.refreshPlayerTabList(player);
+                                            player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_admin_rank").replace("{player}", target_player.getName()).replace("{rank}", priority.getKey()));
+                                        }
                                     }
                                 }
-                            }else{
+                            } else {
                                 player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "is_not_a_player").replace("{player}", args[2]));
                             }
-                        }else{
+                        } else {
                             player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "permission"));
                         }
-                    }else if(args[1].equals("down")){
-                        if(player.hasPermission("admingui.rank.down")){
-                            Player target_player = Bukkit.getServer().getPlayer(ChatColor.stripColor(args[2]));
-                            if(target_player != null){
-
-                            }else{
-                                player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "is_not_a_player").replace("{player}", args[2]));
-                            }
-                        }else{
-                            player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "permission"));
-                        }
-                    }else{
+                    } else {
                         player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_rank_arguments"));
                     }
                 }else{
