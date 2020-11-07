@@ -7,10 +7,8 @@
     <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/commands/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/commands/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/permissions.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/permissions.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/TabCompletion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/TabCompletion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/commands/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/commands/Admin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/utils/TargetPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/utils/TargetPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/PlayerJoinListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/PlayerJoinListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/PlayerJoinListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/PlayerJoinListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -202,13 +200,6 @@
       <workItem from="1577725216137" duration="7109000" />
       <workItem from="1578348949962" duration="293000" />
       <workItem from="1578422894075" duration="968000" />
-    </task>
-    <task id="LOCAL-00058" summary="Added Hebrew language.">
-      <created>1584708170974</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1584708170975</updated>
     </task>
     <task id="LOCAL-00059" summary="Added kick, Hebrew language, fixed some bugs and now you can execute all Admin GUI Premium commands thru console.">
       <created>1584821555947</created>
@@ -546,7 +537,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604784150689</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="Added /admin rank up &lt;player&gt; and /admin rank down &lt;player&gt;">
+      <created>1604786141996</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1604786141996</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -571,7 +569,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/LiteBansAPI" />
     </ignored-roots>
-    <MESSAGE value="Fixed spawners in 1.16.x minecraft server version. So now Admin GUI Premium fully support 1.16.x mc server versions." />
     <MESSAGE value="Added 140+ predefined CSS colors and support to Hex colors." />
     <MESSAGE value="Fixed Zombie Pigman on older versions." />
     <MESSAGE value="Added Freeze option." />
@@ -596,37 +593,38 @@
     <MESSAGE value="Added Finnish language." />
     <MESSAGE value="Fixed Finnish language." />
     <MESSAGE value="Added permission manager." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added permission manager." />
+    <MESSAGE value="Added /admin rank up &lt;player&gt; and /admin rank down &lt;player&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added /admin rank up &lt;player&gt; and /admin rank down &lt;player&gt;" />
   </component>
   <component name="WindowStateProjectService">
     <state x="768" y="266" width="374" height="582" key="#com.intellij.ide.util.MemberChooser" timestamp="1603301154236">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="768" y="266" width="374" height="582" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1603301154236" />
-    <state x="616" y="142" width="810" height="812" key="CommitChangelistDialog2" timestamp="1604784150567">
+    <state x="616" y="142" width="810" height="812" key="CommitChangelistDialog2" timestamp="1604786141946">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="616" y="142" width="810" height="812" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1604784150567" />
+    <state x="616" y="142" width="810" height="812" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1604786141946" />
     <state x="902" y="326" width="424" height="491" key="FileChooserDialogImpl" timestamp="1603385078239">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="902" y="326" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1603385078239" />
-    <state width="1878" height="234" key="GridCell.Tab.0.bottom" timestamp="1604785401381">
+    <state width="1878" height="234" key="GridCell.Tab.0.bottom" timestamp="1604787692982">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1878" height="234" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1604785401381" />
-    <state width="1878" height="234" key="GridCell.Tab.0.center" timestamp="1604785401380">
+    <state width="1878" height="234" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1604787692982" />
+    <state width="1878" height="234" key="GridCell.Tab.0.center" timestamp="1604787692982">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1878" height="234" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1604785401380" />
-    <state width="1878" height="234" key="GridCell.Tab.0.left" timestamp="1604785401380">
+    <state width="1878" height="234" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1604787692982" />
+    <state width="1878" height="234" key="GridCell.Tab.0.left" timestamp="1604787692982">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1878" height="234" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1604785401380" />
-    <state width="1878" height="234" key="GridCell.Tab.0.right" timestamp="1604785401381">
+    <state width="1878" height="234" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1604787692982" />
+    <state width="1878" height="234" key="GridCell.Tab.0.right" timestamp="1604787692982">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1878" height="234" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1604785401381" />
+    <state width="1878" height="234" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1604787692982" />
     <state width="1878" height="342" key="GridCell.Tab.1.bottom" timestamp="1601138004902">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -643,10 +641,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1878" height="342" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1601138004901" />
-    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1604784154100">
+    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1604786146907">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1604784154100" />
+    <state x="714" y="303" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1604786146907" />
     <state x="764" y="469" width="392" height="175" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601107033618">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
