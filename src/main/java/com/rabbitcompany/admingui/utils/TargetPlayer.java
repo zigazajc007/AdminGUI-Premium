@@ -7,10 +7,12 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.BanList;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import static org.bukkit.Bukkit.getServer;
@@ -35,6 +37,36 @@ public class TargetPlayer {
             } else {
                 p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_potions").replace("{player}", target_player.getName()).replace("{potion}", Message.getMessage(p.getUniqueId(), getPotionConfigName)).replace("{time}", "" + duration));
                 target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "prefix") + Message.getMessage(target_player.getUniqueId(), "message_target_player_potions").replace("{player}", p.getName()).replace("{potion}", Message.getMessage(target_player.getUniqueId(), getPotionConfigName)).replace("{time}", "" + duration));
+            }
+        }
+    }
+
+    public static void refreshPermissions(Player player){
+        String rank = AdminGUI.getInstance().getPermissions().getString("ranks."+player.getUniqueId().toString(), null);
+
+        AdminUI.permissions.get(player.getUniqueId()).remove();
+        AdminUI.permissions.put(player.getUniqueId(), player.addAttachment(AdminGUI.getInstance()));
+        PermissionAttachment permissionAttachment = AdminUI.permissions.get(player.getUniqueId());
+
+        List<?> permissions;
+        List<?> inheritance = null;
+        if(rank == null){
+            permissions = AdminGUI.getInstance().getPermissions().getList("groups.default.permissions");
+        }else{
+            permissions = AdminGUI.getInstance().getPermissions().getList("groups." + rank + ".permissions");
+            inheritance = AdminGUI.getInstance().getPermissions().getList("groups." + rank + ".inheritance");
+        }
+
+        for (Object permission: permissions) {
+            permissionAttachment.setPermission(permission.toString(), true);
+        }
+
+        if(inheritance != null){
+            for (Object inter : inheritance) {
+                permissions = AdminGUI.getInstance().getPermissions().getList("groups." + inter + ".permissions");
+                for (Object permission: permissions) {
+                    permissionAttachment.setPermission(permission.toString(), true);
+                }
             }
         }
     }

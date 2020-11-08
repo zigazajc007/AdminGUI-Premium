@@ -21,6 +21,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -44,6 +45,9 @@ public class AdminUI {
 
     //Custom Chat Channels
     public static HashMap<UUID, String> custom_chat_channel = new HashMap<>();
+
+    //Permissions
+    public static HashMap<UUID, PermissionAttachment> permissions = new HashMap<>();
 
     //Mute chat
     public static boolean muted_chat = false;

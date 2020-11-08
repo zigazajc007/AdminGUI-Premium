@@ -32,30 +32,9 @@ public class PlayerJoinListener implements Listener {
 
         //TODO: Permissions
         if(AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)){
-            PermissionAttachment player_attachment = player.addAttachment(AdminGUI.getInstance());
-            String rank = AdminGUI.getInstance().getPermissions().getString("ranks."+player.getUniqueId().toString(), null);
-
-            List<?> permissions;
-            List<?> inheritance = null;
-            if(rank == null){
-                permissions = AdminGUI.getInstance().getPermissions().getList("groups.default.permissions");
-            }else{
-                permissions = AdminGUI.getInstance().getPermissions().getList("groups." + rank + ".permissions");
-                inheritance = AdminGUI.getInstance().getPermissions().getList("groups." + rank + ".inheritance");
-            }
-
-            for (Object permission: permissions) {
-                player_attachment.setPermission(permission.toString(), true);
-            }
-
-            if(inheritance != null){
-                for (Object inter : inheritance) {
-                    permissions = AdminGUI.getInstance().getPermissions().getList("groups." + inter + ".permissions");
-                    for (Object permission: permissions) {
-                        player_attachment.setPermission(permission.toString(), true);
-                    }
-                }
-            }
+            PermissionAttachment permissionAttachment = player.addAttachment(AdminGUI.getInstance());
+            AdminUI.permissions.put(player.getUniqueId(), permissionAttachment);
+            TargetPlayer.refreshPermissions(player);
         }
 
         if(AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false)){

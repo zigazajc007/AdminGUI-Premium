@@ -58,6 +58,7 @@ public class Admin implements CommandExecutor {
                                             AdminGUI.getInstance().getPermissions().set("ranks." + target_player.getUniqueId().toString(), priority.getKey());
                                             AdminGUI.getInstance().savePermissions();
                                             TargetPlayer.refreshPlayerTabList(target_player);
+                                            TargetPlayer.refreshPermissions(target_player);
                                             sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_admin_rank").replace("{player}", target_player.getName()).replace("{rank}", priority.getKey()));
                                         }
                                     }
@@ -84,6 +85,7 @@ public class Admin implements CommandExecutor {
                                             AdminGUI.getInstance().getPermissions().set("ranks." + target_player.getUniqueId().toString(), priority.getKey());
                                             AdminGUI.getInstance().savePermissions();
                                             TargetPlayer.refreshPlayerTabList(target_player);
+                                            TargetPlayer.refreshPermissions(target_player);
                                             sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_admin_rank").replace("{player}", target_player.getName()).replace("{rank}", priority.getKey()));
                                         }
                                     }
@@ -92,6 +94,30 @@ public class Admin implements CommandExecutor {
                                 sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "is_not_a_player").replace("{player}", args[2]));
                             }
                     } else {
+                        sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "wrong_rank_arguments"));
+                    }
+                }else{
+                    sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "wrong_arguments"));
+                }
+            }else if(args.length == 4){
+                if(args[0].equals("rank")){
+                    if(args[1].equals("set")) {
+                        Player target_player = Bukkit.getServer().getPlayer(ChatColor.stripColor(args[2]));
+                        if (target_player != null) {
+                            String rank = args[3];
+                            if (AdminGUI.getInstance().getPermissions().getString("groups." + rank + ".prefix") != null) {
+                                AdminGUI.getInstance().getPermissions().set("ranks." + target_player.getUniqueId().toString(), rank);
+                                AdminGUI.getInstance().savePermissions();
+                                TargetPlayer.refreshPlayerTabList(target_player);
+                                TargetPlayer.refreshPermissions(target_player);
+                                sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_admin_rank").replace("{player}", target_player.getName()).replace("{rank}", rank));
+                            } else {
+                                sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "wrong_rank_arguments"));
+                            }
+                        } else {
+                            sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "is_not_a_player").replace("{player}", args[2]));
+                        }
+                    }else{
                         sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "wrong_rank_arguments"));
                     }
                 }else{
@@ -217,6 +243,7 @@ public class Admin implements CommandExecutor {
                                             AdminGUI.getInstance().getPermissions().set("ranks." + target_player.getUniqueId().toString(), priority.getKey());
                                             AdminGUI.getInstance().savePermissions();
                                             TargetPlayer.refreshPlayerTabList(target_player);
+                                            TargetPlayer.refreshPermissions(target_player);
                                             player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_admin_rank").replace("{player}", target_player.getName()).replace("{rank}", priority.getKey()));
                                         }
                                     }
@@ -247,6 +274,7 @@ public class Admin implements CommandExecutor {
                                             AdminGUI.getInstance().getPermissions().set("ranks." + target_player.getUniqueId().toString(), priority.getKey());
                                             AdminGUI.getInstance().savePermissions();
                                             TargetPlayer.refreshPlayerTabList(target_player);
+                                            TargetPlayer.refreshPermissions(target_player);
                                             player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_admin_rank").replace("{player}", target_player.getName()).replace("{rank}", priority.getKey()));
                                         }
                                     }
@@ -274,6 +302,7 @@ public class Admin implements CommandExecutor {
                                     AdminGUI.getInstance().getPermissions().set("ranks." + target_player.getUniqueId().toString(), rank);
                                     AdminGUI.getInstance().savePermissions();
                                     TargetPlayer.refreshPlayerTabList(target_player);
+                                    TargetPlayer.refreshPermissions(target_player);
                                     player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_admin_rank").replace("{player}", target_player.getName()).replace("{rank}", rank));
                                 } else {
                                     player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_rank_arguments"));
