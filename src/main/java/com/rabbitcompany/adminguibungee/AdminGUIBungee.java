@@ -3,6 +3,14 @@ package com.rabbitcompany.adminguibungee;
 import com.rabbitcompany.adminguibungee.listeners.PluginMessageListener;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.plugin.Plugin;
+import net.md_5.bungee.config.Configuration;
+import net.md_5.bungee.config.ConfigurationProvider;
+import net.md_5.bungee.config.YamlConfiguration;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
 
 public class AdminGUIBungee extends Plugin {
 
@@ -44,7 +52,7 @@ public class AdminGUIBungee extends Plugin {
         }else{
             getLogger().info(ChatColor.GOLD + "|   " + ChatColor.BLUE + "Plugin owner: " + ChatColor.RED + ChatColor.BOLD + "CRACKED");
         }
-        getLogger().info(ChatColor.GOLD + "|   " + ChatColor.BLUE + "Version: " + ChatColor.AQUA + "1.0.0");
+        getLogger().info(ChatColor.GOLD + "|   " + ChatColor.BLUE + "Version: " + ChatColor.AQUA + "1.0.1");
         getLogger().info(ChatColor.GOLD + "|");
         getLogger().info(ChatColor.GOLD + "| " + ChatColor.RED + "Support:");
         getLogger().info(ChatColor.GOLD + "|");

@@ -8,6 +8,7 @@ import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.AdminGUIPlaceholders;
 import com.rabbitcompany.admingui.utils.Item;
 import com.rabbitcompany.admingui.utils.Message;
+import com.rabbitcompany.admingui.utils.Permissions;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
 import net.milkbowl.vault.chat.Chat;
@@ -22,6 +23,7 @@ import org.bukkit.plugin.messaging.PluginMessageListener;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.UUID;
 
 //TODO: Bungee
 public class AdminGUI extends JavaPlugin implements PluginMessageListener {
@@ -174,7 +176,6 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
             setupChat();
             setupPermissions();
             vault = true;
-            new AdminGUIPlaceholders().register();
         }
 
         gui_type = getConf().getInt("gui_type", 0);
@@ -202,6 +203,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){
             new PlayerPlaceholderMessageListener(this);
             new PlayerPlaceholderCommandListener(this);
+            new AdminGUIPlaceholders().register();
         }else{
             new PlayerMessageListener(this);
             new PlayerCommandListener(this);
@@ -489,7 +491,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         }else{
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &4&lCRACKED"));
         }
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.1.0"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.1.1"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
@@ -527,6 +529,11 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
                     AdminUI.online_players.add(on);
                     AdminUI.skulls_players.put(on, Item.pre_createPlayerHead(on));
                 }
+                break;
+            case "rank":
+                String target_uuid = in.readUTF();
+                String rank = in.readUTF();
+                Permissions.saveRank(UUID.fromString(target_uuid), rank);
                 break;
             case "gamemode":
                 String player = in.readUTF();

@@ -33,4 +33,26 @@ public class Permissions {
         }
     }
 
+    public static boolean setRank(UUID uuid, String rank){
+        if (AdminGUI.getInstance().getPermissions().getString("groups." + rank + ".prefix") != null) {
+            AdminGUI.getInstance().getPermissions().set("ranks." + uuid, rank);
+            AdminGUI.getInstance().savePermissions();
+
+            if(AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false) && AdminGUI.getInstance().getConf().getBoolean("bungeecord_rank_sync", true)){
+                Channel.send("Console", "rank", uuid.toString(), rank);
+            }
+
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean saveRank(UUID uuid, String rank){
+        if (AdminGUI.getInstance().getPermissions().getString("groups." + rank + ".prefix") != null) {
+            AdminGUI.getInstance().getPermissions().set("ranks." + uuid, rank);
+            AdminGUI.getInstance().savePermissions();
+            return true;
+        }
+        return false;
+    }
 }

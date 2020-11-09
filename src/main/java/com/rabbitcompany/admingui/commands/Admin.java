@@ -3,10 +3,7 @@ package com.rabbitcompany.admingui.commands;
 import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.XMaterial;
 import com.rabbitcompany.admingui.ui.AdminUI;
-import com.rabbitcompany.admingui.utils.Channel;
-import com.rabbitcompany.admingui.utils.Initialize;
-import com.rabbitcompany.admingui.utils.Message;
-import com.rabbitcompany.admingui.utils.TargetPlayer;
+import com.rabbitcompany.admingui.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -55,8 +52,7 @@ public class Admin implements CommandExecutor {
                                     int max_pri = Collections.max(priorities);
                                     for (Map.Entry<String, Object> priority : AdminGUI.getInstance().getPermissions().getConfigurationSection("groups").getValues(false).entrySet()) {
                                         if (AdminGUI.getInstance().getPermissions().getInt("groups." + priority.getKey() + ".priority") == max_pri) {
-                                            AdminGUI.getInstance().getPermissions().set("ranks." + target_player.getUniqueId().toString(), priority.getKey());
-                                            AdminGUI.getInstance().savePermissions();
+                                            Permissions.setRank(target_player.getUniqueId(), priority.getKey());
                                             TargetPlayer.refreshPlayerTabList(target_player);
                                             TargetPlayer.refreshPermissions(target_player);
                                             sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_admin_rank").replace("{player}", target_player.getName()).replace("{rank}", priority.getKey()));
@@ -82,8 +78,7 @@ public class Admin implements CommandExecutor {
                                     int min_pri = Collections.min(priorities);
                                     for (Map.Entry<String, Object> priority : AdminGUI.getInstance().getPermissions().getConfigurationSection("groups").getValues(false).entrySet()) {
                                         if (AdminGUI.getInstance().getPermissions().getInt("groups." + priority.getKey() + ".priority") == min_pri) {
-                                            AdminGUI.getInstance().getPermissions().set("ranks." + target_player.getUniqueId().toString(), priority.getKey());
-                                            AdminGUI.getInstance().savePermissions();
+                                            Permissions.setRank(target_player.getUniqueId(), priority.getKey());
                                             TargetPlayer.refreshPlayerTabList(target_player);
                                             TargetPlayer.refreshPermissions(target_player);
                                             sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_admin_rank").replace("{player}", target_player.getName()).replace("{rank}", priority.getKey()));
@@ -105,13 +100,11 @@ public class Admin implements CommandExecutor {
                         Player target_player = Bukkit.getServer().getPlayer(ChatColor.stripColor(args[2]));
                         if (target_player != null) {
                             String rank = args[3];
-                            if (AdminGUI.getInstance().getPermissions().getString("groups." + rank + ".prefix") != null) {
-                                AdminGUI.getInstance().getPermissions().set("ranks." + target_player.getUniqueId().toString(), rank);
-                                AdminGUI.getInstance().savePermissions();
+                            if(Permissions.setRank(target_player.getUniqueId(), rank)){
                                 TargetPlayer.refreshPlayerTabList(target_player);
                                 TargetPlayer.refreshPermissions(target_player);
                                 sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_admin_rank").replace("{player}", target_player.getName()).replace("{rank}", rank));
-                            } else {
+                            }else{
                                 sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "wrong_rank_arguments"));
                             }
                         } else {
@@ -240,8 +233,7 @@ public class Admin implements CommandExecutor {
                                     int max_pri = Collections.max(priorities);
                                     for (Map.Entry<String, Object> priority : AdminGUI.getInstance().getPermissions().getConfigurationSection("groups").getValues(false).entrySet()) {
                                         if (AdminGUI.getInstance().getPermissions().getInt("groups." + priority.getKey() + ".priority") == max_pri) {
-                                            AdminGUI.getInstance().getPermissions().set("ranks." + target_player.getUniqueId().toString(), priority.getKey());
-                                            AdminGUI.getInstance().savePermissions();
+                                            Permissions.setRank(target_player.getUniqueId(), priority.getKey());
                                             TargetPlayer.refreshPlayerTabList(target_player);
                                             TargetPlayer.refreshPermissions(target_player);
                                             player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_admin_rank").replace("{player}", target_player.getName()).replace("{rank}", priority.getKey()));
@@ -271,8 +263,7 @@ public class Admin implements CommandExecutor {
                                     int min_pri = Collections.min(priorities);
                                     for (Map.Entry<String, Object> priority : AdminGUI.getInstance().getPermissions().getConfigurationSection("groups").getValues(false).entrySet()) {
                                         if (AdminGUI.getInstance().getPermissions().getInt("groups." + priority.getKey() + ".priority") == min_pri) {
-                                            AdminGUI.getInstance().getPermissions().set("ranks." + target_player.getUniqueId().toString(), priority.getKey());
-                                            AdminGUI.getInstance().savePermissions();
+                                            Permissions.setRank(target_player.getUniqueId(), priority.getKey());
                                             TargetPlayer.refreshPlayerTabList(target_player);
                                             TargetPlayer.refreshPermissions(target_player);
                                             player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_admin_rank").replace("{player}", target_player.getName()).replace("{rank}", priority.getKey()));
@@ -298,13 +289,11 @@ public class Admin implements CommandExecutor {
                             Player target_player = Bukkit.getServer().getPlayer(ChatColor.stripColor(args[2]));
                             if (target_player != null) {
                                 String rank = args[3];
-                                if (AdminGUI.getInstance().getPermissions().getString("groups." + rank + ".prefix") != null) {
-                                    AdminGUI.getInstance().getPermissions().set("ranks." + target_player.getUniqueId().toString(), rank);
-                                    AdminGUI.getInstance().savePermissions();
+                                if(Permissions.setRank(target_player.getUniqueId(), rank)){
                                     TargetPlayer.refreshPlayerTabList(target_player);
                                     TargetPlayer.refreshPermissions(target_player);
                                     player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_admin_rank").replace("{player}", target_player.getName()).replace("{rank}", rank));
-                                } else {
+                                }else{
                                     player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_rank_arguments"));
                                 }
                             } else {
