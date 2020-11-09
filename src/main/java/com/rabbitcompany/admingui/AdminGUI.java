@@ -2,15 +2,15 @@ package com.rabbitcompany.admingui;
 
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
-import com.rabbitcompany.adminbans.AdminBans;
 import com.rabbitcompany.admingui.commands.*;
 import com.rabbitcompany.admingui.listeners.*;
 import com.rabbitcompany.admingui.ui.AdminUI;
-import com.rabbitcompany.admingui.utils.Initialize;
+import com.rabbitcompany.admingui.utils.AdminGUIPlaceholders;
 import com.rabbitcompany.admingui.utils.Item;
 import com.rabbitcompany.admingui.utils.Message;
-import com.zaxxer.hikari.HikariDataSource;
 import net.milkbowl.vault.economy.Economy;
+import net.milkbowl.vault.permission.Permission;
+import net.milkbowl.vault.chat.Chat;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -22,8 +22,6 @@ import org.bukkit.plugin.messaging.PluginMessageListener;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
 
 //TODO: Bungee
 public class AdminGUI extends JavaPlugin implements PluginMessageListener {
@@ -38,6 +36,8 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
     //VaultAPI
     private static Economy econ = null;
     public static boolean vault = false;
+    private static Permission perms = null;
+    private static Chat chat = null;
 
     //Config
     private File co = null;
@@ -169,8 +169,12 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         }
 
         //VaultAPI
-        if(setupEconomy()){
+        if (getServer().getPluginManager().getPlugin("Vault") != null){
+            setupEconomy();
+            setupChat();
+            setupPermissions();
             vault = true;
+            new AdminGUIPlaceholders().register();
         }
 
         gui_type = getConf().getInt("gui_type", 0);
@@ -265,20 +269,31 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
 
     //VaultAPI
     private boolean setupEconomy() {
-        if (getServer().getPluginManager().getPlugin("Vault") == null) {
-            return false;
-        }
         RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
-        if (rsp == null) {
-            return false;
-        }
+        if (rsp == null) return false;
         econ = rsp.getProvider();
         return true;
     }
 
-    public static Economy getEconomy() {
-        return econ;
+    private boolean setupChat() {
+        RegisteredServiceProvider<Chat> rsp = getServer().getServicesManager().getRegistration(Chat.class);
+        if(rsp == null) return false;
+        chat = rsp.getProvider();
+        return true;
     }
+
+    private boolean setupPermissions() {
+        RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
+        if(rsp == null) return false;
+        perms = rsp.getProvider();
+        return true;
+    }
+
+    public static Economy getEconomy(){ return econ; }
+
+    public static Permission getVaultPermissions() { return perms; }
+
+    public static Chat getVaultChat() { return chat; }
 
     public void mkdir() {
 
@@ -474,7 +489,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         }else{
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &4&lCRACKED"));
         }
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.0.6"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.1.0"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));

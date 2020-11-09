@@ -5,6 +5,7 @@ import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Colors;
 import com.rabbitcompany.admingui.utils.Message;
+import com.rabbitcompany.admingui.utils.Permissions;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -157,18 +158,8 @@ public class PlayerMessageListener implements Listener {
                 }
 
                 //TODO: Permissions
-                String prefix = "";
-                String suffix = "";
-                if(AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)){
-                    String rank = AdminGUI.getInstance().getPermissions().getString("ranks." + p.getUniqueId().toString(), null);
-                    if(rank == null){
-                        prefix = AdminGUI.getInstance().getPermissions().getString("groups.default.prefix", "");
-                        suffix = AdminGUI.getInstance().getPermissions().getString("groups.default.suffix", "");
-                    }else{
-                        prefix = AdminGUI.getInstance().getPermissions().getString("groups." + rank + ".prefix", "");
-                        suffix = AdminGUI.getInstance().getPermissions().getString("groups." + rank + ".suffix", "");
-                    }
-                }
+                String prefix = Permissions.getPrefix(p.getUniqueId());
+                String suffix = Permissions.getSuffix(p.getUniqueId());
 
                 if(p.hasPermission("admingui.chat.color") || p.hasPermission("admingui.chat.colors")){
                     if(Bukkit.getVersion().contains("1.16")) message = Colors.toHex(message);
