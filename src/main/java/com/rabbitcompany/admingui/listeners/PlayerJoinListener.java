@@ -3,17 +3,11 @@ package com.rabbitcompany.admingui.listeners;
 import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.*;
-import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.permissions.PermissionAttachment;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 public class PlayerJoinListener implements Listener {
 
@@ -32,8 +26,13 @@ public class PlayerJoinListener implements Listener {
 
         //TODO: Permissions
         if(AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)){
-            PermissionAttachment permissionAttachment = player.addAttachment(AdminGUI.getInstance());
-            AdminUI.permissions.put(player.getUniqueId(), permissionAttachment);
+            String rank = AdminGUI.getInstance().getPermissions().getString("ranks." + player.getName() + ".rank", null);
+            if(rank != null){
+                AdminGUI.getInstance().getPermissions().set("ranks." + player.getName(), null);
+                AdminGUI.getInstance().getPermissions().set("ranks." + player.getUniqueId() + ".name", player.getName());
+                AdminGUI.getInstance().getPermissions().set("ranks." + player.getUniqueId() + ".rank", rank);
+                AdminGUI.getInstance().savePermissions();
+            }
             TargetPlayer.refreshPermissions(player);
         }
 

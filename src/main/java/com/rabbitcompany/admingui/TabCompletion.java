@@ -50,8 +50,13 @@ public class TabCompletion implements TabCompleter {
                }
            }else if(args.length == 3){
                if(args[0].equals("rank") && (args[1].equals("set") || args[1].equals("up") || args[1].equals("down"))) {
-                   for(Player all : Bukkit.getServer().getOnlinePlayers()) {
-                       completions.add(all.getName());
+                   if(AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false)){
+                       Channel.send(sender.getName(),"send", "online_players");
+                       completions.addAll(AdminUI.online_players);
+                   }else{
+                       for(Player all : Bukkit.getServer().getOnlinePlayers()) {
+                           completions.add(all.getName());
+                       }
                    }
                }
            }else if(args.length == 4){

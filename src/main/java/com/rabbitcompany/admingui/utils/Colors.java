@@ -49,9 +49,6 @@ public class Colors {
             case 12:
                 c = Color.PURPLE;
                 break;
-            case 13:
-                c = Color.RED;
-                break;
             case 14:
                 c = Color.SILVER;
                 break;

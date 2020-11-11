@@ -42,8 +42,9 @@ public class PluginMessageListener implements Listener {
                         break;
                     case "rank":
                         String target_uuid = input.readUTF();
+                        String target_name = input.readUTF();
                         String rank = input.readUTF();
-                        Channel.sendToAllServers(sender, "rank", target_uuid, rank);
+                        Channel.sendToAllServers(sender, "rank", target_uuid, target_name, rank);
                         break;
                     case "gamemode":
                         String player = input.readUTF();

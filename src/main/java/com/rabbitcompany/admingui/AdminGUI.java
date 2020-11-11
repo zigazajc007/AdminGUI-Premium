@@ -491,7 +491,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         }else{
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &4&lCRACKED"));
         }
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.1.1"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.1.2"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
@@ -532,8 +532,13 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
                 break;
             case "rank":
                 String target_uuid = in.readUTF();
+                String name = in.readUTF();
                 String rank = in.readUTF();
-                Permissions.saveRank(UUID.fromString(target_uuid), rank);
+                if(target_uuid.equals("null")){
+                    Permissions.saveRank(null, name, rank);
+                }else{
+                    Permissions.saveRank(UUID.fromString(target_uuid), name, rank);
+                }
                 break;
             case "gamemode":
                 String player = in.readUTF();

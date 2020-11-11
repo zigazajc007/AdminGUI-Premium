@@ -52,7 +52,7 @@ public class AdminGUIBungee extends Plugin {
         }else{
             getLogger().info(ChatColor.GOLD + "|   " + ChatColor.BLUE + "Plugin owner: " + ChatColor.RED + ChatColor.BOLD + "CRACKED");
         }
-        getLogger().info(ChatColor.GOLD + "|   " + ChatColor.BLUE + "Version: " + ChatColor.AQUA + "1.0.1");
+        getLogger().info(ChatColor.GOLD + "|   " + ChatColor.BLUE + "Version: " + ChatColor.AQUA + "1.0.2");
         getLogger().info(ChatColor.GOLD + "|");
         getLogger().info(ChatColor.GOLD + "| " + ChatColor.RED + "Support:");
         getLogger().info(ChatColor.GOLD + "|");

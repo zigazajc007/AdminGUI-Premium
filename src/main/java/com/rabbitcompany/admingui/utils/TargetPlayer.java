@@ -42,9 +42,9 @@ public class TargetPlayer {
     }
 
     public static void refreshPermissions(Player player){
-        String rank = AdminGUI.getInstance().getPermissions().getString("ranks."+player.getUniqueId().toString(), null);
+        String rank = AdminGUI.getInstance().getPermissions().getString("ranks." + player.getUniqueId() + ".rank", null);
 
-        AdminUI.permissions.get(player.getUniqueId()).remove();
+        //AdminUI.permissions.get(player.getUniqueId()).remove();
         AdminUI.permissions.put(player.getUniqueId(), player.addAttachment(AdminGUI.getInstance()));
         PermissionAttachment permissionAttachment = AdminUI.permissions.get(player.getUniqueId());
 
@@ -76,7 +76,7 @@ public class TargetPlayer {
         String prefix = "";
         String suffix = "";
         if(AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)){
-            String rank = AdminGUI.getInstance().getPermissions().getString("ranks." + player.getUniqueId().toString(), null);
+            String rank = AdminGUI.getInstance().getPermissions().getString("ranks." + player.getUniqueId() + ".rank", null);
             if(rank == null){
                 prefix = AdminGUI.getInstance().getPermissions().getString("groups.default.prefix", "");
                 suffix = AdminGUI.getInstance().getPermissions().getString("groups.default.suffix", "");
