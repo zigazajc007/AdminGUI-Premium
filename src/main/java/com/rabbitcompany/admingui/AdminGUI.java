@@ -5,10 +5,7 @@ import com.google.common.io.ByteStreams;
 import com.rabbitcompany.admingui.commands.*;
 import com.rabbitcompany.admingui.listeners.*;
 import com.rabbitcompany.admingui.ui.AdminUI;
-import com.rabbitcompany.admingui.utils.AdminGUIPlaceholders;
-import com.rabbitcompany.admingui.utils.Item;
-import com.rabbitcompany.admingui.utils.Message;
-import com.rabbitcompany.admingui.utils.Permissions;
+import com.rabbitcompany.admingui.utils.*;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
 import net.milkbowl.vault.chat.Chat;
@@ -25,7 +22,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
-//TODO: Bungee
 public class AdminGUI extends JavaPlugin implements PluginMessageListener {
 
     private static AdminGUI instance;
@@ -49,74 +45,6 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
     private File pe = null;
     private final YamlConfiguration perm = new YamlConfiguration();
 
-    //English
-    private File en = null;
-    private final YamlConfiguration engl = new YamlConfiguration();
-
-    //German
-    private File ge = null;
-    private final YamlConfiguration germ = new YamlConfiguration();
-
-    //Chinese
-    private File ch = null;
-    private final YamlConfiguration chin = new YamlConfiguration();
-
-    //Japanese
-    private File ja = null;
-    private final YamlConfiguration japa = new YamlConfiguration();
-
-    //Korean
-    private File ko = null;
-    private final YamlConfiguration kore = new YamlConfiguration();
-
-    //Italian
-    private File it = null;
-    private final YamlConfiguration ital = new YamlConfiguration();
-
-    //Russian
-    private File ru = null;
-    private final YamlConfiguration russ = new YamlConfiguration();
-
-    //Bulgarian
-    private File bu = null;
-    private final YamlConfiguration bulg = new YamlConfiguration();
-
-    //Spanish
-    private File sp = null;
-    private final YamlConfiguration span = new YamlConfiguration();
-
-    //French
-    private File fr = null;
-    private final YamlConfiguration fren = new YamlConfiguration();
-
-    //Dutch
-    private File du = null;
-    private final YamlConfiguration dutc = new YamlConfiguration();
-
-    //Swedish
-    private File sw = null;
-    private final YamlConfiguration swed = new YamlConfiguration();
-
-    //Finnish
-    private File fi = null;
-    private final YamlConfiguration finn = new YamlConfiguration();
-
-    //Portuguese
-    private File po = null;
-    private final YamlConfiguration port = new YamlConfiguration();
-
-    //Hebrew
-    private File he = null;
-    private final YamlConfiguration hebr = new YamlConfiguration();
-
-    //Slovak
-    private File sl = null;
-    private final YamlConfiguration slov = new YamlConfiguration();
-
-    //Turkish
-    private File tu = null;
-    private final YamlConfiguration turk = new YamlConfiguration();
-
     //Kick
     private File k = null;
     private final YamlConfiguration kick = new YamlConfiguration();
@@ -138,23 +66,6 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         instance = this;
         this.co = new File(getDataFolder(), "config.yml");
         this.pe = new File(getDataFolder(), "permissions.yml");
-        this.en = new File(getDataFolder(), "Languages/English.yml");
-        this.ge = new File(getDataFolder(), "Languages/German.yml");
-        this.ch = new File(getDataFolder(), "Languages/Chinese.yml");
-        this.ja = new File(getDataFolder(), "Languages/Japanese.yml");
-        this.ko = new File(getDataFolder(), "Languages/Korean.yml");
-        this.it = new File(getDataFolder(), "Languages/Italian.yml");
-        this.ru = new File(getDataFolder(), "Languages/Russian.yml");
-        this.bu = new File(getDataFolder(), "Languages/Bulgarian.yml");
-        this.sp = new File(getDataFolder(), "Languages/Spanish.yml");
-        this.fr = new File(getDataFolder(), "Languages/French.yml");
-        this.du = new File(getDataFolder(), "Languages/Dutch.yml");
-        this.sw = new File(getDataFolder(), "Languages/Swedish.yml");
-        this.fi = new File(getDataFolder(), "Languages/Finnish.yml");
-        this.po = new File(getDataFolder(), "Languages/Portuguese.yml");
-        this.he = new File(getDataFolder(), "Languages/Hebrew.yml");
-        this.sl = new File(getDataFolder(), "Languages/Slovak.yml");
-        this.tu = new File(getDataFolder(), "Languages/Turkish.yml");
         this.k = new File(getDataFolder(), "kick.yml");
         this.p = new File(getDataFolder(), "Custom Commands/plugins.yml");
         this.c = new File(getDataFolder(), "Custom Commands/commands.yml");
@@ -162,6 +73,8 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
 
         mkdir();
         loadYamls();
+
+        Language.downloadLanguage(getConf().getString("default_language", "English"));
 
         info("&aEnabling");
 
@@ -307,74 +220,6 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
             saveResource("permissions.yml", false);
         }
 
-        if (!this.en.exists()) {
-            saveResource("Languages/English.yml", false);
-        }
-
-        if (!this.ge.exists()) {
-            saveResource("Languages/German.yml", false);
-        }
-
-        if (!this.ch.exists()) {
-            saveResource("Languages/Chinese.yml", false);
-        }
-
-        if(!this.ja.exists()){
-            saveResource("Languages/Japanese.yml", false);
-        }
-
-        if (!this.ko.exists()) {
-            saveResource("Languages/Korean.yml", false);
-        }
-
-        if(!this.it.exists()){
-            saveResource("Languages/Italian.yml", false);
-        }
-
-        if (!this.ru.exists()) {
-            saveResource("Languages/Russian.yml", false);
-        }
-
-        if (!this.bu.exists()) {
-            saveResource("Languages/Bulgarian.yml", false);
-        }
-
-        if (!this.sp.exists()) {
-            saveResource("Languages/Spanish.yml", false);
-        }
-
-        if(!this.fr.exists()){
-            saveResource("Languages/French.yml", false);
-        }
-
-        if(!this.du.exists()){
-            saveResource("Languages/Dutch.yml", false);
-        }
-
-        if(!this.sw.exists()){
-            saveResource("Languages/Swedish.yml", false);
-        }
-
-        if(!this.fi.exists()){
-            saveResource("Languages/Finnish.yml", false);
-        }
-
-        if(!this.po.exists()){
-            saveResource("Languages/Portuguese.yml", false);
-        }
-
-        if(!this.he.exists()){
-            saveResource("Languages/Hebrew.yml", false);
-        }
-
-        if(!this.sl.exists()){
-            saveResource("Languages/Slovak.yml", false);
-        }
-
-        if(!this.tu.exists()){
-            saveResource("Languages/Turkish.yml", false);
-        }
-
         if(!this.k.exists()){
             saveResource("kick.yml", false);
         }
@@ -396,23 +241,6 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         try{
             this.conf.load(this.co);
             this.perm.load(this.pe);
-            this.engl.load(this.en);
-            this.germ.load(this.ge);
-            this.chin.load(this.ch);
-            this.japa.load(this.ja);
-            this.kore.load(this.ko);
-            this.ital.load(this.it);
-            this.russ.load(this.ru);
-            this.bulg.load(this.bu);
-            this.span.load(this.sp);
-            this.fren.load(this.fr);
-            this.dutc.load(this.du);
-            this.swed.load(this.sw);
-            this.finn.load(this.fi);
-            this.port.load(this.po);
-            this.hebr.load(this.he);
-            this.slov.load(this.sl);
-            this.turk.load(this.tu);
             this.kick.load(this.k);
             this.plug.load(this.p);
             this.comm.load(this.c);
@@ -425,40 +253,6 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
     public YamlConfiguration getConf() { return this.conf; }
 
     public YamlConfiguration getPermissions() { return this.perm; }
-
-    public YamlConfiguration getEngl() { return this.engl; }
-
-    public YamlConfiguration getGerm() { return this.germ; }
-
-    public YamlConfiguration getChin() { return this.chin; }
-
-    public YamlConfiguration getJapa() { return this.japa; }
-
-    public YamlConfiguration getKore() { return this.kore; }
-
-    public YamlConfiguration getItal() { return this.ital; }
-
-    public YamlConfiguration getRuss() { return this.russ; }
-
-    public YamlConfiguration getBulg() { return this.bulg; }
-
-    public YamlConfiguration getSpan() { return this.span; }
-
-    public YamlConfiguration getFren() { return this.fren; }
-
-    public YamlConfiguration getDutc() { return this.dutc; }
-
-    public YamlConfiguration getSwed() { return this.swed; }
-
-    public YamlConfiguration getFinn() { return this.finn; }
-
-    public YamlConfiguration getPort() { return this.port; }
-
-    public YamlConfiguration getHebr() { return this.hebr; }
-
-    public YamlConfiguration getSlov() { return this.slov; }
-
-    public YamlConfiguration getTurk() { return this.turk; }
 
     public YamlConfiguration getKick() { return this.kick; }
 
@@ -491,7 +285,16 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         }else{
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &4&lCRACKED"));
         }
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.1.2"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.1.3"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cLanguages:"));
+        for (String language: Language.getLanguages()) {
+            if(getConf().getString("default_language", "English").equals(language)){
+                Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &b- " + language + " (default)"));
+            }else{
+                Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &b- " + language));
+            }
+        }
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));

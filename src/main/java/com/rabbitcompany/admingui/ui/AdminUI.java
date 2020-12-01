@@ -1562,56 +1562,18 @@ public class AdminUI {
                 p.openInventory(GUI_Unmute_Players(p));
             }
         }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "main_language") + language.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("default_language")))){
-            switch (language.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("default_language"))){
-                case "English":
-                    language.put(p.getUniqueId(), "Chinese");
-                    break;
-                case "Chinese":
-                    language.put(p.getUniqueId(), "Japanese");
-                    break;
-                case "Japanese":
-                    language.put(p.getUniqueId(), "Korean");
-                    break;
-                case "Korean":
-                    language.put(p.getUniqueId(), "French");
-                    break;
-                case "French":
-                    language.put(p.getUniqueId(), "Spanish");
-                    break;
-                case "Spanish":
-                    language.put(p.getUniqueId(), "Portuguese");
-                    break;
-                case "Portuguese":
-                    language.put(p.getUniqueId(), "Russian");
-                    break;
-                case "Russian":
-                    language.put(p.getUniqueId(), "Italian");
-                    break;
-                case "Italian":
-                    language.put(p.getUniqueId(), "Dutch");
-                    break;
-                case "Dutch":
-                    language.put(p.getUniqueId(), "Slovak");
-                    break;
-                case "Slovak":
-                    language.put(p.getUniqueId(), "Swedish");
-                    break;
-                case "Swedish":
-                    language.put(p.getUniqueId(), "Finnish");
-                    break;
-                case "Finnish":
-                    language.put(p.getUniqueId(), "Bulgarian");
-                    break;
-                case "Bulgarian":
-                    language.put(p.getUniqueId(), "Turkish");
-                    break;
-                case "Turkish":
-                    language.put(p.getUniqueId(), "Hebrew");
-                    break;
-                case "Hebrew":
-                default:
-                    language.put(p.getUniqueId(), "English");
-                    break;
+            String lang = language.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("default_language"));
+            if(Language.enabled_languages.size() > 1){
+                for (int i = 0; i < Language.enabled_languages.size(); i++) {
+                    if(Language.enabled_languages.get(i).equals(lang)){
+                        if(Language.enabled_languages.size()-1 == i){
+                            language.put(p.getUniqueId(), Language.enabled_languages.get(0));
+                        }else{
+                            language.put(p.getUniqueId(), Language.enabled_languages.get(i+1));
+                        }
+                        break;
+                    }
+                }
             }
             p.openInventory(GUI_Main(p));
         }else if(InventoryGUI.getClickedItem(clicked, "  ")){

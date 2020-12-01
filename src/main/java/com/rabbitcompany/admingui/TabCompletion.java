@@ -2,6 +2,7 @@ package com.rabbitcompany.admingui;
 
 import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Channel;
+import com.rabbitcompany.admingui.utils.Language;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -35,6 +36,8 @@ public class TabCompletion implements TabCompleter {
 
                 if(sender.hasPermission("admingui.rank")) completions.add("rank");
 
+                if(!(sender instanceof Player)) completions.add("language");
+
                 completions.add("tools");
 
                 completions.add("initialize");
@@ -47,6 +50,9 @@ public class TabCompletion implements TabCompleter {
                    if(sender.hasPermission("admingui.rank.set")) completions.add("set");
                    if(sender.hasPermission("admingui.rank.up")) completions.add("up");
                    if(sender.hasPermission("admingui.rank.down")) completions.add("down");
+               }else if(args[0].equals("language")){
+                   if(!(sender instanceof Player)) completions.add("fix");
+                   if(!(sender instanceof Player)) completions.add("download");
                }
            }else if(args.length == 3){
                if(args[0].equals("rank") && (args[1].equals("set") || args[1].equals("up") || args[1].equals("down"))) {
@@ -58,6 +64,10 @@ public class TabCompletion implements TabCompleter {
                            completions.add(all.getName());
                        }
                    }
+               }else if(args[0].equals("language") && args[1].equals("download") && !(sender instanceof Player)){
+                   completions.addAll(Language.default_languages);
+               }else if(args[0].equals("language") && args[1].equals("fix") && !(sender instanceof Player)){
+                   completions.addAll(Language.enabled_languages);
                }
            }else if(args.length == 4){
                if(args[0].equals("rank") && (args[1].equals("set") || args[1].equals("up") || args[1].equals("down"))) {

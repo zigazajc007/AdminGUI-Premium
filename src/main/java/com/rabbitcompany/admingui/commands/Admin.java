@@ -30,11 +30,16 @@ public class Admin implements CommandExecutor {
                     sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_reload_start"));
                     AdminGUI.getInstance().mkdir();
                     AdminGUI.getInstance().loadYamls();
+                    Language.getLanguages();
                     sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_reload_finish"));
+                }else if(args[0].equals("language")){
+                    sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.chat("&cYou can only use /admin language download <language> or /admin language fix <language>"));
                 }
             }else if(args.length == 2){
                 if(args[0].equals("rank")) {
                     sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "wrong_rank_arguments"));
+                }else if(args[0].equals("language")){
+                    sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.chat("&cYou can only use /admin language download <language> or /admin language fix <language>"));
                 }
             }else if(args.length == 3){
                 if(args[0].equals("rank")) {
@@ -129,6 +134,22 @@ public class Admin implements CommandExecutor {
                     } else {
                         sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "wrong_rank_arguments"));
                     }
+                }else if(args[0].equals("language")){
+                    if(args[1].equals("download")){
+                        if(Language.downloadLanguage(args[2])){
+                            sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.chat("&a"+args[2] + " language has been downloaded."));
+                        }else{
+                            sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.chat("&c"+args[2] + " language don't exists. Please check list of available languages."));
+                        }
+                    }else if(args[1].equals("fix")){
+                        if(Language.fixLanguage(args[2])){
+                            sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.chat("&a"+args[2] + " language has been fixed."));
+                        }else{
+                            sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.chat("&c"+args[2] + ".yml don't exists. Please download it first."));
+                        }
+                    }else{
+                        sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.chat("&cYou can only use /admin language download <language> or /admin language fix <language>"));
+                    }
                 }else{
                     sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "wrong_arguments"));
                 }
@@ -181,6 +202,7 @@ public class Admin implements CommandExecutor {
                         player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_reload_start"));
                         AdminGUI.getInstance().mkdir();
                         AdminGUI.getInstance().loadYamls();
+                        Language.getLanguages();
                         player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_reload_finish"));
                     }else{
                         player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "permission"));
