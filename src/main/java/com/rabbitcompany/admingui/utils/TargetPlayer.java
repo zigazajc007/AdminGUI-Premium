@@ -42,30 +42,28 @@ public class TargetPlayer {
     }
 
     public static void refreshPermissions(Player player){
-        String rank = AdminGUI.getInstance().getPermissions().getString("ranks." + player.getUniqueId() + ".rank", null);
+        String rank = Permissions.getRank(player.getUniqueId(), player.getName());
 
         //AdminUI.permissions.get(player.getUniqueId()).remove();
         AdminUI.permissions.put(player.getUniqueId(), player.addAttachment(AdminGUI.getInstance()));
         PermissionAttachment permissionAttachment = AdminUI.permissions.get(player.getUniqueId());
 
-        List<?> permissions;
-        List<?> inheritance = null;
-        if(rank == null){
-            permissions = AdminGUI.getInstance().getPermissions().getList("groups.default.permissions");
-        }else{
-            permissions = AdminGUI.getInstance().getPermissions().getList("groups." + rank + ".permissions");
-            inheritance = AdminGUI.getInstance().getPermissions().getList("groups." + rank + ".inheritance");
-        }
+        List<?> permissions = AdminGUI.getInstance().getPermissions().getList("groups." + rank + ".permissions");
+        List<?> inheritance = AdminGUI.getInstance().getPermissions().getList("groups." + rank + ".inheritance");
 
-        for (Object permission: permissions) {
-            permissionAttachment.setPermission(permission.toString(), true);
+        if(permissions != null){
+            for (Object permission: permissions) {
+                permissionAttachment.setPermission(permission.toString(), true);
+            }
         }
 
         if(inheritance != null){
             for (Object inter : inheritance) {
                 permissions = AdminGUI.getInstance().getPermissions().getList("groups." + inter + ".permissions");
-                for (Object permission: permissions) {
-                    permissionAttachment.setPermission(permission.toString(), true);
+                if(permissions != null){
+                    for (Object permission: permissions) {
+                        permissionAttachment.setPermission(permission.toString(), true);
+                    }
                 }
             }
         }
@@ -76,14 +74,10 @@ public class TargetPlayer {
         String prefix = "";
         String suffix = "";
         if(AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)){
-            String rank = AdminGUI.getInstance().getPermissions().getString("ranks." + player.getUniqueId() + ".rank", null);
-            if(rank == null){
-                prefix = AdminGUI.getInstance().getPermissions().getString("groups.default.prefix", "");
-                suffix = AdminGUI.getInstance().getPermissions().getString("groups.default.suffix", "");
-            }else{
-                prefix = AdminGUI.getInstance().getPermissions().getString("groups." + rank + ".prefix", "");
-                suffix = AdminGUI.getInstance().getPermissions().getString("groups." + rank + ".suffix", "");
-            }
+            String rank = Permissions.getRank(player.getUniqueId(), player.getName());
+            prefix = AdminGUI.getInstance().getPermissions().getString("groups." + rank + ".prefix", "");
+            suffix = AdminGUI.getInstance().getPermissions().getString("groups." + rank + ".suffix", "");
+
         }
 
         if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){

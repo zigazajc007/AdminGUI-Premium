@@ -65,6 +65,11 @@ admin_tools_lore: "&dClick me to open Admin GUI"
 #----------------------------------------------------------
 # Do you want Admin Permissions to be enabled?
 ap_enabled: false
+# Were and how do you want to save ranks?
+# if ap_storage_type is set to 0, then ranks will be saved into permissions.yml file
+# if ap_storage_type is set to 1, then ranks will be synchronized through Bungeecord servers (Make sure that Bungeecord is enabled)
+# if ap_storage_type is set to 2, then ranks will be saved into MySql database (Make sure that MySQL is enabled and connected properly)
+ap_storage_type: 0
 #----------------------------------------------------------
 #            Admin Chat - Support PlaceholderAPI
 #----------------------------------------------------------
@@ -161,5 +166,15 @@ server_name: "Lobby"
 # If control_type is set to 0, then you will be teleported on the same server as target player is located.
 # If control_type is set to 1, then you can control player even tho you aren't on the same server as target player is. (Coming soon...)
 control_type: 0
-# Do you want ranks to be synchronized?
-bungeecord_rank_sync: true
+#----------------------------------------------------------
+#                   Database - MySQL
+#----------------------------------------------------------
+# Do you want to enable mysql database?
+mysql: false
+# Here are all data for connection to Mysql database. Please create database, user and password by yourself. Do not use root as user, because of security risk!
+mysql_host: "localhost"
+mysql_port: "3306"
+mysql_database: "AdminGUI"
+mysql_user: "root"
+mysql_password: ""
+mysql_useSSL: false

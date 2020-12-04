@@ -7,6 +7,7 @@ com/rabbitcompany/adminguibungee/listeners/PluginMessageListener.class
 com/rabbitcompany/admingui/AdminGUI.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_10.class
 com/rabbitcompany/admingui/listeners/PlayerMoveListener.class
+com/rabbitcompany/admingui/utils/Database.class
 com/rabbitcompany/admingui/listeners/PlayerCommandListener.class
 com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_11.class
 com/rabbitcompany/admingui/listeners/PlayerPlaceholderMessageListener.class

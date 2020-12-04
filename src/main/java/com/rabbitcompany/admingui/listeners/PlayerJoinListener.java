@@ -25,6 +25,11 @@ public class PlayerJoinListener implements Listener {
         Player player = event.getPlayer();
 
         //TODO: Permissions
+        if(AdminGUI.getInstance().getConf().getBoolean("mysql", false) && AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false) && AdminGUI.getInstance().getConf().getInt("ap_storage_type", 0) == 2){
+            if(Database.rankNeedFix(event.getPlayer().getName())) Database.fixRank(event.getPlayer().getUniqueId(), event.getPlayer().getName());
+            Database.cacheRank(event.getPlayer().getUniqueId());
+        }
+
         if(AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)){
             String rank = AdminGUI.getInstance().getPermissions().getString("ranks." + player.getName() + ".rank", null);
             if(rank != null){

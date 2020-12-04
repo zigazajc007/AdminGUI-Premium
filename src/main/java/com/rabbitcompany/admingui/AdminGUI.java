@@ -6,6 +6,7 @@ import com.rabbitcompany.admingui.commands.*;
 import com.rabbitcompany.admingui.listeners.*;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.*;
+import com.zaxxer.hikari.HikariDataSource;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
 import net.milkbowl.vault.chat.Chat;
@@ -20,6 +21,8 @@ import org.bukkit.plugin.messaging.PluginMessageListener;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.UUID;
 
 public class AdminGUI extends JavaPlugin implements PluginMessageListener {
@@ -28,6 +31,10 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
 
     String username = "%%__USERNAME__%%";
     String user_id = "%%__USER__%%";
+
+    //Database
+    public static HikariDataSource hikari;
+    private static Connection conn = null;
 
     public static int gui_type = 0;
 
@@ -78,10 +85,14 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
 
         info("&aEnabling");
 
-        //bStats
-        if(!Bukkit.getVersion().contains("1.8")){
-            MetricsLite metricsLite = new MetricsLite(this);
+        //Database connection
+        if(getConf().getBoolean("mysql", false)) {
+            setupMySQL();
         }
+
+        //bStats
+        if(!Bukkit.getVersion().contains("1.8")) new MetricsLite(this);
+
 
         //VaultAPI
         if (getServer().getPluginManager().getPlugin("Vault") != null){
@@ -180,6 +191,33 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
     @Override
     public void onDisable() {
         info("&4Disabling");
+
+        if(conn != null){
+            try {
+                conn.close();
+            } catch (SQLException ignored) { }
+        }
+    }
+
+    //MySql
+    private void setupMySQL(){
+        try {
+            hikari = new HikariDataSource();
+            hikari.setMaximumPoolSize(10);
+            hikari.setJdbcUrl("jdbc:mysql://" + getConf().getString("mysql_host") + ":" + getConf().getString("mysql_port") + "/" + getConf().getString("mysql_database"));
+            hikari.setUsername(getConf().getString("mysql_user"));
+            hikari.setPassword(getConf().getString("mysql_password"));
+            hikari.addDataSourceProperty("useSSL", getConf().getString("mysql_useSSL"));
+            hikari.addDataSourceProperty("cachePrepStmts", "true");
+            hikari.addDataSourceProperty("prepStmtCacheSize", "250");
+            hikari.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+
+            conn = hikari.getConnection();
+            conn.createStatement().execute("CREATE TABLE IF NOT EXISTS admingui_ranks(uuid CHAR(36) NOT NULL PRIMARY KEY, username varchar(25) NOT NULL, rank varchar(25) NOT NULL, created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)");
+            conn.close();
+        } catch (SQLException e) {
+            Bukkit.getConsoleSender().sendMessage(e.getMessage());
+        }
     }
 
     //VaultAPI
@@ -285,7 +323,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         }else{
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &4&lCRACKED"));
         }
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.1.3"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.2.0"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cLanguages:"));
         for (String language: Language.getLanguages()) {
