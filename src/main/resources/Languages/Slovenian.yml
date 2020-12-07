@@ -47,6 +47,7 @@ wrong_arguments: "&cUporabljaš lahko samo /admin ali /admin <player>"
 wrong_chat_arguments: "&cUporabljaš lahko samo /adminchat mute"
 wrong_initialize: "&cUpšorabljaš lahko samo /admin initialize gui ali /admin initialize players"
 wrong_rank_arguments: "&cUporabljaš lahko samo /admin rank set <player> <rank> ali /admin rank <up/down> <player>"
+wrong_check_arguments: "&cUporabiš lahko samo /admin check <player> ukaz"
 vault_required: "&cVaš strežnik nima nameščenega vtičnika Vault!"
 vanish_required: "&cVaš strežnik nima nameščenega vtičnika Super Vanish ali Premium Vanish!"
 #----------------------------------------------------------

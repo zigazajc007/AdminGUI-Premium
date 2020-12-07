@@ -47,6 +47,7 @@ wrong_arguments: "&cJe kunt alleen /admin of /admin <player> gebruiken"
 wrong_chat_arguments: "&cJe kunt alleen /adminchat mute"
 wrong_initialize: "&cJe kunt alleen /admin initialize gui of /admin initialize players gebruiken"
 wrong_rank_arguments: "&cYou can only use /admin rank set <player> <rank> or /admin rank <up/down> <player>"
+wrong_check_arguments: "&cYou can only use /admin check <player>"
 vault_required: "&cJe moet de Vault plugin hebben om deze actie te kunnen uitvoeren!"
 vanish_required: "&cJe moet Super Vanish of Premium Vanish om deze actie te kunnen uitvoeren!"
 #----------------------------------------------------------

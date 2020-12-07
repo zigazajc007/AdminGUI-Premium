@@ -47,6 +47,7 @@ wrong_arguments: "&cMôžeš použiť iba /admin alebo /admin <player>"
 wrong_chat_arguments: "&cMôžeš použiť iba /adminchat mute"
 wrong_initialize: "&cMôžeš použiť iba /admin initialize gui alebo /admin initialize players"
 wrong_rank_arguments: "&cYou can only use /admin rank set <player> <rank> or /admin rank <up/down> <player>"
+wrong_check_arguments: "&cYou can only use /admin check <player>"
 vault_required: "&cTvoj server nemá nainštalovaný Vault na dokončenie tejto akcie!"
 vanish_required: "&cTvoj server nemá nainštalovaný Super Vanish alebo Premium Vanish na dokončenie tejto akcie!"
 #----------------------------------------------------------

@@ -49,6 +49,7 @@ wrong_arguments: "&7&lВы можете использовать только &c
 wrong_chat_arguments: "&cВы можете использовать только /adminchat mute"
 wrong_initialize: "&c&lВы можете использовать только &c&l/admin initialize gui &7&lили &c&l/admin initialize [Player]"
 wrong_rank_arguments: "&cYou can only use /admin rank set <player> <rank> or /admin rank <up/down> <player>"
+wrong_check_arguments: "&cYou can only use /admin check <player>"
 vault_required: "&c&lНа вашем сервере не установлено Vault для выполнения этого действия!"
 vanish_required: "&c&lНа вашем сервере не установлены Super Vanish или Premium Vanish для выполнения этого действия!"
 #----------------------------------------------------------

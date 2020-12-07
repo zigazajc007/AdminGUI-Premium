@@ -171,6 +171,7 @@ groups:
       - admingui.maintenance
       - admingui.maintenance.manage
       - admingui.reload
+      - admingui.check
       - admingui.chat.staff
       - admingui.chat.filter.bypass
       - admingui.chat.advertisement.bypass

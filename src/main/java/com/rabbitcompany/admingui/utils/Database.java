@@ -1,8 +1,5 @@
 package com.rabbitcompany.admingui.utils;
-
-import com.rabbitcompany.adminbans.AdminBans;
 import com.rabbitcompany.admingui.AdminGUI;
-import org.bukkit.Bukkit;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

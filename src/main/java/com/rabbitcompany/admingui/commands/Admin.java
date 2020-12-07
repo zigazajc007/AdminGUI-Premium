@@ -34,12 +34,35 @@ public class Admin implements CommandExecutor {
                     sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_reload_finish"));
                 }else if(args[0].equals("language")){
                     sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.chat("&cYou can only use /admin language download <language> or /admin language fix <language>"));
+                }else if(args[0].equals("check")){
+                    sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "wrong_check_arguments"));
                 }
             }else if(args.length == 2){
                 if(args[0].equals("rank")) {
                     sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "wrong_rank_arguments"));
                 }else if(args[0].equals("language")){
                     sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.chat("&cYou can only use /admin language download <language> or /admin language fix <language>"));
+                }else if(args[0].equals("check")){
+                    String name = ChatColor.stripColor(args[1]);
+                    Set<String> con_sec = AdminGUI.getInstance().getPlayers().getConfigurationSection("").getKeys(false);
+                    for (String uuid_name : con_sec){
+                        if(AdminGUI.getInstance().getPlayers().getString(uuid_name + ".name").equals(name)){
+                            sender.sendMessage(Message.chat("&9"+ name + " stats:"));
+                            sender.sendMessage(Message.chat("  &9UUID: &b" + uuid_name));
+                            if(AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)){
+                                sender.sendMessage(Message.chat("  &9Rank: &b" + AdminGUI.getInstance().getPlayers().getString(uuid_name+ ".rank", "default")));
+                            }
+                            StringBuilder ips = new StringBuilder();
+                            for (String ip: AdminGUI.getInstance().getPlayers().getStringList(uuid_name + ".ips")) {
+                                ips.append(ip).append(", ");
+                            }
+                            ips.delete(ips.length()-2, ips.length());
+                            sender.sendMessage(Message.chat("  &9IPs: &b" + ips.toString()));
+                            sender.sendMessage(Message.chat("  &9Last Join: &b" + Database.date_format.format(new Date(AdminGUI.getInstance().getPlayers().getLong(uuid_name + ".lastJoin")))));
+                            sender.sendMessage(Message.chat("  &9First Join: &b" + Database.date_format.format(new Date(AdminGUI.getInstance().getPlayers().getLong(uuid_name + ".firstJoin")))));
+                            break;
+                        }
+                    }
                 }
             }else if(args.length == 3){
                 if(args[0].equals("rank")) {
@@ -209,8 +232,10 @@ public class Admin implements CommandExecutor {
                     }
                 }else if(args[0].equals("initialize")) {
                     player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_initialize"));
-                }else if(args[0].equals("rank")){
+                }else if(args[0].equals("rank")) {
                     player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_rank_arguments"));
+                }else if(args[0].equals("check")){
+                    player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_check_arguments"));
                 }else if(args[0].equals("tools") || args[0].equals("tool")){
                     if(player.hasPermission("admingui.admin") && AdminGUI.getInstance().getConf().getBoolean("admin_tools_enabled", true)){
                         List<String> lore = Collections.singletonList(Message.chat(AdminGUI.getInstance().getConf().getString("admin_tools_lore", "&dClick me to open Admin GUI")));
@@ -276,6 +301,31 @@ public class Admin implements CommandExecutor {
                     }
                 }else if(args[0].equals("rank")){
                     player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_rank_arguments"));
+                }else if(args[0].equals("check")){
+                    if(player.hasPermission("admingui.check")){
+                        String name = ChatColor.stripColor(args[1]);
+                        Set<String> con_sec = AdminGUI.getInstance().getPlayers().getConfigurationSection("").getKeys(false);
+                        for (String uuid_name : con_sec){
+                            if(AdminGUI.getInstance().getPlayers().getString(uuid_name + ".name").equals(name)){
+                                player.sendMessage(Message.chat("&9"+ name + " stats:"));
+                                player.sendMessage(Message.chat("  &9UUID: &b" + uuid_name));
+                                if(AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)){
+                                    player.sendMessage(Message.chat("  &9Rank: &b" + AdminGUI.getInstance().getPlayers().getString(uuid_name+ ".rank", "default")));
+                                }
+                                StringBuilder ips = new StringBuilder();
+                                for (String ip: AdminGUI.getInstance().getPlayers().getStringList(uuid_name + ".ips")) {
+                                    ips.append(ip).append(", ");
+                                }
+                                ips.delete(ips.length()-2, ips.length());
+                                player.sendMessage(Message.chat("  &9IPs: &b" + ips.toString()));
+                                player.sendMessage(Message.chat("  &9Last Join: &b" + Database.date_format.format(new Date(AdminGUI.getInstance().getPlayers().getLong(uuid_name + ".lastJoin")))));
+                                player.sendMessage(Message.chat("  &9First Join: &b" + Database.date_format.format(new Date(AdminGUI.getInstance().getPlayers().getLong(uuid_name + ".firstJoin")))));
+                                break;
+                            }
+                        }
+                    }else{
+                        player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "permission"));
+                    }
                 }else{
                     player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_arguments"));
                 }

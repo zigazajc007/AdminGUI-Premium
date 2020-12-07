@@ -47,6 +47,7 @@ wrong_arguments: "&cאפשר להשתמש רק ב-/admin או /admin <שחקן>"
 wrong_chat_arguments: "&cYou can only use /adminchat mute"
 wrong_initialize: "&cאפשר להשתמש רק ב-/admin initialize gui או /admin initialize players"
 wrong_rank_arguments: "&cYou can only use /admin rank set <player> <rank> or /admin rank <up/down> <player>"
+wrong_check_arguments: "&cYou can only use /admin check <player>"
 vault_required: "&cVault לא מותקן על השרת"
 vanish_required: "&cSuperVanish או PremiumVanish לא מותקנים על השרת"
 #----------------------------------------------------------

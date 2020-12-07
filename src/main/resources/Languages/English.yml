@@ -47,6 +47,7 @@ wrong_arguments: "&cYou can only use /admin or /admin <player>"
 wrong_chat_arguments: "&cYou can only use /adminchat mute"
 wrong_initialize: "&cYou can only use /admin initialize gui or /admin initialize players"
 wrong_rank_arguments: "&cYou can only use /admin rank set <player> <rank> or /admin rank <up/down> <player>"
+wrong_check_arguments: "&cYou can only use /admin check <player>"
 vault_required: "&cYour server doesn't have installed Vault to complete this action!"
 vanish_required: "&cYour server doesn't have installed Super Vanish or Premium Vanish to complete this action!"
 #----------------------------------------------------------

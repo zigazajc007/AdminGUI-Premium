@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class TabCompletion implements TabCompleter {
 
@@ -36,6 +37,8 @@ public class TabCompletion implements TabCompleter {
 
                 if(sender.hasPermission("admingui.rank")) completions.add("rank");
 
+               if(sender.hasPermission("admingui.check")) completions.add("check");
+
                 if(!(sender instanceof Player)) completions.add("language");
 
                 completions.add("tools");
@@ -53,6 +56,11 @@ public class TabCompletion implements TabCompleter {
                }else if(args[0].equals("language")){
                    if(!(sender instanceof Player)) completions.add("fix");
                    if(!(sender instanceof Player)) completions.add("download");
+               }else if(args[0].equals("check") && sender.hasPermission("admingui.check")){
+                   Set<String> con_sec = AdminGUI.getInstance().getPlayers().getConfigurationSection("").getKeys(false);
+                   for (String uuid_name : con_sec){
+                       completions.add(AdminGUI.getInstance().getPlayers().getString(uuid_name+".name"));
+                   }
                }
            }else if(args.length == 3){
                if(args[0].equals("rank") && (args[1].equals("set") || args[1].equals("up") || args[1].equals("down"))) {
@@ -70,7 +78,7 @@ public class TabCompletion implements TabCompleter {
                    completions.addAll(Language.enabled_languages);
                }
            }else if(args.length == 4){
-               if(args[0].equals("rank") && (args[1].equals("set") || args[1].equals("up") || args[1].equals("down"))) {
+               if(args[0].equals("rank") && args[1].equals("set")) {
                    for (Map.Entry<String, Object> rank : AdminGUI.getInstance().getPermissions().getConfigurationSection("groups").getValues(false).entrySet()) {
                        completions.add(rank.getKey());
                    }

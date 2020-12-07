@@ -1,11 +1,14 @@
 package com.rabbitcompany.admingui.utils;
 
+import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Date;
 
 public class AdminGUIPlaceholders extends PlaceholderExpansion {
 
@@ -53,6 +56,17 @@ public class AdminGUIPlaceholders extends PlaceholderExpansion {
                 return String.valueOf(AdminUI.freeze.getOrDefault(player.getUniqueId(), false));
             case "is_maintenance_mode":
                 return String.valueOf(AdminUI.maintenance_mode);
+            case "player_first_join":
+                return Database.date_format.format(new Date(AdminGUI.getInstance().getPlayers().getLong(player.getUniqueId() + ".firstJoin")));
+            case "player_last_join":
+                return Database.date_format.format(new Date(AdminGUI.getInstance().getPlayers().getLong(player.getUniqueId() + ".lastJoin")));
+            case "player_ips":
+                StringBuilder ips = new StringBuilder();
+                for (String ip: AdminGUI.getInstance().getPlayers().getStringList(player.getUniqueId() + ".ips")) {
+                    ips.append(ip).append(", ");
+                }
+                ips.delete(ips.length()-2, ips.length());
+                return ips.toString();
             default:
                 return null;
         }

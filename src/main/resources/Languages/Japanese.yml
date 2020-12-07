@@ -49,6 +49,7 @@ wrong_arguments: "&c/admin もしくは /admin <player> のみ使えます。"
 wrong_chat_arguments: "&cYou can only use /adminchat mute"
 wrong_initialize: "&cYou can only use /admin initialize gui or /admin initialize players"
 wrong_rank_arguments: "&cYou can only use /admin rank set <player> <rank> or /admin rank <up/down> <player>"
+wrong_check_arguments: "&cYou can only use /admin check <player>"
 vault_required: "&cこのアクションを完了するためのVaultがインストールされていません！"
 vanish_required: "&cこのアクションを完了するためのSuper VanishもしくはPremium Vanishがインストールされていません！"
 #----------------------------------------------------------

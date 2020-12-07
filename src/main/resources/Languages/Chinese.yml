@@ -47,6 +47,7 @@ wrong_arguments: "&c你只能用 /admin 或 /admin <玩家>"
 wrong_chat_arguments: "&c你只能用 /adminchat mute"
 wrong_initialize: "&c你只能用 /admin initialize gui 或 /admin initialize players"
 wrong_rank_arguments: "&cYou can only use /admin rank set <player> <rank> or /admin rank <up/down> <player>"
+wrong_check_arguments: "&cYou can only use /admin check <player>"
 vault_required: "&c你的伺服器並未安裝 Vault !"
 vanish_required: "&c你的伺服器並未安裝 Super Vanish 或 Premium Vanish !"
 #----------------------------------------------------------

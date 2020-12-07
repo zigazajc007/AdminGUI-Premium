@@ -52,6 +52,10 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
     private File pe = null;
     private final YamlConfiguration perm = new YamlConfiguration();
 
+    //Players
+    private File pl = null;
+    private final YamlConfiguration play = new YamlConfiguration();
+
     //Kick
     private File k = null;
     private final YamlConfiguration kick = new YamlConfiguration();
@@ -73,6 +77,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         instance = this;
         this.co = new File(getDataFolder(), "config.yml");
         this.pe = new File(getDataFolder(), "permissions.yml");
+        this.pl = new File(getDataFolder(), "players.yml");
         this.k = new File(getDataFolder(), "kick.yml");
         this.p = new File(getDataFolder(), "Custom Commands/plugins.yml");
         this.c = new File(getDataFolder(), "Custom Commands/commands.yml");
@@ -258,6 +263,10 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
             saveResource("permissions.yml", false);
         }
 
+        if(!this.pl.exists()){
+            saveResource("players.yml", false);
+        }
+
         if(!this.k.exists()){
             saveResource("kick.yml", false);
         }
@@ -279,6 +288,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         try{
             this.conf.load(this.co);
             this.perm.load(this.pe);
+            this.play.load(this.pl);
             this.kick.load(this.k);
             this.plug.load(this.p);
             this.comm.load(this.c);
@@ -292,6 +302,8 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
 
     public YamlConfiguration getPermissions() { return this.perm; }
 
+    public YamlConfiguration getPlayers(){ return this.play; }
+
     public YamlConfiguration getKick() { return this.kick; }
 
     public YamlConfiguration getPlug() { return this.plug; }
@@ -303,6 +315,14 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
     public void savePermissions() {
         try {
             this.perm.save(this.pe);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void savePlayers(){
+        try {
+            this.play.save(this.pl);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -323,9 +343,10 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         }else{
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &4&lCRACKED"));
         }
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.2.0"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.3.0"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cLanguages:"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         for (String language: Language.getLanguages()) {
             if(getConf().getString("default_language", "English").equals(language)){
                 Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &b- " + language + " (default)"));

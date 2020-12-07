@@ -9,6 +9,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import java.util.List;
+
 public class PlayerJoinListener implements Listener {
 
     private AdminGUI adminGUI;
@@ -24,19 +26,30 @@ public class PlayerJoinListener implements Listener {
 
         Player player = event.getPlayer();
 
+        if(AdminGUI.getInstance().getPlayers().getString(player.getUniqueId().toString(), null) == null){
+            AdminGUI.getInstance().getPlayers().set(player.getUniqueId() + ".name", player.getName());
+            AdminGUI.getInstance().getPlayers().set(player.getUniqueId() + ".ips", new String[]{player.getAddress().getAddress().toString().replace("/", "")});
+            AdminGUI.getInstance().getPlayers().set(player.getUniqueId() + ".firstJoin", System.currentTimeMillis());
+        }else{
+            List<String> ips = AdminGUI.getInstance().getPlayers().getStringList(player.getUniqueId() + ".ips");
+            if(!ips.contains(player.getAddress().getAddress().toString().replace("/", ""))) ips.add(player.getAddress().getAddress().toString().replace("/", ""));
+            AdminGUI.getInstance().getPlayers().set(player.getUniqueId() + ".ips", ips);
+        }
+        AdminGUI.getInstance().getPlayers().set(player.getUniqueId() + ".lastJoin", System.currentTimeMillis());
+        AdminGUI.getInstance().savePlayers();
+
         //TODO: Permissions
         if(AdminGUI.getInstance().getConf().getBoolean("mysql", false) && AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false) && AdminGUI.getInstance().getConf().getInt("ap_storage_type", 0) == 2){
-            if(Database.rankNeedFix(event.getPlayer().getName())) Database.fixRank(event.getPlayer().getUniqueId(), event.getPlayer().getName());
-            Database.cacheRank(event.getPlayer().getUniqueId());
+            if(Database.rankNeedFix(player.getName())) Database.fixRank(player.getUniqueId(), player.getName());
+            Database.cacheRank(player.getUniqueId());
         }
 
         if(AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)){
-            String rank = AdminGUI.getInstance().getPermissions().getString("ranks." + player.getName() + ".rank", null);
+            String rank = AdminGUI.getInstance().getPlayers().getString(player.getName() + ".rank", null);
             if(rank != null){
-                AdminGUI.getInstance().getPermissions().set("ranks." + player.getName(), null);
-                AdminGUI.getInstance().getPermissions().set("ranks." + player.getUniqueId() + ".name", player.getName());
-                AdminGUI.getInstance().getPermissions().set("ranks." + player.getUniqueId() + ".rank", rank);
-                AdminGUI.getInstance().savePermissions();
+                AdminGUI.getInstance().getPlayers().set(player.getName(), null);
+                AdminGUI.getInstance().getPlayers().set(player.getUniqueId() + ".rank", rank);
+                AdminGUI.getInstance().savePlayers();
             }
             TargetPlayer.refreshPermissions(player);
         }
