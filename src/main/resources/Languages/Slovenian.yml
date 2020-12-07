@@ -192,25 +192,25 @@ actions_back: "&c&lNazaj"
 #                       Kick GUI
 #----------------------------------------------------------
 kick: "&4Bil si brcnjen iz strežnika zaradi "
-kick_back: "&c&lBack"
+kick_back: "&c&lNazaj"
 #----------------------------------------------------------
 #                       Ban GUI
 #----------------------------------------------------------
-ban_time: "&4You have been banned for {reason}\n&cYour suspension expires on &c&l{time}"
-ban_perm: "&4You have been permanent banned for {reason}"
-ban_years: "&e&lYears"
-ban_months: "&e&lMonths"
-ban_days: "&e&lDays"
-ban_hours: "&e&lHours"
-ban_minutes: "&e&lMinutes"
-ban_hacking: "&7&lHacking!"
-ban_griefing: "&6&lGriefing!"
-ban_spamming: "&d&lSpamming!"
-ban_advertising: "&3&lAdvertising!"
-ban_swearing: "&e&lSwearing!"
-ban_silence_disabled: "&c&lSilence"
-ban_silence_enabled: "&a&lSilence"
-ban_back: "&c&lBack"
+ban_time: "&4Dostop do strežnika imaš prepovedan zaradi {reason}\n&cSpet boš imel dostop do strežnika &c&l{time}"
+ban_perm: "&4Za vedno imaš prepovedan dostop zaradi {reason}"
+ban_years: "&e&lLeta"
+ban_months: "&e&lMeseci"
+ban_days: "&e&lDni"
+ban_hours: "&e&lUre"
+ban_minutes: "&e&lMinute"
+ban_hacking: "&7&lHekanje!"
+ban_griefing: "&6&lUničevanje osebne lastnine!"
+ban_spamming: "&d&lPošiljanje vsiljene pošte!"
+ban_advertising: "&3&lOglaševanje!"
+ban_swearing: "&e&lPreklinjanje!"
+ban_silence_disabled: "&c&lTiho"
+ban_silence_enabled: "&a&lTiho"
+ban_back: "&c&lNazaj"
 #----------------------------------------------------------
 #                     Potions GUI
 #----------------------------------------------------------
