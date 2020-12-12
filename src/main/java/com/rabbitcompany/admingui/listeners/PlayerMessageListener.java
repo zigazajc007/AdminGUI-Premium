@@ -163,8 +163,10 @@ public class PlayerMessageListener implements Listener {
 
                 if(p.hasPermission("admingui.chat.color") || p.hasPermission("admingui.chat.colors")){
                     if(Bukkit.getVersion().contains("1.16")) message = Colors.toHex(message);
+                    event.setMessage(message);
                     event.setFormat(Message.chat(adminGUI.getConf().getString("ac_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix).replace("{message}", message)));
                 }else{
+                    event.setMessage(ChatColor.stripColor(message));
                     event.setFormat(Message.chat(adminGUI.getConf().getString("ac_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix).replace("{message}", ChatColor.stripColor(message))));
                 }
             }

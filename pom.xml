@@ -6,7 +6,7 @@
 
     <groupId>com.rabbitcompany</groupId>
     <artifactId>AdminGUI-Premium</artifactId>
-    <version>5.3.0</version>
+    <version>5.3.1</version>
     <packaging>jar</packaging>
 
     <name>AdminGUI Premium</name>
@@ -83,6 +83,11 @@
             <id>placeholderapi</id>
             <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
         </repository>
+        <!-- discordsrv -->
+        <repository>
+            <id>Scarsz-Nexus</id>
+            <url>https://nexus.scarsz.me/content/groups/public/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -133,6 +138,12 @@
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
             <version>3.4.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.discordsrv</groupId>
+            <artifactId>discordsrv</artifactId>
+            <version>1.21.0</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

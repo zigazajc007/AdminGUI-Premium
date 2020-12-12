@@ -5,7 +5,7 @@ api-version: 1.13
 authors: [RabbitCompany]
 description: Easy manage your Minecraft server with Admin GUI
 website: rabbit-company.com
-softdepend: [Vault, SuperVanish, PremiumVanish, LiteBans, AdvancedBan, AdminBans, PlaceholderAPI]
+softdepend: [Vault, SuperVanish, PremiumVanish, LiteBans, AdvancedBan, AdminBans, PlaceholderAPI, DiscordSRV]
 commands:
   admin:
     usage: /<command>

@@ -7,6 +7,7 @@ import com.rabbitcompany.admingui.listeners.*;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.*;
 import com.zaxxer.hikari.HikariDataSource;
+import github.scarsz.discordsrv.DiscordSRV;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
 import net.milkbowl.vault.chat.Chat;
@@ -43,6 +44,9 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
     public static boolean vault = false;
     private static Permission perms = null;
     private static Chat chat = null;
+
+    //DiscordSRV
+    private DiscordSRVListener discordsrvListener;
 
     //Config
     private File co = null;
@@ -98,6 +102,11 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         //bStats
         if(!Bukkit.getVersion().contains("1.8")) new MetricsLite(this);
 
+        //DiscordSRV
+        if(getServer().getPluginManager().getPlugin("DiscordSRV") != null){
+            discordsrvListener = new DiscordSRVListener(this);
+            DiscordSRV.api.subscribe(discordsrvListener);
+        }
 
         //VaultAPI
         if (getServer().getPluginManager().getPlugin("Vault") != null){
@@ -196,6 +205,11 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
     @Override
     public void onDisable() {
         info("&4Disabling");
+
+        //DiscordSRV
+        if(getServer().getPluginManager().getPlugin("DiscordSRV") != null){
+            DiscordSRV.api.unsubscribe(discordsrvListener);
+        }
 
         if(conn != null){
             try {
@@ -343,7 +357,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         }else{
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &4&lCRACKED"));
         }
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.3.0"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.3.1"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cLanguages:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
