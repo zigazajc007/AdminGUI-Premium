@@ -28,11 +28,13 @@ public class PlayerJoinListener implements Listener {
 
         if(AdminGUI.getInstance().getPlayers().getString(player.getUniqueId().toString(), null) == null){
             AdminGUI.getInstance().getPlayers().set(player.getUniqueId() + ".name", player.getName());
-            AdminGUI.getInstance().getPlayers().set(player.getUniqueId() + ".ips", new String[]{player.getAddress().getAddress().toString().replace("/", "")});
+            if(player.getAddress() != null && player.getAddress().getAddress() != null)
+                AdminGUI.getInstance().getPlayers().set(player.getUniqueId() + ".ips", new String[]{player.getAddress().getAddress().toString().replace("/", "")});
             AdminGUI.getInstance().getPlayers().set(player.getUniqueId() + ".firstJoin", System.currentTimeMillis());
         }else{
             List<String> ips = AdminGUI.getInstance().getPlayers().getStringList(player.getUniqueId() + ".ips");
-            if(!ips.contains(player.getAddress().getAddress().toString().replace("/", ""))) ips.add(player.getAddress().getAddress().toString().replace("/", ""));
+            if(player.getAddress() != null && player.getAddress().getAddress() != null)
+                if(!ips.contains(player.getAddress().getAddress().toString().replace("/", ""))) ips.add(player.getAddress().getAddress().toString().replace("/", ""));
             AdminGUI.getInstance().getPlayers().set(player.getUniqueId() + ".ips", ips);
         }
         AdminGUI.getInstance().getPlayers().set(player.getUniqueId() + ".lastJoin", System.currentTimeMillis());

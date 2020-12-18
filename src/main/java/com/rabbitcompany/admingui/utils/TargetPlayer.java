@@ -44,7 +44,6 @@ public class TargetPlayer {
     public static void refreshPermissions(Player player){
         String rank = Permissions.getRank(player.getUniqueId(), player.getName());
 
-        //AdminUI.permissions.get(player.getUniqueId()).remove();
         AdminUI.permissions.put(player.getUniqueId(), player.addAttachment(AdminGUI.getInstance()));
         PermissionAttachment permissionAttachment = AdminUI.permissions.get(player.getUniqueId());
 

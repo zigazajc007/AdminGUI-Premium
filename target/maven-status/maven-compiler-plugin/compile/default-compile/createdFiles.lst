@@ -30,6 +30,7 @@ com/rabbitcompany/admingui/listeners/PlayerLoginListener.class
 com/rabbitcompany/admingui/utils/Initialize$2.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_9.class
 com/rabbitcompany/admingui/commands/Admin.class
+com/rabbitcompany/admingui/listeners/DiscordSRVListener.class
 com/rabbitcompany/admingui/utils/MutedPlayerIn.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_13.class
 com/rabbitcompany/admingui/listeners/PlayerJoinListener.class
