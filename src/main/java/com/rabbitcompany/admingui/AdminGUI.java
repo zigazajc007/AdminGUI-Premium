@@ -357,7 +357,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         }else{
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &4&lCRACKED"));
         }
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.3.3"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.3.2"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cLanguages:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));

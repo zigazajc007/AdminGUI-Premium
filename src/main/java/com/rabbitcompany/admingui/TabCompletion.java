@@ -37,7 +37,9 @@ public class TabCompletion implements TabCompleter {
 
                 if(sender.hasPermission("admingui.rank")) completions.add("rank");
 
-               if(sender.hasPermission("admingui.check")) completions.add("check");
+                if(sender.hasPermission("admingui.check")) completions.add("check");
+
+                if(sender.hasPermission("admingui.maintenance.manage")) completions.add("maintenance");
 
                 if(!(sender instanceof Player)) completions.add("language");
 
@@ -56,6 +58,9 @@ public class TabCompletion implements TabCompleter {
                }else if(args[0].equals("language")){
                    if(!(sender instanceof Player)) completions.add("fix");
                    if(!(sender instanceof Player)) completions.add("download");
+               }else if(args[0].equals("maintenance")){
+                   if(sender.hasPermission("admingui.maintenance.manage")) completions.add("on");
+                   if(sender.hasPermission("admingui.maintenance.manage")) completions.add("off");
                }else if(args[0].equals("check") && sender.hasPermission("admingui.check")){
                    Set<String> con_sec = AdminGUI.getInstance().getPlayers().getConfigurationSection("").getKeys(false);
                    for (String uuid_name : con_sec){
