@@ -1,8 +1,8 @@
 #       ----------- + AdminGUI by Ziga Zajc + -----------   #
 #                                                           #
 #                           Language                        #
-#                       Translate:VLADik                    #
-#                         Update 5.0.6                      #
+#                       Translate: Gronox                   #
+#                         Update 5.3.2                      #
 #                                                           #
 #       --------- + ------------------------- + ---------   #
 #
@@ -385,4 +385,4 @@ message_admin_chat_clear: "&e&l{player} &7&lочистил чат"
 message_admin_chat_server_disabled: "&7&lАдмин чат &c&lвыключен &7&lна этом сервере."
 message_freeze_enabled: "&7&lИгрок &e&l{player} &b&lЗаморозил вас!"
 message_freeze_disabled: "&7&lИгрок &e&l{player} &b&lРазморозил вас!"
-message_admin_rank: "&a{player} is now {rank}."
+message_admin_rank: "&a{player} новый ранг {rank}."
