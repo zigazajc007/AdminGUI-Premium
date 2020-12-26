@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Russian.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Russian.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/TabCompletion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/TabCompletion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/commands/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/commands/Admin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/Language.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/Language.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -195,13 +193,6 @@
       <workItem from="1577725216137" duration="7109000" />
       <workItem from="1578348949962" duration="293000" />
       <workItem from="1578422894075" duration="968000" />
-    </task>
-    <task id="LOCAL-00072" summary="Added Admin tools and fixed some small visual bugs.">
-      <created>1590485710560</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1590485710560</updated>
     </task>
     <task id="LOCAL-00073" summary="Added Admin tools and fixed some small visual bugs.">
       <created>1590485751830</created>
@@ -539,7 +530,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608503355834</updated>
     </task>
-    <option name="localTasksCounter" value="121" />
+    <task id="LOCAL-00121" summary="Updated Russian translation.">
+      <created>1608936756143</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1608936756143</updated>
+    </task>
+    <option name="localTasksCounter" value="122" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -564,7 +562,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/LiteBansAPI" />
     </ignored-roots>
-    <MESSAGE value="Fixed giving gradient chat color to other players bug and added rainbow chat color effect." />
     <MESSAGE value="- Fixed chat colors in admin chat&#10;- Added option for custom chat channels&#10;- Added ignore commands option in admin command spy" />
     <MESSAGE value="fixed freeze player can't chat in channel." />
     <MESSAGE value="Changed custom chat channel colors" />
@@ -589,6 +586,7 @@
     <MESSAGE value="Added DiscordSRV support so now chat filters will be applied on DiscordSRV plugin too." />
     <MESSAGE value="Now you can add list of custom commands, so multiple commands can be executed on single item click in GUI." />
     <MESSAGE value="Now you can enable maintenance mode in game or thru console with /admin maintenance &lt;on/off&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Now you can enable maintenance mode in game or thru console with /admin maintenance &lt;on/off&gt;" />
+    <MESSAGE value="Updated Russian translation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Russian translation." />
   </component>
 </project>
