@@ -64,14 +64,15 @@ public class PlayerJoinListener implements Listener {
 
         AdminUI.skulls_players.put(player.getName(), Item.pre_createPlayerHead(player.getName()));
 
-        if(AdminGUI.getInstance().getConf().getBoolean("atl_enabled", false)){
-            TargetPlayer.refreshPlayerTabList(player);
+        if(AdminGUI.getInstance().getConf().getBoolean("atl_enabled", false)) TargetPlayer.refreshPlayerTabList(player);
+
+        //Update Checker
+        if(AdminGUI.getInstance().getConf().getBoolean("uc_enabled", true) && AdminGUI.getInstance().getConf().getInt("uc_send_type", 1) == 1 && AdminGUI.new_version != null && (player.hasPermission("admingui.admin") || player.isOp())){
+            player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.chat(AdminGUI.getInstance().getConf().getString("uc_notify", "&aNew update is available. Please update me to &b{version}&a.").replace("{version}", AdminGUI.new_version)));
         }
 
         if(adminGUI.getConf().getInt("initialize_gui",0) == 1) {
-            if(!AdminUI.task_gui.containsKey(player.getUniqueId())){
-                Initialize.GUI(player, player.getInventory().getHelmet());
-            }
+            if(!AdminUI.task_gui.containsKey(player.getUniqueId())) Initialize.GUI(player, player.getInventory().getHelmet());
         }
     }
 }

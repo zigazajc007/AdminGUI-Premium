@@ -39,6 +39,9 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
 
     public static int gui_type = 0;
 
+    //Update Checker
+    public static String new_version = null;
+
     //VaultAPI
     private static Economy econ = null;
     public static boolean vault = false;
@@ -92,15 +95,33 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
 
         Language.downloadLanguage(getConf().getString("default_language", "English"));
 
-        info("&aEnabling");
-
         //Database connection
         if(getConf().getBoolean("mysql", false)) {
             setupMySQL();
         }
 
         //bStats
-        if(!Bukkit.getVersion().contains("1.8")) new MetricsLite(this);
+        if(!Bukkit.getVersion().contains("1.8")){
+            Metrics metrics = new Metrics(this, 5815);
+            metrics.addCustomChart(new Metrics.SimplePie("default_language", () -> getConf().getString("default_language", "English")));
+            metrics.addCustomChart(new Metrics.SimplePie("admin_tools", () -> getConf().getString("admin_tools_enabled", "true")));
+            metrics.addCustomChart(new Metrics.SimplePie("admin_permissions", () -> getConf().getString("ap_enabled", "false")));
+            metrics.addCustomChart(new Metrics.SimplePie("admin_chat", () -> getConf().getString("ac_enabled", "false")));
+            metrics.addCustomChart(new Metrics.SimplePie("admin_tablist", () -> getConf().getString("atl_enabled", "false")));
+            metrics.addCustomChart(new Metrics.SimplePie("admin_command_spy", () -> getConf().getString("acs_enabled", "false")));
+            metrics.addCustomChart(new Metrics.SimplePie("bungeecord", () -> getConf().getString("bungeecord_enabled", "false")));
+            metrics.addCustomChart(new Metrics.SimplePie("mysql", () -> getConf().getString("mysql", "false")));
+        }
+
+        //Update Checker
+        if(getConf().getBoolean("uc_enabled", true)){
+            new UpdateChecker(this, 49).getVersion(updater_version -> {
+                if (!getDescription().getVersion().equalsIgnoreCase(updater_version)) new_version = updater_version;
+                info("&aEnabling");
+            });
+        }else{
+            info("&aEnabling");
+        }
 
         //DiscordSRV
         if(getServer().getPluginManager().getPlugin("DiscordSRV") != null){
@@ -357,7 +378,11 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         }else{
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &4&lCRACKED"));
         }
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b5.3.2"));
+        if(new_version != null){
+            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b" + getDescription().getVersion() + " (&6update available&b)"));
+        }else{
+            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b" + getDescription().getVersion()));
+        }
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cLanguages:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));

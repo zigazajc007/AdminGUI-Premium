@@ -39,7 +39,7 @@
 # If gui_type is set to 1, then Player heads will be used in gui (slower but nicer).
 gui_type: 0
 # If initialize_gui is set to 0 then gui won't be initialized and will be very buggy on first use. (You will be still able to initialize the gui in game with /admin initialize gui)
-# If initialize_gui is set to 1 then gui will be initialized when player join the game. (Default and recommended)
+# If initialize_gui is set to 1 then gui will be initialized when player join the game. (Recommended if you have gui_type set to 1)
 initialize_gui: 0
 # How many seconds expires before next player head will start initializing. (Default is 2) (Lower number is faster but more buggier)
 initialize_delay: 2
@@ -52,6 +52,15 @@ default_language: "English"
 gui_default_color: "LIGHT_BLUE_STAINED_GLASS_PANE"
 # How would you like to display date in Admin GUI plugin? (y = year, M = month, d = day, H = hour, m = minute and s = second)
 date_format: "yyyy-MM-dd HH:mm:ss"
+#----------------------------------------------------------
+#                     Update Checker
+#----------------------------------------------------------
+# Do you want update checker to be enabled?
+uc_enabled: true
+uc_notify: "&aNew update is available. Please update me to &b{version}&a."
+# if uc_send_type is set to 0 then only console will be notified when update is available.
+# if uc_send_type is set to 1 then console and players with admingui.admin permission will be notified when update is available. (Default and recommended)
+uc_send_type: 1
 #----------------------------------------------------------
 #                       Admin Tools
 #----------------------------------------------------------

@@ -2,15 +2,17 @@ package com.rabbitcompany.admingui.utils;
 
 import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.UUID;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
 
 public class Language {
 
@@ -54,6 +56,39 @@ public class Language {
         if(default_languages.contains(language) && enabled_languages.contains(language)){
             AdminGUI.getInstance().saveResource("Languages/" + language + ".yml", true);
             getLanguages();
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean advancedFixLanguage(String language){
+        if(enabled_languages.contains(language)){
+            YamlConfiguration temp_lang = new YamlConfiguration();
+            YamlConfiguration lang = languages.getOrDefault(language, null);
+            YamlConfiguration ml_lang = new YamlConfiguration();
+
+            InputStream lang_inputStream = AdminGUI.getInstance().getResource("Languages/" + language + ".yml");
+            if(lang_inputStream == null) lang_inputStream = AdminGUI.getInstance().getResource("Languages/English.yml");
+
+            try {
+                temp_lang.load(new InputStreamReader(lang_inputStream));
+            } catch (InvalidConfigurationException | IOException e) {
+                e.printStackTrace();
+            }
+
+            Set<String> temp_lang_keys = temp_lang.getKeys(false);
+            Set<String> lang_keys = lang.getKeys(false);
+
+            if(!temp_lang_keys.equals(lang_keys)){
+                for (String key : temp_lang_keys) {
+                    if(!lang_keys.contains(key)){
+                        ml_lang.set(key, temp_lang.getString(key, ""));
+                    }
+                }
+                try {
+                    ml_lang.save(new File(AdminGUI.getInstance().getDataFolder(), "Languages/" + language + "-Missing-Lines.txt"));
+                } catch (IOException ignored) {}
+            }
             return true;
         }
         return false;
