@@ -76,17 +76,23 @@ public class TargetPlayer {
             String rank = Permissions.getRank(player.getUniqueId(), player.getName());
             prefix = AdminGUI.getInstance().getPermissions().getString("groups." + rank + ".prefix", "");
             suffix = AdminGUI.getInstance().getPermissions().getString("groups." + rank + ".suffix", "");
+        }
 
+        String vault_prefix = "";
+        String vault_suffix = "";
+        if(AdminGUI.vault){
+            vault_prefix = AdminGUI.getVaultChat().getPlayerPrefix(player);
+            vault_suffix = AdminGUI.getVaultChat().getPlayerSuffix(player);
         }
 
         if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){
-            player.setPlayerListHeader(PlaceholderAPI.setPlaceholders(player, Message.chat(AdminGUI.getInstance().getConf().getString("atl_header", "&a{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix))));
-            player.setPlayerListName(PlaceholderAPI.setPlaceholders(player, Message.chat(AdminGUI.getInstance().getConf().getString("atl_format", "&a{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix))));
-            player.setPlayerListFooter(PlaceholderAPI.setPlaceholders(player, Message.chat(AdminGUI.getInstance().getConf().getString("atl_footer", "&a{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix))));
+            player.setPlayerListHeader(PlaceholderAPI.setPlaceholders(player, Message.chat(AdminGUI.getInstance().getConf().getString("atl_header", "&a{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix).replace("{vault_prefix}", vault_prefix).replace("{vault_suffix}", vault_suffix))));
+            player.setPlayerListName(PlaceholderAPI.setPlaceholders(player, Message.chat(AdminGUI.getInstance().getConf().getString("atl_format", "&a{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix).replace("{vault_prefix}", vault_prefix).replace("{vault_suffix}", vault_suffix))));
+            player.setPlayerListFooter(PlaceholderAPI.setPlaceholders(player, Message.chat(AdminGUI.getInstance().getConf().getString("atl_footer", "&a{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix).replace("{vault_prefix}", vault_prefix).replace("{vault_suffix}", vault_suffix))));
         }else{
-            player.setPlayerListHeader(Message.chat(AdminGUI.getInstance().getConf().getString("atl_header", "&a{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix)));
-            player.setPlayerListName(Message.chat(AdminGUI.getInstance().getConf().getString("atl_format", "&a{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix)));
-            player.setPlayerListFooter(Message.chat(AdminGUI.getInstance().getConf().getString("atl_footer", "&a{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix)));
+            player.setPlayerListHeader(Message.chat(AdminGUI.getInstance().getConf().getString("atl_header", "&a{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix).replace("{vault_prefix}", vault_prefix).replace("{vault_suffix}", vault_suffix)));
+            player.setPlayerListName(Message.chat(AdminGUI.getInstance().getConf().getString("atl_format", "&a{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix).replace("{vault_prefix}", vault_prefix).replace("{vault_suffix}", vault_suffix)));
+            player.setPlayerListFooter(Message.chat(AdminGUI.getInstance().getConf().getString("atl_footer", "&a{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix).replace("{vault_prefix}", vault_prefix).replace("{vault_suffix}", vault_suffix)));
         }
     }
 
