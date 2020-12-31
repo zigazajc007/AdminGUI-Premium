@@ -114,7 +114,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         }
 
         //Update Checker
-        if(getConf().getBoolean("uc_enabled", true)){
+        if(getConf().getBoolean("uc_enabled", true) && !Bukkit.getVersion().contains("1.8") && !Bukkit.getVersion().contains("1.9") && !Bukkit.getVersion().contains("1.10") && !Bukkit.getVersion().contains("1.11")){
             new UpdateChecker(this, 49).getVersion(updater_version -> {
                 if (!getDescription().getVersion().equalsIgnoreCase(updater_version)) new_version = updater_version;
                 info("&aEnabling");
