@@ -93,35 +93,35 @@ public class Permissions {
             if(AdminGUI.getInstance().getConf().getBoolean("mysql", false) && AdminGUI.getInstance().getConf().getInt("ap_storage_type", 0) == 2){
                 Database.setRank(uuid, name, rank);
                 if(uuid != null) Database.cacheRank(uuid);
-            }else{
-                if(uuid != null){
-                    if(rank.equals("default")){
+            }else {
+                if (uuid != null) {
+                    if (rank.equals("default")) {
                         AdminGUI.getInstance().getPlayers().set(uuid + ".rank", null);
-                    }else{
+                    } else {
                         AdminGUI.getInstance().getPlayers().set(uuid + ".name", name);
                         AdminGUI.getInstance().getPlayers().set(uuid + ".rank", rank);
                     }
 
-                    if(AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false) && AdminGUI.getInstance().getConf().getInt("ap_storage_type", 0) == 1){
+                    if (AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false) && AdminGUI.getInstance().getConf().getInt("ap_storage_type", 0) == 1) {
                         Channel.send("Console", "rank", uuid.toString(), name, rank);
                     }
-                }else{
+                } else {
                     boolean changed = false;
                     Set<String> con_sec = AdminGUI.getInstance().getPlayers().getConfigurationSection("").getKeys(false);
-                    for (String uuid_name : con_sec){
-                        if(AdminGUI.getInstance().getPlayers().getString(uuid_name + ".name").equals(name)){
+                    for (String uuid_name : con_sec) {
+                        if (AdminGUI.getInstance().getPlayers().getString(uuid_name + ".name").equals(name)) {
                             AdminGUI.getInstance().getPlayers().set(uuid_name + ".name", name);
                             AdminGUI.getInstance().getPlayers().set(uuid_name + ".rank", rank);
                             changed = true;
                             break;
                         }
                     }
-                    if(!changed){
+                    if (!changed) {
                         AdminGUI.getInstance().getPlayers().set(name + ".name", name);
                         AdminGUI.getInstance().getPlayers().set(name + ".rank", rank);
                     }
 
-                    if(AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false) && AdminGUI.getInstance().getConf().getInt("ap_storage_type", 0) == 1){
+                    if (AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false) && AdminGUI.getInstance().getConf().getInt("ap_storage_type", 0) == 1) {
                         Channel.send("Console", "rank", "null", name, rank);
                     }
                 }

@@ -168,13 +168,21 @@ public class PlayerPlaceholderMessageListener implements Listener {
                 String prefix = Permissions.getPrefix(p.getUniqueId());
                 String suffix = Permissions.getSuffix(p.getUniqueId());
 
+                //VaultAPI
+                String vault_prefix = "";
+                String vault_suffix = "";
+                if(AdminGUI.vault){
+                    vault_prefix = AdminGUI.getVaultChat().getPlayerPrefix(p);
+                    vault_suffix = AdminGUI.getVaultChat().getPlayerSuffix(p);
+                }
+
                 if (p.hasPermission("admingui.chat.color") || p.hasPermission("admingui.chat.colors")) {
                     if(Bukkit.getVersion().contains("1.16")) message = Colors.toHex(message);
                     event.setMessage(message);
-                    event.setFormat(Message.chat(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix).replace("{message}", message)));
+                    event.setFormat(Message.chat(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix).replace("{vault_prefix}", vault_prefix).replace("{vault_suffix}", vault_suffix).replace("{message}", message)));
                 } else {
                     event.setMessage(ChatColor.stripColor(message));
-                    event.setFormat(Message.chat(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix).replace("{message}", ChatColor.stripColor(message))));
+                    event.setFormat(Message.chat(chat_format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix).replace("{vault_prefix}", vault_prefix).replace("{vault_suffix}", vault_suffix).replace("{message}", ChatColor.stripColor(message))));
                 }
             }
 

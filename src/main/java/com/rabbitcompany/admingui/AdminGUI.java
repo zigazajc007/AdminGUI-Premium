@@ -114,7 +114,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         }
 
         //Update Checker
-        if(getConf().getBoolean("uc_enabled", true) && !Bukkit.getVersion().contains("1.8") && !Bukkit.getVersion().contains("1.9") && !Bukkit.getVersion().contains("1.10") && !Bukkit.getVersion().contains("1.11")){
+        if(getConf().getBoolean("uc_enabled", true)){
             new UpdateChecker(this, 49).getVersion(updater_version -> {
                 if (!getDescription().getVersion().equalsIgnoreCase(updater_version)) new_version = updater_version;
                 info("&aEnabling");
@@ -131,10 +131,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
 
         //VaultAPI
         if (getServer().getPluginManager().getPlugin("Vault") != null){
-            setupEconomy();
-            setupChat();
-            setupPermissions();
-            vault = true;
+            if(setupEconomy() && setupChat() && setupPermissions()) vault = true;
         }
 
         gui_type = getConf().getInt("gui_type", 0);
