@@ -80,7 +80,7 @@ public class Admin implements CommandExecutor {
                     String name = ChatColor.stripColor(args[1]);
                     Set<String> con_sec = AdminGUI.getInstance().getPlayers().getConfigurationSection("").getKeys(false);
                     for (String uuid_name : con_sec){
-                        if(AdminGUI.getInstance().getPlayers().getString(uuid_name + ".name").equals(name)){
+                        if(AdminGUI.getInstance().getPlayers().getString(uuid_name + ".name", "").equals(name)){
                             sender.sendMessage(Message.chat("&9"+ name + " stats:"));
                             sender.sendMessage(Message.chat("  &9UUID: &b" + uuid_name));
                             if(AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)){
@@ -90,8 +90,27 @@ public class Admin implements CommandExecutor {
                             for (String ip: AdminGUI.getInstance().getPlayers().getStringList(uuid_name + ".ips")) {
                                 ips.append(ip).append(", ");
                             }
-                            ips.delete(ips.length()-2, ips.length());
-                            sender.sendMessage(Message.chat("  &9IPs: &b" + ips.toString()));
+                            if(ips.length() >= 3){
+                                ips.delete(ips.length()-2, ips.length());
+                                sender.sendMessage(Message.chat("  &9IPs: &b" + ips.toString()));
+                            }else{
+                                sender.sendMessage(Message.chat("  &9IPs:&b none"));
+                            }
+                            StringBuilder alts = new StringBuilder();
+                            for (String uuid_name2 : con_sec){
+                                String alt_name = AdminGUI.getInstance().getPlayers().getString(uuid_name2 + ".name");
+                                for (String ip: AdminGUI.getInstance().getPlayers().getStringList(uuid_name2 + ".ips")) {
+                                    if(ips.toString().contains(ip) && !name.equals(alt_name) && !alts.toString().contains(alt_name)){
+                                        alts.append(alt_name).append(", ");
+                                    }
+                                }
+                            }
+                            if(alts.length() >= 3){
+                                alts.delete(alts.length()-2, alts.length());
+                                sender.sendMessage(Message.chat("  &9ALTs: &b" + alts.toString()));
+                            }else{
+                                sender.sendMessage(Message.chat("  &9ALTs:&b none"));
+                            }
                             sender.sendMessage(Message.chat("  &9Last Join: &b" + Database.date_format.format(new Date(AdminGUI.getInstance().getPlayers().getLong(uuid_name + ".lastJoin")))));
                             sender.sendMessage(Message.chat("  &9First Join: &b" + Database.date_format.format(new Date(AdminGUI.getInstance().getPlayers().getLong(uuid_name + ".firstJoin")))));
                             break;
@@ -389,8 +408,27 @@ public class Admin implements CommandExecutor {
                                 for (String ip: AdminGUI.getInstance().getPlayers().getStringList(uuid_name + ".ips")) {
                                     ips.append(ip).append(", ");
                                 }
-                                ips.delete(ips.length()-2, ips.length());
-                                player.sendMessage(Message.chat("  &9IPs: &b" + ips.toString()));
+                                if(ips.length() >= 3){
+                                    ips.delete(ips.length()-2, ips.length());
+                                    player.sendMessage(Message.chat("  &9IPs: &b" + ips.toString()));
+                                }else{
+                                    player.sendMessage(Message.chat("  &9IPs:&b none"));
+                                }
+                                StringBuilder alts = new StringBuilder();
+                                for (String uuid_name2 : con_sec){
+                                    String alt_name = AdminGUI.getInstance().getPlayers().getString(uuid_name2 + ".name");
+                                    for (String ip: AdminGUI.getInstance().getPlayers().getStringList(uuid_name2 + ".ips")) {
+                                        if(ips.toString().contains(ip) && !name.equals(alt_name) && !alts.toString().contains(alt_name)){
+                                            alts.append(alt_name).append(", ");
+                                        }
+                                    }
+                                }
+                                if(alts.length() >= 3){
+                                    alts.delete(alts.length()-2, alts.length());
+                                    player.sendMessage(Message.chat("  &9ALTs: &b" + alts.toString()));
+                                }else{
+                                    player.sendMessage(Message.chat("  &9ALTs:&b none"));
+                                }
                                 player.sendMessage(Message.chat("  &9Last Join: &b" + Database.date_format.format(new Date(AdminGUI.getInstance().getPlayers().getLong(uuid_name + ".lastJoin")))));
                                 player.sendMessage(Message.chat("  &9First Join: &b" + Database.date_format.format(new Date(AdminGUI.getInstance().getPlayers().getLong(uuid_name + ".firstJoin")))));
                                 break;

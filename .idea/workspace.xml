@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="Update checker not works from 1.8 to 1.11 and now Admin Chat support Vault prefix and suffix.">
+    <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/TargetPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/TargetPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/commands/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/commands/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/commands/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/commands/Admin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/utils/TargetPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/utils/TargetPlayer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -194,13 +196,6 @@
       <workItem from="1577725216137" duration="7109000" />
       <workItem from="1578348949962" duration="293000" />
       <workItem from="1578422894075" duration="968000" />
-    </task>
-    <task id="LOCAL-00077" summary="Added Slovak Language.">
-      <created>1592077598167</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1592077598167</updated>
     </task>
     <task id="LOCAL-00078" summary="Added Slovak Language.">
       <created>1592077968551</created>
@@ -538,7 +533,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609443520915</updated>
     </task>
-    <option name="localTasksCounter" value="126" />
+    <task id="LOCAL-00126" summary="Update checker not works from 1.8 to 1.11 and now Admin Chat and Admin TabList support Vault prefix and suffix.">
+      <created>1609453188046</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1609453188047</updated>
+    </task>
+    <option name="localTasksCounter" value="127" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -563,7 +565,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/LiteBansAPI" />
     </ignored-roots>
-    <MESSAGE value="Updated Russian language." />
     <MESSAGE value="Now you can customize tablist with Admin Tablist and clear chat with /adminchat clear" />
     <MESSAGE value="Added Finnish language." />
     <MESSAGE value="Fixed Finnish language." />
@@ -588,6 +589,7 @@
     <MESSAGE value="- Added update checker&#10;- Updated Russian translation&#10;- Added French language to downloader&#10;- Updated XMaterials&#10;- Created custom Pies for bStats" />
     <MESSAGE value="Update checker not works from 1.8 to 1.11." />
     <MESSAGE value="Update checker not works from 1.8 to 1.11 and now Admin Chat support Vault prefix and suffix." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update checker not works from 1.8 to 1.11 and now Admin Chat support Vault prefix and suffix." />
+    <MESSAGE value="Update checker not works from 1.8 to 1.11 and now Admin Chat and Admin TabList support Vault prefix and suffix." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update checker not works from 1.8 to 1.11 and now Admin Chat and Admin TabList support Vault prefix and suffix." />
   </component>
 </project>
