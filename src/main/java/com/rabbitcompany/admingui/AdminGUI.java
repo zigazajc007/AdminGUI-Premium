@@ -415,10 +415,14 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         String sender = in.readUTF();
         String subchannel = in.readUTF();
 
-        //Bukkit.getConsoleSender().sendMessage(Message.chat("&dSender: " + sender));
-        //Bukkit.getConsoleSender().sendMessage(Message.chat("&dSubchannel: " + subchannel));
-
         switch (subchannel){
+            case "chat":
+                if(getConf().getBoolean("bungeecord_enabled", false) && getConf().getBoolean("bungeecord_admin_chat", false)){
+                    Player player = Bukkit.getServer().getPlayer(sender);
+                    if(player == null || !player.isOnline())
+                        Bukkit.getServer().broadcastMessage(in.readUTF());
+                }
+                break;
             case "online_players":
                 String online_players = in.readUTF();
                 String[] op = online_players.split(";");

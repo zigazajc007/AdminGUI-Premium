@@ -84,7 +84,7 @@ ap_storage_type: 0
 #----------------------------------------------------------
 # Do you want Admin Staff Chat to be enabled?
 ac_enabled: false
-# Here you can set your own Admin Chat format (Valid tags are {name}, {display_name} and {message})
+# Here you can set your own Admin Chat format (Valid tags are {name}, {display_name}, {message} and {server_name})
 # If you have enabled Admin Permissions then you can use tags {prefix} and {suffix} to display player rank.
 # If you don't use Admin Permissions as your permission manager then you can use tags {vault_prefix} and {vault_suffix}
 ac_format: "&7{display_name} &7> {message}"
@@ -168,6 +168,12 @@ freeze_admin_chat: "staffchat"
 #----------------------------------------------------------
 # If you enable bungeecord you will have control over other players on other servers.
 bungeecord_enabled: false
+# If bungeecord Admin Chat is enabled, messages will be send on every server that is connected to bungeecord and has this feature enabled. (Require AdminGUIBungee)
+bungeecord_admin_chat: false
+# Here you can set your own Bungeecord Admin Chat format (Valid tags are {name}, {display_name}, {message} and {server_name})
+# If you have enabled Admin Permissions then you can use tags {prefix} and {suffix} to display player rank.
+# If you don't use Admin Permissions as your permission manager then you can use tags {vault_prefix} and {vault_suffix}
+bungeecord_admin_chat_format: "&7[{server_name}] &7{display_name} &7> {message}"
 # You can write what ever you want in server_name, but 2 servers can't have the same name. (I suggest the same names as in bungeecord config file)
 server_name: "Lobby"
 # If control_type is set to 0, then you will be teleported on the same server as target player is located.

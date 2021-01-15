@@ -3,6 +3,7 @@ package com.rabbitcompany.admingui.listeners;
 import com.rabbitcompany.adminbans.AdminBansAPI;
 import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
+import com.rabbitcompany.admingui.utils.Channel;
 import com.rabbitcompany.admingui.utils.Colors;
 import com.rabbitcompany.admingui.utils.Message;
 import com.rabbitcompany.admingui.utils.Permissions;
@@ -72,9 +73,7 @@ public class PlayerMessageListener implements Listener {
                 }
 
                 if(Bukkit.getServer().getPluginManager().getPlugin("AdminBans") != null){
-                    if(AdminBansAPI.isPlayerMuted(event.getPlayer().getUniqueId(), AdminBansAPI.server_name)){
-                        return;
-                    }
+                    if(AdminBansAPI.isPlayerMuted(event.getPlayer().getUniqueId(), AdminBansAPI.server_name)) return;
                 }
 
                 if (!p.hasPermission("admingui.chat.color") && !p.hasPermission("admingui.chat.colors")) {
@@ -169,13 +168,18 @@ public class PlayerMessageListener implements Listener {
                     vault_suffix = AdminGUI.getVaultChat().getPlayerSuffix(p);
                 }
 
-                if(p.hasPermission("admingui.chat.color") || p.hasPermission("admingui.chat.colors")){
-                    if(Bukkit.getVersion().contains("1.16")) message = Colors.toHex(message);
-                    event.setMessage(message);
-                    event.setFormat(Message.chat(adminGUI.getConf().getString("ac_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix).replace("{vault_prefix}", vault_prefix).replace("{vault_suffix}", vault_suffix).replace("{message}", message)));
-                }else{
-                    event.setMessage(ChatColor.stripColor(message));
-                    event.setFormat(Message.chat(adminGUI.getConf().getString("ac_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{prefix}", prefix).replace("{suffix}", suffix).replace("{vault_prefix}", vault_prefix).replace("{vault_suffix}", vault_suffix).replace("{message}", ChatColor.stripColor(message))));
+                message = Colors.toHex(message);
+
+                String format = Colors.toHex(Message.chat(adminGUI.getConf().getString("ac_format", "&7{display_name} &7> {message}").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{server_name}", adminGUI.getConf().getString("server_name", "Default")).replace("{prefix}", prefix).replace("{suffix}", suffix).replace("{vault_prefix}", vault_prefix).replace("{vault_suffix}", vault_suffix)));
+
+                if (!p.hasPermission("admingui.chat.color") && !p.hasPermission("admingui.chat.colors")) message = ChatColor.stripColor(message);
+
+                event.setMessage(message);
+                event.setFormat(format.replace("{message}", message));
+
+                if(adminGUI.getConf().getBoolean("bungeecord_enabled", false) && adminGUI.getConf().getBoolean("bungeecord_admin_chat", false)) {
+                    String bungee_format = Colors.toHex(Message.chat(adminGUI.getConf().getString("bungeecord_admin_chat_format", "&7[{server_name}] &7{display_name} &7> {message}").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{server_name}", adminGUI.getConf().getString("server_name", "Default")).replace("{prefix}", prefix).replace("{suffix}", suffix).replace("{vault_prefix}", vault_prefix).replace("{vault_suffix}", vault_suffix)));
+                    Channel.send(p.getName(), "chat", bungee_format.replace("{message}", message));
                 }
             }
         }

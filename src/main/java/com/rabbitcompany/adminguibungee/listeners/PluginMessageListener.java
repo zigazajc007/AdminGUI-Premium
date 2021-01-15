@@ -28,6 +28,10 @@ public class PluginMessageListener implements Listener {
                         String target = input.readUTF();
                         AdminGUIBungee.getInstance().getProxy().getPlayer(sender).connect(AdminGUIBungee.getInstance().getProxy().getPlayer(target).getServer().getInfo());
                         break;
+                    case "chat":
+                        String message = input.readUTF();
+                        Channel.sendToAllServers(sender, "chat", message);
+                        break;
                     case "send":
                         String action = input.readUTF();
                         switch (action){
