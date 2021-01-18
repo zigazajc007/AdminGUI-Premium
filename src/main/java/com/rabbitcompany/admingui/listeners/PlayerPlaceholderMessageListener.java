@@ -79,6 +79,21 @@ public class PlayerPlaceholderMessageListener implements Listener {
                     if(AdminBansAPI.isPlayerMuted(event.getPlayer().getUniqueId(), AdminBansAPI.server_name)) return;
                 }
 
+                if(adminGUI.getConf().getDouble("ac_delay", 0) > 0 && !p.hasPermission("admingui.chat.delay.bypass")){
+                    long last_message_send = AdminUI.admin_chat_delay.getOrDefault(p.getUniqueId(), 0L);
+                    if(last_message_send != 0L){
+                        if(last_message_send + (adminGUI.getConf().getDouble("ac_delay", 0) * 1000) >= System.currentTimeMillis()){
+                            event.setCancelled(true);
+                            p.sendMessage(Message.chat(adminGUI.getConf().getString("ac_delay_message", "&cYou need to wait {seconds} seconds to sent another message!").replace("{seconds}", ""+adminGUI.getConf().getString("ac_delay", "0"))));
+                            return;
+                        }else{
+                            AdminUI.admin_chat_delay.put(p.getUniqueId(), System.currentTimeMillis());
+                        }
+                    }else{
+                        AdminUI.admin_chat_delay.put(p.getUniqueId(), System.currentTimeMillis());
+                    }
+                }
+
                 if (!p.hasPermission("admingui.chat.color") && !p.hasPermission("admingui.chat.colors")) {
                     message = message.replace("&", "");
                 }
@@ -184,7 +199,7 @@ public class PlayerPlaceholderMessageListener implements Listener {
 
                 if(adminGUI.getConf().getBoolean("bungeecord_enabled", false) && adminGUI.getConf().getBoolean("bungeecord_admin_chat", false)) {
                     String bungee_format = PlaceholderAPI.setPlaceholders(p, Colors.toHex(Message.chat(adminGUI.getConf().getString("bungeecord_admin_chat_format", "&7[{server_name}] &7{display_name} &7> {message}").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{server_name}", adminGUI.getConf().getString("server_name", "Default")).replace("{prefix}", prefix).replace("{suffix}", suffix).replace("{vault_prefix}", vault_prefix).replace("{vault_suffix}", vault_suffix))));
-                    Channel.send(p.getName(), "chat", bungee_format.replace("{message}", message));
+                    Channel.send(p.getUniqueId().toString(), "chat", bungee_format.replace("{message}", message));
                 }
             }
 
