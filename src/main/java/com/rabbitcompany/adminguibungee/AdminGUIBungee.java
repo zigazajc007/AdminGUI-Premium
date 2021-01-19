@@ -1,6 +1,7 @@
 package com.rabbitcompany.adminguibungee;
 
 import com.rabbitcompany.adminguibungee.listeners.PluginMessageListener;
+import com.rabbitcompany.adminguibungee.listeners.ServerKickListener;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
@@ -16,6 +17,9 @@ public class AdminGUIBungee extends Plugin {
 
     private static AdminGUIBungee instance;
 
+    public static Configuration config = null;
+    public static Configuration bungee_config = null;
+
     String username = "%%__USERNAME__%%";
     String user_id = "%%__USER__%%";
 
@@ -23,7 +27,17 @@ public class AdminGUIBungee extends Plugin {
     public void onEnable() {
         instance = this;
         getProxy().registerChannel("my:admingui");
+
+        try {
+            bungee_config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(new File("config.yml"));
+            mkdir();
+            config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(new File(getDataFolder(),"config.yml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         getProxy().getPluginManager().registerListener(this, new PluginMessageListener());
+        if(config.getBoolean("fallback_server_enabled", false)) getProxy().getPluginManager().registerListener(this, new ServerKickListener());
 
         info(ChatColor.GREEN + "Enabled");
     }
@@ -31,6 +45,23 @@ public class AdminGUIBungee extends Plugin {
     @Override
     public void onDisable() {
         info(ChatColor.RED + "Disabled");
+    }
+
+    void mkdir(){
+        if (!getDataFolder().exists()) getDataFolder().mkdir();
+
+        File file = new File(getDataFolder(), "config.yml");
+
+        if (!file.exists()) {
+            try (InputStream in = getResourceAsStream("bungee_config.yml")) {
+                Files.copy(in, file.toPath());
+                config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(new File(getDataFolder(),"config.yml"));
+                config.set("fallback_server_list", bungee_config.getSection("servers").getKeys().toArray());
+                ConfigurationProvider.getProvider(YamlConfiguration.class).save(config, new File(getDataFolder(), "config.yml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public static AdminGUIBungee getInstance(){

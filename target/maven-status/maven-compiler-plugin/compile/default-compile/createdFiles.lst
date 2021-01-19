@@ -41,6 +41,7 @@ com/rabbitcompany/admingui/listeners/PlayerBlockPlaceListener.class
 com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_9.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_10.class
 com/rabbitcompany/admingui/listeners/PlayerCommandListener.class
+com/rabbitcompany/adminguibungee/listeners/ServerKickListener.class
 com/rabbitcompany/admingui/listeners/PlayerPlaceholderMessageListener.class
 com/rabbitcompany/admingui/utils/Fireworks.class
 com/rabbitcompany/admingui/Metrics$MultiLineChart.class

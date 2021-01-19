@@ -222,6 +222,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
 
     @Override
     public void onDisable() {
+
         info("&4Disabling");
 
         //DiscordSRV
