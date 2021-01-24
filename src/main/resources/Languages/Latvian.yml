@@ -1,0 +1,386 @@
+#       ----------- + AdminGUI by Ziga Zajc + -----------   #
+#                                                           #
+#                           Latviski                        #
+#                    Translated by ShooxyLV                 #
+#       --------- + ------------------------- + ---------   #
+#
+#       Vari izmantot čata krāsas:
+#                ________________________
+#               |   Kods: | Krāsa:       |
+#               |________________________|
+#               |     &0  |	Melna	     |
+#               |     &1  |	Tumši zila	 |
+#               |     &2  |	Tumši zaļa   |
+#               |     &3  |	Tumša tirkīza|
+#               |     &4  |	Tumši Sarkana|
+#               |     &5  |	Tumši violeta|
+#               |     &6  |	Zelta	     |
+#               |     &7  |	Pelēka	     |
+#               |     &8  |	Tumši pelēka |
+#               |     &9  |	Zila	     |
+#               |     &a  |	Zaļa	     |
+#               |     &b  |	Tirkīza	     |
+#               |     &c  |	Sarkana      |
+#               |     &d  |	Gaiši violeta|
+#               |     &e  |	Dzeltena     |
+#               |     &f  |	Balta	     |
+#               |     &k  |	Šifrēts 	 |
+#               |     &l  |	Biezs	     |
+#               |     &m  |	Nosvītrots   |
+#               |     &n  |	Pasvītrots	 |
+#               |     &o  |	Itāliski     |
+#               |     &r  |	Atjaunot     |
+#               |________________________|
+#
+#----------------------------------------------------------
+#                         Prefix
+#----------------------------------------------------------
+prefix: "&7[&cAdministrācijas GUI&7] "
+#----------------------------------------------------------
+#----------------------------------------------------------
+#                       Komandas
+#----------------------------------------------------------
+permission: "&cTev nav atļaujas šo darīt!"
+is_not_a_player: "&c{player} nav spēlētājs!"
+is_not_a_number: "&c{number} nav skaitlis!"
+wrong_arguments: "&cTu vari tikai izmantot /admin vai /admin <spēlētājs>"
+wrong_chat_arguments: "&cTu vari tikai izmantot /adminchat mute"
+wrong_initialize: "&cTu vari tikai izmantot /admin initialize gui vai /admin initialize players"
+wrong_rank_arguments: "&cTu vari tikai izmantot /admin rank set <spēlētājs> <ranks> vai /admin rank <up/down> <spēlētājs>"
+wrong_check_arguments: "&c Tu tikai vari izmantot /admin check <spēlētājs>"
+vault_required: "&cServerī nav instalēts Vault paplašinājums lai veiktu šo darbību!"
+vanish_required: "&cServerī nav instalēts Super Vanish vai Premium Vanish lai veiktu šo darbību!"
+#----------------------------------------------------------
+#                    Sadaļu nosaukumi
+#----------------------------------------------------------
+inventory_main: "&4&lAdministrācijas GUI &c&lPremium"
+inventory_player: "&5&l{player}"
+inventory_world: "&2&lPasaule"
+inventory_players: "&1&lSpēlētāji"
+inventory_plugins: "&e&lPaplašinājumi"
+inventory_commands: "&2&lKomandas"
+inventory_unban: "&c&lAtbloķēt"
+inventory_unmute: "&c&lNoņemt runāšanas aizliegumu"
+inventory_actions: "&9&lDarbības &2&l{player}"
+inventory_kick: "&8&lIzmest &2&l{player}"
+inventory_ban: "&8&lNobloķēt &2&l{player}"
+inventory_potions: "&c&lDziras &2&l{player}"
+inventory_spawner: "&8&lSpawner &2&l{player}"
+inventory_money: "&2&lNauda &2&l{player}"
+inventory_money_give: "&2&lNaudu IEDOT {player}"
+inventory_money_set: "&2&lNaudu&9&l UZSTĀDĪT &2&l{player}"
+inventory_money_take: "&2&lNaudu&c&l PAŅEMT &2&l{player}"
+inventory_inventory: "&a&lInventorijs &2&l{player}"
+#----------------------------------------------------------
+#                       Administrācijas GUI
+#----------------------------------------------------------
+main_player: "&5&l{player}"
+main_world: "&2&lPasaule"
+main_players: "&9&lSpēlētāji"
+main_plugins: "&6&lPaplašinājumi"
+main_maintenance_mode: "&c&lRemontdarbu režīms"
+main_unban_players: "&c&lAtbloķēt/Noņemt runāšanas aizliegumu"
+main_language: "&b&l"
+main_quit: "&c&lIziet"
+#----------------------------------------------------------
+#                      Spēlētāja GUI
+#----------------------------------------------------------
+player_info: "&2&l{player}"
+player_heal: "&e&lAtjaunot dzīvību"
+player_feed: "&7&lAtjaunot izsalkumu"
+player_survival: "&a&lIzdzīvošanas režīms"
+player_adventure: "&2&lPiedzīvojumu režīms"
+player_creative: "&3&lRadošais režīms"
+player_spectator: "&9&lSkatītāja režīms"
+player_god_enabled: "&c&lDievs"
+player_god_disabled: "&a&lDievs"
+player_potions: "&c&lDziras"
+player_spawner: "&8&lSpawner"
+player_kill: "&8&lNogalināt"
+player_burn: "&c&lAizdedzināt"
+player_lightning: "&5&lZibens"
+player_firework: "&4&lRaķete"
+player_money: "&2&lNauda"
+player_vanish_enabled: "&a&lNeredzamība"
+player_vanish_disabled: "&c&lNeredzamība"
+player_custom: "&6&lNestandarta komandas"
+player_chat_color: "&3&lČata &6&lKrāsa"
+player_back: "&c&lAtpakaļ"
+#----------------------------------------------------------
+#                       Pasaules GUI
+#----------------------------------------------------------
+world_day: "&e&lDiena"
+world_night: "&8&lNakts"
+world_thunder: "&9&lPērkona negaiss"
+world_rain: "&3&lLietus"
+world_clear: "&b&lSkaidrs"
+world_back: "&c&lAtpakaļ"
+#----------------------------------------------------------
+#                     Spēlētāja GUI
+#----------------------------------------------------------
+players_color: "&2&l{player}"
+players_more: "&cNospied šeit lai iegūtu vairāk darbības"
+players_previous: "&c&lIepriekšējais"
+players_page: "&a&lLapa"
+players_next: "&2&lNākamais"
+players_back: "&c&lAtpakaļ"
+#----------------------------------------------------------
+#                     Paplašinājumu GUI
+#----------------------------------------------------------
+plugins_back: "&c&lAtpakaļ"
+#----------------------------------------------------------
+#                     Komandu GUI
+#----------------------------------------------------------
+commands_back: "&c&lAtpakaļ"
+#----------------------------------------------------------
+#                     Atbloķēšanas GUI
+#----------------------------------------------------------
+unban_color: "&2&l{player}"
+unban_more: "&cSpied šeit lai atbloķētu šo spēlētāju"
+unban_previous: "&c&lIepriekšējais"
+unban_page: "&a&lLapa"
+unban_next: "&2&lNākamais"
+unban_back: "&c&lAtpakaļ"
+#----------------------------------------------------------
+#                 Runāšanas aizlieguma GUI
+#----------------------------------------------------------
+unmute_color: "&2&l{player}"
+unmute_more: "&cSpied šeit lai atļautu šim spēlētājam runāt"
+unmute_previous: "&c&lIepriekšējais"
+unmute_page: "&a&lLapa"
+unmute_next: "&2&lNākamais"
+unmute_back: "&c&lAtpakaļ"
+#----------------------------------------------------------
+#                 Spēlētāja iestatījumu GUI
+#----------------------------------------------------------
+players_settings_info: "&2&l{player}"
+players_settings_actions: "&9&lDarbības"
+players_settings_money: "&2&lNauda"
+players_settings_kick_player: "&8&lIzmest spēlētāju"
+players_settings_ban_player: "&8&lNobloķēt spēlētāju"
+players_settings_back: "&c&lAtpakaļ"
+#----------------------------------------------------------
+#                   Darbību GUI
+#----------------------------------------------------------
+actions_heal: "&e&lAtjaunot dzīvības"
+actions_feed: "&7&lAtjaunot izsalkumu"
+actions_info: "&2&l{player}"
+actions_survival: "&a&lIzdzīvošanas režīms"
+actions_adventure: "&2&lPiedzīvojumu režīms"
+actions_creative: "&3&lRadošais režīms"
+actions_spectator: "&9&lSkatītāja režīms"
+actions_teleport_to_player: "&d&lTeleportēties pie spēlētāja"
+actions_kill_player: "&8&lNogalināt  spēlētāju"
+actions_burn_player: "&c&lAizdedzināt spēlētāju"
+actions_teleport_player_to_you: "&d&lTeleportēt spēlētāju pie tevis"
+actions_god_enabled: "&c&lDievs"
+actions_god_disabled: "&a&lDievs"
+actions_potions: "&c&lDziras"
+actions_spawner: "&8&lSpawneris"
+actions_inventory: "&a&lInventorijs"
+actions_vanish_enabled: "&a&lIzgaist"
+actions_vanish_disabled: "&c&lParādīties"
+actions_lightning: "&5&lZibens"
+actions_firework: "&4&lRaķete"
+actions_fakeop: "&c&lViltus OP"
+actions_custom: "&6&lNestandarta komandas"
+actions_chat_color: "&3&lČata &6&lKrāsa"
+actions_freeze_enabled: "&b&lSasaldēts"
+actions_freeze_disabled: "&c&lAtsaldēts"
+actions_back: "&c&lAtpakaļ"
+#----------------------------------------------------------
+#                       Izmešanas GUI
+#----------------------------------------------------------
+kick: "&4Tu tiki izmests par "
+kick_back: "&c&lAtpakaļ"
+#----------------------------------------------------------
+#                       Bloķēšanas GUI
+#----------------------------------------------------------
+ban_time: "&4Tu esi bloķēts par {reason}\n&cTu tiksi atbloķēts pēc &c&l{time}"
+ban_perm: "&4Tu esi neatgriezeniski bloķēts par {reason}"
+ban_years: "&e&lGadi"
+ban_months: "&e&lMēneši"
+ban_days: "&e&lDienas"
+ban_hours: "&e&lStundas"
+ban_minutes: "&e&lMinūtes"
+ban_hacking: "&7&lAizliegtas palīgprogrammas!"
+ban_griefing: "&6&lDemolēšana!"
+ban_spamming: "&d&lSpamošana!"
+ban_advertising: "&3&leReklamēšanās!"
+ban_swearing: "&e&lNecenzēta leksika!"
+ban_silence_disabled: "&c&lKlusums"
+ban_silence_enabled: "&a&lKlusums"
+ban_back: "&c&lAtpakaļ"
+#----------------------------------------------------------
+#                     Dziru GUI
+#----------------------------------------------------------
+potions_night_vision: "&8&lNakts redze"
+potions_invisibility: "&7&lNeredzamība"
+potions_jump_boost: "&a&lAugstāks lēciens"
+potions_fire_resistance: "&c&lUguns izturība"
+potions_speed: "&b&lĀtrums"
+potions_slowness: "&4&lLēnums"
+potions_water_breathing: "&9&lZemūdens elpošana"
+potions_instant_health: "&a&lTūlītēja dzīvība"
+potions_instant_damage: "&4&lTūlītēji bojājumi"
+potions_poison: "&5&lInde"
+potions_regeneration: "&e&lReģenerācija"
+potions_strength: "&e&lSpēks"
+potions_weakness: "&4&lVājums"
+potions_luck: "&6&lVeiksme"
+potions_slow_falling: "&3&lLēna Krišana"
+potions_time: "&a&lLaiks"
+potions_remove_all: "&4&lNoņemt visas"
+potions_level: "&a&lLīmenis"
+potions_back: "&c&lAtpakaļ"
+#----------------------------------------------------------
+#                     Spawneru GUI
+#----------------------------------------------------------
+spawner_bat: "&a&lSikspārnis"
+spawner_bee: "&6&lBite"
+spawner_blaze: "&c&lBlaze"
+spawner_cat: "&a&lKaķis"
+spawner_cave_spider: "&c&lAlu zirneklis"
+spawner_chicken: "&a&lVista"
+spawner_cod: "&b&lMenca"
+spawner_cow: "&a&lGovs"
+spawner_creeper: "&c&lKrīpers"
+spawner_dolphin: "&b&lDelfīns"
+spawner_donkey: "&a&lĒzelis"
+spawner_drowned: "&c&lNoslīkušie"
+spawner_elder_guardian: "&c&lVecākais Guardian"
+spawner_enderman: "&c&lEnderman"
+spawner_endermite: "&c&lEndermite"
+spawner_evoker: "&c&lEvoker"
+spawner_fox: "&a&lLapsa"
+spawner_ghast: "&c&lSpoks"
+spawner_guardian: "&c&lGuardian"
+spawner_horse: "&a&lZirgs"
+spawner_husk: "&c&lHusk"
+spawner_llama: "&a&Lama"
+spawner_magma_cube: "&c&lMagma Cube"
+spawner_mooshroom: "&a&lMooshroom"
+spawner_mule: "&a&lMule"
+spawner_ocelot: "&a&lKaķis"
+spawner_panda: "&a&lPanda"
+spawner_parrot: "&a&lPapagailis"
+spawner_phantom: "&c&lPhantom"
+spawner_pig: "&a&lCūka"
+spawner_pillager: "&c&lPillager"
+spawner_polar_bear: "&a&lPolārlācis"
+spawner_pufferfish: "&b&lPufferfish"
+spawner_rabbit: "&a&lTrusis"
+spawner_ravager: "&c&lRavager"
+spawner_salmon: "&b&lLasis"
+spawner_sheep: "&a&lAita"
+spawner_shulker: "&c&lShulker"
+spawner_silverfish: "&c&lSilverfish"
+spawner_skeleton: "&c&lSkelets"
+spawner_skeleton_horse: "&c&lSkeletu zirgs"
+spawner_slime: "&c&lSlime"
+spawner_spider: "&c&lZirneklis"
+spawner_squid: "&b&lKalmārs"
+spawner_stray: "&c&lStray"
+spawner_trader_llama: "&a&lTirgotāja lama"
+spawner_tropical_fish: "&b&lTropiskās zivis"
+spawner_turtle: "&a&lBruņurupucis"
+spawner_vex: "&c&lVex"
+spawner_villager: "&a&lIedzīvotājs"
+spawner_vindicator: "&c&lVindicator"
+spawner_wandering_trader: "&a&lCeļojošais tirgotājs"
+spawner_witch: "&c&lRagana"
+spawner_wither: "&c&lWither"
+spawner_wolf: "&a&lVilks"
+spawner_zombie: "&c&lZombijs"
+spawner_zombie_pigman: "&c&lZombie Pigman"
+spawner_zombie_villager: "&c&lZombiju iedzīvotājs"
+spawner_back: "&c&lAtpakaļ"
+#----------------------------------------------------------
+#                      Naudas GUI
+#----------------------------------------------------------
+money_give: "&2&lIedot"
+money_set: "&9&lUzstādīt"
+money_take: "&c&lPaņemt"
+money_back: "&c&lAtpakaļ"
+#----------------------------------------------------------
+#                      Naudas daudzuma GUI
+#----------------------------------------------------------
+money_amount_back: "&c&lAtpakaļ"
+#----------------------------------------------------------
+#                    Inventorija GUI
+#----------------------------------------------------------
+inventory_refresh: "&a&lAtjaunot"
+inventory_clear: "&b&lIztīrīt"
+inventory_back: "&c&lAtpakaļ"
+#----------------------------------------------------------
+#                       Paziņojumi
+#----------------------------------------------------------
+message_target_player_teleport: "&aTu tiki teleportēts pie spēlētāja {player}."
+message_player_kill: "&aTu nogalināji {player}."
+message_player_burn: "&aTu &caizdedzināji&a spēlētāju {player}!"
+message_target_player_creeper: "&a&lCreeper, Aww Man!"
+message_player_creeper: "&aUz tevis tika radīts krīpers {player}."
+message_target_player_heal: "&e{player} izdziedēja tevi."
+message_player_heal: "&aTu izdziedēji {player}."
+message_target_player_feed: "&e{player} pabaroja tevi."
+message_player_feed: "&aTu pabaroji spēlētāju {player}."
+message_player_kick: "&a{player} tika izmests dēļ {reason}"
+message_player_ban: "&a{player} tika bloķēts dēļ {reason}"
+message_player_mute: "&a{player} tika apklusināts dēļ {reason}"
+message_player_god_enabled: "&a{player} tagad ir DIEVA režīmā."
+message_player_god_disabled: "&a{player} vairs nav DIEVA režīmā."
+message_target_player_god_enabled: "&a{player} ieslēdza tev DIEVA režīmu."
+message_target_player_god_disabled: "&a{player} izslēdza tev DIEVA režīmu."
+message_target_player_potions: "&a{player} iedeva tev {potion}&a efektu uz {time} minūtēm."
+message_player_potions: "&aTu tikko iedevi {player} {potion}&a efektu uz {time} minūtem."
+message_target_player_potions_remove: "&a{player} &cnoņēma &avisus tavu dziru efektus."
+message_player_potions_remove: "&aTu tikko noņēmi visus spēlētāja {player} dziru efektus."
+message_heal: "&aTu tiki izdziedēts."
+message_feed: "&aTu tiki pabarots."
+message_god_enabled: "&aTu ieslēdzi DIEVA režīmu."
+message_god_disabled: "&aTu izslēdzi DIEVA režīmu."
+message_kill: "&cTu izdarīji pašnāvību."
+message_burn: "&cTu sevi aizdedzināji."
+message_potions_remove: "&aTu noņēmi visus savus effektus."
+message_potions: "&aTu iestatīji sev {potion}&a efektu uz {time} minūtēm."
+message_maintenance: "&aServerī tagad notiek &cRemontdarbi&a. Atgriezies vēlāk."
+message_maintenance_enabled: "&aRemontdarbu režīms tagad ir &a&lIeslēgts."
+message_maintenance_disabled: "&aRemontdarbu režīms tagad ir &c&lIzslēgts."
+message_player_not_found: "&cSpēlētājs pašlaik nav pieejams!"
+message_ban_bypass: "&cTu nevari nobloķēt šo spēlētāju!"
+message_kick_bypass: "&cTu nevari izmest šo spēlētāju!"
+message_give: "&aTu nosūtiji {amount} sev, tagad tev ir {balance}."
+message_player_give: "&aTu iedevi {amount} spēlētājam {player}, tagad viņam ir {balance}."
+message_target_player_give: "&a{player} atsūtija tev {amount}, tagad tev ir {balance}."
+message_set: "&aTu tikko sev iestatīji naudu uz {amount}."
+message_player_set: "&aTu tikko iestatīji spēlētāja {player} naudu uz {amount}."
+message_target_player_set: "&a{player} iestatīja tavu naudu uz {amount}."
+message_take: "&aTu paņēmi {amount} no sevis, tagad tev ir {balance}."
+message_player_take: "&aTu paņēmi {amount} no {player} un tagad viņam ir {balance}."
+message_target_player_take: "&c{player} paņēma {amount}, tagad tev ir {balance}."
+message_transaction_error: "&cKautkas nogāja greizi ar pārskaitījumu!"
+message_take_error: "&cTu nevari paņemt vairāk naudas kā tevi ir!"
+message_player_take_error: "&cTu nevari paņemt vairāk naudas kā ir spēlētājam!"
+message_visible: "&aTu tagad esi&a&l redzams&a citiem spēlētājiem."
+message_player_visible: "&a{player} tagad ir&a&l redzams&a citiem spēlētājiem."
+message_hide: "&aTu tagad esi&c&l paslēpts&a no citiem spēlētājiem."
+message_player_hide: "&a{player} tagad ir&c&l paslēpts&a no citiem spēlētājiem."
+message_unban_player: "&a{player} ir atbloķēts."
+message_unmute_player: "&a{player} tagad var runāt."
+message_initializing_start: "&aPaplašinājums lādējas..."
+message_initializing_finish: "&aGUI ir gatavs izmantošanai."
+message_already_initializing: "&cGUI jau lādējas..."
+message_reload_start: "&aPaplašinājums atjaunojas..."
+message_reload_finish: "&aPaplašinājums tika atjaunots!"
+message_enabled: "&a{name} tika ieslēgts"
+message_disabled: "&c{name} tika izslēgts"
+message_admin_chat_enabled: "&aAdministrācijas čats ir ieslēgts"
+message_admin_chat_disabled: "&cAdministrācijas čats ir izslēgts"
+message_admin_chat_mute: "&aČats tika apklusināts."
+message_admin_chat_unmute: "&aČats tagad var runāt."
+message_admin_chat_muted: "&cTu nevari runāt kamēr čats ir apklusināts."
+message_admin_chat_clear: "&aČatu notīrija {player}"
+message_admin_chat_server_disabled: "&cAdministrācijas čats ir izslēgts šajā serverī."
+message_freeze_enabled: "&a{player} &bsasaldēja tevi!"
+message_freeze_disabled: "&a{player} &batsaldēja tevi!"
+message_admin_rank: "&a{player} tagad ir {rank}."
