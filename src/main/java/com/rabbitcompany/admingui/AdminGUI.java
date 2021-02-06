@@ -144,9 +144,8 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
 
         //Listeners
         new InventoryClickListener(this);
-        if(Bukkit.getVersion().contains("1.8")) {
-            new PlayerDamageListener(this);
-        }
+        if(Bukkit.getVersion().contains("1.8")) new PlayerDamageListener(this);
+
         new PlayerJoinListener(this);
         new PlayerLeaveListener(this);
         new PlayerLoginListener(this);
@@ -164,6 +163,8 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
             new PlayerMessageListener(this);
             new PlayerCommandListener(this);
         }
+
+        if(getConf().getBoolean("motd_changer_enabled", false)) new ServerListPingListener(this);
 
         //Freeze
         new PlayerMoveListener(this);
@@ -344,14 +345,6 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
     public YamlConfiguration getComm() { return this.comm; }
 
     public YamlConfiguration getComo() { return this.como; }
-
-    public void savePermissions() {
-        try {
-            this.perm.save(this.pe);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void savePlayers(){
         try {

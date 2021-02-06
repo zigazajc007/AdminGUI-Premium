@@ -50,6 +50,7 @@ com/rabbitcompany/admingui/utils/Channel.class
 com/rabbitcompany/admingui/utils/Item.class
 com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_15.class
 com/rabbitcompany/admingui/listeners/PlayerMessageListener.class
+com/rabbitcompany/admingui/listeners/ServerListPingListener.class
 com/rabbitcompany/admingui/listeners/InventoryClickListener.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_9.class
 com/rabbitcompany/admingui/utils/MutedPlayerIn.class

@@ -3,6 +3,7 @@ package com.rabbitcompany.admingui.listeners;
 import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Channel;
+import com.rabbitcompany.admingui.utils.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,6 +21,14 @@ public class PlayerLeaveListener implements Listener {
 
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent event){
+
+        if(adminGUI.getConf().getBoolean("cjlm_enabled", true)){
+            if(adminGUI.getConf().getString("leave_message", "&7[&4-&7] &6{display_name}") != null){
+                event.setQuitMessage(Message.chat(adminGUI.getConf().getString("leave_message", "&7[&4-&7] &6{display_name}").replace("{name}", event.getPlayer().getName()).replace("{display_name}", event.getPlayer().getDisplayName())));
+            }else{
+                event.setQuitMessage(null);
+            }
+        }
 
         if(AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false)){
             Channel.send(event.getPlayer().getName(),"send", "online_players");

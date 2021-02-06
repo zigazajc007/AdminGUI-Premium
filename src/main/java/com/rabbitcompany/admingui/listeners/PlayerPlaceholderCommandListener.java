@@ -28,6 +28,18 @@ public class PlayerPlaceholderCommandListener implements Listener {
         Player p = event.getPlayer();
         String message = event.getMessage();
 
+        if(adminGUI.getConf().getBoolean("command_disabler_enabled", false)){
+            if(adminGUI.getConf().getConfigurationSection("disabled_commands") != null){
+                for(String command : adminGUI.getConf().getConfigurationSection("disabled_commands").getValues(false).keySet()){
+                    if(command.equals(message.split(" ")[0])){
+                        p.sendMessage(Message.chat(adminGUI.getConf().getString("disabled_commands." + command, Message.getMessage(p.getUniqueId(), "permission"))));
+                        event.setCancelled(true);
+                        return;
+                    }
+                }
+            }
+        }
+
         if(AdminUI.freeze.getOrDefault(p.getUniqueId(), false) && AdminGUI.getInstance().getConf().getBoolean("freeze_execute_commands", true)){
             event.setCancelled(true);
             return;

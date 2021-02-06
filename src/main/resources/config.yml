@@ -62,7 +62,34 @@ uc_notify: "&aNew update is available. Please update me to &b{version}&a."
 # if uc_send_type is set to 1 then console and players with admingui.admin permission will be notified when update is available. (Default and recommended)
 uc_send_type: 1
 #----------------------------------------------------------
-#                       Admin Tools
+#             Custom Join / Leave message
+#----------------------------------------------------------
+# Do you want custom join / leave message to be enabled?
+cjlm_enabled: false
+# Here you can set your own join message format (Valid tags are {name} and {display_name}) or null for no join message
+join_message: "&7[&a+&7] &6{display_name}"
+# Here you can set your own leave message format (Valid tags are {name} and {display_name}) or null for no leave message
+leave_message: "&7[&4-&7] &6{display_name}"
+#----------------------------------------------------------
+#                   Custom MOTD changer
+#----------------------------------------------------------
+# Do you want custom MOTD changer to be enabled?
+motd_changer_enabled: false
+# Here you can set the message that will be displayed in MOTD.
+motd_changer_motd: "&6&lWelcome to my server"
+# Here you can change max players.
+motd_changer_max_players: 100
+#----------------------------------------------------------
+#                   Command disabler
+#----------------------------------------------------------
+# Do you want command disabled to be enabled?
+command_disabler_enabled: false
+# On the left side are disabled commands and on the right side messages that will be displayed if player tried to execute that command
+disabled_commands:
+  "/plugins" : "&cBecause of security risk, we have disabled this command."
+  "/pl" : "&cBecause of security risk, we have disabled this command."
+#----------------------------------------------------------
+#                      Admin Tools
 #----------------------------------------------------------
 admin_tools_enabled: true
 admin_tools_name: "&c&lAdmin Tools"
@@ -70,7 +97,7 @@ admin_tools_material: "NETHER_STAR"
 admin_tools_enchantment: false
 admin_tools_lore: "&dClick me to open Admin GUI"
 #----------------------------------------------------------
-#                    Admin Permissions
+#                   Admin Permissions
 #----------------------------------------------------------
 # Do you want Admin Permissions to be enabled?
 ap_enabled: false
@@ -96,6 +123,12 @@ ac_delay: 0
 ac_delay_message: "&cYou need to wait {seconds} seconds to sent another message!"
 # Which prefix will be used for determining css colors.
 ac_color_prefix: ";"
+# Here words on the left will be replaced with words on the right.
+ac_emojis:
+  ":)" : "☺"
+  ":(" : "☹"
+  "<3" : "&4❤&7"
+  "ugly" : "cute"
 # Which bad words should be blocked in chat?
 ac_filter:
   - "fuck"

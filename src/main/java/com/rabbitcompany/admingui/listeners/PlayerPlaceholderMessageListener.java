@@ -121,6 +121,11 @@ public class PlayerPlaceholderMessageListener implements Listener {
                     }
                 }
 
+                if(adminGUI.getConf().getConfigurationSection("ac_emojis") != null){
+                    for(String emoji : adminGUI.getConf().getConfigurationSection("ac_emojis").getValues(false).keySet())
+                        message = message.replace(emoji, adminGUI.getConf().getString("ac_emojis."+emoji, emoji));
+                }
+
                 if(adminGUI.getConf().getBoolean("ac_beautifier", true)){
                     message = Character.toUpperCase(message.charAt(0)) + message.substring(1);
                 }

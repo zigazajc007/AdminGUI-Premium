@@ -15,7 +15,10 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class PlayerMessageListener implements Listener {
 
@@ -114,6 +117,11 @@ public class PlayerMessageListener implements Listener {
                     for (String filter : filters) {
                         message = message.replace(filter, "****");
                     }
+                }
+
+                if(adminGUI.getConf().getConfigurationSection("ac_emojis") != null){
+                    for(String emoji : adminGUI.getConf().getConfigurationSection("ac_emojis").getValues(false).keySet())
+                        message = message.replace(emoji, adminGUI.getConf().getString("ac_emojis."+emoji, emoji));
                 }
 
                 if(adminGUI.getConf().getBoolean("ac_beautifier", true)){

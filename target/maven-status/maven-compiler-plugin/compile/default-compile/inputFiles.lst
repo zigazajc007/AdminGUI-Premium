@@ -16,6 +16,7 @@
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_10.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_8.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/Permissions.java
+/home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/listeners/ServerListPingListener.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/BannedPlayerIn.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_11.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/AdminGUIPlaceholders.java

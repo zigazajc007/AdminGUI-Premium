@@ -26,37 +26,45 @@ public class PlayerJoinListener implements Listener {
 
         Player player = event.getPlayer();
 
-        if(AdminGUI.getInstance().getPlayers().getString(player.getUniqueId().toString(), null) == null){
-            AdminGUI.getInstance().getPlayers().set(player.getUniqueId() + ".name", player.getName());
+        if(adminGUI.getConf().getBoolean("cjlm_enabled", true)){
+            if(adminGUI.getConf().getString("join_message", "&7[&a+&7] &6{display_name}") != null){
+                event.setJoinMessage(Message.chat(adminGUI.getConf().getString("join_message", "&7[&a+&7] &6{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName())));
+            }else{
+                event.setJoinMessage(null);
+            }
+        }
+
+        if(adminGUI.getPlayers().getString(player.getUniqueId().toString(), null) == null){
+            adminGUI.getPlayers().set(player.getUniqueId() + ".name", player.getName());
             if(player.getAddress() != null && player.getAddress().getAddress() != null)
-                AdminGUI.getInstance().getPlayers().set(player.getUniqueId() + ".ips", new String[]{player.getAddress().getAddress().toString().replace("/", "")});
-            AdminGUI.getInstance().getPlayers().set(player.getUniqueId() + ".firstJoin", System.currentTimeMillis());
+                adminGUI.getPlayers().set(player.getUniqueId() + ".ips", new String[]{player.getAddress().getAddress().toString().replace("/", "")});
+            adminGUI.getPlayers().set(player.getUniqueId() + ".firstJoin", System.currentTimeMillis());
         }else{
-            List<String> ips = AdminGUI.getInstance().getPlayers().getStringList(player.getUniqueId() + ".ips");
+            List<String> ips = adminGUI.getPlayers().getStringList(player.getUniqueId() + ".ips");
             if(player.getAddress() != null && player.getAddress().getAddress() != null)
                 if(!ips.contains(player.getAddress().getAddress().toString().replace("/", ""))) ips.add(player.getAddress().getAddress().toString().replace("/", ""));
-            AdminGUI.getInstance().getPlayers().set(player.getUniqueId() + ".ips", ips);
+            adminGUI.getPlayers().set(player.getUniqueId() + ".ips", ips);
         }
-        AdminGUI.getInstance().getPlayers().set(player.getUniqueId() + ".lastJoin", System.currentTimeMillis());
-        AdminGUI.getInstance().savePlayers();
+        adminGUI.getPlayers().set(player.getUniqueId() + ".lastJoin", System.currentTimeMillis());
+        adminGUI.savePlayers();
 
         //TODO: Permissions
-        if(AdminGUI.getInstance().getConf().getBoolean("mysql", false) && AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false) && AdminGUI.getInstance().getConf().getInt("ap_storage_type", 0) == 2){
+        if(adminGUI.getConf().getBoolean("mysql", false) && adminGUI.getConf().getBoolean("ap_enabled", false) && adminGUI.getConf().getInt("ap_storage_type", 0) == 2){
             if(Database.rankNeedFix(player.getName())) Database.fixRank(player.getUniqueId(), player.getName());
             Database.cacheRank(player.getUniqueId());
         }
 
-        if(AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)){
-            String rank = AdminGUI.getInstance().getPlayers().getString(player.getName() + ".rank", null);
+        if(adminGUI.getConf().getBoolean("ap_enabled", false)){
+            String rank = adminGUI.getPlayers().getString(player.getName() + ".rank", null);
             if(rank != null){
-                AdminGUI.getInstance().getPlayers().set(player.getName(), null);
-                AdminGUI.getInstance().getPlayers().set(player.getUniqueId() + ".rank", rank);
-                AdminGUI.getInstance().savePlayers();
+                adminGUI.getPlayers().set(player.getName(), null);
+                adminGUI.getPlayers().set(player.getUniqueId() + ".rank", rank);
+                adminGUI.savePlayers();
             }
             TargetPlayer.refreshPermissions(player);
         }
 
-        if(AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false)){
+        if(adminGUI.getConf().getBoolean("bungeecord_enabled", false)){
             Channel.send(player.getName(),"send", "online_players");
         }else{
             AdminUI.online_players.add(player.getName());
@@ -64,11 +72,11 @@ public class PlayerJoinListener implements Listener {
 
         AdminUI.skulls_players.put(player.getName(), Item.pre_createPlayerHead(player.getName()));
 
-        if(AdminGUI.getInstance().getConf().getBoolean("atl_enabled", false)) TargetPlayer.refreshPlayerTabList(player);
+        if(adminGUI.getConf().getBoolean("atl_enabled", false)) TargetPlayer.refreshPlayerTabList(player);
 
         //Update Checker
-        if(AdminGUI.getInstance().getConf().getBoolean("uc_enabled", true) && AdminGUI.getInstance().getConf().getInt("uc_send_type", 1) == 1 && AdminGUI.new_version != null && (player.hasPermission("admingui.admin") || player.isOp())){
-            player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.chat(AdminGUI.getInstance().getConf().getString("uc_notify", "&aNew update is available. Please update me to &b{version}&a.").replace("{version}", AdminGUI.new_version)));
+        if(adminGUI.getConf().getBoolean("uc_enabled", true) && adminGUI.getConf().getInt("uc_send_type", 1) == 1 && AdminGUI.new_version != null && (player.hasPermission("admingui.admin") || player.isOp())){
+            player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.chat(adminGUI.getConf().getString("uc_notify", "&aNew update is available. Please update me to &b{version}&a.").replace("{version}", AdminGUI.new_version)));
         }
 
         if(adminGUI.getConf().getInt("initialize_gui",0) == 1) {
