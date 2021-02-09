@@ -43,6 +43,9 @@ public class AdminUI {
     //Player GUI color
     private static HashMap<UUID, String> gui_color = new HashMap<>();
 
+    //RTP delay
+    public static HashMap<UUID, Long> rtp_delay = new HashMap<>();
+
     //Chat Delay
     public static HashMap<UUID, Long> admin_chat_delay = new HashMap<>();
 

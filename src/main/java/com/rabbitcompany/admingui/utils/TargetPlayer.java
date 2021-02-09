@@ -6,6 +6,10 @@ import com.rabbitcompany.admingui.ui.AdminUI;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.BanList;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.potion.PotionEffect;
@@ -13,6 +17,7 @@ import org.bukkit.potion.PotionEffectType;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import static org.bukkit.Bukkit.getServer;
@@ -124,6 +129,38 @@ public class TargetPlayer {
             }
         }
 
+    }
+
+    public static boolean safeTeleport(Player player){
+        Random rnd = new Random();
+
+        int min_x = AdminGUI.getInstance().getConf().getInt("rtp_min_x", -1000);
+        int max_x = AdminGUI.getInstance().getConf().getInt("rtp_max_x", 1000);
+        int min_z = AdminGUI.getInstance().getConf().getInt("rtp_min_z", -1000);
+        int max_z = AdminGUI.getInstance().getConf().getInt("rtp_max_z", 1000);
+
+        int x;
+        int z;
+        int y;
+        int count = 0;
+
+        do{
+            x = rnd.nextInt((max_x - min_x) + 1) + min_x;
+            z = rnd.nextInt((max_z - min_z) + 1) + min_z;
+            y = player.getWorld().getHighestBlockYAt(x, z)+1;
+            if(count >= AdminGUI.getInstance().getConf().getInt("rtp_attempts", 20)) return false;
+            count++;
+        }while (!isSafeLocation(new Location(player.getWorld(), x+0.5, y, z+0.5)));
+
+        player.teleport(new Location(player.getWorld(), x+0.5, y ,z+0.5));
+        return true;
+    }
+
+    public static boolean isSafeLocation(Location location) {
+        Block feet = location.getBlock();
+        if (!feet.getType().isAir() || !feet.getRelative(BlockFace.UP).getType().isAir()) return false;
+        if (!feet.getRelative(BlockFace.DOWN).getType().isSolid() && !feet.getRelative(BlockFace.DOWN).getLocation().subtract(0, 1, 0).getBlock().getType().isSolid()) return false;
+        return true;
     }
 
     public static String banReason(UUID target, String reason, String time){

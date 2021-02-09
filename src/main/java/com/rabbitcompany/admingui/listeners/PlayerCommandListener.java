@@ -4,6 +4,7 @@ import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Item;
 import com.rabbitcompany.admingui.utils.Message;
+import com.rabbitcompany.admingui.utils.TargetPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -43,6 +44,33 @@ public class PlayerCommandListener implements Listener {
         if(AdminUI.freeze.getOrDefault(p.getUniqueId(), false) && AdminGUI.getInstance().getConf().getBoolean("freeze_execute_commands", true)){
             event.setCancelled(true);
             return;
+        }
+
+        //RTP Command
+        if((message.equals("/rtp") || message.equals("/wild")) && adminGUI.getConf().getBoolean("rtp_enabled", false)){
+            if(AdminGUI.getInstance().getConf().getDouble("rtp_delay", 10) > 0 && !p.hasPermission("admingui.rtp.delay.bypass")){
+                long last_rtp_send = AdminUI.rtp_delay.getOrDefault(p.getUniqueId(), 0L);
+                if(last_rtp_send != 0L){
+                    if(last_rtp_send + (AdminGUI.getInstance().getConf().getDouble("rtp_delay", 10) * 1000) >= System.currentTimeMillis()){
+                        p.sendMessage(Message.chat(AdminGUI.getInstance().getConf().getString("rtp_delay_message", "&cYou need to wait {seconds} seconds, before you can execute /rtp command again!").replace("{seconds}", AdminGUI.getInstance().getConf().getString("rtp_delay", "10"))));
+                        event.setCancelled(true);
+                        return;
+                    }else{
+                        AdminUI.rtp_delay.put(p.getUniqueId(), System.currentTimeMillis());
+                    }
+                }else{
+                    AdminUI.rtp_delay.put(p.getUniqueId(), System.currentTimeMillis());
+                }
+            }
+
+            p.sendMessage(Message.chat(AdminGUI.getInstance().getConf().getString("rtp_begin", "&aFinding safe location...")));
+
+            if(TargetPlayer.safeTeleport(p)){
+                p.sendMessage(Message.chat(AdminGUI.getInstance().getConf().getString("rtp_success", "&aYou have been teleported to safe location.")));
+            }else{
+                p.sendMessage(Message.chat(AdminGUI.getInstance().getConf().getString("rtp_failed", "&cSafe location to teleport can't be found. Please try again later.")));
+            }
+            event.setCancelled(true);
         }
 
         if(adminGUI.getConf().getBoolean("acs_enabled", false)){

@@ -178,6 +178,12 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         this.getCommand("adminchat").setExecutor(new AdminChat());
         this.getCommand("adminchat").setTabCompleter(new TabCompletion());
         this.getCommand("admincommandspy").setExecutor(new CommandSpy());
+        /*
+        if(getConf().getBoolean("rtp_enabled", false)){
+            this.getCommand("rtp").setExecutor(new RTP());
+            this.getCommand("wild").setExecutor(new RTP());
+        }
+         */
 
         //Skulls
         switch (gui_type){

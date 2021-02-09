@@ -84,10 +84,33 @@ motd_changer_max_players: 100
 #----------------------------------------------------------
 # Do you want command disabled to be enabled?
 command_disabler_enabled: false
-# On the left side are disabled commands and on the right side messages that will be displayed if player tried to execute that command
+# On the left side are disabled commands and on the right side messages that will be displayed if player tried to execute that command.
 disabled_commands:
   "/plugins" : "&cBecause of security risk, we have disabled this command."
   "/pl" : "&cBecause of security risk, we have disabled this command."
+#----------------------------------------------------------
+#          Random teleport command (/rtp, /wild)
+#----------------------------------------------------------
+# Do you want Random teleport command to be enabled?
+rtp_enabled: false
+# Teleport between x coordinates. (Make sure that min value is always smaller then max)
+rtp_min_x: -1000
+rtp_max_x: 1000
+# Teleport between z coordinates. (Make sure that min value is always smaller then max)
+rtp_min_z: -1000
+rtp_max_z: 1000
+# How many times do you want RTP to try find safe location? After this amount of attempts RTP will stop searching for safe location.
+rtp_attempts: 20
+# How many seconds does player needs to wait before it can execute rtp command again.
+rtp_delay: 10
+# This message will be send when player don't wait for delay.
+rtp_delay_message: "&cYou need to wait {seconds} seconds, before you can execute /rtp command again!"
+# This message will be send when player execute /rtp or /wild command.
+rtp_begin: "&aFinding safe location..."
+# This message will be send to player after they teleport successfully.
+rtp_success: "&aYou have been teleported to safe location."
+# This message will be send if safe location can't be found in certain amount of attempts.
+rtp_failed: "&cSafe location to teleport can't be found. Please try again later."
 #----------------------------------------------------------
 #                      Admin Tools
 #----------------------------------------------------------
