@@ -6,11 +6,11 @@ import java.security.NoSuchAlgorithmException;
 
 public class Hash {
 
-    public static String generateLicenseKey(String username){
-        return new StringBuilder(getHash(username, "SHA-1").toUpperCase().substring(0, 20)).insert(5, "-").insert(11, "-").insert(17, "-").toString();
+    public String createLicenseKey(String username){
+        return new StringBuilder(Hash(username, "SHA-1").toUpperCase().substring(0, 20)).insert(5, "-").insert(11, "-").insert(17, "-").toString();
     }
 
-    public static String getHash(String password, String algorithm) {
+    public String Hash(String password, String algorithm){
         try {
             MessageDigest digest = MessageDigest.getInstance(algorithm);
             return bytesToHex(digest.digest(password.getBytes(StandardCharsets.UTF_8)));
@@ -19,7 +19,7 @@ public class Hash {
         }
     }
 
-    private static String bytesToHex(byte[] hash) {
+    private String bytesToHex(byte[] hash) {
         StringBuilder hexString = new StringBuilder();
         for (byte b : hash) {
             String hex = Integer.toHexString(0xff & b);

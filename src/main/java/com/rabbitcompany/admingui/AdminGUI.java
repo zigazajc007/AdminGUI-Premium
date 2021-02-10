@@ -361,17 +361,17 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Name: &bAdminGUI-Premium"));
         if(new_version != null){
-            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b" + getDescription().getVersion() + " (&6update available&b)"));
+            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b" + getDescription().getVersion() + " (&6Update available&b)"));
         }else{
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b" + getDescription().getVersion()));
         }
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Developer: &bBlack1_TV"));
         if(!username.contains("%%__")){
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &b" + username));
-            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9License key: &b" + Hash.generateLicenseKey(username)));
+            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9License key: &b" + new Hash().createLicenseKey(username)));
         }else if(!user_id.contains("%%__")){
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &b" + user_id));
-            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9License key: &b" + Hash.generateLicenseKey(user_id)));
+            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9License key: &b" + new Hash().createLicenseKey(user_id)));
         }else{
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &4&lCRACKED"));
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9License key: &400000-00000-00000-00000"));

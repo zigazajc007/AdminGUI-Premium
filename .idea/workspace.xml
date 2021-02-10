@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/Hash.java" afterDir="false" />
+    <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="- Now you can negotiate permissions with Admin Permissions&#10;- Clearing Admin Chat will now clear all messages&#10;- Optimized / redesigned code&#10;- Added License keys&#10;- Added new graphs to bStats&#10;- Updated HikariCP, bStats and DiscordSRV">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/AdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/AdminGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/Metrics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/Metrics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/Hash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/Hash.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/Settings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/AdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/AdminGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,13 +204,6 @@
       <workItem from="1577725216137" duration="7109000" />
       <workItem from="1578348949962" duration="293000" />
       <workItem from="1578422894075" duration="968000" />
-    </task>
-    <task id="LOCAL-00086" summary="Fixed reload and some small bugs.">
-      <created>1598991023930</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1598991023930</updated>
     </task>
     <task id="LOCAL-00087" summary="Added option so frozen players can chat in Admin Chat.">
       <created>1599071551690</created>
@@ -551,7 +541,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612972906232</updated>
     </task>
-    <option name="localTasksCounter" value="135" />
+    <task id="LOCAL-00135" summary="- Now you can negotiate permissions with Admin Permissions&#10;- Clearing Admin Chat will now clear all messages&#10;- Optimized / redesigned code&#10;- Added License keys&#10;- Added new graphs to bStats&#10;- Updated HikariCP, bStats and DiscordSRV">
+      <created>1612976142438</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1612976142438</updated>
+    </task>
+    <option name="localTasksCounter" value="136" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -576,7 +573,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/LiteBansAPI" />
     </ignored-roots>
-    <MESSAGE value="Added custom Placeholders" />
     <MESSAGE value="Now you can sync ranks thru Bungeecord." />
     <MESSAGE value="Fixed algorithm for rank up/down and now you can give ranks to offline people. Note that removing permissions.yml file is required, because system for ranks has been changed." />
     <MESSAGE value="Fixed English and French languages." />
@@ -601,6 +597,7 @@
     <MESSAGE value="- Added custom join / leave message&#10;- Added custom MOTD changer&#10;- Added command disabler&#10;- Added chat manipulator&#10;&#10;To enable those features you need to re-generated config.yml file." />
     <MESSAGE value="- Added RTP / Wild commands" />
     <MESSAGE value="- Now you can negotiate Admin Permissions&#10;- Clearing Admin Chat will now clear all messages&#10;- Optimized / redesigned code&#10;- Updated HikariCP and DiscordSRV" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Now you can negotiate Admin Permissions&#10;- Clearing Admin Chat will now clear all messages&#10;- Optimized / redesigned code&#10;- Updated HikariCP and DiscordSRV" />
+    <MESSAGE value="- Now you can negotiate permissions with Admin Permissions&#10;- Clearing Admin Chat will now clear all messages&#10;- Optimized / redesigned code&#10;- Added License keys&#10;- Added new graphs to bStats&#10;- Updated HikariCP, bStats and DiscordSRV" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Now you can negotiate permissions with Admin Permissions&#10;- Clearing Admin Chat will now clear all messages&#10;- Optimized / redesigned code&#10;- Added License keys&#10;- Added new graphs to bStats&#10;- Updated HikariCP, bStats and DiscordSRV" />
   </component>
 </project>

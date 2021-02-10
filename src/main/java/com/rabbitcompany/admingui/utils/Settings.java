@@ -55,7 +55,7 @@ public class Settings {
     public static HashMap<UUID, Integer> plugin_slot = new HashMap<>();
 
     //Date Format
-    public static SimpleDateFormat date_format = new SimpleDateFormat(AdminGUI.getInstance().getConf().getString("date_format", "yyyy-MM-dd HH:mm:ss"));
+    public static SimpleDateFormat date_format = new SimpleDateFormat(""+AdminGUI.getInstance().getConf().getString("date_format", "yyyy-MM-dd HH:mm:ss"));
 
     //Command Spy
     public static HashMap<UUID, Boolean> command_spy = new HashMap<>();
