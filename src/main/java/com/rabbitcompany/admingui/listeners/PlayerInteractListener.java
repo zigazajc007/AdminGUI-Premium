@@ -3,6 +3,8 @@ package com.rabbitcompany.admingui.listeners;
 import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Message;
+import com.rabbitcompany.admingui.utils.Settings;
+import com.rabbitcompany.admingui.utils.TargetPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -31,8 +33,8 @@ public class PlayerInteractListener implements Listener {
                         if(event.getItem().getItemMeta().getLore().contains(Message.chat(AdminGUI.getInstance().getConf().getString("admin_tools_lore", "&dClick me to open Admin GUI")))){
                             Player player = event.getPlayer();
                             if(player.getOpenInventory().getType() != InventoryType.CHEST){
-                                if(player.hasPermission("admingui.admin")){
-                                    AdminUI.target_player.put(player, player);
+                                if(TargetPlayer.hasPermission(player, "admingui.admin")){
+                                    Settings.target_player.put(player, player);
                                     player.openInventory(adminUI.GUI_Main(player));
                                 }else{
                                     player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "permission"));

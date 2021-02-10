@@ -13,9 +13,7 @@ public class Channel {
         ByteArrayDataOutput output = ByteStreams.newDataOutput();
         output.writeUTF(player);
         output.writeUTF(subchannel);
-        for (String da: data) {
-            output.writeUTF(da);
-        }
+        for (String da: data) output.writeUTF(da);
 
         try{
             if(AdminGUIBungee.getInstance().getProxy().getPlayer(player).isConnected())
@@ -28,9 +26,7 @@ public class Channel {
         ByteArrayDataOutput output = ByteStreams.newDataOutput();
         output.writeUTF(player);
         output.writeUTF(subchannel);
-        for (String da: data) {
-            output.writeUTF(da);
-        }
+        for (String da: data) output.writeUTF(da);
 
         Map<String, ServerInfo> servers = AdminGUIBungee.getInstance().getProxy().getServers();
         for (Map.Entry<String, ServerInfo> en : servers.entrySet()) {

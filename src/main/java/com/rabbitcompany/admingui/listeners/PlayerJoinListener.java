@@ -67,20 +67,20 @@ public class PlayerJoinListener implements Listener {
         if(adminGUI.getConf().getBoolean("bungeecord_enabled", false)){
             Channel.send(player.getName(),"send", "online_players");
         }else{
-            AdminUI.online_players.add(player.getName());
+            Settings.online_players.add(player.getName());
         }
 
-        AdminUI.skulls_players.put(player.getName(), Item.pre_createPlayerHead(player.getName()));
+        Settings.skulls_players.put(player.getName(), Item.pre_createPlayerHead(player.getName()));
 
         if(adminGUI.getConf().getBoolean("atl_enabled", false)) TargetPlayer.refreshPlayerTabList(player);
 
         //Update Checker
-        if(adminGUI.getConf().getBoolean("uc_enabled", true) && adminGUI.getConf().getInt("uc_send_type", 1) == 1 && AdminGUI.new_version != null && (player.hasPermission("admingui.admin") || player.isOp())){
+        if(adminGUI.getConf().getBoolean("uc_enabled", true) && adminGUI.getConf().getInt("uc_send_type", 1) == 1 && AdminGUI.new_version != null && TargetPlayer.hasPermission(player, "admingui.admin")){
             player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.chat(adminGUI.getConf().getString("uc_notify", "&aNew update is available. Please update me to &b{version}&a.").replace("{version}", AdminGUI.new_version)));
         }
 
         if(adminGUI.getConf().getInt("initialize_gui",0) == 1) {
-            if(!AdminUI.task_gui.containsKey(player.getUniqueId())) Initialize.GUI(player, player.getInventory().getHelmet());
+            if(!Settings.task_gui.containsKey(player.getUniqueId())) Initialize.GUI(player, player.getInventory().getHelmet());
         }
     }
 }

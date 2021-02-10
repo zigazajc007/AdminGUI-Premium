@@ -26,16 +26,14 @@ public class Language {
         if(dir.exists()){
             String[] files = dir.list();
             for (String file: files) {
-                if(isLangFile(file)){
-                    enabled_languages.add(file.replace(".yml", ""));
-                }
+                if(isLangFile(file)) enabled_languages.add(file.replace(".yml", ""));
             }
         }
         return enabled_languages;
     }
 
     public static String getMessages(UUID uuid, String config){
-        String language = AdminUI.language.getOrDefault(uuid, AdminGUI.getInstance().getConf().getString("default_language"));
+        String language = Settings.language.getOrDefault(uuid, AdminGUI.getInstance().getConf().getString("default_language"));
         if(enabled_languages.contains(language)) return languages.getOrDefault(language, null).getString(config, null);
         return null;
     }
@@ -81,9 +79,7 @@ public class Language {
 
             if(!temp_lang_keys.equals(lang_keys)){
                 for (String key : temp_lang_keys) {
-                    if(!lang_keys.contains(key)){
-                        ml_lang.set(key, temp_lang.getString(key, ""));
-                    }
+                    if(!lang_keys.contains(key)) ml_lang.set(key, temp_lang.getString(key, ""));
                 }
                 try {
                     ml_lang.save(new File(AdminGUI.getInstance().getDataFolder(), "Languages/" + language + "-Missing-Lines.txt"));

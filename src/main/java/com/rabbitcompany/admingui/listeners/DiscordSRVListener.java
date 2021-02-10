@@ -18,9 +18,7 @@ public class DiscordSRVListener {
     public void discordMessageProcessed(DiscordGuildMessagePostProcessEvent event) {
         List<String> filters = AdminGUI.getInstance().getConf().getStringList("ac_filter");
         String message = event.getProcessedMessage();
-        for (String filter : filters) {
-            message = message.replace(filter, "****");
-        }
+        for (String filter : filters) message = message.replace(filter, "****");
         event.setProcessedMessage(message);
     }
 }

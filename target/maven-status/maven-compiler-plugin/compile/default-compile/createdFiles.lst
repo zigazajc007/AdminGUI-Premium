@@ -31,6 +31,7 @@ com/rabbitcompany/admingui/listeners/PlayerEntityInteractListener.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_11.class
 com/rabbitcompany/admingui/utils/Initialize.class
 com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_10.class
+com/rabbitcompany/admingui/utils/Settings.class
 com/rabbitcompany/admingui/Metrics$SimplePie.class
 com/rabbitcompany/admingui/XMaterial$1.class
 com/rabbitcompany/admingui/Metrics$DrilldownPie.class

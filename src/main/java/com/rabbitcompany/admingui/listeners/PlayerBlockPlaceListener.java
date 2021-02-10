@@ -2,6 +2,7 @@ package com.rabbitcompany.admingui.listeners;
 
 import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
+import com.rabbitcompany.admingui.utils.Settings;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -23,9 +24,7 @@ public class PlayerBlockPlaceListener implements Listener {
     public void onPlayerPlaceBlock(BlockPlaceEvent event){
         Player p = event.getPlayer();
 
-        if(AdminUI.freeze.getOrDefault(p.getUniqueId(), false) && AdminGUI.getInstance().getConf().getBoolean("freeze_place_block", true)){
-            event.setCancelled(true);
-        }
+        if(Settings.freeze.getOrDefault(p.getUniqueId(), false) && AdminGUI.getInstance().getConf().getBoolean("freeze_place_block", true)) event.setCancelled(true);
     }
 
 }

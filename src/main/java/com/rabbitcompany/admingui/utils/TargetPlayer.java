@@ -7,7 +7,6 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.BanList;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
@@ -25,9 +24,8 @@ import static org.bukkit.Bukkit.getServer;
 public class TargetPlayer {
 
     public void setPotionEffect(org.bukkit.entity.Player p, org.bukkit.entity.Player target_player, PotionEffectType potion, String getPotionConfigName, int duration, int level){
-        if(target_player.hasPotionEffect(potion)){
-            target_player.removePotionEffect(potion);
-        }
+        if(target_player.hasPotionEffect(potion)) target_player.removePotionEffect(potion);
+
         target_player.addPotionEffect(new PotionEffect(potion, duration*1200, level-1));
         if(duration == 1000000){
             if(p.getName().equals(target_player.getName())){
@@ -49,28 +47,39 @@ public class TargetPlayer {
     public static void refreshPermissions(Player player){
         String rank = Permissions.getRank(player.getUniqueId(), player.getName());
 
-        AdminUI.permissions.put(player.getUniqueId(), player.addAttachment(AdminGUI.getInstance()));
-        PermissionAttachment permissionAttachment = AdminUI.permissions.get(player.getUniqueId());
+        Settings.permissions.put(player.getUniqueId(), player.addAttachment(AdminGUI.getInstance()));
+        PermissionAttachment permissionAttachment = Settings.permissions.get(player.getUniqueId());
 
-        List<?> permissions = AdminGUI.getInstance().getPermissions().getList("groups." + rank + ".permissions");
+        List<?> permissions;
         List<?> inheritance = AdminGUI.getInstance().getPermissions().getList("groups." + rank + ".inheritance");
-
-        if(permissions != null){
-            for (Object permission: permissions) {
-                permissionAttachment.setPermission(permission.toString(), true);
-            }
-        }
 
         if(inheritance != null){
             for (Object inter : inheritance) {
                 permissions = AdminGUI.getInstance().getPermissions().getList("groups." + inter + ".permissions");
                 if(permissions != null){
                     for (Object permission: permissions) {
-                        permissionAttachment.setPermission(permission.toString(), true);
+                        if(permission.toString().charAt(0) == '!'){
+                            permissionAttachment.unsetPermission(permission.toString().substring(1));
+                        }else{
+                            permissionAttachment.setPermission(permission.toString(), true);
+                        }
                     }
                 }
             }
         }
+
+        permissions = AdminGUI.getInstance().getPermissions().getList("groups." + rank + ".permissions");
+
+        if(permissions != null){
+            for (Object permission: permissions) {
+                if(permission.toString().charAt(0) == '!'){
+                    permissionAttachment.unsetPermission(permission.toString().substring(1));
+                }else{
+                    permissionAttachment.setPermission(permission.toString(), true);
+                }
+            }
+        }
+
     }
 
     public static void refreshPlayerTabList(Player player){
@@ -101,6 +110,21 @@ public class TargetPlayer {
         }
     }
 
+    public static boolean hasPermission(Player player, String permission){
+
+        if(player.isOp() || player.hasPermission(permission)) return true;
+
+        String[] sections = permission.split("\\.");
+
+        for(int i = 0; i < sections.length; i++){
+            StringBuilder perm = new StringBuilder();
+            for(int j = 0; j < i; j++) perm.append(sections[j]).append(".");
+            perm.append("*");
+            if(player.hasPermission(perm.toString())) return true;
+        }
+        return false;
+    }
+
     public static void ban(UUID player_uuid, String player_name, UUID target_uuid, String target, String reason, Date expired){
         if(getServer().getPluginManager().getPlugin("AdminBans") != null && getServer().getPluginManager().isPluginEnabled("AdminBans")){
             if(expired == null){
@@ -123,9 +147,9 @@ public class TargetPlayer {
                 if(target_player != null)
                     target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.permBanReason(target_player.getUniqueId(), reason));
             }else{
-                Bukkit.getServer().getBanList(BanList.Type.NAME).addBan(target, banReason(target_uuid, reason, AdminUI.date_format.format(expired)), expired, null);
+                Bukkit.getServer().getBanList(BanList.Type.NAME).addBan(target, banReason(target_uuid, reason, Settings.date_format.format(expired)), expired, null);
                 if(target_player != null)
-                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), reason, AdminUI.date_format.format(expired)));
+                    target_player.kickPlayer(Message.getMessage(target_player.getUniqueId(), "prefix") + TargetPlayer.banReason(target_player.getUniqueId(), reason, Settings.date_format.format(expired)));
             }
         }
 

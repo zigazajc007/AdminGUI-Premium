@@ -100,9 +100,7 @@ public class Colors {
 
         for(int i = 0, j = 0; i < text.length(); i++, j++){
 
-            if(text.charAt(i) == ' '){
-                j--;
-            }
+            if(text.charAt(i) == ' ') j--;
 
             switch(j){
                 case 0:

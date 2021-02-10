@@ -2,6 +2,7 @@ package com.rabbitcompany.admingui.listeners;
 
 import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
+import com.rabbitcompany.admingui.utils.Settings;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,11 +21,11 @@ public class PlayerMoveListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGH)
-    public void onPlayerMove(PlayerMoveEvent event){
-        Player p = event.getPlayer();
+    public void onPlayerMove(PlayerMoveEvent e){
+        Player p = e.getPlayer();
 
-        if(AdminUI.freeze.getOrDefault(p.getUniqueId(), false) && AdminGUI.getInstance().getConf().getBoolean("freeze_player_move", true)){
-            event.setCancelled(true);
+        if(Settings.freeze.getOrDefault(p.getUniqueId(), false) && AdminGUI.getInstance().getConf().getBoolean("freeze_player_move", true) && e.getTo() != null){
+            if (e.getFrom().getBlockX() != e.getTo().getBlockX() || e.getFrom().getBlockY() != e.getTo().getBlockY() || e.getFrom().getBlockZ() != e.getTo().getBlockZ()) e.setCancelled(true);
         }
     }
 

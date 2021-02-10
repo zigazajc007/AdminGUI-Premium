@@ -46,16 +46,16 @@ public class AdminGUIPlaceholders extends PlaceholderExpansion {
             case "player_rank":
                 return Permissions.getRank(player.getUniqueId(), player.getName());
             case "player_chat_channel":
-                return AdminUI.custom_chat_channel.getOrDefault(player.getUniqueId(), "default");
+                return Settings.custom_chat_channel.getOrDefault(player.getUniqueId(), "default");
             case "is_chat_muted":
-                return String.valueOf(AdminUI.muted_chat);
+                return String.valueOf(Settings.muted_chat);
             case "is_player_god":
-                if(Bukkit.getVersion().contains("1.8")) return String.valueOf(AdminUI.god.getOrDefault(player.getUniqueId(), false));
+                if(Bukkit.getVersion().contains("1.8")) return String.valueOf(Settings.god.getOrDefault(player.getUniqueId(), false));
                 return String.valueOf(player.isInvulnerable());
             case "is_player_frozen":
-                return String.valueOf(AdminUI.freeze.getOrDefault(player.getUniqueId(), false));
+                return String.valueOf(Settings.freeze.getOrDefault(player.getUniqueId(), false));
             case "is_maintenance_mode":
-                return String.valueOf(AdminUI.maintenance_mode);
+                return String.valueOf(Settings.maintenance_mode);
             case "player_first_join":
                 return Database.date_format.format(new Date(AdminGUI.getInstance().getPlayers().getLong(player.getUniqueId() + ".firstJoin")));
             case "player_last_join":

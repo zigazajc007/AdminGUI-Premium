@@ -87,13 +87,9 @@ public class Database {
             PreparedStatement ps = conn.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
 
-            if(rs.next()){
-                uuid = rs.getString("uuid");
-            }
+            if(rs.next()) uuid = rs.getString("uuid");
             conn.close();
-            if(uuid.startsWith("!!!")){
-                return true;
-            }
+            if(uuid.startsWith("!!!")) return true;
         } catch (SQLException ignored) { }
         return false;
     }

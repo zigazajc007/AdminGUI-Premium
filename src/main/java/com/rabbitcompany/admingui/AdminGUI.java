@@ -178,50 +178,44 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         this.getCommand("adminchat").setExecutor(new AdminChat());
         this.getCommand("adminchat").setTabCompleter(new TabCompletion());
         this.getCommand("admincommandspy").setExecutor(new CommandSpy());
-        /*
-        if(getConf().getBoolean("rtp_enabled", false)){
-            this.getCommand("rtp").setExecutor(new RTP());
-            this.getCommand("wild").setExecutor(new RTP());
-        }
-         */
 
         //Skulls
         switch (gui_type){
             case 1:
-                AdminUI.skulls.put("0qt", Item.pre_createPlayerHead("0qt"));
-                AdminUI.skulls.put("Black1_TV", Item.pre_createPlayerHead("Black1_TV"));
-                AdminUI.skulls.put("mattijs", Item.pre_createPlayerHead("mattijs"));
-                AdminUI.skulls.put("BKing2012", Item.pre_createPlayerHead("BKing2012"));
-                AdminUI.skulls.put("AverageJoe", Item.pre_createPlayerHead("AverageJoe"));
-                AdminUI.skulls.put("LobbyPlugin", Item.pre_createPlayerHead("LobbyPlugin"));
-                AdminUI.skulls.put("MHF_Redstone", Item.pre_createPlayerHead("MHF_Redstone"));
-                AdminUI.skulls.put("Ground15", Item.pre_createPlayerHead("Ground15"));
-                AdminUI.skulls.put("EDDxample", Item.pre_createPlayerHead("EDDxample"));
-                AdminUI.skulls.put("LapisBlock", Item.pre_createPlayerHead("LapisBlock"));
-                AdminUI.skulls.put("emack0714", Item.pre_createPlayerHead("emack0714"));
-                AdminUI.skulls.put("Super_Sniper", Item.pre_createPlayerHead("Super_Sniper"));
-                AdminUI.skulls.put("IM_", Item.pre_createPlayerHead("IM_"));
-                AdminUI.skulls.put("Burger_guy", Item.pre_createPlayerHead("Burger_guy"));
-                AdminUI.skulls.put("MFH_Spawner", Item.pre_createPlayerHead("MFH_Spawner"));
-                AdminUI.skulls.put("MrSnowDK", Item.pre_createPlayerHead("MrSnowDK"));
-                AdminUI.skulls.put("ZeeFear", Item.pre_createPlayerHead("ZeeFear"));
-                AdminUI.skulls.put("Opp", Item.pre_createPlayerHead("Opp"));
-                AdminUI.skulls.put("haohanklliu", Item.pre_createPlayerHead("haohanklliu"));
-                AdminUI.skulls.put("raichuthink", Item.pre_createPlayerHead("raichuthink"));
-                AdminUI.skulls.put("ThaBrick", Item.pre_createPlayerHead("ThaBrick"));
-                AdminUI.skulls.put("Mannahara", Item.pre_createPlayerHead("Mannahara"));
-                AdminUI.skulls.put("Zyne", Item.pre_createPlayerHead("Zyne"));
-                AdminUI.skulls.put("3i5g00d", Item.pre_createPlayerHead("3i5g00d"));
-                AdminUI.skulls.put("MHF_ArrowLeft", Item.pre_createPlayerHead("MHF_ArrowLeft"));
-                AdminUI.skulls.put("MHF_Question", Item.pre_createPlayerHead("MHF_Question"));
-                AdminUI.skulls.put("MHF_ArrowRight", Item.pre_createPlayerHead("MHF_ArrowRight"));
-                AdminUI.skulls.put("ZiGmUnDo", Item.pre_createPlayerHead("ZiGmUnDo"));
-                AdminUI.skulls.put("Push_red_button", Item.pre_createPlayerHead("Push_red_button"));
-                AdminUI.skulls.put("ElMarcosFTW", Item.pre_createPlayerHead("ElMarcosFTW"));
-                AdminUI.skulls.put("DavidGriffiths", Item.pre_createPlayerHead("DavidGriffiths"));
+                Settings.skulls.put("0qt", Item.pre_createPlayerHead("0qt"));
+                Settings.skulls.put("Black1_TV", Item.pre_createPlayerHead("Black1_TV"));
+                Settings.skulls.put("mattijs", Item.pre_createPlayerHead("mattijs"));
+                Settings.skulls.put("BKing2012", Item.pre_createPlayerHead("BKing2012"));
+                Settings.skulls.put("AverageJoe", Item.pre_createPlayerHead("AverageJoe"));
+                Settings.skulls.put("LobbyPlugin", Item.pre_createPlayerHead("LobbyPlugin"));
+                Settings.skulls.put("MHF_Redstone", Item.pre_createPlayerHead("MHF_Redstone"));
+                Settings.skulls.put("Ground15", Item.pre_createPlayerHead("Ground15"));
+                Settings.skulls.put("EDDxample", Item.pre_createPlayerHead("EDDxample"));
+                Settings.skulls.put("LapisBlock", Item.pre_createPlayerHead("LapisBlock"));
+                Settings.skulls.put("emack0714", Item.pre_createPlayerHead("emack0714"));
+                Settings.skulls.put("Super_Sniper", Item.pre_createPlayerHead("Super_Sniper"));
+                Settings.skulls.put("IM_", Item.pre_createPlayerHead("IM_"));
+                Settings.skulls.put("Burger_guy", Item.pre_createPlayerHead("Burger_guy"));
+                Settings.skulls.put("MFH_Spawner", Item.pre_createPlayerHead("MFH_Spawner"));
+                Settings.skulls.put("MrSnowDK", Item.pre_createPlayerHead("MrSnowDK"));
+                Settings.skulls.put("ZeeFear", Item.pre_createPlayerHead("ZeeFear"));
+                Settings.skulls.put("Opp", Item.pre_createPlayerHead("Opp"));
+                Settings.skulls.put("haohanklliu", Item.pre_createPlayerHead("haohanklliu"));
+                Settings.skulls.put("raichuthink", Item.pre_createPlayerHead("raichuthink"));
+                Settings.skulls.put("ThaBrick", Item.pre_createPlayerHead("ThaBrick"));
+                Settings.skulls.put("Mannahara", Item.pre_createPlayerHead("Mannahara"));
+                Settings.skulls.put("Zyne", Item.pre_createPlayerHead("Zyne"));
+                Settings.skulls.put("3i5g00d", Item.pre_createPlayerHead("3i5g00d"));
+                Settings.skulls.put("MHF_ArrowLeft", Item.pre_createPlayerHead("MHF_ArrowLeft"));
+                Settings.skulls.put("MHF_Question", Item.pre_createPlayerHead("MHF_Question"));
+                Settings.skulls.put("MHF_ArrowRight", Item.pre_createPlayerHead("MHF_ArrowRight"));
+                Settings.skulls.put("ZiGmUnDo", Item.pre_createPlayerHead("ZiGmUnDo"));
+                Settings.skulls.put("Push_red_button", Item.pre_createPlayerHead("Push_red_button"));
+                Settings.skulls.put("ElMarcosFTW", Item.pre_createPlayerHead("ElMarcosFTW"));
+                Settings.skulls.put("DavidGriffiths", Item.pre_createPlayerHead("DavidGriffiths"));
                 break;
             default:
-                AdminUI.skulls.put("Black1_TV", Item.pre_createPlayerHead("Black1_TV"));
+                Settings.skulls.put("Black1_TV", Item.pre_createPlayerHead("Black1_TV"));
                 break;
         }
 
@@ -426,10 +420,10 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
             case "online_players":
                 String online_players = in.readUTF();
                 String[] op = online_players.split(";");
-                AdminUI.online_players.clear();
+                Settings.online_players.clear();
                 for (String on: op) {
-                    AdminUI.online_players.add(on);
-                    AdminUI.skulls_players.put(on, Item.pre_createPlayerHead(on));
+                    Settings.online_players.add(on);
+                    Settings.skulls_players.put(on, Item.pre_createPlayerHead(on));
                 }
                 break;
             case "rank":

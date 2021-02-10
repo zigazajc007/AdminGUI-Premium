@@ -4,6 +4,7 @@ import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Item;
 import com.rabbitcompany.admingui.utils.Message;
+import com.rabbitcompany.admingui.utils.Settings;
 import com.rabbitcompany.admingui.utils.TargetPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -41,25 +42,25 @@ public class PlayerCommandListener implements Listener {
             }
         }
 
-        if(AdminUI.freeze.getOrDefault(p.getUniqueId(), false) && AdminGUI.getInstance().getConf().getBoolean("freeze_execute_commands", true)){
+        if(Settings.freeze.getOrDefault(p.getUniqueId(), false) && AdminGUI.getInstance().getConf().getBoolean("freeze_execute_commands", true)){
             event.setCancelled(true);
             return;
         }
 
         //RTP Command
         if((message.equals("/rtp") || message.equals("/wild")) && adminGUI.getConf().getBoolean("rtp_enabled", false)){
-            if(AdminGUI.getInstance().getConf().getDouble("rtp_delay", 10) > 0 && !p.hasPermission("admingui.rtp.delay.bypass")){
-                long last_rtp_send = AdminUI.rtp_delay.getOrDefault(p.getUniqueId(), 0L);
+            if(AdminGUI.getInstance().getConf().getDouble("rtp_delay", 10) > 0 && !TargetPlayer.hasPermission(p, "admingui.rtp.delay.bypass")){
+                long last_rtp_send = Settings.rtp_delay.getOrDefault(p.getUniqueId(), 0L);
                 if(last_rtp_send != 0L){
                     if(last_rtp_send + (AdminGUI.getInstance().getConf().getDouble("rtp_delay", 10) * 1000) >= System.currentTimeMillis()){
                         p.sendMessage(Message.chat(AdminGUI.getInstance().getConf().getString("rtp_delay_message", "&cYou need to wait {seconds} seconds, before you can execute /rtp command again!").replace("{seconds}", AdminGUI.getInstance().getConf().getString("rtp_delay", "10"))));
                         event.setCancelled(true);
                         return;
                     }else{
-                        AdminUI.rtp_delay.put(p.getUniqueId(), System.currentTimeMillis());
+                        Settings.rtp_delay.put(p.getUniqueId(), System.currentTimeMillis());
                     }
                 }else{
-                    AdminUI.rtp_delay.put(p.getUniqueId(), System.currentTimeMillis());
+                    Settings.rtp_delay.put(p.getUniqueId(), System.currentTimeMillis());
                 }
             }
 
@@ -75,7 +76,7 @@ public class PlayerCommandListener implements Listener {
 
         if(adminGUI.getConf().getBoolean("acs_enabled", false)){
             for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-                if(player.hasPermission("admingui.chat.spy") && AdminUI.command_spy.getOrDefault(player.getUniqueId(), false) && !player.getUniqueId().equals(p.getUniqueId())){
+                if(TargetPlayer.hasPermission(player, "admingui.chat.spy") && Settings.command_spy.getOrDefault(player.getUniqueId(), false) && !player.getUniqueId().equals(p.getUniqueId())){
                     for (String ignored_command: adminGUI.getConf().getStringList("acs_ignore")) if(message.startsWith(ignored_command)) return;
                     player.sendMessage(Message.chat(adminGUI.getConf().getString("acs_format").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
                 }
@@ -96,15 +97,15 @@ public class PlayerCommandListener implements Listener {
 
                 if(name == null) name = slots.getKey();
 
-                if(p.hasPermission(permission)){
-                    String current_channel = AdminUI.custom_chat_channel.getOrDefault(p.getUniqueId(), "");
+                if(TargetPlayer.hasPermission(p, permission)){
+                    String current_channel = Settings.custom_chat_channel.getOrDefault(p.getUniqueId(), "");
 
                     if(message.replace("/", "").equals(slots.getKey()) || !message.contains(" ")){
                         if(current_channel.equals(slots.getKey())){
-                            AdminUI.custom_chat_channel.remove(p.getUniqueId());
+                            Settings.custom_chat_channel.remove(p.getUniqueId());
                             p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_disabled").replace("{name}", name));
                         }else{
-                            AdminUI.custom_chat_channel.put(p.getUniqueId(), slots.getKey());
+                            Settings.custom_chat_channel.put(p.getUniqueId(), slots.getKey());
                             p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_enabled").replace("{name}", name));
                         }
                     }else{
@@ -112,7 +113,7 @@ public class PlayerCommandListener implements Listener {
                         String message2 = message.substring(message.indexOf(" ") + 1);
 
                         for (Player target : Bukkit.getServer().getOnlinePlayers()) {
-                            if (target.hasPermission(permission)) {
+                            if (TargetPlayer.hasPermission(target, permission)) {
                                 target.sendMessage(Message.chat(format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message2)));
                             }
                         }

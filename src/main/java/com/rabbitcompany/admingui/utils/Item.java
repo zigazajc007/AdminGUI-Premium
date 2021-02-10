@@ -20,9 +20,8 @@ public class Item {
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(Message.chat(displayName));
 
-        for(String s : loreString){
-            lore.add(Message.chat(s));
-        }
+        for(String s : loreString) lore.add(Message.chat(s));
+
         meta.setLore(lore);
         item.setItemMeta(meta);
         inv.setItem(invSlot - 1, item);
@@ -43,9 +42,8 @@ public class Item {
 
         ItemMeta meta = item.getItemMeta();
 
-        for(String s : loreString){
-            lore.add(Message.chat(s));
-        }
+        for(String s : loreString) lore.add(Message.chat(s));
+
         meta.setLore(lore);
         item.setItemMeta(meta);
         inv.setItem(invSlot - 1, item);
@@ -73,18 +71,12 @@ public class Item {
 
         ArrayList lore = new ArrayList();
 
-        //SkullMeta skullMeta = (SkullMeta) item.getItemMeta();
-
-        //skullMeta.setDisplayName(Message.chat(displayName));
-        //item.setItemMeta(skullMeta);
-
         ItemMeta meta = item.getItemMeta();
 
         meta.setDisplayName(Message.chat(displayName));
 
-        for(String s : loreString){
-            lore.add(Message.chat(s));
-        }
+        for(String s : loreString) lore.add(Message.chat(s));
+
         meta.setLore(lore);
         item.setItemMeta(meta);
         inv.setItem(invSlot - 1, item);
@@ -100,9 +92,8 @@ public class Item {
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(Message.chat(displayName));
 
-        for(String s : loreString){
-            lore.add(Message.chat(s));
-        }
+        for(String s : loreString) lore.add(Message.chat(s));
+
         meta.setLore(lore);
         item.setItemMeta(meta);
         inv.setItem(invSlot - 1, item);

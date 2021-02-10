@@ -1,7 +1,6 @@
 package com.rabbitcompany.admingui.utils;
 
 import com.rabbitcompany.admingui.AdminGUI;
-import com.rabbitcompany.admingui.ui.AdminUI;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -15,7 +14,7 @@ public class Message {
     }
 
     public static String getMessage(UUID uuid, String config){
-        String lang = AdminUI.language.getOrDefault(uuid, AdminGUI.getInstance().getConf().getString("default_language"));
+        String lang = Settings.language.getOrDefault(uuid, AdminGUI.getInstance().getConf().getString("default_language"));
         String mess = Language.getMessages(uuid, config);
 
         if(mess != null){

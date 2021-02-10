@@ -3,6 +3,7 @@ package com.rabbitcompany.admingui;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Channel;
 import com.rabbitcompany.admingui.utils.Language;
+import com.rabbitcompany.admingui.utils.Settings;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -26,7 +27,7 @@ public class TabCompletion implements TabCompleter {
 
                 if(AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false)){
                     Channel.send(sender.getName(),"send", "online_players");
-                    completions.addAll(AdminUI.online_players);
+                    completions.addAll(Settings.online_players);
                 }else{
                     for(Player all : Bukkit.getServer().getOnlinePlayers()) {
                         completions.add(all.getName());
@@ -71,7 +72,7 @@ public class TabCompletion implements TabCompleter {
                if(args[0].equals("rank") && (args[1].equals("set") || args[1].equals("up") || args[1].equals("down"))) {
                    if(AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false)){
                        Channel.send(sender.getName(),"send", "online_players");
-                       completions.addAll(AdminUI.online_players);
+                       completions.addAll(Settings.online_players);
                    }else{
                        for(Player all : Bukkit.getServer().getOnlinePlayers()) {
                            completions.add(all.getName());

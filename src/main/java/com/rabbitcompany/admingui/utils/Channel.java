@@ -13,9 +13,7 @@ public class Channel {
             ByteArrayDataOutput output = ByteStreams.newDataOutput();
             output.writeUTF(sender);
             output.writeUTF(subchannel);
-            for (String da: data) {
-                output.writeUTF(da);
-            }
+            for (String da: data) output.writeUTF(da);
             Bukkit.getServer().sendPluginMessage(AdminGUI.getInstance(), "my:admingui", output.toByteArray());
         }
     }

@@ -4,6 +4,7 @@ import com.rabbitcompany.admingui.AdminGUI;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Channel;
 import com.rabbitcompany.admingui.utils.Message;
+import com.rabbitcompany.admingui.utils.Settings;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -33,13 +34,12 @@ public class PlayerLeaveListener implements Listener {
         if(AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false)){
             Channel.send(event.getPlayer().getName(),"send", "online_players");
         }else{
-            AdminUI.online_players.remove(event.getPlayer().getName());
+            Settings.online_players.remove(event.getPlayer().getName());
         }
 
-        if(adminGUI.getConf().getBoolean("ac_enabled", false) && adminGUI.getConf().getDouble("ac_delay", 0) > 0 ){
-            AdminUI.admin_chat_delay.remove(event.getPlayer().getUniqueId());
-        }
+        if(adminGUI.getConf().getBoolean("ac_enabled", false) && adminGUI.getConf().getDouble("ac_delay", 0) > 0)
+            Settings.admin_chat_delay.remove(event.getPlayer().getUniqueId());
 
-        AdminUI.skulls_players.remove(event.getPlayer().getName());
+        Settings.skulls_players.remove(event.getPlayer().getName());
     }
 }

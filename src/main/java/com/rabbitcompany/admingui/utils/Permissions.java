@@ -16,13 +16,11 @@ public class Permissions {
         String rank;
 
         if(AdminGUI.getInstance().getConf().getBoolean("mysql", false) && AdminGUI.getInstance().getConf().getInt("ap_storage_type", 0) == 2){
-
             if(cache_ranks.getOrDefault(uuid, null) != null){
                 rank = cache_ranks.get(uuid);
             }else{
                 rank = Database.cacheRank(uuid);
             }
-
         }else{
             rank = AdminGUI.getInstance().getPlayers().getString(uuid + ".rank", null);
         }
@@ -38,13 +36,11 @@ public class Permissions {
         String rank;
 
         if(AdminGUI.getInstance().getConf().getBoolean("mysql", false) && AdminGUI.getInstance().getConf().getInt("ap_storage_type", 0) == 2){
-
             if(cache_ranks.getOrDefault(uuid, null) != null){
                 rank = cache_ranks.get(uuid);
             }else{
                 rank = Database.cacheRank(uuid);
             }
-
         }else{
             rank = AdminGUI.getInstance().getPlayers().getString(uuid + ".rank", null);
         }
