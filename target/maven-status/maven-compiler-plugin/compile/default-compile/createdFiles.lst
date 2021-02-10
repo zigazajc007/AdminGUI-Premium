@@ -54,6 +54,7 @@ com/rabbitcompany/admingui/listeners/PlayerMessageListener.class
 com/rabbitcompany/admingui/listeners/ServerListPingListener.class
 com/rabbitcompany/admingui/listeners/InventoryClickListener.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_9.class
+com/rabbitcompany/admingui/utils/Hash.class
 com/rabbitcompany/admingui/utils/MutedPlayerIn.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_13.class
 com/rabbitcompany/admingui/utils/BannedPlayerIn.class

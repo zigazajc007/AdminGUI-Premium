@@ -101,17 +101,16 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         }
 
         //bStats
-        if(!Bukkit.getVersion().contains("1.8")){
-            Metrics metrics = new Metrics(this, 5815);
-            metrics.addCustomChart(new Metrics.SimplePie("default_language", () -> getConf().getString("default_language", "English")));
-            metrics.addCustomChart(new Metrics.SimplePie("admin_tools", () -> getConf().getString("admin_tools_enabled", "true")));
-            metrics.addCustomChart(new Metrics.SimplePie("admin_permissions", () -> getConf().getString("ap_enabled", "false")));
-            metrics.addCustomChart(new Metrics.SimplePie("admin_chat", () -> getConf().getString("ac_enabled", "false")));
-            metrics.addCustomChart(new Metrics.SimplePie("admin_tablist", () -> getConf().getString("atl_enabled", "false")));
-            metrics.addCustomChart(new Metrics.SimplePie("admin_command_spy", () -> getConf().getString("acs_enabled", "false")));
-            metrics.addCustomChart(new Metrics.SimplePie("bungeecord", () -> getConf().getString("bungeecord_enabled", "false")));
-            metrics.addCustomChart(new Metrics.SimplePie("mysql", () -> getConf().getString("mysql", "false")));
-        }
+        Metrics metrics = new Metrics(this, 5815);
+        metrics.addCustomChart(new Metrics.SimplePie("default_language", () -> getConf().getString("default_language", "English")));
+        metrics.addCustomChart(new Metrics.SimplePie("admin_tools", () -> getConf().getString("admin_tools_enabled", "true")));
+        metrics.addCustomChart(new Metrics.SimplePie("admin_random_teleport", () -> getConf().getString("rtp_enabled", "false")));
+        metrics.addCustomChart(new Metrics.SimplePie("admin_permissions", () -> getConf().getString("ap_enabled", "false")));
+        metrics.addCustomChart(new Metrics.SimplePie("admin_chat", () -> getConf().getString("ac_enabled", "false")));
+        metrics.addCustomChart(new Metrics.SimplePie("admin_tablist", () -> getConf().getString("atl_enabled", "false")));
+        metrics.addCustomChart(new Metrics.SimplePie("admin_command_spy", () -> getConf().getString("acs_enabled", "false")));
+        metrics.addCustomChart(new Metrics.SimplePie("bungeecord", () -> getConf().getString("bungeecord_enabled", "false")));
+        metrics.addCustomChart(new Metrics.SimplePie("mysql", () -> getConf().getString("mysql", "false")));
 
         //Update Checker
         if(getConf().getBoolean("uc_enabled", true)){
@@ -361,18 +360,21 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cInformation:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Name: &bAdminGUI-Premium"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Developer: &bBlack1_TV"));
-        if(!username.contains("%%__")){
-            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &b" + username));
-        }else if(!user_id.contains("%%__")){
-            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &b" + user_id));
-        }else{
-            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &4&lCRACKED"));
-        }
         if(new_version != null){
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b" + getDescription().getVersion() + " (&6update available&b)"));
         }else{
             Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b" + getDescription().getVersion()));
+        }
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Developer: &bBlack1_TV"));
+        if(!username.contains("%%__")){
+            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &b" + username));
+            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9License key: &b" + Hash.generateLicenseKey(username)));
+        }else if(!user_id.contains("%%__")){
+            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &b" + user_id));
+            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9License key: &b" + Hash.generateLicenseKey(user_id)));
+        }else{
+            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &4&lCRACKED"));
+            Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9License key: &400000-00000-00000-00000"));
         }
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cLanguages:"));
