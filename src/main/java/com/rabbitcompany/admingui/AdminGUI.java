@@ -4,7 +4,6 @@ import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
 import com.rabbitcompany.admingui.commands.*;
 import com.rabbitcompany.admingui.listeners.*;
-import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.*;
 import com.zaxxer.hikari.HikariDataSource;
 import github.scarsz.discordsrv.DiscordSRV;
@@ -96,9 +95,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         Language.downloadLanguage(getConf().getString("default_language", "English"));
 
         //Database connection
-        if(getConf().getBoolean("mysql", false)) {
-            setupMySQL();
-        }
+        if(getConf().getBoolean("mysql", false)) setupMySQL();
 
         //bStats
         Metrics metrics = new Metrics(this, 5815);

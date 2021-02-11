@@ -41,19 +41,19 @@ groups:
     suffix: ""
     priority: 1000
     permissions:
-    - essentials.home
-    - essentials.home.bed
-    - essentials.sethome
-    - essentials.delhome
-    - essentials.tpa
-    - essentials.tpahere
-    - essentials.tpaccept
-    - essentials.tpdeny
-    - essentials.msg
-    - essentials.time
-    - essentials.warp
-    - essentials.warp.list
-    - essentials.warps.*
+      - essentials.home
+      - essentials.home.bed
+      - essentials.sethome
+      - essentials.delhome
+      - essentials.tpa
+      - essentials.tpahere
+      - essentials.tpaccept
+      - essentials.tpdeny
+      - essentials.msg
+      - essentials.time
+      - essentials.warp
+      - essentials.warp.list
+      - essentials.warps.*
   member+:
     prefix: "&7[&aMember+&7]"
     suffix: ""
