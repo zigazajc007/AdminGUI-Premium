@@ -64,12 +64,41 @@ groups:
       - essentials.ptime
       - essentials.pweather
       - essentials.workbench
-      - essentials.enderchest
       - admingui.chat.color
+  vip:
+    prefix: "&7[&6VIP&7]"
+    suffix: ""
+    priority: 800
+    inheritance:
+      - default
+      - member+
+    permissions:
+      - essentials.fly
+  vip+:
+    prefix: "&7[&6VIP+&7]"
+    suffix: ""
+    priority: 700
+    inheritance:
+      - default
+      - member+
+      - vip
+    permissions:
+      - essentials.back
+      - essentials.back.ondeath
+      - essentials.enderchest
+  youtuber:
+    prefix: "&7[&cYou&ftuber&7]"
+    suffix: ""
+    priority: 600
+    inheritance:
+      - default
+      - member+
+    permissions:
+      - essentials.fly
   helper:
     prefix: "&7[&9Helper&7]"
     suffix: ""
-    priority: 800
+    priority: 500
     inheritance:
       - default
       - member+
@@ -78,7 +107,7 @@ groups:
   builder:
     prefix: "&7[&9Builder&7]"
     suffix: ""
-    priority: 700
+    priority: 400
     inheritance:
       - default
       - member+
@@ -89,7 +118,7 @@ groups:
   moderator:
     prefix: "&7[&9Mod&7]"
     suffix: ""
-    priority: 600
+    priority: 300
     inheritance:
       - default
       - member+
@@ -129,7 +158,7 @@ groups:
   admin:
     prefix: "&7[&cAdmin&7]"
     suffix: ""
-    priority: 500
+    priority: 200
     inheritance:
       - default
       - member+
