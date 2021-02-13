@@ -79,9 +79,9 @@ public class AdminUI {
                 Item.after_createPlayerHead(inv_main, Settings.skulls.get("0qt"), 1, 13, Message.getMessage(p.getUniqueId(), "main_world"));
                 Item.after_createPlayerHead(inv_main, Settings.skulls.get("mattijs"), 1, 17, Message.getMessage(p.getUniqueId(), "main_plugins"));
                 if(Settings.maintenance_mode){
-                    Item.after_createPlayerHead(inv_main, Settings.skulls.get("BKing2012"),1,28, Message.getMessage(p.getUniqueId(), "main_Settings.maintenance_mode"));
+                    Item.after_createPlayerHead(inv_main, Settings.skulls.get("BKing2012"),1,28, Message.getMessage(p.getUniqueId(), "main_maintenance_mode"));
                 }else{
-                    Item.after_createPlayerHead(inv_main, Settings.skulls.get("AverageJoe"),1,28, Message.getMessage(p.getUniqueId(), "main_Settings.maintenance_mode"));
+                    Item.after_createPlayerHead(inv_main, Settings.skulls.get("AverageJoe"),1,28, Message.getMessage(p.getUniqueId(), "main_maintenance_mode"));
                 }
                 if(TargetPlayer.hasPermission(p, "admingui.unban") || TargetPlayer.hasPermission(p, "admingui.unmute")) {
                     Item.after_createPlayerHead(inv_main, Settings.skulls.get("LobbyPlugin"),1,32, Message.getMessage(p.getUniqueId(), "main_unban_players"));
@@ -93,9 +93,9 @@ public class AdminUI {
                 Item.create(inv_main, "GRASS_BLOCK", 1, 13, Message.getMessage(p.getUniqueId(), "main_world"));
                 Item.create(inv_main, "BOOKSHELF", 1, 17, Message.getMessage(p.getUniqueId(), "main_plugins"));
                 if(Settings.maintenance_mode){
-                    Item.create(inv_main, "GLOWSTONE_DUST", 1, 28, Message.getMessage(p.getUniqueId(), "main_Settings.maintenance_mode"));
+                    Item.create(inv_main, "GLOWSTONE_DUST", 1, 28, Message.getMessage(p.getUniqueId(), "main_maintenance_mode"));
                 }else{
-                    Item.create(inv_main, "REDSTONE", 1, 28, Message.getMessage(p.getUniqueId(), "main_Settings.maintenance_mode"));
+                    Item.create(inv_main, "REDSTONE", 1, 28, Message.getMessage(p.getUniqueId(), "main_maintenance_mode"));
                 }
                 if(TargetPlayer.hasPermission(p, "admingui.unban") || TargetPlayer.hasPermission(p, "admingui.unmute")) {
                     Item.create(inv_main, "BARRIER",1,32, Message.getMessage(p.getUniqueId(), "main_unban_players"));
@@ -389,7 +389,7 @@ public class AdminUI {
 
         if(AdminGUI.getInstance().getConf().getBoolean("ac_enabled")){
             if(TargetPlayer.hasPermission(p, "admingui.chat.color.change")){
-                Item.create(inv_player, Settings.chat_color.getOrDefault(p.getUniqueId(), "LIGHT_GRAY_WOOL"),1,37, Message.getMessage(p.getUniqueId(), "player_Settings.chat_color"));
+                Item.create(inv_player, Settings.chat_color.getOrDefault(p.getUniqueId(), "LIGHT_GRAY_WOOL"),1,37, Message.getMessage(p.getUniqueId(), "player_chat_color"));
             }else{
                 Item.create(inv_player, "RED_STAINED_GLASS_PANE", 1, 37,  Message.getMessage(p.getUniqueId(), "permission"));
             }
@@ -1127,7 +1127,7 @@ public class AdminUI {
 
         if(AdminGUI.getInstance().getConf().getBoolean("ac_enabled")){
             if(TargetPlayer.hasPermission(p, "admingui.chat.color.change.other")){
-                Item.create(inv_actions, Settings.chat_color.getOrDefault(target.getUniqueId(), "LIGHT_GRAY_WOOL"),1,41, Message.getMessage(p.getUniqueId(), "actions_Settings.chat_color"));
+                Item.create(inv_actions, Settings.chat_color.getOrDefault(target.getUniqueId(), "LIGHT_GRAY_WOOL"),1,41, Message.getMessage(p.getUniqueId(), "actions_chat_color"));
             }else{
                 Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 41,  Message.getMessage(p.getUniqueId(), "permission"));
             }
@@ -1504,13 +1504,13 @@ public class AdminUI {
         }else if(InventoryGUI.getClickedItem(clicked,Message.getMessage(p.getUniqueId(), "main_players"))){
             //TODO: Bungee
             if(AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false)){
-                Channel.send(p.getName(),"send", "Settings.online_players");
+                Channel.send(p.getName(),"send", "online_players");
             }
             p.openInventory(GUI_Players(p));
         }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "main_plugins"))){
             Settings.custom_method.put(p.getUniqueId(), 0);
             p.openInventory(GUI_Plugins(p));
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "main_Settings.maintenance_mode"))) {
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "main_maintenance_mode"))) {
             if(TargetPlayer.hasPermission(p, "admingui.maintenance.manage")){
                 if (Settings.maintenance_mode) {
                     Settings.maintenance_mode = false;
@@ -1665,7 +1665,7 @@ public class AdminUI {
         }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_custom"))){
             Settings.custom_method.put(p.getUniqueId(), 1);
             p.openInventory(GUI_Plugins(p));
-        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_Settings.chat_color"))){
+        }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "player_chat_color"))){
             switch (Settings.chat_color.getOrDefault(p.getUniqueId(), "LIGHT_GRAY_WOOL")){
                 case "WHITE_WOOL":
                     Settings.chat_color.put(p.getUniqueId(), "ORANGE_WOOL");
@@ -2055,7 +2055,7 @@ public class AdminUI {
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_custom"))){
                 Settings.custom_method.put(p.getUniqueId(), 2);
                 p.openInventory(GUI_Plugins(p));
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_Settings.chat_color"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_chat_color"))){
                 switch (Settings.chat_color.getOrDefault(target_player.getUniqueId(), "LIGHT_GRAY_WOOL")){
                     case "WHITE_WOOL":
                         Settings.chat_color.put(target_player.getUniqueId(), "ORANGE_WOOL");
@@ -2219,7 +2219,7 @@ public class AdminUI {
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_custom"))){
                 Settings.custom_method.put(p.getUniqueId(), 2);
                 p.openInventory(GUI_Plugins(p));
-            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_Settings.chat_color"))){
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_chat_color"))){
                 switch (Settings.chat_color.getOrDefault(target_player.getUniqueId(), "LIGHT_GRAY_WOOL")){
                     case "WHITE_WOOL":
                         Settings.chat_color.put(target_player.getUniqueId(), "ORANGE_WOOL");
