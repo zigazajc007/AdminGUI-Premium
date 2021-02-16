@@ -145,6 +145,7 @@ groups:
       - admingui.unmute
       - admingui.teleport
       - admingui.inventory
+      - admingui.enderchest
       - admingui.vanish
       - admingui.firework
       - admingui.lightning
@@ -190,6 +191,7 @@ groups:
       - admingui.money
       - admingui.money.other
       - admingui.inventory.edit
+      - admingui.enderchest.edit
       - admingui.vanish.other
       - admingui.firework.other
       - admingui.lightning.other

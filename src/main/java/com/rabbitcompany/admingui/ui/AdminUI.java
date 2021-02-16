@@ -3115,7 +3115,6 @@ public class AdminUI {
                             target_player.getEnderChest().setItem(slot, null);
                         }
                     }
-                    //target_player.updateInventory();
                     p.openInventory(GUI_Ender_Chest(p, target_player));
                 }
             }

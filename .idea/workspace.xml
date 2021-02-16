@@ -6,29 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/InventoryClickListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/InventoryClickListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/PlayerJoinListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/PlayerJoinListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/ui/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/ui/AdminUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Bulgarian.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Bulgarian.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Chinese.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Chinese.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Dutch.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Dutch.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/English.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/English.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Finnish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Finnish.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/French.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/French.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/German.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/German.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Hebrew.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Hebrew.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Italian.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Italian.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Japanese.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Japanese.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Korean.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Korean.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Latvian.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Latvian.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Portuguese.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Portuguese.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Russian.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Russian.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Slovak.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Slovak.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Slovenian.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Slovenian.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Spanish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Spanish.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Swedish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Swedish.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Turkish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Turkish.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/permissions.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/permissions.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/InventoryClickListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/InventoryClickListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/PlayerJoinListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/PlayerJoinListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/ui/AdminUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/ui/AdminUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/utils/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/utils/Entity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -223,13 +206,6 @@
       <workItem from="1577725216137" duration="7109000" />
       <workItem from="1578348949962" duration="293000" />
       <workItem from="1578422894075" duration="968000" />
-    </task>
-    <task id="LOCAL-00093" summary="Fixed sending data on bungee unregistered channel bug.">
-      <created>1601277510178</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1601277510178</updated>
     </task>
     <task id="LOCAL-00094" summary="1. Fixed default GUI background colors&#10;2. Show player IP in nicer format&#10;3. Fixed admin tool on 1.15+ mc versions&#10;4. Now you can type /admin tool or /admin tools to receive a tools&#10;5. You can now click with admin tool on a player to open their GUI.&#10;6. Added perm ban&#10;7. Now you can give permissions for each gamemode">
       <created>1601409694963</created>
@@ -567,7 +543,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613321190978</updated>
     </task>
-    <option name="localTasksCounter" value="142" />
+    <task id="LOCAL-00142" summary="- Now you can view / edit items in players Ender chest.&#10;- Fixed null error when you enable Admin Tablist on older Minecraft Versions.">
+      <created>1613470721972</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
+      <option name="project" value="LOCAL" />
+      <updated>1613470721973</updated>
+    </task>
+    <option name="localTasksCounter" value="143" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -592,7 +575,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/LiteBansAPI" />
     </ignored-roots>
-    <MESSAGE value="Added language downloader and fixer." />
     <MESSAGE value="Now you can save ranks into database." />
     <MESSAGE value="Added check command to display players stats. Moved ranks from permissions.yml to players.yml file. Added player_first_join, player_last_join and player_ips placeholders." />
     <MESSAGE value="Supplemented Slovenian.yml" />
@@ -617,6 +599,7 @@
     <MESSAGE value="- Now you can negotiate permissions with Admin Permissions&#10;- Added VIP, VIP+ and Youtuber rank to default permissions template&#10;- Clearing Admin Chat will now clear all messages&#10;- Optimized / redesigned code&#10;- Added License keys&#10;- Added new graphs to bStats&#10;- Updated HikariCP, bStats and DiscordSRV" />
     <MESSAGE value="- After big update some text bugs appeared. In this release I have fixed them. If you see a bug please contact me." />
     <MESSAGE value="- Fixed null error when you enable Admin Tablist on older Minecraft Versions." />
-    <option name="LAST_COMMIT_MESSAGE" value="- Fixed null error when you enable Admin Tablist on older Minecraft Versions." />
+    <MESSAGE value="- Now you can view / edit items in players Ender chest.&#10;- Fixed null error when you enable Admin Tablist on older Minecraft Versions." />
+    <option name="LAST_COMMIT_MESSAGE" value="- Now you can view / edit items in players Ender chest.&#10;- Fixed null error when you enable Admin Tablist on older Minecraft Versions." />
   </component>
 </project>
