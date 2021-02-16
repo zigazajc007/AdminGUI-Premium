@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
+    <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="- Added German translation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/ui/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/ui/AdminUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/permissions.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/permissions.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/InventoryClickListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/InventoryClickListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/PlayerJoinListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/PlayerJoinListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/Language.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/Language.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/German.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/German.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/ui/AdminUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/ui/AdminUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/utils/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/utils/Entity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -206,13 +203,6 @@
       <workItem from="1577725216137" duration="7109000" />
       <workItem from="1578348949962" duration="293000" />
       <workItem from="1578422894075" duration="968000" />
-    </task>
-    <task id="LOCAL-00094" summary="1. Fixed default GUI background colors&#10;2. Show player IP in nicer format&#10;3. Fixed admin tool on 1.15+ mc versions&#10;4. Now you can type /admin tool or /admin tools to receive a tools&#10;5. You can now click with admin tool on a player to open their GUI.&#10;6. Added perm ban&#10;7. Now you can give permissions for each gamemode">
-      <created>1601409694963</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1601409694964</updated>
     </task>
     <task id="LOCAL-00095" summary="Optimized ban system.">
       <created>1601453943607</created>
@@ -550,7 +540,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613470721973</updated>
     </task>
-    <option name="localTasksCounter" value="143" />
+    <task id="LOCAL-00143" summary="- Now you can view/edit items in the player's Ender chest.&#10;- Fixed null error when you enable Admin Tablist on older Minecraft Versions.&#10;&#10;New permissions:&#10;- admingui.enderchest (To view players Ender chest)&#10;- admingui.enderchest.edit (To edit their Ender chests)&#10;&#10;Important:&#10;- In this update language files has been changed, so make sure to execute a command in the console: admin language fix &lt;Language&gt;">
+      <created>1613471317687</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1613471317687</updated>
+    </task>
+    <option name="localTasksCounter" value="144" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -575,7 +572,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/LiteBansAPI" />
     </ignored-roots>
-    <MESSAGE value="Now you can save ranks into database." />
     <MESSAGE value="Added check command to display players stats. Moved ranks from permissions.yml to players.yml file. Added player_first_join, player_last_join and player_ips placeholders." />
     <MESSAGE value="Supplemented Slovenian.yml" />
     <MESSAGE value="Added DiscordSRV support so now chat filters will be applied on DiscordSRV plugin too." />
@@ -600,6 +596,7 @@
     <MESSAGE value="- After big update some text bugs appeared. In this release I have fixed them. If you see a bug please contact me." />
     <MESSAGE value="- Fixed null error when you enable Admin Tablist on older Minecraft Versions." />
     <MESSAGE value="- Now you can view / edit items in players Ender chest.&#10;- Fixed null error when you enable Admin Tablist on older Minecraft Versions." />
-    <option name="LAST_COMMIT_MESSAGE" value="- Now you can view / edit items in players Ender chest.&#10;- Fixed null error when you enable Admin Tablist on older Minecraft Versions." />
+    <MESSAGE value="- Now you can view/edit items in the player's Ender chest.&#10;- Fixed null error when you enable Admin Tablist on older Minecraft Versions.&#10;&#10;New permissions:&#10;- admingui.enderchest (To view players Ender chest)&#10;- admingui.enderchest.edit (To edit their Ender chests)&#10;&#10;Important:&#10;- In this update language files has been changed, so make sure to execute a command in the console: admin language fix &lt;Language&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Now you can view/edit items in the player's Ender chest.&#10;- Fixed null error when you enable Admin Tablist on older Minecraft Versions.&#10;&#10;New permissions:&#10;- admingui.enderchest (To view players Ender chest)&#10;- admingui.enderchest.edit (To edit their Ender chests)&#10;&#10;Important:&#10;- In this update language files has been changed, so make sure to execute a command in the console: admin language fix &lt;Language&gt;" />
   </component>
 </project>

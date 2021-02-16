@@ -16,7 +16,7 @@ import java.util.*;
 
 public class Language {
 
-    public static ArrayList<String> default_languages = new ArrayList<>(Arrays.asList("Bulgarian", "Chinese", "Dutch", "English", "Finnish", "French", "Hebrew", "Italian", "Japanese", "Korean", "Latvian", "Portuguese", "Russian", "Slovak", "Spanish", "Swedish", "Turkish"));
+    public static ArrayList<String> default_languages = new ArrayList<>(Arrays.asList("Bulgarian", "Chinese", "Dutch", "English", "Finnish", "French", "German", "Hebrew", "Italian", "Japanese", "Korean", "Latvian", "Portuguese", "Russian", "Slovak", "Spanish", "Swedish", "Turkish"));
     public static ArrayList<String> enabled_languages = new ArrayList<>();
     static HashMap<String, YamlConfiguration> languages = new HashMap<>();
 
