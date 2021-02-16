@@ -5,9 +5,6 @@ import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Message;
 import com.rabbitcompany.admingui.utils.Settings;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Color;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -31,13 +28,13 @@ public class InventoryClickListener implements Listener {
         String player = e.getWhoClicked().getName();
         Player p = (Player) e.getWhoClicked();
 
-        if(Settings.freeze.getOrDefault(p.getUniqueId(), false) && AdminGUI.getInstance().getConf().getBoolean("freeze_move_inventory", true)){
+        if(Settings.freeze.getOrDefault(p.getUniqueId(), false) && adminGUI.getConf().getBoolean("freeze_move_inventory", true)){
             e.setCancelled(true);
             return;
         }
 
         try{
-            if (title.equals(Message.getMessage(p.getUniqueId(), "inventory_main")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_player").replace("{player}", player)) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_world")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_players")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_plugins")) || title.contains(Message.getMessage(p.getUniqueId(), "inventory_commands")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_unban")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_unmute")) || title.equals(Message.getMessage(p.getUniqueId(), "players_color").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_actions").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_kick").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_ban").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_potions").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_spawner").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_inventory").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_money_give").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_money_set").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_money_take").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_money").replace("{player}", Settings.target_player.get(p).getName()))) {
+            if (title.equals(Message.getMessage(p.getUniqueId(), "inventory_main")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_player").replace("{player}", player)) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_world")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_players")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_plugins")) || title.contains(Message.getMessage(p.getUniqueId(), "inventory_commands")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_unban")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_unmute")) || title.equals(Message.getMessage(p.getUniqueId(), "players_color").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_actions").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_kick").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_ban").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_potions").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_spawner").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_inventory").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_ender_chest").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_money_give").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_money_set").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_money_take").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_money").replace("{player}", Settings.target_player.get(p).getName()))) {
 
                 e.setCancelled(true);
 
@@ -80,6 +77,8 @@ public class InventoryClickListener implements Listener {
                         adminUI.clicked_money_amount(p, e.getSlot(), e.getCurrentItem(), e.getInventory(), Settings.target_player.get(p), 3);
                     } else if (title.equals(Message.getMessage(p.getUniqueId(), "inventory_inventory").replace("{player}", Settings.target_player.get(p).getName()))) {
                         adminUI.clicked_inventory(p, e.getSlot(), e.getCurrentItem(), e.getInventory(), Settings.target_player.get(p), e.isLeftClick());
+                    }else if(title.equals(Message.getMessage(p.getUniqueId(), "inventory_ender_chest").replace("{player}", Settings.target_player.get(p).getName()))){
+                        adminUI.clicked_ender_chest(p, e.getSlot(), e.getCurrentItem(), e.getInventory(), Settings.target_player.get(p), e.isLeftClick());
                     }
                 }
             }

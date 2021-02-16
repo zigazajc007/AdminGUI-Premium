@@ -71,6 +71,7 @@ inventory_money_give: "&2&lGEEF geld aan {player}"
 inventory_money_set: "&2&lSTEL het saldo IN van &2&l{player}"
 inventory_money_take: "&2&lNEEM geld van &2&l{player}"
 inventory_inventory: "&a&lInventory &2&l{player}"
+inventory_ender_chest: "&5&lEnder Chest &2&l{player}"
 #----------------------------------------------------------
 #                       Admin GUI
 #----------------------------------------------------------
@@ -178,6 +179,7 @@ actions_god_disabled: "&c&lGod"
 actions_potions: "&c&lDranken"
 actions_spawner: "&8&lSpawner"
 actions_inventory: "&a&lInventory"
+actions_ender_chest: "&5&lEnder Chest"
 actions_vanish_enabled: "&a&lVerdwijn"
 actions_vanish_disabled: "&c&lVerdwijn"
 actions_lightning: "&5&lBliksem"

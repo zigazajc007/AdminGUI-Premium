@@ -71,6 +71,7 @@ inventory_money_give: "&2&lלתת כסף {player}"
 inventory_money_set: "&2&lכסף&9&l לשנות &2&l{player}"
 inventory_money_take: "&2&lכסף&c&l לקחת &2&l{player}"
 inventory_inventory: "&a&lתיק &2&l{player}"
+inventory_ender_chest: "&5&lEnder Chest &2&l{player}"
 #----------------------------------------------------------
 #                       Admin GUI
 #----------------------------------------------------------
@@ -178,6 +179,7 @@ actions_god_disabled: "&a&lאל"
 actions_potions: "&c&lשיקויים"
 actions_spawner: "&8&lיוצר"
 actions_inventory: "&a&lתיק"
+actions_ender_chest: "&5&lEnder Chest"
 actions_vanish_enabled: "&a&lנעלם"
 actions_vanish_disabled: "&c&lנעלם"
 actions_lightning: "&5&lברק"

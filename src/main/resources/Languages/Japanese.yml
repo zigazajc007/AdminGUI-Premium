@@ -73,6 +73,7 @@ inventory_money_give: "&2&lお金を与える {player}"
 inventory_money_set: "&2&lお金を&9&l設定 &2&l{player}"
 inventory_money_take: "&2&lお金を&c&l取る &2&l{player}"
 inventory_inventory: "&a&lインベントリ &2&l{player}"
+inventory_ender_chest: "&5&lEnder Chest &2&l{player}"
 #----------------------------------------------------------
 #                       Admin GUI
 #----------------------------------------------------------
@@ -180,6 +181,7 @@ actions_god_disabled: "&c&l無敵"
 actions_potions: "&c&lポーション"
 actions_spawner: "&8&lスポーン"
 actions_inventory: "&a&lインベントリ"
+actions_ender_chest: "&5&lEnder Chest"
 actions_vanish_enabled: "&a&l姿を消す"
 actions_vanish_disabled: "&c&l姿を消す"
 actions_lightning: "&5&l雷"

@@ -71,6 +71,7 @@ inventory_money_give: "&2&lDenar DODAJ {player}"
 inventory_money_set: "&2&lDenar&9&l NASTAVI &2&l{player}"
 inventory_money_take: "&2&lDenar&c&l VZEMI &2&l{player}"
 inventory_inventory: "&a&lInventar &2&l{player}"
+inventory_ender_chest: "&5&lEnder Chest &2&l{player}"
 #----------------------------------------------------------
 #                       Admin GUI
 #----------------------------------------------------------
@@ -178,6 +179,7 @@ actions_god_disabled: "&a&lBog"
 actions_potions: "&c&lNapoji"
 actions_spawner: "&8&lIzvir pošasti"
 actions_inventory: "&a&lInventar"
+actions_ender_chest: "&5&lEnder Chest"
 actions_vanish_enabled: "&a&lIzginiti"
 actions_vanish_disabled: "&c&lIzginiti"
 actions_lightning: "&5&lStrela"

@@ -71,6 +71,7 @@ inventory_money_give: "&2&l金錢 給予 {player}"
 inventory_money_set: "&2&l金錢&9&l 設定 &2&l{player}"
 inventory_money_take: "&2&l金錢&c&l 拿走 &2&l{player}"
 inventory_inventory: "&a&l介面 &2&l{player}"
+inventory_ender_chest: "&5&lEnder Chest &2&l{player}"
 #----------------------------------------------------------
 #                       管理員介面
 #----------------------------------------------------------
@@ -178,6 +179,7 @@ actions_god_disabled: "&a&l上帝"
 actions_potions: "&c&l藥水效果"
 actions_spawner: "&8&l生怪"
 actions_inventory: "&a&l背包"
+actions_ender_chest: "&5&lEnder Chest"
 actions_vanish_enabled: "&a&l隱形"
 actions_vanish_disabled: "&c&l隱形"
 actions_lightning: "&5&l雷擊"

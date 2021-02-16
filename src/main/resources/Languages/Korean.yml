@@ -71,6 +71,7 @@ inventory_money_give: "&2&l돈 주기 {player}"
 inventory_money_set: "&2&l돈&9&l 설정 &2&l{player}"
 inventory_money_take: "&2&l돈&c&l 가져가기 &2&l{player}"
 inventory_inventory: "&a&l인벤토리 &2&l{player}"
+inventory_ender_chest: "&5&lEnder Chest &2&l{player}"
 #----------------------------------------------------------
 #                       Admin GUI
 #----------------------------------------------------------
@@ -178,6 +179,7 @@ actions_god_disabled: "&c&lGod 모드"
 actions_potions: "&c&l포션"
 actions_spawner: "&8&l스포너"
 actions_inventory: "&a&l인벤토리"
+actions_ender_chest: "&5&lEnder Chest"
 actions_vanish_enabled: "&a&l사라지기"
 actions_vanish_disabled: "&c&l사라지기"
 actions_lightning: "&5&l번개"

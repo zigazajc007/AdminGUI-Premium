@@ -964,22 +964,29 @@ public class AdminUI {
                     Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 29,  Message.getMessage(p.getUniqueId(), "permission"));
                 }
 
-                if(TargetPlayer.hasPermission(p, "admingui.burn.other")) {
-                    Item.after_createPlayerHead(inv_actions, Settings.skulls.get("haohanklliu"), 1, 31, Message.getMessage(p.getUniqueId(), "actions_burn_player"));
+                //TODO: Ender Chest
+                if(TargetPlayer.hasPermission(p, "admingui.enderchest")){
+                    Item.after_createPlayerHead(inv_actions, Settings.skulls.get("ElMarcosFTW"), 1, 31, Message.getMessage(p.getUniqueId(), "actions_ender_chest"));
                 }else{
                     Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 31,  Message.getMessage(p.getUniqueId(), "permission"));
                 }
 
-                if(TargetPlayer.hasPermission(p, "admingui.lightning.other")){
-                    Item.after_createPlayerHead(inv_actions, Settings.skulls.get("raichuthink"), 1, 35, Message.getMessage(p.getUniqueId(), "actions_lightning"));
+                if(TargetPlayer.hasPermission(p, "admingui.burn.other")) {
+                    Item.after_createPlayerHead(inv_actions, Settings.skulls.get("haohanklliu"), 1, 33, Message.getMessage(p.getUniqueId(), "actions_burn_player"));
                 }else{
-                    Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 35, Message.getMessage(p.getUniqueId(), "permission"));
+                    Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 33,  Message.getMessage(p.getUniqueId(), "permission"));
+                }
+
+                if(TargetPlayer.hasPermission(p, "admingui.lightning.other")){
+                    Item.after_createPlayerHead(inv_actions, Settings.skulls.get("raichuthink"), 1, 37, Message.getMessage(p.getUniqueId(), "actions_lightning"));
+                }else{
+                    Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 37, Message.getMessage(p.getUniqueId(), "permission"));
                 }
 
                 if(TargetPlayer.hasPermission(p, "admingui.custom")) {
-                    Item.after_createPlayerHead(inv_actions, Settings.skulls.get("Opp"),1,41, Message.getMessage(p.getUniqueId(), "actions_custom"));
+                    Item.after_createPlayerHead(inv_actions, Settings.skulls.get("Opp"),1,43, Message.getMessage(p.getUniqueId(), "actions_custom"));
                 }else{
-                    Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 41,  Message.getMessage(p.getUniqueId(), "permission"));
+                    Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 43,  Message.getMessage(p.getUniqueId(), "permission"));
                 }
 
                 Item.after_createPlayerHead(inv_actions, Settings.skulls.get("MHF_Redstone"),1,54, Message.getMessage(p.getUniqueId(), "actions_back"));
@@ -1051,26 +1058,33 @@ public class AdminUI {
                     Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 29,  Message.getMessage(p.getUniqueId(), "permission"));
                 }
 
-                if(TargetPlayer.hasPermission(p, "admingui.burn.other")) {
-                    Item.create(inv_actions, "FLINT_AND_STEEL", 1, 31, Message.getMessage(p.getUniqueId(), "actions_burn_player"));
+                //TODO: Ender Chest
+                if(TargetPlayer.hasPermission(p, "admingui.enderchest")){
+                    Item.create(inv_actions, "ENDER_CHEST", 1, 31, Message.getMessage(p.getUniqueId(), "actions_ender_chest"));
                 }else{
                     Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 31,  Message.getMessage(p.getUniqueId(), "permission"));
                 }
 
+                if(TargetPlayer.hasPermission(p, "admingui.burn.other")) {
+                    Item.create(inv_actions, "FLINT_AND_STEEL", 1, 33, Message.getMessage(p.getUniqueId(), "actions_burn_player"));
+                }else{
+                    Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 33,  Message.getMessage(p.getUniqueId(), "permission"));
+                }
+
                 if(TargetPlayer.hasPermission(p, "admingui.lightning.other")){
                     if(Bukkit.getVersion().contains("1.13") || Bukkit.getVersion().contains("1.14") || Bukkit.getVersion().contains("1.15") || Bukkit.getVersion().contains("1.16")){
-                        Item.create(inv_actions, "TRIDENT", 1, 35, Message.getMessage(p.getUniqueId(), "actions_lightning"));
+                        Item.create(inv_actions, "TRIDENT", 1, 37, Message.getMessage(p.getUniqueId(), "actions_lightning"));
                     }else{
-                        Item.create(inv_actions, "STICK", 1, 35, Message.getMessage(p.getUniqueId(), "actions_lightning"));
+                        Item.create(inv_actions, "STICK", 1, 37, Message.getMessage(p.getUniqueId(), "actions_lightning"));
                     }
                 }else{
-                    Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 35, Message.getMessage(p.getUniqueId(), "permission"));
+                    Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 37, Message.getMessage(p.getUniqueId(), "permission"));
                 }
 
                 if(TargetPlayer.hasPermission(p, "admingui.custom")) {
-                    Item.create(inv_actions, "COMMAND_BLOCK",1,41, Message.getMessage(p.getUniqueId(), "actions_custom"));
+                    Item.create(inv_actions, "COMMAND_BLOCK",1,43, Message.getMessage(p.getUniqueId(), "actions_custom"));
                 }else{
-                    Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 41,  Message.getMessage(p.getUniqueId(), "permission"));
+                    Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 43,  Message.getMessage(p.getUniqueId(), "permission"));
                 }
 
                 Item.create(inv_actions, "REDSTONE_BLOCK",1,54, Message.getMessage(p.getUniqueId(), "actions_back"));
@@ -1102,46 +1116,45 @@ public class AdminUI {
         if (TargetPlayer.hasPermission(p, "admingui.vanish.other")) {
             if (Bukkit.getPluginManager().isPluginEnabled("SuperVanish") || Bukkit.getPluginManager().isPluginEnabled("PremiumVanish")) {
                 if (VanishAPI.isInvisible(target)) {
-                    Item.create(inv_actions, "FEATHER", 1, 33, Message.getMessage(p.getUniqueId(), "actions_vanish_disabled"));
+                    Item.create(inv_actions, "FEATHER", 1, 35, Message.getMessage(p.getUniqueId(), "actions_vanish_disabled"));
                 } else {
-                    Item.create(inv_actions, "FEATHER", 1, 33, Message.getMessage(p.getUniqueId(), "actions_vanish_enabled"));
+                    Item.create(inv_actions, "FEATHER", 1, 35, Message.getMessage(p.getUniqueId(), "actions_vanish_enabled"));
                 }
             } else {
-                Item.create(inv_actions, "FEATHER", 1, 33, Message.getMessage(p.getUniqueId(), "actions_vanish_enabled"));
+                Item.create(inv_actions, "FEATHER", 1, 35, Message.getMessage(p.getUniqueId(), "actions_vanish_enabled"));
             }
         }else{
-            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 33, Message.getMessage(p.getUniqueId(), "permission"));
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 35, Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         if(TargetPlayer.hasPermission(p, "admingui.firework.other")){
-            Item.create(inv_actions, "FIREWORK_ROCKET", 1, 37, Message.getMessage(p.getUniqueId(), "actions_firework"));
-        }else{
-            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 37, Message.getMessage(p.getUniqueId(), "permission"));
-        }
-
-        if(TargetPlayer.hasPermission(p, "admingui.fakeop")){
-            Item.create(inv_actions, "PAPER", 1, 39, Message.getMessage(p.getUniqueId(), "actions_fakeop"));
+            Item.create(inv_actions, "FIREWORK_ROCKET", 1, 39, Message.getMessage(p.getUniqueId(), "actions_firework"));
         }else{
             Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 39, Message.getMessage(p.getUniqueId(), "permission"));
         }
 
+        if(TargetPlayer.hasPermission(p, "admingui.fakeop")){
+            Item.create(inv_actions, "PAPER", 1, 41, Message.getMessage(p.getUniqueId(), "actions_fakeop"));
+        }else{
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 41, Message.getMessage(p.getUniqueId(), "permission"));
+        }
+
         if(AdminGUI.getInstance().getConf().getBoolean("ac_enabled")){
             if(TargetPlayer.hasPermission(p, "admingui.chat.color.change.other")){
-                Item.create(inv_actions, Settings.chat_color.getOrDefault(target.getUniqueId(), "LIGHT_GRAY_WOOL"),1,41, Message.getMessage(p.getUniqueId(), "actions_chat_color"));
+                Item.create(inv_actions, Settings.chat_color.getOrDefault(target.getUniqueId(), "LIGHT_GRAY_WOOL"),1,43, Message.getMessage(p.getUniqueId(), "actions_chat_color"));
             }else{
-                Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 41,  Message.getMessage(p.getUniqueId(), "permission"));
+                Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 43,  Message.getMessage(p.getUniqueId(), "permission"));
             }
         }
 
-        //TODO: Freeze
         if(TargetPlayer.hasPermission(p, "admingui.freeze.other")){
             if(Settings.freeze.getOrDefault(target.getUniqueId(), false)){
-                Item.create(inv_actions, "ICE", 1, 43, Message.getMessage(p.getUniqueId(), "actions_freeze_disabled"));
+                Item.create(inv_actions, "ICE", 1, 45, Message.getMessage(p.getUniqueId(), "actions_freeze_disabled"));
             }else{
-                Item.create(inv_actions, "ICE", 1, 43, Message.getMessage(p.getUniqueId(), "actions_freeze_enabled"));
+                Item.create(inv_actions, "ICE", 1, 45, Message.getMessage(p.getUniqueId(), "actions_freeze_enabled"));
             }
         }else{
-            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 43,  Message.getMessage(p.getUniqueId(), "permission"));
+            Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 45,  Message.getMessage(p.getUniqueId(), "permission"));
         }
 
         return inv_actions;
@@ -1491,6 +1504,50 @@ public class AdminUI {
         }
 
         return inv_inventory;
+    }
+
+    public Inventory GUI_Ender_Chest(Player p, Player target) {
+
+        String inventory_ender_chest_name = Message.getMessage(p.getUniqueId(), "inventory_ender_chest").replace("{player}", target.getName());
+        Settings.target_player.put(p, target);
+
+        Inventory inv_ender_chest = Bukkit.createInventory(null, 36, inventory_ender_chest_name);
+
+        if(target.isOnline()){
+
+            ItemStack[] items = target.getEnderChest().getContents();
+
+            for(int i = 0; i < items.length; i++){
+                if(items[i] != null){
+                    inv_ender_chest.setItem(i, items[i]);
+                }else{
+                    inv_ender_chest.setItem(i, null);
+                }
+            }
+
+        }else{
+            p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
+            p.closeInventory();
+        }
+
+        for (int i = 28; i < 36; i++){
+            Item.create(inv_ender_chest, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
+        }
+
+        Item.create(inv_ender_chest, "GREEN_TERRACOTTA", 1, 28, Message.getMessage(p.getUniqueId(), "inventory_refresh"));
+
+        Item.create(inv_ender_chest, "BLUE_TERRACOTTA", 1, 32, Message.getMessage(p.getUniqueId(), "inventory_clear"));
+
+        switch (AdminGUI.gui_type){
+            case 1:
+                Item.after_createPlayerHead(inv_ender_chest, Settings.skulls.get("MHF_Redstone"),1,36, Message.getMessage(p.getUniqueId(), "inventory_back"));
+                break;
+            default:
+                Item.create(inv_ender_chest, "REDSTONE_BLOCK",1,36, Message.getMessage(p.getUniqueId(), "inventory_back"));
+                break;
+        }
+
+        return inv_ender_chest;
     }
 
     public void clicked_main(Player p, int slot, ItemStack clicked, Inventory inv, boolean isLeftClick){
@@ -2028,6 +2085,8 @@ public class AdminUI {
                 p.openInventory(GUI_Spawner(p, target_player));
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_inventory"))){
                 p.openInventory(GUI_Inventory(p, target_player));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_ender_chest"))){
+                p.openInventory(GUI_Ender_Chest(p, target_player));
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_vanish_enabled"))){
                 if (Bukkit.getPluginManager().isPluginEnabled("SuperVanish") || Bukkit.getPluginManager().isPluginEnabled("PremiumVanish")) {
                     VanishAPI.hidePlayer(target_player);
@@ -2192,6 +2251,8 @@ public class AdminUI {
                 p.openInventory(GUI_Spawner(p, target_player));
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_inventory"))){
                 p.openInventory(GUI_Inventory(p, target_player));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_ender_chest"))){
+                p.openInventory(GUI_Ender_Chest(p, target_player));
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_vanish_enabled"))){
                 if (Bukkit.getPluginManager().isPluginEnabled("SuperVanish") || Bukkit.getPluginManager().isPluginEnabled("PremiumVanish")) {
                     VanishAPI.hidePlayer(target_player);
@@ -3026,6 +3087,36 @@ public class AdminUI {
                     }
                     target_player.updateInventory();
                     p.openInventory(GUI_Inventory(p, target_player));
+                }
+            }
+        }else{
+            p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_player_not_found"));
+            p.closeInventory();
+        }
+    }
+
+    //TODO: Ender Chest
+    public void clicked_ender_chest(Player p, int slot, ItemStack clicked, Inventory inv, Player target_player, boolean left_click){
+
+        if(target_player.isOnline()){
+            if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "inventory_back"))){
+                p.openInventory(GUI_Actions(p, target_player));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "inventory_clear"))){
+                target_player.getEnderChest().clear();
+                p.openInventory(GUI_Ender_Chest(p, target_player));
+            }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "inventory_refresh"))){
+                p.openInventory(GUI_Ender_Chest(p, target_player));
+            }else{
+                if(TargetPlayer.hasPermission(p, "admingui.enderchest.edit")){
+                    if(left_click){
+                        target_player.getEnderChest().addItem(clicked);
+                    }else{
+                        if(clicked.getType() == target_player.getEnderChest().getItem(slot).getType() && clicked.getAmount() == target_player.getEnderChest().getItem(slot).getAmount()){
+                            target_player.getEnderChest().setItem(slot, null);
+                        }
+                    }
+                    //target_player.updateInventory();
+                    p.openInventory(GUI_Ender_Chest(p, target_player));
                 }
             }
         }else{

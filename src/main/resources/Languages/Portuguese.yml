@@ -71,6 +71,7 @@ inventory_money_give: "&2&lMoney GIVE {player}"
 inventory_money_set: "&2&lMoney&9&l SET &2&l{player}"
 inventory_money_take: "&2&lMoney&c&l TAKE &2&l{player}"
 inventory_inventory: "&a&lInventario &2&l{player}"
+inventory_ender_chest: "&5&lEnder Chest &2&l{player}"
 #----------------------------------------------------------
 #                      GUI de Admin
 #----------------------------------------------------------
@@ -178,6 +179,7 @@ actions_god_disabled: "&a&lDeus"
 actions_potions: "&c&lPoções"
 actions_spawner: "&8&lSpawner"
 actions_inventory: "&a&lInventario"
+actions_ender_chest: "&5&lEnder Chest"
 actions_vanish_enabled: "&a&lInvisível"
 actions_vanish_disabled: "&c&lInvisível"
 actions_lightning: "&5&lRaio"

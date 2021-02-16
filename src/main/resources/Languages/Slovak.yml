@@ -71,6 +71,7 @@ inventory_money_give: "&2&lDarovať Peniaze {player}"
 inventory_money_set: "&9&l NASTAVIŤ &2&lPeniaze &2&l{player}"
 inventory_money_take: "&c&l VZIAŤ &2&lPeniaze &2&l{player}"
 inventory_inventory: "&a&lInventár &2&l{player}"
+inventory_ender_chest: "&5&lEnder Chest &2&l{player}"
 #----------------------------------------------------------
 #                     Admin GUI
 #----------------------------------------------------------
@@ -178,6 +179,7 @@ actions_god_disabled: "&a&lBoh"
 actions_potions: "&c&lLektvary"
 actions_spawner: "&8&lSpawner"
 actions_inventory: "&a&lInventár"
+actions_ender_chest: "&5&lEnder Chest"
 actions_vanish_enabled: "&a&lNeviditeľnosť"
 actions_vanish_disabled: "&c&lNeviditeľnosť"
 actions_lightning: "&5&lBlesk"

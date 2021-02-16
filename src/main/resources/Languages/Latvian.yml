@@ -71,6 +71,7 @@ inventory_money_give: "&2&lNaudu IEDOT {player}"
 inventory_money_set: "&2&lNaudu&9&l UZSTĀDĪT &2&l{player}"
 inventory_money_take: "&2&lNaudu&c&l PAŅEMT &2&l{player}"
 inventory_inventory: "&a&lInventorijs &2&l{player}"
+inventory_ender_chest: "&5&lEnder Chest &2&l{player}"
 #----------------------------------------------------------
 #                       Administrācijas GUI
 #----------------------------------------------------------
@@ -178,6 +179,7 @@ actions_god_disabled: "&a&lDievs"
 actions_potions: "&c&lDziras"
 actions_spawner: "&8&lSpawneris"
 actions_inventory: "&a&lInventorijs"
+actions_ender_chest: "&5&lEnder Chest"
 actions_vanish_enabled: "&a&lIzgaist"
 actions_vanish_disabled: "&c&lParādīties"
 actions_lightning: "&5&lZibens"

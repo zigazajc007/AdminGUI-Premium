@@ -71,6 +71,7 @@ inventory_money_give: "&2&lPengar GIVE {player}"
 inventory_money_set: "&2&lPengar&9&l SET &2&l{player}"
 inventory_money_take: "&2&lPengar&c&l TAKE &2&l{player}"
 inventory_inventory: "&a&lUtrustning &2&l{player}"
+inventory_ender_chest: "&5&lEnder Chest &2&l{player}"
 #----------------------------------------------------------
 #                      Administrativ GUI
 #----------------------------------------------------------
@@ -178,6 +179,7 @@ actions_god_disabled: "&a&lGudaläge Av"
 actions_potions: "&c&lBrygder"
 actions_spawner: "&8&lMonsterskapare"
 actions_inventory: "&a&lUtrustning"
+actions_ender_chest: "&5&lEnder Chest"
 actions_vanish_enabled: "&a&lOsynlig"
 actions_vanish_disabled: "&c&lOsynlig"
 actions_lightning: "&5&lBlixt-"

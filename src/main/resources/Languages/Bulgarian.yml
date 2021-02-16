@@ -71,6 +71,7 @@ inventory_money_give: "&2&lДай пари на {player}"
 inventory_money_set: "&2&lПари&9&l Сложи &2&l{player}"
 inventory_money_take: "&2&lПари&c&l Вземи &2&l{player}"
 inventory_inventory: "&a&lИнвентар &2&l{player}"
+inventory_ender_chest: "&5&lEnder Chest &2&l{player}"
 #----------------------------------------------------------
 #                       Админ Меню
 #----------------------------------------------------------
@@ -178,6 +179,7 @@ actions_god_disabled: "&a&lГоспод"
 actions_potions: "&c&lОтвари"
 actions_spawner: "&8&lСпаунар"
 actions_inventory: "&a&lИнвентар"
+actions_ender_chest: "&5&lEnder Chest"
 actions_vanish_enabled: "&a&lИзчезни"
 actions_vanish_disabled: "&c&lИзчезни"
 actions_lightning: "&5&lСветкавица"

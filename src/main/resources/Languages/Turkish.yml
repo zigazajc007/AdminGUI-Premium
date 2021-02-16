@@ -71,6 +71,7 @@ inventory_money_give: "&2&lPara EKLE {player}"
 inventory_money_set: "&2&lPara&9&l AYARLA &2&l{player}"
 inventory_money_take: "&2&lPara&c&l AL &2&l{player}"
 inventory_inventory: "&a&lEnvanter &2&l{player}"
+inventory_ender_chest: "&5&lEnder Chest &2&l{player}"
 #----------------------------------------------------------
 #                       Admin GUI
 #----------------------------------------------------------
@@ -178,6 +179,7 @@ actions_god_disabled: "&a&lÖlümsüz"
 actions_potions: "&c&lIksirler"
 actions_spawner: "&8&lCanavar çağır"
 actions_inventory: "&a&lEnvanter"
+actions_ender_chest: "&5&lEnder Chest"
 actions_vanish_enabled: "&a&lGizlen"
 actions_vanish_disabled: "&c&lGizlen"
 actions_lightning: "&5&lYıldırım"

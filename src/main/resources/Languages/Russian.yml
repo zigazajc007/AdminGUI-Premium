@@ -73,6 +73,7 @@ inventory_money_give: "&2&lВыдать деньги &e&l{player}"
 inventory_money_set: "&2&lУстановить &9&lденьги &e&l{player}"
 inventory_money_take: "&2&lЗабрать &c&lденьги &e&l{player}"
 inventory_inventory: "&a&lИнвентарь &2&l{player}"
+inventory_ender_chest: "&5&lEnder Chest &2&l{player}"
 #----------------------------------------------------------
 #                       Admin GUI
 #----------------------------------------------------------
@@ -180,6 +181,7 @@ actions_god_disabled: "&c&lРежим бога"
 actions_potions: "&c&lЭффекты"
 actions_spawner: "&8&lСпавнер"
 actions_inventory: "&a&lИнвентарь"
+actions_ender_chest: "&5&lEnder Chest"
 actions_vanish_enabled: "&a&lВаниш"
 actions_vanish_disabled: "&c&lВаниш"
 actions_lightning: "&5&lМолния"

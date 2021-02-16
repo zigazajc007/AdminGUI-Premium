@@ -71,6 +71,7 @@ inventory_money_give: "&2&lRaha anna {player}"
 inventory_money_set: "&2&lRaha&9&l Aseta &2&l{player}"
 inventory_money_take: "&2&lRaha&c&l Ota &2&l{player}"
 inventory_inventory: "&a&lTavaraluettelo &2&l{player}"
+inventory_ender_chest: "&5&lEnder Chest &2&l{player}"
 #----------------------------------------------------------
 #                       Järjestelmänvalvoja GUI
 #----------------------------------------------------------
@@ -178,6 +179,7 @@ actions_god_disabled: "&a&lJumala"
 actions_potions: "&c&lTaika Juomat"
 actions_spawner: "&8&lLuoja"
 actions_inventory: "&a&lTavaraluettelo"
+actions_ender_chest: "&5&lEnder Chest"
 actions_vanish_enabled: "&a&lHäviä"
 actions_vanish_disabled: "&c&lHäviä"
 actions_lightning: "&5&lSalama"
