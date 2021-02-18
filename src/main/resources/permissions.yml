@@ -152,6 +152,7 @@ groups:
       - admingui.chat.spy
       - admingui.chat.color.change
       - admingui.chat.clear
+      - admingui.chat.delay.bypass
       - adminbans.warn
       - adminbans.kick
       - adminbans.banlist

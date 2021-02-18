@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="- Added German translation">
+    <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/Language.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/Language.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/German.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/German.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/ui/AdminUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/ui/AdminUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/permissions.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/permissions.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,13 +200,6 @@
       <workItem from="1577725216137" duration="7109000" />
       <workItem from="1578348949962" duration="293000" />
       <workItem from="1578422894075" duration="968000" />
-    </task>
-    <task id="LOCAL-00095" summary="Optimized ban system.">
-      <created>1601453943607</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1601453943608</updated>
     </task>
     <task id="LOCAL-00096" summary="Added Turkish language.">
       <created>1601650485637</created>
@@ -547,7 +537,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613471317687</updated>
     </task>
-    <option name="localTasksCounter" value="144" />
+    <task id="LOCAL-00144" summary="- Added German translation">
+      <created>1613485429988</created>
+      <option name="number" value="00144" />
+      <option name="presentableId" value="LOCAL-00144" />
+      <option name="project" value="LOCAL" />
+      <updated>1613485429988</updated>
+    </task>
+    <option name="localTasksCounter" value="145" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,7 +569,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/LiteBansAPI" />
     </ignored-roots>
-    <MESSAGE value="Added check command to display players stats. Moved ranks from permissions.yml to players.yml file. Added player_first_join, player_last_join and player_ips placeholders." />
     <MESSAGE value="Supplemented Slovenian.yml" />
     <MESSAGE value="Added DiscordSRV support so now chat filters will be applied on DiscordSRV plugin too." />
     <MESSAGE value="Now you can add list of custom commands, so multiple commands can be executed on single item click in GUI." />
@@ -597,6 +593,7 @@
     <MESSAGE value="- Fixed null error when you enable Admin Tablist on older Minecraft Versions." />
     <MESSAGE value="- Now you can view / edit items in players Ender chest.&#10;- Fixed null error when you enable Admin Tablist on older Minecraft Versions." />
     <MESSAGE value="- Now you can view/edit items in the player's Ender chest.&#10;- Fixed null error when you enable Admin Tablist on older Minecraft Versions.&#10;&#10;New permissions:&#10;- admingui.enderchest (To view players Ender chest)&#10;- admingui.enderchest.edit (To edit their Ender chests)&#10;&#10;Important:&#10;- In this update language files has been changed, so make sure to execute a command in the console: admin language fix &lt;Language&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Now you can view/edit items in the player's Ender chest.&#10;- Fixed null error when you enable Admin Tablist on older Minecraft Versions.&#10;&#10;New permissions:&#10;- admingui.enderchest (To view players Ender chest)&#10;- admingui.enderchest.edit (To edit their Ender chests)&#10;&#10;Important:&#10;- In this update language files has been changed, so make sure to execute a command in the console: admin language fix &lt;Language&gt;" />
+    <MESSAGE value="- Added German translation" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added German translation" />
   </component>
 </project>
