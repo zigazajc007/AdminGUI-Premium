@@ -119,6 +119,10 @@ admin_tools_name: "&c&lAdmin Tools"
 admin_tools_material: "NETHER_STAR"
 admin_tools_enchantment: false
 admin_tools_lore: "&dClick me to open Admin GUI"
+# Do you want to give Admin Tools to players with admingui.admin permission when they join?
+admin_tools_give_on_join: false
+# On which slot do you want to give Admin Tools? (Note that if player already have something in this slot it will be deleted)
+admin_tools_give_on_join_slot: 0
 #----------------------------------------------------------
 #                   Admin Permissions
 #----------------------------------------------------------

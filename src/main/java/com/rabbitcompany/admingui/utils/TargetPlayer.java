@@ -2,6 +2,7 @@ package com.rabbitcompany.admingui.utils;
 
 import com.rabbitcompany.adminbans.AdminBansAPI;
 import com.rabbitcompany.admingui.AdminGUI;
+import com.rabbitcompany.admingui.XMaterial;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.BanList;
@@ -9,15 +10,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 
 import static org.bukkit.Bukkit.getServer;
 
@@ -157,6 +158,23 @@ public class TargetPlayer {
             }
         }
 
+    }
+
+    public static void giveAdminTools(Player player, int slot){
+        List<String> lore = Collections.singletonList(Message.chat(AdminGUI.getInstance().getConf().getString("admin_tools_lore", "&dClick me to open Admin GUI")));
+        ItemStack item = new ItemStack(XMaterial.matchXMaterial(AdminGUI.getInstance().getConf().getString("admin_tools_material", "NETHER_STAR")).get().parseMaterial(), 1, XMaterial.matchXMaterial(AdminGUI.getInstance().getConf().getString("admin_tools_material", "NETHER_STAR")).get().getData());
+
+        if(AdminGUI.getInstance().getConf().getBoolean("admin_tools_enchantment", false)){
+            item.addUnsafeEnchantment(Enchantment.DURABILITY, 10);
+        }
+
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(Message.chat(AdminGUI.getInstance().getConf().getString("admin_tools_name", "&c&lAdmin Tools")));
+        meta.setLore(lore);
+
+        item.setItemMeta(meta);
+
+        player.getInventory().setItem(slot, item);
     }
 
     public static boolean safeTeleport(Player player){

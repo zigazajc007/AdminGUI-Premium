@@ -81,5 +81,9 @@ public class PlayerJoinListener implements Listener {
         if(adminGUI.getConf().getInt("initialize_gui",0) == 1) {
             if(!Settings.task_gui.containsKey(player.getUniqueId())) Initialize.GUI(player, player.getInventory().getHelmet());
         }
+
+        if(TargetPlayer.hasPermission(player, "admingui.admin") && AdminGUI.getInstance().getConf().getBoolean("admin_tools_enabled", true) && adminGUI.getConf().getBoolean("admin_tools_give_on_join", false)){
+            TargetPlayer.giveAdminTools(player, adminGUI.getConf().getInt("admin_tools_give_on_join_slot", 0));
+        }
     }
 }

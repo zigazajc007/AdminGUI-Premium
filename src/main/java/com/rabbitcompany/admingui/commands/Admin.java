@@ -308,20 +308,7 @@ public class Admin implements CommandExecutor {
                     }
                 }else if(args[0].equals("tools") || args[0].equals("tool")){
                     if(TargetPlayer.hasPermission(player, "admingui.admin") && AdminGUI.getInstance().getConf().getBoolean("admin_tools_enabled", true)){
-                        List<String> lore = Collections.singletonList(Message.chat(AdminGUI.getInstance().getConf().getString("admin_tools_lore", "&dClick me to open Admin GUI")));
-                        ItemStack item = new ItemStack(XMaterial.matchXMaterial(AdminGUI.getInstance().getConf().getString("admin_tools_material", "NETHER_STAR")).get().parseMaterial(), 1, XMaterial.matchXMaterial(AdminGUI.getInstance().getConf().getString("admin_tools_material", "NETHER_STAR")).get().getData());
-
-                        if(AdminGUI.getInstance().getConf().getBoolean("admin_tools_enchantment", false)){
-                            item.addUnsafeEnchantment(Enchantment.DURABILITY, 10);
-                        }
-
-                        ItemMeta meta = item.getItemMeta();
-                        meta.setDisplayName(Message.chat(AdminGUI.getInstance().getConf().getString("admin_tools_name", "&c&lAdmin Tools")));
-                        meta.setLore(lore);
-
-                        item.setItemMeta(meta);
-
-                        player.getInventory().setItem(0, item);
+                        TargetPlayer.giveAdminTools(player, 0);
                     }else{
                         player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "permission"));
                     }
