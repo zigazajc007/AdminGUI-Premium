@@ -86,8 +86,23 @@ motd_changer_max_players: 100
 command_disabler_enabled: false
 # On the left side are disabled commands and on the right side messages that will be displayed if player tried to execute that command.
 disabled_commands:
+  "/ver" : "&cBecause of security risk, we have disabled this command."
+  "/bukkit:ver" : "&cBecause of security risk, we have disabled this command."
+  "/version" : "&cBecause of security risk, we have disabled this command."
+  "/bukkit:version" : "&cBecause of security risk, we have disabled this command."
+  "/about" : "&cBecause of security risk, we have disabled this command."
+  "/bukkit:about" : "&cBecause of security risk, we have disabled this command."
+  "/icanhasbukkit" : "&cBecause of security risk, we have disabled this command."
+  "/help" : "&cBecause of security risk, we have disabled this command."
+  "/minecraft:help" : "&cBecause of security risk, we have disabled this command."
+  "/bukkit:help" : "&cBecause of security risk, we have disabled this command."
+  "/me" : "&cBecause of security risk, we have disabled this command."
+  "/minecraft:me" : "&cBecause of security risk, we have disabled this command."
+  "/bukkit:?" : "&cBecause of security risk, we have disabled this command."
   "/plugins" : "&cBecause of security risk, we have disabled this command."
+  "/bukkit:plugins" : "&cBecause of security risk, we have disabled this command."
   "/pl" : "&cBecause of security risk, we have disabled this command."
+  "/bukkit:pl" : "&cBecause of security risk, we have disabled this command."
 #----------------------------------------------------------
 #          Random teleport command (/rtp, /wild)
 #----------------------------------------------------------
@@ -141,7 +156,7 @@ ac_enabled: false
 # Here you can set your own Admin Chat format (Valid tags are {name}, {display_name}, {message} and {server_name})
 # If you have enabled Admin Permissions then you can use tags {prefix} and {suffix} to display player rank.
 # If you don't use Admin Permissions as your permission manager then you can use tags {vault_prefix} and {vault_suffix}
-ac_format: "&7{display_name} &7> {message}"
+ac_format: "{vault_prefix} &7{display_name} &7> {message}"
 # If beautifier is enabled, every message will start with uppercase and end with dot.
 ac_beautifier: true
 # How many seconds, player needs to wait until the next message can be sent?
@@ -174,7 +189,7 @@ atl_enabled: false
 # If you have enabled Admin Permissions you can use {prefix} and {suffix} tag to display players rank.
 # If you don't use Admin Permissions as your permission manager then you can use tags {vault_prefix} and {vault_suffix}
 atl_header: "\n &6&lWelcome &c&l{display_name} &6&lto my server! \n"
-atl_format: "&a{display_name}"
+atl_format: "{vault_prefix} &7{display_name}"
 atl_footer: "\n&cChange me in config.yml file!"
 #----------------------------------------------------------
 #         Admin Command Spy - Support PlaceholderAPI

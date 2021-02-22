@@ -5,6 +5,7 @@ import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Channel;
 import com.rabbitcompany.admingui.utils.Message;
 import com.rabbitcompany.admingui.utils.Settings;
+import com.rabbitcompany.admingui.utils.TargetPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -41,5 +42,7 @@ public class PlayerLeaveListener implements Listener {
             Settings.admin_chat_delay.remove(event.getPlayer().getUniqueId());
 
         Settings.skulls_players.remove(event.getPlayer().getName());
+
+        if(adminGUI.getConf().getBoolean("ap_enabled", false)) TargetPlayer.removePermissions(event.getPlayer());
     }
 }

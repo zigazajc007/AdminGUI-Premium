@@ -183,7 +183,7 @@ public class PlayerPlaceholderMessageListener implements Listener {
                 //VaultAPI
                 String vault_prefix = "";
                 String vault_suffix = "";
-                if(AdminGUI.vault){
+                if(AdminGUI.getVaultChat() != null){
                     vault_prefix = AdminGUI.getVaultChat().getPlayerPrefix(p);
                     vault_suffix = AdminGUI.getVaultChat().getPlayerSuffix(p);
                 }

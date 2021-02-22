@@ -1,6 +1,5 @@
 package com.rabbitcompany.admingui;
 
-import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Channel;
 import com.rabbitcompany.admingui.utils.Language;
 import com.rabbitcompany.admingui.utils.Settings;
@@ -74,9 +73,7 @@ public class TabCompletion implements TabCompleter {
                        Channel.send(sender.getName(),"send", "online_players");
                        completions.addAll(Settings.online_players);
                    }else{
-                       for(Player all : Bukkit.getServer().getOnlinePlayers()) {
-                           completions.add(all.getName());
-                       }
+                       for(Player all : Bukkit.getServer().getOnlinePlayers()) completions.add(all.getName());
                    }
                }else if(args[0].equals("language") && args[1].equals("download") && !(sender instanceof Player)){
                    completions.addAll(Language.default_languages);

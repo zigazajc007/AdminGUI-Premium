@@ -1,5 +1,5 @@
 name: AdminGUI-Premium
-version: 5.5.2
+version: 5.5.3
 main: com.rabbitcompany.admingui.AdminGUI
 api-version: 1.13
 authors: [RabbitCompany]
@@ -9,21 +9,18 @@ softdepend: [Vault, SuperVanish, PremiumVanish, LiteBans, AdvancedBan, AdminBans
 commands:
   admin:
     usage: /<command>
-    permission: admingui.admin
     description: Show Admin GUI
   adminchat:
     usage: /<command>
-    permission: admingui.chat
     description: Manage with Admin Chat
     aliases: [achat, ac]
   admincommandspy:
     usage: /<command>
-    permission: admingui.chat.spy
     description: Spy on players commands
     aliases: [acommandspy, admincs, acs]
 permissions:
   admingui.admin:
-    description: Gratnts access to open Admin GUI
+    description: Grants access to open Admin GUI
     default: op
   admingui.heal:
     description: Grants access to heal yourself

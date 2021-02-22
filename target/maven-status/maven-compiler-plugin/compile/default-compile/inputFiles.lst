@@ -61,7 +61,9 @@
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/UpdateChecker.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/listeners/PlayerDamageListener.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/Channel.java
+/home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/vault/VaultPermissionConnector.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/commands/CommandSpy.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_9.java
+/home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/vault/VaultChatConnector.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/commands/Admin.java
 /home/ziga/IdeaProjects/AdminGUI-Premium/src/main/java/com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_9.java

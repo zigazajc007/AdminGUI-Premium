@@ -60,7 +60,13 @@ public class PlayerJoinListener implements Listener {
                 adminGUI.getPlayers().set(player.getUniqueId() + ".rank", rank);
                 adminGUI.savePlayers();
             }
-            TargetPlayer.refreshPermissions(player);
+
+            //Vault
+            if(AdminGUI.getVaultChat() != null){
+                AdminGUI.getVaultChat().setPlayerPrefix(player, Permissions.getPrefix(player.getUniqueId()));
+                AdminGUI.getVaultChat().setPlayerSuffix(player, Permissions.getSuffix(player.getUniqueId()));
+            }
+            TargetPlayer.givePermissions(player);
         }
 
         if(adminGUI.getConf().getBoolean("bungeecord_enabled", false)){

@@ -88,7 +88,14 @@ public class Permissions {
         if (AdminGUI.getInstance().getPermissions().getString("groups." + rank + ".prefix") != null) {
             if(AdminGUI.getInstance().getConf().getBoolean("mysql", false) && AdminGUI.getInstance().getConf().getInt("ap_storage_type", 0) == 2){
                 Database.setRank(uuid, name, rank);
-                if(uuid != null) Database.cacheRank(uuid);
+                if(uuid != null){
+                    Database.cacheRank(uuid);
+                    //Vault
+                    if(AdminGUI.getVaultChat() != null){
+                        AdminGUI.getVaultChat().setPlayerPrefix(Bukkit.getPlayer(uuid), getPrefix(uuid));
+                        AdminGUI.getVaultChat().setPlayerSuffix(Bukkit.getPlayer(uuid), getSuffix(uuid));
+                    }
+                }
             }else {
                 if (uuid != null) {
                     if (rank.equals("default")) {
@@ -101,6 +108,13 @@ public class Permissions {
                     if (AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false) && AdminGUI.getInstance().getConf().getInt("ap_storage_type", 0) == 1) {
                         Channel.send("Console", "rank", uuid.toString(), name, rank);
                     }
+
+                    //Vault
+                    if(AdminGUI.getVaultChat() != null){
+                        AdminGUI.getVaultChat().setPlayerPrefix(Bukkit.getPlayer(uuid), getPrefix(uuid));
+                        AdminGUI.getVaultChat().setPlayerSuffix(Bukkit.getPlayer(uuid), getSuffix(uuid));
+                    }
+
                 } else {
                     boolean changed = false;
                     Set<String> con_sec = AdminGUI.getInstance().getPlayers().getConfigurationSection("").getKeys(false);

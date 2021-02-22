@@ -5,6 +5,8 @@ import com.google.common.io.ByteStreams;
 import com.rabbitcompany.admingui.commands.*;
 import com.rabbitcompany.admingui.listeners.*;
 import com.rabbitcompany.admingui.utils.*;
+import com.rabbitcompany.admingui.utils.vault.VaultChatConnector;
+import com.rabbitcompany.admingui.utils.vault.VaultPermissionConnector;
 import com.zaxxer.hikari.HikariDataSource;
 import github.scarsz.discordsrv.DiscordSRV;
 import net.milkbowl.vault.economy.Economy;
@@ -16,6 +18,8 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
+import org.bukkit.plugin.ServicePriority;
+import org.bukkit.plugin.ServicesManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
@@ -43,7 +47,6 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
 
     //VaultAPI
     private static Economy econ = null;
-    public static boolean vault = false;
     private static Permission perms = null;
     private static Chat chat = null;
 
@@ -127,7 +130,15 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
 
         //VaultAPI
         if (getServer().getPluginManager().getPlugin("Vault") != null){
-            if(setupEconomy() && setupChat() && setupPermissions()) vault = true;
+            setupEconomy();
+            setupPermissions();
+            if(getConf().getBoolean("ap_enabled", false)){
+                final ServicesManager sm = getServer().getServicesManager();
+                sm.register(Permission.class, new VaultPermissionConnector(), this, ServicePriority.Highest);
+                setupPermissions();
+                sm.register(Chat.class, new VaultChatConnector(perms),this, ServicePriority.Highest);
+            }
+            setupChat();
         }
 
         gui_type = getConf().getInt("gui_type", 0);
@@ -223,8 +234,12 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         info("&4Disabling");
 
         //DiscordSRV
-        if(getServer().getPluginManager().getPlugin("DiscordSRV") != null){
-            DiscordSRV.api.unsubscribe(discordsrvListener);
+        if(getServer().getPluginManager().getPlugin("DiscordSRV") != null) DiscordSRV.api.unsubscribe(discordsrvListener);
+
+        //Admin Permissions
+        if(getConf().getBoolean("ap_enabled", false)){
+            for (Player player: Bukkit.getOnlinePlayers()) TargetPlayer.removePermissions(player);
+            Settings.permissions.clear();
         }
 
         if(conn != null){
@@ -284,34 +299,13 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
     public static Chat getVaultChat() { return chat; }
 
     public void mkdir() {
-
-        if(!this.co.exists()){
-            saveResource("config.yml", false);
-        }
-
-        if(!this.pe.exists()){
-            saveResource("permissions.yml", false);
-        }
-
-        if(!this.pl.exists()){
-            saveResource("players.yml", false);
-        }
-
-        if(!this.k.exists()){
-            saveResource("kick.yml", false);
-        }
-
-        if(!this.p.exists()){
-            saveResource("Custom Commands/plugins.yml", false);
-        }
-
-        if(!this.c.exists()){
-            saveResource("Custom Commands/commands.yml", false);
-        }
-
-        if(!this.o.exists()){
-            saveResource("Custom Commands/commands-other.yml", false);
-        }
+        if(!this.co.exists()) saveResource("config.yml", false);
+        if(!this.pe.exists()) saveResource("permissions.yml", false);
+        if(!this.pl.exists()) saveResource("players.yml", false);
+        if(!this.k.exists()) saveResource("kick.yml", false);
+        if(!this.p.exists()) saveResource("Custom Commands/plugins.yml", false);
+        if(!this.c.exists()) saveResource("Custom Commands/commands.yml", false);
+        if(!this.o.exists()) saveResource("Custom Commands/commands-other.yml", false);
     }
 
     public void loadYamls(){

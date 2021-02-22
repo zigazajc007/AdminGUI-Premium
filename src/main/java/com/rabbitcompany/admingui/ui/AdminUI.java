@@ -170,7 +170,7 @@ public class AdminUI {
         }
 
         if(TargetPlayer.hasPermission(p, "admingui.info")) {
-            if(AdminGUI.vault){
+            if(AdminGUI.getEconomy() != null){
                 if(p.getAddress() != null && p.getAddress().getAddress() != null){
                     Item.createPlayerHead(inv_player, p.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "player_info").replace("{player}", p.getName()), Message.chat("&eHeal: " + Math.round(p.getHealth())), Message.chat("&7Feed: " + Math.round(p.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(p.getName()))) ,Message.chat("&aGamemode: " + p.getGameMode().toString()), Message.chat("&5IP: " + p.getAddress().getAddress().toString().replace("/", "")));
                 }else{
@@ -799,7 +799,7 @@ public class AdminUI {
             if(AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false) && target_player == null){
                 Item.createPlayerHead(inv_players_settings, target_name, 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_name));
             }else{
-                if(AdminGUI.vault){
+                if(AdminGUI.getEconomy() != null){
                     if(target_player.getAddress() != null && target_player.getAddress().getAddress() != null){
                         Item.createPlayerHead(inv_players_settings, target_name, 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_name), Message.chat("&eHeal: " + Math.round(target_player.getHealth())), Message.chat("&7Feed: " + Math.round(target_player.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(target_name))) ,Message.chat("&aGamemode: " + target_player.getGameMode().toString()), Message.chat("&5IP: " + target_player.getAddress().getAddress().toString().replace("/", "")));
                     }else{
@@ -883,7 +883,7 @@ public class AdminUI {
         }
 
         if(TargetPlayer.hasPermission(p, "admingui.info")) {
-            if(AdminGUI.vault){
+            if(AdminGUI.getEconomy() != null){
                 if(target.getAddress() != null && target.getAddress().getAddress() != null){
                     Item.createPlayerHead(inv_actions, target.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target.getName()), Message.chat("&eHeal: " + Math.round(target.getHealth())), Message.chat("&7Feed: " + Math.round(target.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(target.getName()))) ,Message.chat("&aGamemode: " + target.getGameMode().toString()), Message.chat("&5IP: " + target.getAddress().getAddress().toString().replace("/", "")));
                 }else{
@@ -2959,21 +2959,21 @@ public class AdminUI {
                     p.openInventory(GUI_Players_Settings(p, target_player, target_player.getName()));
                 }
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "money_give"))){
-                if(AdminGUI.vault){
+                if(AdminGUI.getEconomy() != null){
                     p.openInventory(GUI_Money_Amount(p, target_player, 1));
                 }else{
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "vault_required"));
                     p.closeInventory();
                 }
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "money_set"))){
-                if(AdminGUI.vault){
+                if(AdminGUI.getEconomy() != null){
                     p.openInventory(GUI_Money_Amount(p, target_player, 2));
                 }else{
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "vault_required"));
                     p.closeInventory();
                 }
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "money_take"))){
-                if(AdminGUI.vault){
+                if(AdminGUI.getEconomy() != null){
                     p.openInventory(GUI_Money_Amount(p, target_player, 3));
                 }else{
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "vault_required"));
@@ -2995,7 +2995,7 @@ public class AdminUI {
                         if (clicked.getItemMeta().hasDisplayName()) {
                             String amount = stripNonDigits(clicked.getItemMeta().getDisplayName());
                             if (NumberUtils.isNumber(amount)) {
-                                if (AdminGUI.vault) {
+                                if (AdminGUI.getEconomy() != null) {
                                     switch (option) {
                                         case 1:
                                             EconomyResponse r = AdminGUI.getEconomy().depositPlayer(target_player, Double.parseDouble(amount));

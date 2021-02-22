@@ -45,11 +45,12 @@ public class TargetPlayer {
         }
     }
 
-    public static void refreshPermissions(Player player){
+    public static void givePermissions(Player player){
         String rank = Permissions.getRank(player.getUniqueId(), player.getName());
 
+        if(Settings.permissions.containsKey(player.getUniqueId())) return;
+
         Settings.permissions.put(player.getUniqueId(), player.addAttachment(AdminGUI.getInstance()));
-        PermissionAttachment permissionAttachment = Settings.permissions.get(player.getUniqueId());
 
         List<?> permissions;
         List<?> inheritance = AdminGUI.getInstance().getPermissions().getList("groups." + rank + ".inheritance");
@@ -60,9 +61,9 @@ public class TargetPlayer {
                 if(permissions != null){
                     for (Object permission: permissions) {
                         if(permission.toString().charAt(0) == '!'){
-                            permissionAttachment.unsetPermission(permission.toString().substring(1));
+                            Settings.permissions.get(player.getUniqueId()).unsetPermission(permission.toString().substring(1));
                         }else{
-                            permissionAttachment.setPermission(permission.toString(), true);
+                            Settings.permissions.get(player.getUniqueId()).setPermission(permission.toString(), true);
                         }
                     }
                 }
@@ -74,13 +75,58 @@ public class TargetPlayer {
         if(permissions != null){
             for (Object permission: permissions) {
                 if(permission.toString().charAt(0) == '!'){
-                    permissionAttachment.unsetPermission(permission.toString().substring(1));
+                    Settings.permissions.get(player.getUniqueId()).unsetPermission(permission.toString().substring(1));
                 }else{
-                    permissionAttachment.setPermission(permission.toString(), true);
+                    Settings.permissions.get(player.getUniqueId()).setPermission(permission.toString(), true);
                 }
             }
         }
 
+    }
+
+    public static void refreshPermissions(Player player){
+        String rank = Permissions.getRank(player.getUniqueId(), player.getName());
+
+        List<?> permissions;
+        List<?> inheritance = AdminGUI.getInstance().getPermissions().getList("groups." + rank + ".inheritance");
+
+        for(String perm : Settings.permissions.get(player.getUniqueId()).getPermissions().keySet())
+            Settings.permissions.get(player.getUniqueId()).unsetPermission(perm);
+
+        if(inheritance != null){
+            for (Object inter : inheritance) {
+                permissions = AdminGUI.getInstance().getPermissions().getList("groups." + inter + ".permissions");
+                if(permissions != null){
+                    for (Object permission: permissions) {
+                        if(permission.toString().charAt(0) == '!'){
+                            Settings.permissions.get(player.getUniqueId()).unsetPermission(permission.toString().substring(1));
+                        }else{
+                            Settings.permissions.get(player.getUniqueId()).setPermission(permission.toString(), true);
+                        }
+                    }
+                }
+            }
+        }
+
+        permissions = AdminGUI.getInstance().getPermissions().getList("groups." + rank + ".permissions");
+
+        if(permissions != null){
+            for (Object permission: permissions) {
+                if(permission.toString().charAt(0) == '!'){
+                    Settings.permissions.get(player.getUniqueId()).unsetPermission(permission.toString().substring(1));
+                }else{
+                    Settings.permissions.get(player.getUniqueId()).setPermission(permission.toString(), true);
+                }
+            }
+        }
+
+    }
+
+    public static void removePermissions(Player player){
+        if(Settings.permissions.containsKey(player.getUniqueId())){
+            player.removeAttachment(Settings.permissions.get(player.getUniqueId()));
+            Settings.permissions.remove(player.getUniqueId());
+        }
     }
 
     public static void refreshPlayerTabList(Player player){
@@ -95,7 +141,7 @@ public class TargetPlayer {
 
         String vault_prefix = "";
         String vault_suffix = "";
-        if(AdminGUI.vault){
+        if(AdminGUI.getVaultChat() != null){
             vault_prefix = AdminGUI.getVaultChat().getPlayerPrefix(player);
             vault_suffix = AdminGUI.getVaultChat().getPlayerSuffix(player);
         }
