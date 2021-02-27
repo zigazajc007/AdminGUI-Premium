@@ -474,16 +474,18 @@ public class AdminUI {
             Item.create(inv_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
         }
 
-        int player_slot = (page.getOrDefault(p.getUniqueId(),1)-1) * 45;
+        Bukkit.getScheduler().runTaskAsynchronously(AdminGUI.getInstance(), () -> {
+            int player_slot = (page.getOrDefault(p.getUniqueId(),1)-1) * 45;
 
-        for (int i = 0; i < 45; i++){
-            if(player_slot < online){
-                Item.createPlayerHead(inv_players, Settings.online_players.get(player_slot),1, i+1, Message.getMessage(p.getUniqueId(), "players_color").replace("{player}", Settings.online_players.get(player_slot)), Message.getMessage(p.getUniqueId(), "players_more"));
-                player_slot++;
-            }else{
-                Item.create(inv_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i+1, " ");
+            for (int i = 0; i < 45; i++){
+                if(player_slot < online){
+                    Item.createPlayerHead(inv_players, Settings.online_players.get(player_slot),1, i+1, Message.getMessage(p.getUniqueId(), "players_color").replace("{player}", Settings.online_players.get(player_slot)), Message.getMessage(p.getUniqueId(), "players_more"));
+                    player_slot++;
+                }else{
+                    Item.create(inv_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i+1, " ");
+                }
             }
-        }
+        });
 
         switch (AdminGUI.gui_type){
             case 1:
@@ -1317,7 +1319,7 @@ public class AdminUI {
 
         Settings.target_player.put(p, target);
 
-        if(Bukkit.getVersion().contains("1.16") || Bukkit.getVersion().contains("1.15")){
+        if(Bukkit.getVersion().contains("1.17") || Bukkit.getVersion().contains("1.16") || Bukkit.getVersion().contains("1.15")){
             for(Material_Version_15 material : Material_Version_15.values()){
                 Item.create(inv_spawner, material.name(), 1, material.ordinal()+1, Message.getMessage(p.getUniqueId(), Message_Version_15.values()[material.ordinal()].name()));
             }
