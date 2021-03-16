@@ -33,7 +33,7 @@ public class InventoryClickListener implements Listener {
             return;
         }
 
-        //try{
+        try{
             if (title.equals(Message.getMessage(p.getUniqueId(), "inventory_main")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_player").replace("{player}", player)) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_world")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_players")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_plugins")) || title.contains(Message.getMessage(p.getUniqueId(), "inventory_commands")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_unban")) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_unmute")) || title.equals(Message.getMessage(p.getUniqueId(), "players_color").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_actions").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_kick").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_ban").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_potions").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_spawner").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_inventory").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_ender_chest").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_money_give").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_money_set").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_money_take").replace("{player}", Settings.target_player.get(p).getName())) || title.equals(Message.getMessage(p.getUniqueId(), "inventory_money").replace("{player}", Settings.target_player.get(p).getName()))) {
 
                 e.setCancelled(true);
@@ -82,6 +82,6 @@ public class InventoryClickListener implements Listener {
                     }
                 }
             }
-        //}catch (Exception ignored){}
+        }catch (Exception ignored){}
     }
 }

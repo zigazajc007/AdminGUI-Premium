@@ -4,18 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="- Player heads will be now added asynchronically (Awesome for servers with 100+ players)&#10;- Some code optimization">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_LeonMangler_SuperVanish_6_2_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__de_myzelyam_SuperVanish_6_1_3.xml" beforeDir="false" />
+    <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminGUI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AdminGUI.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/InventoryClickListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/listeners/InventoryClickListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/ui/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/ui/AdminUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/InventoryClickListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/listeners/InventoryClickListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/ui/AdminUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rabbitcompany/admingui/ui/AdminUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,13 +200,6 @@
       <workItem from="1577725216137" duration="7109000" />
       <workItem from="1578348949962" duration="293000" />
       <workItem from="1578422894075" duration="968000" />
-    </task>
-    <task id="LOCAL-00101" summary="Added mute command">
-      <created>1603312221121</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1603312221121</updated>
     </task>
     <task id="LOCAL-00102" summary="Updated Russian language.">
       <created>1603790317961</created>
@@ -553,7 +537,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614463127248</updated>
     </task>
-    <option name="localTasksCounter" value="150" />
+    <task id="LOCAL-00150" summary="- Player heads will be now added asynchronically in unban and unmute GUI&#10;- Fixed bug in unban GUI&#10;- Some code optimization">
+      <created>1615914028895</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
+      <option name="project" value="LOCAL" />
+      <updated>1615914028895</updated>
+    </task>
+    <option name="localTasksCounter" value="151" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -578,7 +569,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/LiteBansAPI" />
     </ignored-roots>
-    <MESSAGE value="Updated Russian translation." />
     <MESSAGE value="Updated Russian translation and added French language to downloader." />
     <MESSAGE value="- Added update checker&#10;- Updated Russian translation&#10;- Added French language to downloader&#10;- Updated XMaterials&#10;- Created custom Pies for bStats" />
     <MESSAGE value="Update checker not works from 1.8 to 1.11." />
@@ -603,6 +593,7 @@
     <MESSAGE value="- You can now give Admin Tools to players with admingui.admin permission when they join the server&#10;- Now commands in tab list are hidden if player don't have permission to use them&#10;- Added German translation&#10;- Added admingui.chat.delay.bypass permission to Moderator" />
     <MESSAGE value="- Recoded Admin Permission manager&#10;- Admin Permission manager will now send data to Vault&#10;- You can now give Admin Tools to players with admingui.admin permission when they join the server&#10;- Added German translation&#10;- Added 15 new commands to Command disabler&#10;- Added admingui.chat.delay.bypass permission to Moderator" />
     <MESSAGE value="- Player heads will be now added asynchronically (Awesome for servers with 100+ players)&#10;- Some code optimization" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Player heads will be now added asynchronically (Awesome for servers with 100+ players)&#10;- Some code optimization" />
+    <MESSAGE value="- Player heads will be now added asynchronically in unban and unmute GUI&#10;- Fixed bug in unban GUI&#10;- Some code optimization" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Player heads will be now added asynchronically in unban and unmute GUI&#10;- Fixed bug in unban GUI&#10;- Some code optimization" />
   </component>
 </project>
