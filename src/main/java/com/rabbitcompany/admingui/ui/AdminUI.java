@@ -21,7 +21,6 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -470,22 +469,9 @@ public class AdminUI {
 
         pages.put(p.getUniqueId(), (int) Math.ceil((float)online / 45));
 
-        for (int i = 46; i <= 53; i++){
+        for (int i = 1; i <= 53; i++){
             Item.create(inv_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
         }
-
-        Bukkit.getScheduler().runTaskAsynchronously(AdminGUI.getInstance(), () -> {
-            int player_slot = (page.getOrDefault(p.getUniqueId(),1)-1) * 45;
-
-            for (int i = 0; i < 45; i++){
-                if(player_slot < online){
-                    Item.createPlayerHead(inv_players, Settings.online_players.get(player_slot),1, i+1, Message.getMessage(p.getUniqueId(), "players_color").replace("{player}", Settings.online_players.get(player_slot)), Message.getMessage(p.getUniqueId(), "players_more"));
-                    player_slot++;
-                }else{
-                    Item.create(inv_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i+1, " ");
-                }
-            }
-        });
 
         switch (AdminGUI.gui_type){
             case 1:
@@ -497,7 +483,7 @@ public class AdminUI {
                     Item.after_createPlayerHead(inv_players, Settings.skulls.get("MHF_Question"), page.getOrDefault(p.getUniqueId(), 1), 50, Message.getMessage(p.getUniqueId(), "players_page") + " " + page.getOrDefault(p.getUniqueId(), 1));
                 }
 
-                if(pages.get(p.getUniqueId()) > page.getOrDefault(p.getUniqueId(), 1)){
+                if(pages.getOrDefault(p.getUniqueId(), 1) > page.getOrDefault(p.getUniqueId(), 1)){
                     Item.after_createPlayerHead(inv_players, Settings.skulls.get("MHF_ArrowRight"), 1, 51, Message.getMessage(p.getUniqueId(), "players_next"));
                 }
 
@@ -512,13 +498,24 @@ public class AdminUI {
                     Item.create(inv_players, "BOOK", page.getOrDefault(p.getUniqueId(), 1), 50, Message.getMessage(p.getUniqueId(), "players_page") + " " + page.getOrDefault(p.getUniqueId(), 1));
                 }
 
-                if(pages.get(p.getUniqueId()) > page.getOrDefault(p.getUniqueId(), 1)){
+                if(pages.getOrDefault(p.getUniqueId(), 1) > page.getOrDefault(p.getUniqueId(), 1)){
                     Item.create(inv_players, "PAPER", 1, 51, Message.getMessage(p.getUniqueId(), "players_next"));
                 }
 
                 Item.create(inv_players, "REDSTONE_BLOCK",1,54, Message.getMessage(p.getUniqueId(), "players_back"));
                 break;
         }
+
+        Bukkit.getScheduler().runTaskAsynchronously(AdminGUI.getInstance(), () -> {
+            int player_slot = (page.getOrDefault(p.getUniqueId(),1)-1) * 45;
+
+            for (int i = 0; i < 45; i++){
+                if(player_slot < online){
+                    Item.createPlayerHead(inv_players, Settings.online_players.get(player_slot),1, i+1, Message.getMessage(p.getUniqueId(), "players_color").replace("{player}", Settings.online_players.get(player_slot)), Message.getMessage(p.getUniqueId(), "players_more"));
+                    player_slot++;
+                }
+            }
+        });
 
         return inv_players;
     }
@@ -621,59 +618,8 @@ public class AdminUI {
 
         Inventory inv_unban_players = Bukkit.createInventory(null, 54, Message.getMessage(p.getUniqueId(), "inventory_unban"));
 
-        if(Bukkit.getPluginManager().isPluginEnabled("AdminBans")){
-
-            ArrayList<BannedPlayer> abs = new ArrayList<>(AdminBansAPI.getBannedPlayers());
-
-            int online = abs.size();
-
-            unban_pages.put(p.getUniqueId(), (int) Math.ceil((float)online / 45));
-
-            for (int i = 46; i <= 53; i++){
-                Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
-            }
-
-            int player_slot = (unban_page.getOrDefault(p.getUniqueId(),1)-1) * 45;
-
-            for (int i = 0; i < 45; i++){
-                if(player_slot < online){
-                    Item.createPlayerHead(inv_unban_players, abs.get(player_slot).username_to, 1, i + 1, Message.getMessage(p.getUniqueId(), "unban_color").replace("{player}", abs.get(player_slot).username_to), Message.chat("&aBanned by: &6" + abs.get(player_slot).username_from), Message.chat("&aBanned on: &6" + AdminBansAPI.date_format.format(abs.get(player_slot).created)), Message.chat("&aExpiration: &6" + AdminBansAPI.date_format.format(abs.get(player_slot).until)), " ", Message.getMessage(p.getUniqueId(), "unban_more"));
-                    player_slot++;
-                }else{
-                    Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i+1, " ");
-                }
-            }
-        }else{
-            ArrayList<String> pl = new ArrayList<>();
-
-            for (OfflinePlayer all : getServer().getBannedPlayers()) {
-                pl.add(all.getName());
-            }
-
-            Collections.sort(pl);
-
-            int online = pl.size();
-
-            unban_pages.put(p.getUniqueId(), (int) Math.ceil((float)online / 45));
-
-            for (int i = 46; i <= 53; i++){
-                Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
-            }
-
-            int player_slot = (unban_page.getOrDefault(p.getUniqueId(),1)-1) * 45;
-
-            for (int i = 0; i < 45; i++){
-                if(player_slot < online){
-                    if(Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getExpiration() == null){
-                        Item.createPlayerHead(inv_unban_players, pl.get(player_slot), 1, i + 1, Message.getMessage(p.getUniqueId(), "unban_color").replace("{player}", pl.get(player_slot)), Message.chat("&aBanned: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getCreated()), Message.chat("&aExpiration: &6Never"), " ", Message.getMessage(p.getUniqueId(), "unban_more"));
-                    }else{
-                        Item.createPlayerHead(inv_unban_players, pl.get(player_slot), 1, i + 1, Message.getMessage(p.getUniqueId(), "unban_color").replace("{player}", pl.get(player_slot)), Message.chat("&aBanned: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getCreated()), Message.chat("&aExpiration: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getExpiration()), " ", Message.getMessage(p.getUniqueId(), "unban_more"));
-                    }
-                    player_slot++;
-                }else{
-                    Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i+1, " ");
-                }
-            }
+        for (int i = 1; i <= 53; i++){
+            Item.create(inv_unban_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
         }
 
         switch (AdminGUI.gui_type){
@@ -686,7 +632,7 @@ public class AdminUI {
                     Item.after_createPlayerHead(inv_unban_players, Settings.skulls.get("MHF_Question"), unban_page.getOrDefault(p.getUniqueId(), 1), 50, Message.getMessage(p.getUniqueId(), "unban_page") + " " + unban_page.getOrDefault(p.getUniqueId(), 1));
                 }
 
-                if(unban_pages.get(p.getUniqueId()) > unban_page.getOrDefault(p.getUniqueId(), 1)){
+                if(unban_pages.getOrDefault(p.getUniqueId(), 1) > unban_page.getOrDefault(p.getUniqueId(), 1)){
                     Item.after_createPlayerHead(inv_unban_players, Settings.skulls.get("MHF_ArrowRight"), 1, 51, Message.getMessage(p.getUniqueId(), "unban_next"));
                 }
 
@@ -701,12 +647,59 @@ public class AdminUI {
                     Item.create(inv_unban_players, "BOOK", unban_page.getOrDefault(p.getUniqueId(), 1), 50, Message.getMessage(p.getUniqueId(), "unban_page") + " " + unban_page.getOrDefault(p.getUniqueId(), 1));
                 }
 
-                if(unban_pages.get(p.getUniqueId()) > unban_page.getOrDefault(p.getUniqueId(), 1)){
+                if(unban_pages.getOrDefault(p.getUniqueId(), 1) > unban_page.getOrDefault(p.getUniqueId(), 1)){
                     Item.create(inv_unban_players, "PAPER", 1, 51, Message.getMessage(p.getUniqueId(), "unban_next"));
                 }
 
                 Item.create(inv_unban_players, "REDSTONE_BLOCK",1,54, Message.getMessage(p.getUniqueId(), "unban_back"));
                 break;
+        }
+
+        if(Bukkit.getPluginManager().isPluginEnabled("AdminBans")){
+
+            ArrayList<BannedPlayer> abs = new ArrayList<>(AdminBansAPI.getBannedPlayers());
+            int online = abs.size();
+            unban_pages.put(p.getUniqueId(), (int) Math.ceil((float)online / 45));
+
+            Bukkit.getScheduler().runTaskAsynchronously(AdminGUI.getInstance(), () -> {
+                int player_slot = (unban_page.getOrDefault(p.getUniqueId(),1)-1) * 45;
+
+                for (int i = 0; i < 45; i++){
+                    if(player_slot < online){
+                        Item.createPlayerHead(inv_unban_players, abs.get(player_slot).username_to, 1, i + 1, Message.getMessage(p.getUniqueId(), "unban_color").replace("{player}", abs.get(player_slot).username_to), Message.chat("&aBanned by: &6" + abs.get(player_slot).username_from), Message.chat("&aBanned on: &6" + AdminBansAPI.date_format.format(abs.get(player_slot).created)), Message.chat("&aExpiration: &6" + AdminBansAPI.date_format.format(abs.get(player_slot).until)), " ", Message.getMessage(p.getUniqueId(), "unban_more"));
+                        player_slot++;
+                    }
+                }
+            });
+
+        }else{
+            ArrayList<String> pl = new ArrayList<>();
+
+            for (OfflinePlayer all : getServer().getBannedPlayers()) pl.add(all.getName());
+            int online = pl.size();
+            unban_pages.put(p.getUniqueId(), (int) Math.ceil((float)online / 45));
+
+            Bukkit.getScheduler().runTaskAsynchronously(AdminGUI.getInstance(), () -> {
+
+                int player_slot = (unban_page.getOrDefault(p.getUniqueId(),1)-1) * 45;
+
+                for (int i = 0; i < 45; i++){
+                    if(player_slot < online){
+                        if(Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)) == null){
+                            player_slot++;
+                            continue;
+                        }
+                        if(Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getExpiration() == null){
+                            Item.createPlayerHead(inv_unban_players, pl.get(player_slot), 1, i + 1, Message.getMessage(p.getUniqueId(), "unban_color").replace("{player}", pl.get(player_slot)), Message.chat("&aBanned: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getCreated()), Message.chat("&aExpiration: &6Never"), " ", Message.getMessage(p.getUniqueId(), "unban_more"));
+                        }else{
+                            Item.createPlayerHead(inv_unban_players, pl.get(player_slot), 1, i + 1, Message.getMessage(p.getUniqueId(), "unban_color").replace("{player}", pl.get(player_slot)), Message.chat("&aBanned: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getCreated()), Message.chat("&aExpiration: &6" + Bukkit.getBanList(BanList.Type.NAME).getBanEntry(pl.get(player_slot)).getExpiration()), " ", Message.getMessage(p.getUniqueId(), "unban_more"));
+                        }
+                        player_slot++;
+                    }
+                }
+
+            });
+
         }
 
         return inv_unban_players;
@@ -716,74 +709,62 @@ public class AdminUI {
 
         Inventory inv_unmute_players = Bukkit.createInventory(null, 54, Message.getMessage(p.getUniqueId(), "inventory_unmute"));
 
-        if(Bukkit.getPluginManager().isPluginEnabled("AdminBans")){
-            ArrayList<MutedPlayer> abs = new ArrayList<>(AdminBansAPI.getMutedPlayers());
-
-            int online = abs.size();
-
-            unmute_pages.put(p.getUniqueId(), (int) Math.ceil((float)online / 45));
-
-            for (int i = 46; i <= 53; i++){
-                Item.create(inv_unmute_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
-            }
-
-            int player_slot = (unmute_page.getOrDefault(p.getUniqueId(),1)-1) * 45;
-
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-            for (int i = 0; i < 45; i++){
-                if(player_slot < online){
-                    Item.createPlayerHead(inv_unmute_players, abs.get(player_slot).username_to, 1, i + 1, Message.getMessage(p.getUniqueId(), "unmute_color").replace("{player}", abs.get(player_slot).username_to), Message.chat("&aMuted by: &6" + abs.get(player_slot).username_from), Message.chat("&aMuted on: &6" + sdf.format(abs.get(player_slot).created)), Message.chat("&aExpiration: &6" + sdf.format(abs.get(player_slot).until)), " ", Message.getMessage(p.getUniqueId(), "unmute_more"));
-                    player_slot++;
-                }else{
-                    Item.create(inv_unmute_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i+1, " ");
-                }
-            }
-
-            switch (AdminGUI.gui_type){
-                case 1:
-                    if(unmute_page.getOrDefault(p.getUniqueId(), 1) > 1){
-                        Item.after_createPlayerHead(inv_unmute_players, Settings.skulls.get("MHF_ArrowLeft"), 1, 49, Message.getMessage(p.getUniqueId(), "unmute_previous"));
-                    }
-
-                    if(unmute_pages.getOrDefault(p.getUniqueId(), 1) > 1){
-                        Item.after_createPlayerHead(inv_unmute_players, Settings.skulls.get("MHF_Question"), unmute_page.getOrDefault(p.getUniqueId(), 1), 50, Message.getMessage(p.getUniqueId(), "unmute_page") + " " + unmute_page.getOrDefault(p.getUniqueId(), 1));
-                    }
-
-                    if(unmute_pages.get(p.getUniqueId()) > unmute_page.getOrDefault(p.getUniqueId(), 1)){
-                        Item.after_createPlayerHead(inv_unmute_players, Settings.skulls.get("MHF_ArrowRight"), 1, 51, Message.getMessage(p.getUniqueId(), "unmute_next"));
-                    }
-                    break;
-                default:
-                    if(unmute_page.getOrDefault(p.getUniqueId(), 1) > 1){
-                        Item.create(inv_unmute_players, "PAPER", 1, 49, Message.getMessage(p.getUniqueId(), "unmute_previous"));
-                    }
-
-                    if(unmute_pages.getOrDefault(p.getUniqueId(), 1) > 1){
-                        Item.create(inv_unmute_players, "BOOK", unmute_page.getOrDefault(p.getUniqueId(), 1), 50, Message.getMessage(p.getUniqueId(), "unmute_page") + " " + unmute_page.getOrDefault(p.getUniqueId(), 1));
-                    }
-
-                    if(unmute_pages.get(p.getUniqueId()) > unmute_page.getOrDefault(p.getUniqueId(), 1)){
-                        Item.create(inv_unmute_players, "PAPER", 1, 51, Message.getMessage(p.getUniqueId(), "unmute_next"));
-                    }
-                    break;
-            }
-
-        }else{
-            for (int i = 0; i < 53; i++){
-                Item.create(inv_unmute_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i+1, " ");
-            }
+        for (int i = 1; i <= 53; i++){
+            Item.create(inv_unmute_players, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
         }
 
         switch (AdminGUI.gui_type){
             case 1:
+                if(unmute_page.getOrDefault(p.getUniqueId(), 1) > 1){
+                    Item.after_createPlayerHead(inv_unmute_players, Settings.skulls.get("MHF_ArrowLeft"), 1, 49, Message.getMessage(p.getUniqueId(), "unmute_previous"));
+                }
+
+                if(unmute_pages.getOrDefault(p.getUniqueId(), 1) > 1){
+                    Item.after_createPlayerHead(inv_unmute_players, Settings.skulls.get("MHF_Question"), unmute_page.getOrDefault(p.getUniqueId(), 1), 50, Message.getMessage(p.getUniqueId(), "unmute_page") + " " + unmute_page.getOrDefault(p.getUniqueId(), 1));
+                }
+
+                if(unmute_pages.getOrDefault(p.getUniqueId(), 1) > unmute_page.getOrDefault(p.getUniqueId(), 1)){
+                    Item.after_createPlayerHead(inv_unmute_players, Settings.skulls.get("MHF_ArrowRight"), 1, 51, Message.getMessage(p.getUniqueId(), "unmute_next"));
+                }
+
                 Item.after_createPlayerHead(inv_unmute_players, Settings.skulls.get("MHF_Redstone"),1,54, Message.getMessage(p.getUniqueId(), "unmute_back"));
                 break;
             default:
+                if(unmute_page.getOrDefault(p.getUniqueId(), 1) > 1){
+                    Item.create(inv_unmute_players, "PAPER", 1, 49, Message.getMessage(p.getUniqueId(), "unmute_previous"));
+                }
+
+                if(unmute_pages.getOrDefault(p.getUniqueId(), 1) > 1){
+                    Item.create(inv_unmute_players, "BOOK", unmute_page.getOrDefault(p.getUniqueId(), 1), 50, Message.getMessage(p.getUniqueId(), "unmute_page") + " " + unmute_page.getOrDefault(p.getUniqueId(), 1));
+                }
+
+                if(unmute_pages.getOrDefault(p.getUniqueId(), 1) > unmute_page.getOrDefault(p.getUniqueId(), 1)){
+                    Item.create(inv_unmute_players, "PAPER", 1, 51, Message.getMessage(p.getUniqueId(), "unmute_next"));
+                }
+
                 Item.create(inv_unmute_players, "REDSTONE_BLOCK",1,54, Message.getMessage(p.getUniqueId(), "unmute_back"));
                 break;
         }
 
+        if(Bukkit.getPluginManager().isPluginEnabled("AdminBans")){
+
+            ArrayList<MutedPlayer> abs = new ArrayList<>(AdminBansAPI.getMutedPlayers());
+            int online = abs.size();
+            unmute_pages.put(p.getUniqueId(), (int) Math.ceil((float)online / 45));
+
+            final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+            Bukkit.getScheduler().runTaskAsynchronously(AdminGUI.getInstance(), () -> {
+                int player_slot = (unmute_page.getOrDefault(p.getUniqueId(),1)-1) * 45;
+
+                for (int i = 0; i < 45; i++){
+                    if(player_slot < online){
+                        Item.createPlayerHead(inv_unmute_players, abs.get(player_slot).username_to, 1, i + 1, Message.getMessage(p.getUniqueId(), "unmute_color").replace("{player}", abs.get(player_slot).username_to), Message.chat("&aMuted by: &6" + abs.get(player_slot).username_from), Message.chat("&aMuted on: &6" + sdf.format(abs.get(player_slot).created)), Message.chat("&aExpiration: &6" + sdf.format(abs.get(player_slot).until)), " ", Message.getMessage(p.getUniqueId(), "unmute_more"));
+                        player_slot++;
+                    }
+                }
+            });
+        }
         return inv_unmute_players;
     }
 
