@@ -47,6 +47,11 @@ public class PlayerJoinListener implements Listener {
         adminGUI.getPlayers().set(player.getUniqueId() + ".lastJoin", System.currentTimeMillis());
         adminGUI.savePlayers();
 
+        if(adminGUI.getConf().getBoolean("ac_enabled", false)){
+            String color = adminGUI.getPlayers().getString(player.getUniqueId() + ".chatColor");
+            if(color != null) Settings.chat_color.put(player.getUniqueId(), color);
+        }
+
         //TODO: Permissions
         if(adminGUI.getConf().getBoolean("mysql", false) && adminGUI.getConf().getBoolean("ap_enabled", false) && adminGUI.getConf().getInt("ap_storage_type", 0) == 2){
             if(Database.rankNeedFix(player.getName())) Database.fixRank(player.getUniqueId(), player.getName());

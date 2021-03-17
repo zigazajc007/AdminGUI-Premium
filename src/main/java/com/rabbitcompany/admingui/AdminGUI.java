@@ -238,7 +238,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
 
         //Admin Permissions
         if(getConf().getBoolean("ap_enabled", false)){
-            for (Player player: Bukkit.getOnlinePlayers()) TargetPlayer.removePermissions(player);
+            for (Player player : Bukkit.getOnlinePlayers()) TargetPlayer.removePermissions(player);
             Settings.permissions.clear();
         }
 
