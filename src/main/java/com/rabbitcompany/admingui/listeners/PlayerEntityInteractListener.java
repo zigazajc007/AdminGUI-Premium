@@ -31,7 +31,7 @@ public class PlayerEntityInteractListener implements Listener {
             if(player.getItemInHand().hasItemMeta() && player.getItemInHand().getItemMeta() != null && player.getItemInHand().getItemMeta().getLore() != null){
                 if(player.getItemInHand().getItemMeta().getLore().contains(Message.chat(AdminGUI.getInstance().getConf().getString("admin_tools_lore", "&dClick me to open Admin GUI")))){
                     if(TargetPlayer.hasPermission(player, "admingui.admin")){
-                        Settings.target_player.put(player, target);
+                        Settings.target_player.put(player.getUniqueId(), target);
                         if(player.getName().equals(target.getName())){
                             player.openInventory(adminUI.GUI_Player(player));
                         }else{

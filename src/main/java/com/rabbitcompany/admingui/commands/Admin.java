@@ -270,7 +270,7 @@ public class Admin implements CommandExecutor {
             Channel.send(player.getName(),"send", "online_players");
 
             if(args.length == 0){
-                Settings.target_player.put(player, player);
+                Settings.target_player.put(player.getUniqueId(), player);
                 player.openInventory(adminUI.GUI_Main(player));
             }else if(args.length == 1){
                 if(args[0].equals("reload")) {
@@ -315,7 +315,7 @@ public class Admin implements CommandExecutor {
                 }else{
                     Player target_player = Bukkit.getServer().getPlayer(ChatColor.stripColor(args[0]));
                     if(target_player != null){
-                        Settings.target_player.put(player, target_player);
+                        Settings.target_player.put(player.getUniqueId(), target_player);
                         if(player.getName().equals(target_player.getName())){
                             player.openInventory(adminUI.GUI_Player(player));
                         }else{
@@ -328,7 +328,7 @@ public class Admin implements CommandExecutor {
                                 Channel.send(player.getName(),"connect", ChatColor.stripColor(args[0]));
                                 break;
                             case 1:
-                                Settings.target_player.put(player, null);
+                                Settings.target_player.put(player.getUniqueId(), null);
                                 player.openInventory(adminUI.GUI_Players_Settings(player,null, ChatColor.stripColor(args[0])));
                                 break;
                             default:

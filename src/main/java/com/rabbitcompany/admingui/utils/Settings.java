@@ -13,7 +13,7 @@ import java.util.UUID;
 public class Settings {
 
     //Target players
-    public static HashMap<Player, Player> target_player = new HashMap<>();
+    public static HashMap<UUID, Player> target_player = new HashMap<>();
 
     //Player heads
     public static HashMap<String, ItemStack> skulls = new HashMap<>();

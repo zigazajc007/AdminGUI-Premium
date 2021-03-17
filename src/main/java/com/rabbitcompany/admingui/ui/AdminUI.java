@@ -857,7 +857,7 @@ public class AdminUI {
     public Inventory GUI_Actions(Player p, Player target){
 
         String inventory_actions_name = Message.getMessage(p.getUniqueId(), "inventory_actions").replace("{player}", target.getName());
-        Settings.target_player.put(p, target);
+        Settings.target_player.put(p.getUniqueId(), target);
 
         Inventory inv_actions = Bukkit.createInventory(null, 54, inventory_actions_name);
 
@@ -1146,7 +1146,7 @@ public class AdminUI {
     public Inventory GUI_Kick(Player p, Player target){
 
         String inventory_kick_name = Message.getMessage(p.getUniqueId(), "inventory_kick").replace("{player}", target.getName());
-        Settings.target_player.put(p, target);
+        Settings.target_player.put(p.getUniqueId(), target);
 
         Inventory inv_kick = Bukkit.createInventory(null, 27, inventory_kick_name);
 
@@ -1186,7 +1186,7 @@ public class AdminUI {
     public Inventory GUI_Ban(Player p, Player target){
 
         String inventory_ban_name = Message.getMessage(p.getUniqueId(), "inventory_ban").replace("{player}", target.getName());
-        Settings.target_player.put(p, target);
+        Settings.target_player.put(p.getUniqueId(), target);
 
         Inventory inv_ban = Bukkit.createInventory(null, 36, inventory_ban_name);
 
@@ -1255,7 +1255,7 @@ public class AdminUI {
     public Inventory GUI_potions(Player p, Player target){
 
         String inventory_potions_name = Message.getMessage(p.getUniqueId(), "inventory_potions").replace("{player}", target.getName());
-        Settings.target_player.put(p, target);
+        Settings.target_player.put(p.getUniqueId(), target);
 
         Inventory inv_potions = Bukkit.createInventory(null, 36, inventory_potions_name);
 
@@ -1298,7 +1298,7 @@ public class AdminUI {
         String inventory_spawner_name = Message.getMessage(p.getUniqueId(), "inventory_spawner").replace("{player}", target.getName());
         Inventory inv_spawner = Bukkit.createInventory(null, 54, inventory_spawner_name);
 
-        Settings.target_player.put(p, target);
+        Settings.target_player.put(p.getUniqueId(), target);
 
         if(Bukkit.getVersion().contains("1.17") || Bukkit.getVersion().contains("1.16") || Bukkit.getVersion().contains("1.15")){
             for(Material_Version_15 material : Material_Version_15.values()){
@@ -1349,7 +1349,7 @@ public class AdminUI {
     public Inventory GUI_Money(Player p, Player target){
 
         String inventory_money_name = Message.getMessage(p.getUniqueId(), "inventory_money").replace("{player}", target.getName());
-        Settings.target_player.put(p, target);
+        Settings.target_player.put(p.getUniqueId(), target);
 
         Inventory inv_money = Bukkit.createInventory(null, 27, inventory_money_name);
 
@@ -1394,7 +1394,7 @@ public class AdminUI {
             default:
                 inventory_money_amount_name = Message.getMessage(p.getUniqueId(), "inventory_money_set").replace("{player}", target.getName());
         }
-        Settings.target_player.put(p, target);
+        Settings.target_player.put(p.getUniqueId(), target);
 
         Inventory inv_money_amount = Bukkit.createInventory(null, 36, inventory_money_amount_name);
 
@@ -1440,7 +1440,7 @@ public class AdminUI {
     public Inventory GUI_Inventory(Player p, Player target) {
 
         String inventory_inventory_name = Message.getMessage(p.getUniqueId(), "inventory_inventory").replace("{player}", target.getName());
-        Settings.target_player.put(p, target);
+        Settings.target_player.put(p.getUniqueId(), target);
 
         Inventory inv_inventory = Bukkit.createInventory(null, 54, inventory_inventory_name);
 
@@ -1492,7 +1492,7 @@ public class AdminUI {
     public Inventory GUI_Ender_Chest(Player p, Player target) {
 
         String inventory_ender_chest_name = Message.getMessage(p.getUniqueId(), "inventory_ender_chest").replace("{player}", target.getName());
-        Settings.target_player.put(p, target);
+        Settings.target_player.put(p.getUniqueId(), target);
 
         Inventory inv_ender_chest = Bukkit.createInventory(null, 36, inventory_ender_chest_name);
 
@@ -1811,7 +1811,7 @@ public class AdminUI {
                 Player target_p = getServer().getPlayer(ChatColor.stripColor(clicked.getItemMeta().getDisplayName()));
                 if(target_p != null){
                     if(p.getUniqueId() != target_p.getUniqueId()){
-                        Settings.target_player.put(p, target_p);
+                        Settings.target_player.put(p.getUniqueId(), target_p);
                         p.openInventory(GUI_Players_Settings(p,target_p, target_p.getName()));
                     }else{
                         p.openInventory(GUI_Player(p));
@@ -1823,7 +1823,7 @@ public class AdminUI {
                             Channel.send(p.getName(),"connect", ChatColor.stripColor(clicked.getItemMeta().getDisplayName()));
                             break;
                         case 1:
-                            Settings.target_player.put(p, null);
+                            Settings.target_player.put(p.getUniqueId(), null);
                             p.openInventory(GUI_Players_Settings(p,null, ChatColor.stripColor(clicked.getItemMeta().getDisplayName())));
                             break;
                         default:
@@ -1871,19 +1871,19 @@ public class AdminUI {
                 if(yamlConfiguration.isList("plugins."+Settings.plugin_slot.getOrDefault(p.getUniqueId(), 1)+".commands."+slot+".command")){
                     List<String> comm_list = yamlConfiguration.getStringList("plugins."+Settings.plugin_slot.getOrDefault(p.getUniqueId(), 1)+".commands."+slot+".command");
                     for(String command : comm_list){
-                        getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("/","").replace("{player}", p.getName()).replace("{target_player}", Settings.target_player.getOrDefault(p, p).getName()));
+                        getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("/","").replace("{player}", p.getName()).replace("{target_player}", Settings.target_player.getOrDefault(p.getUniqueId(), p).getName()));
                     }
                 }else{
-                    getServer().dispatchCommand(Bukkit.getConsoleSender(), yamlConfiguration.getString("plugins."+Settings.plugin_slot.getOrDefault(p.getUniqueId(), 1)+".commands."+slot+".command").replace("/","").replace("{player}", p.getName()).replace("{target_player}", Settings.target_player.getOrDefault(p, p).getName()));
+                    getServer().dispatchCommand(Bukkit.getConsoleSender(), yamlConfiguration.getString("plugins."+Settings.plugin_slot.getOrDefault(p.getUniqueId(), 1)+".commands."+slot+".command").replace("/","").replace("{player}", p.getName()).replace("{target_player}", Settings.target_player.getOrDefault(p.getUniqueId(), p).getName()));
                 }
             }else{
                 if(yamlConfiguration.isList("plugins."+Settings.plugin_slot.getOrDefault(p.getUniqueId(), 1)+".commands."+slot+".command")){
                     List<String> comm_list = yamlConfiguration.getStringList("plugins."+Settings.plugin_slot.getOrDefault(p.getUniqueId(), 1)+".commands."+slot+".command");
                     for(String command : comm_list){
-                        getServer().dispatchCommand(p, command.replace("/","").replace("{player}", p.getName()).replace("{target_player}", Settings.target_player.getOrDefault(p, p).getName()));
+                        getServer().dispatchCommand(p, command.replace("/","").replace("{player}", p.getName()).replace("{target_player}", Settings.target_player.getOrDefault(p.getUniqueId(), p).getName()));
                     }
                 }else{
-                    getServer().dispatchCommand(p, yamlConfiguration.getString("plugins."+Settings.plugin_slot.getOrDefault(p.getUniqueId(), 1)+".commands."+slot+".command").replace("/","").replace("{player}", p.getName()).replace("{target_player}", Settings.target_player.getOrDefault(p, p).getName()));
+                    getServer().dispatchCommand(p, yamlConfiguration.getString("plugins."+Settings.plugin_slot.getOrDefault(p.getUniqueId(), 1)+".commands."+slot+".command").replace("/","").replace("{player}", p.getName()).replace("{target_player}", Settings.target_player.getOrDefault(p.getUniqueId(), p).getName()));
                 }
             }
         }

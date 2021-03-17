@@ -34,7 +34,7 @@ public class PlayerInteractListener implements Listener {
                             Player player = event.getPlayer();
                             if(player.getOpenInventory().getType() != InventoryType.CHEST){
                                 if(TargetPlayer.hasPermission(player, "admingui.admin")){
-                                    Settings.target_player.put(player, player);
+                                    Settings.target_player.put(player.getUniqueId(), player);
                                     player.openInventory(adminUI.GUI_Main(player));
                                 }else{
                                     player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "permission"));
