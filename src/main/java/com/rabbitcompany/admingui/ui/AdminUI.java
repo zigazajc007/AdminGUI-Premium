@@ -1751,6 +1751,9 @@ public class AdminUI {
                     Settings.chat_color.put(p.getUniqueId(), "GREEN_WOOL");
                     break;
                 case "GREEN_WOOL":
+                    Settings.chat_color.put(p.getUniqueId(), "PINK_WOOL");
+                    break;
+                case "PINK_WOOL":
                     Settings.chat_color.put(p.getUniqueId(), "RED_WOOL");
                     break;
                 case "RED_WOOL":
@@ -2143,7 +2146,10 @@ public class AdminUI {
                         Settings.chat_color.put(target_player.getUniqueId(), "GREEN_WOOL");
                         break;
                     case "GREEN_WOOL":
-                        Settings.chat_color.put(target_player.getUniqueId(), "RED_WOOL");
+                        Settings.chat_color.put(p.getUniqueId(), "PINK_WOOL");
+                        break;
+                    case "PINK_WOOL":
+                        Settings.chat_color.put(p.getUniqueId(), "RED_WOOL");
                         break;
                     case "RED_WOOL":
                         Settings.chat_color.put(target_player.getUniqueId(), "BLACK_WOOL");
@@ -2309,6 +2315,9 @@ public class AdminUI {
                         Settings.chat_color.put(target_player.getUniqueId(), "GREEN_WOOL");
                         break;
                     case "GREEN_WOOL":
+                        Settings.chat_color.put(target_player.getUniqueId(), "PINK_WOOL");
+                        break;
+                    case "PINK_WOOL":
                         Settings.chat_color.put(target_player.getUniqueId(), "RED_WOOL");
                         break;
                     case "RED_WOOL":

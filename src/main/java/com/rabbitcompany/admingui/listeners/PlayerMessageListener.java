@@ -142,6 +142,9 @@ public class PlayerMessageListener implements Listener {
                     case "LIME_WOOL":
                         message = Message.chat("&a" + message);
                         break;
+                    case "PINK_WOOL":
+                        message = Message.chat("&c" + message);
+                        break;
                     case "GRAY_WOOL":
                         message = Message.chat("&8" + message);
                         break;
