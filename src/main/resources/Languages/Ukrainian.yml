@@ -1,0 +1,388 @@
+#       ----------- + AdminGUI by Ziga Zajc + -----------   #
+#                           Premium                         #
+#                          Ukrainian                        #
+#                          by Gummer                        #
+#       --------- + ------------------------- + ---------   #
+#
+#       You can use chat colors:
+#                ________________________
+#               |   code: | color:       |
+#               |________________________|
+#               |     &0  |	Black	     |
+#               |     &1  |	Dark Blue	 |
+#               |     &2  |	Dark Green	 |
+#               |     &3  |	Dark Aqua	 |
+#               |     &4  |	Dark Red	 |
+#               |     &5  |	Dark Purple	 |
+#               |     &6  |	Gold	     |
+#               |     &7  |	Gray	     |
+#               |     &8  |	Dark Gray	 |
+#               |     &9  |	Blue	     |
+#               |     &a  |	Green	     |
+#               |     &b  |	Aqua	     |
+#               |     &c  |	Red	         |
+#               |     &d  |	Light Purple |
+#               |     &e  |	Yellow	     |
+#               |     &f  |	White	     |
+#               |     &k  |	Obfuscated	 |
+#               |     &l  |	Bold	     |
+#               |     &m  |	Strikethrough|
+#               |     &n  |	Underline	 |
+#               |     &o  |	Italic	     |
+#               |     &r  |	Reset	     |
+#               |________________________|
+#
+#----------------------------------------------------------
+#                         Prefix
+#----------------------------------------------------------
+prefix: "&7[&cAdmin GUI&7] "
+#----------------------------------------------------------
+#----------------------------------------------------------
+#                       Commands
+#----------------------------------------------------------
+permission: "&cЗдається, ти не адмін!"
+is_not_a_player: "&c{player} не гравець!"
+is_not_a_number: "&c{number} не число!"
+wrong_arguments: "&cВведи /admin або /admin <player>"
+wrong_chat_arguments: "&cВведи /adminchat mute"
+wrong_initialize: "&cВведи /admin initialize gui або /admin initialize players"
+wrong_rank_arguments: "&cВведи /admin rank set <player> <rank> або /admin rank <up/down> <player>"
+wrong_check_arguments: "&cВведи /admin check <player>"
+vault_required: "&cНа Вашому сервері не встановлено плагін Vault для економіки!"
+vanish_required: "&cНа Вашому сервері не встановлено плагін Super Vanish або Premium Vanish!"
+#----------------------------------------------------------
+#                    Inventory names
+#----------------------------------------------------------
+inventory_main: "&4&lAdmin GUI &c&lPremium"
+inventory_player: "&5&l{player}"
+inventory_world: "&2&lСвіт"
+inventory_players: "&1&lГравці"
+inventory_plugins: "&e&lПлагіни"
+inventory_commands: "&2&lКоманди"
+inventory_unban: "&c&lРозбан"
+inventory_unmute: "&c&lРозмют"
+inventory_actions: "&9&lДії з &2&l{player}"
+inventory_kick: "&8&lKick &2&l{player}"
+inventory_ban: "&8&lBan &2&l{player}"
+inventory_potions: "&c&lЕфекти &2&l{player}"
+inventory_spawner: "&8&lСпавнер &2&l{player}"
+inventory_money: "&2&lВалюта &2&l{player}"
+inventory_money_give: "&2&lДАТИ грошей {player}"
+inventory_money_set: "&2&lВалюту&9&l ВСТАНОВИТИ &2&l{player}"
+inventory_money_take: "&2&lВалюту&c&l ЗАБРАТИ &2&l{player}"
+inventory_inventory: "&a&lІнвентар &2&l{player}"
+inventory_ender_chest: "&5&lЕндер-скриня &2&l{player}"
+#----------------------------------------------------------
+#                       Admin GUI
+#----------------------------------------------------------
+main_player: "&5&l{player}"
+main_world: "&2&lСвіт"
+main_players: "&9&lГравці"
+main_plugins: "&6&lПлагіни"
+main_maintenance_mode: "&c&lРежим тех-робіт"
+main_unban_players: "&c&lUnban/Unmute"
+main_language: "&b&l"
+main_quit: "&c&lВийти"
+#----------------------------------------------------------
+#                      Player GUI
+#----------------------------------------------------------
+player_info: "&2&l{player}"
+player_heal: "&e&lВилікувати"
+player_feed: "&7&lНагодувати"
+player_survival: "&a&lSurvival"
+player_adventure: "&2&lAdventure"
+player_creative: "&3&lCreative"
+player_spectator: "&9&lSpectator"
+player_god_enabled: "&c&lGod"
+player_god_disabled: "&a&lGod"
+player_potions: "&c&lЕфекти"
+player_spawner: "&8&lСпавнер"
+player_kill: "&8&lВбити"
+player_burn: "&c&lСпалити"
+player_lightning: "&5&lБлискавка"
+player_firework: "&4&lФеєрверк"
+player_money: "&2&lВалюта"
+player_vanish_enabled: "&a&lVanish"
+player_vanish_disabled: "&c&lVanish"
+player_custom: "&6&lКоманди"
+player_chat_color: "&3&lКолір &6&lЧату"
+player_back: "&c&lНазад"
+#----------------------------------------------------------
+#                       World GUI
+#----------------------------------------------------------
+world_day: "&e&lДень"
+world_night: "&8&lНіч"
+world_thunder: "&9&lГроза"
+world_rain: "&3&lДощ"
+world_clear: "&b&lГарна погода"
+world_back: "&c&lНазад"
+#----------------------------------------------------------
+#                     Players GUI
+#----------------------------------------------------------
+players_color: "&2&l{player}"
+players_more: "&cКлацніть сюди для більшого вибору"
+players_previous: "&c&lПопередня"
+players_page: "&a&lсторінка"
+players_next: "&2&lДалі"
+players_back: "&c&lНазад"
+#----------------------------------------------------------
+#                     Plugins GUI
+#----------------------------------------------------------
+plugins_back: "&c&lНазад"
+#----------------------------------------------------------
+#                     Commands GUI
+#----------------------------------------------------------
+commands_back: "&c&lНазад"
+#----------------------------------------------------------
+#                     Unban GUI
+#----------------------------------------------------------
+unban_color: "&2&l{player}"
+unban_more: "&cКлацніть сюди аби розбанити гравця"
+unban_previous: "&c&lПопередня"
+unban_page: "&a&lсторінка"
+unban_next: "&2&lДалі"
+unban_back: "&c&lНазад"
+#----------------------------------------------------------
+#                     Unmute GUI
+#----------------------------------------------------------
+unmute_color: "&2&l{player}"
+unmute_more: "&cКлацніть сюди аби розмютити граця"
+unmute_previous: "&c&lПопередня"
+unmute_page: "&a&lсторінка"
+unmute_next: "&2&lДалі"
+unmute_back: "&c&lНазад"
+#----------------------------------------------------------
+#                 Players Settings GUI
+#----------------------------------------------------------
+players_settings_info: "&2&l{player}"
+players_settings_actions: "&9&lДії"
+players_settings_money: "&2&lВалюта"
+players_settings_kick_player: "&8&lКікнути гравця"
+players_settings_ban_player: "&8&lЗабанити гравця"
+players_settings_back: "&c&lНазад"
+#----------------------------------------------------------
+#                   Actions GUI
+#----------------------------------------------------------
+actions_heal: "&e&lВилікувати"
+actions_feed: "&7&lНагодувати"
+actions_info: "&2&l{player}"
+actions_survival: "&a&lSurvival"
+actions_adventure: "&2&lAdventure"
+actions_creative: "&3&lCreative"
+actions_spectator: "&9&lSpectator"
+actions_teleport_to_player: "&d&lТелепортуватись до гравця"
+actions_kill_player: "&8&lВбити гравця"
+actions_burn_player: "&c&lСпалити гравця"
+actions_teleport_player_to_you: "&d&lТелепортувати гравця до Вас"
+actions_god_enabled: "&c&lGod"
+actions_god_disabled: "&a&lGod"
+actions_potions: "&c&lЕфекти"
+actions_spawner: "&8&lСпавнер"
+actions_inventory: "&a&lІнвентар"
+actions_ender_chest: "&5&lЕндер-скриня"
+actions_vanish_enabled: "&a&lVanish"
+actions_vanish_disabled: "&c&lVanish"
+actions_lightning: "&5&lБлискавка"
+actions_firework: "&4&lФеєрверк"
+actions_fakeop: "&c&lFake OP"
+actions_custom: "&6&lКоманди"
+actions_chat_color: "&3&lКолір &6&lчату"
+actions_freeze_enabled: "&b&lЗаморозити"
+actions_freeze_disabled: "&c&lВимкнути заморозку"
+actions_back: "&c&lНазад"
+#----------------------------------------------------------
+#                       Kick GUI
+#----------------------------------------------------------
+kick: "&4Вас кікнули за  "
+kick_back: "&c&lНазад"
+#----------------------------------------------------------
+#                       Ban GUI
+#----------------------------------------------------------
+ban_time: "&4Вас забанили: {reason}\n&cВаш бан закінчується за &c&l{time}"
+ban_perm: "&4Вас забанили: {reason}"
+ban_years: "&e&lРоків"
+ban_months: "&e&lМісяців"
+ban_days: "&e&lДнів"
+ban_hours: "&e&lГодин"
+ban_minutes: "&e&lХвилин"
+ban_hacking: "&7&lЧітерство!"
+ban_griefing: "&6&lГріферство!"
+ban_spamming: "&d&lСпам!"
+ban_advertising: "&3&lРеклама!"
+ban_swearing: "&e&lМатюки!"
+ban_silence_disabled: "&c&lТиша"
+ban_silence_enabled: "&a&lТиша"
+ban_back: "&c&lНазад"
+#----------------------------------------------------------
+#                     Potions GUI
+#----------------------------------------------------------
+potions_night_vision: "&8&lНічне бачення"
+potions_invisibility: "&7&lНевидимість"
+potions_jump_boost: "&a&lСтрибучість"
+potions_fire_resistance: "&c&lВогнестійкість"
+potions_speed: "&b&lШвидкість"
+potions_slowness: "&4&lСповільнення"
+potions_water_breathing: "&9&lПідводне дихання"
+potions_instant_health: "&a&lВідновлення"
+potions_instant_damage: "&4&lУшкодження"
+potions_poison: "&5&lОтрута"
+potions_regeneration: "&e&lРегенерація"
+potions_strength: "&e&lСила"
+potions_weakness: "&4&lСлабкість"
+potions_luck: "&6&lВдача"
+potions_slow_falling: "&3&lПовільне падіння"
+potions_time: "&a&lЧас"
+potions_remove_all: "&4&lЗняти всі"
+potions_level: "&a&lРівень"
+potions_back: "&c&lНазад"
+#----------------------------------------------------------
+#                     Spawner GUI
+#----------------------------------------------------------
+spawner_bat: "&a&lКажан"
+spawner_bee: "&6&lБджола"
+spawner_blaze: "&c&lБлейз"
+spawner_cat: "&a&lКіт"
+spawner_cave_spider: "&c&lПечерний павук"
+spawner_chicken: "&a&lКурка"
+spawner_cod: "&b&lРиба"
+spawner_cow: "&a&lКорова"
+spawner_creeper: "&c&lКріпер"
+spawner_dolphin: "&b&lДельфін"
+spawner_donkey: "&a&lОсел"
+spawner_drowned: "&c&lВодяник"
+spawner_elder_guardian: "&c&lСтарий вартовий"
+spawner_enderman: "&c&lЕндермен"
+spawner_endermite: "&c&lЕндерміт"
+spawner_evoker: "&c&lЗаклинач"
+spawner_fox: "&a&lЛисиця"
+spawner_ghast: "&c&lГаст"
+spawner_guardian: "&c&lВартовий"
+spawner_horse: "&a&lКінь"
+spawner_husk: "&c&lКадавр"
+spawner_llama: "&a&LЛама"
+spawner_magma_cube: "&c&lМагма-куб"
+spawner_mooshroom: "&a&lГрибна корова"
+spawner_mule: "&a&lМул"
+spawner_ocelot: "&a&lОцелот"
+spawner_panda: "&a&lПанда"
+spawner_parrot: "&a&lПапуга"
+spawner_phantom: "&c&lФантом"
+spawner_pig: "&a&lСвиня"
+spawner_pillager: "&c&lРозбійник"
+spawner_polar_bear: "&a&lБілий ведмідь"
+spawner_pufferfish: "&b&lРиба фугу"
+spawner_rabbit: "&a&lКролик"
+spawner_ravager: "&c&lРуйнівник (НАШО?!)"
+spawner_salmon: "&b&lЛосось"
+spawner_sheep: "&a&lВівця"
+spawner_shulker: "&c&lШалкер"
+spawner_silverfish: "&c&lЛусківниця"
+spawner_skeleton: "&c&lСкелет"
+spawner_skeleton_horse: "&c&lКінь-скелет"
+spawner_slime: "&c&lСлайм"
+spawner_spider: "&c&lПавук"
+spawner_squid: "&b&lКальмар"
+spawner_stray: "&c&lПримара (ЗИМОВИЙ СКЕЛЕТ)"
+spawner_trader_llama: "&a&lЛама бариги"
+spawner_tropical_fish: "&b&lТропічна риба"
+spawner_turtle: "&a&lЧерепаха"
+spawner_vex: "&c&lБісик"
+spawner_villager: "&a&lСелянин"
+spawner_vindicator: "&c&lПоборник"
+spawner_wandering_trader: "&a&lМандрівний барига"
+spawner_witch: "&c&lВідьма"
+spawner_wither: "&c&lВізер"
+spawner_wolf: "&a&lВовк"
+spawner_zombie: "&c&lЗомбі"
+spawner_zombie_pigman: "&c&lЗомбі-піґмен"
+spawner_zombie_villager: "&c&lЗомбі селянин"
+spawner_back: "&c&lНазад"
+#----------------------------------------------------------
+#                      Money GUI
+#----------------------------------------------------------
+money_give: "&2&lДати"
+money_set: "&9&lВстановити"
+money_take: "&c&lВзяти"
+money_back: "&c&lНазад"
+#----------------------------------------------------------
+#                      Money Amount GUI
+#----------------------------------------------------------
+money_amount_back: "&c&lНазад"
+#----------------------------------------------------------
+#                    Inventory GUI
+#----------------------------------------------------------
+inventory_refresh: "&a&lОновити"
+inventory_clear: "&b&lОчистити"
+inventory_back: "&c&lНазад"
+#----------------------------------------------------------
+#                       Messages
+#----------------------------------------------------------
+message_target_player_teleport: "&aВас телепортували до {player}."
+message_player_kill: "&aВи вбили {player}."
+message_player_burn: "&aВи спалили {player}!"
+message_target_player_creeper: "&a&lОМГ КРІПЕР!"
+message_player_creeper: "&aКріпера заспавнено біля гравця {player}."
+message_target_player_heal: "&e{player} вилікував Вас."
+message_player_heal: "&aВи вилікували {player}."
+message_target_player_feed: "&e{player} відновив Ваш голод."
+message_player_feed: "&aВи нагодували {player}."
+message_player_kick: "&a{player} викинули з серверу. {reason}"
+message_player_ban: "&a{player} забанили. {reason}"
+message_player_mute: "&a{player} замютили. {reason}"
+message_player_god_enabled: "&a{player} тепер у god-mode."
+message_player_god_disabled: "&a{player} вже не у god-mode."
+message_target_player_god_enabled: "&a{player} увімкнув Вам god-mode."
+message_target_player_god_disabled: "&a{player} вимкнув Вам god-mode."
+message_target_player_potions: "&a{player} наклав на Вас ефект {potion}&a на {time} хвилин."
+message_player_potions: "&aВи наклали на {player} ефект {potion}&a на {time} хвилин."
+message_target_player_potions_remove: "&a{player} &cприбрав &aУСІ ефекти з Вас."
+message_player_potions_remove: "&aВи прибрали усі ефект з {player}."
+message_heal: "&aВас вилікували."
+message_feed: "&aВас нагодували."
+message_god_enabled: "&aВи увімкнули god-mode."
+message_god_disabled: "&aВи вимкнули god-mode."
+message_kill: "&cВи вбили самого себе."
+message_burn: "&cВи спалили самого себе."
+message_potions_remove: "&aВи прибрали усі ефекти з себе."
+message_potions: "&aВи наклали на себе ефект {potion}&a на {time} хвилин."
+message_maintenance: "&aНаразі сервер знаходиться у &cРежимі тех-робіт&a. Будь ласка, спробуйте пізніше."
+message_maintenance_enabled: "&aРежим тех-робіт &a&lувімкнено."
+message_maintenance_disabled: "&aРежим тех-робіт &c&lвимкнено."
+message_player_not_found: "&cГравця не знайдено!"
+message_ban_bypass: "&cВи не можете забанити цього гравця!"
+message_kick_bypass: "&cВи не можете кікнути цього гравця!"
+message_give: "&aВи видали собі {amount} і наразі у Вас {balance}."
+message_player_give: "&aВи видали {amount} гравцю {player} і наразі у нього {balance}."
+message_target_player_give: "&a{player} видав Вам {amount} і наразі у Вас {balance}."
+message_set: "&aВи встановили собі баланс {amount}."
+message_player_set: "&aВи встановили баланс {player} на {amount}."
+message_target_player_set: "&a{player} встановив Ваш баланс на {amount}."
+message_take: "&aВи забрали в себе {amount} і наразі у Вас {balance}."
+message_player_take: "&aВи забрали {amount} у {player} і наразі в нього {balance}."
+message_target_player_take: "&c{player} забрав у Вас {amount} і наразі у Вас {balance}."
+message_transaction_error: "&cЩось пішло не так з Вашою транзакцією.."
+message_take_error: "&cВи не можете забрати більше грошей, ніж є на балансі!"
+message_player_take_error: "&cВи не можете забрати більше грошей, ніж є на балансі!"
+message_visible: "&aТепер Ви&a&l видимий&a для інший гравців."
+message_player_visible: "&a{player} тепер&a&l видимий&a для інших гравців."
+message_hide: "&aТепер Ви&c&l невидимий&a для інших гравців."
+message_player_hide: "&a{player} тепер&c&l невидимий&a для інших гравців."
+message_unban_player: "&a{player} тепер не в бані."
+message_unmute_player: "&a{player} тепер не в мюті."
+message_initializing_start: "&aПлагін ініціалізується..."
+message_initializing_finish: "&aGUI готовий до використання."
+message_already_initializing: "&cGUI ініціалізується..."
+message_reload_start: "&aПлагін перезавантажується..."
+message_reload_finish: "&aКонфігурацію успішно перезавантажено!"
+message_enabled: "&a{name} увімкнено"
+message_disabled: "&c{name} вимкнено"
+message_admin_chat_enabled: "&aАдмін-чат увімкнено"
+message_admin_chat_disabled: "&cАдмін-чат вимкнено"
+message_admin_chat_mute: "&aЧат замючено."
+message_admin_chat_unmute: "&aЧат розмючено."
+message_admin_chat_muted: "&cВи не можете писати доки чат замючено."
+message_admin_chat_clear: "&aЧат очищено {player}"
+message_admin_chat_server_disabled: "&cАдмін-чат вимкнено на цьому сервері."
+message_freeze_enabled: "&a{player} &bзаморозив Вас!"
+message_freeze_disabled: "&a{player} &bрозморозив Вас!"
+message_admin_rank: "&a{player} тепер {rank}."
