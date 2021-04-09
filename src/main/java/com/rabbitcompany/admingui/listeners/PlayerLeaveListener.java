@@ -6,6 +6,7 @@ import com.rabbitcompany.admingui.utils.Message;
 import com.rabbitcompany.admingui.utils.Settings;
 import com.rabbitcompany.admingui.utils.TargetPlayer;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -53,6 +54,10 @@ public class PlayerLeaveListener implements Listener {
         }
 
         Settings.skulls_players.remove(event.getPlayer().getName());
+
+        if(adminGUI.getConf().getBoolean("atl_enabled", false) && adminGUI.getConf().getBoolean("atl_show_online_players", false)){
+            for (Player p: Bukkit.getOnlinePlayers()) TargetPlayer.refreshPlayerTabList(p);
+        }
 
         if(adminGUI.getConf().getBoolean("ap_enabled", false)) TargetPlayer.removePermissions(event.getPlayer());
     }

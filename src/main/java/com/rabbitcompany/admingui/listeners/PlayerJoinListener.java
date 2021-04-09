@@ -82,7 +82,13 @@ public class PlayerJoinListener implements Listener {
 
         Settings.skulls_players.put(player.getName(), Item.pre_createPlayerHead(player.getName()));
 
-        if(adminGUI.getConf().getBoolean("atl_enabled", false)) TargetPlayer.refreshPlayerTabList(player);
+        if(adminGUI.getConf().getBoolean("atl_enabled", false)){
+            if(adminGUI.getConf().getBoolean("atl_show_online_players", false)){
+                for (Player p : Bukkit.getOnlinePlayers()) TargetPlayer.refreshPlayerTabList(p);
+            }else{
+                TargetPlayer.refreshPlayerTabList(player);
+            }
+        }
 
         //Update Checker
         if(adminGUI.getConf().getBoolean("uc_enabled", true) && adminGUI.getConf().getInt("uc_send_type", 1) == 1 && AdminGUI.new_version != null && TargetPlayer.hasPermission(player, "admingui.admin")){
