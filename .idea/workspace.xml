@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68fba916-2c46-44c3-b849-1655c59b9b44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Languages/Czech.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/Language.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/Language.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/TargetPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rabbitcompany/admingui/utils/TargetPlayer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,13 +201,6 @@
       <workItem from="1577725216137" duration="7109000" />
       <workItem from="1578348949962" duration="293000" />
       <workItem from="1578422894075" duration="968000" />
-    </task>
-    <task id="LOCAL-00108" summary="Now you can rankup player from console too.">
-      <created>1604788238096</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1604788238096</updated>
     </task>
     <task id="LOCAL-00109" summary="Fixed permission manager">
       <created>1604795046617</created>
@@ -546,7 +538,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616163408637</updated>
     </task>
-    <option name="localTasksCounter" value="157" />
+    <task id="LOCAL-00157" summary="- Added Czech language">
+      <created>1617994094119</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1617994094119</updated>
+    </task>
+    <option name="localTasksCounter" value="158" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -571,7 +570,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/LiteBansAPI" />
     </ignored-roots>
-    <MESSAGE value="Added alt checker and fixed error which can display if you check the player that has joined the game for the first time." />
     <MESSAGE value="- Added bungeecord support for Admin Chat&#10;- All Admin Chat placeholders now support Hex color codes.&#10;- Optimized Admin Chat" />
     <MESSAGE value="- Added spam prevention in Admin Chat&#10;- Fixed duplicated messages when Admin Chat is connected through Bungeecord is some rare cases." />
     <MESSAGE value="- Added fallback servers option." />
@@ -596,6 +594,7 @@
     <MESSAGE value="- Chat Colors are now saved even after server restart.&#10;- Added pink color to Chat Colors&#10;- Reduced RAM consumption by few KBytes in long run" />
     <MESSAGE value="- Fixed bug when you change chat color for other player" />
     <MESSAGE value="- Added Ukrainian language" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added Ukrainian language" />
+    <MESSAGE value="- Added Czech language" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added Czech language" />
   </component>
 </project>

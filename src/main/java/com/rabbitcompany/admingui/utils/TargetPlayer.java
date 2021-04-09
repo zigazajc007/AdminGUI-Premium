@@ -124,7 +124,9 @@ public class TargetPlayer {
 
     public static void removePermissions(Player player){
         if(Settings.permissions.containsKey(player.getUniqueId())){
-            player.removeAttachment(Settings.permissions.get(player.getUniqueId()));
+            try{
+                player.removeAttachment(Settings.permissions.get(player.getUniqueId()));
+            }catch (IllegalArgumentException ignored){}
             Settings.permissions.remove(player.getUniqueId());
         }
     }
