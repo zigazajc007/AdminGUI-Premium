@@ -188,7 +188,7 @@ atl_enabled: false
 # If you want to show how many players are online in Tablist we would need to refresh it for every player, every time someone join or leave the server.
 # So if you won't use {online_players} tag in formats below leave it to false
 atl_show_online_players: false
-# Here you can set your own Admin Tablist formats (Valid tags are {name}, {display_name}, {online_players} <- (require atl_show_online_player to be true))
+# Here you can set your own Admin Tablist formats (Valid tags are {name}, {display_name}, {online_players} <- (require atl_show_online_players to be true))
 # If you have enabled Admin Permissions you can use {prefix} and {suffix} tag to display players rank.
 # If you don't use Admin Permissions as your permission manager then you can use tags {vault_prefix} and {vault_suffix}
 atl_header: "\n &6&lWelcome &c&l{display_name} &6&lto my server! \n"
