@@ -1,0 +1,388 @@
+#       ----------- + AdminGUI by Ziga Zajc + -----------   #
+#                                                           #
+#                            Czech                          #
+#                                                           #
+#       --------- + ------------------------- + ---------   #
+#
+#       You can use chat colors:
+#                ________________________
+#               |   code: | color:       |
+#               |________________________|
+#               |     &0  | Black        |
+#               |     &1  | Dark Blue    |
+#               |     &2  | Dark Green   |
+#               |     &3  | Dark Aqua    |
+#               |     &4  | Dark Red     |
+#               |     &5  | Dark Purple  |
+#               |     &6  | Gold         |
+#               |     &7  | Gray         |
+#               |     &8  | Dark Gray    |
+#               |     &9  | Blue         |
+#               |     &a  | Green        |
+#               |     &b  | Aqua         |
+#               |     &c  | Red          |
+#               |     &d  | Light Purple |
+#               |     &e  | Yellow       |
+#               |     &f  | White        |
+#               |     &k  | Obfuscated   |
+#               |     &l  | Bold         |
+#               |     &m  | Strikethrough|
+#               |     &n  | Underline    |
+#               |     &o  | Italic       |
+#               |     &r  | Reset        |
+#               |________________________|
+#
+#----------------------------------------------------------
+#                         Prefix
+#----------------------------------------------------------
+prefix: "&7[&cAdmin GUI&7] "
+#----------------------------------------------------------
+#----------------------------------------------------------
+#                       Commands
+#----------------------------------------------------------
+permission: "&cNemáte oprávnění vykonat tuto akci!"
+is_not_a_player: "&c{player} není hráč!"
+is_not_a_number: "&c{number} není číslo!"
+wrong_arguments: "&cMůžete použít pouze /admin nebo /admin <hráč>"
+wrong_chat_arguments: "&cMůžete použít pouze /adminchat mute"
+wrong_initialize: "&cMůžete použít pouze /admin initialize gui nebo /admin initialize players"
+wrong_rank_arguments: "&cMůžete použít pouze /admin rank set <hráč> <hodnost> nebo /admin rank <up/down> <hráč>"
+wrong_check_arguments: "&cMůžete použít pouze /admin check <hráč>"
+vault_required: "&cVáš server nemá nainstalovaný Vault pro dokončení této akce!"
+vanish_required: "&cVáš server nemá nainstalovaný Super Vanish nebo Premium Vanish pro dokončení této akce!"
+#----------------------------------------------------------
+#                    Inventory names
+#----------------------------------------------------------
+inventory_main: "&4&lAdmin GUI &c&lPremium"
+inventory_player: "&5&l{player}"
+inventory_world: "&2&lSvět"
+inventory_players: "&1&lHráči"
+inventory_plugins: "&e&lPluginy"
+inventory_commands: "&2&lPříkazy"
+inventory_unban: "&c&lUnban"
+inventory_unmute: "&c&lZrušení umlčení"
+inventory_actions: "&9&lAkce hráče &2&l{player}"
+inventory_kick: "&8&lVyhodit hráče &2&l{player}"
+inventory_ban: "&8&lZabanovat hráče &2&l{player}"
+inventory_potions: "&c&lLektvary hráče &2&l{player}"
+inventory_spawner: "&8&lSpawner hráče &2&l{player}"
+inventory_money: "&2&lPeníze hráče &2&l{player}"
+inventory_money_give: "&2&lDÁT peníze hráči {player}"
+inventory_money_set: "&9&lNASTAVIT&2&l peníze hráči &2&l{player}"
+inventory_money_take: "&c&lVZÍT&2&l peníze hráči &2&l{player}"
+inventory_inventory: "&a&lInventář hráče &2&l{player}"
+inventory_ender_chest: "&5&lEnderitová truhla hráče &2&l{player}"
+#----------------------------------------------------------
+#                       Admin GUI
+#----------------------------------------------------------
+main_player: "&5&l{player}"
+main_world: "&2&lSvět"
+main_players: "&9&lHráči"
+main_plugins: "&6&lPluginy"
+main_maintenance_mode: "&c&lRežim pdržby"
+main_unban_players: "&c&lUnban/Zrušení umlčení"
+main_language: "&b&l"
+main_quit: "&c&lOdejít"
+#----------------------------------------------------------
+#                      Player GUI
+#----------------------------------------------------------
+player_info: "&2&l{player}"
+player_heal: "&e&lVyléčit"
+player_feed: "&7&lNasytit"
+player_survival: "&a&lPřežití"
+player_adventure: "&2&lDobrodružná"
+player_creative: "&3&lTvořivá"
+player_spectator: "&9&lPozorovatel"
+player_god_enabled: "&c&lBůh"
+player_god_disabled: "&a&lBůh"
+player_potions: "&c&lLektvary"
+player_spawner: "&8&lSpawner"
+player_kill: "&8&lZabít"
+player_burn: "&c&lUpálit"
+player_lightning: "&5&lBlesk"
+player_firework: "&4&lRachejtle"
+player_money: "&2&lPeníze"
+player_vanish_enabled: "&a&lVanish"
+player_vanish_disabled: "&c&lVanish"
+player_custom: "&6&lVlastní příkazy"
+player_chat_color: "&6&lBarva &3&lchatu"
+player_back: "&c&lZpět"
+#----------------------------------------------------------
+#                       World GUI
+#----------------------------------------------------------
+world_day: "&e&lDem"
+world_night: "&8&lNoc"
+world_thunder: "&9&lBouřka"
+world_rain: "&3&lDéšť"
+world_clear: "&b&lVymazat"
+world_back: "&c&lZpět"
+#----------------------------------------------------------
+#                     Players GUI
+#----------------------------------------------------------
+players_color: "&2&l{player}"
+players_more: "&cKlikněte sem pro více akcí"
+players_previous: "&c&lPředchozí"
+players_page: "&a&lStrana"
+players_next: "&2&lDalší"
+players_back: "&c&lZpět"
+#----------------------------------------------------------
+#                     Plugins GUI
+#----------------------------------------------------------
+plugins_back: "&c&lZpět"
+#----------------------------------------------------------
+#                     Commands GUI
+#----------------------------------------------------------
+commands_back: "&c&lZpět"
+#----------------------------------------------------------
+#                     Unban GUI
+#----------------------------------------------------------
+unban_color: "&2&l{player}"
+unban_more: "&cKlikněte sem pro unban tohoto hráče"
+unban_previous: "&c&lPředchozí"
+unban_page: "&a&lStrana"
+unban_next: "&2&lDalší"
+unban_back: "&c&lZpět"
+#----------------------------------------------------------
+#                     Unmute GUI
+#----------------------------------------------------------
+unmute_color: "&2&l{player}"
+unmute_more: "&cKlikněte pro zrušení umlčení tohoto hráče"
+unmute_previous: "&c&lPředchozí"
+unmute_page: "&a&lStrana"
+unmute_next: "&2&lDalší"
+unmute_back: "&c&lZpět"
+#----------------------------------------------------------
+#                 Players Settings GUI
+#----------------------------------------------------------
+players_settings_info: "&2&l{player}"
+players_settings_actions: "&9&lAkce"
+players_settings_money: "&2&lPeníze"
+players_settings_kick_player: "&8&lVyhodit hráče"
+players_settings_ban_player: "&8&lZabanovat hráče"
+players_settings_back: "&c&lZpět"
+#----------------------------------------------------------
+#                   Actions GUI
+#----------------------------------------------------------
+actions_heal: "&e&lVyléčit"
+actions_feed: "&7&lNasytit"
+actions_info: "&2&l{player}"
+actions_survival: "&a&lPřežití"
+actions_adventure: "&2&lDobrodružná"
+actions_creative: "&3&lTvořivá"
+actions_spectator: "&9&lPozorovatel"
+actions_teleport_to_player: "&d&lTeleportovat se k hráči"
+actions_kill_player: "&8&lZabít hráče"
+actions_burn_player: "&c&lUpálit hráče"
+actions_teleport_player_to_you: "&d&lTeleportovat hráče k sobě"
+actions_god_enabled: "&c&lBůh"
+actions_god_disabled: "&a&lBůh"
+actions_potions: "&c&lLektvary"
+actions_spawner: "&8&lSpawner"
+actions_inventory: "&a&lInventář"
+actions_ender_chest: "&5&lEnderitová truhla"
+actions_vanish_enabled: "&a&lVanish"
+actions_vanish_disabled: "&c&lVanish"
+actions_lightning: "&5&lBlesk"
+actions_firework: "&4&lRachejtle"
+actions_fakeop: "&c&lFalešné OP"
+actions_custom: "&6&lVlastní příkazy"
+actions_chat_color: "&6&lBarva &3&lchatu"
+actions_freeze_enabled: "&b&lZmražení"
+actions_freeze_disabled: "&c&lZmražení"
+actions_back: "&c&lZpět"
+#----------------------------------------------------------
+#                       Kick GUI
+#----------------------------------------------------------
+kick: "&4Byli jste vyhozeni na "
+kick_back: "&c&lZpět"
+#----------------------------------------------------------
+#                       Ban GUI
+#----------------------------------------------------------
+ban_time: "&4Byli jste zabanováni za {reason}\n&cVyprší za &c&l{time}"
+ban_perm: "&4Byli jste permanentně zabanováni za {reason}"
+ban_years: "&e&llet"
+ban_months: "&e&lměsíců"
+ban_days: "&e&ldnů"
+ban_hours: "&e&lhodin"
+ban_minutes: "&e&lminut"
+ban_hacking: "&7&lHackování!"
+ban_griefing: "&6&lGriefování!"
+ban_spamming: "&d&lSpamování!"
+ban_advertising: "&3&lReklama!"
+ban_swearing: "&e&lNadávání!"
+ban_silence_disabled: "&c&lTicho"
+ban_silence_enabled: "&a&lTicho"
+ban_back: "&c&lZpět"
+#----------------------------------------------------------
+#                     Potions GUI
+#----------------------------------------------------------
+potions_night_vision: "&8&lNoční vidění"
+potions_invisibility: "&7&lNeviditelnost"
+potions_jump_boost: "&a&lVyšší skoky"
+potions_fire_resistance: "&c&lOhnivzdornost"
+potions_speed: "&b&lSvižnost"
+potions_slowness: "&4&lZpomalení"
+potions_water_breathing: "&9&lPodvodní dýchání"
+potions_instant_health: "&a&lOkamžité zdraví"
+potions_instant_damage: "&4&lOkamžité zranění"
+potions_poison: "&5&lOtrava"
+potions_regeneration: "&e&lRegenerace"
+potions_strength: "&e&lSíla"
+potions_weakness: "&4&lOslabení"
+potions_luck: "&6&lŠtěstí"
+potions_slow_falling: "&3&lSnášení se"
+potions_time: "&a&lČas"
+potions_remove_all: "&4&lOdebrat vše"
+potions_level: "&a&lÚroveň"
+potions_back: "&c&lZpět"
+#----------------------------------------------------------
+#                     Spawner GUI
+#----------------------------------------------------------
+spawner_bat: "&a&lNetopír"
+spawner_bee: "&6&lVčela"
+spawner_blaze: "&c&lOhnivák"
+spawner_cat: "&a&lKočka"
+spawner_cave_spider: "&c&lJeskynní pavouk"
+spawner_chicken: "&a&lSlepice"
+spawner_cod: "&b&lTreska"
+spawner_cow: "&a&lKráva"
+spawner_creeper: "&c&lCreeper"
+spawner_dolphin: "&b&lDelfín"
+spawner_donkey: "&a&lOsel"
+spawner_drowned: "&c&lUtopenec"
+spawner_elder_guardian: "&c&lPrastrážce"
+spawner_enderman: "&c&lEnderman"
+spawner_endermite: "&c&lEndermit"
+spawner_evoker: "&c&lMág"
+spawner_fox: "&a&lLiška"
+spawner_ghast: "&c&lĎas"
+spawner_guardian: "&c&lStrážce"
+spawner_horse: "&a&lKůň"
+spawner_husk: "&c&lPouštní zombie"
+spawner_llama: "&a&Lama"
+spawner_magma_cube: "&c&lMagmaslizoun"
+spawner_mooshroom: "&a&lKrávomůrka"
+spawner_mule: "&a&lMula"
+spawner_ocelot: "&a&lOcelot"
+spawner_panda: "&a&lPanda"
+spawner_parrot: "&a&lPapoušek"
+spawner_phantom: "&c&lPřízrak"
+spawner_pig: "&a&lPrase"
+spawner_pillager: "&c&lNájezdník"
+spawner_polar_bear: "&a&lPolární medvěd"
+spawner_pufferfish: "&b&lČtverzubec"
+spawner_rabbit: "&a&lKrálík"
+spawner_ravager: "&c&lNičitel"
+spawner_salmon: "&b&lLosos"
+spawner_sheep: "&a&lOvce"
+spawner_shulker: "&c&lShulker"
+spawner_silverfish: "&c&lRybenka"
+spawner_skeleton: "&c&lKostlivec"
+spawner_skeleton_horse: "&c&lKoňský kostlivec"
+spawner_slime: "&c&lSlizoun"
+spawner_spider: "&c&lPavouk"
+spawner_squid: "&b&lChobotnice"
+spawner_stray: "&c&lTulák"
+spawner_trader_llama: "&a&lObchodníkova lama"
+spawner_tropical_fish: "&b&lTropická ryba"
+spawner_turtle: "&a&lŽelva"
+spawner_vex: "&c&lProtiva"
+spawner_villager: "&a&lVesničan"
+spawner_vindicator: "&c&lMstitel"
+spawner_wandering_trader: "&a&lPotulný obchodník"
+spawner_witch: "&c&lČarodějnice"
+spawner_wither: "&c&lWither"
+spawner_wolf: "&a&lVlk"
+spawner_zombie: "&c&lZombie"
+spawner_zombie_pigman: "&c&lPrasečí zombie"
+spawner_zombie_villager: "&c&lZombie vesničan"
+spawner_back: "&c&lZpět"
+#----------------------------------------------------------
+#                      Money GUI
+#----------------------------------------------------------
+money_give: "&2&lDát"
+money_set: "&9&lNastavit"
+money_take: "&c&lVzít"
+money_back: "&c&lZpět"
+#----------------------------------------------------------
+#                      Money Amount GUI
+#----------------------------------------------------------
+money_amount_back: "&c&lZpět"
+#----------------------------------------------------------
+#                    Inventory GUI
+#----------------------------------------------------------
+inventory_refresh: "&a&lObnovit"
+inventory_clear: "&b&lVymazat"
+inventory_back: "&c&lZpět"
+#----------------------------------------------------------
+#                       Messages
+#----------------------------------------------------------
+message_target_player_teleport: "&aByli jste teleportováni k hráči {player}."
+message_player_kill: "&aZabili jste hráče {player}."
+message_player_burn: "&cZapálili &ajste hráče {player}!"
+message_target_player_creeper: "&a&lCreeper, Aww Man!"
+message_player_creeper: "&aCreeper byl spawnut u hráče {player}."
+message_target_player_heal: "&e{player} vás vyléčil/a."
+message_player_heal: "&aVyléčili jste hráče {player}."
+message_target_player_feed: "&e{player} vás nasytil/a."
+message_player_feed: "&aNasytili jste hráče {player}."
+message_player_kick: "&a{player} byl/a vykopnut/a za {reason}"
+message_player_ban: "&a{player} byl/a zabanován/a za {reason}"
+message_player_mute: "&a{player} byl/a umlčen/a za {reason}"
+message_player_god_enabled: "&a{player} je nyní v režimu boha."
+message_player_god_disabled: "&a{player} již není v režimu boha."
+message_target_player_god_enabled: "&a{player} vám povolil/a režim boha."
+message_target_player_god_disabled: "&a{player} vám zakázal/a režim boha."
+message_target_player_potions: "&a{player} vám dal/a efekt {potion}&a na {time} minut."
+message_player_potions: "&aDali jste hráči {player} efekt {potion}&a na {time} minut."
+message_target_player_potions_remove: "&a{player} &cvám odebral/a &avšechny vaše efekty."
+message_player_potions_remove: "&aOdebrali jste hráči {player} všechny efekty."
+message_heal: "&aByli jste vyléčeni."
+message_feed: "&aByli jste nasyceni."
+message_god_enabled: "&aPovolili jste režim boha."
+message_god_disabled: "&aZakázali jste režim boha."
+message_kill: "&cZabili jste se."
+message_burn: "&cZapálili jste se."
+message_potions_remove: "&aOdebrali jste si všechny efekty."
+message_potions: "&aNastavili jste si efekt {potion}&a na {time} minut."
+message_maintenance: "&aServer je nyní v &crežimu údržby&a. Přijďte prosím později."
+message_maintenance_enabled: "&aRežim údržby byl &a&lpovolen."
+message_maintenance_disabled: "&aRežim údržby byl &c&lzakázán."
+message_player_not_found: "&cHráč není momentálně dostupný!"
+message_ban_bypass: "&cNemůžete zabanovat tohoto hráče!"
+message_kick_bypass: "&cNemůžete vyhodit tohoto hráče!"
+message_give: "&aPoslali jste sami sobě {amount} a nyní máte {balance}."
+message_player_give: "&aDali jste {amount} hráči {player} a nyní má {balance}."
+message_target_player_give: "&a{player} vám poslal/a {amount} a nyní máte {balance}."
+message_set: "&aNastavili jste si {amount}."
+message_player_set: "&aNastavili jste hráči {player} peníze na {amount}."
+message_target_player_set: "&a{player} vám nastavil/a peníze na {amount}."
+message_take: "&aVzali jste sami sobě {amount} a nyní máte {balance}."
+message_player_take: "&aVzali jste {amount} hráči {player} a nyní má {balance}."
+message_target_player_take: "&c{player} vám vzal/a {amount} a nyní máte {balance}."
+message_transaction_error: "&cNěco se pokazilo při převodu!"
+message_take_error: "&cNemůžete si sebrat více peněz, než máte!"
+message_player_take_error: "&cNemůžete hráči sebrat více peněz, než má!"
+message_visible: "&aNyní jste&a&l viditelní&a pro ostatní hráče."
+message_player_visible: "&aHráč {player} je nyní&a&l viditelný&a pro ostatní hráče."
+message_hide: "&aNyní jste&c&l skrytí&a před ostatními hráči."
+message_player_hide: "&aHráč {player} je nyní&c&l skrytý&a před ostatními hráči."
+message_unban_player: "&aHráči {player} byl zrušen ban."
+message_unmute_player: "&aHráči {player} bylo zrušeno umlčení."
+message_initializing_start: "&aPlugin se načítá..."
+message_initializing_finish: "&aGUI je připraveno k použití."
+message_already_initializing: "&cGUI se již načítá..."
+message_reload_start: "&aPlugin se nyní znovu načítá..."
+message_reload_finish: "&aPlugin byl úspěšně znovu načten!"
+message_enabled: "&a{name} byl povolen"
+message_disabled: "&c{name} byl zakázán"
+message_admin_chat_enabled: "&aAdmin chat byl povolen"
+message_admin_chat_disabled: "&cAdmin chat byl zakázán"
+message_admin_chat_mute: "&aChat byl umlčen."
+message_admin_chat_unmute: "&aBylo zrušeno umlčení chatu."
+message_admin_chat_muted: "&cNemůžete mluvit, když je chat umlčen."
+message_admin_chat_clear: "&aChat byl vymazán hráčem {player}"
+message_admin_chat_server_disabled: "&cAdmin Chat je na tomto serveru zakázán."
+message_freeze_enabled: "&a{player} &bvás zmrazil!"
+message_freeze_disabled: "&a{player} &bvás rozmrazil!"
+message_admin_rank: "&a{player} je nyní {rank}."
