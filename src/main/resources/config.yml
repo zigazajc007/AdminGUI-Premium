@@ -195,6 +195,13 @@ atl_header: "\n &6&lWelcome &c&l{display_name} &6&lto my server! \n"
 atl_format: "{vault_prefix} &7{display_name}"
 atl_footer: "\n&cChange me in config.yml file!"
 #----------------------------------------------------------
+#                   Multiplayer Sleep
+#----------------------------------------------------------
+# Do you want Multiplayer Sleep to be enabled?
+ms_enabled: false
+# How many percentages of players do you want to sleep for the night to be skipped?
+ms_percentages: 50
+#----------------------------------------------------------
 #         Admin Command Spy - Support PlaceholderAPI
 #----------------------------------------------------------
 # Do you want Admin Command Spy to be enabled?

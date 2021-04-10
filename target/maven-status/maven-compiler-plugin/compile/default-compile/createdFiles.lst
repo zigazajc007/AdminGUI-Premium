@@ -3,6 +3,7 @@ com/rabbitcompany/adminguibungee/listeners/PluginMessageListener.class
 com/rabbitcompany/admingui/AdminGUI.class
 com/rabbitcompany/admingui/listeners/PlayerMoveListener.class
 com/rabbitcompany/admingui/Metrics$CustomChart.class
+com/rabbitcompany/admingui/listeners/MultiplayerSleepListener.class
 com/rabbitcompany/admingui/utils/Database.class
 com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_11.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_14.class

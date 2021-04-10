@@ -162,6 +162,8 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
             new PlayerEntityInteractListener(this);
         }
 
+        if(getConf().getBoolean("ms_enabled", false)) new MultiplayerSleepListener(this);
+
         if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){
             new PlayerPlaceholderMessageListener(this);
             new PlayerPlaceholderCommandListener(this);

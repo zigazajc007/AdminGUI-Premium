@@ -60,6 +60,9 @@ public class Settings {
     //Command Spy
     public static HashMap<UUID, Boolean> command_spy = new HashMap<>();
 
+    //Multiplayer sleep
+    public static int players_sleeping = 0;
+
     //Freeze
     public static HashMap<UUID, Boolean> freeze = new HashMap<>();
 
