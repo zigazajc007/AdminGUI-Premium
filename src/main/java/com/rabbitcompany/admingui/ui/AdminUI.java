@@ -2162,12 +2162,16 @@ public class AdminUI {
             }else if(InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_freeze_enabled")) || InventoryGUI.getClickedItem(clicked, Message.getMessage(p.getUniqueId(), "actions_freeze_disabled"))){
                 if(Settings.freeze.getOrDefault(target_player.getUniqueId(), false)){
                     Settings.freeze.put(target_player.getUniqueId(), false);
-                     Settings.custom_chat_channel.remove(p.getUniqueId());
+                    if(AdminGUI.getInstance().getConf().getString("freeze_title", null) != null || AdminGUI.getInstance().getConf().getString("freeze_subtitle", null) != null)
+                        target_player.resetTitle();
+                    Settings.custom_chat_channel.remove(target_player.getUniqueId());
                     target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "message_freeze_disabled").replace("{player}", p.getName()));
                 }else{
                     if(!TargetPlayer.hasPermission(target_player, "admingui.freeze.bypass")){
                         Settings.freeze.put(target_player.getUniqueId(), true);
-                        Settings.custom_chat_channel.put(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("freeze_admin_chat", "adminchat"));
+                        if(AdminGUI.getInstance().getConf().getString("freeze_title", null) != null && AdminGUI.getInstance().getConf().getString("freeze_subtitle", null) != null)
+                            target_player.sendTitle(AdminGUI.getInstance().getConf().getString("freeze_title", ""), AdminGUI.getInstance().getConf().getString("freeze_subtitle", ""), 50, 72000, 50);
+                        Settings.custom_chat_channel.put(target_player.getUniqueId(), AdminGUI.getInstance().getConf().getString("freeze_admin_chat", "adminchat"));
                         target_player.sendMessage(Message.getMessage(target_player.getUniqueId(), "message_freeze_enabled").replace("{player}", p.getName()));
                     }else{
                         p.closeInventory();

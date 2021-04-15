@@ -45,7 +45,7 @@ initialize_gui: 0
 initialize_delay: 2
 # If initialize_reminder is set to true then players will be reminded when GUI will start initializing and when it will finish. Only use on versions 1.14.x+ (Default is false)
 initialize_reminder: false
-# Players will see messages in default language (Default is English) - Available options: English, Chinese, French, Spanish, Russian, Italian, Dutch, Dutch, Hebrew, Korean, Slovak, Swedish, Bulgarian, Turkish and Portuguese.
+# Players will see messages in default language (Default is English) - Available options: English, Bulgarian, Chinese, Dutch, Finnish, French, German, Hebrew, Italian, Japanese, Korean, Latvian, Portuguese, Russian, Slovak, Spanish, Swedish and Turkish.
 # If you translate plugin into any other language feel free to send it and I will include it into this plugin.
 default_language: "English"
 # Here you can specify default GUI color - Only works with stained glass panes.
@@ -201,6 +201,8 @@ atl_footer: "\n&cChange me in config.yml file!"
 ms_enabled: false
 # How many percentages of players do you want to sleep for the night to be skipped?
 ms_percentages: 50
+# What message do you want to show when someone goes to bed? (Valid tags are {name}, {display_name}, {until_skip}, {online_players}) (If you don't want to show any message set it to null)
+ms_message: "&9{display_name} went to sleep. Only {until_skip} more players needs to go to sleep for the night to be skipped."
 #----------------------------------------------------------
 #         Admin Command Spy - Support PlaceholderAPI
 #----------------------------------------------------------
@@ -252,6 +254,9 @@ freeze_place_block: true
 freeze_drop_items: true
 # In which channel player will be able to chat when it will be frozen
 freeze_admin_chat: "staffchat"
+# Do you want to display frozen player title and subtitle? If not set it to null
+freeze_title: "&bYou are frozen!"
+freeze_subtitle: "&cPlease listen to staff!"
 #----------------------------------------------------------
 #                       Bungeecord
 #----------------------------------------------------------
