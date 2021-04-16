@@ -1,8 +1,8 @@
 com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_14.class
 com/rabbitcompany/adminguibungee/listeners/PluginMessageListener.class
 com/rabbitcompany/admingui/AdminGUI.class
-com/rabbitcompany/admingui/listeners/PlayerMoveListener.class
 com/rabbitcompany/admingui/Metrics$CustomChart.class
+com/rabbitcompany/admingui/listeners/PlayerMoveListener.class
 com/rabbitcompany/admingui/listeners/MultiplayerSleepListener.class
 com/rabbitcompany/admingui/utils/Database.class
 com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_11.class
@@ -28,8 +28,8 @@ com/rabbitcompany/admingui/utils/potions/Version_14.class
 com/rabbitcompany/adminguibungee/utils/Channel.class
 com/rabbitcompany/admingui/Metrics$SimpleBarChart.class
 com/rabbitcompany/admingui/utils/Language.class
-com/rabbitcompany/admingui/listeners/PlayerDamageListener.class
 com/rabbitcompany/admingui/listeners/PlayerEntityInteractListener.class
+com/rabbitcompany/admingui/listeners/PlayerDamageListener.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_11.class
 com/rabbitcompany/admingui/utils/Initialize.class
 com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_10.class
@@ -47,8 +47,8 @@ com/rabbitcompany/admingui/listeners/PlayerCommandListener.class
 com/rabbitcompany/adminguibungee/listeners/ServerKickListener.class
 com/rabbitcompany/admingui/listeners/PlayerPlaceholderMessageListener.class
 com/rabbitcompany/admingui/utils/Fireworks.class
-com/rabbitcompany/admingui/Metrics$MultiLineChart.class
 com/rabbitcompany/admingui/XMaterial$Data.class
+com/rabbitcompany/admingui/Metrics$MultiLineChart.class
 com/rabbitcompany/admingui/utils/Channel.class
 com/rabbitcompany/admingui/utils/Item.class
 com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_15.class
@@ -72,8 +72,8 @@ com/rabbitcompany/admingui/XMaterial.class
 com/rabbitcompany/admingui/commands/AdminChat.class
 com/rabbitcompany/admingui/utils/TargetPlayer.class
 com/rabbitcompany/adminguibungee/AdminGUIBungee.class
-com/rabbitcompany/admingui/utils/Initialize$1.class
 com/rabbitcompany/admingui/utils/Permissions.class
+com/rabbitcompany/admingui/utils/Initialize$1.class
 com/rabbitcompany/admingui/listeners/PlayerLeaveListener.class
 com/rabbitcompany/admingui/listeners/PlayersDroppingItemsListener.class
 com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_13.class

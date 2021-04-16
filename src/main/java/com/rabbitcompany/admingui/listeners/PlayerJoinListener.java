@@ -103,9 +103,11 @@ public class PlayerJoinListener implements Listener {
             TargetPlayer.giveAdminTools(player, adminGUI.getConf().getInt("admin_tools_give_on_join_slot", 0));
         }
 
-        if(Settings.freeze.getOrDefault(player.getUniqueId(), false)){
+        //Freeze
+        if(AdminGUI.getInstance().getPlayers().getBoolean(player.getUniqueId() + ".frozen", false)){
+            Settings.freeze.put(player.getUniqueId(), true);
             if(AdminGUI.getInstance().getConf().getString("freeze_title", null) != null && AdminGUI.getInstance().getConf().getString("freeze_subtitle", null) != null)
-                player.sendTitle(AdminGUI.getInstance().getConf().getString("freeze_title", ""), AdminGUI.getInstance().getConf().getString("freeze_subtitle", ""), 50, 72000, 50);
+                player.sendTitle(Message.chat(AdminGUI.getInstance().getConf().getString("freeze_title", "")), Message.chat(AdminGUI.getInstance().getConf().getString("freeze_subtitle", "")), 50, 72000, 50);
         }
     }
 }
