@@ -71,7 +71,7 @@ public class Colors {
     private static final Pattern hex_pattern = Pattern.compile("(?<!\\\\)(#[a-fA-F0-9]{6})");
 
     public static String toHex(String message) {
-        if(Bukkit.getVersion().contains("1.16")){
+        if(Bukkit.getVersion().contains("1.16") || Bukkit.getVersion().contains("1.17")){
             Matcher matcher = hex_pattern.matcher(message);
             while (matcher.find()) {
                 String color = message.substring(matcher.start(), matcher.end());
