@@ -1,7 +1,6 @@
 package com.rabbitcompany.admingui.listeners;
 
 import com.rabbitcompany.admingui.AdminGUI;
-import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Message;
 import com.rabbitcompany.admingui.utils.Settings;
 import com.rabbitcompany.admingui.utils.TargetPlayer;
@@ -17,7 +16,7 @@ import java.util.Map;
 
 public class PlayerPlaceholderCommandListener implements Listener {
 
-    private AdminGUI adminGUI;
+    private final AdminGUI adminGUI;
 
     public PlayerPlaceholderCommandListener(AdminGUI plugin){
         adminGUI = plugin;

@@ -9,7 +9,7 @@ import org.bukkit.event.server.ServerListPingEvent;
 
 public class ServerListPingListener implements Listener {
 
-    private AdminGUI adminGUI;
+    private final AdminGUI adminGUI;
 
     public ServerListPingListener(AdminGUI plugin){
         adminGUI = plugin;

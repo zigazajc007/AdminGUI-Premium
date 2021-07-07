@@ -1,7 +1,6 @@
 package com.rabbitcompany.admingui.listeners;
 
 import com.rabbitcompany.admingui.AdminGUI;
-import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Settings;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -12,7 +11,7 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 
 public class PlayersDroppingItemsListener implements Listener {
 
-    private AdminGUI adminGUI;
+    private final AdminGUI adminGUI;
 
     public PlayersDroppingItemsListener(AdminGUI plugin){
         adminGUI = plugin;

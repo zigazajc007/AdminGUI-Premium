@@ -12,7 +12,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 
 public class PlayerBlockBreakListener implements Listener {
 
-    private AdminGUI adminGUI;
+    private final AdminGUI adminGUI;
 
     public PlayerBlockBreakListener(AdminGUI plugin){
         adminGUI = plugin;

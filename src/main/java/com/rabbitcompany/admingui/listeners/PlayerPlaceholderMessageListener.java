@@ -2,7 +2,6 @@ package com.rabbitcompany.admingui.listeners;
 
 import com.rabbitcompany.adminbans.AdminBansAPI;
 import com.rabbitcompany.admingui.AdminGUI;
-import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.*;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
@@ -17,7 +16,7 @@ import java.util.List;
 
 public class PlayerPlaceholderMessageListener implements Listener {
 
-    private AdminGUI adminGUI;
+    private final AdminGUI adminGUI;
 
     public PlayerPlaceholderMessageListener(AdminGUI plugin){
         adminGUI = plugin;

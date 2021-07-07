@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class PlayerCommandListener implements Listener {
 
-    private AdminGUI adminGUI;
+    private final AdminGUI adminGUI;
 
     public PlayerCommandListener(AdminGUI plugin){
         adminGUI = plugin;

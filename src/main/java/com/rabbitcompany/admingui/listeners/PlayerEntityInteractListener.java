@@ -13,8 +13,8 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 
 public class PlayerEntityInteractListener implements Listener {
 
-    private AdminUI adminUI = new AdminUI();
-    private AdminGUI adminGUI;
+    private final AdminUI adminUI = new AdminUI();
+    private final AdminGUI adminGUI;
 
     public PlayerEntityInteractListener(AdminGUI plugin){
         adminGUI = plugin;

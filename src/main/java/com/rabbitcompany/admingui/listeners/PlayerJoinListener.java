@@ -12,7 +12,7 @@ import java.util.List;
 
 public class PlayerJoinListener implements Listener {
 
-    private AdminGUI adminGUI;
+    private final AdminGUI adminGUI;
 
     public PlayerJoinListener(AdminGUI plugin){
         adminGUI = plugin;

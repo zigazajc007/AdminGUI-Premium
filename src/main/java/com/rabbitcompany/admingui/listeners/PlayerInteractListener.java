@@ -11,12 +11,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.InventoryView;
 
 public class PlayerInteractListener implements Listener {
 
-    private AdminUI adminUI = new AdminUI();
-    private AdminGUI adminGUI;
+    private final AdminUI adminUI = new AdminUI();
+    private final AdminGUI adminGUI;
 
     public PlayerInteractListener(AdminGUI plugin){
         adminGUI = plugin;

@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerBedLeaveEvent;
 
 public class MultiplayerSleepListener implements Listener {
 
-    private AdminGUI adminGUI;
+    private final AdminGUI adminGUI;
 
     public MultiplayerSleepListener(AdminGUI plugin){
         adminGUI = plugin;
