@@ -27,7 +27,6 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Map;
 import java.util.UUID;
 
 public class AdminGUI extends JavaPlugin implements PluginMessageListener {
@@ -58,6 +57,10 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
     private File co = null;
     private final YamlConfiguration conf = new YamlConfiguration();
 
+    //Settings
+    private File se = null;
+    private final YamlConfiguration sett = new YamlConfiguration();
+
     //Permissions
     private File pe = null;
     private final YamlConfiguration perm = new YamlConfiguration();
@@ -86,6 +89,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
     public void onEnable() {
         instance = this;
         this.co = new File(getDataFolder(), "config.yml");
+        this.se = new File(getDataFolder(), "settings.yml");
         this.pe = new File(getDataFolder(), "permissions.yml");
         this.pl = new File(getDataFolder(), "players.yml");
         this.k = new File(getDataFolder(), "kick.yml");
@@ -97,6 +101,8 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         loadYamls();
 
         Language.downloadLanguage(getConf().getString("default_language", "English"));
+
+        if(getSett().getBoolean("maintenance", false)) Settings.maintenance_mode = true;
 
         //Database connection
         if(getConf().getBoolean("mysql", false)) setupMySQL();
@@ -303,6 +309,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
 
     public void mkdir() {
         if(!this.co.exists()) saveResource("config.yml", false);
+        if(!this.se.exists()) saveResource("settings.yml", false);
         if(!this.pe.exists()) saveResource("permissions.yml", false);
         if(!this.pl.exists()) saveResource("players.yml", false);
         if(!this.k.exists()) saveResource("kick.yml", false);
@@ -314,6 +321,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
     public void loadYamls(){
         try{
             this.conf.load(this.co);
+            this.sett.load(this.se);
             this.perm.load(this.pe);
             this.play.load(this.pl);
             this.kick.load(this.k);
@@ -326,22 +334,25 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
     }
 
     public YamlConfiguration getConf() { return this.conf; }
-
+    public YamlConfiguration getSett() { return this.sett; }
     public YamlConfiguration getPermissions() { return this.perm; }
-
     public YamlConfiguration getPlayers(){ return this.play; }
-
     public YamlConfiguration getKick() { return this.kick; }
-
     public YamlConfiguration getPlug() { return this.plug; }
-
     public YamlConfiguration getComm() { return this.comm; }
-
     public YamlConfiguration getComo() { return this.como; }
 
     public void savePlayers(){
         try {
             this.play.save(this.pl);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveSettings(){
+        try {
+            this.sett.save(this.se);
         } catch (IOException e) {
             e.printStackTrace();
         }

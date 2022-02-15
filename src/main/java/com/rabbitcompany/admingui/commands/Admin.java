@@ -1,7 +1,6 @@
 package com.rabbitcompany.admingui.commands;
 
 import com.rabbitcompany.admingui.AdminGUI;
-import com.rabbitcompany.admingui.XMaterial;
 import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.*;
 import org.bukkit.Bukkit;
@@ -9,10 +8,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -42,9 +38,13 @@ public class Admin implements CommandExecutor {
                 }else if(args[0].equals("maintenance")){
                     if(Settings.maintenance_mode){
                         Settings.maintenance_mode = false;
+                        AdminGUI.getInstance().getSett().set("maintenance", false);
+                        AdminGUI.getInstance().saveSettings();
                         sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_maintenance_disabled"));
                     }else{
                         Settings.maintenance_mode = true;
+                        AdminGUI.getInstance().getSett().set("maintenance", true);
+                        AdminGUI.getInstance().saveSettings();
                         sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_maintenance_enabled"));
                         for (Player pl : getServer().getOnlinePlayers()) {
                             if (!pl.isOp() && !TargetPlayer.hasPermission(pl, "admingui.maintenance")) {
@@ -63,6 +63,8 @@ public class Admin implements CommandExecutor {
                     if(enabled.equals("on") || enabled.equals("enable")){
                         if(!Settings.maintenance_mode){
                             Settings.maintenance_mode = true;
+                            AdminGUI.getInstance().getSett().set("maintenance", true);
+                            AdminGUI.getInstance().saveSettings();
                             for (Player pl : getServer().getOnlinePlayers()) {
                                 if (!pl.isOp() && !TargetPlayer.hasPermission(pl, "admingui.maintenance")) {
                                     pl.kickPlayer(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_maintenance"));
@@ -72,6 +74,8 @@ public class Admin implements CommandExecutor {
                         sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_maintenance_enabled"));
                     }else if(enabled.equals("off") || enabled.equals("disable")){
                         Settings.maintenance_mode = false;
+                        AdminGUI.getInstance().getSett().set("maintenance", false);
+                        AdminGUI.getInstance().saveSettings();
                         sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_maintenance_disabled"));
                     }else{
                         sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.chat("&cYou can only use /admin maintenance <on/off>"));
@@ -293,9 +297,13 @@ public class Admin implements CommandExecutor {
                     if(TargetPlayer.hasPermission(player, "admingui.maintenance.manage")){
                         if(Settings.maintenance_mode){
                             Settings.maintenance_mode = false;
+                            AdminGUI.getInstance().getSett().set("maintenance", false);
+                            AdminGUI.getInstance().saveSettings();
                             player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_maintenance_disabled"));
                         }else{
                             Settings.maintenance_mode = true;
+                            AdminGUI.getInstance().getSett().set("maintenance", true);
+                            AdminGUI.getInstance().saveSettings();
                             player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_maintenance_enabled"));
                             for (Player pl : getServer().getOnlinePlayers()) {
                                 if (!pl.isOp() && !TargetPlayer.hasPermission(pl, "admingui.maintenance")) {
@@ -364,6 +372,8 @@ public class Admin implements CommandExecutor {
                         if(enabled.equals("on") || enabled.equals("enable")){
                             if(!Settings.maintenance_mode){
                                 Settings.maintenance_mode = true;
+                                AdminGUI.getInstance().getSett().set("maintenance", true);
+                                AdminGUI.getInstance().saveSettings();
                                 for (Player pl : getServer().getOnlinePlayers()) {
                                     if (!pl.isOp() && !TargetPlayer.hasPermission(pl, "admingui.maintenance")) {
                                         pl.kickPlayer(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_maintenance"));
@@ -373,6 +383,8 @@ public class Admin implements CommandExecutor {
                             player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_maintenance_enabled"));
                         }else if(enabled.equals("off") || enabled.equals("disable")){
                             Settings.maintenance_mode = false;
+                            AdminGUI.getInstance().getSett().set("maintenance", false);
+                            AdminGUI.getInstance().saveSettings();
                             player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_maintenance_disabled"));
                         }else{
                             player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.chat("&cYou can only use /admin maintenance <on/off>"));

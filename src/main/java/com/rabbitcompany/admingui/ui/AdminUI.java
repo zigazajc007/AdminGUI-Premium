@@ -1554,10 +1554,14 @@ public class AdminUI {
             if(TargetPlayer.hasPermission(p, "admingui.maintenance.manage")){
                 if (Settings.maintenance_mode) {
                     Settings.maintenance_mode = false;
+                    AdminGUI.getInstance().getSett().set("maintenance", false);
+                    AdminGUI.getInstance().saveSettings();
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_maintenance_disabled"));
                     p.closeInventory();
                 } else {
                     Settings.maintenance_mode = true;
+                    AdminGUI.getInstance().getSett().set("maintenance", true);
+                    AdminGUI.getInstance().saveSettings();
                     p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "message_maintenance_enabled"));
                     p.closeInventory();
                     for (Player pl : getServer().getOnlinePlayers()) {

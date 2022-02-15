@@ -1,7 +1,6 @@
 package com.rabbitcompany.admingui.commands;
 
 import com.rabbitcompany.admingui.AdminGUI;
-import com.rabbitcompany.admingui.ui.AdminUI;
 import com.rabbitcompany.admingui.utils.Message;
 import com.rabbitcompany.admingui.utils.Settings;
 import com.rabbitcompany.admingui.utils.TargetPlayer;
