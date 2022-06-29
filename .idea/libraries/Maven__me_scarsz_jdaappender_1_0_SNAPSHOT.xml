@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: me.scarsz:jdaappender:1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/me/scarsz/jdaappender/1.0-SNAPSHOT/jdaappender-1.0-20220310.220543-102.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/me/scarsz/jdaappender/1.0-SNAPSHOT/jdaappender-1.0-20220310.220543-102-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/me/scarsz/jdaappender/1.0-SNAPSHOT/jdaappender-1.0-20220310.220543-102-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

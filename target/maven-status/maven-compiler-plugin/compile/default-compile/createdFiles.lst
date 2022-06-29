@@ -28,14 +28,13 @@ com/rabbitcompany/admingui/utils/potions/Version_14.class
 com/rabbitcompany/admingui/Metrics$SimpleBarChart.class
 com/rabbitcompany/adminguibungee/utils/Channel.class
 com/rabbitcompany/admingui/utils/Language.class
-com/rabbitcompany/admingui/listeners/PlayerDamageListener.class
 com/rabbitcompany/admingui/listeners/PlayerEntityInteractListener.class
+com/rabbitcompany/admingui/listeners/PlayerDamageListener.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_11.class
 com/rabbitcompany/admingui/utils/Initialize.class
 com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_10.class
 com/rabbitcompany/admingui/utils/Settings.class
 com/rabbitcompany/admingui/Metrics$SimplePie.class
-com/rabbitcompany/admingui/XMaterial$1.class
 com/rabbitcompany/admingui/Metrics$DrilldownPie.class
 com/rabbitcompany/admingui/utils/potions/Version_8.class
 com/rabbitcompany/admingui/utils/HexColors.class
@@ -57,8 +56,8 @@ com/rabbitcompany/admingui/listeners/ServerListPingListener.class
 com/rabbitcompany/admingui/listeners/InventoryClickListener.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_9.class
 com/rabbitcompany/admingui/utils/Hash.class
-com/rabbitcompany/admingui/utils/vault/VaultChatConnector.class
 com/rabbitcompany/admingui/utils/MutedPlayerIn.class
+com/rabbitcompany/admingui/utils/vault/VaultChatConnector.class
 com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_13.class
 com/rabbitcompany/admingui/utils/BannedPlayerIn.class
 com/rabbitcompany/admingui/TabCompletion.class

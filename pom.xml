@@ -6,7 +6,7 @@
 
     <groupId>com.rabbitcompany</groupId>
     <artifactId>AdminGUI-Premium</artifactId>
-    <version>5.7.3</version>
+    <version>5.9.0</version>
     <packaging>jar</packaging>
 
     <name>AdminGUI Premium</name>
@@ -66,24 +66,16 @@
             <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
         </repository>
         <repository>
-            <id>spigotmc-repo2</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
-        </repository>
-        <repository>
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
         <repository>
             <id>husk</id>
-            <url>http://maven.husk.pro/repository/internal/</url>
+            <url>https://maven.husk.pro/repository/internal/</url>
         </repository>
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
-        </repository>
-        <repository>
-            <id>cubekrowd-repo</id>
-            <url>https://mavenrepo.cubekrowd.net/artifactory/repo/</url>
         </repository>
         <repository>
             <id>placeholderapi</id>
@@ -100,7 +92,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.16.1-R0.1-SNAPSHOT</version>
+            <version>1.18.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -118,25 +110,25 @@
         <dependency>
             <groupId>me.clip</groupId>
             <artifactId>placeholderapi</artifactId>
-            <version>2.10.9</version>
+            <version>2.11.1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.gitlab.ruany</groupId>
             <artifactId>LiteBansAPI</artifactId>
-            <version>0.3.3</version>
+            <version>0.3.5</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.github.zigazajc007</groupId>
             <artifactId>AdminBans</artifactId>
-            <version>1.0.7</version>
+            <version>v2.0.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>net.md-5</groupId>
             <artifactId>bungeecord-api</artifactId>
-            <version>1.16-R0.3</version>
+            <version>1.18-R0.1-SNAPSHOT</version>
             <type>jar</type>
             <scope>provided</scope>
         </dependency>
@@ -148,7 +140,7 @@
         <dependency>
             <groupId>com.discordsrv</groupId>
             <artifactId>discordsrv</artifactId>
-            <version>1.22.0</version>
+            <version>1.25.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

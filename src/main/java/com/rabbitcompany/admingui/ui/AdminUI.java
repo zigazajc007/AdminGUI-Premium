@@ -1055,10 +1055,10 @@ public class AdminUI {
                 }
 
                 if(TargetPlayer.hasPermission(p, "admingui.lightning.other")){
-                    if(Bukkit.getVersion().contains("1.13") || Bukkit.getVersion().contains("1.14") || Bukkit.getVersion().contains("1.15") || Bukkit.getVersion().contains("1.16") || Bukkit.getVersion().contains("1.17") || Bukkit.getVersion().contains("1.18")){
-                        Item.create(inv_actions, "TRIDENT", 1, 37, Message.getMessage(p.getUniqueId(), "actions_lightning"));
-                    }else{
+                    if(Bukkit.getVersion().contains("1.8") || Bukkit.getVersion().contains("1.9") || Bukkit.getVersion().contains("1.10") || Bukkit.getVersion().contains("1.11") || Bukkit.getVersion().contains("1.12")){
                         Item.create(inv_actions, "STICK", 1, 37, Message.getMessage(p.getUniqueId(), "actions_lightning"));
+                    }else{
+                        Item.create(inv_actions, "TRIDENT", 1, 37, Message.getMessage(p.getUniqueId(), "actions_lightning"));
                     }
                 }else{
                     Item.create(inv_actions, "RED_STAINED_GLASS_PANE", 1, 37, Message.getMessage(p.getUniqueId(), "permission"));
@@ -1263,7 +1263,7 @@ public class AdminUI {
             Item.create(inv_potions, gui_color.getOrDefault(p.getUniqueId(), AdminGUI.getInstance().getConf().getString("gui_default_color", "LIGHT_BLUE_STAINED_GLASS_PANE")), 1, i, " ");
         }
 
-        if (Bukkit.getVersion().contains("1.18") || Bukkit.getVersion().contains("1.17") || Bukkit.getVersion().contains("1.16") || Bukkit.getVersion().contains("1.15") || Bukkit.getVersion().contains("1.14") || Bukkit.getVersion().contains("1.13")) {
+        if (Bukkit.getVersion().contains("1.19") || Bukkit.getVersion().contains("1.18") || Bukkit.getVersion().contains("1.17") || Bukkit.getVersion().contains("1.16") || Bukkit.getVersion().contains("1.15") || Bukkit.getVersion().contains("1.14") || Bukkit.getVersion().contains("1.13")) {
             for(Version_14 potion : Version_14.values()){
                 Item.create(inv_potions, "POTION", 1, potion.ordinal() + 1, Message.getMessage(p.getUniqueId(), potion.name()));
             }
@@ -1300,7 +1300,7 @@ public class AdminUI {
 
         Settings.target_player.put(p.getUniqueId(), target);
 
-        if(Bukkit.getVersion().contains("1.18") || Bukkit.getVersion().contains("1.17") || Bukkit.getVersion().contains("1.16") || Bukkit.getVersion().contains("1.15")){
+        if(Bukkit.getVersion().contains("1.19") || Bukkit.getVersion().contains("1.18") || Bukkit.getVersion().contains("1.17") || Bukkit.getVersion().contains("1.16") || Bukkit.getVersion().contains("1.15")){
             for(Material_Version_15 material : Material_Version_15.values()){
                 Item.create(inv_spawner, material.name(), 1, material.ordinal()+1, Message.getMessage(p.getUniqueId(), Message_Version_15.values()[material.ordinal()].name()));
             }
@@ -1733,7 +1733,7 @@ public class AdminUI {
                     Settings.chat_color.put(p.getUniqueId(), "CLOCK");
                     break;
                 case "CLOCK":
-                    if(getVersion().contains("1.16") || getVersion().contains("1.17") || Bukkit.getVersion().contains("1.18")){
+                    if(getVersion().contains("1.16") || getVersion().contains("1.17") || Bukkit.getVersion().contains("1.18") || Bukkit.getVersion().contains("1.19")){
                         Settings.chat_color.put(p.getUniqueId(), "EXPERIENCE_BOTTLE");
                     }else{
                         Settings.chat_color.put(p.getUniqueId(), "LIGHT_GRAY_WOOL");
@@ -2128,7 +2128,7 @@ public class AdminUI {
                         Settings.chat_color.put(target_player.getUniqueId(), "CLOCK");
                         break;
                     case "CLOCK":
-                        if(getVersion().contains("1.16") || getVersion().contains("1.17") || getVersion().contains("1.18")){
+                        if(getVersion().contains("1.16") || getVersion().contains("1.17") || getVersion().contains("1.18") || Bukkit.getVersion().contains("1.19")){
                             Settings.chat_color.put(target_player.getUniqueId(), "EXPERIENCE_BOTTLE");
                         }else{
                             Settings.chat_color.put(target_player.getUniqueId(), "LIGHT_GRAY_WOOL");
@@ -2304,7 +2304,7 @@ public class AdminUI {
                         Settings.chat_color.put(target_player.getUniqueId(), "CLOCK");
                         break;
                     case "CLOCK":
-                        if(getVersion().contains("1.16") || getVersion().contains("1.17")){
+                        if(getVersion().contains("1.16") || getVersion().contains("1.17") || getVersion().contains("1.18") || getVersion().contains("1.19")){
                             Settings.chat_color.put(target_player.getUniqueId(), "EXPERIENCE_BOTTLE");
                         }else{
                             Settings.chat_color.put(target_player.getUniqueId(), "LIGHT_GRAY_WOOL");
