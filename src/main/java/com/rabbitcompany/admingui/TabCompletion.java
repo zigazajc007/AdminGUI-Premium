@@ -2,6 +2,7 @@ package com.rabbitcompany.admingui;
 
 import com.rabbitcompany.admingui.utils.Channel;
 import com.rabbitcompany.admingui.utils.Language;
+import com.rabbitcompany.admingui.utils.Message;
 import com.rabbitcompany.admingui.utils.Settings;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -35,7 +36,7 @@ public class TabCompletion implements TabCompleter {
 
                 if(sender.hasPermission("admingui.reload")) completions.add("reload");
 
-                if(sender.hasPermission("admingui.rank")) completions.add("rank");
+                if(sender.hasPermission("admingui.rank") && AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)) completions.add("rank");
 
                 if(sender.hasPermission("admingui.check")) completions.add("check");
 
@@ -51,7 +52,7 @@ public class TabCompletion implements TabCompleter {
                if(args[0].equals("initialize")){
                    completions.add("gui");
                    completions.add("players");
-               }else if(args[0].equals("rank")){
+               }else if(args[0].equals("rank") && AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)){
                    if(sender.hasPermission("admingui.rank.set")) completions.add("set");
                    if(sender.hasPermission("admingui.rank.up")) completions.add("up");
                    if(sender.hasPermission("admingui.rank.down")) completions.add("down");
@@ -68,7 +69,7 @@ public class TabCompletion implements TabCompleter {
                    }
                }
            }else if(args.length == 3){
-               if(args[0].equals("rank") && (args[1].equals("set") || args[1].equals("up") || args[1].equals("down"))) {
+               if(args[0].equals("rank") && AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false) && (args[1].equals("set") || args[1].equals("up") || args[1].equals("down"))) {
                    if(AdminGUI.getInstance().getConf().getBoolean("bungeecord_enabled", false)){
                        Channel.send(sender.getName(),"send", "online_players");
                        completions.addAll(Settings.online_players);
@@ -81,7 +82,7 @@ public class TabCompletion implements TabCompleter {
                    completions.addAll(Language.enabled_languages);
                }
            }else if(args.length == 4){
-               if(args[0].equals("rank") && args[1].equals("set")) {
+               if(args[0].equals("rank") && AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false) && args[1].equals("set")) {
                    for (Map.Entry<String, Object> rank : AdminGUI.getInstance().getPermissions().getConfigurationSection("groups").getValues(false).entrySet()) {
                        completions.add(rank.getKey());
                    }

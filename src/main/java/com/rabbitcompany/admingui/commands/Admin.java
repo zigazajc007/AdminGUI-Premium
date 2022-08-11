@@ -55,6 +55,10 @@ public class Admin implements CommandExecutor {
                 }
             }else if(args.length == 2){
                 if(args[0].equals("rank")) {
+                    if(!AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)){
+                        sender.sendMessage(Message.chat("&cAdmin Permissions are disabled on this server!"));
+                        return true;
+                    }
                     sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "wrong_rank_arguments"));
                 }else if(args[0].equals("language")) {
                     sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.chat("&cYou can only use /admin language download <language> or /admin language fix <language>"));
@@ -123,6 +127,10 @@ public class Admin implements CommandExecutor {
                 }
             }else if(args.length == 3){
                 if(args[0].equals("rank")) {
+                    if(!AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)){
+                        sender.sendMessage(Message.chat("&cAdmin Permissions are disabled on this server!"));
+                        return true;
+                    }
                     if (args[1].equals("up")) {
                             Player target_player = Bukkit.getServer().getPlayer(ChatColor.stripColor(args[2]));
                             if (target_player != null) {
@@ -235,6 +243,10 @@ public class Admin implements CommandExecutor {
                 }
             }else if(args.length == 4){
                 if(args[0].equals("rank")){
+                    if(!AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)){
+                        sender.sendMessage(Message.chat("&cAdmin Permissions are disabled on this server!"));
+                        return true;
+                    }
                     if(args[1].equals("set")) {
                         Player target_player = Bukkit.getServer().getPlayer(ChatColor.stripColor(args[2]));
                         String rank = args[3];
@@ -290,6 +302,10 @@ public class Admin implements CommandExecutor {
                 }else if(args[0].equals("initialize")) {
                     player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_initialize"));
                 }else if(args[0].equals("rank")) {
+                    if(!AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)){
+                        player.sendMessage(Message.chat("&cAdmin Permissions are disabled on this server!"));
+                        return true;
+                    }
                     player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_rank_arguments"));
                 }else if(args[0].equals("check")) {
                     player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_check_arguments"));
@@ -365,6 +381,10 @@ public class Admin implements CommandExecutor {
                         player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_initialize"));
                     }
                 }else if(args[0].equals("rank")) {
+                    if(!AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)){
+                        player.sendMessage(Message.chat("&cAdmin Permissions are disabled on this server!"));
+                        return true;
+                    }
                     player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_rank_arguments"));
                 }else if(args[0].equals("maintenance")){
                     if(TargetPlayer.hasPermission(player, "admingui.maintenance.manage")){
@@ -440,8 +460,11 @@ public class Admin implements CommandExecutor {
                     player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_arguments"));
                 }
             }else if(args.length == 3){
-                //TODO: Permissions
                 if(args[0].equals("rank")) {
+                    if(!AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)){
+                        player.sendMessage(Message.chat("&cAdmin Permissions are disabled on this server!"));
+                        return true;
+                    }
                     if (args[1].equals("up")) {
                         if (TargetPlayer.hasPermission(player, "admingui.rank.up")) {
                             Player target_player = Bukkit.getServer().getPlayer(ChatColor.stripColor(args[2]));
@@ -547,6 +570,10 @@ public class Admin implements CommandExecutor {
                 }
             }else if(args.length == 4){
                 if(args[0].equals("rank")){
+                    if(!AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)){
+                        player.sendMessage(Message.chat("&cAdmin Permissions are disabled on this server!"));
+                        return true;
+                    }
                     if(args[1].equals("set")) {
                         if (TargetPlayer.hasPermission(player, "admingui.rank.set")){
                             Player target_player = Bukkit.getServer().getPlayer(ChatColor.stripColor(args[2]));
