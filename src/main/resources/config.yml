@@ -52,6 +52,8 @@ default_language: "English"
 gui_default_color: "LIGHT_BLUE_STAINED_GLASS_PANE"
 # How would you like to display date in Admin GUI plugin? (y = year, M = month, d = day, H = hour, m = minute and s = second)
 date_format: "yyyy-MM-dd HH:mm:ss"
+# Do you want to show player IP addresses in Admin GUI?
+show_ips: true
 #----------------------------------------------------------
 #                     Update Checker
 #----------------------------------------------------------

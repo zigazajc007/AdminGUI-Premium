@@ -1,8 +1,6 @@
 package com.rabbitcompany.admingui.listeners;
 
 import com.rabbitcompany.admingui.AdminGUI;
-import com.rabbitcompany.admingui.ui.AdminUI;
-import com.rabbitcompany.admingui.utils.Item;
 import com.rabbitcompany.admingui.utils.Message;
 import com.rabbitcompany.admingui.utils.Settings;
 import com.rabbitcompany.admingui.utils.TargetPlayer;
@@ -30,7 +28,7 @@ public class PlayerCommandListener implements Listener {
         Player p = event.getPlayer();
         String message = event.getMessage();
 
-        if(adminGUI.getConf().getBoolean("command_disabler_enabled", false)){
+        if(adminGUI.getConf().getBoolean("command_disabler_enabled", false) && p.hasPermission("") && !TargetPlayer.hasPermission(p, "admingui.commanddisabler.bypass")){
             if(adminGUI.getConf().getConfigurationSection("disabled_commands") != null){
                 for(String command : adminGUI.getConf().getConfigurationSection("disabled_commands").getValues(false).keySet()){
                     if(command.equals(message.split(" ")[0])){

@@ -170,13 +170,13 @@ public class AdminUI {
 
         if(TargetPlayer.hasPermission(p, "admingui.info")) {
             if(AdminGUI.getEconomy() != null){
-                if(p.getAddress() != null && p.getAddress().getAddress() != null){
+                if(AdminGUI.getInstance().getConf().getBoolean("show_ips", true) && p.getAddress() != null && p.getAddress().getAddress() != null){
                     Item.createPlayerHead(inv_player, p.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "player_info").replace("{player}", p.getName()), Message.chat("&eHeal: " + Math.round(p.getHealth())), Message.chat("&7Feed: " + Math.round(p.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(p.getName()))) ,Message.chat("&aGamemode: " + p.getGameMode().toString()), Message.chat("&5IP: " + p.getAddress().getAddress().toString().replace("/", "")));
                 }else{
                     Item.createPlayerHead(inv_player, p.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "player_info").replace("{player}", p.getName()), Message.chat("&eHeal: " + Math.round(p.getHealth())), Message.chat("&7Feed: " + Math.round(p.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(p.getName()))) ,Message.chat("&aGamemode: " + p.getGameMode().toString()));
                 }
             }else{
-                if(p.getAddress() != null && p.getAddress().getAddress() != null){
+                if(AdminGUI.getInstance().getConf().getBoolean("show_ips", true) && p.getAddress() != null && p.getAddress().getAddress() != null){
                     Item.createPlayerHead(inv_player, p.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "player_info").replace("{player}", p.getName()), Message.chat("&eHeal: " + Math.round(p.getHealth())), Message.chat("&7Feed: " + Math.round(p.getFoodLevel())), Message.chat("&aGamemode: " + p.getGameMode().toString()), Message.chat("&5IP: " + p.getAddress().getAddress().toString().replace("/", "")));
                 }else{
                     Item.createPlayerHead(inv_player, p.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "player_info").replace("{player}", p.getName()), Message.chat("&eHeal: " + Math.round(p.getHealth())), Message.chat("&7Feed: " + Math.round(p.getFoodLevel())), Message.chat("&aGamemode: " + p.getGameMode().toString()));
@@ -783,13 +783,13 @@ public class AdminUI {
                 Item.createPlayerHead(inv_players_settings, target_name, 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_name));
             }else{
                 if(AdminGUI.getEconomy() != null){
-                    if(target_player.getAddress() != null && target_player.getAddress().getAddress() != null){
+                    if(AdminGUI.getInstance().getConf().getBoolean("show_ips", true) && target_player.getAddress() != null && target_player.getAddress().getAddress() != null){
                         Item.createPlayerHead(inv_players_settings, target_name, 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_name), Message.chat("&eHeal: " + Math.round(target_player.getHealth())), Message.chat("&7Feed: " + Math.round(target_player.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(target_name))) ,Message.chat("&aGamemode: " + target_player.getGameMode().toString()), Message.chat("&5IP: " + target_player.getAddress().getAddress().toString().replace("/", "")));
                     }else{
                         Item.createPlayerHead(inv_players_settings, target_name, 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_name), Message.chat("&eHeal: " + Math.round(target_player.getHealth())), Message.chat("&7Feed: " + Math.round(target_player.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(target_name))) ,Message.chat("&aGamemode: " + target_player.getGameMode().toString()));
                     }
                 }else{
-                    if(target_player.getAddress() != null && target_player.getAddress().getAddress() != null){
+                    if(AdminGUI.getInstance().getConf().getBoolean("show_ips", true) && target_player.getAddress() != null && target_player.getAddress().getAddress() != null){
                         Item.createPlayerHead(inv_players_settings, target_name, 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_name), Message.chat("&eHeal: " + Math.round(target_player.getHealth())), Message.chat("&7Feed: " + Math.round(target_player.getFoodLevel())), Message.chat("&aGamemode: " + target_player.getGameMode().toString()), Message.chat("&5IP: " + target_player.getAddress().getAddress().toString().replace("/", "")));
                     }else{
                         Item.createPlayerHead(inv_players_settings, target_name, 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target_name), Message.chat("&eHeal: " + Math.round(target_player.getHealth())), Message.chat("&7Feed: " + Math.round(target_player.getFoodLevel())), Message.chat("&aGamemode: " + target_player.getGameMode().toString()));
@@ -867,13 +867,13 @@ public class AdminUI {
 
         if(TargetPlayer.hasPermission(p, "admingui.info")) {
             if(AdminGUI.getEconomy() != null){
-                if(target.getAddress() != null && target.getAddress().getAddress() != null){
+                if(AdminGUI.getInstance().getConf().getBoolean("show_ips", true) && target.getAddress() != null && target.getAddress().getAddress() != null){
                     Item.createPlayerHead(inv_actions, target.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target.getName()), Message.chat("&eHeal: " + Math.round(target.getHealth())), Message.chat("&7Feed: " + Math.round(target.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(target.getName()))) ,Message.chat("&aGamemode: " + target.getGameMode().toString()), Message.chat("&5IP: " + target.getAddress().getAddress().toString().replace("/", "")));
                 }else{
                     Item.createPlayerHead(inv_actions, target.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target.getName()), Message.chat("&eHeal: " + Math.round(target.getHealth())), Message.chat("&7Feed: " + Math.round(target.getFoodLevel())), Message.chat("&2Money: " + AdminGUI.getEconomy().format(AdminGUI.getEconomy().getBalance(target.getName()))) ,Message.chat("&aGamemode: " + target.getGameMode().toString()));
                 }
             }else{
-                if(target.getAddress() != null && target.getAddress().getAddress() != null){
+                if(AdminGUI.getInstance().getConf().getBoolean("show_ips", true) && target.getAddress() != null && target.getAddress().getAddress() != null){
                     Item.createPlayerHead(inv_actions, target.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target.getName()), Message.chat("&eHeal: " + Math.round(target.getHealth())), Message.chat("&7Feed: " + Math.round(target.getFoodLevel())), Message.chat("&aGamemode: " + target.getGameMode().toString()), Message.chat("&5IP: " + target.getAddress().getAddress().toString().replace("/", "")));
                 }else{
                     Item.createPlayerHead(inv_actions, target.getName(), 1, 5, Message.getMessage(p.getUniqueId(), "players_settings_info").replace("{player}", target.getName()), Message.chat("&eHeal: " + Math.round(target.getHealth())), Message.chat("&7Feed: " + Math.round(target.getFoodLevel())), Message.chat("&aGamemode: " + target.getGameMode().toString()));
