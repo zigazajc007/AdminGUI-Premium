@@ -119,7 +119,7 @@ public class PlayerMessageListener implements Listener {
                 if(adminGUI.getConf().getBoolean("ac_beautifier", true))
                     message = Character.toUpperCase(message.charAt(0)) + message.substring(1);
 
-                switch (Settings.chat_color.getOrDefault(p.getUniqueId(), "LIGHT_GRAY_WOOL")){
+                switch (Settings.chat_color.getOrDefault(p.getUniqueId(), adminGUI.getConf().getString("ac_default_color", "LIGHT_GRAY_WOOL"))){
                     case "WHITE_WOOL":
                         message = Message.chat("&f" + message);
                         break;
