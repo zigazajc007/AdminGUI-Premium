@@ -87,8 +87,14 @@ public class PlayerMessageListener implements Listener {
                     }
                 }
 
-                if (!TargetPlayer.hasPermission(p, "admingui.chat.color") && !TargetPlayer.hasPermission(p, "admingui.chat.colors"))
-                    message = message.replace("&", "");
+                message = Message.chat(message);
+                if (!TargetPlayer.hasPermission(p, "admingui.chat.color") && !TargetPlayer.hasPermission(p, "admingui.chat.colors")){
+                    message = ChatColor.stripColor(message);
+                }else{
+                    message = Colors.toHex(message);
+                }
+
+                message = message.replaceAll("%", "‰");
 
                 if(!TargetPlayer.hasPermission(p, "admingui.chat.advertisement.bypass")){
                     if(!message.endsWith(".")){
@@ -185,11 +191,7 @@ public class PlayerMessageListener implements Listener {
                     vault_suffix = AdminGUI.getVaultChat().getPlayerSuffix(p);
                 }
 
-                message = Colors.toHex(message);
-
                 String format = Colors.toHex(Message.chat(adminGUI.getConf().getString("ac_format", "&7{display_name} &7> {message}").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{server_name}", adminGUI.getConf().getString("server_name", "Default")).replace("{prefix}", prefix).replace("{suffix}", suffix).replace("{vault_prefix}", vault_prefix).replace("{vault_suffix}", vault_suffix)));
-
-                if (!TargetPlayer.hasPermission(p, "admingui.chat.color") && !TargetPlayer.hasPermission(p, "admingui.chat.colors")) message = ChatColor.stripColor(message);
 
                 event.setMessage(message);
                 event.setFormat(format.replace("{message}", message));
