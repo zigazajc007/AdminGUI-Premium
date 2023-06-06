@@ -118,6 +118,20 @@ public class PlayerPlaceholderMessageListener implements Listener {
                     for (String filter : filters) {
                         message = message.replace(filter, "****");
                     }
+
+                    if(!adminGUI.getConf().getBoolean("ac_beautifier", true)){
+                        String tempMessage = message.toLowerCase();
+
+                        for (String filter : filters) {
+                            tempMessage = tempMessage.replace(filter, "****");
+                        }
+
+                        int index = tempMessage.indexOf("*");
+                        while(index != -1){
+                            message = message.substring(0, index) + "*" + message.substring(index + 1);
+                            index = tempMessage.indexOf("*", index + 1);
+                        }
+                    }
                 }
 
                 if(adminGUI.getConf().getConfigurationSection("ac_emojis") != null){
