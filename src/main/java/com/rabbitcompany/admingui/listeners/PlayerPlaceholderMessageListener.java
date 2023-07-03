@@ -194,6 +194,9 @@ public class PlayerPlaceholderMessageListener implements Listener {
                     case "EXPERIENCE_BOTTLE":
                         message = Colors.gradientText(message);
                         break;
+                    default:
+                        message = Message.chat(message);
+                        break;
                 }
 
                 //TODO: Permissions

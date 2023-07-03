@@ -26,10 +26,10 @@ public class PlayerJoinListener implements Listener {
         Player player = event.getPlayer();
 
         if(adminGUI.getConf().getBoolean("cjlm_enabled", true)){
-            if(adminGUI.getConf().getString("join_message", "&7[&a+&7] &6{display_name}") != null){
-                event.setJoinMessage(Message.chat(adminGUI.getConf().getString("join_message", "&7[&a+&7] &6{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName())));
+            if(adminGUI.getPlayers().getString(player.getUniqueId().toString(), null) == null){
+                event.setJoinMessage(Message.chat(adminGUI.getConf().getString("first_join_message", "&7[&1+&7] &6{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName())));
             }else{
-                event.setJoinMessage(null);
+                event.setJoinMessage(Message.chat(adminGUI.getConf().getString("join_message", "&7[&a+&7] &6{display_name}").replace("{name}", player.getName()).replace("{display_name}", player.getDisplayName())));
             }
         }
 

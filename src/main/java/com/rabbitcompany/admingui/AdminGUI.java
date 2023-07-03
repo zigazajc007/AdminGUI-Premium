@@ -394,7 +394,7 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Discord: &bCrazy Rabbit#0001"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Discord: &bziga.zajc007"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Mail: &bziga.zajc007@gmail.com"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Discord: &bhttps://discord.gg/hUNymXX"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
