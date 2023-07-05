@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -82,6 +83,100 @@ public class Permissions {
 		} else {
 			return rank;
 		}
+	}
+
+	public static boolean setPermission(UUID uuid, String name, String permission){
+		if(uuid != null){
+			List<String> permissions = AdminGUI.getInstance().getPlayers().getStringList(uuid + ".permissions");
+			if(permissions.contains(permission)) return true;
+			permissions.add(permission);
+			AdminGUI.getInstance().getPlayers().set(uuid + ".permissions", permissions);
+			AdminGUI.getInstance().getPlayers().set(uuid + ".name", name);
+			AdminGUI.getInstance().savePlayers();
+
+			Player target_player = Bukkit.getPlayer(uuid);
+			if (target_player != null && target_player.isOnline()) {
+				TargetPlayer.refreshPermissions(target_player);
+			}
+			return true;
+		}
+
+		boolean changed = false;
+		Set<String> con_sec = AdminGUI.getInstance().getPlayers().getConfigurationSection("").getKeys(false);
+		for (String uuid_name : con_sec) {
+			if (AdminGUI.getInstance().getPlayers().getString(uuid_name + ".name").equals(name)) {
+				List<String> permissions = AdminGUI.getInstance().getPlayers().getStringList(uuid_name + ".permissions");
+				if(permissions.contains(permission)) return true;
+				permissions.add(permission);
+				AdminGUI.getInstance().getPlayers().set(uuid_name + ".permissions", permissions);
+				AdminGUI.getInstance().getPlayers().set(uuid_name + ".name", name);
+				changed = true;
+				break;
+			}
+		}
+
+		if(!changed){
+			List<String> permissions = AdminGUI.getInstance().getPlayers().getStringList(name + ".permissions");
+			if(permissions.contains(permission)) return true;
+			permissions.add(permission);
+			AdminGUI.getInstance().getPlayers().set(name + ".name", name);
+			AdminGUI.getInstance().getPlayers().set(name + ".permissions", permissions);
+		}
+
+		AdminGUI.getInstance().savePlayers();
+
+		Player target_player = Bukkit.getPlayer(name);
+		if (target_player != null && target_player.isOnline()) {
+			TargetPlayer.refreshPermissions(target_player);
+		}
+		return true;
+	}
+
+	public static boolean removePermission(UUID uuid, String name, String permission){
+		if(uuid != null){
+			List<String> permissions = AdminGUI.getInstance().getPlayers().getStringList(uuid + ".permissions");
+			if(!permissions.contains(permission)) return true;
+			permissions.remove(permission);
+			AdminGUI.getInstance().getPlayers().set(uuid + ".permissions", permissions);
+			AdminGUI.getInstance().getPlayers().set(uuid + ".name", name);
+			AdminGUI.getInstance().savePlayers();
+
+			Player target_player = Bukkit.getPlayer(uuid);
+			if (target_player != null && target_player.isOnline()) {
+				TargetPlayer.refreshPermissions(target_player);
+			}
+			return true;
+		}
+
+		boolean changed = false;
+		Set<String> con_sec = AdminGUI.getInstance().getPlayers().getConfigurationSection("").getKeys(false);
+		for (String uuid_name : con_sec) {
+			if (AdminGUI.getInstance().getPlayers().getString(uuid_name + ".name").equals(name)) {
+				List<String> permissions = AdminGUI.getInstance().getPlayers().getStringList(uuid_name + ".permissions");
+				if(!permissions.contains(permission)) return true;
+				permissions.remove(permission);
+				AdminGUI.getInstance().getPlayers().set(uuid_name + ".permissions", permissions);
+				AdminGUI.getInstance().getPlayers().set(uuid_name + ".name", name);
+				changed = true;
+				break;
+			}
+		}
+
+		if(!changed){
+			List<String> permissions = AdminGUI.getInstance().getPlayers().getStringList(name + ".permissions");
+			if(!permissions.contains(permission)) return true;
+			permissions.remove(permission);
+			AdminGUI.getInstance().getPlayers().set(name + ".name", name);
+			AdminGUI.getInstance().getPlayers().set(name + ".permissions", permissions);
+		}
+
+		AdminGUI.getInstance().savePlayers();
+
+		Player target_player = Bukkit.getPlayer(name);
+		if (target_player != null && target_player.isOnline()) {
+			TargetPlayer.refreshPermissions(target_player);
+		}
+		return true;
 	}
 
 	public static boolean setRank(UUID uuid, String name, String rank) {

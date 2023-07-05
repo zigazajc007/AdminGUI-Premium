@@ -35,6 +35,18 @@ public class Admin implements CommandExecutor {
 					sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.chat("&cYou can only use /admin language download <language> or /admin language fix <language>"));
 				} else if (args[0].equals("check")) {
 					sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "wrong_check_arguments"));
+				}else if (args[0].equals("rank")) {
+					if (!AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)) {
+						sender.sendMessage(Message.chat("&cAdmin Permissions are disabled on this server!"));
+						return true;
+					}
+					sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "wrong_rank_arguments"));
+				} else if (args[0].equals("permission")) {
+					if (!AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)) {
+						sender.sendMessage(Message.chat("&cAdmin Permissions are disabled on this server!"));
+						return true;
+					}
+					sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "wrong_permission_arguments"));
 				} else if (args[0].equals("maintenance")) {
 					if (Settings.maintenance_mode) {
 						Settings.maintenance_mode = false;
@@ -60,6 +72,12 @@ public class Admin implements CommandExecutor {
 						return true;
 					}
 					sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "wrong_rank_arguments"));
+				} else if (args[0].equals("permission")) {
+					if (!AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)) {
+						sender.sendMessage(Message.chat("&cAdmin Permissions are disabled on this server!"));
+						return true;
+					}
+					sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "wrong_permission_arguments"));
 				} else if (args[0].equals("language")) {
 					sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.chat("&cYou can only use /admin language download <language> or /admin language fix <language>"));
 				} else if (args[0].equals("maintenance")) {
@@ -126,7 +144,13 @@ public class Admin implements CommandExecutor {
 					}
 				}
 			} else if (args.length == 3) {
-				if (args[0].equals("rank")) {
+				if (args[0].equals("permission")){
+					if (!AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)) {
+						sender.sendMessage(Message.chat("&cAdmin Permissions are disabled on this server!"));
+						return true;
+					}
+					sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "wrong_permission_arguments"));
+				} else if (args[0].equals("rank")) {
 					if (!AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)) {
 						sender.sendMessage(Message.chat("&cAdmin Permissions are disabled on this server!"));
 						return true;
@@ -242,7 +266,40 @@ public class Admin implements CommandExecutor {
 					sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "wrong_arguments"));
 				}
 			} else if (args.length == 4) {
-				if (args[0].equals("rank")) {
+				if (args[0].equals("permission")){
+					if (!AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)) {
+						sender.sendMessage(Message.chat("&cAdmin Permissions are disabled on this server!"));
+						return true;
+					}
+
+					if(!args[1].equals("add") && !args[1].equals("remove")){
+						sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "wrong_permission_arguments"));
+						return true;
+					}
+
+					String name = args[2];
+					String permission = args[3];
+
+					Player target_player = Bukkit.getServer().getPlayer(ChatColor.stripColor(name));
+					if(target_player != null){
+						if(args[1].equals("add")){
+							Permissions.setPermission(target_player.getUniqueId(), name, permission);
+							sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_permission_added").replace("{player}", name).replace("{permission}", permission));
+						}else{
+							Permissions.removePermission(target_player.getUniqueId(), name, permission);
+							sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_permission_removed").replace("{player}", name).replace("{permission}", permission));
+						}
+						return true;
+					}
+
+					if(args[1].equals("add")){
+						Permissions.setPermission(null, name, permission);
+						sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_permission_added").replace("{player}", name).replace("{permission}", permission));
+					}else{
+						Permissions.removePermission(null, name, permission);
+						sender.sendMessage(Message.getMessage(UUID.randomUUID(), "prefix") + Message.getMessage(UUID.randomUUID(), "message_permission_removed").replace("{player}", name).replace("{permission}", permission));
+					}
+				}else if (args[0].equals("rank")) {
 					if (!AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)) {
 						sender.sendMessage(Message.chat("&cAdmin Permissions are disabled on this server!"));
 						return true;
@@ -307,6 +364,12 @@ public class Admin implements CommandExecutor {
 						return true;
 					}
 					player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_rank_arguments"));
+				} else if (args[0].equals("permission")){
+					if (!AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)) {
+						player.sendMessage(Message.chat("&cAdmin Permissions are disabled on this server!"));
+						return true;
+					}
+					player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_permission_arguments"));
 				} else if (args[0].equals("check")) {
 					player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_check_arguments"));
 				} else if (args[0].equals("maintenance")) {
@@ -386,6 +449,12 @@ public class Admin implements CommandExecutor {
 						return true;
 					}
 					player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_rank_arguments"));
+				} else if (args[0].equals("permission")) {
+					if (!AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)) {
+						player.sendMessage(Message.chat("&cAdmin Permissions are disabled on this server!"));
+						return true;
+					}
+					player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_permission_arguments"));
 				} else if (args[0].equals("maintenance")) {
 					if (TargetPlayer.hasPermission(player, "admingui.maintenance.manage")) {
 						String enabled = ChatColor.stripColor(args[1]);
@@ -460,7 +529,13 @@ public class Admin implements CommandExecutor {
 					player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_arguments"));
 				}
 			} else if (args.length == 3) {
-				if (args[0].equals("rank")) {
+				if (args[0].equals("permission")) {
+					if (!AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)) {
+						player.sendMessage(Message.chat("&cAdmin Permissions are disabled on this server!"));
+						return true;
+					}
+					player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_permission_arguments"));
+				} else if (args[0].equals("rank")) {
 					if (!AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)) {
 						player.sendMessage(Message.chat("&cAdmin Permissions are disabled on this server!"));
 						return true;
@@ -569,7 +644,45 @@ public class Admin implements CommandExecutor {
 					player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_arguments"));
 				}
 			} else if (args.length == 4) {
-				if (args[0].equals("rank")) {
+				if (args[0].equals("permission")){
+					if (!AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)) {
+						player.sendMessage(Message.chat("&cAdmin Permissions are disabled on this server!"));
+						return true;
+					}
+
+					if(!args[1].equals("add") && !args[1].equals("remove")){
+						player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "wrong_permission_arguments"));
+						return true;
+					}
+
+					if (!TargetPlayer.hasPermission(player, "admingui.permission.manage")) {
+						player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "permission"));
+						return true;
+					}
+
+					String name = args[2];
+					String permission = args[3];
+
+					Player target_player = Bukkit.getServer().getPlayer(ChatColor.stripColor(name));
+					if(target_player != null){
+						if(args[1].equals("add")){
+							Permissions.setPermission(target_player.getUniqueId(), name, permission);
+							player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_permission_added").replace("{player}", name).replace("{permission}", permission));
+						}else{
+							Permissions.removePermission(target_player.getUniqueId(), name, permission);
+							player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_permission_removed").replace("{player}", name).replace("{permission}", permission));
+						}
+						return true;
+					}
+
+					if(args[1].equals("add")){
+						Permissions.setPermission(null, name, permission);
+						player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_permission_added").replace("{player}", name).replace("{permission}", permission));
+					}else{
+						Permissions.removePermission(null, name, permission);
+						player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "message_permission_removed").replace("{player}", name).replace("{permission}", permission));
+					}
+				} else if (args[0].equals("rank")) {
 					if (!AdminGUI.getInstance().getConf().getBoolean("ap_enabled", false)) {
 						player.sendMessage(Message.chat("&cAdmin Permissions are disabled on this server!"));
 						return true;

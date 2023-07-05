@@ -47,6 +47,7 @@ wrong_arguments: "&c/admin 또는 /admin <플레이어>만 사용할 수 있습�
 wrong_chat_arguments: "&cYou can only use /adminchat mute"
 wrong_initialize: "&c/admin initialize gui 또는 /admin initialize players 만 사용할 수 있습니다."
 wrong_rank_arguments: "&cYou can only use /admin rank set <player> <rank> or /admin rank <up/down> <player>"
+wrong_permission_arguments: "&cYou can only use /admin permission <add/remove> <player> <permission>"
 wrong_check_arguments: "&cYou can only use /admin check <player>"
 vault_required: "&c이 작업을 완료하려면, 서버에 Vault가 설치되어 있어야 합니다!"
 vanish_required: "&c서버에서 이 작업을 완료하기 위해 Super Vanish 또는 Premium Vanish를 설치하지 않았습니다!"
@@ -385,3 +386,5 @@ message_admin_chat_server_disabled: "&c이 서버에서 관리자 채팅을 사�
 message_freeze_enabled: "&a{player} &bfroze you!"
 message_freeze_disabled: "&a{player} &bunfroze you!"
 message_admin_rank: "&a{player} is now {rank}."
+message_permission_added: "&aPermission {permission} has been added to {player}."
+message_permission_removed: "&aPermission {permission} has been removed from {player}."

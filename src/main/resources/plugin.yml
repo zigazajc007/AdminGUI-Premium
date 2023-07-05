@@ -221,7 +221,7 @@ permissions:
     description: Grants access to change your default chat color
     default: op
   admingui.chat.color.change.other:
-    description: Grants access to change ydefault chat color for others
+    description: Grants access to change default chat color for others
     default: op
   admingui.rank.set:
     description: Grants access to set players rank
@@ -234,4 +234,7 @@ permissions:
     default: op
   admingui.check:
     description: Grants access to check players stats
+    default: op
+  admingui.permission.manage:
+    description: Grants access to manage player permissions
     default: op

@@ -236,3 +236,4 @@ groups:
       - admingui.rank.set
       - admingui.rank.up
       - admingui.rank.down
+      - admingui.permission.manage

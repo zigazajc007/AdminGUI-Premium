@@ -29,33 +29,29 @@ public class TargetPlayer {
 
 		Settings.permissions.put(player.getUniqueId(), player.addAttachment(AdminGUI.getInstance()));
 
-		List<?> permissions;
-		List<?> inheritance = AdminGUI.getInstance().getPermissions().getList("groups." + rank + ".inheritance");
+		List<String> permissions;
+		List<String> inheritance = AdminGUI.getInstance().getPermissions().getStringList("groups." + rank + ".inheritance");
 
-		if (inheritance != null) {
-			for (Object inter : inheritance) {
-				permissions = AdminGUI.getInstance().getPermissions().getList("groups." + inter + ".permissions");
-				if (permissions != null) {
-					for (Object permission : permissions) {
-						if (permission.toString().charAt(0) == '!') {
-							Settings.permissions.get(player.getUniqueId()).unsetPermission(permission.toString().substring(1));
-						} else {
-							Settings.permissions.get(player.getUniqueId()).setPermission(permission.toString(), true);
-						}
-					}
+		for (String inter : inheritance) {
+			permissions = AdminGUI.getInstance().getPermissions().getStringList("groups." + inter + ".permissions");
+			for (String permission : permissions) {
+				if (permission.charAt(0) == '!') {
+					Settings.permissions.get(player.getUniqueId()).unsetPermission(permission.substring(1));
+				} else {
+					Settings.permissions.get(player.getUniqueId()).setPermission(permission, true);
 				}
 			}
 		}
 
-		permissions = AdminGUI.getInstance().getPermissions().getList("groups." + rank + ".permissions");
+		permissions = AdminGUI.getInstance().getPermissions().getStringList("groups." + rank + ".permissions");
+		List<String> playerPermissions = AdminGUI.getInstance().getPlayers().getStringList(player.getUniqueId() + ".permissions");
+		permissions.addAll(playerPermissions);
 
-		if (permissions != null) {
-			for (Object permission : permissions) {
-				if (permission.toString().charAt(0) == '!') {
-					Settings.permissions.get(player.getUniqueId()).unsetPermission(permission.toString().substring(1));
-				} else {
-					Settings.permissions.get(player.getUniqueId()).setPermission(permission.toString(), true);
-				}
+		for (String permission : permissions) {
+			if (permission.charAt(0) == '!') {
+				Settings.permissions.get(player.getUniqueId()).unsetPermission(permission.substring(1));
+			} else {
+				Settings.permissions.get(player.getUniqueId()).setPermission(permission, true);
 			}
 		}
 
@@ -64,36 +60,32 @@ public class TargetPlayer {
 	public static void refreshPermissions(Player player) {
 		String rank = Permissions.getRank(player.getUniqueId(), player.getName());
 
-		List<?> permissions;
-		List<?> inheritance = AdminGUI.getInstance().getPermissions().getList("groups." + rank + ".inheritance");
+		List<String> permissions;
+		List<String> inheritance = AdminGUI.getInstance().getPermissions().getStringList("groups." + rank + ".inheritance");
 
 		for (String perm : Settings.permissions.get(player.getUniqueId()).getPermissions().keySet())
 			Settings.permissions.get(player.getUniqueId()).unsetPermission(perm);
 
-		if (inheritance != null) {
-			for (Object inter : inheritance) {
-				permissions = AdminGUI.getInstance().getPermissions().getList("groups." + inter + ".permissions");
-				if (permissions != null) {
-					for (Object permission : permissions) {
-						if (permission.toString().charAt(0) == '!') {
-							Settings.permissions.get(player.getUniqueId()).unsetPermission(permission.toString().substring(1));
-						} else {
-							Settings.permissions.get(player.getUniqueId()).setPermission(permission.toString(), true);
-						}
-					}
+		for (String inter : inheritance) {
+			permissions = AdminGUI.getInstance().getPermissions().getStringList("groups." + inter + ".permissions");
+			for (String permission : permissions) {
+				if (permission.charAt(0) == '!') {
+					Settings.permissions.get(player.getUniqueId()).unsetPermission(permission.substring(1));
+				} else {
+					Settings.permissions.get(player.getUniqueId()).setPermission(permission, true);
 				}
 			}
 		}
 
-		permissions = AdminGUI.getInstance().getPermissions().getList("groups." + rank + ".permissions");
+		permissions = AdminGUI.getInstance().getPermissions().getStringList("groups." + rank + ".permissions");
+		List<String> playerPermissions = AdminGUI.getInstance().getPlayers().getStringList(player.getUniqueId() + ".permissions");
+		permissions.addAll(playerPermissions);
 
-		if (permissions != null) {
-			for (Object permission : permissions) {
-				if (permission.toString().charAt(0) == '!') {
-					Settings.permissions.get(player.getUniqueId()).unsetPermission(permission.toString().substring(1));
-				} else {
-					Settings.permissions.get(player.getUniqueId()).setPermission(permission.toString(), true);
-				}
+		for (String permission : permissions) {
+			if (permission.charAt(0) == '!') {
+				Settings.permissions.get(player.getUniqueId()).unsetPermission(permission.substring(1));
+			} else {
+				Settings.permissions.get(player.getUniqueId()).setPermission(permission, true);
 			}
 		}
 
