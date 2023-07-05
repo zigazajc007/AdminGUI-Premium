@@ -11,19 +11,20 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 
 public class PlayersDroppingItemsListener implements Listener {
 
-    private final AdminGUI adminGUI;
+	private final AdminGUI adminGUI;
 
-    public PlayersDroppingItemsListener(AdminGUI plugin){
-        adminGUI = plugin;
+	public PlayersDroppingItemsListener(AdminGUI plugin) {
+		adminGUI = plugin;
 
-        Bukkit.getPluginManager().registerEvents(this, plugin);
-    }
+		Bukkit.getPluginManager().registerEvents(this, plugin);
+	}
 
-    @EventHandler(priority = EventPriority.HIGH)
-    public void onPlayerDroppingItems(PlayerDropItemEvent event){
-        Player p = event.getPlayer();
+	@EventHandler(priority = EventPriority.HIGH)
+	public void onPlayerDroppingItems(PlayerDropItemEvent event) {
+		Player p = event.getPlayer();
 
-        if(Settings.freeze.getOrDefault(p.getUniqueId(), false) && AdminGUI.getInstance().getConf().getBoolean("freeze_drop_items", true)) event.setCancelled(true);
-    }
+		if (Settings.freeze.getOrDefault(p.getUniqueId(), false) && AdminGUI.getInstance().getConf().getBoolean("freeze_drop_items", true))
+			event.setCancelled(true);
+	}
 
 }

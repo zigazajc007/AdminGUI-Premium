@@ -12,20 +12,20 @@ import org.bukkit.event.player.PlayerLoginEvent;
 
 public class PlayerLoginListener implements Listener {
 
-    private final AdminGUI adminGUI;
+	private final AdminGUI adminGUI;
 
-    public PlayerLoginListener(AdminGUI plugin){
-        adminGUI = plugin;
+	public PlayerLoginListener(AdminGUI plugin) {
+		adminGUI = plugin;
 
-        Bukkit.getPluginManager().registerEvents(this, plugin);
-    }
+		Bukkit.getPluginManager().registerEvents(this, plugin);
+	}
 
-    @EventHandler(priority = EventPriority.HIGH)
-    public void onPlayerLogin(PlayerLoginEvent event){
-        if(event.getResult() == PlayerLoginEvent.Result.ALLOWED){
-            if(Settings.maintenance_mode && !TargetPlayer.hasPermission(event.getPlayer(), "admingui.maintenance"))
-                event.disallow(PlayerLoginEvent.Result.KICK_OTHER, Message.getMessage(event.getPlayer().getUniqueId(), "prefix") + Message.getMessage(event.getPlayer().getUniqueId(), "message_maintenance"));
-        }
-    }
+	@EventHandler(priority = EventPriority.HIGH)
+	public void onPlayerLogin(PlayerLoginEvent event) {
+		if (event.getResult() == PlayerLoginEvent.Result.ALLOWED) {
+			if (Settings.maintenance_mode && !TargetPlayer.hasPermission(event.getPlayer(), "admingui.maintenance"))
+				event.disallow(PlayerLoginEvent.Result.KICK_OTHER, Message.getMessage(event.getPlayer().getUniqueId(), "prefix") + Message.getMessage(event.getPlayer().getUniqueId(), "message_maintenance"));
+		}
+	}
 
 }

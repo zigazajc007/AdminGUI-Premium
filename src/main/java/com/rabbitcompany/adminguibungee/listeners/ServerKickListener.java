@@ -15,52 +15,53 @@ import java.util.List;
 
 public class ServerKickListener implements Listener {
 
-    @EventHandler
-    public void onServerKickEvent(ServerKickEvent e) {
+	public static boolean isServerOnline(String ip, int port) {
+		try {
+			Socket s = new Socket();
+			s.connect(new InetSocketAddress(ip, port));
+			s.close();
+		} catch (IOException e) {
+			return false;
+		}
+		return true;
+	}
 
-        ServerInfo kickedFrom;
+	@EventHandler
+	public void onServerKickEvent(ServerKickEvent e) {
 
-        if (e.getPlayer().getServer() != null) {
-            kickedFrom = e.getPlayer().getServer().getInfo();
-        } else if (AdminGUIBungee.getInstance().getProxy().getReconnectHandler() != null) {
-            kickedFrom = AdminGUIBungee.getInstance().getProxy().getReconnectHandler().getServer(e.getPlayer());
-        } else {
-            kickedFrom = AbstractReconnectHandler.getForcedHost(e.getPlayer().getPendingConnection());
-            if (kickedFrom == null) kickedFrom = ProxyServer.getInstance().getServerInfo(e.getPlayer().getPendingConnection().getListener().getDefaultServer());
-        }
+		ServerInfo kickedFrom;
 
-        List<String> server_list = AdminGUIBungee.config.getStringList("fallback_server_list");
+		if (e.getPlayer().getServer() != null) {
+			kickedFrom = e.getPlayer().getServer().getInfo();
+		} else if (AdminGUIBungee.getInstance().getProxy().getReconnectHandler() != null) {
+			kickedFrom = AdminGUIBungee.getInstance().getProxy().getReconnectHandler().getServer(e.getPlayer());
+		} else {
+			kickedFrom = AbstractReconnectHandler.getForcedHost(e.getPlayer().getPendingConnection());
+			if (kickedFrom == null)
+				kickedFrom = ProxyServer.getInstance().getServerInfo(e.getPlayer().getPendingConnection().getListener().getDefaultServer());
+		}
 
-        String fallback_server = AdminGUIBungee.config.getStringList("fallback_server_list").get(0);
+		List<String> server_list = AdminGUIBungee.config.getStringList("fallback_server_list");
 
-        for (String server: server_list) {
-            if(!server.equals(kickedFrom.getName())) {
-                String host = AdminGUIBungee.bungee_config.getString("servers." + server + ".address");
-                String[] host_list = host.split(":");
-                if (isServerOnline(host_list[0], Integer.parseInt(host_list[1]))) {
-                    fallback_server = server;
-                    break;
-                }
-            }
-        }
+		String fallback_server = AdminGUIBungee.config.getStringList("fallback_server_list").get(0);
 
-        ServerInfo kickTo = AdminGUIBungee.getInstance().getProxy().getServerInfo(fallback_server);
+		for (String server : server_list) {
+			if (!server.equals(kickedFrom.getName())) {
+				String host = AdminGUIBungee.bungee_config.getString("servers." + server + ".address");
+				String[] host_list = host.split(":");
+				if (isServerOnline(host_list[0], Integer.parseInt(host_list[1]))) {
+					fallback_server = server;
+					break;
+				}
+			}
+		}
 
-        if (kickedFrom != null && kickedFrom.equals(kickTo)) return;
+		ServerInfo kickTo = AdminGUIBungee.getInstance().getProxy().getServerInfo(fallback_server);
 
-        e.setCancelled(true);
-        e.setCancelServer(kickTo);
-    }
+		if (kickedFrom != null && kickedFrom.equals(kickTo)) return;
 
-    public static boolean isServerOnline(String ip, int port){
-        try {
-            Socket s = new Socket();
-            s.connect(new InetSocketAddress(ip, port));
-            s.close();
-        } catch (IOException e) {
-            return false;
-        }
-        return true;
-    }
+		e.setCancelled(true);
+		e.setCancelServer(kickTo);
+	}
 
 }

@@ -12,61 +12,61 @@ import java.util.UUID;
 
 public class Settings {
 
-    //Target players
-    public static HashMap<UUID, Player> target_player = new HashMap<>();
+	//Target players
+	public static HashMap<UUID, Player> target_player = new HashMap<>();
 
-    //Player heads
-    public static HashMap<String, ItemStack> skulls = new HashMap<>();
-    public static HashMap<String, ItemStack> skulls_players = new HashMap<>();
+	//Player heads
+	public static HashMap<String, ItemStack> skulls = new HashMap<>();
+	public static HashMap<String, ItemStack> skulls_players = new HashMap<>();
 
-    //RTP delay
-    public static HashMap<UUID, Long> rtp_delay = new HashMap<>();
+	//RTP delay
+	public static HashMap<UUID, Long> rtp_delay = new HashMap<>();
 
-    //Chat Delay
-    public static HashMap<UUID, Long> admin_chat_delay = new HashMap<>();
+	//Chat Delay
+	public static HashMap<UUID, Long> admin_chat_delay = new HashMap<>();
 
-    //Custom Chat Channels
-    public static HashMap<UUID, String> custom_chat_channel = new HashMap<>();
+	//Custom Chat Channels
+	public static HashMap<UUID, String> custom_chat_channel = new HashMap<>();
 
-    //Permissions
-    public static HashMap<UUID, PermissionAttachment> permissions = new HashMap<>();
+	//Permissions
+	public static HashMap<UUID, PermissionAttachment> permissions = new HashMap<>();
 
-    //Mute chat
-    public static boolean muted_chat = false;
+	//Mute chat
+	public static boolean muted_chat = false;
 
-    //Initialize task
-    public static HashMap<UUID, Integer> task_gui = new HashMap<>();
-    public static HashMap<UUID, Integer> task_players = new HashMap<>();
+	//Initialize task
+	public static HashMap<UUID, Integer> task_gui = new HashMap<>();
+	public static HashMap<UUID, Integer> task_players = new HashMap<>();
 
-    //Online players
-    public static ArrayList<String> online_players = new ArrayList<>();
+	//Online players
+	public static ArrayList<String> online_players = new ArrayList<>();
 
-    //Language
-    public static HashMap<UUID, String> language = new HashMap<>();
+	//Language
+	public static HashMap<UUID, String> language = new HashMap<>();
 
-    //God
-    public static HashMap<UUID, Boolean> god = new HashMap<>();
+	//God
+	public static HashMap<UUID, Boolean> god = new HashMap<>();
 
-    //Chat Color
-    public static HashMap<UUID, String> chat_color = new HashMap<>();
+	//Chat Color
+	public static HashMap<UUID, String> chat_color = new HashMap<>();
 
-    //Custom commands
-    public static HashMap<UUID, Integer> custom_method = new HashMap<>();
-    public static HashMap<UUID, Integer> plugin_slot = new HashMap<>();
+	//Custom commands
+	public static HashMap<UUID, Integer> custom_method = new HashMap<>();
+	public static HashMap<UUID, Integer> plugin_slot = new HashMap<>();
 
-    //Date Format
-    public static SimpleDateFormat date_format = new SimpleDateFormat(""+AdminGUI.getInstance().getConf().getString("date_format", "yyyy-MM-dd HH:mm:ss"));
+	//Date Format
+	public static SimpleDateFormat date_format = new SimpleDateFormat(AdminGUI.getInstance().getConf().getString("date_format", "yyyy-MM-dd HH:mm:ss"));
 
-    //Command Spy
-    public static HashMap<UUID, Boolean> command_spy = new HashMap<>();
+	//Command Spy
+	public static HashMap<UUID, Boolean> command_spy = new HashMap<>();
 
-    //Multiplayer sleep
-    public static int players_sleeping = 0;
+	//Multiplayer sleep
+	public static int players_sleeping = 0;
 
-    //Freeze
-    public static HashMap<UUID, Boolean> freeze = new HashMap<>();
+	//Freeze
+	public static HashMap<UUID, Boolean> freeze = new HashMap<>();
 
-    //Maintenance mode
-    public static boolean maintenance_mode = false;
+	//Maintenance mode
+	public static boolean maintenance_mode = false;
 
 }

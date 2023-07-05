@@ -90,23 +90,23 @@ motd_changer_max_players: 100
 command_disabler_enabled: false
 # On the left side are disabled commands and on the right side messages that will be displayed if player tried to execute that command.
 disabled_commands:
-  "/ver" : "&cBecause of security risk, we have disabled this command."
-  "/bukkit:ver" : "&cBecause of security risk, we have disabled this command."
-  "/version" : "&cBecause of security risk, we have disabled this command."
-  "/bukkit:version" : "&cBecause of security risk, we have disabled this command."
-  "/about" : "&cBecause of security risk, we have disabled this command."
-  "/bukkit:about" : "&cBecause of security risk, we have disabled this command."
-  "/icanhasbukkit" : "&cBecause of security risk, we have disabled this command."
-  "/help" : "&cBecause of security risk, we have disabled this command."
-  "/minecraft:help" : "&cBecause of security risk, we have disabled this command."
-  "/bukkit:help" : "&cBecause of security risk, we have disabled this command."
-  "/me" : "&cBecause of security risk, we have disabled this command."
-  "/minecraft:me" : "&cBecause of security risk, we have disabled this command."
-  "/bukkit:?" : "&cBecause of security risk, we have disabled this command."
-  "/plugins" : "&cBecause of security risk, we have disabled this command."
-  "/bukkit:plugins" : "&cBecause of security risk, we have disabled this command."
-  "/pl" : "&cBecause of security risk, we have disabled this command."
-  "/bukkit:pl" : "&cBecause of security risk, we have disabled this command."
+  "/ver": "&cBecause of security risk, we have disabled this command."
+  "/bukkit:ver": "&cBecause of security risk, we have disabled this command."
+  "/version": "&cBecause of security risk, we have disabled this command."
+  "/bukkit:version": "&cBecause of security risk, we have disabled this command."
+  "/about": "&cBecause of security risk, we have disabled this command."
+  "/bukkit:about": "&cBecause of security risk, we have disabled this command."
+  "/icanhasbukkit": "&cBecause of security risk, we have disabled this command."
+  "/help": "&cBecause of security risk, we have disabled this command."
+  "/minecraft:help": "&cBecause of security risk, we have disabled this command."
+  "/bukkit:help": "&cBecause of security risk, we have disabled this command."
+  "/me": "&cBecause of security risk, we have disabled this command."
+  "/minecraft:me": "&cBecause of security risk, we have disabled this command."
+  "/bukkit:?": "&cBecause of security risk, we have disabled this command."
+  "/plugins": "&cBecause of security risk, we have disabled this command."
+  "/bukkit:plugins": "&cBecause of security risk, we have disabled this command."
+  "/pl": "&cBecause of security risk, we have disabled this command."
+  "/bukkit:pl": "&cBecause of security risk, we have disabled this command."
 #----------------------------------------------------------
 #          Random teleport command (/rtp, /wild)
 #----------------------------------------------------------
@@ -174,10 +174,10 @@ ac_delay_message: "&cYou need to wait {seconds} seconds to sent another message!
 ac_color_prefix: ";"
 # Here words on the left will be replaced with words on the right.
 ac_emojis:
-  ":)" : "☺"
-  ":(" : "☹"
-  "<3" : "&4❤&7"
-  "ugly" : "cute"
+  ":)": "☺"
+  ":(": "☹"
+  "<3": "&4❤&7"
+  "ugly": "cute"
 # Which bad words should be blocked in chat?
 ac_filter:
   - "fuck"

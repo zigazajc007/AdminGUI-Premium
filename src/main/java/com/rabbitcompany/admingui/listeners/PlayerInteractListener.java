@@ -14,38 +14,38 @@ import org.bukkit.event.player.PlayerInteractEvent;
 
 public class PlayerInteractListener implements Listener {
 
-    private final AdminUI adminUI = new AdminUI();
-    private final AdminGUI adminGUI;
+	private final AdminUI adminUI = new AdminUI();
+	private final AdminGUI adminGUI;
 
-    public PlayerInteractListener(AdminGUI plugin){
-        adminGUI = plugin;
+	public PlayerInteractListener(AdminGUI plugin) {
+		adminGUI = plugin;
 
-        Bukkit.getPluginManager().registerEvents(this, plugin);
-    }
+		Bukkit.getPluginManager().registerEvents(this, plugin);
+	}
 
-    @EventHandler
-    public void onPlayerInteract(PlayerInteractEvent event){
-        if(event.hasItem()){
-            if(event.getItem() != null){
-                if(event.getItem().hasItemMeta() && event.getItem().getItemMeta() != null){
-                    if(event.getItem().getItemMeta().hasLore() && event.getItem().getItemMeta().getLore() != null){
-                        if(event.getItem().getItemMeta().getLore().contains(Message.chat(AdminGUI.getInstance().getConf().getString("admin_tools_lore", "&dClick me to open Admin GUI")))){
-                            Player player = event.getPlayer();
-                            if(player.getOpenInventory().getType() != InventoryType.CHEST){
-                                if(TargetPlayer.hasPermission(player, "admingui.admin")){
-                                    Settings.target_player.put(player.getUniqueId(), player);
-                                    player.openInventory(adminUI.GUI_Main(player));
-                                }else{
-                                    player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "permission"));
-                                }
-                            }
-                            event.setCancelled(true);
-                        }
-                    }
-                }
-            }
-        }
+	@EventHandler
+	public void onPlayerInteract(PlayerInteractEvent event) {
+		if (event.hasItem()) {
+			if (event.getItem() != null) {
+				if (event.getItem().hasItemMeta() && event.getItem().getItemMeta() != null) {
+					if (event.getItem().getItemMeta().hasLore() && event.getItem().getItemMeta().getLore() != null) {
+						if (event.getItem().getItemMeta().getLore().contains(Message.chat(AdminGUI.getInstance().getConf().getString("admin_tools_lore", "&dClick me to open Admin GUI")))) {
+							Player player = event.getPlayer();
+							if (player.getOpenInventory().getType() != InventoryType.CHEST) {
+								if (TargetPlayer.hasPermission(player, "admingui.admin")) {
+									Settings.target_player.put(player.getUniqueId(), player);
+									player.openInventory(adminUI.GUI_Main(player));
+								} else {
+									player.sendMessage(Message.getMessage(player.getUniqueId(), "prefix") + Message.getMessage(player.getUniqueId(), "permission"));
+								}
+							}
+							event.setCancelled(true);
+						}
+					}
+				}
+			}
+		}
 
-    }
+	}
 
 }

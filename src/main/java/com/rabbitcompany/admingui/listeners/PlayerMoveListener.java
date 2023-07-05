@@ -11,21 +11,22 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 public class PlayerMoveListener implements Listener {
 
-    private final AdminGUI adminGUI;
+	private final AdminGUI adminGUI;
 
-    public PlayerMoveListener(AdminGUI plugin){
-        adminGUI = plugin;
+	public PlayerMoveListener(AdminGUI plugin) {
+		adminGUI = plugin;
 
-        Bukkit.getPluginManager().registerEvents(this, plugin);
-    }
+		Bukkit.getPluginManager().registerEvents(this, plugin);
+	}
 
-    @EventHandler(priority = EventPriority.HIGH)
-    public void onPlayerMove(PlayerMoveEvent e){
-        Player p = e.getPlayer();
+	@EventHandler(priority = EventPriority.HIGH)
+	public void onPlayerMove(PlayerMoveEvent e) {
+		Player p = e.getPlayer();
 
-        if(Settings.freeze.getOrDefault(p.getUniqueId(), false) && AdminGUI.getInstance().getConf().getBoolean("freeze_player_move", true) && e.getTo() != null){
-            if (e.getFrom().getBlockX() != e.getTo().getBlockX() || e.getFrom().getBlockY() != e.getTo().getBlockY() || e.getFrom().getBlockZ() != e.getTo().getBlockZ()) e.setCancelled(true);
-        }
-    }
+		if (Settings.freeze.getOrDefault(p.getUniqueId(), false) && AdminGUI.getInstance().getConf().getBoolean("freeze_player_move", true) && e.getTo() != null) {
+			if (e.getFrom().getBlockX() != e.getTo().getBlockX() || e.getFrom().getBlockY() != e.getTo().getBlockY() || e.getFrom().getBlockZ() != e.getTo().getBlockZ())
+				e.setCancelled(true);
+		}
+	}
 
 }
