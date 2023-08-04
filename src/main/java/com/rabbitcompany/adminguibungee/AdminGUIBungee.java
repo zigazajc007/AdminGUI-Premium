@@ -1,5 +1,8 @@
 package com.rabbitcompany.adminguibungee;
 
+import com.rabbitcompany.admingui.utils.Hash;
+import com.rabbitcompany.admingui.utils.Language;
+import com.rabbitcompany.admingui.utils.Message;
 import com.rabbitcompany.adminguibungee.listeners.PluginMessageListener;
 import com.rabbitcompany.adminguibungee.listeners.ServerKickListener;
 import net.md_5.bungee.api.ChatColor;
@@ -68,30 +71,39 @@ public class AdminGUIBungee extends Plugin {
 	}
 
 	private void info(String message) {
-		getLogger().info("");
-		getLogger().info(ChatColor.GOLD + "[]======[" + message + ChatColor.RED + " AdminGUI-Bungee" + ChatColor.GOLD + "]======[]");
-		getLogger().info(ChatColor.GOLD + "|");
-		getLogger().info(ChatColor.GOLD + "| " + ChatColor.RED + "Information:");
-		getLogger().info(ChatColor.GOLD + "|");
-		getLogger().info(ChatColor.GOLD + "|   " + ChatColor.BLUE + "Name: " + ChatColor.AQUA + "AdminGUI-Bungee");
-		getLogger().info(ChatColor.GOLD + "|   " + ChatColor.BLUE + "Developer: " + ChatColor.AQUA + "Black1_TV");
+		String text = "\n\n";
+		text += ChatColor.GRAY + "[]========[" + message + " " + ChatColor.RED + "AdminGUI-Bungee" + ChatColor.GRAY + "]=======[]\n";
+		text += ChatColor.GRAY + "|\n";
+		text += ChatColor.GRAY + "| " + ChatColor.RED + "Information:\n";
+		text += ChatColor.GRAY + "|\n";
+		text += ChatColor.GRAY + "|   " + ChatColor.BLUE + "Name: " + ChatColor.AQUA + "AdminGUI-Bungee\n";
+		text += ChatColor.GRAY + "|   " + ChatColor.BLUE + "Developer: " + ChatColor.AQUA + "Black1_TV\n";
 		if (!username.contains("%%__")) {
-			getLogger().info(ChatColor.GOLD + "|   " + ChatColor.BLUE + "Plugin owner: " + ChatColor.AQUA + username);
+			text += ChatColor.GRAY + "|   " + ChatColor.BLUE + "Plugin owner: " + ChatColor.AQUA + username + "\n";
+			text += ChatColor.GRAY + "|   " + ChatColor.BLUE + "License key: " + ChatColor.AQUA + new Hash().createLicenseKey(username) + "\n";
 		} else if (!user_id.contains("%%__")) {
-			getLogger().info(ChatColor.GOLD + "|   " + ChatColor.BLUE + "Plugin owner: " + ChatColor.AQUA + user_id);
+			text += ChatColor.GRAY + "|   " + ChatColor.BLUE + "Plugin owner: " + ChatColor.AQUA + user_id + "\n";
+			text += ChatColor.GRAY + "|   " + ChatColor.BLUE + "License key: " + ChatColor.AQUA + new Hash().createLicenseKey(user_id) + "\n";
 		} else {
-			getLogger().info(ChatColor.GOLD + "|   " + ChatColor.BLUE + "Plugin owner: " + ChatColor.RED + ChatColor.BOLD + "CRACKED");
+			text += ChatColor.GRAY + "|   " + ChatColor.BLUE + "Plugin owner: " + ChatColor.DARK_RED + ChatColor.BOLD + "CRACKED\n";
+			text += ChatColor.GRAY + "|   " + ChatColor.BLUE + "License key: " + ChatColor.DARK_RED + "00000-00000-00000-00000\n";
 		}
-		getLogger().info(ChatColor.GOLD + "|   " + ChatColor.BLUE + "Version: " + ChatColor.AQUA + getDescription().getVersion());
-		getLogger().info(ChatColor.GOLD + "|");
-		getLogger().info(ChatColor.GOLD + "| " + ChatColor.RED + "Support:");
-		getLogger().info(ChatColor.GOLD + "|");
-		getLogger().info(ChatColor.GOLD + "|   " + ChatColor.BLUE + "Discord: " + ChatColor.AQUA + "Crazy Rabbit#0001");
-		getLogger().info(ChatColor.GOLD + "|   " + ChatColor.BLUE + "Mail: " + ChatColor.AQUA + "ziga.zajc007@gmail.com");
-		getLogger().info(ChatColor.GOLD + "|   " + ChatColor.BLUE + "Discord: " + ChatColor.AQUA + "https://discord.gg/hUNymXX");
-		getLogger().info(ChatColor.GOLD + "|");
-		getLogger().info(ChatColor.GOLD + "[]=====================================[]");
-		getLogger().info("");
+		text += ChatColor.GRAY + "|   " + ChatColor.BLUE + "Version: " + ChatColor.AQUA + getDescription().getVersion() + "\n";
+		text += ChatColor.GRAY + "|   " + ChatColor.BLUE + "Website: " + ChatColor.AQUA + "https://rabbit-company.com\n";
+		text += ChatColor.GRAY + "|\n";
+		text += ChatColor.GRAY + "| " + ChatColor.RED + "Sponsors:\n";
+		text += ChatColor.GRAY + "|\n";
+		text += ChatColor.GRAY + "|   " + ChatColor.BLUE + "- " + ChatColor.YELLOW + "https://rabbitserverlist.com\n";
+		text += ChatColor.GRAY + "|\n";
+		text += ChatColor.GRAY + "| " + ChatColor.RED + "Support:\n";
+		text += ChatColor.GRAY + "|\n";
+		text += ChatColor.GRAY + "|   " + ChatColor.BLUE + "Discord: " + ChatColor.AQUA + "ziga.zajc007\n";
+		text += ChatColor.GRAY + "|   " + ChatColor.BLUE + "Mail: " + ChatColor.AQUA + "ziga.zajc007@gmail.com\n";
+		text += ChatColor.GRAY + "|   " + ChatColor.BLUE + "Discord: " + ChatColor.AQUA + "https://discord.gg/hUNymXX\n";
+		text += ChatColor.GRAY + "|\n";
+		text += ChatColor.GRAY + "[]=========================================[]\n";
+
+		getLogger().info(text);
 	}
 
 }

@@ -378,48 +378,53 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
 	}
 
 	private void info(String message) {
-		Bukkit.getConsoleSender().sendMessage(Message.chat(""));
-		Bukkit.getConsoleSender().sendMessage(Message.chat("&6[]=====[" + message + " &cAdminGUI-Premium&6]=====[]"));
-		Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
-		Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cInformation:"));
-		Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
-		Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Name: &bAdminGUI-Premium"));
-		if (new_version != null) {
-			Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b" + getDescription().getVersion() + " (&6Update available&b)"));
-		} else {
-			Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Version: &b" + getDescription().getVersion()));
-		}
-		Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Developer: &bBlack1_TV"));
+		String text = "\n\n";
+		text += "&8[]=======[" + message + " &cAdminGUI-Premium&8]=======[]\n";
+		text += "&8|\n";
+		text += "&8| &cInformation:\n";
+		text += "&8|\n";
+		text += "&8|   &9Name: &bAdminGUI-Premium\n";
+		text += "&8|   &9Developer: &bBlack1_TV\n";
 		if (!username.contains("%%__")) {
-			Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &b" + username));
-			Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9License key: &b" + new Hash().createLicenseKey(username)));
+			text += "&8|   &9Plugin owner: &b" + username + "\n";
+			text += "&8|   &9License key: &b" + new Hash().createLicenseKey(username) + "\n";
 		} else if (!user_id.contains("%%__")) {
-			Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &b" + user_id));
-			Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9License key: &b" + new Hash().createLicenseKey(user_id)));
+			text += "&8|   &9Plugin owner: &b" + user_id + "\n";
+			text += "&8|   &9License key: &b" + new Hash().createLicenseKey(user_id) + "\n";
 		} else {
-			Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Plugin owner: &4&lCRACKED"));
-			Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9License key: &400000-00000-00000-00000"));
+			text += "&8|   &9Plugin owner: &4&lCRACKED\n";
+			text += "&8|   &9License key: &400000-00000-00000-00000\n";
 		}
-		Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
-		Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cLanguages:"));
-		Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
+		if (new_version != null) {
+			text += "&8|   &9Version: &b" + getDescription().getVersion() + " (&6update available&b)\n";
+		} else {
+			text += "&8|   &9Version: &b" + getDescription().getVersion() + "\n";
+		}
+		text += "&8|   &9Website: &bhttps://rabbit-company.com\n";
+		text += "&8|\n";
+		text += "&8| &cLanguages:\n";
+		text += "&8|\n";
 		for (String language : Language.getLanguages()) {
 			if (getConf().getString("default_language", "English").equals(language)) {
-				Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &b- " + language + " (default)"));
+				text += "&8|   &9- &b" + language + " (default)\n";
 			} else {
-				Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &b- " + language));
+				text += "&8|   &9- &b" + language + "\n";
 			}
 		}
-		Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
-		Bukkit.getConsoleSender().sendMessage(Message.chat("&6| &cSupport:"));
-		Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
-		Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Website: &6https://rabbit-company.com"));
-		Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Discord: &bziga.zajc007"));
-		Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Mail: &bziga.zajc007@gmail.com"));
-		Bukkit.getConsoleSender().sendMessage(Message.chat("&6|   &9Discord: &bhttps://discord.gg/hUNymXX"));
-		Bukkit.getConsoleSender().sendMessage(Message.chat("&6|"));
-		Bukkit.getConsoleSender().sendMessage(Message.chat("&6[]=====================================[]"));
-		Bukkit.getConsoleSender().sendMessage(Message.chat(""));
+		text += "&8|\n";
+		text += "&8| &cSponsors:\n";
+		text += "&8|\n";
+		text += "&8|   &9- &6https://rabbitserverlist.com\n";
+		text += "&8|\n";
+		text += "&8| &cSupport:\n";
+		text += "&8|\n";
+		text += "&8|   &9Discord: &bziga.zajc007\n";
+		text += "&8|   &9Mail: &bziga.zajc007@gmail.com\n";
+		text += "&8|   &9Discord: &bhttps://discord.gg/hUNymXX\n";
+		text += "&8|\n";
+		text += "&8[]=========================================[]\n";
+
+		Bukkit.getConsoleSender().sendMessage(Message.chat(text));
 	}
 
 	//TODO: Bungee
