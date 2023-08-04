@@ -440,6 +440,29 @@ public class AdminGUI extends JavaPlugin implements PluginMessageListener {
 						Bukkit.getServer().broadcastMessage(in.readUTF());
 				}
 				break;
+			case "custom_chat_channels":
+				String ccChannel = in.readUTF();
+				String ccServerName = in.readUTF();
+				String ccPlayerName = in.readUTF();
+				String ccMessage = in.readUTF();
+
+				if(!getConf().getBoolean("bungeecord_enabled", false) || !getConf().getBoolean("bungeecord_custom_chat_channels", false)) break;
+				if(!getConf().contains("ccc." + ccChannel)) break;
+				Player ccPlayer = Bukkit.getServer().getPlayer(UUID.fromString(sender));
+				if (ccPlayer != null && ccPlayer.isOnline()) break;
+				String bbFormat = getConf().getString("bungeecord_custom_chat_channels_format", "&7[{server_name}] {format}");
+				String ccFormat = getConf().getString("ccc." + ccChannel + ".format", "&2[&cStaff Chat&2] &5{name} &f> {message}");
+				String ccPermission = getConf().getString("ccc." + ccChannel + ".permission");
+
+				ccFormat = bbFormat.replace("{server_name}", ccServerName).replace("{format}", ccFormat);
+
+				for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+					if (TargetPlayer.hasPermission(player, ccPermission)) {
+						player.sendMessage(Message.chat(ccFormat.replace("{name}", ccPlayerName).replace("{display_name}", ccPlayerName).replace("{server_name}", ccServerName).replace("{message}", ccMessage)));
+					}
+				}
+				Bukkit.getConsoleSender().sendMessage(Message.chat(ccFormat.replace("{name}", ccPlayerName).replace("{display_name}", ccPlayerName).replace("{server_name}", ccServerName).replace("{message}", ccMessage)));
+				break;
 			case "online_players":
 				String online_players = in.readUTF();
 				String[] op = online_players.split(";");

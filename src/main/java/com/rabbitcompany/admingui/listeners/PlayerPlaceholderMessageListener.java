@@ -48,11 +48,12 @@ public class PlayerPlaceholderMessageListener implements Listener {
 			return;
 		}
 
-		if (!Settings.custom_chat_channel.getOrDefault(p.getUniqueId(), "").equals("")) {
+		String command = Settings.custom_chat_channel.getOrDefault(p.getUniqueId(), "");
+		if (!command.equals("")) {
 			event.setCancelled(true);
-			String channel = Settings.custom_chat_channel.get(p.getUniqueId());
-			String format = PlaceholderAPI.setPlaceholders(p, adminGUI.getConf().getString("ccc." + channel + ".format"));
-			String permission = adminGUI.getConf().getString("ccc." + channel + ".permission");
+
+			String format = PlaceholderAPI.setPlaceholders(p, adminGUI.getConf().getString("ccc." + command + ".format"));
+			String permission = adminGUI.getConf().getString("ccc." + command + ".permission");
 
 			for (Player player : Bukkit.getServer().getOnlinePlayers()) {
 				if (TargetPlayer.hasPermission(player, permission)) {
@@ -60,6 +61,11 @@ public class PlayerPlaceholderMessageListener implements Listener {
 				}
 			}
 			Bukkit.getConsoleSender().sendMessage(Message.chat(format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message)));
+
+			if (adminGUI.getConf().getBoolean("bungeecord_enabled", false) && adminGUI.getConf().getBoolean("bungeecord_custom_chat_channels", false)) {
+				String serverName = adminGUI.getConf().getString("server_name", "Default");
+				Channel.send(p.getUniqueId().toString(), "custom_chat_channels", command, serverName, p.getName(), message);
+			}
 
 		} else {
 

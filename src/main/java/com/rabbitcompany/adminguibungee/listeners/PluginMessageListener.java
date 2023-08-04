@@ -32,6 +32,13 @@ public class PluginMessageListener implements Listener {
 						String message = input.readUTF();
 						Channel.sendToAllServers(sender, "chat", message);
 						break;
+					case "custom_chat_channels":
+						String ccChannel = input.readUTF();
+						String ccServerName = input.readUTF();
+						String ccPlayerName = input.readUTF();
+						String ccMessage = input.readUTF();
+						Channel.sendToAllServers(sender, "custom_chat_channels", ccChannel, ccServerName, ccPlayerName, ccMessage);
+						break;
 					case "send":
 						String action = input.readUTF();
 						if (action.equals("online_players")) {

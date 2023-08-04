@@ -1,6 +1,7 @@
 package com.rabbitcompany.admingui.listeners;
 
 import com.rabbitcompany.admingui.AdminGUI;
+import com.rabbitcompany.admingui.utils.Channel;
 import com.rabbitcompany.admingui.utils.Message;
 import com.rabbitcompany.admingui.utils.Settings;
 import com.rabbitcompany.admingui.utils.TargetPlayer;
@@ -120,6 +121,10 @@ public class PlayerPlaceholderCommandListener implements Listener {
 						}
 						Bukkit.getConsoleSender().sendMessage(Message.chat(format.replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{message}", message2)));
 
+						if (adminGUI.getConf().getBoolean("bungeecord_enabled", false) && adminGUI.getConf().getBoolean("bungeecord_custom_chat_channels", false)) {
+							String serverName = adminGUI.getConf().getString("server_name", "Default");
+							Channel.send(p.getUniqueId().toString(), "custom_chat_channels", slots.getKey(), serverName, p.getName(), message2);
+						}
 					}
 				} else {
 					p.sendMessage(Message.getMessage(p.getUniqueId(), "prefix") + Message.getMessage(p.getUniqueId(), "permission"));
