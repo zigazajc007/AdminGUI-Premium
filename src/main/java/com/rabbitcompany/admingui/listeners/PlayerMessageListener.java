@@ -215,6 +215,17 @@ public class PlayerMessageListener implements Listener {
 
 				String format = Colors.toHex(Message.chat(adminGUI.getConf().getString("ac_format", "&7{display_name} &7> {message}").replace("{name}", p.getName()).replace("{display_name}", p.getDisplayName()).replace("{server_name}", adminGUI.getConf().getString("server_name", "Default")).replace("{prefix}", prefix).replace("{suffix}", suffix).replace("{vault_prefix}", vault_prefix).replace("{vault_suffix}", vault_suffix)));
 
+				int noChatReport = adminGUI.getConf().getInt("ac_no_chat_reports", 0);
+				if(noChatReport == 1){
+					message = message + " ";
+				}else if(noChatReport == 2 || noChatReport == 3){
+					event.setCancelled(true);
+					for(Player player : Bukkit.getOnlinePlayers()){
+						player.sendMessage(format.replace("{message}", message));
+					}
+					if(noChatReport == 3) Bukkit.getConsoleSender().sendMessage(format.replace("{message}", message));
+				}
+
 				event.setMessage(message);
 				event.setFormat(format.replace("{message}", message));
 

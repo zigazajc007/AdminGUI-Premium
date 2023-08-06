@@ -1,8 +1,6 @@
 package com.rabbitcompany.adminguibungee;
 
 import com.rabbitcompany.admingui.utils.Hash;
-import com.rabbitcompany.admingui.utils.Language;
-import com.rabbitcompany.admingui.utils.Message;
 import com.rabbitcompany.adminguibungee.listeners.PluginMessageListener;
 import com.rabbitcompany.adminguibungee.listeners.ServerKickListener;
 import net.md_5.bungee.api.ChatColor;

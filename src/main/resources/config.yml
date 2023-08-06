@@ -166,6 +166,12 @@ ac_format: "{vault_prefix} &7{display_name} &7> {message}"
 ac_default_color: "LIGHT_GRAY_WOOL"
 # If beautifier is enabled, every message will start with uppercase and end with dot.
 ac_beautifier: true
+# Prevent players from reporting messages
+# if ac_no_chat_reports is set to 0, then this feature is disabled
+# if ac_no_chat_reports is set to 1, then every message will get modified by adding additional space
+# if ac_no_chat_reports is set to 2, then server will send messages to all players
+# if ac_no_chat_reports is set to 3, then server will send messages to all players as well as log them in console
+ac_no_chat_reports: 0
 # How many seconds, player needs to wait until the next message can be sent?
 ac_delay: 0
 # What will be sent to players if they start spamming in chat?
