@@ -1436,7 +1436,11 @@ public class AdminUI {
 
 		Item.create(inv_inventory, "GREEN_TERRACOTTA", 1, 46, Message.getMessage(p.getUniqueId(), "inventory_refresh"));
 
-		Item.create(inv_inventory, "BLUE_TERRACOTTA", 1, 50, Message.getMessage(p.getUniqueId(), "inventory_clear"));
+		if (TargetPlayer.hasPermission(p, "admingui.inventory.edit")) {
+			Item.create(inv_inventory, "BLUE_TERRACOTTA", 1, 50, Message.getMessage(p.getUniqueId(), "inventory_clear"));
+		}else{
+			Item.create(inv_inventory, "RED_STAINED_GLASS_PANE", 1, 50, Message.getMessage(p.getUniqueId(), "permission"));
+		}
 
 		if (AdminGUI.gui_type == 1) {
 			Item.after_createPlayerHead(inv_inventory, Settings.skulls.get("MHF_Redstone"), 1, 54, Message.getMessage(p.getUniqueId(), "inventory_back"));
@@ -1477,7 +1481,11 @@ public class AdminUI {
 
 		Item.create(inv_ender_chest, "GREEN_TERRACOTTA", 1, 28, Message.getMessage(p.getUniqueId(), "inventory_refresh"));
 
-		Item.create(inv_ender_chest, "BLUE_TERRACOTTA", 1, 32, Message.getMessage(p.getUniqueId(), "inventory_clear"));
+		if (TargetPlayer.hasPermission(p, "admingui.enderchest.edit")) {
+			Item.create(inv_ender_chest, "BLUE_TERRACOTTA", 1, 32, Message.getMessage(p.getUniqueId(), "inventory_clear"));
+		}else{
+			Item.create(inv_ender_chest, "RED_STAINED_GLASS_PANE", 1, 32, Message.getMessage(p.getUniqueId(), "permission"));
+		}
 
 		if (AdminGUI.gui_type == 1) {
 			Item.after_createPlayerHead(inv_ender_chest, Settings.skulls.get("MHF_Redstone"), 1, 36, Message.getMessage(p.getUniqueId(), "inventory_back"));
