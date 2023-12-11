@@ -7,6 +7,7 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.BanList;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.enchantments.Enchantment;
@@ -202,6 +203,8 @@ public class TargetPlayer {
 		int max_x = AdminGUI.getInstance().getConf().getInt("rtp_max_x", 1000);
 		int min_z = AdminGUI.getInstance().getConf().getInt("rtp_min_z", -1000);
 		int max_z = AdminGUI.getInstance().getConf().getInt("rtp_max_z", 1000);
+		World world = Bukkit.getWorld(AdminGUI.getInstance().getConf().getString("rtp_world", "WorldName"));
+		if(world == null) world = player.getWorld();
 
 		int x;
 		int z;
@@ -214,9 +217,9 @@ public class TargetPlayer {
 			y = player.getWorld().getHighestBlockYAt(x, z) + 1;
 			if (count >= AdminGUI.getInstance().getConf().getInt("rtp_attempts", 20)) return false;
 			count++;
-		} while (!isSafeLocation(new Location(player.getWorld(), x + 0.5, y, z + 0.5)));
+		} while (!isSafeLocation(new Location(world, x + 0.5, y, z + 0.5)));
 
-		player.teleport(new Location(player.getWorld(), x + 0.5, y, z + 0.5));
+		player.teleport(new Location(world, x + 0.5, y, z + 0.5));
 		return true;
 	}
 

@@ -112,6 +112,8 @@ disabled_commands:
 #----------------------------------------------------------
 # Do you want Random teleport command to be enabled?
 rtp_enabled: false
+# In which world would you like to teleport players? If the specified world name doesn't exist, it will default to the same world as the player's current location.
+rtp_world: "WorldName"
 # Teleport between x coordinates. (Make sure that min value is always smaller then max)
 rtp_min_x: -1000
 rtp_max_x: 1000
